@@ -1,4 +1,4 @@
-# Phase 1b — Literature-derived candidate targets
+# Phase 1b: literature-derived candidate targets
 
 A PubMed sweep of 32 disease- and manifestation-directed queries returned 492 articles, of which 303 named at least one molecular target presented as a driver, modifier, or therapeutic target in neurofibromatosis. After extraction, full-text verification, and the exclusions described below, the list stands at **379 gene × disease × manifestation rows over 194 target labels, drawn from 236 papers**. Fifty-four of those rows are anchored in at least one paper whose full text was retrieved and read; the remaining 325 rest on abstracts alone and are labelled as such. The list is `data/phase1b-literature-targets.csv`; the paper-level record, including per-paper access, is `data/phase1b-references.csv`.
 
@@ -12,9 +12,9 @@ This list is deliberately independent of the expression pipeline. It is held for
 
 **Thirty-six paper-level assignments were relabelled** from the full text. Correction was applied at the level of the individual paper rather than the whole row: where a retrieved full text showed a paper actually studied a different manifestation than its abstract implied, that paper's support moved to the corrected manifestation, while other papers supporting the same row were left where the abstract put them. Several corrections expanded one label into multiple (a paper read as plexiform-neurofibroma-only that in full text covers the plexiform → ANNUBP → MPNST progression now supports all three).
 
-**Family and pathway labels were kept, and expanded rather than replaced.** Two columns were added. `constituent_genes` lists the HGNC symbols that are either the named target itself or the members of the named family/complex, so Phase 4 can query databases without first having to parse the label; 250 distinct gene symbols appear across the 194 labels. `label_type` says what kind of entity the label is — `gene` (271 rows), `family` (58), `pathway` (27), `complex` (17), `drug` (3), `miRNA` (1), `other` (2) — which is what makes an empty `constituent_genes` interpretable rather than ambiguous.
+**Family and pathway labels were kept, and expanded rather than replaced.** Two columns were added. `constituent_genes` lists the HGNC symbols that are either the named target itself or the members of the named family/complex, so Phase 4 can query databases without first having to parse the label; 250 distinct gene symbols appear across the 194 labels. `label_type` says what kind of entity the label is: `gene` (271 rows), `family` (58), `pathway` (27), `complex` (17), `drug` (3), `miRNA` (1), `other` (2). That is what makes an empty `constituent_genes` interpretable rather than ambiguous.
 
-Every plain symbol was checked against HGNC through mygene.info, matching on official symbols only. Alias matching was tried first and rejected: it silently mapped SPP1 to CXXC1, ATR to MMAB, and MIF to AMH, because each of those is a legitimate alias of an unrelated gene. Twenty-seven labels that are not official symbols were expanded by hand — families (BET → *BRD2/3/4/BRDT*; SDH → *SDHA/B/C/D*), complexes (BORC, CRL4-DCAF1, PP2A), renames confirmed against HGNC (CRMP2 → *DPYSL2*, MRVI1 → *IRAG1*, SURVIVIN → *BIRC5*, VEGFR2 → *KDR*, RABL6A → *RABL6*), and three drug names that had leaked into the target column (bevacizumab, simvastatin, apocynin), which are marked `drug` and mapped to the gene each acts on. Two labels — hyaluronan and "oligodendrocyte differentiation (clemastine target)" — are not gene products and carry an empty `constituent_genes` with `label_type = other`.
+Every plain symbol was checked against HGNC through mygene.info, matching on official symbols only. Alias matching was tried first and rejected: it silently mapped SPP1 to CXXC1, ATR to MMAB, and MIF to AMH, because each of those is a legitimate alias of an unrelated gene. Twenty-seven labels that are not official symbols were expanded by hand: families (BET → *BRD2/3/4/BRDT*; SDH → *SDHA/B/C/D*), complexes (BORC, CRL4-DCAF1, PP2A), renames confirmed against HGNC (CRMP2 → *DPYSL2*, MRVI1 → *IRAG1*, SURVIVIN → *BIRC5*, VEGFR2 → *KDR*, RABL6A → *RABL6*), and three drug names that had leaked into the target column (bevacizumab, simvastatin, apocynin), which are marked `drug` and mapped to the gene each acts on. Two labels, hyaluronan and "oligodendrocyte differentiation (clemastine target)", are not gene products and carry an empty `constituent_genes` with `label_type = other`.
 
 ## NF1
 
@@ -32,7 +32,7 @@ VEGFA is the one NF2 target with real-world clinical use: bevacizumab for NF2-as
 
 ## SWN (schwannomatosis)
 
-Schwannomatosis is the thinnest of the three by a wide margin — 21 of 379 rows — and its targets are the predisposition genes themselves. Germline *LZTR1* loss-of-function predisposes to schwannomatosis ([Piotrowski 2013](https://doi.org/10.1038/ng.2855)), and the mechanism resolves to LZTR1 acting in a CUL3 complex that ubiquitinates RAS ([Steklov 2018](https://doi.org/10.1126/science.aap7607); [Zhang 2021](https://doi.org/10.3892/ol.2021.12825)), which places SWN back on the RAS axis shared with NF1 and makes it the most interesting cross-disease mechanistic link to carry into Phase 5. *SMARCB1*-driven disease and the clinical management of both subtypes are covered by the GENTURIS guideline ([Evans 2022](https://doi.org/10.1038/s41431-022-01086-x)); phenotypic expansion of *LZTR1*-related disease continues to be reported ([Horn 2024](https://doi.org/10.3389/fneur.2024.1391425)). Pain, the dominant clinical problem in schwannomatosis, produced six rows and no target with a mechanism beyond the predisposition genes — a genuine gap, not a search artefact.
+Schwannomatosis is the thinnest of the three by a wide margin, 21 of 379 rows, and its targets are the predisposition genes themselves. Germline *LZTR1* loss-of-function predisposes to schwannomatosis ([Piotrowski 2013](https://doi.org/10.1038/ng.2855)), and the mechanism resolves to LZTR1 acting in a CUL3 complex that ubiquitinates RAS ([Steklov 2018](https://doi.org/10.1126/science.aap7607); [Zhang 2021](https://doi.org/10.3892/ol.2021.12825)), which places SWN back on the RAS axis shared with NF1 and makes it the most interesting cross-disease mechanistic link to carry into Phase 5. *SMARCB1*-driven disease and the clinical management of both subtypes are covered by the GENTURIS guideline ([Evans 2022](https://doi.org/10.1038/s41431-022-01086-x)); phenotypic expansion of *LZTR1*-related disease continues to be reported ([Horn 2024](https://doi.org/10.3389/fneur.2024.1391425)). Pain, the dominant clinical problem in schwannomatosis, produced six rows and no target with a mechanism beyond the predisposition genes, a genuine gap rather than a search artefact.
 
 ## Coverage by disease and manifestation
 
@@ -69,8 +69,8 @@ The plan requires that every literature claim declare full-text versus abstract-
 
 | Evidence tier | Rows |
 |---|---|
-| full text – supported | 46 |
-| full text – partial | 8 |
+| full text - supported | 46 |
+| full text - partial | 8 |
 | abstract only | 325 |
 
 Verification was attempted on the rows that had two or more supporting papers before filtering, producing 257 row–paper judgements, of which 136 were assessable against retrieved text and 121 were `not_assessed` for want of full text.
@@ -91,6 +91,6 @@ Thirty-two PubMed queries spanning NF1, NF2-SWN, and SWN crossed with the plan's
 
 ## Files
 
-- `data/phase1b-literature-targets.csv` — 379 rows, one per gene × disease × manifestation, with `constituent_genes`, `label_type`, mechanism, supporting PMIDs, per-paper access, and evidence tier
-- `data/phase1b-references.csv` — 236 contributing papers with DOI, PMC id, whether full text was read, and rows contributed
-- `data/phase1b-coverage.csv` — the coverage matrix above in machine-readable form
+- `data/phase1b-literature-targets.csv`: 379 rows, one per gene × disease × manifestation, with `constituent_genes`, `label_type`, mechanism, supporting PMIDs, per-paper access, and evidence tier
+- `data/phase1b-references.csv`: 236 contributing papers with DOI, PMC id, whether full text was read, and rows contributed
+- `data/phase1b-coverage.csv`: the coverage matrix above in machine-readable form
