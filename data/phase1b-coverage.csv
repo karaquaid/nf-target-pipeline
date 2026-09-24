@@ -1,21 +1,21 @@
-manifestation,NF1,NF2-SWN,SWN,Not specified,total
-Bone defects,5,0,0,4,9
-Cardiovascular issues,6,1,0,5,12
-Cognition / Behavioral / Learning,7,0,0,0,7
-Sleep,4,0,0,2,6
-Cutaneous neurofibroma,21,0,1,2,24
-Ependymoma,0,6,0,3,9
-Gastrointestinal stromal tumor (GIST),9,0,0,6,15
-Hematologic malignancies,3,0,0,11,14
-High grade glioma,11,0,0,36,47
-Malignant peripheral nerve sheath tumor (MPNST),70,1,2,5,78
-Meningioma,0,32,0,39,71
-Optic pathway glioma,15,0,0,2,17
-Non-optic LGG,5,0,0,10,15
-Pain,13,0,6,2,21
-Plexiform neurofibroma,42,0,0,3,45
-ANNUBP / atypical neurofibroma,8,0,0,0,8
-Pulmonary disease,5,1,0,0,6
-Non-vestibular schwannoma,0,17,5,4,26
-Vestibular schwannoma,1,47,2,5,55
-Other,23,2,3,34,62
+manifestation,NF1,NF2-SWN,SWN,total
+Bone defects,5,0,0,5
+Cardiovascular issues,7,1,0,8
+Cognition / Behavioral / Learning,7,0,0,7
+Sleep,4,0,0,4
+Cutaneous neurofibroma,21,0,1,22
+Ependymoma,0,6,0,6
+Gastrointestinal stromal tumor (GIST),9,0,0,9
+Hematologic malignancies,3,0,0,3
+High grade glioma,11,0,0,11
+Malignant peripheral nerve sheath tumor (MPNST),70,1,2,73
+Meningioma,0,32,0,32
+Optic pathway glioma,15,0,0,15
+Non-optic LGG,5,0,0,5
+Pain,13,0,6,19
+Plexiform neurofibroma,43,0,0,43
+ANNUBP / atypical neurofibroma,9,0,0,9
+Pulmonary disease,5,1,0,6
+Non-vestibular schwannoma,0,17,5,22
+Vestibular schwannoma,1,47,3,51
+Other,24,1,4,29
