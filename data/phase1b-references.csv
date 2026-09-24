@@ -1,0 +1,304 @@
+pmid,doi,pmc,first_author,year,journal,title,pmc_available,access_used,n_target_rows
+12351569,10.1093/hmg/11.20.2347,,Maher,2002,Hum Mol Genet,The pressure rises: update on the genetics of phaeochromocytoma.,False,abstract_only,1
+12432832,10.1016/s0733-8619(01)00019-6,,Lynch,2002,Neurol Clin,Neurofibromatosis 1.,False,abstract_only,1
+17573495,10.1378/chest.06-3017,,Stewart,2007,Chest,Is pulmonary arterial hypertension in neurofibromatosis type 1 secondary to a plexogenic arteriopathy?,False,abstract_only,2
+20043105,,,Ponti,2010,Oncol Rep,Gastrointestinal stromal tumor and other primary metachronous or synchronous neoplasms as a suspicion criterion for syndromic setting.,False,abstract_only,3
+20043723,10.3171/2009.11.FOCUS09221,,Gottfried,2010,Neurosurg Focus,Neurofibromatosis Type 1 and tumorigenesis: molecular mechanisms and therapeutic implications.,False,abstract_only,5
+20511180,10.1093/neuonc/noq012,PMC2940674,Ammoun,2010,Neuro Oncol,ErbB/HER receptor activation and preclinical efficacy of lapatinib in vestibular schwannoma.,True,abstract_only,5
+21987445,10.1002/gcc.20921,,Beert,2011,Genes Chromosomes Cancer,Atypical neurofibromas in neurofibromatosis type 1 are premalignant tumors.,False,abstract_only,2
+22821631,10.1007/s12307-012-0115-x,PMC3460056,Yang,2012,Cancer Microenviron,The plexiform neurofibroma microenvironment.,True,abstract_only,2
+24370551,10.1161/CIRCULATIONAHA.113.006320,PMC3960343,Li,2013,Circulation,Neurofibromin-deficient myeloid cells are critical mediators of aneurysm formation in vivo.,True,abstract_only,3
+24426628,10.1007/s12262-012-0572-y,PMC3693257,Swain,2012,Indian J Surg,Unusual presentation of gastrointestinal stromal tumor of stomach in neurofibromatosis type 1: a case report.,True,abstract_only,1
+24470531,10.1634/theoncologist.2013-0328,PMC3926794,Farid,2014,Oncologist,Malignant peripheral nerve sheath tumors.,True,abstract_only,7
+24569456,10.1172/JCI69927,PMC3973083,Gritsman,2014,J Clin Invest,Hematopoiesis and RAS-driven myeloid leukemia differentially require PI3K isoform p110α.,True,abstract_only,2
+24812670,10.1172/JCI74182,PMC4038579,Kong,2014,J Clin Invest,Combined MEK and JAK inhibition abrogates murine myeloproliferative neoplasm.,True,abstract_only,2
+25012485,10.1016/j.jocn.2014.05.019,,Johnson,2014,J Clin Neurosci,"CIP2A and PP2A in human leptomeninges, arachnoid granulations and meningiomas.",False,abstract_only,3
+25054093,10.4161/rdis.28341,PMC4091572,Walker,2014,Rare Dis,A Drosophila screen identifies neurofibromatosis-1 genetic modifiers involved in systemic and synaptic growth.,True,abstract_only,1
+25335493,10.1038/ejhg.2014.220,PMC4463507,Paganini,2014,Eur J Hum Genet,Expanding the mutational spectrum of LZTR1 in schwannomatosis.,True,abstract_only,3
+25480913,10.1212/WNL.0000000000001129,PMC4336087,Smith,2014,Neurology,Mutations in LZTR1 add to the complex heterogeneity of schwannomatosis.,True,abstract_only,1
+25534823,10.1093/neuonc/nou329,PMC4483119,Kaul,2014,Neuro Oncol,Akt- or MEK-mediated mTOR inhibition suppresses Nf1 optic glioma growth.,True,abstract_only,4
+25728762,10.1002/pd.4586,,Burger,2015,Prenat Diagn,Why increased nuchal translucency is associated with congenital heart disease: a systematic review on genetic mechanisms.,False,abstract_only,1
+25917340,10.1007/s11940-015-0355-4,,Sabatini,2015,Curr Treat Options Neurol,Treatment of neurofibromatosis type 1.,False,abstract_only,1
+26022982,10.1007/s11060-015-1828-8,,Hochart,2015,J Neurooncol,Bevacizumab decreases vestibular schwannomas growth rate in children and teenagers with neurofibromatosis type 2.,False,abstract_only,1
+26564072,10.1016/B978-0-444-62702-5.00005-6,,Evans,2015,Handb Clin Neurol,Neurofibromatosis type 2.,False,abstract_only,1
+26637774,10.1182/asheducation-2015.1.571,,Haroche,2015,Hematology Am Soc Hematol Educ Program,"Uncommon histiocytic disorders: Rosai-Dorfman, juvenile xanthogranuloma, and Erdheim-Chester disease.",False,abstract_only,7
+26857854,10.1007/s00401-016-1540-6,,Röhrich,2016,Acta Neuropathol,Methylation-based classification of benign and malignant peripheral nerve sheath tumors.,False,abstract_only,3
+27889578,10.1016/j.neuroscience.2016.11.017,,Switon,2016,Neuroscience,Molecular neurobiology of mTOR.,False,abstract_only,1
+28124441,10.1002/gcc.22446,,Sohier,2017,Genes Chromosomes Cancer,Confirmation of mutation landscape of NF1-associated malignant peripheral nerve sheath tumors.,False,abstract_only,4
+28126595,10.1016/j.ebiom.2017.01.020,PMC5474504,Bassiri,2017,EBioMedicine,Global Proteome and Phospho-proteome Analysis of Merlin-deficient Meningioma and Schwannoma Identifies PDLIM2 as a Novel Therapeutic Target.,True,abstract_only,1
+28256688,,,Garcia-Penas,2017,Rev Neurol,[Learning disorders in neurofibromatosis type 1].,False,abstract_only,1
+28314790,10.1158/1078-0432.CCR-16-2632,,Nair,2017,Clin Cancer Res,Selinexor (KPT-330) Induces Tumor Suppression through Nuclear Sequestration of IκB and Downregulation of Survivin.,False,abstract_only,3
+28380429,10.18632/oncotarget.16516,PMC5464843,Pan,2017,Oncotarget,Ccl5 establishes an autocrine high-grade glioma growth regulatory circuit critical for mesenchymal glioblastoma survival.,True,abstract_only,3
+28558056,10.1371/journal.pone.0178064,PMC5448771,Fukushima,2017,PLoS One,Hypoxia-inducible factor 1 alpha is a poor prognostic factor and potential therapeutic target in malignant peripheral nerve sheath tumor.,True,abstract_only,1
+28735458,10.1007/s11060-017-2567-9,,Paldor,2017,J Neurooncol,The efficacy of lapatinib and nilotinib in combination with radiation therapy in a model of NF2 associated peripheral schwannoma.,False,abstract_only,6
+28759666,10.1001/jamaneurol.2017.1406,PMC5710179,Pathmanaban,2017,JAMA Neurol,Association of Genetic Predisposition With Solitary Schwannoma or Meningioma in Children and Young Adults.,True,abstract_only,5
+29230670,10.1007/s11060-017-2711-6,,Paganini,2017,J Neurooncol,Double somatic SMARCB1 and NF2 mutations in sporadic spinal schwannoma.,False,abstract_only,2
+29249250,10.1016/S0151-9638(17)31063-3,,Chiaverini,2017,Ann Dermatol Venereol,[What's new in pediatric dermatology?].,False,abstract_only,1
+29262839,10.1186/s13023-017-0734-x,PMC5738781,Rozza-de-Menezes,2017,Orphanet J Rare Dis,Receptor of ghrelin is expressed in cutaneous neurofibromas of individuals with neurofibromatosis 1.,True,abstract_only,1
+29441367,10.21037/tgh.2018.01.02,PMC5803009,Niinuma,2018,Transl Gastroenterol Hepatol,Molecular characterization and pathogenesis of gastrointestinal stromal tumor.,True,abstract_only,5
+29473773,10.3171/2017.8.JNS17765,,Payne,2018,J Neurosurg,MLN8237 treatment in an orthoxenograft murine model for malignant peripheral nerve sheath tumors.,False,abstract_only,1
+29596064,10.1172/JCI99424,PMC6025974,Liao,2018,J Clin Invest,Contributions of inflammation and tumor microenvironment to neurofibroma tumorigenesis.,True,abstract_only,1
+29599333,10.21873/anticanres.12455,,DE Carvalho,2018,Anticancer Res,Frequency of the Loss of Heterozygosity of theGene in Sporadic Spinal Schwannomas.,False,abstract_only,1
+29681099,10.1002/ajmg.a.38675,PMC5918269,Fisher,2018,Am J Med Genet A,"2016 Children's Tumor Foundation conference on neurofibromatosis type 1, neurofibromatosis type 2, and schwannomatosis.",True,abstract_only,1
+29844011,10.1182/blood-2017-10-811760,PMC6071563,Melo-Cardenas,2018,Blood,USP22 deficiency leads to myeloid leukemia upon oncogenic Kras activation through a PU.1-dependent mechanism.,True,abstract_only,2
+29925695,10.1172/jci.insight.120402,PMC6124439,White,2018,JCI Insight,A porcine model of neurofibromatosis type 1 that mimics the human disease.,True,abstract_only,4
+29948766,10.1007/s11060-018-2922-5,PMC6126973,Osorio,2018,J Neurooncol,Effect of lapatinib on meningioma growth in adults with neurofibromatosis type 2.,True,abstract_only,2
+29982664,10.1093/neuonc/noy046,PMC6071664,Angus,2018,Neuro Oncol,EPH receptor signaling as a novel therapeutic target in NF2-deficient meningioma.,True,abstract_only,5
+30145722,10.1007/s12307-018-0216-2,PMC6250613,Ariyannur,2018,Cancer Microenviron,Cerebrospinal Fluid Hyaluronan and Neurofibromatosis Type 2.,True,abstract_only,3
+30169729,10.1093/jnen/nly076,,Nix,2018,J Neuropathol Exp Neurol,Malignant Peripheral Nerve Sheath Tumors Show Decreased Global DNA Methylation.,False,abstract_only,1
+30239952,10.1093/neuonc/noy150,PMC6374766,Poore,2019,Neuro Oncol,Inhibition of mTORC1 in pediatric low-grade glioma depletes glutathione and therapeutically synergizes with carboplatin.,True,abstract_only,2
+30387339,10.22608/APO.2018182,,Karaconji,2018,Asia Pac J Ophthalmol (Phila),Neurofibromatosis Type 1: Review and Update on Emerging Therapies.,False,abstract_only,2
+30442766,10.1126/science.aap8210,PMC6794158,Bigenzahn,2018,Science,LZTR1 is a regulator of RAS ubiquitination and signaling.,True,abstract_only,2
+30511495,10.1111/neup.12524,,Barresi,2018,Neuropathology,High p-mTOR expression is associated with recurrence and shorter disease-free survival in atypical meningiomas.,False,abstract_only,1
+30542122,10.1038/s41388-018-0600-x,PMC6461477,Fletcher,2018,Oncogene,STAT3 inhibition reduces macrophage number and tumor growth in neurofibroma.,True,abstract_only,1
+30728335,10.1172/jci.insight.98601,PMC6413799,Fletcher,2019,JCI Insight,Cxcr3-expressing leukocytes are necessary for neurofibroma formation in mice.,True,abstract_only,2
+30946477,10.1093/brain/awz044,PMC6485274,Behnan,2019,Brain,The landscape of the mesenchymal signature in brain tumours.,True,abstract_only,2
+30993672,10.1111/cge.13551,,Halliday,2019,Clin Genet,Trends in phenotype in the English paediatric neurofibromatosis type 2 cohort stratified by genetic severity.,False,abstract_only,1
+31059067,10.3892/ijo.2019.4797,,Jia,2019,Int J Oncol,Activated androgen receptor accelerates angiogenesis in cutaneous neurofibroma by regulating VEGFA transcription.,False,abstract_only,2
+31091306,10.1093/hmg/ddz095,PMC6687955,Rhodes,2019,Hum Mol Genet,Cdkn2a (Arf) loss drives NF1-associated atypical neurofibroma and malignant transformation.,True,abstract_only,1
+31197610,10.1007/s11626-019-00370-3,,Wang,2019,In Vitro Cell Dev Biol Anim,NFKB1-miR-612-FAIM2 pathway regulates tumorigenesis in neurofibromatosis type 1.,False,abstract_only,3
+31258848,10.18632/oncotarget.27005,PMC6592288,Georgescu,2019,Oncotarget,Mutations of the MAPK/TSC/mTOR pathway characterize periventricular glioblastoma with epithelioid SEGA-like morphology-morphological and therapeutic implications.,True,abstract_only,4
+31262833,10.1158/0008-5472.CAN-19-1186,,Natarajan,2019,Cancer Res,Poly Combs the Immune System: PRC2 Loss in Malignant Peripheral Nerve Sheath Tumors Can Dampen Immune Responses.,False,abstract_only,1
+31425178,10.1097/CCO.0000000000000579,,Halliday,2019,Curr Opin Oncol,Neurofibromatosis type 2 and related disorders.,False,abstract_only,4
+31431463,10.1158/0008-5472.CAN-19-1272,,Ohka,2019,Cancer Res,Pathogenic Epigenetic Consequences of Genetic Alterations in IDH-Wild-Type Diffuse Astrocytic Gliomas.,False,abstract_only,3
+31534897,10.1055/s-0038-1676628,PMC6748845,Killeen,2018,J Neurol Surg B Skull Base,Long-Term Effects of Bevacizumab on Vestibular Schwannoma Volume in Neurofibromatosis Type 2 Patients.,True,abstract_only,1
+31841591,10.1093/neuonc/noz230,PMC7158655,Arnold,2020,Neuro Oncol,Synergistic activity of mTORC1/2 kinase and MEK inhibitors suppresses pediatric low-grade glioma tumorigenicity and vascularity.,True,abstract_only,4
+32108293,10.1007/s11060-020-03443-6,,Espírito Santo,2020,J Neurooncol,Selumetinib for plexiform neurofibromas in neurofibromatosis type 1: a single-institution experience.,False,abstract_only,1
+32111496,10.1016/j.arcmed.2019.12.018,,Jia,2020,Arch Med Res,Infiltrating Macrophages Induced Stem-cell-like Features Through PI3K/AKT/GSK3β Signaling to Promote Neurofibroma Growth.,False,abstract_only,1
+32193699,10.1007/s00262-020-02548-1,PMC7303069,Farschtschi,2020,Cancer Immunol Immunother,Upregulated immuno-modulator PD-L1 in malignant peripheral nerve sheath tumors provides a potential biomarker and a therapeutic target.,True,abstract_only,2
+32194680,10.3892/ol.2020.11299,PMC7039135,Breun,2020,Oncol Lett,ADAM9: A novel player in vestibular schwannoma pathogenesis.,True,abstract_only,2
+32236425,10.1093/neuonc/noaa071,PMC7566451,Ullrich,2020,Neuro Oncol,"A phase II study of continuous oral mTOR inhibitor everolimus for recurrent, radiographic-progressive neurofibromatosis type 1-associated pediatric low-grade glioma: a Neurofibromatosis Clinical Trials Consortium study.",True,abstract_only,1
+32266095,,PMC7136923,Guo,2020,Am J Cancer Res,Polo-like kinase 1 as a therapeutic target for malignant peripheral nerve sheath tumors (MPNST) and schwannomas.,True,abstract_only,3
+32315290,10.1172/JCI130379,PMC7324187,Palomo-Irigoyen,2020,J Clin Invest,HuR/ELAVL1 drives malignant peripheral nerve sheath tumor growth and metastasis.,True,abstract_only,6
+32323813,10.3892/or.2020.7513,,Jia,2020,Oncol Rep,Cutaneous neurofibroma cells with active YAP promotes proliferation of macrophages resulting in increased accumulation of macrophages by modulating CCL5 and TGF‑β1.,False,abstract_only,5
+32441531,10.1080/07357907.2020.1773844,,Das,2020,Cancer Invest,"Effect of Dovitinib (TKI258), a Multi-Target Angiokinase Inhibitor on Aggressive Meningioma Cells.",False,abstract_only,2
+32470937,10.3171/2020.3.JNS193230,,Lewis,2020,J Neurosurg,The microenvironment in sporadic and neurofibromatosis type II-related vestibular schwannoma: the same tumor or different? A comparative imaging and neuropathology study.,False,abstract_only,2
+32564155,10.1007/s00381-020-04754-9,,Shofty,2020,Childs Nerv Syst,Spinal manifestations of Neurofibromatosis type 1.,False,abstract_only,1
+32583151,10.1007/s00381-020-04749-6,,Chauvel-Picard,2020,Childs Nerv Syst,Craniofacial bone alterations in patients with neurofibromatosis type 1.,False,abstract_only,1
+32601903,10.1007/s00381-020-04704-5,,Packer,2020,Childs Nerv Syst,New treatment modalities in NF-related neuroglial tumors.,False,abstract_only,3
+32601904,10.1007/s00381-020-04771-8,,Legius,2020,Childs Nerv Syst,"Genetic basis of neurofibromatosis type 1 and related conditions, including mosaicism.",False,abstract_only,2
+32657748,10.3238/arztebl.2020.0354,PMC7373809,Farschtschi,2020,Dtsch Arztebl Int,The Neurofibromatoses.,True,abstract_only,2
+32927517,10.3760/cma.j.cn.441530-20200614-00356,,Tong,2020,Zhonghua Wei Chang Wai Ke Za Zhi,[Characteristics and targeted therapy of wild-type gastrointestinal stromal tumor].,False,abstract_only,1
+32939452,10.1093/noajnl/vdaa095,PMC7486535,Jackson,2020,Neurooncol Adv,The MEK inhibitor selumetinib reduces spinal neurofibroma burden in patients with NF1 and plexiform neurofibromas.,True,abstract_only,1
+33108355,10.1172/JCI139807,PMC7773354,Mo,2021,J Clin Invest,Humanized neurofibroma model from induced pluripotent stem cells delineates tumor pathogenesis and developmental origins.,True,abstract_only,2
+33109559,10.21873/anticanres.14642,,Kinoshita,2020,Anticancer Res,Frequent MN1 Gene Mutations in Malignant Peripheral Nerve Sheath Tumor.,False,abstract_only,1
+33193598,10.3389/fgene.2020.507816,PMC7661748,Gao,2020,Front Genet,Whole Genome Sequencing Identifies Key Genes in Spinal Schwannoma.,True,abstract_only,1
+33235741,10.1002/ccr3.3071,PMC7669387,Yasuda,2020,Clin Case Rep,Effects of imatinib mesylate on cutaneous neurofibromas associated with neurofibromatosis type 1.,True,abstract_only,1
+33263426,10.1080/02688697.2020.1836323,,Schraepen,2020,Br J Neurosurg,What to know about schwannomatosis: a literature review.,False,abstract_only,2
+33442015,10.1038/s41591-020-01193-6,PMC8275010,Fisher,2021,Nat Med,Cabozantinib for neurofibromatosis type 1-related plexiform neurofibromas: a phase 2 trial.,True,abstract_only,3
+33588442,10.1093/neuros/nyab021,PMC7884141,Belakhoua,2021,Neurosurgery,Diagnostic Pathology of Tumors of Peripheral Nerve.,True,abstract_only,8
+33606385,10.1097/PAS.0000000000001690,,Eschbacher,2021,Am J Surg Pathol,Diffuse Gliomas of the Brainstem and Cerebellum in Adults Show Molecular Heterogeneity.,False,abstract_only,7
+33641042,10.1007/s11864-021-00830-7,,Hassan,2021,Curr Treat Options Oncol,Systemic Options for Malignant Peripheral Nerve Sheath Tumors.,False,abstract_only,2
+33683166,10.1080/03007995.2021.1900089,,Mukhopadhyay,2021,Curr Med Res Opin,Selumetinib: the first ever approved drug for neurofibromatosis-1 related inoperable plexiform neurofibroma.,False,abstract_only,2
+33751171,10.1007/s00381-021-05127-6,,Toledano,2021,Childs Nerv Syst,Trametinib for orbital plexiform neurofibromas in young children with neurofibromatosis type 1.,False,abstract_only,1
+33753124,10.1016/j.jneumeth.2021.109141,,Waldt,2021,J Neurosci Methods,Crispr/Cas-based modeling of NF2 loss in meningioma cells.,False,abstract_only,2
+33831431,10.1016/j.jid.2021.03.016,,Muniz,2021,J Invest Dermatol,Genomic Landscape of Malignant Peripheral Nerve Sheath Tumor‒Like Melanoma.,False,abstract_only,3
+33835000,,,Wollina,2020,Acta Dermatovenerol Croat,Plexiform Neurofibroma Without Neurofibromatosis Type 1.,False,abstract_only,3
+33850002,10.1158/1535-7163.MCT-20-0717,,Tang,2021,Mol Cancer Ther,Small Molecule Inhibitors of TEAD Auto-palmitoylation Selectively Inhibit Proliferation and Tumor Growth of-deficient Mesothelioma.,False,abstract_only,2
+34283254,10.1007/s00401-021-02341-z,,Kochat,2021,Acta Neuropathol,Enhancer reprogramming in PRC2-deficient malignant peripheral nerve sheath tumors induces a targetable de-differentiated state.,False,abstract_only,4
+34285798,10.1177/20458940211029550,PMC8264739,Taniguchi,2021,Pulm Circ,Pulmonary hypertension associated with neurofibromatosis type 2.,True,abstract_only,1
+34406460,10.1007/s00347-021-01471-9,,Zimbelmann,2021,Ophthalmologe,[Treatment and management of orbital tumors].,False,abstract_only,2
+34432163,10.1007/s00428-021-03189-0,,Ito,2021,Virchows Arch,Clinicopathological and prognostic significance of H3K27 methylation status in malignant peripheral nerve sheath tumor: correlation with skeletal muscle differentiation.,False,abstract_only,2
+34453890,10.1016/j.molcel.2021.07.040,,Meng,2021,Mol Cell,Induced phase separation of mutant NF2 imprisons the cGAS-STING machinery to abrogate antitumor immunity.,False,abstract_only,5
+34629433,10.1097/WCO.0000000000001002,,Graillon,2021,Curr Opin Neurol,Chemotherapy and targeted therapies for meningiomas: what is the evidence?,False,abstract_only,7
+34812989,10.1007/s10014-021-00417-y,PMC8752536,Lim,2021,Brain Tumor Pathol,Molecular subtyping of ependymoma and prognostic impact of Ki-67.,True,abstract_only,3
+35156148,10.1007/s10557-022-07324-0,PMC11726350,Yi,2022,Cardiovasc Drugs Ther,An Assessment of the Therapeutic Landscape for the Treatment of Heart Disease in the RASopathies.,True,abstract_only,3
+35175984,10.1097/SCS.0000000000008528,,Zhu,2022,J Craniofac Surg,The Clinical Features and Molecular Mechanism of Pituitary Adenoma Associated With Vestibular Schwannoma.,False,abstract_only,1
+35210278,10.3174/ajnr.A7433,PMC8910799,Vajapeyam,2022,AJNR Am J Neuroradiol,ADC Histogram Analysis of Pediatric Low-Grade Glioma Treated with Selumetinib: A Report from the Pediatric Brain Tumor Consortium.,True,abstract_only,1
+35230908,10.1177/01945998221083506,PMC9433467,Thielhelm,2022,Otolaryngol Head Neck Surg,RAD51 Inhibitor and Radiation Toxicity in Vestibular Schwannoma.,True,abstract_only,1
+35261809,,PMC8899988,Huang,2022,Am J Cancer Res,A novel HDAC11 inhibitor potentiates the tumoricidal effects of cordycepin against malignant peripheral nerve sheath tumor through the Hippo signaling pathway.,True,abstract_only,4
+35282706,10.1177/00031348221083934,,Schaeffer,2022,Am Surg,Neurofibromatosis-associated Gastrointestinal Stromal Tumor Causing Small Bowel Obstruction.,False,abstract_only,3
+35284800,10.14744/nci.2020.37431,PMC8848499,Arikan,2021,North Clin Istanb,Giant composite pheochromocytoma and gastrointestinal stromal tumor in a patient with neurofibromatosis: A case report.,True,abstract_only,1
+35301838,10.23736/S0390-5616.21.05528-4,,Sharawat,2022,J Neurosurg Sci,Efficacy and safety profile of selumetinib in symptomatic inoperable plexiform neurofibromas.,False,abstract_only,1
+35363510,10.1200/JCO.21.02840,PMC9273373,Eckstein,2022,J Clin Oncol,Phase II Study of Selumetinib in Children and Young Adults With Tumors Harboring Activating Mitogen-Activated Protein Kinase Pathway Genetic Alterations: Arm E of the NCI-COG Pediatric MATCH Trial.,True,abstract_only,1
+35419473,10.1080/23723556.2021.1989262,PMC8997259,Zhu,2021,Mol Cell Oncol,A therapeutic window for preventive therapy in NF1-associated optic pathway glioma.,True,abstract_only,2
+35467749,10.1093/neuonc/noac109,PMC9629448,Gross,2022,Neuro Oncol,Selumetinib in children with neurofibromatosis type 1 and asymptomatic inoperable plexiform neurofibroma at risk for developing tumor-related morbidity.,True,abstract_only,1
+35657359,10.1093/neuonc/noac146,PMC9629437,Fisher,2022,Neuro Oncol,Management of neurofibromatosis type 1-associated plexiform neurofibromas.,True,abstract_only,1
+35761463,10.1097/MAO.0000000000003556,PMC9354971,Misztal,2022,Otol Neurotol,Effect of AR42 in Primary Vestibular Schwannoma Cells and a Xenograft Model of Vestibular Schwannoma.,True,abstract_only,2
+35788692,10.1093/neuonc/noac165,PMC9629420,de Blank,2022,Neuro Oncol,MEK inhibitors for neurofibromatosis type 1 manifestations: Clinical evidence and consensus.,True,abstract_only,1
+35855174,10.25259/SNI_453_2022,PMC9282769,Oyama,2022,Surg Neurol Int,Laminectomy triggers symptomatic growth of spinal schwannoma in a patient with schwannomatosis.,True,abstract_only,1
+35936751,10.3389/fonc.2022.931371,PMC9354681,Young,2022,Front Oncol,CDK 4/6 inhibitors for the treatment of meningioma.,True,abstract_only,1
+36134665,10.1172/jci.insight.154513,PMC9675562,Kershner,2022,JCI Insight,Multiple Nf1 Schwann cell populations reprogram the plexiform neurofibroma tumor microenvironment.,True,abstract_only,9
+36139588,10.3390/cancers14184429,PMC9496830,Leisz,2022,Cancers (Basel),Vestibular Schwannoma Volume and Tumor Growth Correlates with Macrophage Marker Expression.,True,abstract_only,3
+36567410,10.1007/s10072-022-06575-x,,Villani,2022,Neurol Sci,Malignant meningioma mTOR mutated and precision medicine.,False,abstract_only,2
+36739480,10.1016/j.ymthe.2023.01.030,PMC10124140,Pasupuleti,2023,Mol Ther,Potential clinical use of azacitidine and MEK inhibitor combination therapy in PTPN11-mutated juvenile myelomonocytic leukemia.,True,abstract_only,2
+36818284,10.1016/j.isci.2023.106096,PMC9929861,Magallón-Lorenz,2023,iScience,Deep genomic analysis of malignant peripheral nerve sheath tumor cell lines challenges current malignant peripheral nerve sheath tumor diagnosis.,True,abstract_only,1
+36866403,10.1093/neuonc/noad053,PMC10479771,Kresbach,2023,Neuro Oncol,Atypical neurofibromas reveal distinct epigenetic features with proximity to benign peripheral nerve sheath tumor entities.,True,abstract_only,1
+36959063,10.1016/j.neurol.2023.03.006,,Graillon,2023,Rev Neurol (Paris),Innovative treatments for meningiomas.,False,abstract_only,15
+37025569,10.1093/braincomms/fcad089,PMC10072238,Madhani,2023,Brain Commun,Vestibular dysfunction in neurofibromatosis type 2-related schwannomatosis.,True,abstract_only,1
+37086345,10.1007/s13402-023-00819-4,PMC12974627,Chung,2023,Cell Oncol (Dordr),RRM2 as a novel prognostic and therapeutic target of NF1-associated MPNST.,True,abstract_only,3
+37328781,10.1186/s12885-023-10996-y,PMC10273716,Armstrong,2023,BMC Cancer,Treatment decisions and the use of MEK inhibitors for children with neurofibromatosis type 1-related plexiform neurofibromas.,True,abstract_only,2
+37344677,10.1007/s00381-023-06029-5,,Vaassen,2023,Childs Nerv Syst,A chance to cut is a chance to cure: complete resection of an atypical neurofibroma prevents further progression to malignancy.,False,abstract_only,1
+37401302,10.26355/eurrev_202306_32804,,Amato,2023,Eur Rev Med Pharmacol Sci,Neurofibromatosis type 1-associated optic pathway gliomas: pathogenesis and emerging treatments.,False,abstract_only,4
+37584733,10.1007/s10528-023-10480-z,,Saharafi,2023,Biochem Genet,Assessment of Ecotropic Viral Integration Site 2B (EVI2B) Gene in Juvenile Myelomonocytic Leukemia and Neurofibromatosis Type 1 NF1 Tumors.,False,abstract_only,1
+37670622,10.3760/cma.j.cn112151-20230109-00015,,Peng,2023,Zhonghua Bing Li Xue Za Zhi,[Malignant peripheral nerve sheath tumor: a clinicopathological analysis].,False,abstract_only,4
+37677047,10.3791/65430,PMC11188578,Turner-Ivey,2023,J Vis Exp,Genetic Profiling and Genome-Scale Dropout Screening to Identify Therapeutic Targets in Mouse Models of Malignant Peripheral Nerve Sheath Tumor.,True,abstract_only,4
+37796695,10.31083/j.fbl2809214,,Wei,2023,Front Biosci (Landmark Ed),Identification of Therapeutic Targets and Novel Drug Candidates for Malignant Peripheral Nerve Sheath Tumors.,False,abstract_only,1
+37817770,10.3389/fonc.2023.1253659,PMC10561395,McLean,2023,Front Oncol,Single-cell RNA sequencing of neurofibromas reveals a tumor microenvironment favorable for neural regeneration and immune suppression in a neurofibromatosis type 1 porcine model.,True,abstract_only,1
+37820090,10.1097/CCO.0000000000000994,,Planet,2023,Curr Opin Oncol,Schwannomatosis: a Realm Reborn: year one.,False,abstract_only,3
+37906356,10.1007/s11912-023-01451-z,,Brown,2023,Curr Oncol Rep,Management of Central and Peripheral Nervous System Tumors in Patients with Neurofibromatosis.,False,abstract_only,2
+37937606,10.1177/17407745231207970,,Staedtke,2023,Clin Trials,Gene-targeted therapy for neurofibromatosis and schwannomatosis: The path to clinical trials.,False,abstract_only,2
+38195220,10.1136/jcp-2023-209318,PMC11874301,Ali,2025,J Clin Pathol,Clinicopathological analysis of BRAF and non-BRAF MAPK pathway-altered gliomas in paediatric and adult patients: a single-institution study of 40 patients.,True,abstract_only,6
+38258905,10.1172/jci.insight.171275,PMC10906222,Raut,2024,JCI Insight,Schwann cells modulate nociception in neurofibromatosis 1.,True,abstract_only,1
+38647418,10.1080/08880018.2024.2343688,,Lee,2024,Pediatr Hematol Oncol,Therapeutic efficacy of RAS inhibitor trametinib using a juvenile myelomonocytic leukemia patient-derived xenograft model.,False,abstract_only,1
+38714355,10.1158/1535-7163.MCT-23-0510,PMC11374499,Ioannou,2024,Mol Cancer Ther,MEK Inhibition Enhances the Antitumor Effect of Radiotherapy in NF1-Deficient Glioblastoma.,True,abstract_only,3
+38739347,10.1186/s40792-024-01915-9,PMC11091025,Kunugitani,2024,Surg Case Rep,Malignant perineurioma derived from the retroperitoneum with an aggressive clinical course: a case report.,True,abstract_only,1
+38844366,10.3174/ajnr.A8368,PMC11878982,Soni,2025,AJNR Am J Neuroradiol,Meningioma: Molecular Updates from the 2021 World Health Organization Classification of CNS Tumors and Imaging Correlates.,True,abstract_only,3
+38867349,10.1158/2159-8290.CD-23-1376,PMC11374478,Stieglitz,2024,Cancer Discov,Efficacy of the Allosteric MEK Inhibitor Trametinib in Relapsed and Refractory Juvenile Myelomonocytic Leukemia: a Report from the Children's Oncology Group.,True,abstract_only,1
+38879607,10.1038/s41467-024-49298-7,PMC11180199,Kyrkou,2024,Nat Commun,G6PD and ACSL3 are synthetic lethal partners of NF2 in Schwann cells.,True,abstract_only,3
+38884429,10.17116/jnevro202412405148,,Makashova,2024,Zh Nevrol Psikhiatr Im S S Korsakova,[Features of course of pain syndrome in patients with schwannomatosis].,False,abstract_only,2
+38887507,10.1093/noajnl/vdae058,PMC11181934,Nguyen,2024,Neurooncol Adv,Matrix metalloproteinase 9: An emerging biomarker for classification of adherent vestibular schwannoma.,True,abstract_only,2
+38924432,10.1126/scitranslmed.adj1597,PMC12093263,Perrin,2024,Sci Transl Med,MEK-SHP2 inhibition prevents tibial pseudarthrosis caused byloss in Schwann cells and skeletal stem/progenitor cells.,True,abstract_only,3
+38928264,10.3390/ijms25126558,PMC11204266,Kim,2024,Int J Mol Sci,NF2-Related Schwannomatosis (NF2): Molecular Insights and Therapeutic Avenues.,True,abstract_only,3
+39016685,10.1242/jcs.262343,PMC11361638,Bouley,2024,J Cell Sci,Chemical genetic screens reveal defective lysosomal trafficking as synthetic lethal with NF1 loss.,True,abstract_only,1
+39034326,10.1007/s40265-024-02072-x,,Keam,2024,Drugs,Tunlametinib: First Approval.,False,abstract_only,1
+39094827,10.1016/j.canlet.2024.217151,,Li,2024,Cancer Lett,Reduced PTPRS expression promotes epithelial-mesenchymal transition of Schwann cells in NF1-related plexiform neurofibromas.,False,abstract_only,2
+39140257,10.1016/j.gim.2024.101241,,Mastromoro,2024,Genet Med,Heterozygosity for loss-of-function variants in LZTR1 is associated with isolated multiple café-au-lait macules.,False,abstract_only,1
+39325963,10.1097/HEP.0000000000001063,,Sun,2024,Hepatology,The actin-binding protein drebrin disrupts NF2-LATS kinases complex assembly to facilitate liver tumorigenesis.,False,abstract_only,4
+39385823,10.3389/fneur.2024.1466946,PMC11461199,Dionysiou,2024,Front Neurol,Case report: MEK inhibitor as treatment for multi-lineage mosaic KRAS G12D-associated epidermal nevus syndrome in a pediatric patient.,True,abstract_only,2
+39483902,10.21203/rs.3.rs-5263500/v1,PMC11527268,Wang,2024,Res Sq,Targeting the Galectin-1/Ras Interaction for Treating Malignant Peripheral Nerve Sheath Tumors.,True,abstract_only,2
+39500722,10.1093/neuonc/noae235,PMC11889724,Lucas,2025,Neuro Oncol,Consensus recommendations for an integrated diagnostic approach to peripheral nerve sheath tumors arising in the setting of Neurofibromatosis Type 1.,True,abstract_only,3
+39514826,10.1200/JCO.24.01034,PMC11825507,Moertel,2024,J Clin Oncol,"ReNeu: A Pivotal, Phase IIb Trial of Mirdametinib in Adults and Children With Symptomatic Neurofibromatosis Type 1-Associated Plexiform Neurofibroma.",True,abstract_only,1
+39577862,10.1093/neuonc/noae253,PMC12083233,Sahm,2025,Neuro Oncol,European Association of Neuro-Oncology guideline on molecular testing of meningiomas for targeted therapy selection.,True,abstract_only,2
+39620202,10.1093/noajnl/vdae188,PMC11606644,Bhunia,2024,Neurooncol Adv,Multiomic analyses reveal new targets of polycomb repressor complex 2 in Schwann lineage cells and malignant peripheral nerve sheath tumors.,True,abstract_only,4
+39647233,10.1016/j.heares.2024.109165,,Franco-Caspueñas,2024,Hear Res,Uncovering cellular senescence as a therapeutic target in NF2-related vestibular schwannoma.,False,abstract_only,1
+39731295,10.1093/neuonc/noae282,PMC12187371,Chung,2025,Neuro Oncol,"Therapeutic effect of novel drug candidate, PRG-N-01, on NF2 syndrome-related tumor.",True,abstract_only,2
+39762421,10.1038/s41591-024-03361-4,PMC12423960,Gross,2025,Nat Med,Selumetinib in adults with NF1 and inoperable plexiform neurofibroma: a phase 2 trial.,True,abstract_only,1
+39793045,10.1073/pnas.2407745121,PMC11725864,Sait,2024,Proc Natl Acad Sci U S A,Hydroxychloroquine prevents resistance and potentiates the antitumor effect of SHP2 inhibition in NF1-associated malignant peripheral nerve sheath tumors.,True,abstract_only,2
+39979642,10.1038/s41416-025-02956-z,PMC11961721,Pham,2025,Br J Cancer,Enhanced CXCL10 expression in mast cells for cutaneous neurofibroma presenting with pain and itch.,True,abstract_only,2
+39988022,10.1016/j.pneurobio.2025.102730,,Zhang,2025,Prog Neurobiol,Single-cell RNA sequencing reveals ECM remodeling-tumor stiffness-FAK as a key driver of vestibular schwannoma progression.,False,abstract_only,2
+40055528,10.1038/s41401-025-01514-w,PMC12205083,Su,2025,Acta Pharmacol Sin,Gracillin suppresses cancer progression through inducing Merlin/LATS protein-protein interaction and activating Hippo signaling pathway.,True,abstract_only,3
+40063513,10.1158/1078-0432.CCR-24-3029,PMC12081192,Mitchell,2025,Clin Cancer Res,DLK1 Distinguishes Subsets of NF1-Associated Malignant Peripheral Nerve Sheath Tumors with Divergent Molecular Signatures.,True,abstract_only,4
+40075076,10.1038/s41467-025-57808-4,PMC11903865,Liao,2025,Nat Commun,Nf2-FAK signaling axis is critical for cranial bone ossification and regeneration.,True,abstract_only,4
+40075752,10.3390/cancers17050905,PMC11899227,Pundavela,2025,Cancers (Basel),Granulocyte-Macrophage Colony Stimulating Factor Receptor Contributes to Plexiform Neurofibroma Initiation.,True,abstract_only,2
+40106943,10.1016/j.ijscr.2025.111166,PMC11964538,Ibrahimi,2025,Int J Surg Case Rep,Gastrointestinal stromal tumor in patient with neurofibromatosis type 1: A case report.,True,abstract_only,1
+40215269,10.1093/brain/awaf129,PMC12404732,Soni,2025,Brain,Single-cell dissection of the genotype-immunophenotype relationship in glioblastoma.,True,abstract_only,5
+40241281,10.1093/neuonc/noaf065,PMC12526141,Fangusaro,2025,Neuro Oncol,"A phase 2 PBTC study of selumetinib for recurrent/progressive pediatric low-grade glioma: Strata 2, 5, and 6 with long-term outcomes on strata 1, 3, and 4.",True,abstract_only,3
+40252783,10.1016/j.phrs.2025.107723,,Roskoski,2025,Pharmacol Res,Properties of FDA-approved small molecule protein kinase inhibitors: A 2025 update.,False,abstract_only,2
+40332594,10.1007/s10565-025-10036-4,PMC12058923,Lang,2025,Cell Biol Toxicol,Rap2a promotes cardiac fibrosis and exacerbates myocardial infarction through the TNIK/Merlin/YAP axis.,True,abstract_only,4
+40393479,10.3340/jkns.2025.0073,PMC12582889,Liao,2025,J Korean Neurosurg Soc,Neurofibromatosis Type 1 : A General Review.,True,abstract_only,1
+40400261,10.1093/ejendo/lvaf095,,van Roessel,2025,Eur J Endocrinol,Increased insulin-like growth factor-1 concentrations in paediatric suprasellar low-grade glioma: an international multicentre study.,False,abstract_only,1
+40434540,10.1007/s11060-025-05020-1,,Nakhate,2025,J Neurooncol,Effect of bevacizumab on non-target intracranial meningiomas and non-vestibular schwannomas in NF2-related schwannomatosis: NF104.,False,abstract_only,1
+40473450,10.1016/S0140-6736(25)00986-9,PMC12285420,Chen,2025,Lancet,"Efficacy and safety of selumetinib in adults with neurofibromatosis type 1 and symptomatic, inoperable plexiform neurofibromas (KOMET): a multicentre, international, randomised, placebo-controlled, parallel, double-blind, phase 3 study.",True,abstract_only,1
+40540562,10.1126/sciadv.adu0772,PMC12180511,Abu-Sultanah,2025,Sci Adv,TGFβ-dependent signaling drives tumor growth and aberrant extracellular matrix dynamics in NF1-associated plexiform neurofibroma.,True,abstract_only,2
+40553452,10.1158/1078-0432.CCR-24-3610,PMC12616245,Zhang,2025,Clin Cancer Res,MTA-Cooperative PRMT5 Inhibitors Are Efficacious in MTAP-Deleted Malignant Peripheral Nerve Sheath Tumor Models.,True,abstract_only,2
+40562609,10.1016/j.ebiom.2025.105814,PMC12278414,Shah,2025,EBioMedicine,Integrated proteomic and targeted Next Generation Sequencing reveal relevant heterogeneity in lower-grade meningioma and ANXA3 as a new target in NF2 mutated meningiomas.,True,abstract_only,1
+40565537,10.3390/genes16060645,PMC12192340,Miele,2025,Genes (Basel),Clinical Efficacy of Selumetinib in Alleviating Neuropathic Pain Associated with Plexiform Neurofibroma: A Case Series.,True,abstract_only,1
+40587782,10.1073/pnas.2506823122,PMC12260521,Vasudevan,2025,Proc Natl Acad Sci U S A,"A transcriptomic, proteomic, and functional genetic atlas dissects neurofibromin function in the peripheral nervous system.",True,abstract_only,4
+40630199,10.3389/fonc.2025.1609477,PMC12234525,Zhang,2025,Front Oncol,Malignant peripheral nerve sheath tumor in early childhood: a case report of a diagnostic challenge.,True,abstract_only,1
+40709016,10.1093/noajnl/vdaf101,PMC12288023,Adeyemi,2025,Neurooncol Adv,Selumetinib in pediatric patients with neurofibromatosis type 1 and plexiform neurofibroma: Propensity score analysis of SPRINT vs. natural history control arm.,True,abstract_only,1
+40732327,10.3390/ph18071039,PMC12298819,Yuen,2025,Pharmaceuticals (Basel),Selumetinib in Adult Neurofibromatosis 1 with Plexiform Neurofibroma.,True,abstract_only,1
+40755378,10.1111/bjh.70060,PMC12512064,Munyurangabo,2025,Br J Haematol,Co-operative epigenetic remodelling by Setd2 deficiency and Kras mutation drives juvenile myelomonocytic leukaemia development and MEK inhibitor sensitivity.,True,abstract_only,4
+40766628,10.1101/2025.07.25.666841,PMC12324403,Botero,2025,bioRxiv,Metabolic and behavioral effects of neurofibromin result from differential recruitment of MAPK and mTOR signaling.,True,abstract_only,2
+40787520,10.1097/MS9.0000000000003556,PMC12333779,Patel,2025,Ann Med Surg (Lond),Evolving treatment strategies in meningioma: from traditional approaches to emerging therapies.,True,abstract_only,3
+40819104,10.1038/s41418-025-01561-0,PMC12811360,Zhang,2025,Cell Death Differ,The m6A methyltransferase METTL14 promotes oncogenic Kras induced juvenile myelomonocytic leukemia through dysregulating autophagy.,True,abstract_only,3
+40900834,10.3389/fphar.2025.1649335,PMC12399812,Cafaro,2025,Front Pharmacol,Therapeutic drug monitoring of selumetinib in pediatrics: a combined LC-MS/MS and LC-HRMS approach.,True,abstract_only,1
+40932001,10.1080/13543784.2025.2558656,,Oztosun,2025,Expert Opin Investig Drugs,"Mirdametinib, an FDA-Approved MEK1/2 inhibitor for adult and pediatric NF1-associated plexiform neurofibromas.",False,abstract_only,1
+40956079,10.1227/neu.0000000000003728,,Hudelist,2025,Neurosurgery,Salvage Microsurgery After Failed Bevacizumab Treatment for NF2-Related Schwannomatosis Vestibular Schwannoma: A Multicentric Retrospective Study.,False,abstract_only,1
+40968507,10.1002/ajmg.c.32151,,Sato,2025,Am J Med Genet C Semin Med Genet,Targeted Therapies in Neurofibromatosis Type 1.,False,abstract_only,1
+41053414,10.1038/s41698-025-01078-2,PMC12501028,Njoya,2025,NPJ Precis Oncol,Natural history of SPP1 signaling in NF1 tumors.,True,abstract_only,3
+41053457,10.1007/s00405-025-09734-w,,Koucký,2025,Eur Arch Otorhinolaryngol,Efficacy of first line of bevacizumab in patients with neurofibromatosis 2-related vestibular schwannomas.,False,abstract_only,1
+41100399,10.1111/1346-8138.17888,,Koga,2025,J Dermatol,A Retrospective Study of Diffuse Plexiform Neurofibroma With Surgical Intervention in Neurofibromatosis 1.,False,abstract_only,1
+41122968,10.1172/jci.insight.196350,PMC12581665,Fan,2025,JCI Insight,CRB3 and NF2 orchestrate cytoskeletal dynamics to control epithelial barrier assembly.,True,abstract_only,2
+41250253,10.1097/MAO.0000000000004759,,Hatley,2025,Otol Neurotol,The Association Between Age and Outcomes of Bevacizumab Treatment in NF2-Related Schwannomatosis.,False,abstract_only,1
+41288319,10.1002/gcc.70096,,Chen,2025,Genes Chromosomes Cancer,NF1 Mutated Gastrointestinal Stromal Tumors With Coamplification of MDM2 and MYC.,False,abstract_only,3
+41317405,10.1093/jnen/nlaf129,PMC12713544,Belakhoua,2025,J Neuropathol Exp Neurol,RECQL4 alterations in gliomas and nerve sheath tumors: Expression patterns and therapeutic implications.,True,abstract_only,2
+41504652,10.1158/1078-0432.CCR-25-2887,PMC13352048,Kim,2026,Clin Cancer Res,SARC031: A Phase II Trial of Selumetinib and Sirolimus for Patients with Unresectable or Metastatic Malignant Peripheral Nerve Sheath Tumors (MPNST).,True,abstract_only,2
+41589090,10.1093/omcr/omaf258,PMC12832010,Al Harrak,2026,Oxf Med Case Reports,Metachronous Pheochromocytoma and Cholangiocarcinoma in a patient with Neurofibromatosis type 1: a case report.,True,abstract_only,1
+41642951,10.1002/advs.202522756,PMC13067829,Zhang,2026,Adv Sci (Weinh),KMT2C Loss Promotes NF2-Wildtype Meningioma Progression and Ferroptosis Sensitivity via Epigenetic Repression of Hippo Signaling.,True,abstract_only,5
+41758723,10.1002/advs.202515597,PMC13159156,Yin,2026,Adv Sci (Weinh),Deciphering and Targeting the Schwannoma-Neuron-Macrophage Crosstalk for the Treatment of Schwannomatosis and Associated Pain.,True,abstract_only,4
+41898501,10.3390/ijms27062636,PMC13026985,Nagel,2026,Int J Mol Sci,Fimepinostat Promotes Apoptosis and Decreases Cytokine Secretion in-Related Human Schwannoma Cells.,True,abstract_only,5
+41930352,10.1002/mco2.70709,PMC13042794,Ge,2026,MedComm (2020),Metabolic Alterations in Macrophage Subtypes Propel Immune and Stromal Remodeling in Neurofibroma's Malignant Progression.,True,abstract_only,2
+41959302,10.64898/2026.03.09.710638,PMC13060969,Wang,2026,bioRxiv,PRMT5 is Frequently Upregulated and a Potential Therapeutic Target in MTAP-deficient Malignant Peripheral Nerve Sheath Tumors.,True,abstract_only,2
+42116118,10.1186/s40478-026-02315-w,PMC13366792,Yue,2026,Acta Neuropathol Commun,Decreased PP2A expression and activity represent a therapeutic target for plexiform neurofibroma.,True,abstract_only,2
+42135588,10.1177/10668969261438511,,Román-Mendoza,2026,Int J Surg Pathol,Atypical Neurofibromatous Neoplasms of Uncertain Biological Potential in Children with Neurofibromatosis Type 1: Report of Two Patients and Review.,False,abstract_only,3
+42176046,10.1007/s11060-026-05643-y,,Hwang,2026,J Neurooncol,Therapeutic effects of selumetinib on diffuse neurofibroma and optic pathway glioma in neurofibromatosis type 1.,False,abstract_only,1
+42189937,10.1126/scisignal.aee5174,PMC13499461,Raut,2026,Sci Signal,MAPK-dependent release of GDNF from Schwann cells mediates tumor-independent pain in neurofibromatosis 1.,True,abstract_only,3
+42201959,10.1073/pnas.2535319123,PMC13229218,Silva,2026,Proc Natl Acad Sci U S A,NF1 and SPRED1/2 cooperate through RAS-MAPK-independent functions.,True,abstract_only,1
+42276973,10.1111/jpc.70455,PMC13480507,Trapani,2026,J Paediatr Child Health,Selumetinib as a Target Therapy in Progressive Paediatric Low-Grade Gliomas-Case Series (pLGG).,True,abstract_only,1
+42310314,10.1038/s41467-026-73119-8,PMC13276310,Uriarte-Arrazola,2026,Nat Commun,Induced pluripotent stem cell-derived models of malignant nerve sheath tumor progression mimic glial to neuro-mesenchymal transition and uncover therapeutic opportunities.,True,abstract_only,6
+42394972,10.3389/fphar.2026.1855171,PMC13323312,Zhang,2026,Front Pharmacol,Durable responses to long-term selumetinib in Chinese pediatric NF1 patients with inoperable plexiform neurofibromas.,True,abstract_only,1
+42397741,10.1016/j.celrep.2026.117638,,Benbahouche,2026,Cell Rep,A non-catalytic function for RAD18 in sustaining glioblastoma proliferation.,False,abstract_only,3
+42414678,10.1007/s11060-026-05699-w,,Grin,2026,J Neurooncol,Incidence and predictors of hemorrhage in pediatric low-grade glioma.,False,abstract_only,2
+42482124,10.1093/neuonc/noag163,,Aghoghovwia,2026,Neuro Oncol,Carboplatin induces optic nerve oligodendrocyte loss and impairs myelin sheath microstructure in a mouse model of neurofibromatosis type 1 (NF1).,False,abstract_only,4
+42527881,10.1002/1545-5017.70477,,Siegel,2026,Pediatr Blood Cancer,Long-Term Hematologic Effects of Selumetinib Treatment in Children With Neurofibromatosis Type 1-Associated Plexiform Neurofibromas.,False,abstract_only,1
+42540436,10.1093/noajnl/vdag180,PMC13425640,Gross,2026,Neurooncol Adv,Malignant peripheral nerve sheath tumor development during MEK inhibitor treatment: A pre-clinical study and a clinical case series.,True,abstract_only,1
+42620117,10.64898/2026.08.05.743013,PMC13484691,Mineji,2026,bioRxiv,YAP-TEAD-driven CPA4 promotes NF2-deficient meningioma growth.,True,abstract_only,3
+42677329,10.1093/noajnl/vdag208,PMC13528769,Levin,2026,Neurooncol Adv,Ornithine decarboxylase levels in peripheral nerve sheath tumors from NF1 patients.,True,abstract_only,2
+22118770,10.1016/j.devcel.2011.09.014,PMC3241850,Tan,2011,Dev Cell,SAG/RBX2/ROC2 E3 ubiquitin ligase is essential for vascular and neural development by targeting NF1 for degradation.,True,full_text,2
+23875798,10.1146/annurev-genom-091212-153523,PMC4115674,Rauen,2013,Annu Rev Genomics Hum Genet,The RASopathies.,True,full_text,3
+24362817,10.1038/ng.2855,PMC4352302,Piotrowski,2013,Nat Genet,Germline loss-of-function mutations in LZTR1 predispose to an inherited disorder of multiple schwannomas.,True,full_text,3
+27158663,10.18103/mra.v0i3.104,PMC4856299,Anderson,2015,Med Res Arch,KINOMIC ALTERATIONS IN ATYPICAL MENINGIOMA.,True,full_text,6
+27269372,10.1016/j.semcdb.2016.06.002,PMC5028257,Smithson,2016,Semin Cell Dev Biol,Contextual signaling in cancer.,True,full_text,3
+28029918,10.1056/NEJMoa1605943,PMC5508592,Dombi,2016,N Engl J Med,Activity of Selumetinib in Neurofibromatosis Type 1-Related Plexiform Neurofibromas.,True,full_text,1
+28551330,10.1016/j.humpath.2017.05.010,PMC5628119,Miettinen,2017,Hum Pathol,Histopathologic evaluation of atypical neurofibromatous tumors and their transformation into malignant peripheral nerve sheath tumor in patients with neurofibromatosis 1-a consensus overview.,True,full_text,3
+28767512,10.1097/j.pain.0000000000001026,PMC6359908,Moutal,2017,Pain,Dissecting the role of the CRMP2-neurofibromin complex on pain behaviors.,True,full_text,2
+28836293,10.1002/glia.23203,PMC5988206,Herting,2017,Glia,Genetic driver mutations define the expression signature and microenvironmental composition of high-grade gliomas.,True,full_text,3
+28923059,10.1186/s12964-017-0189-7,PMC5604305,Mei,2017,Cell Commun Signal,Osteoglycin promotes meningioma development through downregulation of NF2 and activation of mTOR signaling.,True,full_text,4
+28950062,10.1021/acschemneuro.7b00197,PMC5771884,Barrette,2017,ACS Chem Neurosci,Integrating Transcriptomic Data with Mechanistic Systems Pharmacology Models for Virtual Drug Combination Trials.,True,full_text,3
+29655575,10.1016/j.neuroscience.2018.04.002,PMC5963520,Moutal,2018,Neuroscience,CRMP2-Neurofibromin Interface Drives NF1-related Pain.,True,full_text,4
+29847659,10.1167/iovs.17-22588,PMC5963003,Zhang,2018,Invest Ophthalmol Vis Sci,Neurofibromin Deficiency Induces Endothelial Cell Proliferation and Retinal Neovascularization.,True,full_text,4
+30289729,10.1177/2472630318803749,PMC7058093,Wilson,2018,SLAS Technol,Mutation Profiles in Glioblastoma 3D Oncospheres Modulate Drug Efficacy.,True,full_text,3
+30306639,10.1002/glia.23500,PMC6289291,Ma,2018,Glia,Polycomb repression regulates Schwann cell proliferation and axon regeneration after nerve injury.,True,full_text,7
+30348677,10.1158/2159-8290.CD-18-0151,PMC6328325,Chen,2018,Cancer Discov,Spatiotemporal Loss ofin Schwann Cell Lineage Leads to Different Types of Cutaneous Neurofibroma Susceptible to Modification by the Hippo Pathway.,True,full_text,3
+30442762,10.1126/science.aap7607,PMC8058620,Steklov,2018,Science,Mutations in LZTR1 drive human disease by dysregulating RAS ubiquitination.,True,full_text,2
+31151904,10.1016/S1470-2045(19)30277-3,PMC6628202,Fangusaro,2019,Lancet Oncol,"Selumetinib in paediatric patients with BRAF-aberrant or neurofibromatosis type 1-associated recurrent, refractory, or progressive low-grade glioma: a multicentre, phase 2 trial.",True,full_text,2
+31246731,10.1097/j.pain.0000000000001648,PMC6800626,Khanna,2019,Pain,Assessment of nociception and related quality-of-life measures in a porcine model of neurofibromatosis type 1.,True,full_text,2
+31341276,10.1038/s41586-019-1426-6,PMC6697195,Wu,2019,Nature,Intercellular interaction dictates cancer cell ferroptosis via NF2-YAP signalling.,True,full_text,5
+31902875,10.2176/nmc.oa.2019-0194,PMC7040431,Fujii,2020,Neurol Med Chir (Tokyo),Bevacizumab Therapy of Neurofibromatosis Type 2 Associated Vestibular Schwannoma in Japanese Patients.,True,full_text,1
+31913576,10.1002/ajmg.a.61485,PMC7456498,Gross,2020,Am J Med Genet A,Advancing RAS/RASopathy therapies: An NCI-sponsored intramural and extramural collaboration for the study of RASopathies.,True,full_text,1
+32144278,10.1038/s41598-020-60156-6,PMC7060236,Sagers,2020,Sci Rep,Combination therapy with mTOR kinase inhibitor and dasatinib as a novel therapeutic strategy for vestibular schwannoma.,True,full_text,5
+32187457,10.1056/NEJMoa1912735,PMC7305659,Gross,2020,N Engl J Med,Selumetinib in Children with Inoperable Plexiform Neurofibromas.,True,full_text,1
+32232723,10.1007/s12105-020-01155-x,PMC7669921,Gupta,2020,Head Neck Pathol,Vestibular Schwannoma: What We Know and Where We are Heading.,True,full_text,3
+32245394,10.1186/s40478-020-00912-x,PMC7118946,von Spreckelsen,2020,Acta Neuropathol Commun,KLF4-mutated meningiomas show enhanced hypoxia signaling and respond to mTORC1 inhibitor treatment.,True,full_text,3
+32629964,10.3390/cancers12071744,PMC7407567,Lyons Rimmer,2020,Cancers (Basel),The Potential of MLN3651 in Combination with Selumetinib as a Treatment for Merlin-Deficient Meningioma.,True,full_text,4
+32642722,10.1093/noajnl/vdz055,PMC7212891,Deng,2020,Neurooncol Adv,The CREB-binding protein inhibitor ICG-001: a promising therapeutic strategy in sporadic meningioma withmutations.,True,full_text,4
+32642724,10.1093/noajnl/vdz059,PMC7212869,Cantero,2020,Neurooncol Adv,"TP53, ATRX alterations, and low tumor mutation load feature IDH-wildtype giant cell glioblastoma despite exceptional ultra-mutated tumors.",True,full_text,2
+32748499,10.1111/cas.14597,PMC7541004,Higa,2020,Cancer Sci,A tailored next-generation sequencing panel identified distinct subtypes of wildtype IDH and TERT promoter glioblastomas.,True,full_text,3
+32816910,10.1158/0008-5472.CAN-19-1429,PMC7968129,Chaney,2020,Cancer Res,Loss in a Model of Neurofibroma Demonstrates Stepwise Tumor Progression to Atypical Neurofibroma and MPNST.,True,full_text,2
+33026636,10.1007/s11060-020-03640-3,PMC7609413,Selt,2020,J Neurooncol,Response to trametinib treatment in progressive pediatric low-grade glioma patients.,True,full_text,3
+33447015,10.2147/DDDT.S280069,PMC7802892,Long,2021,Drug Des Devel Ther,A Review of Drug Therapy in Vestibular Schwannoma.,True,full_text,1
+33456709,10.18632/oncotarget.27862,PMC7800773,Kohlmeyer,2021,Oncotarget,Combination therapies for MPNSTs targeting RABL6A-RB1 signaling.,True,full_text,4
+34072574,10.3390/ijms22115850,PMC8198724,Tamura,2021,Int J Mol Sci,"Current Understanding of Neurofibromatosis Type 1, 2, and Schwannomatosis.",True,full_text,4
+34113392,10.3892/ol.2021.12825,PMC8185703,Zhang,2021,Oncol Lett,LZTR1: A promising adaptor of the CUL3 family.,True,full_text,1
+34224367,10.1158/1535-7163.MCT-21-0143,PMC8419097,Karajannis,2021,Mol Cancer Ther,Phase 0 Clinical Trial of Everolimus in Patients with Vestibular Schwannoma or Meningioma.,True,full_text,1
+34264955,10.1371/journal.pone.0252048,PMC8282008,Chang,2021,PLoS One,Brigatinib causes tumor shrinkage in both NF2-deficient meningioma and schwannoma through inhibition of multiple tyrosine kinases but not ALK.,True,full_text,3
+34274754,10.1016/j.ijscr.2021.106178,PMC8319367,Mishra,2021,Int J Surg Case Rep,Multiple jejunal gastrointestinal stromal tumors and Neurofibromatosis type 1: A rare association.,True,full_text,1
+34408780,10.1155/2021/5574555,PMC8367536,Chen,2021,Evid Based Complement Alternat Med,Curcumin Inhibits HGF-Induced EMT by Regulating c-MET-Dependent PI3K/Akt/mTOR Signaling Pathways in Meningioma.,True,full_text,5
+34885143,10.3390/cancers13236032,PMC8657309,Sanchez,2021,Cancers (Basel),Targeted Therapies for the Neurofibromatoses.,True,full_text,1
+35188187,10.1242/dmm.049362,PMC8891636,Anastasaki,2022,Dis Model Mech,RAS and beyond: the many faces of the neurofibromatosis type 1 protein.,True,full_text,1
+35361920,10.1038/s41431-022-01086-x,PMC9259735,Evans,2022,Eur J Hum Genet,"ERN GENTURIS clinical practice guidelines for the diagnosis, treatment, management and surveillance of people with schwannomatosis.",True,full_text,3
+35545829,10.14791/btrt.2022.0006,PMC9098979,Park,2022,Brain Tumor Res Treat,Recent Update in Pharmacological Agents for Optic Pathway Glioma.,True,full_text,3
+36139608,10.3390/cancers14184448,PMC9496760,Mondielli,2022,Cancers (Basel),Co-Targeting MAP Kinase and Pi3K-Akt-mTOR Pathways in Meningioma: Preclinical Study of Alpelisib and Trametinib.,True,full_text,4
+36139671,10.3390/cancers14184513,PMC9497298,Ge,2022,Cancers (Basel),Neurofibroma Development in Neurofibromatosis Type 1: Insights from Cellular Origin and Schwann Cell Lineage Development.,True,full_text,2
+36148553,10.1093/brain/awac342,PMC10115179,Laraba,2023,Brain,Inhibition of YAP/TAZ-driven TEAD activity prevents growth of NF2-null schwannoma and meningioma.,True,full_text,3
+36181606,10.1007/s11060-022-04148-8,PMC9989003,Mair,2022,J Neurooncol,Emerging systemic treatment options in meningioma.,True,full_text,7
+36225651,10.1093/noajnl/vdac123,PMC9549880,Kumthekar,2022,Neurooncol Adv,A multi-institutional phase II trial of bevacizumab for recurrent and refractory meningioma.,True,full_text,1
+36598417,10.1158/2159-8290.CD-22-0786,PMC9983734,Cortes-Ciriano,2023,Cancer Discov,Genomic Patterns of Malignant Peripheral Nerve Sheath Tumor (MPNST) Evolution Correlate with Clinical Outcome and Are Detectable in Cell-Free DNA.,True,full_text,4
+36622276,10.1158/0008-5472.CAN-22-3003,PMC10073315,Wang,2023,Cancer Res,WNT5a Signaling through ROR2 Activates the Hippo Pathway to Suppress YAP1 Activity and Tumor Growth.,True,full_text,5
+36636686,10.1159/000526844,PMC9830298,Miyamoto,2022,Case Rep Oncol,Atypical Neurofibromatous Neoplasm with Uncertain Biologic Potential in the Posterior Mediastinum of a Young Patient with Neurofibromatosis Type 1: A Case Report.,True,full_text,1
+37012245,10.1038/s41467-023-37361-8,PMC10070461,Chen,2023,Nat Commun,Monocyte depletion enhances neutrophil influx and proneural to mesenchymal transition in glioblastoma.,True,full_text,3
+37080959,10.1038/s41467-023-37871-5,PMC10119135,He,2023,Nat Commun,LncRNA modulates Hippo-YAP signaling to reprogram iron metabolism.,True,full_text,4
+37886501,10.21203/rs.3.rs-3405297/v1,PMC10602174,Fernandez-Valle,2023,Res Sq,Simultaneous Inhibition of PI3K and PAK in Preclinical Models of Neurofibromatosis Type 2-related Schwannomatosis.,True,full_text,2
+37921028,10.1097/PAS.0000000000002138,PMC10842611,Miettinen,2023,Am J Surg Pathol,Assessment of The Utility of The Sarcoma DNA Methylation Classifier In Surgical Pathology.,True,full_text,3
+38058737,10.1016/j.omtm.2023.101156,PMC10696461,Blackwood,2023,Mol Ther Methods Clin Dev,Case report of selumetinib as a novel therapy in a neurofibromatosis type 2-associated ependymoma.,True,full_text,2
+38127282,10.1158/1078-0432.CCR-23-2548,PMC11095977,Mitchell,2024,Clin Cancer Res,Spatial Gene-Expression Profiling Unveils Immuno-oncogenic Programs of NF1-Associated Peripheral Nerve Sheath Tumor Progression.,True,full_text,3
+38203448,10.3390/ijms25010277,PMC10779378,Huang,2023,Int J Mol Sci,FT895 Impairs Mitochondrial Function in Malignant Peripheral Nerve Sheath Tumor Cells.,True,full_text,2
+38265489,10.1007/s00401-023-02668-9,PMC10808175,Neyazi,2024,Acta Neuropathol,Transcriptomic and epigenetic dissection of spinal ependymoma (SP-EPN) identifies clinically relevant subtypes enriched for tumors with and without NF2 mutation.,True,full_text,1
+38279591,10.1111/srt.13595,PMC10818123,Wang,2024,Skin Res Technol,Global research trends in cutaneous neurofibromas: A bibliometric analysis from 2003 to 2022.,True,full_text,1
+38336988,10.1038/s41388-024-02958-w,PMC10959746,Nagel,2024,Oncogene,Simultaneous inhibition of PI3K and PAK in preclinical models of neurofibromatosis type 2-related schwannomatosis.,True,full_text,2
+38975694,10.1093/neuonc/noae121,PMC11630552,Kim,2024,Neuro Oncol,Safety and efficacy of selumetinib in pediatric and adult patients with neurofibromatosis type 1 and plexiform neurofibroma.,True,full_text,1
+39058094,10.1158/2159-8290.CD-23-1529,PMC11609825,Klingbeil,2024,Cancer Discov,MARK2/MARK3 Kinases Are Catalytic Codependencies of YAP/TAZ in Human Cancer.,True,full_text,3
+39062695,10.3390/genes15070916,PMC11276570,Uliana,2024,Genes (Basel),Phenotypic Expansion of Autosomal Dominant-Related Disorders with Special Emphasis on Adult-Onset Features.,True,full_text,2
+39083549,10.1371/journal.pone.0305121,PMC11290668,Benton,2024,PLoS One,Synergistic effect of PAK and Hippo pathway inhibitor combination in NF2-deficient Schwannoma.,True,full_text,3
+39116228,10.1126/science.adf4478,PMC11956869,Guo,2024,Science,PI4P-mediated solid-like Merlin condensates orchestrate Hippo pathway regulation.,True,full_text,2
+39258154,10.3389/fneur.2024.1391425,PMC11383758,Horn,2024,Front Neurol,LZTR1 loss-of-function variants associated with café au lait macules with or without freckling.,True,full_text,1
+39337558,10.3390/ijms251810075,PMC11432498,Selke,2024,Int J Mol Sci,Effect of Different Glucose Levels and Glycation on Meningioma Cell Migration and Invasion.,True,full_text,2
+39367156,10.1038/s41598-024-72043-5,PMC11452616,Nakamura,2024,Sci Rep,Whole-exome sequencing reveals the genetic causes and modifiers of moyamoya syndrome.,True,full_text,4
+40140675,10.1038/s41467-025-57586-z,PMC11947219,Jones,2025,Nat Commun,Spatial mapping of immune cell environments in NF2-related schwannomatosis vestibular schwannoma.,True,full_text,3
+41001593,10.1080/23723556.2025.2561292,PMC12459363,Leisz,2025,Mol Cell Oncol,Loss of Schwann cell's normal rhythmic core clock gene expression and gain of rhythmic expression of oncogenic driver genes in malignant NF1-associated peripheral nerve sheath tumor.,True,full_text,4
+41004338,10.1016/j.celrep.2025.116185,PMC12646131,Rominger,2025,Cell Rep,Mutant RIT1 cooperates with YAP to drive an EMT-like lung cancer state.,True,full_text,5
+41256734,10.1002/mco2.70485,PMC12620556,Kim,2025,MedComm (2020),Ataluren-Induced Functional Restoration of Neurofibromin in Fibroblasts From Neurofibromatosis Type 1 Patients With Nonsense Mutations.,True,full_text,5
+41293003,10.1101/2025.11.15.688608,PMC12642662,Laws,2025,bioRxiv,Variable Schwann cell merlin inactivation is targetable with TEAD1 inhibition in schwannomas.,True,full_text,3
+41327009,10.1080/07853890.2025.2593209,PMC12673984,Jin,2025,Ann Med,Unveiling the prognostic and immunological role of IFI44 in glioma.,True,full_text,5
+41364765,10.1073/pnas.2522444122,PMC12718333,Pan,2025,Proc Natl Acad Sci U S A,A metabolic cell death program downstream of SARM1 couples NADdepletion to BAX activation and APAF1 degradation.,True,full_text,8
