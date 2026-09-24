@@ -30,6 +30,8 @@ Raw expression data stays out of the repository, for size and for data-use terms
 
 Literature claims record whether they were confirmed against full text or only an abstract, and database queries are written against current API documentation rather than recalled syntax. Where a value is missing it is flagged as missing, not estimated.
 
-## License and funding
+## Program and license
 
-MIT licensed. Supported by Anthropic's AI for Science program.
+This project is part of Anthropic's AI for Science Rare Disease Research Program, in which the Children's Tumor Foundation participates.
+
+MIT licensed.
