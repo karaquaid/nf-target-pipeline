@@ -20,6 +20,8 @@ The re-judgement changed the list in four ways.
 
 **Forty-two paper-level assignments moved manifestation** on the same paper-level rule used earlier. PAK1/2, for instance, moved from vestibular to non-vestibular schwannoma because that is what the body studies.
 
+**Five further assignments were moved by hand on review of the "Other" bucket.** Three papers had been filed there although they study a manifestation the vocabulary already covers: a paper on the spinal manifestations of NF1 (RAS pathway) moved to Bone defects, one on the metabolic and behavioural effects of neurofibromin (PI3K-AKT-MTOR axis) moved to Cognition / Behavioral / Learning, and two on atypical neurofibroma (CDKN2A, CDKN2B) moved to ANNUBP / atypical neurofibroma, where CDKN2A now carries 10 supporting papers. CDKN2A retains one "Other" assignment from a nerve-injury paper that studies neither. What is left in "Other" is four distinct things: whole-disease review claims with no manifestation to attach to, normal Schwann-cell and nerve-injury biology, assay-level findings with no phenotype, and real NF phenotypes absent from the fixed vocabulary (retinal neovascularization, pheochromocytoma, cafe-au-lait macules). The first of those is a structural gap: the vocabulary has no disease-level slot, so every future extraction pass will pool general claims with specific ones until one is added.
+
 No row now rests on the excerpt-based verdicts. Five rows (CACNA1B, CRMP2 and NF1 in NF1 pain, MTOR in NF2-SWN meningioma, BIRC5 in NF1 MPNST) were held over because their papers sit outside the Europe PMC open-access set, but the bodies were already in hand from the first round; they were re-judged separately over complete text and all five came back supported, which brings the whole-body total to 263 pairs.
 
 ## Scope decisions carried forward
@@ -52,9 +54,9 @@ Distinct gene x manifestation rows, germline-attributable evidence only.
 
 | Manifestation | NF1 | NF2-SWN | SWN | Total |
 |---|---|---|---|---|
-| Bone defects | 5 | 0 | 0 | 5 |
+| Bone defects | 6 | 0 | 0 | 6 |
 | Cardiovascular issues | 6 | 1 | 0 | 7 |
-| Cognition / Behavioral / Learning | 7 | 0 | 0 | 7 |
+| Cognition / Behavioral / Learning | 8 | 0 | 0 | 8 |
 | Sleep | 0 | 0 | 0 | 0 |
 | Cutaneous neurofibroma | 18 | 0 | 1 | 19 |
 | Ependymoma | 0 | 4 | 0 | 4 |
@@ -67,15 +69,15 @@ Distinct gene x manifestation rows, germline-attributable evidence only.
 | Non-optic LGG | 5 | 0 | 0 | 5 |
 | Pain | 13 | 0 | 6 | 19 |
 | Plexiform neurofibroma | 47 | 0 | 0 | 47 |
-| ANNUBP / atypical neurofibroma | 8 | 0 | 0 | 8 |
+| ANNUBP / atypical neurofibroma | 9 | 0 | 0 | 9 |
 | Pulmonary disease | 3 | 1 | 0 | 4 |
 | Non-vestibular schwannoma | 0 | 19 | 5 | 24 |
 | Vestibular schwannoma | 1 | 41 | 3 | 45 |
-| Other | 23 | 1 | 3 | 27 |
+| Other | 20 | 1 | 3 | 24 |
 
 ![Stacked horizontal bars of candidate target rows per manifestation, one panel per disease, shaded by whether the strongest supporting paper was read in full text or only as an abstract](figures/phase1b-coverage-verification.png)
 
-**Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is the number of candidate target rows (n = 363 gene x disease x manifestation claims); shading is the provenance of the strongest supporting paper behind each row. Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a manifestation with no rows at all in that disease. 158 of 363 rows (44 percent) are anchored in a paper read in full, and among the five manifestations holding 20 or more rows that share runs from 30 to 59 percent, so the principal tumour types are now reasonably well evidenced. What the figure shows instead is how sharply coverage falls away from them: Sleep (0), Hematologic malignancies (3), Ependymoma (4), Pulmonary disease (4), Bone defects (5), Non-optic LGG (5), Cardiovascular issues (7), Cognition / Behavioral / Learning (7), ANNUBP / atypical neurofibroma (8), Gastrointestinal stromal tumor (GIST) (9) rows respectively, and no full-text-supported target at all for Cardiovascular issues, Sleep, Gastrointestinal stromal tumor (GIST).
+**Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is the number of candidate target rows (n = 363 gene x disease x manifestation claims); shading is the provenance of the strongest supporting paper behind each row. Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a manifestation with no rows at all in that disease. 158 of 363 rows (44 percent) are anchored in a paper read in full, and among the five manifestations holding 20 or more rows that share runs from 35 to 59 percent, so the principal tumour types are now reasonably well evidenced. What the figure shows instead is how sharply coverage falls away from them: Sleep (0), Hematologic malignancies (3), Ependymoma (4), Pulmonary disease (4), Non-optic LGG (5), Bone defects (6), Cardiovascular issues (7), Cognition / Behavioral / Learning (8), Gastrointestinal stromal tumor (GIST) (9), ANNUBP / atypical neurofibroma (9) rows respectively, and no full-text-supported target at all for Cardiovascular issues, Gastrointestinal stromal tumor (GIST).
 
 ## Access and verification
 
