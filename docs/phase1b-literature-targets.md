@@ -20,7 +20,7 @@ The re-judgement changed the list in four ways.
 
 **Forty-two paper-level assignments moved manifestation** on the same paper-level rule used earlier. PAK1/2, for instance, moved from vestibular to non-vestibular schwannoma because that is what the body studies.
 
-Five rows still rest on the earlier provisional pass alone (CACNA1B, CRMP2 and NF1 in NF1 pain, MTOR in NF2-SWN meningioma, BIRC5 in NF1 MPNST). Their papers are not open access, so re-judging them needs a copy from outside.
+No row now rests on the excerpt-based verdicts. Five rows (CACNA1B, CRMP2 and NF1 in NF1 pain, MTOR in NF2-SWN meningioma, BIRC5 in NF1 MPNST) were held over because their papers sit outside the Europe PMC open-access set, but the bodies were already in hand from the first round; they were re-judged separately over complete text and all five came back supported, which brings the whole-body total to 263 pairs.
 
 ## Scope decisions carried forward
 
@@ -34,7 +34,7 @@ Five rows still rest on the earlier provisional pass alone (CACNA1B, CRMP2 and N
 
 Malignant progression is the second well-supported axis and is a loss-of-function story rather than a druggable-kinase one. *CDKN2A* deletion marks the plexiform to atypical transition ([Chaney 2020](https://doi.org/10.1158/0008-5472.CAN-19-1429)), and PRC2 component loss separates MPNST from its benign precursors ([Cortes-Ciriano 2023](https://doi.org/10.1158/2159-8290.CD-22-0786)). Both are tumour-suppressor losses: strong stratification markers, poor direct drug targets, which is the direction-of-effect distinction the Phase 6 rubric has to encode.
 
-NF1 pain retains a mechanistically coherent set built on the neurofibromin-CRMP2 interface and downstream N-type calcium channel regulation ([Moutal 2017](https://doi.org/10.1097/j.pain.0000000000001026); [Khanna 2019](https://doi.org/10.1097/j.pain.0000000000001648)), and is the clearest non-tumour manifestation with a nameable target. It is also where the remaining provisional verdicts sit, so it is the first place a supplied PDF would pay off.
+NF1 pain retains a mechanistically coherent set built on the neurofibromin-CRMP2 interface and downstream N-type calcium channel regulation ([Moutal 2017](https://doi.org/10.1097/j.pain.0000000000001026); [Khanna 2019](https://doi.org/10.1097/j.pain.0000000000001648)), and is the clearest non-tumour manifestation with a nameable target. Both nodes were re-read over complete text in the final pass and confirmed: CRMP2 freed from neurofibromin drives CaV2.2 and NaV1.7 trafficking in sensory neurons, shown by CRISPR truncation of Nf1.
 
 ## NF2-SWN
 
@@ -104,7 +104,7 @@ Queries were capped at 18 results each and date-filtered from 2005, so highly ci
 
 Thirty-two PubMed queries spanning NF1, NF2-SWN, and SWN crossed with the plan's fixed manifestation vocabulary (`search_articles`, relevance-sorted, 18 results per query, `date_from=2005`) returned 492 unique PMIDs; metadata and abstracts were retrieved for 482. Each abstract was passed to a model extraction step returning gene, disease, manifestation(s) from the fixed list, role, mechanism, and study system, with instructions not to extract cohort-defining gene mentions or assay reagents. Gene strings were normalised, manifestations validated against the fixed vocabulary verbatim, and disease coerced to NF1 / NF2-SWN / SWN.
 
-Verification ran in two rounds. The first used NCBI PMC and covered 56 papers, part of it from excerpts. The second identified open-access availability through the Europe PMC REST API (`/{PMCID}/fullTextXML`), fetched 89 complete article bodies, stripped reference sections, and re-judged all 254 row-paper pairs among them with one reasoning call per paper. Where the two rounds disagree, the whole-body verdict wins. Manifestation corrections are applied per paper, not per row, so a paper that turns out to study a different manifestation moves only its own support.
+Verification ran in two rounds. The first used NCBI PMC and covered 56 papers, part of it from excerpts. The second identified open-access availability through the Europe PMC REST API (`/{PMCID}/fullTextXML`), fetched 89 complete article bodies, stripped reference sections, and re-judged all 254 row-paper pairs among them with one reasoning call per paper. A third short pass recovered the bodies of the remaining papers that the first round had read but judged from excerpts, from Europe PMC or NCBI efetch, and re-judged those 9 pairs the same way, for 263 whole-body pairs in total. Where the two rounds disagree, the whole-body verdict wins. Manifestation corrections are applied per paper, not per row, so a paper that turns out to study a different manifestation moves only its own support.
 
 ## Files
 
