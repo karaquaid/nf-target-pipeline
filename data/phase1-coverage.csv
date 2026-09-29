@@ -1,0 +1,241 @@
+disease,manifestation,organism,n_datasets,n_samples_in_scope,n_comparative_design,n_with_controls
+NF1,Bone defects,human,4,370,2,4
+NF1,Bone defects,mouse,3,13,1,2
+NF1,Bone defects,other,0,0,0,0
+NF1,Cardiovascular issues,human,0,0,0,0
+NF1,Cardiovascular issues,mouse,0,0,0,0
+NF1,Cardiovascular issues,other,0,0,0,0
+NF1,Cognition / Behavioral / Learning,human,2,32,0,2
+NF1,Cognition / Behavioral / Learning,mouse,1,30,0,1
+NF1,Cognition / Behavioral / Learning,other,1,16,0,1
+NF1,Sleep,human,0,0,0,0
+NF1,Sleep,mouse,0,0,0,0
+NF1,Sleep,other,0,0,0,0
+NF1,Cutaneous neurofibroma,human,9,310,5,5
+NF1,Cutaneous neurofibroma,mouse,2,37,1,2
+NF1,Cutaneous neurofibroma,other,0,0,0,0
+NF1,Ependymoma,human,0,0,0,0
+NF1,Ependymoma,mouse,0,0,0,0
+NF1,Ependymoma,other,0,0,0,0
+NF1,Gastrointestinal stromal tumor (GIST),human,0,0,0,0
+NF1,Gastrointestinal stromal tumor (GIST),mouse,0,0,0,0
+NF1,Gastrointestinal stromal tumor (GIST),other,0,0,0,0
+NF1,Hematologic malignancies,human,1,5,0,1
+NF1,Hematologic malignancies,mouse,1,6,1,1
+NF1,Hematologic malignancies,other,0,0,0,0
+NF1,High grade glioma,human,0,0,0,0
+NF1,High grade glioma,mouse,7,404,3,5
+NF1,High grade glioma,other,0,0,0,0
+NF1,Malignant peripheral nerve sheath tumor (MPNST),human,41,1093,13,20
+NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,15,270,6,7
+NF1,Malignant peripheral nerve sheath tumor (MPNST),other,1,10,0,0
+NF1,Meningioma,human,0,0,0,0
+NF1,Meningioma,mouse,0,0,0,0
+NF1,Meningioma,other,0,0,0,0
+NF1,Optic pathway glioma,human,2,34,2,2
+NF1,Optic pathway glioma,mouse,11,132,2,4
+NF1,Optic pathway glioma,other,0,0,0,0
+NF1,Non-optic LGG,human,2,40,1,1
+NF1,Non-optic LGG,mouse,0,0,0,0
+NF1,Non-optic LGG,other,0,0,0,0
+NF1,Pain,human,0,0,0,0
+NF1,Pain,mouse,0,0,0,0
+NF1,Pain,other,0,0,0,0
+NF1,Plexiform neurofibroma,human,19,548,11,7
+NF1,Plexiform neurofibroma,mouse,16,220,7,8
+NF1,Plexiform neurofibroma,other,0,0,0,0
+NF1,ANNUBP / atypical neurofibroma,human,3,61,2,0
+NF1,ANNUBP / atypical neurofibroma,mouse,1,20,1,0
+NF1,ANNUBP / atypical neurofibroma,other,0,0,0,0
+NF1,Pulmonary disease,human,0,0,0,0
+NF1,Pulmonary disease,mouse,0,0,0,0
+NF1,Pulmonary disease,other,0,0,0,0
+NF1,Non-vestibular schwannoma,human,0,0,0,0
+NF1,Non-vestibular schwannoma,mouse,0,0,0,0
+NF1,Non-vestibular schwannoma,other,0,0,0,0
+NF1,Vestibular schwannoma,human,0,0,0,0
+NF1,Vestibular schwannoma,mouse,0,0,0,0
+NF1,Vestibular schwannoma,other,0,0,0,0
+NF1,Other,human,6,85,3,3
+NF1,Other,mouse,2,9,0,2
+NF1,Other,other,1,80,1,1
+NF2-SWN,Bone defects,human,0,0,0,0
+NF2-SWN,Bone defects,mouse,2,12,0,2
+NF2-SWN,Bone defects,other,0,0,0,0
+NF2-SWN,Cardiovascular issues,human,0,0,0,0
+NF2-SWN,Cardiovascular issues,mouse,0,0,0,0
+NF2-SWN,Cardiovascular issues,other,0,0,0,0
+NF2-SWN,Cognition / Behavioral / Learning,human,0,0,0,0
+NF2-SWN,Cognition / Behavioral / Learning,mouse,0,0,0,0
+NF2-SWN,Cognition / Behavioral / Learning,other,0,0,0,0
+NF2-SWN,Sleep,human,0,0,0,0
+NF2-SWN,Sleep,mouse,0,0,0,0
+NF2-SWN,Sleep,other,0,0,0,0
+NF2-SWN,Cutaneous neurofibroma,human,0,0,0,0
+NF2-SWN,Cutaneous neurofibroma,mouse,0,0,0,0
+NF2-SWN,Cutaneous neurofibroma,other,0,0,0,0
+NF2-SWN,Ependymoma,human,0,0,0,0
+NF2-SWN,Ependymoma,mouse,0,0,0,0
+NF2-SWN,Ependymoma,other,0,0,0,0
+NF2-SWN,Gastrointestinal stromal tumor (GIST),human,0,0,0,0
+NF2-SWN,Gastrointestinal stromal tumor (GIST),mouse,0,0,0,0
+NF2-SWN,Gastrointestinal stromal tumor (GIST),other,0,0,0,0
+NF2-SWN,Hematologic malignancies,human,0,0,0,0
+NF2-SWN,Hematologic malignancies,mouse,0,0,0,0
+NF2-SWN,Hematologic malignancies,other,0,0,0,0
+NF2-SWN,High grade glioma,human,0,0,0,0
+NF2-SWN,High grade glioma,mouse,0,0,0,0
+NF2-SWN,High grade glioma,other,0,0,0,0
+NF2-SWN,Malignant peripheral nerve sheath tumor (MPNST),human,0,0,0,0
+NF2-SWN,Malignant peripheral nerve sheath tumor (MPNST),mouse,0,0,0,0
+NF2-SWN,Malignant peripheral nerve sheath tumor (MPNST),other,0,0,0,0
+NF2-SWN,Meningioma,human,3,32,1,1
+NF2-SWN,Meningioma,mouse,0,0,0,0
+NF2-SWN,Meningioma,other,0,0,0,0
+NF2-SWN,Optic pathway glioma,human,0,0,0,0
+NF2-SWN,Optic pathway glioma,mouse,0,0,0,0
+NF2-SWN,Optic pathway glioma,other,0,0,0,0
+NF2-SWN,Non-optic LGG,human,0,0,0,0
+NF2-SWN,Non-optic LGG,mouse,0,0,0,0
+NF2-SWN,Non-optic LGG,other,0,0,0,0
+NF2-SWN,Pain,human,1,18,1,0
+NF2-SWN,Pain,mouse,0,0,0,0
+NF2-SWN,Pain,other,0,0,0,0
+NF2-SWN,Plexiform neurofibroma,human,0,0,0,0
+NF2-SWN,Plexiform neurofibroma,mouse,0,0,0,0
+NF2-SWN,Plexiform neurofibroma,other,0,0,0,0
+NF2-SWN,ANNUBP / atypical neurofibroma,human,0,0,0,0
+NF2-SWN,ANNUBP / atypical neurofibroma,mouse,0,0,0,0
+NF2-SWN,ANNUBP / atypical neurofibroma,other,0,0,0,0
+NF2-SWN,Pulmonary disease,human,0,0,0,0
+NF2-SWN,Pulmonary disease,mouse,0,0,0,0
+NF2-SWN,Pulmonary disease,other,0,0,0,0
+NF2-SWN,Non-vestibular schwannoma,human,5,90,3,2
+NF2-SWN,Non-vestibular schwannoma,mouse,5,64,0,2
+NF2-SWN,Non-vestibular schwannoma,other,0,0,0,0
+NF2-SWN,Vestibular schwannoma,human,11,120,6,4
+NF2-SWN,Vestibular schwannoma,mouse,2,36,0,0
+NF2-SWN,Vestibular schwannoma,other,0,0,0,0
+NF2-SWN,Other,human,3,56,0,3
+NF2-SWN,Other,mouse,8,56,1,5
+NF2-SWN,Other,other,0,0,0,0
+SWN,Bone defects,human,0,0,0,0
+SWN,Bone defects,mouse,0,0,0,0
+SWN,Bone defects,other,0,0,0,0
+SWN,Cardiovascular issues,human,0,0,0,0
+SWN,Cardiovascular issues,mouse,0,0,0,0
+SWN,Cardiovascular issues,other,0,0,0,0
+SWN,Cognition / Behavioral / Learning,human,0,0,0,0
+SWN,Cognition / Behavioral / Learning,mouse,0,0,0,0
+SWN,Cognition / Behavioral / Learning,other,0,0,0,0
+SWN,Sleep,human,0,0,0,0
+SWN,Sleep,mouse,0,0,0,0
+SWN,Sleep,other,0,0,0,0
+SWN,Cutaneous neurofibroma,human,0,0,0,0
+SWN,Cutaneous neurofibroma,mouse,0,0,0,0
+SWN,Cutaneous neurofibroma,other,0,0,0,0
+SWN,Ependymoma,human,0,0,0,0
+SWN,Ependymoma,mouse,0,0,0,0
+SWN,Ependymoma,other,0,0,0,0
+SWN,Gastrointestinal stromal tumor (GIST),human,0,0,0,0
+SWN,Gastrointestinal stromal tumor (GIST),mouse,0,0,0,0
+SWN,Gastrointestinal stromal tumor (GIST),other,0,0,0,0
+SWN,Hematologic malignancies,human,0,0,0,0
+SWN,Hematologic malignancies,mouse,0,0,0,0
+SWN,Hematologic malignancies,other,0,0,0,0
+SWN,High grade glioma,human,0,0,0,0
+SWN,High grade glioma,mouse,0,0,0,0
+SWN,High grade glioma,other,0,0,0,0
+SWN,Malignant peripheral nerve sheath tumor (MPNST),human,0,0,0,0
+SWN,Malignant peripheral nerve sheath tumor (MPNST),mouse,0,0,0,0
+SWN,Malignant peripheral nerve sheath tumor (MPNST),other,0,0,0,0
+SWN,Meningioma,human,0,0,0,0
+SWN,Meningioma,mouse,0,0,0,0
+SWN,Meningioma,other,0,0,0,0
+SWN,Optic pathway glioma,human,0,0,0,0
+SWN,Optic pathway glioma,mouse,0,0,0,0
+SWN,Optic pathway glioma,other,0,0,0,0
+SWN,Non-optic LGG,human,0,0,0,0
+SWN,Non-optic LGG,mouse,0,0,0,0
+SWN,Non-optic LGG,other,0,0,0,0
+SWN,Pain,human,0,0,0,0
+SWN,Pain,mouse,0,0,0,0
+SWN,Pain,other,0,0,0,0
+SWN,Plexiform neurofibroma,human,0,0,0,0
+SWN,Plexiform neurofibroma,mouse,0,0,0,0
+SWN,Plexiform neurofibroma,other,0,0,0,0
+SWN,ANNUBP / atypical neurofibroma,human,0,0,0,0
+SWN,ANNUBP / atypical neurofibroma,mouse,0,0,0,0
+SWN,ANNUBP / atypical neurofibroma,other,0,0,0,0
+SWN,Pulmonary disease,human,0,0,0,0
+SWN,Pulmonary disease,mouse,0,0,0,0
+SWN,Pulmonary disease,other,0,0,0,0
+SWN,Non-vestibular schwannoma,human,0,0,0,0
+SWN,Non-vestibular schwannoma,mouse,1,6,0,0
+SWN,Non-vestibular schwannoma,other,0,0,0,0
+SWN,Vestibular schwannoma,human,0,0,0,0
+SWN,Vestibular schwannoma,mouse,0,0,0,0
+SWN,Vestibular schwannoma,other,0,0,0,0
+SWN,Other,human,0,0,0,0
+SWN,Other,mouse,2,18,0,1
+SWN,Other,other,0,0,0,0
+Not specified,Bone defects,human,0,0,0,0
+Not specified,Bone defects,mouse,0,0,0,0
+Not specified,Bone defects,other,0,0,0,0
+Not specified,Cardiovascular issues,human,0,0,0,0
+Not specified,Cardiovascular issues,mouse,0,0,0,0
+Not specified,Cardiovascular issues,other,0,0,0,0
+Not specified,Cognition / Behavioral / Learning,human,0,0,0,0
+Not specified,Cognition / Behavioral / Learning,mouse,0,0,0,0
+Not specified,Cognition / Behavioral / Learning,other,0,0,0,0
+Not specified,Sleep,human,0,0,0,0
+Not specified,Sleep,mouse,0,0,0,0
+Not specified,Sleep,other,0,0,0,0
+Not specified,Cutaneous neurofibroma,human,0,0,0,0
+Not specified,Cutaneous neurofibroma,mouse,0,0,0,0
+Not specified,Cutaneous neurofibroma,other,0,0,0,0
+Not specified,Ependymoma,human,0,0,0,0
+Not specified,Ependymoma,mouse,0,0,0,0
+Not specified,Ependymoma,other,0,0,0,0
+Not specified,Gastrointestinal stromal tumor (GIST),human,0,0,0,0
+Not specified,Gastrointestinal stromal tumor (GIST),mouse,0,0,0,0
+Not specified,Gastrointestinal stromal tumor (GIST),other,0,0,0,0
+Not specified,Hematologic malignancies,human,0,0,0,0
+Not specified,Hematologic malignancies,mouse,0,0,0,0
+Not specified,Hematologic malignancies,other,0,0,0,0
+Not specified,High grade glioma,human,0,0,0,0
+Not specified,High grade glioma,mouse,0,0,0,0
+Not specified,High grade glioma,other,0,0,0,0
+Not specified,Malignant peripheral nerve sheath tumor (MPNST),human,0,0,0,0
+Not specified,Malignant peripheral nerve sheath tumor (MPNST),mouse,0,0,0,0
+Not specified,Malignant peripheral nerve sheath tumor (MPNST),other,0,0,0,0
+Not specified,Meningioma,human,0,0,0,0
+Not specified,Meningioma,mouse,0,0,0,0
+Not specified,Meningioma,other,0,0,0,0
+Not specified,Optic pathway glioma,human,0,0,0,0
+Not specified,Optic pathway glioma,mouse,0,0,0,0
+Not specified,Optic pathway glioma,other,0,0,0,0
+Not specified,Non-optic LGG,human,0,0,0,0
+Not specified,Non-optic LGG,mouse,0,0,0,0
+Not specified,Non-optic LGG,other,0,0,0,0
+Not specified,Pain,human,0,0,0,0
+Not specified,Pain,mouse,0,0,0,0
+Not specified,Pain,other,0,0,0,0
+Not specified,Plexiform neurofibroma,human,0,0,0,0
+Not specified,Plexiform neurofibroma,mouse,0,0,0,0
+Not specified,Plexiform neurofibroma,other,0,0,0,0
+Not specified,ANNUBP / atypical neurofibroma,human,0,0,0,0
+Not specified,ANNUBP / atypical neurofibroma,mouse,0,0,0,0
+Not specified,ANNUBP / atypical neurofibroma,other,0,0,0,0
+Not specified,Pulmonary disease,human,0,0,0,0
+Not specified,Pulmonary disease,mouse,0,0,0,0
+Not specified,Pulmonary disease,other,0,0,0,0
+Not specified,Non-vestibular schwannoma,human,0,0,0,0
+Not specified,Non-vestibular schwannoma,mouse,0,0,0,0
+Not specified,Non-vestibular schwannoma,other,0,0,0,0
+Not specified,Vestibular schwannoma,human,0,0,0,0
+Not specified,Vestibular schwannoma,mouse,0,0,0,0
+Not specified,Vestibular schwannoma,other,0,0,0,0
+Not specified,Other,human,0,0,0,0
+Not specified,Other,mouse,0,0,0,0
+Not specified,Other,other,0,0,0,0
