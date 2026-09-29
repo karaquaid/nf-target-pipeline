@@ -1,6 +1,6 @@
 # Phase 1b: literature-derived candidate targets
 
-A PubMed sweep of 32 disease- and manifestation-directed queries returned 492 articles, of which 303 named at least one molecular target presented as a driver, modifier, or therapeutic target in neurofibromatosis. After extraction, two rounds of full-text verification, and the exclusions described below, the list stands at **363 gene x disease x manifestation rows over 191 target labels, drawn from 235 papers**. **193 of those rows are now anchored in at least one paper read in full**, against 54 in the first version; 170 still rest on abstracts alone and are labelled as such. The list is `data/phase1b-literature-targets.csv`; the paper-level record, including per-paper access, is `data/phase1b-references.csv`.
+A PubMed sweep of 32 disease- and manifestation-directed queries returned 492 articles, of which 303 named at least one molecular target presented as a driver, modifier, or therapeutic target in neurofibromatosis. After extraction, two rounds of full-text verification, and the exclusions described below, the list stands at **363 gene x disease x manifestation rows over 191 target labels, drawn from 235 papers**. **228 of those rows are now anchored in at least one paper read in full**, against 54 in the first version; 135 still rest on abstracts alone and are labelled as such. The list is `data/phase1b-literature-targets.csv`; the paper-level record, including per-paper access, is `data/phase1b-references.csv`.
 
 This list is deliberately independent of the expression pipeline. It is held for the Phase 7 comparison, where overlaps and one-sided findings between the two derivations get examined.
 
@@ -8,11 +8,11 @@ This list is deliberately independent of the expression pipeline. It is held for
 
 The first version of this list had a provenance problem that the numbers above have largely fixed. Full text had been retrieved for only 56 of the contributing papers, and part of that verification was done from short gene-centred excerpts rather than complete articles after the run exhausted its token budget, leaving those verdicts provisional.
 
-Both limits came from the retrieval route rather than from access. The PubMed connector fetches through NCBI's PMC service, which serves only its own open-access package, so most PMC-identified papers returned empty bodies. Europe PMC holds a larger open subset at a different endpoint, and **89 of the 235 papers turned out to be open access there**. Every row-paper pair among them, 254 in total, was re-judged against the complete article body, one reasoning pass per paper, with no excerpting. Full text now covers **108 of 235 papers**.
+Both limits came from the retrieval route rather than from access. The PubMed connector fetches through NCBI's PMC service, which serves only its own open-access package, so most PMC-identified papers returned empty bodies. Europe PMC holds a larger open subset at a different endpoint, and **89 of the 235 papers turned out to be open access there**. Every row-paper pair among them, 254 in total, was re-judged against the complete article body, one reasoning pass per paper, with no excerpting. A third pass then recovered NIH author manuscripts deposited in PMC, which Europe PMC's open-access endpoint refuses but NCBI efetch serves in full, adding 28 more papers and 35 more judged pairs. Full text now covers **136 of 235 papers**.
 
-The re-judgement changed the list in four ways.
+The re-judgement changed the list in five ways.
 
-**Verdicts.** Of 254 pairs, 156 came back supported, 55 partially supported, and 43 not supported. The supported fraction rose from 12 percent of rows to 44 percent.
+**Verdicts.** Across all three passes 298 row-paper pairs have been judged against complete bodies: 181 supported, 60 partially supported, 48 not supported, and 9 from the first round's excerpt pass re-judged and confirmed. The supported fraction rose from 12 percent of rows to 50 percent.
 
 **Twenty rows were dropped.** Each was a single-paper claim whose one paper, read in full, does not support it: the gene appears as a cohort-defining mutation, an assay reagent, or a citation to other work. Among them are ALK and CAMP-PKA in MPNST, EPHA2 and KIT in vestibular schwannoma, PEBP1 in meningioma and ependymoma, and every one of the four Sleep rows. Two further rows (MAP2K1/2 in NF1 "Other", NF2 in NF2-SWN "Other") had all their read papers come back not supported but still have unread papers, so they were kept and tiered `full text - not supported` rather than dropped on partial coverage.
 
@@ -77,20 +77,24 @@ Distinct gene x manifestation rows, germline-attributable evidence only.
 
 ![Stacked horizontal bars of candidate target rows per manifestation, one panel per disease, shaded by whether the strongest supporting paper was read in full text or only as an abstract](figures/phase1b-coverage-verification.png)
 
-**Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is the number of candidate target rows (n = 363 gene x disease x manifestation claims); shading is the provenance of the strongest supporting paper behind each row. Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a manifestation with no rows at all in that disease. 158 of 363 rows (44 percent) are anchored in a paper read in full, and among the five manifestations holding 20 or more rows that share runs from 35 to 59 percent, so the principal tumour types are now reasonably well evidenced. What the figure shows instead is how sharply coverage falls away from them: Sleep (0), Hematologic malignancies (3), Ependymoma (4), Pulmonary disease (4), Non-optic LGG (5), Bone defects (6), Cardiovascular issues (7), Cognition / Behavioral / Learning (8), Gastrointestinal stromal tumor (GIST) (9), ANNUBP / atypical neurofibroma (9) rows respectively, and no full-text-supported target at all for Cardiovascular issues, Gastrointestinal stromal tumor (GIST).
+**Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is the number of candidate target rows (n = 363 gene x disease x manifestation claims); shading is the provenance of the strongest supporting paper behind each row. Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a manifestation with no rows at all in that disease. 183 of 363 rows (50 percent) are anchored in a paper read in full, and among the five manifestations holding 20 or more rows that share runs from 35 to 70 percent, so the principal tumour types are now reasonably well evidenced. What the figure shows instead is how sharply coverage falls away from them: Sleep (0), Hematologic malignancies (3), Ependymoma (4), Pulmonary disease (4), Non-optic LGG (5), Bone defects (6), Cardiovascular issues (7), Cognition / Behavioral / Learning (8), Gastrointestinal stromal tumor (GIST) (9), ANNUBP / atypical neurofibroma (9) rows respectively, and no full-text-supported target at all for Gastrointestinal stromal tumor (GIST).
 
 ## Access and verification
 
-Full text was read for 108 of 235 papers: 89 open access via Europe PMC and the remainder from the earlier NCBI pass. The 127 that remain unread are not open access anywhere Europe PMC indexes. A PMC identifier is not a proxy for full-text access and should not be treated as one in later phases.
+Full text was read for 136 of 235 papers: 89 open access via Europe PMC, 28 NIH author manuscripts via NCBI efetch, and the remainder from the first round. Of the 99 still unread, 18 have a PMC record worth one more attempt and the rest have no free copy any of these routes can reach.
+
+Open-access status and readability are not the same thing, and conflating them cost a round here. A paper can be flagged not open access, because the publisher holds the rights, while an NIH-funded author manuscript of it sits free in PMC. Europe PMC's `fullTextXML` endpoint serves only the open-access subset and returns HTTP 500 for those manuscripts; NCBI efetch against the same PMC id returns the complete body. Any later phase that needs full text should try efetch before concluding a paper is unreachable, and should link to `europepmc.org/article/MED/<pmid>` rather than the DOI, which resolves to the publisher paywall.
 
 | Evidence tier | Rows |
 |---|---|
-| full text - supported | 158 |
-| full text - partial | 33 |
-| full text - not supported | 2 |
-| abstract only | 170 |
+| full text - supported | 183 |
+| full text - partial | 38 |
+| full text - not supported | 7 |
+| abstract only | 135 |
 
-Every row carries `paper_access` per PMID, plus `verdicts_from_whole_body` and `verdicts_from_earlier_pass` so the two verification rounds stay distinguishable.
+Every row carries `paper_access` per PMID, plus `verdicts_from_whole_body` and `verdicts_from_earlier_pass` so the verification rounds stay distinguishable.
+
+**Preprints are flagged.** Six of the 235 papers are preprints rather than peer-reviewed articles: four on bioRxiv, two on Research Square. `is_preprint` and `preprint_server` mark them in the reference table, and each target row carries `n_preprint_papers` and `preprint_only`. **Ten rows rest on a preprint alone**: CPA4 and YAP1-TEAD in NF2-SWN meningioma, TEAD1 in vestibular schwannoma, PRMT5 and MTAP in NF1 ANNUBP and MPNST, HRAS and LGALS1 in MPNST, and PI3K-AKT-MTOR in cognition. Every one is a single-paper, abstract-only row, so they sit at the weakest point of the evidence scale twice over and should not clear a Phase 6 threshold on their own. Preprint status is detected from DOI prefix and journal string; a cross-check against Europe PMC publication types could not be run because the service returned 503 throughout, so a preprint published somewhere unusual could still be unflagged.
 
 ## Limitations
 
@@ -111,6 +115,7 @@ Verification ran in two rounds. The first used NCBI PMC and covered 56 papers, p
 ## Files
 
 - `data/phase1b-literature-targets.csv`: 363 rows, one per gene x disease x manifestation, with `constituent_genes`, `label_type`, mechanism, study system, supporting PMIDs, per-paper access, per-round verdict counts, and evidence tier
-- `data/phase1b-references.csv`: 235 contributing papers with DOI, PMC id, whether full text was read and from which source, the target labels each paper supports, and a resolvable link
+- `data/phase1b-references.csv`: 235 contributing papers with DOI, PMC id, whether full text was read and from which source, preprint status and server, the target labels each paper supports, and a resolvable link
+- `data/phase1b-upload-priority.csv`: the 55 unread papers that could still anchor an abstract-only row, ranked by how many, with Europe PMC, PMC and publisher links for each
 - `data/phase1b-coverage.csv`: the coverage matrix above in machine-readable form
 - `docs/figures/phase1b-coverage-verification.png`: Figure 1
