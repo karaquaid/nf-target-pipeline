@@ -1,6 +1,6 @@
 # Phase 1b: literature-derived candidate targets
 
-A PubMed sweep of 32 disease- and manifestation-directed queries returned 492 articles, of which 303 named at least one molecular target presented as a driver, modifier, or therapeutic target in neurofibromatosis. After extraction, two rounds of full-text verification, and the exclusions described below, the list stands at **348 gene x disease x manifestation rows over 187 target labels, drawn from 234 papers**. **276 of those rows are now anchored in at least one paper read in full**, against 54 in the first version; only 72 still rest on abstracts alone. The list is `data/phase1b-literature-targets.csv`; the paper-level record, including per-paper access, is `data/phase1b-references.csv`.
+A PubMed sweep of 32 disease- and manifestation-directed queries returned 492 articles, of which 303 named at least one molecular target presented as a driver, modifier, or therapeutic target in neurofibromatosis. After extraction, two rounds of full-text verification, and the exclusions described below, the verified list stands at **348 gene x disease x manifestation rows over 187 target labels, drawn from 234 papers**. Excluding the germline NF genes as targets leaves a **candidate list of 311 rows over 182 labels**, which is what later phases consume. **276 of those rows are now anchored in at least one paper read in full**, against 54 in the first version; only 72 still rest on abstracts alone. The list is `data/phase1b-literature-targets.csv`; the paper-level record, including per-paper access, is `data/phase1b-references.csv`.
 
 This list is deliberately independent of the expression pipeline. It is held for the Phase 7 comparison, where overlaps and one-sided findings between the two derivations get examined.
 
@@ -54,30 +54,44 @@ Distinct gene x manifestation rows, germline-attributable evidence only.
 
 | Manifestation | NF1 | NF2-SWN | SWN | Total |
 |---|---|---|---|---|
-| Bone defects | 6 | 0 | 0 | 6 |
-| Cardiovascular issues | 6 | 1 | 0 | 7 |
-| Cognition / Behavioral / Learning | 7 | 0 | 0 | 7 |
+| Bone defects | 5 | 0 | 0 | 5 |
+| Cardiovascular issues | 5 | 0 | 0 | 5 |
+| Cognition / Behavioral / Learning | 6 | 0 | 0 | 6 |
 | Sleep | 0 | 0 | 0 | 0 |
-| Cutaneous neurofibroma | 18 | 0 | 1 | 19 |
-| Ependymoma | 0 | 4 | 0 | 4 |
-| Gastrointestinal stromal tumor (GIST) | 6 | 0 | 0 | 6 |
-| Hematologic malignancies | 3 | 0 | 0 | 3 |
-| High grade glioma | 11 | 0 | 0 | 11 |
-| Malignant peripheral nerve sheath tumor (MPNST) | 67 | 0 | 1 | 68 |
-| Meningioma | 0 | 30 | 1 | 31 |
-| Optic pathway glioma | 14 | 0 | 0 | 14 |
-| Non-optic LGG | 5 | 0 | 0 | 5 |
-| Pain | 10 | 0 | 6 | 16 |
-| Plexiform neurofibroma | 46 | 0 | 0 | 46 |
-| ANNUBP / atypical neurofibroma | 10 | 0 | 0 | 10 |
-| Pulmonary disease | 3 | 1 | 0 | 4 |
-| Non-vestibular schwannoma | 0 | 18 | 5 | 23 |
-| Vestibular schwannoma | 0 | 41 | 3 | 44 |
-| Other | 20 | 1 | 3 | 24 |
+| Cutaneous neurofibroma | 17 | 0 | 0 | 17 |
+| Ependymoma | 0 | 3 | 0 | 3 |
+| Gastrointestinal stromal tumor (GIST) | 5 | 0 | 0 | 5 |
+| Hematologic malignancies | 2 | 0 | 0 | 2 |
+| High grade glioma | 10 | 0 | 0 | 10 |
+| Malignant peripheral nerve sheath tumor (MPNST) | 66 | 0 | 0 | 66 |
+| Meningioma | 0 | 29 | 0 | 29 |
+| Optic pathway glioma | 13 | 0 | 0 | 13 |
+| Non-optic LGG | 4 | 0 | 0 | 4 |
+| Pain | 9 | 0 | 4 | 13 |
+| Plexiform neurofibroma | 45 | 0 | 0 | 45 |
+| ANNUBP / atypical neurofibroma | 9 | 0 | 0 | 9 |
+| Pulmonary disease | 2 | 0 | 0 | 2 |
+| Non-vestibular schwannoma | 0 | 17 | 2 | 19 |
+| Vestibular schwannoma | 0 | 40 | 0 | 40 |
+| Other | 18 | 0 | 0 | 18 |
 
 ![Stacked horizontal bars of candidate target rows per manifestation, one panel per disease, shaded by whether the strongest supporting paper was read in full text or only as an abstract](figures/phase1b-coverage-verification.png)
 
-**Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is the number of candidate target rows (n = 363 gene x disease x manifestation claims); shading is the provenance of the strongest supporting paper behind each row. Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a manifestation with no rows at all in that disease. 220 of 348 rows (63 percent) are anchored in a paper read in full, and among the manifestations holding 20 or more rows that share runs from 35 to 76 percent, so the principal tumour types are now reasonably well evidenced. What the figure shows instead is how sharply coverage falls away from them: Sleep (0), Hematologic malignancies (3), Ependymoma (4), Pulmonary disease (4), Non-optic LGG (5), Bone defects (6), Gastrointestinal stromal tumor (GIST) (6), Cardiovascular issues (7), Cognition / Behavioral / Learning (7) rows respectively, and no full-text-supported target at all for Gastrointestinal stromal tumor (GIST).
+**Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is the number of candidate target rows (n = 311 gene x disease x manifestation claims, germline NF genes excluded); shading is the provenance of the strongest supporting paper behind each row. Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a manifestation with no rows at all in that disease. 194 of 311 rows (62 percent) are anchored in a paper read in full, and in the four manifestations holding 20 or more rows that share runs from 69 to 76 percent, so the principal tumour types are now well evidenced. What the figure shows instead is how sharply coverage falls away from them: Sleep (0), Hematologic malignancies (2), Pulmonary disease (2), Ependymoma (3), Non-optic LGG (4), Bone defects (5), Cardiovascular issues (5), Gastrointestinal stromal tumor (GIST) (5), Cognition / Behavioral / Learning (6), ANNUBP / atypical neurofibroma (9) rows respectively, and no full-text-supported target at all for Gastrointestinal stromal tumor (GIST).
+
+## Driver-gene exclusion
+
+The germline NF disease genes are excluded from the candidate list on the grounds that their role is already established and re-prioritising them tells the project nothing. That removes 37 rows: NF1 (15), NF2 (10), SMARCB1 (6), LZTR1 (5), SPRED1 (1). Twenty-six of the 37 were full-text supported, so this is not a quality filter; it is a scope decision about what a candidate is.
+
+The rows are retained in `data/phase1b-literature-targets.csv` with `driver_gene = True`, and the filtered list is `data/phase1b-candidate-targets.csv`. Nothing is unreconstructible, and the same exclusion can be reversed or widened later by rewriting one column.
+
+Two consequences matter for later phases.
+
+**Schwannomatosis is almost emptied: 20 candidate rows become 6.** SMARCB1, LZTR1 and NF2 were most of what the literature offers for SWN, so after exclusion the disease contributes the RAS-axis and pain rows and little else. Any Phase 3b decision that treats SWN as comparable in evidence to NF1 or NF2-SWN will be reading a list that no longer contains its best-studied genes.
+
+**Recurrent somatic drivers are deliberately kept.** CDKN2A and CDKN2B, PRC2 components, TP53, MTAP and the RAS genes remain candidates even though their role in NF tumour genetics is well described, because they carry the malignant-progression signal that Phase 6 stratification depends on. If that reasoning changes, the wider exclusion is 35 further rows.
+
+Thirty-two papers now support no candidate row at all, their evidence having been entirely about the driver genes; `supports_candidate_rows` marks them in the reference table, and six of them left the PDF queue as a result.
 
 ## Supplied PDFs
 
@@ -124,6 +138,7 @@ Verification ran in two rounds. The first used NCBI PMC and covered 56 papers, p
 
 ## Files
 
+- `data/phase1b-candidate-targets.csv`: the prioritisation input, 311 rows with the germline NF genes excluded
 - `data/phase1b-literature-targets.csv`: 363 rows, one per gene x disease x manifestation, with `constituent_genes`, `label_type`, mechanism, study system, supporting PMIDs, per-paper access, per-round verdict counts, and evidence tier
 - `data/phase1b-references.csv`: 235 contributing papers with DOI, PMC id, whether full text was read and from which source, preprint status and server, the target labels each paper supports, and a resolvable link
 - `data/phase1b-upload-priority.csv`: upload tracker and work queue, 46 papers still needed plus the record of the 29 supplied, with Europe PMC, PMC and publisher links for each
