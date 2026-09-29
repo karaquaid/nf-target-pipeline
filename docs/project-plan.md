@@ -12,6 +12,8 @@ Every dataset (Phase 1) and target (Phase 1b, 3, 4, 5, 6, 7) must be labeled wit
 - **Disease:** NF1, NF2-SWN, or SWN (schwannomatosis). Use "Other" or "Not specified" only if the source genuinely doesn't distinguish, and flag that as a gap rather than guessing.
 - **Manifestation(s):** one or more from this fixed list, applied as-is (don't paraphrase or substitute synonyms): Bone defects; Cardiovascular issues; Cognition / Behavioral / Learning; Sleep; Cutaneous neurofibroma; Ependymoma; Gastrointestinal stromal tumor (GIST); Hematologic malignancies; High grade glioma; Malignant peripheral nerve sheath tumor (MPNST); Meningioma; Optic pathway glioma; Non-optic LGG; Pain; Plexiform neurofibroma; ANNUBP / atypical neurofibroma; Pulmonary disease; Non-vestibular schwannoma; Vestibular schwannoma; Other
 
+**Sporadic tumors are out of scope.** Only germline/NF-associated material counts as evidence. A dataset or paper concerning sporadic tumors with somatic NF1/NF2 loss (most published meningioma work, a large share of vestibular schwannoma and high-grade glioma work) is excluded rather than relabeled; this was applied retroactively to Phase 1b. Where a cohort is mixed, keep the dataset/paper and exclude the sporadic samples at the sample level rather than dropping the whole record. Record what the exclusion removed (accession or PMID, and count) so the decision is auditable and reversible, since the same molecular lesion in sporadic tissue may be worth revisiting if a later phase runs short of evidence.
+
 A dataset or target can carry more than one manifestation label if it's genuinely relevant to more than one (e.g. a gene implicated in both plexiform neurofibroma and MPNST progression). Carry these two labels through every downstream phase so the final scored candidate list (Phase 6) and comparison (Phase 7) can be filtered/grouped by disease and manifestation, not just by gene name.
 
 ## Compute Requirements
@@ -30,14 +32,20 @@ A dataset or target can carry more than one manifestation label if it's genuinel
 
 ## Phase 1: Scope and Data Source Finalization
 
-**Claude tools:** Advanced Research (multi-source dataset search), web search (spot-checks and follow-up)
+**Status:** run 2026-09-29; results and open decisions in `docs/phase1-dataset-scope.md`.
 
-- Run a comprehensive search for public gene expression datasets (GEO, ArrayExpress, SRA) covering NF1, NF2, and schwannomatosis tumor types, using Claude's Advanced Research tool given the breadth of sources and disease subtypes involved
-- Label each dataset found with disease (NF1, NF2-SWN, or SWN) and manifestation(s) per the labeling standard above
-- Confirm public GEO datasets to use as the primary/starting data source (since Portal/Synodos data upload approval is not yet in place)
-- Document which datasets have healthy controls vs. not, to define which need batch-effect handling as a secondary capability
-- Flag any dataset only accessible through the NF Data Portal/Synapse rather than directly public on GEO/ArrayExpress, since those may carry different data-use terms
-- Explicitly confirm that no NF-OSI/Synodos data will be uploaded into Claude at any point in this phase of the project
+**Claude tools:** GEO and ArrayExpress/BioStudies connectors (omics-archives) for the search, NCBI E-utilities directly for the re-runnable script, web search for spot-checks
+
+- Run the dataset search as a versioned script in `/scripts` rather than as an interactive search, so the exact query strings and search date are recorded and the sweep can be re-run and diffed later. Every accession in the final table must resolve against NCBI before it is reported, which removes accession hallucination as a category and leaves spot-checks to confirm relevance only
+- Sources: GEO is primary, ArrayExpress/BioStudies secondary (expect mostly legacy or mirrored records). SRA is not searched as a separate source: human expression submissions with no GEO series are rare and carry no usable disease labeling
+- Restrict to expression assay types ("Expression profiling by array" / "by high throughput sequencing"); unfiltered keyword hits pull in ChIP-seq, ATAC, methylation and miRNA series. Collect single-cell/single-nucleus series but mark them deferred (see Compute Requirements)
+- Label each dataset with disease (NF1, NF2-SWN, or SWN) and manifestation(s) per the labeling standard above, and record the basis for the disease label (stated NF patient cohort / per-sample NF status / engineered NF genotype / inferred), since the standard excludes sporadic tumors
+- Include both human and mouse-model datasets, with an `organism` column. Mouse datasets are a separate analysis track (ortholog mapping required) and are counted separately in the Phase 3b coverage chart, so a zero there reads as "no human tissue" rather than "no evidence". Whether mouse data carries into Phases 2-3 is a decision to make from the Phase 1 counts, not in advance
+- Record a `study_design` column (tumor vs normal / tumor-subtype or grade comparison / in vitro perturbation / xenograft / single-arm profiling), because only the comparative designs feed Phase 3 differential expression
+- Document controls with an explicit taxonomy rather than a yes/no flag: matched adjacent normal tissue; unaffected-donor normal tissue or primary Schwann cells; isogenic or engineered control; non-NF tumor comparator; none. "Healthy control" barely exists for nerve tissue, and which kind of control a dataset has determines the batch-effect handling needed in Phase 2. Control counts are not a GEO metadata field: they come from parsing per-sample characteristics and titles, whose completeness varies widely between series
+- Deduplicate superseries/subseries and re-deposited cohorts before counting, so samples are not double-counted downstream
+- Record per-dataset data availability (raw counts / raw array files / processed matrix only / none), since that decides Phase 2 ingestability
+- Deliverables mirror the Phase 1b schema so Phase 3b can join them: a dataset-level table, a long dataset x disease x manifestation table over the fixed vocabulary with explicit zero rows, a per-sample manifest that doubles as Phase 2's input list, and an exclusions table recording sporadic and off-scope datasets
 - Finalize scope statement: primary focus is candidate drug/target identification; batch-effect correction and no-control-dataset handling are secondary/bonus capabilities, not the headline
 
 ## Phase 1b: Literature-Derived Target Identification (runs in parallel with Phases 1–2)
@@ -52,7 +60,7 @@ A dataset or target can carry more than one manifestation label if it's genuinel
 
 ## Phase 2: Data Ingestion and Preprocessing
 
-**Claude tools:** Claude Code (writing/debugging ingestion and preprocessing scripts), Synapse.org connector (if pulling anything you're authorized to access there directly rather than manually)
+**Claude tools:** Claude Code (writing/debugging ingestion and preprocessing scripts)
 
 - Build ingestion scripts to pull and standardize raw expression data from selected GEO datasets
 - Implement (as secondary capability) batch-effect correction methods and a fallback approach for datasets lacking healthy controls
@@ -143,7 +151,8 @@ A dataset or target can carry more than one manifestation label if it's genuinel
 - Revisit Compound VALET once it has more documentation for the remaining tractability gap; safety is now largely covered by ChEMBL's ADMET data, openFDA FAERS, and SIDER. A real Open Targets connector also exists if you want to reconsider it for tractability despite moving away from it earlier
 - Evaluate the Amass Connector as a possible single replacement for the separate ClinicalTrials.gov, openFDA, and DrugBank integrations before building all three
 - Decide final list of GEO datasets to launch with
-- Determine whether/when to revisit NF-OSI/Synodos data inclusion pending Sage, NTAP, and Gilbert Family Foundation approval
+- Decide whether mouse-model datasets carry into Phases 2-3, from the Phase 1 organism counts
+- Several sources named in Phases 4-5 have no connector on this platform (DGIdb, Guide to Pharmacology, DrugBank, SIDER, ProbeMiner, Monarch/Mondo/DisMech, the Amass Connector) and several of their domains are blocked by the sandbox network allowlist. Each needs either an approved domain or a substitute (Open Targets, openFDA, ChEMBL, ClinicalTrials.gov and KEGG are reachable) before Phase 4-5 wiring starts
 
 ## Appendix: Phase 1 / 1b Prompts
 
@@ -157,13 +166,13 @@ A dataset or target can carry more than one manifestation label if it's genuinel
 
 **Prompt 1 (Phase 1: dataset search)**
 
-> I'm scoping public gene expression data sources for a neurofibromatosis (NF1, NF2, and schwannomatosis) drug target discovery pipeline. Search GEO, ArrayExpress, and SRA (bulk RNA-seq, microarray, and single-cell/single-nucleus) for expression datasets covering: cutaneous neurofibroma, plexiform neurofibroma, MPNST (NF1); vestibular schwannoma and other schwannomas, meningioma (NF2/schwannomatosis); and SMARCB1/LZTR1-driven schwannomatosis specifically.
+> I'm scoping public gene expression data sources for a neurofibromatosis (NF1, NF2-SWN, schwannomatosis) drug target discovery pipeline. Search GEO (primary) and ArrayExpress/BioStudies (secondary) for expression datasets (bulk RNA-seq, microarray, and single-cell/single-nucleus) covering: cutaneous neurofibroma, plexiform neurofibroma, ANNUBP/atypical neurofibroma, MPNST, optic pathway glioma and the other NF1 manifestations; vestibular and non-vestibular schwannoma, meningioma and ependymoma (NF2-SWN); and SMARCB1/LZTR1-driven schwannomatosis. Restrict to expression assay types. Include both human and mouse-model datasets and label each with its organism.
 >
-> For each dataset, report: accession number, platform/assay type, disease (specifically NF1, NF2-SWN, or SWN, flag as "not specified" if the source doesn't distinguish), manifestation(s) from this fixed list (apply as-is, don't paraphrase): Bone defects; Cardiovascular issues; Cognition / Behavioral / Learning; Sleep; Cutaneous neurofibroma; Ependymoma; Gastrointestinal stromal tumor (GIST); Hematologic malignancies; High grade glioma; Malignant peripheral nerve sheath tumor (MPNST); Meningioma; Optic pathway glioma; Non-optic LGG; Pain; Plexiform neurofibroma; ANNUBP / atypical neurofibroma; Pulmonary disease; Non-vestibular schwannoma; Vestibular schwannoma; Other. Also report total sample count, number of matched healthy/normal-tissue controls (flag zero-control datasets explicitly), and a link.
+> Exclude sporadic tumors: a dataset counts only if its samples are NF-associated (germline NF1/NF2/SMARCB1/LZTR1, an explicitly NF patient cohort, or an engineered NF genotype). For mixed cohorts, keep the dataset and mark which samples are sporadic. Record how germline/NF status was established for each dataset, and keep the excluded datasets in a separate table rather than dropping them silently.
 >
-> Separately flag any dataset only accessible through the NF Data Portal/Synapse rather than directly public on GEO/ArrayExpress, since those may carry different data-use terms.
+> For each dataset report: accession, platform/assay type, organism, disease (NF1, NF2-SWN, or SWN), manifestation(s) from the fixed list in this plan applied as-is, study design (tumor vs normal / tumor-subtype or grade comparison / in vitro perturbation / xenograft / single-arm profiling), total sample count, control samples broken down by type (matched adjacent normal, unaffected-donor normal, isogenic or engineered, non-NF tumor comparator, none), data availability (raw counts / raw array files / processed matrix only / none), any superseries-subseries relation, publication, and link.
 >
-> Present results as a table grouped by disease and manifestation, and call out any disease/manifestation combination with sparse or no coverage.
+> Run this as a script that records the exact query strings and the search date, and verify that every reported accession resolves against NCBI. Present results grouped by disease and manifestation, and show disease/manifestation combinations with zero coverage explicitly rather than omitting them.
 
 **Prompt 2 (Phase 1b: literature-derived targets, run in parallel)**
 
@@ -177,7 +186,7 @@ A dataset or target can carry more than one manifestation label if it's genuinel
 
 **Model/modality guidance:** Claude Code with Sonnet 5. This is well-established methodology (standard preprocessing, batch correction like ComBat) turned into working scripts, not a task needing Opus-level judgment.
 
-**Minimizing hallucination:** No dedicated GEO-download connector exists. Have Claude Code fetch the current GEOparse/GEOquery documentation directly rather than writing from memorized API syntax, since package APIs shift across versions. If you reconnect the **Synapse.org connector**, use it to verify any dataset's provenance/metadata directly against Synapse rather than trusting a scraped description.
+**Minimizing hallucination:** No dedicated GEO-download connector exists. Have Claude Code fetch the current GEOparse/GEOquery documentation directly rather than writing from memorized API syntax, since package APIs shift across versions.
 
 > Write a preprocessing pipeline that ingests the GEO datasets identified in Phase 1 [list accessions], standardizes them into a single expression matrix, and flags samples with missing metadata. For datasets without healthy controls, implement a fallback approach and document what that fallback assumes. Include batch-effect correction (e.g., ComBat) as a separate, clearly labeled step so it can be toggled off. Cite the exact package/version and doc source you used for each preprocessing function, and verify current syntax against that source rather than a remembered API.
 

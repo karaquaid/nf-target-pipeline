@@ -1,0 +1,214 @@
+{
+  "_note": "GEO series classified by hand rather than by the LLM pass: records released after the 2026-09-24 classification run, or cases the pass could not resolve. Merged by scripts/phase1_classify.py --restore-from-tables.",
+  "series": {
+    "GSE344687": {
+      "in_scope": true,
+      "nf_association": "mixed_nf_and_sporadic",
+      "germline_basis": "per_sample_nf_status",
+      "exclusion_reason": "",
+      "disease": "NF2-SWN",
+      "manifestations": [
+        "Vestibular schwannoma"
+      ],
+      "organism_class": "human",
+      "material": "patient_tissue",
+      "study_design": "subtype_or_grade_comparison",
+      "single_cell": true,
+      "control_types": [],
+      "confidence": "high",
+      "evidence": "Single-nucleus multiome and scRNA-seq of vestibular schwannomas; per-sample 'group' characteristic is NF2-associated (19) or sporadic (8).",
+      "notes": "Released 2026-09-25, after the classification run. 8 ATAC-seq samples are not expression data and are out of scope at sample level; 8 sporadic samples excluded."
+    }
+  },
+  "samples": [
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983293",
+      "label": "other_or_unclear",
+      "sporadic": false,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983294",
+      "label": "nf_case_tumor",
+      "sporadic": false,
+      "in_scope_sample": true
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983295",
+      "label": "other_or_unclear",
+      "sporadic": false,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983296",
+      "label": "nf_case_tumor",
+      "sporadic": false,
+      "in_scope_sample": true
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983297",
+      "label": "other_or_unclear",
+      "sporadic": false,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983298",
+      "label": "nf_case_tumor",
+      "sporadic": false,
+      "in_scope_sample": true
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983299",
+      "label": "other_or_unclear",
+      "sporadic": false,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983300",
+      "label": "nf_case_tumor",
+      "sporadic": false,
+      "in_scope_sample": true
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983301",
+      "label": "other_or_unclear",
+      "sporadic": false,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983302",
+      "label": "nf_case_tumor",
+      "sporadic": false,
+      "in_scope_sample": true
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983303",
+      "label": "nf_case_tumor",
+      "sporadic": false,
+      "in_scope_sample": true
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983304",
+      "label": "other_or_unclear",
+      "sporadic": false,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983305",
+      "label": "nf_case_tumor",
+      "sporadic": false,
+      "in_scope_sample": true
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983306",
+      "label": "other_or_unclear",
+      "sporadic": false,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983307",
+      "label": "nf_case_tumor",
+      "sporadic": false,
+      "in_scope_sample": true
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983308",
+      "label": "other_or_unclear",
+      "sporadic": false,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983309",
+      "label": "nf_case_tumor",
+      "sporadic": false,
+      "in_scope_sample": true
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983310",
+      "label": "comparator_sporadic_same_tumor",
+      "sporadic": true,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983311",
+      "label": "comparator_sporadic_same_tumor",
+      "sporadic": true,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983312",
+      "label": "comparator_sporadic_same_tumor",
+      "sporadic": true,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983313",
+      "label": "comparator_sporadic_same_tumor",
+      "sporadic": true,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983314",
+      "label": "comparator_sporadic_same_tumor",
+      "sporadic": true,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983315",
+      "label": "comparator_sporadic_same_tumor",
+      "sporadic": true,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983316",
+      "label": "nf_case_tumor",
+      "sporadic": false,
+      "in_scope_sample": true
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983317",
+      "label": "nf_case_tumor",
+      "sporadic": false,
+      "in_scope_sample": true
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983318",
+      "label": "comparator_sporadic_same_tumor",
+      "sporadic": true,
+      "in_scope_sample": false
+    },
+    {
+      "series": "GSE344687",
+      "gsm": "GSM9983319",
+      "label": "comparator_sporadic_same_tumor",
+      "sporadic": true,
+      "in_scope_sample": false
+    }
+  ]
+}

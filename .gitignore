@@ -1,0 +1,5 @@
+# Sweep caches and intermediate build products (raw SOFT/esummary payloads).
+# Regenerate with scripts/phase1_geo_search.py; only curated tables live in /data.
+build/
+__pycache__/
+.DS_Store
