@@ -1,21 +1,21 @@
 manifestation,NF1,NF2-SWN,SWN,total
 Bone defects,6,0,0,6
 Cardiovascular issues,6,1,0,7
-Cognition / Behavioral / Learning,8,0,0,8
+Cognition / Behavioral / Learning,7,0,0,7
 Sleep,0,0,0,0
 Cutaneous neurofibroma,18,0,1,19
 Ependymoma,0,4,0,4
-Gastrointestinal stromal tumor (GIST),9,0,0,9
+Gastrointestinal stromal tumor (GIST),6,0,0,6
 Hematologic malignancies,3,0,0,3
 High grade glioma,11,0,0,11
-Malignant peripheral nerve sheath tumor (MPNST),71,1,2,74
+Malignant peripheral nerve sheath tumor (MPNST),67,0,1,68
 Meningioma,0,30,1,31
 Optic pathway glioma,14,0,0,14
 Non-optic LGG,5,0,0,5
-Pain,13,0,6,19
-Plexiform neurofibroma,47,0,0,47
-ANNUBP / atypical neurofibroma,9,0,0,9
+Pain,10,0,6,16
+Plexiform neurofibroma,46,0,0,46
+ANNUBP / atypical neurofibroma,10,0,0,10
 Pulmonary disease,3,1,0,4
-Non-vestibular schwannoma,0,19,5,24
-Vestibular schwannoma,1,41,3,45
+Non-vestibular schwannoma,0,18,5,23
+Vestibular schwannoma,0,41,3,44
 Other,20,1,3,24

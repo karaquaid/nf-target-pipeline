@@ -1,6 +1,6 @@
 # Phase 1b: literature-derived candidate targets
 
-A PubMed sweep of 32 disease- and manifestation-directed queries returned 492 articles, of which 303 named at least one molecular target presented as a driver, modifier, or therapeutic target in neurofibromatosis. After extraction, two rounds of full-text verification, and the exclusions described below, the list stands at **363 gene x disease x manifestation rows over 191 target labels, drawn from 235 papers**. **228 of those rows are now anchored in at least one paper read in full**, against 54 in the first version; 135 still rest on abstracts alone and are labelled as such. The list is `data/phase1b-literature-targets.csv`; the paper-level record, including per-paper access, is `data/phase1b-references.csv`.
+A PubMed sweep of 32 disease- and manifestation-directed queries returned 492 articles, of which 303 named at least one molecular target presented as a driver, modifier, or therapeutic target in neurofibromatosis. After extraction, two rounds of full-text verification, and the exclusions described below, the list stands at **348 gene x disease x manifestation rows over 187 target labels, drawn from 234 papers**. **276 of those rows are now anchored in at least one paper read in full**, against 54 in the first version; only 72 still rest on abstracts alone. The list is `data/phase1b-literature-targets.csv`; the paper-level record, including per-paper access, is `data/phase1b-references.csv`.
 
 This list is deliberately independent of the expression pipeline. It is held for the Phase 7 comparison, where overlaps and one-sided findings between the two derivations get examined.
 
@@ -56,41 +56,51 @@ Distinct gene x manifestation rows, germline-attributable evidence only.
 |---|---|---|---|---|
 | Bone defects | 6 | 0 | 0 | 6 |
 | Cardiovascular issues | 6 | 1 | 0 | 7 |
-| Cognition / Behavioral / Learning | 8 | 0 | 0 | 8 |
+| Cognition / Behavioral / Learning | 7 | 0 | 0 | 7 |
 | Sleep | 0 | 0 | 0 | 0 |
 | Cutaneous neurofibroma | 18 | 0 | 1 | 19 |
 | Ependymoma | 0 | 4 | 0 | 4 |
-| Gastrointestinal stromal tumor (GIST) | 9 | 0 | 0 | 9 |
+| Gastrointestinal stromal tumor (GIST) | 6 | 0 | 0 | 6 |
 | Hematologic malignancies | 3 | 0 | 0 | 3 |
 | High grade glioma | 11 | 0 | 0 | 11 |
-| Malignant peripheral nerve sheath tumor (MPNST) | 71 | 1 | 2 | 74 |
+| Malignant peripheral nerve sheath tumor (MPNST) | 67 | 0 | 1 | 68 |
 | Meningioma | 0 | 30 | 1 | 31 |
 | Optic pathway glioma | 14 | 0 | 0 | 14 |
 | Non-optic LGG | 5 | 0 | 0 | 5 |
-| Pain | 13 | 0 | 6 | 19 |
-| Plexiform neurofibroma | 47 | 0 | 0 | 47 |
-| ANNUBP / atypical neurofibroma | 9 | 0 | 0 | 9 |
+| Pain | 10 | 0 | 6 | 16 |
+| Plexiform neurofibroma | 46 | 0 | 0 | 46 |
+| ANNUBP / atypical neurofibroma | 10 | 0 | 0 | 10 |
 | Pulmonary disease | 3 | 1 | 0 | 4 |
-| Non-vestibular schwannoma | 0 | 19 | 5 | 24 |
-| Vestibular schwannoma | 1 | 41 | 3 | 45 |
+| Non-vestibular schwannoma | 0 | 18 | 5 | 23 |
+| Vestibular schwannoma | 0 | 41 | 3 | 44 |
 | Other | 20 | 1 | 3 | 24 |
 
 ![Stacked horizontal bars of candidate target rows per manifestation, one panel per disease, shaded by whether the strongest supporting paper was read in full text or only as an abstract](figures/phase1b-coverage-verification.png)
 
-**Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is the number of candidate target rows (n = 363 gene x disease x manifestation claims); shading is the provenance of the strongest supporting paper behind each row. Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a manifestation with no rows at all in that disease. 183 of 363 rows (50 percent) are anchored in a paper read in full, and among the five manifestations holding 20 or more rows that share runs from 35 to 70 percent, so the principal tumour types are now reasonably well evidenced. What the figure shows instead is how sharply coverage falls away from them: Sleep (0), Hematologic malignancies (3), Ependymoma (4), Pulmonary disease (4), Non-optic LGG (5), Bone defects (6), Cardiovascular issues (7), Cognition / Behavioral / Learning (8), Gastrointestinal stromal tumor (GIST) (9), ANNUBP / atypical neurofibroma (9) rows respectively, and no full-text-supported target at all for Gastrointestinal stromal tumor (GIST).
+**Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is the number of candidate target rows (n = 363 gene x disease x manifestation claims); shading is the provenance of the strongest supporting paper behind each row. Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a manifestation with no rows at all in that disease. 220 of 348 rows (63 percent) are anchored in a paper read in full, and among the manifestations holding 20 or more rows that share runs from 35 to 76 percent, so the principal tumour types are now reasonably well evidenced. What the figure shows instead is how sharply coverage falls away from them: Sleep (0), Hematologic malignancies (3), Ependymoma (4), Pulmonary disease (4), Non-optic LGG (5), Bone defects (6), Gastrointestinal stromal tumor (GIST) (6), Cardiovascular issues (7), Cognition / Behavioral / Learning (7) rows respectively, and no full-text-supported target at all for Gastrointestinal stromal tumor (GIST).
+
+## Supplied PDFs
+
+Twenty-nine PDFs were supplied from subscription access for papers no free route could reach. All 29 matched corpus papers, by DOI where the PDF carried one and by title otherwise; 9 turned out to be papers already read by another route and added nothing. The remaining 20 were read in full and their 64 row-paper pairs judged on the same rubric: 37 supported, 15 partially supported, 12 not supported. **Fifty-three rows moved off abstract-only evidence as a result.**
+
+Those verdicts also removed 16 rows, each a single-paper claim contradicted by the paper itself on full reading: BRAF, KRAS and SDH in NF1 GIST, EGFR, PDGFRA, RAF1 and VEGFA in NF1 MPNST, NF2 in NF2-SWN MPNST, RET in plexiform neurofibroma, PLK1 in non-vestibular schwannoma, CDKN1A, TP53 and ERK1/2 in NF1 pain or cognition, NF1 in vestibular schwannoma, and LZTR1 in SWN MPNST. Three further contradicted rows still hold unread papers and are tiered `full text - not supported` rather than dropped.
+
+The GIST result deserves its own line. Three of its rows were abstract-derived claims the full text does not support, and GIST is now the one manifestation with rows but no full-text-supported target at all. For a tumour type with a genuine NF1 association that is a finding about this corpus rather than about the biology: the mechanistic work sits in sporadic KIT-mutant GIST, which the sporadic exclusion removes.
+
+Supplied PDFs are recorded as `full_text (PDF supplied)` in `paper_access` and `PDF supplied by user` in `fulltext_source`, so hand-supplied copies stay separable from API-retrieved ones. `data/phase1b-upload-priority.csv` doubles as the upload tracker: `pdf_status` says whether a paper was judged from a supplied PDF, was supplied but already in hand, or is still needed; `pdf_filename` names the file; and `rows_anchored_by_pdf` records what each one bought.
 
 ## Access and verification
 
-Full text was read for 136 of 235 papers: 89 open access via Europe PMC, 28 NIH author manuscripts via NCBI efetch, and the remainder from the first round. Of the 99 still unread, 18 have a PMC record worth one more attempt and the rest have no free copy any of these routes can reach.
+Full text was read for 156 of 234 papers: 89 open access via Europe PMC, 28 NIH author manuscripts via NCBI efetch, 20 supplied as PDFs by the project lead from subscription access, and the remainder from the first round. 78 remain unread.
 
 Open-access status and readability are not the same thing, and conflating them cost a round here. A paper can be flagged not open access, because the publisher holds the rights, while an NIH-funded author manuscript of it sits free in PMC. Europe PMC's `fullTextXML` endpoint serves only the open-access subset and returns HTTP 500 for those manuscripts; NCBI efetch against the same PMC id returns the complete body. Any later phase that needs full text should try efetch before concluding a paper is unreachable, and should link to `europepmc.org/article/MED/<pmid>` rather than the DOI, which resolves to the publisher paywall.
 
 | Evidence tier | Rows |
 |---|---|
-| full text - supported | 183 |
-| full text - partial | 38 |
-| full text - not supported | 7 |
-| abstract only | 135 |
+| full text - supported | 220 |
+| full text - partial | 53 |
+| full text - not supported | 3 |
+| abstract only | 72 |
 
 Every row carries `paper_access` per PMID, plus `verdicts_from_whole_body` and `verdicts_from_earlier_pass` so the verification rounds stay distinguishable.
 
@@ -116,6 +126,6 @@ Verification ran in two rounds. The first used NCBI PMC and covered 56 papers, p
 
 - `data/phase1b-literature-targets.csv`: 363 rows, one per gene x disease x manifestation, with `constituent_genes`, `label_type`, mechanism, study system, supporting PMIDs, per-paper access, per-round verdict counts, and evidence tier
 - `data/phase1b-references.csv`: 235 contributing papers with DOI, PMC id, whether full text was read and from which source, preprint status and server, the target labels each paper supports, and a resolvable link
-- `data/phase1b-upload-priority.csv`: the 55 unread papers that could still anchor an abstract-only row, ranked by how many, with Europe PMC, PMC and publisher links for each
+- `data/phase1b-upload-priority.csv`: upload tracker and work queue, 46 papers still needed plus the record of the 29 supplied, with Europe PMC, PMC and publisher links for each
 - `data/phase1b-coverage.csv`: the coverage matrix above in machine-readable form
 - `docs/figures/phase1b-coverage-verification.png`: Figure 1
