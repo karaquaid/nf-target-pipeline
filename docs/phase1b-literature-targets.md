@@ -81,7 +81,7 @@ Distinct gene x manifestation rows, germline-attributable evidence only.
 
 ## Supplied PDFs
 
-Twenty-nine PDFs were supplied from subscription access for papers no free route could reach. All 29 matched corpus papers, by DOI where the PDF carried one and by title otherwise; 9 turned out to be papers already read by another route and added nothing. The remaining 20 were read in full and their 64 row-paper pairs judged on the same rubric: 37 supported, 15 partially supported, 12 not supported. **Fifty-three rows moved off abstract-only evidence as a result.**
+Twenty-nine PDFs were supplied from subscription access for papers no free route could reach. All 29 matched corpus papers, by DOI where the PDF carried one and by title otherwise; 9 turned out to be papers already read by another route and added nothing. The remaining 20 were read in full and their 64 row-paper pairs judged on the same rubric: 37 supported, 15 partially supported, 12 not supported. **Abstract-only rows fell from 135 to 72**: 52 moved up to a full-text tier and 11 were removed as contradicted.
 
 Those verdicts also removed 16 rows, each a single-paper claim contradicted by the paper itself on full reading: BRAF, KRAS and SDH in NF1 GIST, EGFR, PDGFRA, RAF1 and VEGFA in NF1 MPNST, NF2 in NF2-SWN MPNST, RET in plexiform neurofibroma, PLK1 in non-vestibular schwannoma, CDKN1A, TP53 and ERK1/2 in NF1 pain or cognition, NF1 in vestibular schwannoma, and LZTR1 in SWN MPNST. Three further contradicted rows still hold unread papers and are tiered `full text - not supported` rather than dropped.
 
@@ -91,7 +91,7 @@ Supplied PDFs are recorded as `full_text (PDF supplied)` in `paper_access` and `
 
 ## Access and verification
 
-Full text was read for 156 of 234 papers: 89 open access via Europe PMC, 28 NIH author manuscripts via NCBI efetch, 20 supplied as PDFs by the project lead from subscription access, and the remainder from the first round. 78 remain unread.
+Full text was read for 155 of 234 papers: 135 retrieved through Europe PMC, NCBI efetch and the first round, plus 20 supplied as PDFs by the project lead from subscription access. 79 remain unread. These counts are taken from `access_used` in the saved reference table.
 
 Open-access status and readability are not the same thing, and conflating them cost a round here. A paper can be flagged not open access, because the publisher holds the rights, while an NIH-funded author manuscript of it sits free in PMC. Europe PMC's `fullTextXML` endpoint serves only the open-access subset and returns HTTP 500 for those manuscripts; NCBI efetch against the same PMC id returns the complete body. Any later phase that needs full text should try efetch before concluding a paper is unreachable, and should link to `europepmc.org/article/MED/<pmid>` rather than the DOI, which resolves to the publisher paywall.
 
