@@ -8,10 +8,10 @@ one-sided findings between the two derivations are examined. Every target carrie
 disease label (NF1, NF2-SWN, SWN) and one or more manifestations from the project's
 fixed twenty-term vocabulary, applied verbatim.
 
-The phase is complete. It produced a **candidate list of 311 gene x disease x
+The phase is complete. It produced a **candidate list of 309 gene x disease x
 manifestation rows over 182 target labels covering 237 distinct
 gene symbols, drawn from 234 papers**, of which 155 were read
-in full. 246 of the 311 rows are anchored in at least one paper
+in full. 244 of the 309 rows are anchored in at least one paper
 verified against its complete text; 65 rest on abstracts alone
 and are labelled as such. A wider annotated table of 348 rows is retained
 for audit, the difference being the germline NF genes excluded as targets.
@@ -20,7 +20,7 @@ for audit, the difference being the germline NF genes excluded as targets.
 
 | File | What it holds |
 |---|---|
-| `data/phase1b-candidate-targets.csv` | The prioritisation input. 311 rows, germline NF genes excluded. |
+| `data/phase1b-candidate-targets.csv` | The prioritisation input. 309 rows, germline NF genes excluded. |
 | `data/phase1b-literature-targets.csv` | All 348 verified rows with a `driver_gene` flag, for audit. |
 | `data/phase1b-references.csv` | 234 papers: DOI, PMC id, access route, preprint status, targets supported, resolvable link. |
 | `data/phase1b-coverage.csv` | The coverage matrix below, machine-readable. |
@@ -33,7 +33,7 @@ for audit, the difference being the germline NF genes excluded as targets.
 
 1. **Search.** 32 PubMed queries spanning NF1, NF2-SWN and SWN crossed with the fixed manifestation vocabulary, relevance-sorted, 18 results per query, `date_from=2005`, returned 492 unique PMIDs; metadata and abstracts were retrieved for 482. 303 of those papers named at least one molecular target presented as a driver, modifier or therapeutic target.
 2. **Abstract extraction.** Each abstract was passed to a model extraction step returning gene, disease, manifestation(s) from the fixed list, role, mechanism and study system, with explicit instructions not to extract cohort-defining gene mentions or assay reagents. Calls that failed transiently were re-run rather than dropped.
-3. **Symbol normalisation.** Gene strings were mapped through an alias table and validated against official HGNC symbols. Alias-permissive matching was rejected after it mapped common shorthand onto unrelated genes, so validation uses official symbols only with the residue curated by hand. Labels that are genuinely a family, complex or pathway are kept as the label and expanded in `constituent_genes`, with `label_type` recording which kind of entity each is: gene (217), family (53), pathway (22), complex (13), drug (3), other (2), miRNA (1).
+3. **Symbol normalisation.** Gene strings were mapped through an alias table and validated against official HGNC symbols. Alias-permissive matching was rejected after it mapped common shorthand onto unrelated genes, so validation uses official symbols only with the residue curated by hand. Labels that are genuinely a family, complex or pathway are kept as the label and expanded in `constituent_genes`, with `label_type` recording which kind of entity each is: gene (216), family (52), pathway (22), complex (13), drug (3), other (2), miRNA (1).
 4. **First verification round.** Full text was sought through the PubMed connector's NCBI PMC route, which reached 56 papers. Part of that round was judged from short gene-centred excerpts rather than complete articles, which left those verdicts provisional. Both limits were later traced to the retrieval route rather than to access.
 5. **Review round.** Four scope decisions were applied: rows whose disease could not be attributed were dropped, excluding sporadic tumours from the project (168 rows, from a first version of 547); 2 rows that failed verification outright were dropped; manifestation labels were corrected from full text at the level of the individual paper rather than the whole row; and family labels were kept with the `constituent_genes` column added.
 6. **Whole-text verification.** Europe PMC's `/{PMCID}/fullTextXML` endpoint holds a larger open-access subset than the NCBI route, and 89 of the papers proved retrievable there. All 254 row-paper pairs among them were re-judged against complete bodies, reference sections stripped, one reasoning pass per paper, no excerpting. 20 single-paper rows were dropped as contradicted by their own paper on full reading.
@@ -44,7 +44,7 @@ for audit, the difference being the germline NF genes excluded as targets.
 11. **Preprint flagging.** 6 papers are preprints rather than peer-reviewed articles (bioRxiv (4), Research Square (2)). `is_preprint` and `preprint_server` mark them per paper; `n_preprint_papers` and `preprint_only` mark the rows that depend on them.
 12. **Driver-gene exclusion.** The germline NF disease genes were excluded as candidates, on the grounds that their role is established and re-prioritising them tells the project nothing.
 
-Verdicts from a later round override earlier ones, and 297 of the row-paper pairs behind the current list have been judged against a complete article body.
+Verdicts from a later round override earlier ones, and 292 of the row-paper pairs behind the current list have been judged against a complete article body.
 
 ## The current list
 
@@ -52,14 +52,14 @@ Verdicts from a later round override earlier ones, and 297 of the row-paper pair
 |---|---|
 | full text - supported | 194 |
 | full text - partial | 50 |
-| full text - not supported | 2 |
 | abstract only | 65 |
 
-By disease: NF1 216 rows, NF2-SWN 89,
-SWN 6. The two rows tiered `full text - not supported` are
-contradicted by the papers read so far but still hold unread papers, so they are kept
-rather than dropped on partial coverage: a claim nobody has finished checking is not
-the same as a claim that failed.
+By disease: NF1 214 rows, NF2-SWN 89,
+SWN 6. No row here is contradicted by its own papers: rows whose
+full text does not support the claim are excluded from the candidate list and kept only in
+the audit table, where their tier and supporting papers remain visible. The
+`full text - partial` tier is different and stays: the target is real but the disease or
+manifestation attribution is looser than the row claims.
 
 ## Coverage by disease and manifestation
 
@@ -71,7 +71,7 @@ the same as a claim that failed.
 | Sleep | 0 | 0 | 0 | 0 |
 | Cutaneous neurofibroma | 17 | 0 | 0 | 17 |
 | Ependymoma | 0 | 3 | 0 | 3 |
-| Gastrointestinal stromal tumor (GIST) | 5 | 0 | 0 | 5 |
+| Gastrointestinal stromal tumor (GIST) | 4 | 0 | 0 | 4 |
 | Hematologic malignancies | 2 | 0 | 0 | 2 |
 | High grade glioma | 10 | 0 | 0 | 10 |
 | Malignant peripheral nerve sheath tumor (MPNST) | 66 | 0 | 0 | 66 |
@@ -84,19 +84,19 @@ the same as a claim that failed.
 | Pulmonary disease | 2 | 0 | 0 | 2 |
 | Non-vestibular schwannoma | 0 | 17 | 2 | 19 |
 | Vestibular schwannoma | 0 | 40 | 0 | 40 |
-| Other | 18 | 0 | 0 | 18 |
+| Other | 17 | 0 | 0 | 17 |
 
 ![Stacked horizontal bars of candidate target rows per manifestation, one panel per disease, shaded by whether the strongest supporting paper was read in full text or only as an abstract](figures/phase1b-coverage-verification.png)
 
 **Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is
-the number of candidate target rows (n = 311 claims, germline NF genes
+the number of candidate target rows (n = 309 claims, germline NF genes
 excluded); shading is the provenance of the strongest supporting paper behind each row.
 Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a
 manifestation with no rows at all in that disease. 194 of
-311 rows (62 percent) are anchored in a paper read in full, and
+309 rows (63 percent) are anchored in a paper read in full, and
 in the 4 manifestations holding 20 or more rows that share runs from
 69 to 76 percent, so the principal tumour types are well evidenced.
-What the figure shows is how sharply coverage falls away from them: Hematologic malignancies (2), Pulmonary disease (2), Ependymoma (3), Non-optic LGG (4), Bone defects (5), Cardiovascular issues (5), Gastrointestinal stromal tumor (GIST) (5), Cognition / Behavioral / Learning (6), ANNUBP / atypical neurofibroma (9) rows
+What the figure shows is how sharply coverage falls away from them: Hematologic malignancies (2), Pulmonary disease (2), Ependymoma (3), Gastrointestinal stromal tumor (GIST) (4), Non-optic LGG (4), Bone defects (5), Cardiovascular issues (5), Cognition / Behavioral / Learning (6), ANNUBP / atypical neurofibroma (9) rows
 respectively, no rows at all for Sleep, and no full-text-supported target
 for Gastrointestinal stromal tumor (GIST).
 
@@ -104,7 +104,7 @@ for Gastrointestinal stromal tumor (GIST).
 
 ### NF1
 
-216 rows. The MEK1/2 axis dominates and is the only NF-relevant target
+214 rows. The MEK1/2 axis dominates and is the only NF-relevant target
 in this sweep with regulatory-grade human evidence. Selumetinib in inoperable plexiform
 neurofibroma is the strongest row in the list (34 supporting
 papers), running from the phase 1 dose-finding cohort
@@ -189,7 +189,7 @@ because the excluded evidence is retained rather than deleted.
 1. **Sporadic tumours are excluded.** Evidence that cannot be attributed to germline NF1, NF2-SWN or SWN was dropped, 168 rows at the time. Somatic *NF2* loss in sporadic meningioma is the same molecular lesion as the germline case, so if Phase 3b selects meningioma or high-grade glioma these are the first rows to reconsider; they are reconstructible from the references table and the sweep output.
 2. **Germline NF genes are excluded as candidates.** 37 rows: NF1 (15), NF2 (10), SMARCB1 (6), LZTR1 (5), SPRED1 (1). 26 of them were full-text supported, so this removed well-evidenced rows on scope grounds. They are retained in `phase1b-literature-targets.csv` with `driver_gene = True`.
 3. **Recurrent somatic drivers are kept.** CDKN2A and CDKN2B, PRC2 components, TP53, MTAP, PTEN, RB1 and the RAS genes remain candidates despite being well described in NF tumour genetics, because they carry the malignant-progression signal Phase 6 stratification depends on.
-4. **Contradicted rows are dropped only when every supporting paper has been read.** Otherwise they are tiered `full text - not supported` and kept.
+4. **Rows contradicted by full text are excluded.** Where the papers read do not support the claim, the row leaves the candidate list even if a co-supporting paper is still unread, on the grounds that a contradicted claim should not be prioritised while it waits for confirmation it is unlikely to get. It keeps its row, tier and papers in the audit table, so re-reading a remaining paper can restore it.
 
 ## Limitations
 
@@ -225,10 +225,12 @@ primary work is under-represented, and citation-graph expansion was not performe
 
 ## Reproducing
 
-From the repository root:
+From the repository root, in this order:
 
-    python scripts/build_phase1b_report.py    # regenerates this document
-    python scripts/make_phase1b_figure.py     # regenerates Figure 1
+    python scripts/make_phase1b_candidates.py   # candidate list from the audit table
+    python scripts/build_phase1b_report.py      # this document and the coverage matrix
+    python scripts/make_phase1b_figure.py       # Figure 1
 
-Both read only the CSVs in `data/`. Re-run them after any change to the row set rather than
-editing numbers by hand.
+All three read only the CSVs in `data/`. Re-run them after any change to the row set rather
+than editing numbers by hand. The first applies the scope filters, so changing what counts
+as excluded means editing that script and re-running all three.

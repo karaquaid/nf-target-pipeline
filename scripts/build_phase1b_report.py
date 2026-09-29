@@ -159,6 +159,8 @@ def build(s: dict, h: dict) -> str:
     )
     thin = ", ".join(f"{m} ({n})" for m, n in sorted(s["thin"].items(), key=lambda kv: kv[1]))
     mek = s["top"]["NF1"].iloc[0]
+    # Tiers with no rows are omitted rather than printed as zeros.
+    tier_rows = "\n".join(f"| {tier} | {count} |" for tier, count in s["tiers"].items() if count)
 
     return f"""# Phase 1b: literature-derived candidate targets
 
@@ -212,16 +214,14 @@ Verdicts from a later round override earlier ones, and {s['pairs_whole_body']} o
 
 | Evidence tier | Rows |
 |---|---|
-| full text - supported | {s['tiers']['full text - supported']} |
-| full text - partial | {s['tiers']['full text - partial']} |
-| full text - not supported | {s['tiers']['full text - not supported']} |
-| abstract only | {s['tiers']['abstract only']} |
+{tier_rows}
 
 By disease: NF1 {s['by_disease']['NF1']} rows, NF2-SWN {s['by_disease']['NF2-SWN']},
-SWN {s['by_disease']['SWN']}. The two rows tiered `full text - not supported` are
-contradicted by the papers read so far but still hold unread papers, so they are kept
-rather than dropped on partial coverage: a claim nobody has finished checking is not
-the same as a claim that failed.
+SWN {s['by_disease']['SWN']}. No row here is contradicted by its own papers: rows whose
+full text does not support the claim are excluded from the candidate list and kept only in
+the audit table, where their tier and supporting papers remain visible. The
+`full text - partial` tier is different and stays: the target is real but the disease or
+manifestation attribution is looser than the row claims.
 
 ## Coverage by disease and manifestation
 
@@ -332,7 +332,7 @@ because the excluded evidence is retained rather than deleted.
 1. **Sporadic tumours are excluded.** Evidence that cannot be attributed to germline NF1, NF2-SWN or SWN was dropped, {h['rows_sporadic_dropped']} rows at the time. Somatic *NF2* loss in sporadic meningioma is the same molecular lesion as the germline case, so if Phase 3b selects meningioma or high-grade glioma these are the first rows to reconsider; they are reconstructible from the references table and the sweep output.
 2. **Germline NF genes are excluded as candidates.** {s['n_drivers']} rows: {phrase(s['driver_counts'])}. {s['driver_supported']} of them were full-text supported, so this removed well-evidenced rows on scope grounds. They are retained in `phase1b-literature-targets.csv` with `driver_gene = True`.
 3. **Recurrent somatic drivers are kept.** CDKN2A and CDKN2B, PRC2 components, TP53, MTAP, PTEN, RB1 and the RAS genes remain candidates despite being well described in NF tumour genetics, because they carry the malignant-progression signal Phase 6 stratification depends on.
-4. **Contradicted rows are dropped only when every supporting paper has been read.** Otherwise they are tiered `full text - not supported` and kept.
+4. **Rows contradicted by full text are excluded.** Where the papers read do not support the claim, the row leaves the candidate list even if a co-supporting paper is still unread, on the grounds that a contradicted claim should not be prioritised while it waits for confirmation it is unlikely to get. It keeps its row, tier and papers in the audit table, so re-reading a remaining paper can restore it.
 
 ## Limitations
 
@@ -368,13 +368,15 @@ primary work is under-represented, and citation-graph expansion was not performe
 
 ## Reproducing
 
-From the repository root:
+From the repository root, in this order:
 
-    python scripts/build_phase1b_report.py    # regenerates this document
-    python scripts/make_phase1b_figure.py     # regenerates Figure 1
+    python scripts/make_phase1b_candidates.py   # candidate list from the audit table
+    python scripts/build_phase1b_report.py      # this document and the coverage matrix
+    python scripts/make_phase1b_figure.py       # Figure 1
 
-Both read only the CSVs in `data/`. Re-run them after any change to the row set rather than
-editing numbers by hand.
+All three read only the CSVs in `data/`. Re-run them after any change to the row set rather
+than editing numbers by hand. The first applies the scope filters, so changing what counts
+as excluded means editing that script and re-running all three.
 """
 
 

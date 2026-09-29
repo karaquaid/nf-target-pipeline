@@ -5,7 +5,7 @@ Cognition / Behavioral / Learning,6,0,0,6
 Sleep,0,0,0,0
 Cutaneous neurofibroma,17,0,0,17
 Ependymoma,0,3,0,3
-Gastrointestinal stromal tumor (GIST),5,0,0,5
+Gastrointestinal stromal tumor (GIST),4,0,0,4
 Hematologic malignancies,2,0,0,2
 High grade glioma,10,0,0,10
 Malignant peripheral nerve sheath tumor (MPNST),66,0,0,66
@@ -18,4 +18,4 @@ ANNUBP / atypical neurofibroma,9,0,0,9
 Pulmonary disease,2,0,0,2
 Non-vestibular schwannoma,0,17,2,19
 Vestibular schwannoma,0,40,0,40
-Other,18,0,0,18
+Other,17,0,0,17
