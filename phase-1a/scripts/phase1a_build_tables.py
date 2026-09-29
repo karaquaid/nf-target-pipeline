@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
 """Phase 1: turn the GEO sweep + classification output into the deliverable tables.
 
-Inputs (from scripts/phase1_geo_search.py and the classification step):
+Inputs (from phase-1a/scripts/phase1a_geo_search.py and the classification step):
     <builddir>/series.json      series-level GEO metadata for every hit
     <builddir>/samples.json     per-sample SOFT records
     <builddir>/queries.json     query strings, hit counts, search date
     <builddir>/classified.json  accession -> series-level classification
     <builddir>/samples_labelled.json  [{series, gsm, label, sporadic, in_scope_sample}]
 
-Outputs (in /data):
-    phase1-datasets.csv         one row per in-scope dataset
-    phase1-dataset-labels.csv   long dataset x disease x manifestation
-    phase1-samples.csv          per-sample manifest for in-scope datasets (Phase 2 input list)
-    phase1-excluded.csv         everything the sweep returned and the reason it was dropped
-    phase1-coverage.csv         disease x manifestation x organism counts, zeros included
-    phase1-queries.csv          search provenance
+Outputs (in phase-1a/data):
+    phase1a-datasets.csv         one row per in-scope dataset
+    phase1a-dataset-labels.csv   long dataset x disease x manifestation
+    phase1a-samples.csv          per-sample manifest for in-scope datasets (Phase 2 input list)
+    phase1a-excluded.csv         everything the sweep returned and the reason it was dropped
+    phase1a-coverage.csv         disease x manifestation x organism counts, zeros included
+    phase1a-queries.csv          search provenance
 """
 
 from __future__ import annotations
@@ -78,9 +78,9 @@ def organism_class(taxon: str, classified_org: str) -> str:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--builddir", default="build/phase1")
-    ap.add_argument("--datadir", default="data")
-    ap.add_argument("--additions", default="data/phase1-arrayexpress-additions.json",
+    ap.add_argument("--builddir", default="build/phase1a")
+    ap.add_argument("--datadir", default="phase-1a/data")
+    ap.add_argument("--additions", default="phase-1a/data/phase1a-arrayexpress-additions.json",
                     help="hand-curated non-GEO records to merge (dataset counts only)")
     args = ap.parse_args()
     B, D = Path(args.builddir), Path(args.datadir)
@@ -237,12 +237,12 @@ def main() -> int:
             w.writerows(rows)
         return path, len(rows)
 
-    for name, rows in [("phase1-datasets.csv", dataset_rows),
-                       ("phase1-dataset-labels.csv", label_rows),
-                       ("phase1-samples.csv", sample_rows),
-                       ("phase1-excluded.csv", excluded_rows),
-                       ("phase1-coverage.csv", cov_rows),
-                       ("phase1-queries.csv", q_rows)]:
+    for name, rows in [("phase1a-datasets.csv", dataset_rows),
+                       ("phase1a-dataset-labels.csv", label_rows),
+                       ("phase1a-samples.csv", sample_rows),
+                       ("phase1a-excluded.csv", excluded_rows),
+                       ("phase1a-coverage.csv", cov_rows),
+                       ("phase1a-queries.csv", q_rows)]:
         path, n = write(name, rows)
         print(f"[write] {path} {n} rows")
     return 0

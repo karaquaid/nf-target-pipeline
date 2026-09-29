@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Derive the Phase 1b candidate list from the full annotated target table.
 
-`data/phase1b-literature-targets.csv` is the audit record: every row the phase
+`phase-1b/data/phase1b-literature-targets.csv` is the audit record: every row the phase
 verified, whatever became of it. The candidate list is that table minus two
 classes of row, and is what later phases consume:
 
@@ -21,9 +21,9 @@ paper can stop backing any candidate once these rows are removed.
 
 Usage (from the repository root), and the order the three scripts run in:
 
-    python scripts/make_phase1b_candidates.py   # this script
-    python scripts/build_phase1b_report.py      # write-up and coverage matrix
-    python scripts/make_phase1b_figure.py       # Figure 1
+    python phase-1b/scripts/make_phase1b_candidates.py   # this script
+    python phase-1b/scripts/build_phase1b_report.py      # write-up and coverage matrix
+    python phase-1b/scripts/make_phase1b_figure.py       # Figure 1
 
 Requires pandas.
 """
@@ -72,7 +72,7 @@ def annotate_references(refs: pd.DataFrame, candidates: pd.DataFrame) -> pd.Data
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--data", type=Path, default=Path("data"))
+    parser.add_argument("--data", type=Path, default=Path("phase-1b/data"))
     args = parser.parse_args()
 
     targets = pd.read_csv(args.data / "phase1b-literature-targets.csv")

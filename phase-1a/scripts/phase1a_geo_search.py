@@ -17,7 +17,7 @@ Design notes
 
 Usage
 -----
-    python scripts/phase1_geo_search.py --outdir build/phase1 [--email you@example.org]
+    python phase-1a/scripts/phase1a_geo_search.py --outdir build/phase1a [--email you@example.org]
 """
 
 from __future__ import annotations
@@ -262,7 +262,7 @@ def sample_records(accession: str, soft_gsm: list[dict]) -> list[dict]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--outdir", default="build/phase1")
+    ap.add_argument("--outdir", default="build/phase1a")
     ap.add_argument("--email", default=os.environ.get("NCBI_EMAIL"))
     ap.add_argument("--api-key", default=os.environ.get("NCBI_API_KEY"))
     ap.add_argument("--max-samples-fetch", type=int, default=400,

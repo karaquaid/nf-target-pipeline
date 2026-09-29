@@ -14,15 +14,20 @@ Every dataset and every target is labelled with its disease and with one or more
 
 ## Status
 
-Early. The literature-derived target list (Phase 1b) is the first completed stage; see [`docs/phase1b-literature-targets.md`](docs/phase1b-literature-targets.md). Dataset selection, ingestion, and the expression-derived arm are in progress. The phase-by-phase plan in [`docs/project-plan.md`](docs/project-plan.md) is the source of truth for scope and ordering, and is updated in place as decisions change.
+Early. Two stages are complete: the literature-derived target list (Phase 1b, see [`phase-1b/docs/phase1b-literature-targets.md`](phase-1b/docs/phase1b-literature-targets.md)) and the public expression-dataset scope (Phase 1a, see [`phase-1a/docs/phase1a-dataset-scope.md`](phase-1a/docs/phase1a-dataset-scope.md)). Ingestion and the expression-derived arm are in progress. The phase-by-phase plan in [`docs/project-plan.md`](docs/project-plan.md) is the source of truth for scope and ordering, and is updated in place as decisions change.
 
 ## Layout
 
 ```
-docs/     project plan, per-phase write-ups, scoring methodology
-scripts/  ingestion, analysis, and database-integration code
-data/     small reference files only: candidate lists, coverage tables
+docs/        project plan and other cross-phase documents
+phase-1a/    public expression-dataset scope (GEO/ArrayExpress sweep)
+phase-1b/    literature-derived candidate targets
+  data/      small reference files only: candidate lists, coverage tables
+  docs/      that phase's write-up and figures
+  scripts/   the code that produced them
 ```
+
+One folder per phase, added as each phase lands. Anything cross-phase, the project plan above all, stays at the root.
 
 Raw expression data stays out of the repository, for size and for data-use terms.
 
