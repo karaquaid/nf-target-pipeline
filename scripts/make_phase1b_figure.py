@@ -142,6 +142,10 @@ def make_figure(counts: pd.DataFrame, n_rows: int) -> plt.Figure:
     x_max = max(int(totals.groupby(level=0).max().max()), 1)
     y = np.arange(len(MANIFESTATIONS))[::-1]
 
+    # A tier with no rows anywhere gets no legend entry: the key should describe
+    # the data plotted, not the schema.
+    present = [tier for tier in TIERS if counts[tier].sum() > 0]
+
     fig, axes = plt.subplots(1, 3, figsize=(9.6, 5.0), sharex=True, sharey=True)
     for ax, disease in zip(axes, DISEASES):
         panel = counts.loc[disease].reindex(MANIFESTATIONS).fillna(0).astype(int)
@@ -156,7 +160,7 @@ def make_figure(counts: pd.DataFrame, n_rows: int) -> plt.Figure:
                 color=colour,
                 edgecolor="white",
                 linewidth=0.4,
-                label=tier if ax is axes[2] else None,
+                label=tier if (ax is axes[2] and tier in present) else None,
                 zorder=2,
             )
             left = left + width
