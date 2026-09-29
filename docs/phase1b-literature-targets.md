@@ -1,121 +1,234 @@
 # Phase 1b: literature-derived candidate targets
 
-A PubMed sweep of 32 disease- and manifestation-directed queries returned 492 articles, of which 303 named at least one molecular target presented as a driver, modifier, or therapeutic target in neurofibromatosis. After extraction, two rounds of full-text verification, and the exclusions described below, the list stands at **363 gene x disease x manifestation rows over 191 target labels, drawn from 235 papers**. **228 of those rows are now anchored in at least one paper read in full**, against 54 in the first version; 135 still rest on abstracts alone and are labelled as such. The list is `data/phase1b-literature-targets.csv`; the paper-level record, including per-paper access, is `data/phase1b-references.csv`.
+Phase 1b asks what the published literature already proposes as a molecular target in
+neurofibromatosis, and how well each of those proposals is actually evidenced. It is
+deliberately independent of the expression arm of the pipeline: no expression data was
+consulted, and the list is held for the Phase 7 comparison, where agreements and
+one-sided findings between the two derivations are examined. Every target carries a
+disease label (NF1, NF2-SWN, SWN) and one or more manifestations from the project's
+fixed twenty-term vocabulary, applied verbatim.
 
-This list is deliberately independent of the expression pipeline. It is held for the Phase 7 comparison, where overlaps and one-sided findings between the two derivations get examined.
+The phase is complete. It produced a **candidate list of 311 gene x disease x
+manifestation rows over 182 target labels covering 237 distinct
+gene symbols, drawn from 234 papers**, of which 155 were read
+in full. 246 of the 311 rows are anchored in at least one paper
+verified against its complete text; 65 rest on abstracts alone
+and are labelled as such. A wider annotated table of 348 rows is retained
+for audit, the difference being the germline NF genes excluded as targets.
 
-## Whole-text verification pass
+## Outputs
 
-The first version of this list had a provenance problem that the numbers above have largely fixed. Full text had been retrieved for only 56 of the contributing papers, and part of that verification was done from short gene-centred excerpts rather than complete articles after the run exhausted its token budget, leaving those verdicts provisional.
+| File | What it holds |
+|---|---|
+| `data/phase1b-candidate-targets.csv` | The prioritisation input. 311 rows, germline NF genes excluded. |
+| `data/phase1b-literature-targets.csv` | All 348 verified rows with a `driver_gene` flag, for audit. |
+| `data/phase1b-references.csv` | 234 papers: DOI, PMC id, access route, preprint status, targets supported, resolvable link. |
+| `data/phase1b-coverage.csv` | The coverage matrix below, machine-readable. |
+| `data/phase1b-upload-priority.csv` | PDF queue and progress tracker: 40 papers still worth fetching. |
+| `docs/figures/phase1b-coverage-verification.png` | Figure 1. |
+| `scripts/make_phase1b_figure.py` | Regenerates Figure 1 from the candidate table. |
+| `scripts/build_phase1b_report.py` | Regenerates this document from the tables. |
 
-Both limits came from the retrieval route rather than from access. The PubMed connector fetches through NCBI's PMC service, which serves only its own open-access package, so most PMC-identified papers returned empty bodies. Europe PMC holds a larger open subset at a different endpoint, and **89 of the 235 papers turned out to be open access there**. Every row-paper pair among them, 254 in total, was re-judged against the complete article body, one reasoning pass per paper, with no excerpting. A third pass then recovered NIH author manuscripts deposited in PMC, which Europe PMC's open-access endpoint refuses but NCBI efetch serves in full, adding 28 more papers and 35 more judged pairs. Full text now covers **136 of 235 papers**.
+## How the list was built
 
-The re-judgement changed the list in five ways.
+1. **Search.** 32 PubMed queries spanning NF1, NF2-SWN and SWN crossed with the fixed manifestation vocabulary, relevance-sorted, 18 results per query, `date_from=2005`, returned 492 unique PMIDs; metadata and abstracts were retrieved for 482. 303 of those papers named at least one molecular target presented as a driver, modifier or therapeutic target.
+2. **Abstract extraction.** Each abstract was passed to a model extraction step returning gene, disease, manifestation(s) from the fixed list, role, mechanism and study system, with explicit instructions not to extract cohort-defining gene mentions or assay reagents. Calls that failed transiently were re-run rather than dropped.
+3. **Symbol normalisation.** Gene strings were mapped through an alias table and validated against official HGNC symbols. Alias-permissive matching was rejected after it mapped common shorthand onto unrelated genes, so validation uses official symbols only with the residue curated by hand. Labels that are genuinely a family, complex or pathway are kept as the label and expanded in `constituent_genes`, with `label_type` recording which kind of entity each is: gene (217), family (53), pathway (22), complex (13), drug (3), other (2), miRNA (1).
+4. **First verification round.** Full text was sought through the PubMed connector's NCBI PMC route, which reached 56 papers. Part of that round was judged from short gene-centred excerpts rather than complete articles, which left those verdicts provisional. Both limits were later traced to the retrieval route rather than to access.
+5. **Review round.** Four scope decisions were applied: rows whose disease could not be attributed were dropped, excluding sporadic tumours from the project (168 rows, from a first version of 547); 2 rows that failed verification outright were dropped; manifestation labels were corrected from full text at the level of the individual paper rather than the whole row; and family labels were kept with the `constituent_genes` column added.
+6. **Whole-text verification.** Europe PMC's `/{PMCID}/fullTextXML` endpoint holds a larger open-access subset than the NCBI route, and 89 of the papers proved retrievable there. All 254 row-paper pairs among them were re-judged against complete bodies, reference sections stripped, one reasoning pass per paper, no excerpting. 20 single-paper rows were dropped as contradicted by their own paper on full reading.
+7. **Excerpt cleanup.** The remaining pairs still carrying excerpt-based verdicts were re-judged over complete bodies recovered from Europe PMC or NCBI efetch (9 pairs). No row now rests on an excerpt verdict.
+8. **Author-manuscript harvest.** Open-access status and readability turned out to be different things: an NIH author manuscript can sit free in PMC while the publisher version is paywalled, and Europe PMC's open-access endpoint refuses those while NCBI efetch serves them. That route added 28 papers and 35 judged pairs at no cost.
+9. **Supplied PDFs.** 29 PDFs were supplied from subscription access for papers no free route could reach. All matched corpus papers by DOI, or by title where the file carried none; 9 were papers already read by another route. The other 20 were read in full and their 64 pairs judged on the same rubric (37 supported, 15 partially supported, 12 not supported). 52 rows moved up a tier, 11 abstract-only rows were removed as contradicted, and 16 rows were dropped in total.
+10. **Manifestation cleanup.** Papers filed under "Other" that in fact study a vocabulary manifestation were moved: 5 by hand on review, alongside 45 moved automatically where the full text disagreed with the abstract. All moves are per paper, so a paper that studies a different manifestation moves only its own support.
+11. **Preprint flagging.** 6 papers are preprints rather than peer-reviewed articles (bioRxiv (4), Research Square (2)). `is_preprint` and `preprint_server` mark them per paper; `n_preprint_papers` and `preprint_only` mark the rows that depend on them.
+12. **Driver-gene exclusion.** The germline NF disease genes were excluded as candidates, on the grounds that their role is established and re-prioritising them tells the project nothing.
 
-**Verdicts.** Across all three passes 298 row-paper pairs have been judged against complete bodies: 181 supported, 60 partially supported, 48 not supported, and 9 from the first round's excerpt pass re-judged and confirmed. The supported fraction rose from 12 percent of rows to 50 percent.
+Verdicts from a later round override earlier ones, and 297 of the row-paper pairs behind the current list have been judged against a complete article body.
 
-**Twenty rows were dropped.** Each was a single-paper claim whose one paper, read in full, does not support it: the gene appears as a cohort-defining mutation, an assay reagent, or a citation to other work. Among them are ALK and CAMP-PKA in MPNST, EPHA2 and KIT in vestibular schwannoma, PEBP1 in meningioma and ependymoma, and every one of the four Sleep rows. Two further rows (MAP2K1/2 in NF1 "Other", NF2 in NF2-SWN "Other") had all their read papers come back not supported but still have unread papers, so they were kept and tiered `full text - not supported` rather than dropped on partial coverage.
-
-**Sleep is now empty.** It held four rows, all abstract-derived, and all four failed whole-text verification. This is a real result rather than a gap in searching: no paper in this corpus presents a molecular target for sleep disturbance in NF.
-
-**Forty-two paper-level assignments moved manifestation** on the same paper-level rule used earlier. PAK1/2, for instance, moved from vestibular to non-vestibular schwannoma because that is what the body studies.
-
-**Five further assignments were moved by hand on review of the "Other" bucket.** Three papers had been filed there although they study a manifestation the vocabulary already covers: a paper on the spinal manifestations of NF1 (RAS pathway) moved to Bone defects, one on the metabolic and behavioural effects of neurofibromin (PI3K-AKT-MTOR axis) moved to Cognition / Behavioral / Learning, and two on atypical neurofibroma (CDKN2A, CDKN2B) moved to ANNUBP / atypical neurofibroma, where CDKN2A now carries 10 supporting papers. CDKN2A retains one "Other" assignment from a nerve-injury paper that studies neither. What is left in "Other" is four distinct things: whole-disease review claims with no manifestation to attach to, normal Schwann-cell and nerve-injury biology, assay-level findings with no phenotype, and real NF phenotypes absent from the fixed vocabulary (retinal neovascularization, pheochromocytoma, cafe-au-lait macules). The first of those is a structural gap: the vocabulary has no disease-level slot, so every future extraction pass will pool general claims with specific ones until one is added.
-
-No row now rests on the excerpt-based verdicts. Five rows (CACNA1B, CRMP2 and NF1 in NF1 pain, MTOR in NF2-SWN meningioma, BIRC5 in NF1 MPNST) were held over because their papers sit outside the Europe PMC open-access set, but the bodies were already in hand from the first round; they were re-judged separately over complete text and all five came back supported, which brings the whole-body total to 263 pairs.
-
-## Scope decisions carried forward
-
-**Sporadic tumours are excluded.** Evidence that could not be attributed to NF1, NF2-SWN, or SWN was removed rather than carried as "Not specified", which is why meningioma appears only under NF2-SWN and high-grade glioma is NF1-only.
-
-**Family and pathway labels are kept, and expanded rather than replaced.** `constituent_genes` lists the HGNC symbols that are either the named target or the members of the named family or complex (246 distinct symbols across 191 labels), and `label_type` says what kind of entity each label is (gene 268, family 53, pathway 22, complex 14, drug 3, other 2, miRNA 1), so an empty `constituent_genes` is interpretable rather than ambiguous. Symbols were validated against official HGNC symbols only; alias matching was tried and rejected because it silently maps SPP1 to CXXC1, ATR to MMAB, and MIF to AMH. Three drug names that had leaked into the target column (bevacizumab, simvastatin, apocynin) are typed `drug` and mapped to the gene each acts on.
-
-## NF1
-
-244 rows. The MEK1/2 axis dominates and is the only NF-relevant target in this sweep with regulatory-grade human evidence. Selumetinib in inoperable plexiform neurofibroma is the strongest row in the whole list, 34 supporting papers with 10 independently confirmed in full text, running from the phase 1 dose-finding cohort ([Dombi 2016](https://doi.org/10.1056/NEJMoa1605943)) through the phase 2 SPRINT trial that supported approval ([Gross 2020](https://doi.org/10.1056/NEJMoa1912735)) to longer-term safety and efficacy data ([Kim 2024](https://doi.org/10.1093/neuonc/noae121)). The same node carries into NF1-associated glioma, both optic pathway and non-optic low-grade.
-
-Malignant progression is the second well-supported axis and is a loss-of-function story rather than a druggable-kinase one. *CDKN2A* deletion marks the plexiform to atypical transition ([Chaney 2020](https://doi.org/10.1158/0008-5472.CAN-19-1429)), and PRC2 component loss separates MPNST from its benign precursors ([Cortes-Ciriano 2023](https://doi.org/10.1158/2159-8290.CD-22-0786)). Both are tumour-suppressor losses: strong stratification markers, poor direct drug targets, which is the direction-of-effect distinction the Phase 6 rubric has to encode.
-
-NF1 pain retains a mechanistically coherent set built on the neurofibromin-CRMP2 interface and downstream N-type calcium channel regulation ([Moutal 2017](https://doi.org/10.1097/j.pain.0000000000001026); [Khanna 2019](https://doi.org/10.1097/j.pain.0000000000001648)), and is the clearest non-tumour manifestation with a nameable target. Both nodes were re-read over complete text in the final pass and confirmed: CRMP2 freed from neurofibromin drives CaV2.2 and NaV1.7 trafficking in sensory neurons, shown by CRISPR truncation of Nf1.
-
-## NF2-SWN
-
-98 rows. Merlin loss converges on the Hippo pathway and on PAK and PI3K signalling, and the therapeutic literature is preclinical or early-phase rather than approved. Everolimus reached a phase 0 trial in vestibular schwannoma and meningioma ([Karajannis 2021](https://doi.org/10.1158/1535-7163.MCT-21-0143)). Whole-text reading strengthened the Hippo node: YAP1-TEAD in vestibular schwannoma, dropped from the first version as an unattributable "Other" row, is now a supported row in its proper manifestation, and merlin-dependent PAK and TEAD activation is confirmed in NF2-deficient schwannoma lines ([Benton 2024](https://doi.org/10.1371/journal.pone.0305121)), though the PAK1/2 row itself reads as partial and belongs to non-vestibular schwannoma. Merlin-deficient meningioma has been targeted through NEDD8-pathway and selumetinib combination ([Lyons Rimmer 2020](https://doi.org/10.3390/cancers12071744)), which verified cleanly across four pairs.
-
-VEGFA remains the one NF2 target with real-world clinical use, bevacizumab for NF2-associated vestibular schwannoma ([Fujii 2020](https://doi.org/10.2176/nmc.oa.2019-0194)). Spatial profiling of the same tumours adds a target the abstract sweep would have missed: CD44-positive Schwann cells are more abundant in bevacizumab-failure tumours ([Jones 2025](https://doi.org/10.1038/s41467-025-57586-z)), a resistance marker rather than a primary target, and the kind of row that only appears when the body is read.
-
-## SWN (schwannomatosis)
-
-21 rows, still the thinnest of the three, and its targets are the predisposition genes themselves. *LZTR1* in non-vestibular schwannoma is now the second-strongest row in the list (13 papers, 4 confirmed in full text), resting on germline loss-of-function predisposition ([Piotrowski 2013](https://doi.org/10.1038/ng.2855)) and on LZTR1 acting in a CUL3 complex that ubiquitinates RAS ([Steklov 2018](https://doi.org/10.1126/science.aap7607)), which puts SWN back on the RAS axis shared with NF1 and makes it the best cross-disease mechanistic link to carry into Phase 5. *SMARCB1*-driven disease follows at 11 papers. Pain, the dominant clinical problem in schwannomatosis, produced six rows and no target with a mechanism beyond the predisposition genes, which is a genuine gap rather than a search artefact.
-
-## Coverage by disease and manifestation
-
-Distinct gene x manifestation rows, germline-attributable evidence only.
-
-| Manifestation | NF1 | NF2-SWN | SWN | Total |
-|---|---|---|---|---|
-| Bone defects | 6 | 0 | 0 | 6 |
-| Cardiovascular issues | 6 | 1 | 0 | 7 |
-| Cognition / Behavioral / Learning | 8 | 0 | 0 | 8 |
-| Sleep | 0 | 0 | 0 | 0 |
-| Cutaneous neurofibroma | 18 | 0 | 1 | 19 |
-| Ependymoma | 0 | 4 | 0 | 4 |
-| Gastrointestinal stromal tumor (GIST) | 9 | 0 | 0 | 9 |
-| Hematologic malignancies | 3 | 0 | 0 | 3 |
-| High grade glioma | 11 | 0 | 0 | 11 |
-| Malignant peripheral nerve sheath tumor (MPNST) | 71 | 1 | 2 | 74 |
-| Meningioma | 0 | 30 | 1 | 31 |
-| Optic pathway glioma | 14 | 0 | 0 | 14 |
-| Non-optic LGG | 5 | 0 | 0 | 5 |
-| Pain | 13 | 0 | 6 | 19 |
-| Plexiform neurofibroma | 47 | 0 | 0 | 47 |
-| ANNUBP / atypical neurofibroma | 9 | 0 | 0 | 9 |
-| Pulmonary disease | 3 | 1 | 0 | 4 |
-| Non-vestibular schwannoma | 0 | 19 | 5 | 24 |
-| Vestibular schwannoma | 1 | 41 | 3 | 45 |
-| Other | 20 | 1 | 3 | 24 |
-
-![Stacked horizontal bars of candidate target rows per manifestation, one panel per disease, shaded by whether the strongest supporting paper was read in full text or only as an abstract](figures/phase1b-coverage-verification.png)
-
-**Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is the number of candidate target rows (n = 363 gene x disease x manifestation claims); shading is the provenance of the strongest supporting paper behind each row. Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a manifestation with no rows at all in that disease. 183 of 363 rows (50 percent) are anchored in a paper read in full, and among the five manifestations holding 20 or more rows that share runs from 35 to 70 percent, so the principal tumour types are now reasonably well evidenced. What the figure shows instead is how sharply coverage falls away from them: Sleep (0), Hematologic malignancies (3), Ependymoma (4), Pulmonary disease (4), Non-optic LGG (5), Bone defects (6), Cardiovascular issues (7), Cognition / Behavioral / Learning (8), Gastrointestinal stromal tumor (GIST) (9), ANNUBP / atypical neurofibroma (9) rows respectively, and no full-text-supported target at all for Gastrointestinal stromal tumor (GIST).
-
-## Access and verification
-
-Full text was read for 136 of 235 papers: 89 open access via Europe PMC, 28 NIH author manuscripts via NCBI efetch, and the remainder from the first round. Of the 99 still unread, 18 have a PMC record worth one more attempt and the rest have no free copy any of these routes can reach.
-
-Open-access status and readability are not the same thing, and conflating them cost a round here. A paper can be flagged not open access, because the publisher holds the rights, while an NIH-funded author manuscript of it sits free in PMC. Europe PMC's `fullTextXML` endpoint serves only the open-access subset and returns HTTP 500 for those manuscripts; NCBI efetch against the same PMC id returns the complete body. Any later phase that needs full text should try efetch before concluding a paper is unreachable, and should link to `europepmc.org/article/MED/<pmid>` rather than the DOI, which resolves to the publisher paywall.
+## The current list
 
 | Evidence tier | Rows |
 |---|---|
-| full text - supported | 183 |
-| full text - partial | 38 |
-| full text - not supported | 7 |
-| abstract only | 135 |
+| full text - supported | 194 |
+| full text - partial | 50 |
+| full text - not supported | 2 |
+| abstract only | 65 |
 
-Every row carries `paper_access` per PMID, plus `verdicts_from_whole_body` and `verdicts_from_earlier_pass` so the verification rounds stay distinguishable.
+By disease: NF1 216 rows, NF2-SWN 89,
+SWN 6. The two rows tiered `full text - not supported` are
+contradicted by the papers read so far but still hold unread papers, so they are kept
+rather than dropped on partial coverage: a claim nobody has finished checking is not
+the same as a claim that failed.
 
-**Preprints are flagged.** Six of the 235 papers are preprints rather than peer-reviewed articles: four on bioRxiv, two on Research Square. `is_preprint` and `preprint_server` mark them in the reference table, and each target row carries `n_preprint_papers` and `preprint_only`. **Ten rows rest on a preprint alone**: CPA4 and YAP1-TEAD in NF2-SWN meningioma, TEAD1 in vestibular schwannoma, PRMT5 and MTAP in NF1 ANNUBP and MPNST, HRAS and LGALS1 in MPNST, and PI3K-AKT-MTOR in cognition. Every one is a single-paper, abstract-only row, so they sit at the weakest point of the evidence scale twice over and should not clear a Phase 6 threshold on their own. Preprint status is detected from DOI prefix and journal string; a cross-check against Europe PMC publication types could not be run because the service returned 503 throughout, so a preprint published somewhere unusual could still be unflagged.
+## Coverage by disease and manifestation
+
+| Manifestation | NF1 | NF2-SWN | SWN | Total |
+|---|---|---|---|---|
+| Bone defects | 5 | 0 | 0 | 5 |
+| Cardiovascular issues | 5 | 0 | 0 | 5 |
+| Cognition / Behavioral / Learning | 6 | 0 | 0 | 6 |
+| Sleep | 0 | 0 | 0 | 0 |
+| Cutaneous neurofibroma | 17 | 0 | 0 | 17 |
+| Ependymoma | 0 | 3 | 0 | 3 |
+| Gastrointestinal stromal tumor (GIST) | 5 | 0 | 0 | 5 |
+| Hematologic malignancies | 2 | 0 | 0 | 2 |
+| High grade glioma | 10 | 0 | 0 | 10 |
+| Malignant peripheral nerve sheath tumor (MPNST) | 66 | 0 | 0 | 66 |
+| Meningioma | 0 | 29 | 0 | 29 |
+| Optic pathway glioma | 13 | 0 | 0 | 13 |
+| Non-optic LGG | 4 | 0 | 0 | 4 |
+| Pain | 9 | 0 | 4 | 13 |
+| Plexiform neurofibroma | 45 | 0 | 0 | 45 |
+| ANNUBP / atypical neurofibroma | 9 | 0 | 0 | 9 |
+| Pulmonary disease | 2 | 0 | 0 | 2 |
+| Non-vestibular schwannoma | 0 | 17 | 2 | 19 |
+| Vestibular schwannoma | 0 | 40 | 0 | 40 |
+| Other | 18 | 0 | 0 | 18 |
+
+![Stacked horizontal bars of candidate target rows per manifestation, one panel per disease, shaded by whether the strongest supporting paper was read in full text or only as an abstract](figures/phase1b-coverage-verification.png)
+
+**Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is
+the number of candidate target rows (n = 311 claims, germline NF genes
+excluded); shading is the provenance of the strongest supporting paper behind each row.
+Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a
+manifestation with no rows at all in that disease. 194 of
+311 rows (62 percent) are anchored in a paper read in full, and
+in the 4 manifestations holding 20 or more rows that share runs from
+69 to 76 percent, so the principal tumour types are well evidenced.
+What the figure shows is how sharply coverage falls away from them: Hematologic malignancies (2), Pulmonary disease (2), Ependymoma (3), Non-optic LGG (4), Bone defects (5), Cardiovascular issues (5), Gastrointestinal stromal tumor (GIST) (5), Cognition / Behavioral / Learning (6), ANNUBP / atypical neurofibroma (9) rows
+respectively, no rows at all for Sleep, and no full-text-supported target
+for Gastrointestinal stromal tumor (GIST).
+
+## What the evidence says
+
+### NF1
+
+216 rows. The MEK1/2 axis dominates and is the only NF-relevant target
+in this sweep with regulatory-grade human evidence. Selumetinib in inoperable plexiform
+neurofibroma is the strongest row in the list (34 supporting
+papers), running from the phase 1 dose-finding cohort
+([Dombi 2016](https://doi.org/10.1056/NEJMoa1605943)) through the phase 2 SPRINT trial that
+supported approval ([Gross 2020](https://doi.org/10.1056/NEJMoa1912735)) to longer-term
+safety and efficacy data ([Kim 2024](https://doi.org/10.1093/neuonc/noae121)). The same node
+carries into NF1-associated glioma, both optic pathway and non-optic low-grade.
+
+Malignant progression is the second well-supported axis, and it is a loss-of-function story
+rather than a druggable-kinase one. *CDKN2A* deletion marks the plexiform to atypical
+transition ([Chaney 2020](https://doi.org/10.1158/0008-5472.CAN-19-1429)), and PRC2 component
+loss separates MPNST from its benign precursors
+([Cortes-Ciriano 2023](https://doi.org/10.1158/2159-8290.CD-22-0786)). Both are tumour
+suppressor losses: strong stratification markers, poor direct drug targets, which is the
+direction-of-effect distinction the Phase 6 rubric has to encode.
+
+NF1 pain retains a mechanistically coherent set built on the neurofibromin-CRMP2 interface
+and downstream N-type calcium channel regulation
+([Moutal 2017](https://doi.org/10.1097/j.pain.0000000000001026);
+[Khanna 2019](https://doi.org/10.1097/j.pain.0000000000001648)), and is the clearest
+non-tumour manifestation with a nameable target. Both nodes were confirmed over complete
+text: CRMP2 freed from neurofibromin drives CaV2.2 and NaV1.7 trafficking in sensory
+neurons, shown by CRISPR truncation of *Nf1*.
+
+### NF2-SWN
+
+89 rows. Merlin loss converges on the Hippo pathway and on PAK and
+PI3K signalling, and the therapeutic literature is preclinical or early-phase rather than
+approved. Everolimus reached a phase 0 trial in vestibular schwannoma and meningioma
+([Karajannis 2021](https://doi.org/10.1158/1535-7163.MCT-21-0143)). Whole-text reading
+strengthened the Hippo node: YAP1-TEAD in vestibular schwannoma, dropped from the first
+version as an unattributable "Other" row, is now supported in its proper manifestation, on
+TEAD1 inhibition reversing tumorigenic signalling in merlin-inactivated Schwann cells
+([Laws 2025](https://doi.org/10.1101/2025.11.15.688608), a preprint). The PAK arm is weaker
+than the abstracts suggested: reading the PAK and Hippo combination study in full
+([Benton 2024](https://doi.org/10.1371/journal.pone.0305121)) returned no supported verdict
+on either row it touches, leaving PAK1/2 as a partial row in non-vestibular schwannoma,
+where PAK binding to merlin and PAK inhibition in NF2-deficient lines are shown but the
+vestibular attribution is not. Merlin-deficient meningioma has been targeted through
+NEDD8-pathway and selumetinib combination
+([Lyons Rimmer 2020](https://doi.org/10.3390/cancers12071744)).
+
+VEGFA is the one NF2 target with real-world clinical use, bevacizumab for NF2-associated
+vestibular schwannoma ([Fujii 2020](https://doi.org/10.2176/nmc.oa.2019-0194)). Spatial
+profiling of the same tumours adds a target the abstract sweep would have missed:
+CD44-positive Schwann cells are more abundant in bevacizumab-failure tumours
+([Jones 2025](https://doi.org/10.1038/s41467-025-57586-z)), a resistance marker rather than a
+primary target, and the kind of row that only appears when the body is read.
+
+### SWN (schwannomatosis)
+
+6 rows, and the driver exclusion is what makes that number so small:
+*LZTR1* and *SMARCB1* were most of what the SWN literature offers, and both are now held in
+the audit table rather than the candidate list. What survives is the RAS axis, which is the
+useful cross-disease link, since LZTR1 acts in a CUL3 complex that ubiquitinates RAS
+([Steklov 2018](https://doi.org/10.1126/science.aap7607)) and puts schwannomatosis on the
+same pathway as NF1, plus a small set of inflammatory mediators in pain from mouse models.
+Pain is the dominant clinical problem in schwannomatosis and no target with a mechanism
+beyond the predisposition genes reached this list, which is a genuine gap rather than a
+search artefact.
+
+## Access and provenance
+
+Full text was read for 155 of 234 papers:
+full_text (135); abstract_only (79); full_text (PDF supplied) (20). 79 remain unread. Open-access status and
+readability are not the same thing, and any later phase that needs full text should try
+NCBI efetch before concluding a paper is unreachable, and link readers to
+`europepmc.org/article/MED/<pmid>` rather than the DOI, which resolves to the publisher
+paywall.
+
+`data/phase1b-upload-priority.csv` doubles as work queue and progress record.
+`pdf_status` says whether a paper was judged from a supplied PDF (20), was
+supplied but already in hand, or is still needed (40); `pdf_filename` names
+the file and `rows_anchored_by_pdf` records what each one bought, 53
+rows in total. Papers still needed keep their rank, so the queue resumes where it stopped.
+
+## Scope decisions
+
+Each of these is a scope choice rather than a quality judgement, and each is reversible
+because the excluded evidence is retained rather than deleted.
+
+1. **Sporadic tumours are excluded.** Evidence that cannot be attributed to germline NF1, NF2-SWN or SWN was dropped, 168 rows at the time. Somatic *NF2* loss in sporadic meningioma is the same molecular lesion as the germline case, so if Phase 3b selects meningioma or high-grade glioma these are the first rows to reconsider; they are reconstructible from the references table and the sweep output.
+2. **Germline NF genes are excluded as candidates.** 37 rows: NF1 (15), NF2 (10), SMARCB1 (6), LZTR1 (5), SPRED1 (1). 26 of them were full-text supported, so this removed well-evidenced rows on scope grounds. They are retained in `phase1b-literature-targets.csv` with `driver_gene = True`.
+3. **Recurrent somatic drivers are kept.** CDKN2A and CDKN2B, PRC2 components, TP53, MTAP, PTEN, RB1 and the RAS genes remain candidates despite being well described in NF tumour genetics, because they carry the malignant-progression signal Phase 6 stratification depends on.
+4. **Contradicted rows are dropped only when every supporting paper has been read.** Otherwise they are tiered `full text - not supported` and kept.
 
 ## Limitations
 
-Extraction is model-based over abstracts and verification is a single-reader model pass over full text, with no second reader and no adjudication of disagreements. Verdicts are one reviewer's calls. Recall against a gold standard has not been measured in either direction.
+Extraction is model-based over abstracts and verification is a single-reader model pass over
+full text, with no second reader and no adjudication. Recall against a gold standard has not
+been measured in either direction.
 
-Rows that remain abstract-only are not weaker claims about biology, they are claims nobody has checked. The 170 in that tier should not be compared directly against the 158 confirmed rows when Phase 7 weights evidence.
+Rows in the abstract-only tier are not weaker claims about biology; they are claims nobody
+has checked. The 65 rows in that tier should not be weighed
+against the 194 confirmed rows as though the difference
+were biological.
 
-Excluding sporadic-tumour evidence is a deliberate scope choice, not a statement that the evidence is weak. Somatic *NF2* loss in sporadic meningioma and schwannoma is the same molecular lesion as the germline case.
+10 rows rest on a preprint alone: HRAS (NF1, Malignant peripheral nerve sheath tumor (MPNST)); LGALS1 (NF1, Malignant peripheral nerve sheath tumor (MPNST)); MTAP (NF1, ANNUBP / atypical neurofibroma); MTAP (NF1, Malignant peripheral nerve sheath tumor (MPNST)); PRMT5 (NF1, ANNUBP / atypical neurofibroma); PRMT5 (NF1, Malignant peripheral nerve sheath tumor (MPNST)); CPA4 (NF2-SWN, Meningioma); PI3K-AKT-MTOR axis (NF1, Cognition / Behavioral / Learning); TEAD1 (NF2-SWN, Vestibular schwannoma); YAP1-TEAD (NF2-SWN, Meningioma). Each is
+also single-paper, so they are weak on more than one axis and should not clear a Phase 6
+threshold unaided. Preprint status is detected from DOI prefix and journal string; the Europe
+PMC publication-type cross-check could not be run when the service was returning errors, so a
+preprint on an unusual server could be unflagged.
 
-Queries were capped at 18 results each and date-filtered from 2005, so highly cited older primary work is under-represented, and citation-graph expansion was not performed.
+Gastrointestinal stromal tumor (GIST) has rows but no full-text-supported target, and
+Sleep has no rows at all after every one of its claims failed whole-text
+verification. Both are statements about this corpus rather than about the biology: the
+mechanistic GIST literature sits in sporadic KIT-mutant disease, which the sporadic exclusion
+removes.
 
-## Method
+The manifestation vocabulary has no disease-level slot, so whole-disease review claims with no
+manifestation to attach to are pooled into "Other" alongside genuine phenotypes. Three real NF
+phenotypes are also absent from the fixed list: retinal neovascularization, pheochromocytoma
+and cafe-au-lait macules. This will recur in every future extraction pass until the vocabulary
+gains a term.
 
-Thirty-two PubMed queries spanning NF1, NF2-SWN, and SWN crossed with the plan's fixed manifestation vocabulary (`search_articles`, relevance-sorted, 18 results per query, `date_from=2005`) returned 492 unique PMIDs; metadata and abstracts were retrieved for 482. Each abstract was passed to a model extraction step returning gene, disease, manifestation(s) from the fixed list, role, mechanism, and study system, with instructions not to extract cohort-defining gene mentions or assay reagents. Gene strings were normalised, manifestations validated against the fixed vocabulary verbatim, and disease coerced to NF1 / NF2-SWN / SWN.
+Queries were capped at 18 results each and date-filtered from 2005, so highly cited older
+primary work is under-represented, and citation-graph expansion was not performed.
 
-Verification ran in two rounds. The first used NCBI PMC and covered 56 papers, part of it from excerpts. The second identified open-access availability through the Europe PMC REST API (`/{PMCID}/fullTextXML`), fetched 89 complete article bodies, stripped reference sections, and re-judged all 254 row-paper pairs among them with one reasoning call per paper. A third short pass recovered the bodies of the remaining papers that the first round had read but judged from excerpts, from Europe PMC or NCBI efetch, and re-judged those 9 pairs the same way, for 263 whole-body pairs in total. Where the two rounds disagree, the whole-body verdict wins. Manifestation corrections are applied per paper, not per row, so a paper that turns out to study a different manifestation moves only its own support.
+## Reproducing
 
-## Files
+From the repository root:
 
-- `data/phase1b-literature-targets.csv`: 363 rows, one per gene x disease x manifestation, with `constituent_genes`, `label_type`, mechanism, study system, supporting PMIDs, per-paper access, per-round verdict counts, and evidence tier
-- `data/phase1b-references.csv`: 235 contributing papers with DOI, PMC id, whether full text was read and from which source, preprint status and server, the target labels each paper supports, and a resolvable link
-- `data/phase1b-upload-priority.csv`: the 55 unread papers that could still anchor an abstract-only row, ranked by how many, with Europe PMC, PMC and publisher links for each
-- `data/phase1b-coverage.csv`: the coverage matrix above in machine-readable form
-- `docs/figures/phase1b-coverage-verification.png`: Figure 1
+    python scripts/build_phase1b_report.py    # regenerates this document
+    python scripts/make_phase1b_figure.py     # regenerates Figure 1
+
+Both read only the CSVs in `data/`. Re-run them after any change to the row set rather than
+editing numbers by hand.
