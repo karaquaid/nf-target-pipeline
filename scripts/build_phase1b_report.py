@@ -279,10 +279,15 @@ PI3K signalling, and the therapeutic literature is preclinical or early-phase ra
 approved. Everolimus reached a phase 0 trial in vestibular schwannoma and meningioma
 ([Karajannis 2021](https://doi.org/10.1158/1535-7163.MCT-21-0143)). Whole-text reading
 strengthened the Hippo node: YAP1-TEAD in vestibular schwannoma, dropped from the first
-version as an unattributable "Other" row, is a supported row in its proper manifestation,
-and merlin-dependent PAK and TEAD activation is confirmed in NF2-deficient schwannoma lines
-([Benton 2024](https://doi.org/10.1371/journal.pone.0305121)). Merlin-deficient meningioma
-has been targeted through NEDD8-pathway and selumetinib combination
+version as an unattributable "Other" row, is now supported in its proper manifestation, on
+TEAD1 inhibition reversing tumorigenic signalling in merlin-inactivated Schwann cells
+([Laws 2025](https://doi.org/10.1101/2025.11.15.688608), a preprint). The PAK arm is weaker
+than the abstracts suggested: reading the PAK and Hippo combination study in full
+([Benton 2024](https://doi.org/10.1371/journal.pone.0305121)) returned no supported verdict
+on either row it touches, leaving PAK1/2 as a partial row in non-vestibular schwannoma,
+where PAK binding to merlin and PAK inhibition in NF2-deficient lines are shown but the
+vestibular attribution is not. Merlin-deficient meningioma has been targeted through
+NEDD8-pathway and selumetinib combination
 ([Lyons Rimmer 2020](https://doi.org/10.3390/cancers12071744)).
 
 VEGFA is the one NF2 target with real-world clinical use, bevacizumab for NF2-associated
