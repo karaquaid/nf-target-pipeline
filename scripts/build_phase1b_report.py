@@ -186,7 +186,7 @@ for audit, the difference being the germline NF genes excluded as targets.
 |---|---|
 | `data/phase1b-candidate-targets.csv` | The prioritisation input. {s['n_rows']} rows, germline NF genes excluded. |
 | `data/phase1b-literature-targets.csv` | All {s['n_rows_full']} verified rows with a `driver_gene` flag, for audit. |
-| `data/phase1b-references.csv` | {s['n_papers']} papers: DOI, PMC id, access route, preprint status, targets supported, resolvable link. |
+| `data/phase1b-references.csv` | {s['n_papers']} papers: DOI, PMC id, access route, preprint status, targets supported, manifestations covered, resolvable link. |
 | `data/phase1b-coverage.csv` | The coverage matrix below, machine-readable. |
 | `data/phase1b-upload-priority.csv` | PDF queue and progress tracker: {s['queue_open']} papers still worth fetching. |
 | `docs/figures/phase1b-coverage-verification.png` | Figure 1. |
