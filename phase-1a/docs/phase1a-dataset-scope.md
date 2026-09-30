@@ -1,10 +1,10 @@
-# Phase 1: Public expression-dataset scope for NF1 / NF2-SWN / schwannomatosis
+# Phase 1a: Public expression-dataset scope for NF1 / NF2-SWN / schwannomatosis
 
 **Status:** complete, pending review. **Sweep date:** 2026-09-29 (first run 2026-09-24).
-**Scripts:** `scripts/phase1_geo_search.py` (search), `scripts/phase1_classify.py` (rubric +
-cache restore), `scripts/phase1_build_tables.py` (tables).
-**Tables:** `data/phase1-datasets.csv`, `data/phase1-dataset-labels.csv`, `data/phase1-samples.csv`,
-`data/phase1-excluded.csv`, `data/phase1-coverage.csv`, `data/phase1-queries.csv`.
+**Scripts:** `phase-1a/scripts/phase1a_geo_search.py` (search), `phase-1a/scripts/phase1a_classify.py` (rubric +
+cache restore), `phase-1a/scripts/phase1a_build_tables.py` (tables).
+**Tables:** `phase-1a/data/phase1a-datasets.csv`, `phase-1a/data/phase1a-dataset-labels.csv`, `phase-1a/data/phase1a-samples.csv`,
+`phase-1a/data/phase1a-excluded.csv`, `phase-1a/data/phase1a-coverage.csv`, `phase-1a/data/phase1a-queries.csv`.
 
 ## Scope statement
 
@@ -34,10 +34,10 @@ cohorts are kept, with the sporadic samples marked and excluded at sample level.
 Of the 235 exclusions, 152 were not NF-related at all (the string "NF1" in GEO also picks up nuclear
 factor 1, and *NF1* as one mutated gene among many in sporadic cancer), 80 were sporadic tumours with
 somatic *NF1*/*NF2* loss, and 3 were NF-related but out of scope for other reasons recorded in
-`phase1-excluded.csv`. Meningioma is where the sporadic rule bites hardest: the keyword sweep returns
+`phase1a-excluded.csv`. Meningioma is where the sporadic rule bites hardest: the keyword sweep returns
 hundreds of meningioma series, and 3 survive it.
 
-![Datasets per manifestation, human vs mouse](phase1-coverage.png)
+![Datasets per manifestation, human vs mouse](phase1a-coverage.png)
 
 ## Human vs mouse — the decision this run was meant to inform
 
@@ -65,7 +65,7 @@ collection, but that is not the reason to keep it — the reason is *where* the 
 | Cardiovascular issues, Sleep, Ependymoma, GIST, Pulmonary disease | 0 | 0 | 0 | 0 |
 
 Mixed human+mouse series are counted in the human column. Full detail, including the disease
-dimension and explicit zero rows, is in `data/phase1-coverage.csv`.
+dimension and explicit zero rows, is in `phase-1a/data/phase1a-coverage.csv`.
 
 Reading: human data carries the nerve-sheath tumours (MPNST, plexiform and cutaneous neurofibroma,
 vestibular schwannoma). Mouse data carries the CNS manifestations — optic pathway glioma is 11 mouse
@@ -115,20 +115,20 @@ GSE78901 (plexiform neurofibroma, 21).
 1. **Search.** 27 E-utilities queries against GEO DataSets (`db=gds`), one per manifestation in the
    labeling standard plus disease-level and mouse-model catch-alls, each restricted to
    `gse[ETYP]` and to expression DataSet Types. Query strings, hit counts and the run date are in
-   `data/phase1-queries.csv`. Restricting to expression assay types removes 25–35% of raw keyword
+   `phase-1a/data/phase1a-queries.csv`. Restricting to expression assay types removes 25–35% of raw keyword
    hits (ChIP-seq, ATAC, methylation, miRNA); a few multi-assay series still enter because their
    DataSet Type lists expression alongside something else.
 2. **Record retrieval.** For every hit, the series SOFT header plus every sample's SOFT header
    (title, source, characteristics, library strategy). 12,778 sample records for 415 series; 2 series
    above the 400-sample fetch cap are marked rather than fetched.
-3. **Classification.** One LLM pass per series against the scope rubric in `scripts/phase1_classify.py`
+3. **Classification.** One LLM pass per series against the scope rubric in `phase-1a/scripts/phase1a_classify.py`
    (disease, manifestations, NF association and its basis, material, study design, single-cell,
    control types), then one pass per in-scope series over its sample rows to label each sample. The
    rubric instructs the model to judge only from the record and to treat absence of germline evidence
    as out of scope.
 4. **ArrayExpress.** Six free-text searches returned 246 experiments, 59 of them not mirrored from
    GEO, 13 NF-related by title, 5 in scope after reading each record. They are curated by hand in
-   `data/phase1-arrayexpress-additions.json`: E-MEXP-258, E-MEXP-2766, E-MTAB-13334, E-MTAB-14222,
+   `phase-1a/data/phase1a-arrayexpress-additions.json`: E-MEXP-258, E-MEXP-2766, E-MTAB-13334, E-MTAB-14222,
    E-TABM-69. The rest were aCGH, methylation, targeted resequencing or CRISPR/shRNA screens rather
    than expression profiling, or had no germline NF evidence.
 5. **Dedup.** A subseries whose superseries is also in the sweep is kept as a row but not counted in
@@ -157,7 +157,7 @@ GSE78901 (plexiform neurofibroma, 21).
   keyword evidence, not proof.
 - **GEO moves.** The 2026-09-24 run returned 414 series; the 2026-09-29 re-run returned 415. The new
   record (GSE344687, NF2-associated vestibular schwannoma multiome) was classified by hand and is
-  recorded in `data/phase1-manual-classifications.json`. LLM classification is not deterministic, so
+  recorded in `phase-1a/data/phase1a-manual-classifications.json`. LLM classification is not deterministic, so
   the committed tables — not a re-run — are the record of this sweep.
 
 ## Open decisions
@@ -165,7 +165,7 @@ GSE78901 (plexiform neurofibroma, 21).
 1. **Mouse in or out for Phases 2–3.** Recommendation above: keep, as a separate track.
 2. **Which comparative datasets launch Phase 2.** The seven human candidates above plus the mouse
    set are the realistic starting list; the plan's open item "decide final list of GEO datasets to
-   launch with" can be closed from `phase1-datasets.csv` filtered to `comparative_design = True`.
+   launch with" can be closed from `phase1a-datasets.csv` filtered to `comparative_design = True`.
 3. **Zero-coverage manifestations.** Cardiovascular issues, Sleep, Ependymoma, GIST and Pulmonary
    disease have no expression dataset at all under the sporadic exclusion. They should appear as
    explicit zeros in the Phase 3b chart, not be dropped from it.

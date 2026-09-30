@@ -7,7 +7,7 @@
 
 ## Disease and Manifestation Labeling Standard
 
-Every dataset (Phase 1) and target (Phase 1b, 3, 4, 5, 6, 7) must be labeled with:
+Every dataset (Phase 1a) and target (Phase 1b, 3, 4, 5, 6, 7) must be labeled with:
 
 - **Disease:** NF1, NF2-SWN, or SWN (schwannomatosis). Use "Other" or "Not specified" only if the source genuinely doesn't distinguish, and flag that as a gap rather than guessing.
 - **Manifestation(s):** one or more from this fixed list, applied as-is (don't paraphrase or substitute synonyms): Bone defects; Cardiovascular issues; Cognition / Behavioral / Learning; Sleep; Cutaneous neurofibroma; Ependymoma; Gastrointestinal stromal tumor (GIST); Hematologic malignancies; High grade glioma; Malignant peripheral nerve sheath tumor (MPNST); Meningioma; Optic pathway glioma; Non-optic LGG; Pain; Plexiform neurofibroma; ANNUBP / atypical neurofibroma; Pulmonary disease; Non-vestibular schwannoma; Vestibular schwannoma; Other
@@ -19,28 +19,28 @@ A dataset or target can carry more than one manifestation label if it's genuinel
 ## Compute Requirements
 
 - Start laptop-first, using Claude Science to run the pipeline locally (macOS/Linux). Most of the work here (API queries against DGIdb/ChEMBL/Guide to Pharmacology/Monarch, plus standard differential expression and pathway enrichment on bulk RNA-seq/microarray data) is not GPU-heavy and doesn't need dedicated compute provisioned upfront
-- Escalate only if scope expands to single-nuclei/spatial transcriptomics datasets (e.g., snRNA-seq datasets like GSE232766), which produce much larger matrices than the bulk NF2 datasets identified in Phase 1. If that happens, Claude Science can draft and submit that specific job to an HPC cluster or to Modal (cloud compute), scaling from a single GPU to hundreds as needed, rather than requiring bigger hardware from day one
+- Escalate only if scope expands to single-nuclei/spatial transcriptomics datasets (e.g., snRNA-seq datasets like GSE232766), which produce much larger matrices than the bulk NF2 datasets identified in Phase 1a. If that happens, Claude Science can draft and submit that specific job to an HPC cluster or to Modal (cloud compute), scaling from a single GPU to hundreds as needed, rather than requiring bigger hardware from day one
 - No need to pre-provision cloud compute or an HPC account before starting; revisit this only if a specific phase's dataset size clearly exceeds laptop capacity
 
 ## Version Control (GitHub)
 
 - Repo name: **`nf-target-pipeline`** (karaquaid/nf-target-pipeline)
 - Track this project in this GitHub repo from the start, using Claude Science (or Claude Code as a fallback) for repo setup and ongoing git operations (commits, branches, PRs) throughout every phase below
-- Suggested repo structure: `/scripts` (ingestion, analysis, API integration code from Phases 2–6, 8), `/docs` (this project plan, scoring rubric writeups, grant progress reports from Phase 10), `/data` (small reference files only, e.g. candidate target lists; raw expression data stays out of the repo given file size and any data-use terms)
+- Repo structure: one folder per phase, each with its own `data/`, `docs/` and `scripts/` subfolders (`phase-1a/`, `phase-1b/`, and `phase-2/` onward as each phase lands), so everything a phase produced sits together. `/docs/project-plan.md` and `README.md` stay at the repo root as the cross-phase source of truth. `data/` holds small reference files only, e.g. candidate target lists and coverage tables; raw expression data stays out of the repo given file size and any data-use terms
 - Commit at the end of each phase, not just at the end of the project, so the repo reflects real progress and gives you a rollback point if a later phase's approach doesn't pan out
 - Keep this plan document itself in the repo (e.g. `/docs/project-plan.md`) and update it in place as scope shifts, rather than letting the repo and the plan drift apart
 
-## Phase 1: Scope and Data Source Finalization
+## Phase 1a: Scope and Data Source Finalization
 
-**Status:** run 2026-09-29; results and open decisions in `docs/phase1-dataset-scope.md`.
+**Status:** run 2026-09-29; results and open decisions in `phase-1a/docs/phase1a-dataset-scope.md`.
 
 **Claude tools:** GEO and ArrayExpress/BioStudies connectors (omics-archives) for the search, NCBI E-utilities directly for the re-runnable script, web search for spot-checks
 
-- Run the dataset search as a versioned script in `/scripts` rather than as an interactive search, so the exact query strings and search date are recorded and the sweep can be re-run and diffed later. Every accession in the final table must resolve against NCBI before it is reported, which removes accession hallucination as a category and leaves spot-checks to confirm relevance only
+- Run the dataset search as a versioned script in the phase's `scripts/` folder rather than as an interactive search, so the exact query strings and search date are recorded and the sweep can be re-run and diffed later. Every accession in the final table must resolve against NCBI before it is reported, which removes accession hallucination as a category and leaves spot-checks to confirm relevance only
 - Sources: GEO is primary, ArrayExpress/BioStudies secondary (expect mostly legacy or mirrored records). SRA is not searched as a separate source: human expression submissions with no GEO series are rare and carry no usable disease labeling
 - Restrict to expression assay types ("Expression profiling by array" / "by high throughput sequencing"); unfiltered keyword hits pull in ChIP-seq, ATAC, methylation and miRNA series. Collect single-cell/single-nucleus series but mark them deferred (see Compute Requirements)
 - Label each dataset with disease (NF1, NF2-SWN, or SWN) and manifestation(s) per the labeling standard above, and record the basis for the disease label (stated NF patient cohort / per-sample NF status / engineered NF genotype / inferred), since the standard excludes sporadic tumors
-- Include both human and mouse-model datasets, with an `organism` column. Mouse datasets are a separate analysis track (ortholog mapping required) and are counted separately in the Phase 3b coverage chart, so a zero there reads as "no human tissue" rather than "no evidence". Whether mouse data carries into Phases 2-3 is a decision to make from the Phase 1 counts, not in advance
+- Include both human and mouse-model datasets, with an `organism` column. Mouse datasets are a separate analysis track (ortholog mapping required) and are counted separately in the Phase 3b coverage chart, so a zero there reads as "no human tissue" rather than "no evidence". Whether mouse data carries into Phases 2-3 is a decision to make from the Phase 1a counts, not in advance
 - Record a `study_design` column (tumor vs normal / tumor-subtype or grade comparison / in vitro perturbation / xenograft / single-arm profiling), because only the comparative designs feed Phase 3 differential expression
 - Document controls with an explicit taxonomy rather than a yes/no flag: matched adjacent normal tissue; unaffected-donor normal tissue or primary Schwann cells; isogenic or engineered control; non-NF tumor comparator; none. "Healthy control" barely exists for nerve tissue, and which kind of control a dataset has determines the batch-effect handling needed in Phase 2. Control counts are not a GEO metadata field: they come from parsing per-sample characteristics and titles, whose completeness varies widely between series
 - Deduplicate superseries/subseries and re-deposited cohorts before counting, so samples are not double-counted downstream
@@ -48,7 +48,7 @@ A dataset or target can carry more than one manifestation label if it's genuinel
 - Deliverables mirror the Phase 1b schema so Phase 3b can join them: a dataset-level table, a long dataset x disease x manifestation table over the fixed vocabulary with explicit zero rows, a per-sample manifest that doubles as Phase 2's input list, and an exclusions table recording sporadic and off-scope datasets
 - Finalize scope statement: primary focus is candidate drug/target identification; batch-effect correction and no-control-dataset handling are secondary/bonus capabilities, not the headline
 
-## Phase 1b: Literature-Derived Target Identification (runs in parallel with Phases 1–2)
+## Phase 1b: Literature-Derived Target Identification (runs in parallel with Phases 1a–2)
 
 **Claude tools:** Advanced Research (literature search across NF1/NF2/schwannomatosis), web search
 
@@ -151,10 +151,10 @@ A dataset or target can carry more than one manifestation label if it's genuinel
 - Revisit Compound VALET once it has more documentation for the remaining tractability gap; safety is now largely covered by ChEMBL's ADMET data, openFDA FAERS, and SIDER. A real Open Targets connector also exists if you want to reconsider it for tractability despite moving away from it earlier
 - Evaluate the Amass Connector as a possible single replacement for the separate ClinicalTrials.gov, openFDA, and DrugBank integrations before building all three
 - Decide final list of GEO datasets to launch with
-- Decide whether mouse-model datasets carry into Phases 2-3, from the Phase 1 organism counts
+- Decide whether mouse-model datasets carry into Phases 2-3, from the Phase 1a organism counts
 - Several sources named in Phases 4-5 have no connector on this platform (DGIdb, Guide to Pharmacology, DrugBank, SIDER, ProbeMiner, Monarch/Mondo/DisMech, the Amass Connector) and several of their domains are blocked by the sandbox network allowlist. Each needs either an approved domain or a substitute (Open Targets, openFDA, ChEMBL, ClinicalTrials.gov and KEGG are reachable) before Phase 4-5 wiring starts
 
-## Appendix: Phase 1 / 1b Prompts
+## Appendix: Phase 1a / 1b Prompts
 
 **Model/modality guidance:** Prefer **Claude Science** over regular claude.ai chat for this phase specifically. Claude Science natively connects to GEO (alongside ChEMBL, UniProt, PDB, Ensembl, Reactome, ClinVar, and more), so Prompt 1's dataset search becomes a live structured query rather than search-and-verify. It also runs a built-in reviewer agent that checks citations and calculations automatically, a stronger hallucination safeguard than manual spot-checking. Use Claude Opus 5 for both prompts either way, this step is synthesis-heavy (reconciling many database hits and papers into coverage judgment calls), not high-volume/low-latency work. No pre-curated paper set is needed for Prompt 2, it sources papers directly via search (PubMed connector/Advanced Research). If running in regular claude.ai chat instead, turn on Advanced Research for both prompts.
 
@@ -164,7 +164,7 @@ A dataset or target can carry more than one manifestation label if it's genuinel
 - For Prompt 2, require Claude to report full-text vs. abstract-only access per paper, since a claim drawn only from an abstract carries more uncertainty than one verified against full text
 - If running Prompt 1 in regular claude.ai chat rather than Claude Science, no dedicated GEO/ArrayExpress/SRA connector exists there, so have Claude fetch directly from NCBI's own GEO pages rather than relying on search snippets, and manually spot-check accession numbers
 
-**Prompt 1 (Phase 1: dataset search)**
+**Prompt 1 (Phase 1a: dataset search)**
 
 > I'm scoping public gene expression data sources for a neurofibromatosis (NF1, NF2-SWN, schwannomatosis) drug target discovery pipeline. Search GEO (primary) and ArrayExpress/BioStudies (secondary) for expression datasets (bulk RNA-seq, microarray, and single-cell/single-nucleus) covering: cutaneous neurofibroma, plexiform neurofibroma, ANNUBP/atypical neurofibroma, MPNST, optic pathway glioma and the other NF1 manifestations; vestibular and non-vestibular schwannoma, meningioma and ependymoma (NF2-SWN); and SMARCB1/LZTR1-driven schwannomatosis. Restrict to expression assay types. Include both human and mouse-model datasets and label each with its organism.
 >
@@ -188,7 +188,7 @@ A dataset or target can carry more than one manifestation label if it's genuinel
 
 **Minimizing hallucination:** No dedicated GEO-download connector exists. Have Claude Code fetch the current GEOparse/GEOquery documentation directly rather than writing from memorized API syntax, since package APIs shift across versions.
 
-> Write a preprocessing pipeline that ingests the GEO datasets identified in Phase 1 [list accessions], standardizes them into a single expression matrix, and flags samples with missing metadata. For datasets without healthy controls, implement a fallback approach and document what that fallback assumes. Include batch-effect correction (e.g., ComBat) as a separate, clearly labeled step so it can be toggled off. Cite the exact package/version and doc source you used for each preprocessing function, and verify current syntax against that source rather than a remembered API.
+> Write a preprocessing pipeline that ingests the GEO datasets identified in Phase 1a [list accessions], standardizes them into a single expression matrix, and flags samples with missing metadata. For datasets without healthy controls, implement a fallback approach and document what that fallback assumes. Include batch-effect correction (e.g., ComBat) as a separate, clearly labeled step so it can be toggled off. Cite the exact package/version and doc source you used for each preprocessing function, and verify current syntax against that source rather than a remembered API.
 
 ## Appendix: Phase 3 Prompt
 

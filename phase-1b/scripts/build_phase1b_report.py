@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenerate docs/phase1b-literature-targets.md from the Phase 1b tables.
+"""Regenerate phase-1b/docs/phase1b-literature-targets.md from the Phase 1b tables.
 
 Every count in the write-up that describes the CURRENT state of the list is
 computed here from the CSVs, so the prose, the coverage table and the figure
@@ -10,10 +10,10 @@ commit that established each one.
 
 Usage (from the repository root):
 
-    python scripts/build_phase1b_report.py
-    python scripts/build_phase1b_report.py --out docs/phase1b-literature-targets.md
+    python phase-1b/scripts/build_phase1b_report.py
+    python phase-1b/scripts/build_phase1b_report.py --out phase-1b/docs/phase1b-literature-targets.md
 
-Requires pandas. Run scripts/make_phase1b_figure.py to regenerate Figure 1.
+Requires pandas. Run phase-1b/scripts/make_phase1b_figure.py to regenerate Figure 1.
 """
 
 from __future__ import annotations
@@ -184,14 +184,14 @@ for audit, the difference being the germline NF genes excluded as targets.
 
 | File | What it holds |
 |---|---|
-| `data/phase1b-candidate-targets.csv` | The prioritisation input. {s['n_rows']} rows, germline NF genes excluded. |
-| `data/phase1b-literature-targets.csv` | All {s['n_rows_full']} verified rows with a `driver_gene` flag, for audit. |
-| `data/phase1b-references.csv` | {s['n_papers']} papers: DOI, PMC id, access route, preprint status, targets supported, resolvable link. |
-| `data/phase1b-coverage.csv` | The coverage matrix below, machine-readable. |
-| `data/phase1b-upload-priority.csv` | PDF queue and progress tracker: {s['queue_open']} papers still worth fetching. |
-| `docs/figures/phase1b-coverage-verification.png` | Figure 1. |
-| `scripts/make_phase1b_figure.py` | Regenerates Figure 1 from the candidate table. |
-| `scripts/build_phase1b_report.py` | Regenerates this document from the tables. |
+| `phase-1b/data/phase1b-candidate-targets.csv` | The prioritisation input. {s['n_rows']} rows, germline NF genes excluded. |
+| `phase-1b/data/phase1b-literature-targets.csv` | All {s['n_rows_full']} verified rows with a `driver_gene` flag, for audit. |
+| `phase-1b/data/phase1b-references.csv` | {s['n_papers']} papers: DOI, PMC id, access route, preprint status, targets supported, resolvable link. |
+| `phase-1b/data/phase1b-coverage.csv` | The coverage matrix below, machine-readable. |
+| `phase-1b/data/phase1b-upload-priority.csv` | PDF queue and progress tracker: {s['queue_open']} papers still worth fetching. |
+| `phase-1b/docs/figures/phase1b-coverage-verification.png` | Figure 1. |
+| `phase-1b/scripts/make_phase1b_figure.py` | Regenerates Figure 1 from the candidate table. |
+| `phase-1b/scripts/build_phase1b_report.py` | Regenerates this document from the tables. |
 
 ## How the list was built
 
@@ -318,7 +318,7 @@ NCBI efetch before concluding a paper is unreachable, and link readers to
 `europepmc.org/article/MED/<pmid>` rather than the DOI, which resolves to the publisher
 paywall.
 
-`data/phase1b-upload-priority.csv` doubles as work queue and progress record.
+`phase-1b/data/phase1b-upload-priority.csv` doubles as work queue and progress record.
 `pdf_status` says whether a paper was judged from a supplied PDF ({s['queue_judged']}), was
 supplied but already in hand, or is still needed ({s['queue_open']}); `pdf_filename` names
 the file and `rows_anchored_by_pdf` records what each one bought, {s['rows_anchored_by_pdf']}
@@ -370,9 +370,9 @@ primary work is under-represented, and citation-graph expansion was not performe
 
 From the repository root, in this order:
 
-    python scripts/make_phase1b_candidates.py   # candidate list from the audit table
-    python scripts/build_phase1b_report.py      # this document and the coverage matrix
-    python scripts/make_phase1b_figure.py       # Figure 1
+    python phase-1b/scripts/make_phase1b_candidates.py   # candidate list from the audit table
+    python phase-1b/scripts/build_phase1b_report.py      # this document and the coverage matrix
+    python phase-1b/scripts/make_phase1b_figure.py       # Figure 1
 
 All three read only the CSVs in `data/`. Re-run them after any change to the row set rather
 than editing numbers by hand. The first applies the scope filters, so changing what counts
@@ -382,9 +382,9 @@ as excluded means editing that script and re-running all three.
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--data", type=Path, default=Path("data"))
+    parser.add_argument("--data", type=Path, default=Path("phase-1b/data"))
     parser.add_argument("--out", type=Path,
-                        default=Path("docs/phase1b-literature-targets.md"))
+                        default=Path("phase-1b/docs/phase1b-literature-targets.md"))
     args = parser.parse_args()
 
     targets = pd.read_csv(args.data / "phase1b-literature-targets.csv")

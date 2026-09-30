@@ -12,9 +12,9 @@ comparable across diseases.
 
 Usage (from the repository root):
 
-    python scripts/make_phase1b_figure.py
-    python scripts/make_phase1b_figure.py --targets data/phase1b-candidate-targets.csv \
-        --out docs/figures/phase1b-coverage-verification.png
+    python phase-1b/scripts/make_phase1b_figure.py
+    python phase-1b/scripts/make_phase1b_figure.py --targets phase-1b/data/phase1b-candidate-targets.csv \
+        --out phase-1b/docs/figures/phase1b-coverage-verification.png
 
 Requires pandas, numpy and matplotlib.
 """
@@ -202,13 +202,13 @@ def main() -> None:
     parser.add_argument(
         "--targets",
         type=Path,
-        default=Path("data/phase1b-candidate-targets.csv"),
+        default=Path("phase-1b/data/phase1b-candidate-targets.csv"),
         help="candidate target table (default: %(default)s)",
     )
     parser.add_argument(
         "--out",
         type=Path,
-        default=Path("docs/figures/phase1b-coverage-verification.png"),
+        default=Path("phase-1b/docs/figures/phase1b-coverage-verification.png"),
         help="output PNG path (default: %(default)s)",
     )
     parser.add_argument("--dpi", type=int, default=300, help="output resolution")

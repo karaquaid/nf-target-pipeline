@@ -7,16 +7,16 @@ Two things live here:
    and build_digest() - which is what an LLM pass is given for each GEO series. The
    2026-09-24 run executed this fan-out inside Claude Science (host.llm, Sonnet-class
    model, one call per series and one per series' sample block). LLM output is not
-   deterministic, so the committed tables in /data are the record of that run, not
+   deterministic, so the committed tables in phase-1a/data are the record of that run, not
    something a re-run reproduces exactly.
 
 2. `--restore-from-tables`, which rebuilds the intermediate cache
    (classified.json, samples_labelled.json) from those committed tables, so
-   scripts/phase1_build_tables.py can be re-run without repeating the LLM pass.
+   phase-1a/scripts/phase1a_build_tables.py can be re-run without repeating the LLM pass.
 
 Usage
 -----
-    python scripts/phase1_classify.py --builddir build/phase1 --restore-from-tables data
+    python phase-1a/scripts/phase1a_classify.py --builddir build/phase1a --restore-from-tables phase-1a/data
 """
 
 from __future__ import annotations
@@ -115,7 +115,7 @@ def build_digest(series_rec: dict, sample_rows: list[dict], max_samples_shown: i
 def restore_from_tables(datadir: Path, builddir: Path) -> tuple[int, int]:
     """Rebuild classified.json / samples_labelled.json from the committed CSVs."""
     classified: dict[str, dict] = {}
-    with (datadir / "phase1-datasets.csv").open() as fh:
+    with (datadir / "phase1a-datasets.csv").open() as fh:
         for row in csv.DictReader(fh):
             if row.get("source") not in (None, "", "GEO"):
                 continue
@@ -135,7 +135,7 @@ def restore_from_tables(datadir: Path, builddir: Path) -> tuple[int, int]:
                 "evidence": row["evidence"],
                 "notes": row["notes"],
             }
-    with (datadir / "phase1-excluded.csv").open() as fh:
+    with (datadir / "phase1a-excluded.csv").open() as fh:
         for row in csv.DictReader(fh):
             classified[row["accession"]] = {
                 "in_scope": False,
@@ -150,12 +150,12 @@ def restore_from_tables(datadir: Path, builddir: Path) -> tuple[int, int]:
                 "evidence": "", "notes": "",
             }
     labels = []
-    with (datadir / "phase1-samples.csv").open() as fh:
+    with (datadir / "phase1a-samples.csv").open() as fh:
         for row in csv.DictReader(fh):
             labels.append({"series": row["series"], "gsm": row["gsm"], "label": row["label"],
                            "sporadic": {"True": True, "False": False}.get(row["sporadic"], "unknown"),
                            "in_scope_sample": row["in_scope_sample"] == "True"})
-    manual_path = datadir / "phase1-manual-classifications.json"
+    manual_path = datadir / "phase1a-manual-classifications.json"
     if manual_path.exists():
         manual = json.loads(manual_path.read_text())
         classified.update(manual.get("series", {}))
@@ -170,9 +170,9 @@ def restore_from_tables(datadir: Path, builddir: Path) -> tuple[int, int]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--builddir", default="build/phase1")
+    ap.add_argument("--builddir", default="build/phase1a")
     ap.add_argument("--restore-from-tables", metavar="DATADIR",
-                    help="rebuild the classification cache from the committed /data tables")
+                    help="rebuild the classification cache from the committed phase-1a/data tables")
     args = ap.parse_args()
     if not args.restore_from_tables:
         print(__doc__)
