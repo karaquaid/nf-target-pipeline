@@ -67,6 +67,31 @@ TIER_ORDER = [
 ]
 
 
+def flag_summary(candidates: pd.DataFrame) -> dict:
+    """Counts for the three curated target annotations, per label and per row."""
+    labels = candidates.drop_duplicates("gene_target")
+    flags = ["likely_biomarker", "mutation_restricted", "tme_target"]
+    clean = ~labels.likely_biomarker & ~labels.mutation_restricted & ~labels.tme_target
+    unflagged = labels[clean]
+    supported = candidates[candidates.evidence_tier == "full text - supported"]
+    return {
+        "n_labels": len(labels),
+        "labels": {f: int(labels[f].sum()) for f in flags},
+        "rows": {f: int(candidates[f].sum()) for f in flags},
+        "n_clean": int(clean.sum()),
+        "clean_supported": sorted(
+            set(supported[supported.gene_target.isin(unflagged.gene_target)].gene_target)
+        ),
+        "biomarker_and_tme": int((labels.likely_biomarker & labels.tme_target).sum()),
+        "n_overridden": int((labels.annotation_source != "model").sum()),
+        "top_mutation_contexts": [
+            f"{r.gene_target} ({r.mutation_context.split(',')[0].strip()})"
+            for r in labels[labels.mutation_restricted]
+            .nlargest(4, "n_supporting_papers").itertuples()
+        ],
+    }
+
+
 def collect(targets: pd.DataFrame, candidates: pd.DataFrame, refs: pd.DataFrame,
             queue: pd.DataFrame) -> dict:
     """Every current-state number the write-up quotes."""
@@ -144,6 +169,7 @@ def collect(targets: pd.DataFrame, candidates: pd.DataFrame, refs: pd.DataFrame,
                                     (candidates.evidence_tier == "full text - supported")].empty],
         "top": {d: candidates[(candidates.disease == d)].nlargest(1, "n_supporting_papers")
                 for d in DISEASES},
+        "flags": flag_summary(candidates),
     }
 
 
@@ -161,6 +187,7 @@ def build(s: dict, h: dict) -> str:
     mek = s["top"]["NF1"].iloc[0]
     # Tiers with no rows are omitted rather than printed as zeros.
     tier_rows = "\n".join(f"| {tier} | {count} |" for tier, count in s["tiers"].items() if count)
+    f = s["flags"]
 
     return f"""# Phase 1b: literature-derived candidate targets
 
@@ -188,6 +215,7 @@ for audit, the difference being the germline NF genes excluded as targets.
 | `data/phase1b-literature-targets.csv` | All {s['n_rows_full']} verified rows with a `driver_gene` flag, for audit. |
 | `data/phase1b-references.csv` | {s['n_papers']} papers: DOI, PMC id, access route, preprint status, targets supported, manifestations covered, resolvable link. |
 | `data/phase1b-coverage.csv` | The coverage matrix below, machine-readable. |
+| `data/phase1b-target-annotations.csv` | Per-label curated flags: biomarker-like, mutation-restricted, microenvironment target. |
 | `data/phase1b-upload-priority.csv` | PDF queue and progress tracker: {s['queue_open']} papers still worth fetching. |
 | `docs/figures/phase1b-coverage-verification.png` | Figure 1. |
 | `scripts/make_phase1b_figure.py` | Regenerates Figure 1 from the candidate table. |
@@ -308,6 +336,33 @@ same pathway as NF1, plus a small set of inflammatory mediators in pain from mou
 Pain is the dominant clinical problem in schwannomatosis and no target with a mechanism
 beyond the predisposition genes reached this list, which is a genuine gap rather than a
 search artefact.
+
+## Target annotations
+
+Three flags travel with every target label, to stop the prioritisation treating unlike
+things alike. They are **curated judgement, not extracted evidence**: each was assigned by
+a model reading the row's own mechanism text together with what is known of the target's
+pharmacology, then reviewed, with {f['n_overridden']} calls overridden by hand. They are
+stored once per label in `data/phase1b-target-annotations.csv` and joined onto both tables,
+so changing a call means editing that file, not a row.
+
+| Flag | Labels | Rows | What it means |
+|---|---|---|---|
+| `likely_biomarker` | {f['labels']['likely_biomarker']} of {f['n_labels']} | {f['rows']['likely_biomarker']} | More useful for stratification, diagnosis or monitoring than as something a drug acts on. Dominated by tumour-suppressor losses, where the lesion is an absence, and by proliferation and lineage markers. |
+| `mutation_restricted` | {f['labels']['mutation_restricted']} | {f['rows']['mutation_restricted']} | Relevant only to patients carrying a particular genotype. `mutation_context` names it, for example {'; '.join(f['top_mutation_contexts'])}. |
+| `tme_target` | {f['labels']['tme_target']} | {f['rows']['tme_target']} | A drug would act on the microenvironment (endothelium, macrophages, mast cells, T cells, matrix) rather than on the Schwann-lineage tumour cell. |
+
+{f['n_clean']} labels carry none of the three, and those are the closest thing this phase has
+to conventional tumour-cell drug targets. {f['biomarker_and_tme']} labels carry both the
+biomarker and microenvironment flags, typically secreted or immune markers measured in serum.
+
+The flags are properties of the target, not of a manifestation, so a label that behaves
+differently in two settings gets the call that dominates its evidence here, with the
+tension recorded in `annotation_note`. KIT is the clearest such case: mast-cell recruitment
+in plexiform neurofibroma is microenvironment biology, while the GIST row is tumour-cell.
+
+These are a prioritisation aid, not a tractability assessment. Phase 4 queries ChEMBL and
+the other target databases directly, and where it disagrees with a flag here, Phase 4 wins.
 
 ## Access and provenance
 

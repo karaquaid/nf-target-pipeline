@@ -49,6 +49,36 @@ from make_phase1b_figure import MANIFESTATIONS  # noqa: E402
 EXCLUDED_TIERS = ("full text - not supported",)
 
 
+ANNOTATION_COLUMNS = [
+    "likely_biomarker",
+    "mutation_restricted",
+    "mutation_context",
+    "tme_target",
+    "annotation_note",
+    "annotation_source",
+]
+
+
+def attach_annotations(targets: pd.DataFrame, annotations: pd.DataFrame) -> pd.DataFrame:
+    """Join the per-label target annotations onto every row of that label.
+
+    The annotations are curated judgement, not extracted evidence: whether an
+    entity is better used as a biomarker than a drug target, whether it only
+    applies to patients carrying a particular genotype, and whether a drug
+    against it would act on the tumour microenvironment rather than the tumour
+    cell. They are a property of the target, so they are stored once per label
+    in data/phase1b-target-annotations.csv and joined here; edit that file to
+    change a call, and re-run this script.
+    """
+    missing = set(targets.gene_target) - set(annotations.gene_target)
+    if missing:
+        raise ValueError(f"{len(missing)} labels have no annotation: {sorted(missing)[:5]}")
+    targets = targets.drop(columns=[c for c in ANNOTATION_COLUMNS if c in targets.columns])
+    return targets.merge(
+        annotations[["gene_target"] + ANNOTATION_COLUMNS], on="gene_target", how="left"
+    )
+
+
 def derive(targets: pd.DataFrame) -> pd.DataFrame:
     for column in ("driver_gene", "evidence_tier", "gene_target", "supporting_pmids"):
         if column not in targets.columns:
@@ -108,7 +138,10 @@ def main() -> None:
 
     targets = pd.read_csv(args.data / "phase1b-literature-targets.csv")
     refs = pd.read_csv(args.data / "phase1b-references.csv", dtype={"pmid": str})
+    annotations = pd.read_csv(args.data / "phase1b-target-annotations.csv")
 
+    targets = attach_annotations(targets, annotations)
+    targets.to_csv(args.data / "phase1b-literature-targets.csv", index=False)
     candidates = derive(targets)
     refs = annotate_references(refs, targets, candidates)
 

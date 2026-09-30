@@ -22,8 +22,9 @@ for audit, the difference being the germline NF genes excluded as targets.
 |---|---|
 | `data/phase1b-candidate-targets.csv` | The prioritisation input. 309 rows, germline NF genes excluded. |
 | `data/phase1b-literature-targets.csv` | All 348 verified rows with a `driver_gene` flag, for audit. |
-| `data/phase1b-references.csv` | 234 papers: DOI, PMC id, access route, preprint status, targets supported, resolvable link. |
+| `data/phase1b-references.csv` | 234 papers: DOI, PMC id, access route, preprint status, targets supported, manifestations covered, resolvable link. |
 | `data/phase1b-coverage.csv` | The coverage matrix below, machine-readable. |
+| `data/phase1b-target-annotations.csv` | Per-label curated flags: biomarker-like, mutation-restricted, microenvironment target. |
 | `data/phase1b-upload-priority.csv` | PDF queue and progress tracker: 40 papers still worth fetching. |
 | `docs/figures/phase1b-coverage-verification.png` | Figure 1. |
 | `scripts/make_phase1b_figure.py` | Regenerates Figure 1 from the candidate table. |
@@ -165,6 +166,33 @@ same pathway as NF1, plus a small set of inflammatory mediators in pain from mou
 Pain is the dominant clinical problem in schwannomatosis and no target with a mechanism
 beyond the predisposition genes reached this list, which is a genuine gap rather than a
 search artefact.
+
+## Target annotations
+
+Three flags travel with every target label, to stop the prioritisation treating unlike
+things alike. They are **curated judgement, not extracted evidence**: each was assigned by
+a model reading the row's own mechanism text together with what is known of the target's
+pharmacology, then reviewed, with 3 calls overridden by hand. They are
+stored once per label in `data/phase1b-target-annotations.csv` and joined onto both tables,
+so changing a call means editing that file, not a row.
+
+| Flag | Labels | Rows | What it means |
+|---|---|---|---|
+| `likely_biomarker` | 55 of 182 | 82 | More useful for stratification, diagnosis or monitoring than as something a drug acts on. Dominated by tumour-suppressor losses, where the lesion is an absence, and by proliferation and lineage markers. |
+| `mutation_restricted` | 19 | 34 | Relevant only to patients carrying a particular genotype. `mutation_context` names it, for example PRC2 (EED/SUZ12/EZH2) (Biallelic somatic SV-mediated inactivation of EED/SUZ12 (PRC2 loss)); CDKN2A (CDKN2A/9p21 (p16) homozygous deletion); TP53 (TP53 inactivating mutation/deletion in TP53-altered MPNST); SUZ12 (SUZ12 (or EED) inactivating mutation causing PRC2 loss-of-function). |
+| `tme_target` | 42 | 68 | A drug would act on the microenvironment (endothelium, macrophages, mast cells, T cells, matrix) rather than on the Schwann-lineage tumour cell. |
+
+93 labels carry none of the three, and those are the closest thing this phase has
+to conventional tumour-cell drug targets. 13 labels carry both the
+biomarker and microenvironment flags, typically secreted or immune markers measured in serum.
+
+The flags are properties of the target, not of a manifestation, so a label that behaves
+differently in two settings gets the call that dominates its evidence here, with the
+tension recorded in `annotation_note`. KIT is the clearest such case: mast-cell recruitment
+in plexiform neurofibroma is microenvironment biology, while the GIST row is tumour-cell.
+
+These are a prioritisation aid, not a tractability assessment. Phase 4 queries ChEMBL and
+the other target databases directly, and where it disagrees with a flag here, Phase 4 wins.
 
 ## Access and provenance
 
