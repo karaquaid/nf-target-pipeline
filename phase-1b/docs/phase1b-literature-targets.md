@@ -9,7 +9,7 @@ disease label (NF1, NF2-SWN, SWN) and one or more manifestations from the projec
 fixed twenty-term vocabulary, applied verbatim.
 
 The phase is complete. It produced a **candidate list of 309 gene x disease x
-manifestation rows over 182 target labels covering 237 distinct
+manifestation rows over 182 target labels covering 247 distinct
 gene symbols, drawn from 234 papers**, of which 155 were read
 in full. 244 of the 309 rows are anchored in at least one paper
 verified against its complete text; 65 rest on abstracts alone
@@ -22,8 +22,9 @@ for audit, the difference being the germline NF genes excluded as targets.
 |---|---|
 | `phase-1b/data/phase1b-candidate-targets.csv` | The prioritisation input. 309 rows, germline NF genes excluded. |
 | `phase-1b/data/phase1b-literature-targets.csv` | All 348 verified rows with a `driver_gene` flag, for audit. |
-| `phase-1b/data/phase1b-references.csv` | 234 papers: DOI, PMC id, access route, preprint status, targets supported, resolvable link. |
+| `phase-1b/data/phase1b-references.csv` | 234 papers: DOI, PMC id, access route, preprint status, targets supported, manifestations covered, resolvable link. |
 | `phase-1b/data/phase1b-coverage.csv` | The coverage matrix below, machine-readable. |
+| `phase-1b/data/phase1b-target-annotations.csv` | Per-label curated flags: biomarker-like, mutation-restricted, microenvironment target. |
 | `phase-1b/data/phase1b-upload-priority.csv` | PDF queue and progress tracker: 40 papers still worth fetching. |
 | `phase-1b/docs/figures/phase1b-coverage-verification.png` | Figure 1. |
 | `phase-1b/scripts/make_phase1b_figure.py` | Regenerates Figure 1 from the candidate table. |
@@ -33,7 +34,7 @@ for audit, the difference being the germline NF genes excluded as targets.
 
 1. **Search.** 32 PubMed queries spanning NF1, NF2-SWN and SWN crossed with the fixed manifestation vocabulary, relevance-sorted, 18 results per query, `date_from=2005`, returned 492 unique PMIDs; metadata and abstracts were retrieved for 482. 303 of those papers named at least one molecular target presented as a driver, modifier or therapeutic target.
 2. **Abstract extraction.** Each abstract was passed to a model extraction step returning gene, disease, manifestation(s) from the fixed list, role, mechanism and study system, with explicit instructions not to extract cohort-defining gene mentions or assay reagents. Calls that failed transiently were re-run rather than dropped.
-3. **Symbol normalisation.** Gene strings were mapped through an alias table and validated against official HGNC symbols. Alias-permissive matching was rejected after it mapped common shorthand onto unrelated genes, so validation uses official symbols only with the residue curated by hand. Labels that are genuinely a family, complex or pathway are kept as the label and expanded in `constituent_genes`, with `label_type` recording which kind of entity each is: gene (216), family (52), pathway (22), complex (13), drug (3), other (2), miRNA (1).
+3. **Symbol normalisation.** Gene strings were mapped through an alias table and validated against official HGNC symbols. Alias-permissive matching was rejected after it mapped common shorthand onto unrelated genes, so validation uses official symbols only with the residue curated by hand. Labels that are genuinely a family, complex or pathway are kept as the label and expanded in `constituent_genes`, with `label_type` recording which kind of entity each is: gene (216), family (52), pathway (22), complex (13), drug (3), other (2), miRNA (1). Two labels are not gene products at all. HYALURONAN, a glycosaminoglycan, carries the enzymes that synthesise and degrade it in `constituent_genes` (HAS1-3, HYAL1-4, SPAM1, CEMIP, CEMIP2) so that later phases have something to query, and those symbols are curated rather than extracted from the paper, which measures the polysaccharide itself. The clemastine row names a drug effect with no target attached and is still unexpanded.
 4. **First verification round.** Full text was sought through the PubMed connector's NCBI PMC route, which reached 56 papers. Part of that round was judged from short gene-centred excerpts rather than complete articles, which left those verdicts provisional. Both limits were later traced to the retrieval route rather than to access.
 5. **Review round.** Four scope decisions were applied: rows whose disease could not be attributed were dropped, excluding sporadic tumours from the project (168 rows, from a first version of 547); 2 rows that failed verification outright were dropped; manifestation labels were corrected from full text at the level of the individual paper rather than the whole row; and family labels were kept with the `constituent_genes` column added.
 6. **Whole-text verification.** Europe PMC's `/{PMCID}/fullTextXML` endpoint holds a larger open-access subset than the NCBI route, and 89 of the papers proved retrievable there. All 254 row-paper pairs among them were re-judged against complete bodies, reference sections stripped, one reasoning pass per paper, no excerpting. 20 single-paper rows were dropped as contradicted by their own paper on full reading.
@@ -165,6 +166,33 @@ same pathway as NF1, plus a small set of inflammatory mediators in pain from mou
 Pain is the dominant clinical problem in schwannomatosis and no target with a mechanism
 beyond the predisposition genes reached this list, which is a genuine gap rather than a
 search artefact.
+
+## Target annotations
+
+Three flags travel with every target label, to stop the prioritisation treating unlike
+things alike. They are **curated judgement, not extracted evidence**: each was assigned by
+a model reading the row's own mechanism text together with what is known of the target's
+pharmacology, then reviewed, with 3 calls overridden by hand. They are
+stored once per label in `phase-1b/data/phase1b-target-annotations.csv` and joined onto both tables,
+so changing a call means editing that file, not a row.
+
+| Flag | Labels | Rows | What it means |
+|---|---|---|---|
+| `likely_biomarker` | 55 of 182 | 82 | More useful for stratification, diagnosis or monitoring than as something a drug acts on. Dominated by tumour-suppressor losses, where the lesion is an absence, and by proliferation and lineage markers. |
+| `mutation_restricted` | 19 | 34 | Relevant only to patients carrying a particular genotype. `mutation_context` names it, for example PRC2 (EED/SUZ12/EZH2) (Biallelic somatic SV-mediated inactivation of EED/SUZ12 (PRC2 loss)); CDKN2A (CDKN2A/9p21 (p16) homozygous deletion); TP53 (TP53 inactivating mutation/deletion in TP53-altered MPNST); SUZ12 (SUZ12 (or EED) inactivating mutation causing PRC2 loss-of-function). |
+| `tme_target` | 42 | 68 | A drug would act on the microenvironment (endothelium, macrophages, mast cells, T cells, matrix) rather than on the Schwann-lineage tumour cell. |
+
+93 labels carry none of the three, and those are the closest thing this phase has
+to conventional tumour-cell drug targets. 13 labels carry both the
+biomarker and microenvironment flags, typically secreted or immune markers measured in serum.
+
+The flags are properties of the target, not of a manifestation, so a label that behaves
+differently in two settings gets the call that dominates its evidence here, with the
+tension recorded in `annotation_note`. KIT is the clearest such case: mast-cell recruitment
+in plexiform neurofibroma is microenvironment biology, while the GIST row is tumour-cell.
+
+These are a prioritisation aid, not a tractability assessment. Phase 4 queries ChEMBL and
+the other target databases directly, and where it disagrees with a flag here, Phase 4 wins.
 
 ## Access and provenance
 
