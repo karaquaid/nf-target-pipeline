@@ -54,6 +54,50 @@ def data_availability(supp: str, gds_type: str, relations: str) -> str:
     return "other_supplementary"
 
 
+def assay_class(assay_type: str, single_cell: bool) -> str:
+    """Normalise the archive-specific assay strings into one matchable value.
+
+    GEO's DataSet Type ("Expression profiling by array") and ArrayExpress's
+    MAGE-TAB study type ("transcription profiling by array") name the same assay,
+    and multi-assay GEO series concatenate several types with semicolons, so
+    assay_type cannot be matched across - or even within - sources. Values are
+    deliberately named for the measured quantity, since methylation and genotyping
+    arrays exist and are not expression data.
+    """
+    a = assay_type.lower()
+    array = bool(re.search(r"(expression|transcription) profiling by "
+                           r"(array|genome tiling array)", a))
+    seq = bool(re.search(r"expression profiling by high throughput sequencing|rna-seq", a))
+    if array and seq:
+        return "expression_array_and_rnaseq"
+    if seq:
+        return "single_cell_rnaseq" if single_cell else "bulk_rnaseq"
+    if array:
+        return "expression_array"
+    return "unclear"
+
+
+def co_assays(assay_type: str) -> str:
+    """Non-expression assays deposited in the same series.
+
+    These series' supplementary files mix data types, so Phase 2 has to select the
+    expression files rather than ingesting the whole supplementary archive.
+    """
+    a = assay_type.lower()
+    tags = []
+    if "genome binding" in a or "chip" in a:
+        tags.append("chip_or_binding")
+    if "methylation" in a:
+        tags.append("methylation")
+    if "non-coding rna" in a:
+        tags.append("ncrna_array")
+    if "genome variation" in a or "snp" in a:
+        tags.append("genotyping")
+    if re.search(r"\bother\b", a):
+        tags.append("other")
+    return ";".join(tags) if tags else "none"
+
+
 def parse_relations(rel: str) -> tuple[list[str], list[str], bool]:
     sup, sub = [], []
     sra = "sra?term=" in rel.lower() or "/sra" in rel.lower()
@@ -133,6 +177,8 @@ def main() -> int:
         ctypes = sorted({x["label"] for x in lab if x.get("label") in CONTROL_LABELS})
         manifs = [m for m in (cls.get("manifestations") or []) if m in MANIFESTATIONS] or ["Other"]
         disease = cls.get("disease") if cls.get("disease") in DISEASES else "Not specified"
+        aclass = assay_class(rec.get("gds_type", ""), bool(cls.get("single_cell")))
+        coas = co_assays(rec.get("gds_type", ""))
 
         dataset_rows.append({
             "accession": acc, "source": "GEO", "sample_level_labelled": True,
@@ -153,6 +199,7 @@ def main() -> int:
                                                    rec.get("gds_type", ""),
                                                    rec.get("relations", "")),
             "sra_raw_reads": sra,
+            "assay_class": aclass, "co_assays": coas,
             "assay_type": rec.get("gds_type", ""), "platforms": rec.get("platforms", ""),
             "release_date": rec.get("pdat", ""), "pubmed_ids": rec.get("pubmed_ids", ""),
             "superseries_of": ";".join(sup), "subseries_of": ";".join(sub),
@@ -165,7 +212,7 @@ def main() -> int:
         for m in manifs:
             label_rows.append({"accession": acc, "disease": disease, "manifestation": m,
                                "organism": org, "study_design": cls.get("study_design", ""),
-                               "n_samples_in_scope": n_inscope,
+                               "assay_class": aclass, "n_samples_in_scope": n_inscope,
                                "counted_in_coverage": acc not in dup_of})
         for s in smp:
             x = labels.get((acc, s["gsm"]), {})
@@ -182,8 +229,10 @@ def main() -> int:
         template = {k: "" for k in dataset_rows[0]}
         for a in json.loads(add_path.read_text())["records"]:
             manifs = [m for m in a["manifestations"].split(";") if m in MANIFESTATIONS]
+            aclass = assay_class(a.get("assay_type", ""), bool(a.get("single_cell")))
             row = {**template, **a, "source": "ArrayExpress", "sample_level_labelled": False,
                    "manifestations": ";".join(manifs),
+                   "assay_class": aclass, "co_assays": co_assays(a.get("assay_type", "")),
                    "n_samples_metadata_fetched": 0, "n_samples_in_scope": 0,
                    "n_nf_case_samples": 0, "n_control_samples": 0,
                    "n_sporadic_samples_excluded": 0, "sra_raw_reads": False,
@@ -195,7 +244,8 @@ def main() -> int:
                 label_rows.append({"accession": a["accession"], "disease": a["disease"],
                                    "manifestation": m, "organism": a["organism"],
                                    "study_design": a["study_design"],
-                                   "n_samples_in_scope": 0, "counted_in_coverage": True})
+                                   "assay_class": aclass, "n_samples_in_scope": 0,
+                                   "counted_in_coverage": True})
         ds_extra = {a["accession"]: a for a in json.loads(add_path.read_text())["records"]}
         print(f"[merge] {len(ds_extra)} ArrayExpress records added "
               f"(dataset counts only; samples not labelled)")
