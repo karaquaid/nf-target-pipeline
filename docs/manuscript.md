@@ -1,7 +1,9 @@
 # Manuscript draft: nf-target-pipeline
 
-**Status:** working draft. Phases 1a and 1b are complete and written as prose; everything
-downstream is an outline. Do not circulate.
+**Status:** working draft. Framing is settled: a resource paper whose method is also a
+resource, so the protocol is written to be reused rather than as internal detail.
+Phases 1a and 1b are complete and written as prose; everything downstream is an outline.
+Do not circulate.
 
 **How to read the markers.**
 
@@ -20,38 +22,42 @@ which are regenerated from the tables, rather than editing them here by hand.
 
 | Phase | Status | Section here |
 |---|---|---|
-| 1a dataset scope | complete | Methods 2.2, Results 3.1 |
-| 1b literature targets | complete | Methods 2.3, Results 3.2 and 3.3 |
-| 2 ingestion and preprocessing | not started | Methods 2.4 outline |
-| 3 expression-derived candidates | not started | Methods 2.5, Results 3.4 outline |
-| 3b coverage review | not started, human decision point | Methods 2.6, Results 3.5 outline |
-| 4 tractability and drug layer | not started | Methods 2.7, Results 3.6 outline |
-| 5 cross-disease validation | not started | Methods 2.8, Results 3.7 outline |
-| 6 evidence scoring | not started | Methods 2.9, Results 3.8 outline |
-| 7 convergence with literature | not started | Methods 2.10, Results 3.9 outline |
-| 8 agent workflow | not started | Methods 2.11 outline |
+| 1a dataset scope | complete | Methods 2.3, Results 3.1 |
+| 1b literature targets | complete | Methods 2.4, Results 3.2 and 3.3 |
+| 2 ingestion and preprocessing | not started | Methods 2.5 outline |
+| 3 expression-derived candidates | not started | Methods 2.6, Results 3.4 outline |
+| 3b coverage review | not started, human decision point | Methods 2.7, Results 3.5 outline |
+| 4 tractability and drug layer | not started | Methods 2.8, Results 3.6 outline |
+| 5 cross-disease validation | not started | Methods 2.9, Results 3.7 outline |
+| 6 evidence scoring | not started | Methods 2.10, Results 3.8 outline |
+| 7 convergence with literature | not started | Methods 2.11, Results 3.9 outline |
+| 8 agent workflow | not started | Methods 2.12 outline |
 | 9 evaluation | not started | Results 3.10 outline |
 
 ---
 
 ## Title
 
-> `[FILL IN]` Pick a framing. The three options differ in what the paper claims to be, and
-> that choice drives the Introduction and the Discussion:
+This is a resource paper with two resources: the NF evidence map (the tables) and the method
+that produced it (the protocol and the code). Both claims have to be made explicitly, because
+a reader who takes it for a findings paper will ask why there is no validated hit, and a
+reader who takes it for a pure data descriptor will not reuse the protocol.
+
+> `[FILL IN]` Pick one. Both say resource plus method; they differ in which leads.
 >
-> 1. **Resource paper.** "A curated, provenance-tracked map of candidate drug targets and
->    public expression data for neurofibromatosis type 1, NF2-related schwannomatosis and
->    schwannomatosis". Claims: the tables are the contribution. Easiest to defend today,
->    because Phases 1a and 1b alone support it.
-> 2. **Methods paper.** "Agent-operated target prioritisation in a rare disease: provenance
->    discipline as a design constraint". Claims: the pipeline and its verification
->    discipline generalise beyond NF. Needs Phases 2 to 7 to have run.
-> 3. **Findings paper.** "Convergent expression and literature evidence nominates X for
->    Y manifestation in NF". Claims a biological result. Needs Phase 7 and a real hit.
+> 1. "An evidence-graded map of candidate drug targets in neurofibromatosis, and a
+>    provenance-tracking protocol for building one in a rare disease"
+> 2. "Grading the evidence behind rare-disease drug targets: a neurofibromatosis target map
+>    and a reusable verification protocol"
 
 **Authors:** `[FILL IN]`
 **Affiliations:** `[FILL IN]`
 **Corresponding author:** `[FILL IN]`
+
+**Suggested article type:** resource, database or methods article depending on the journal.
+`[FILL IN]` A journal that has both a resource and a protocol format may want this split in
+two; a single paper is only worth it if the protocol is presented as transferable rather than
+as the methods behind our tables.
 
 ## Abstract
 
@@ -97,21 +103,83 @@ the state of the evidence about it. Three problems recur.
 > evidence is thinnest and, I suspect, where unmet need is highest, but that is your
 > judgement to make and to cite, not mine.
 
-We describe a pipeline that addresses these three problems directly. Its design commitments
-are that every claim carries its provenance, that scope exclusions are reversible and
-recorded rather than applied by deletion, and that an absence is distinguished from an
-unverified presence at every stage. The pipeline is operated by a Claude agent against
-public databases and literature, and the code and tables are versioned in full.
+We present two linked resources that address these three problems directly.
 
-> `[CHECK]` I have deliberately not claimed novelty for the pipeline architecture. Several
-> groups publish target-prioritisation frameworks, and Open Targets already scores
-> gene-disease associations. The defensible novelty here is the NF-specific evidence map
-> plus the verification discipline, not the idea of scoring targets. A literature check
-> against existing rare-disease prioritisation frameworks belongs here before submission.
+The first is an evidence map for NF: an inventory of the public expression data that exists
+per disease and manifestation, and a candidate target list in which every claim carries the
+depth at which it was checked, the papers behind it, and whether those papers were read in
+full or only as abstracts.
+
+The second is the method that produced it, which we present as a protocol rather than as
+internal detail. Its components are generic: a fixed manifestation vocabulary applied
+verbatim so coverage can be counted across heterogeneous sources; a three-route ladder for
+obtaining full text that recovers substantially more papers than any single route; a
+per-paper verdict rubric that judges each claim against the complete article body and records
+what the body actually studies; a provenance schema in which every row states its evidence
+tier and access route; scope exclusions implemented as reversible flags rather than
+deletions; and outputs regenerated by committed code so that prose and tables cannot drift.
+None of this is specific to neurofibromatosis. It is specific to the situation of a rare
+disease whose literature is small enough to read exhaustively and uneven enough that counting
+papers misleads.
+
+> `[CHECK]` The novelty claim needs care. Target-prioritisation frameworks are not new, and
+> Open Targets already scores gene-disease associations at scale. What we claim is narrower
+> and, I think, defensible: that grading each claim by verification depth changes the ranking,
+> and that the protocol for doing so is transportable to other rare diseases. A survey of
+> existing rare-disease prioritisation frameworks belongs here before submission, and if one
+> already grades by full-text verification, this claim has to be rewritten rather than
+> softened.
 
 ## 2. Methods
 
-### 2.1 Disease and manifestation labelling standard
+### 2.1 Design principles and reusable components
+
+Six commitments shape every phase, and they are the part of this work we expect to transfer
+to other rare diseases. Each is stated here once rather than repeated per phase, with the
+file that implements it.
+
+1. **A fixed label vocabulary, applied verbatim.** Disease and manifestation labels are fixed
+   in advance (Section 2.2) and never invented at the point of use, so coverage can be counted
+   across datasets, papers and candidates on the same axes. The cost is a residual "Other"
+   bucket, which we report rather than hide.
+2. **Provenance travels with every claim.** Each target row states how many papers support
+   it, which papers, whether each was read in full or only as an abstract, by which retrieval
+   route, and the resulting evidence tier. A reader can audit any single row back to an
+   article body without rerunning anything.
+3. **Absence is distinguished from unverified presence.** A claim nobody has checked is
+   tiered `abstract only` rather than scored as weak evidence, and a manifestation with no
+   rows is reported as empty rather than omitted. The two are different findings and the
+   tables keep them apart.
+4. **Scope exclusions are flags plus derived tables, never deletions.** Sporadic evidence,
+   germline driver genes and contradicted rows are excluded from the candidate list by a
+   filter in one script, while the full annotated table retains them. Any exclusion can be
+   reversed, widened or audited by changing that filter.
+5. **Outputs are regenerated by committed code.** The write-ups, coverage matrices and figures
+   are produced by scripts in the repository, so a count in prose cannot drift from the table
+   it describes. Counts that describe past process rather than current state are held in an
+   explicit history block with the commit that established each.
+6. **Human decisions are recorded as decisions.** Scope choices, the manifestation
+   prioritisation in Phase 3b, and every hand override of a model call are written down with
+   their rationale, so a later reader can tell a judgement from a computation.
+
+| Reusable component | Where it lives |
+|---|---|
+| Disease and manifestation vocabulary | `docs/project-plan.md` |
+| Search strategy and per-record classification rubric | `phase-1a/scripts/phase1a_geo_search.py`, `phase1a_classify.py` |
+| Three-route full-text retrieval ladder | described in Section 2.4 |
+| Per-paper claim verdict rubric | described in Section 2.4 |
+| Provenance and evidence-tier schema | `phase-1b/data/phase1b-candidate-targets.csv` columns |
+| Target annotation scheme (biomarker, genotype-restricted, microenvironment) | `phase-1b/data/phase1b-target-annotations.csv` |
+| Scope filter and derived-table pattern | `phase-1b/scripts/make_phase1b_candidates.py` |
+| Report and figure regeneration | `phase-1b/scripts/build_phase1b_report.py`, `make_phase1b_figure.py` |
+
+> `[CHECK]` The retrieval ladder and the verdict rubric are currently described in prose in
+> Section 2.4 rather than packaged as a standalone script. If the protocol is a headline
+> resource, they should be extracted into `scripts/` as a reusable module with the disease
+> vocabulary as a parameter. That is a modest piece of work and it would make the transfer
+> claim concrete rather than aspirational.
+
+### 2.2 Disease and manifestation labelling standard
 
 Every dataset, paper and candidate target carries a disease label (NF1, NF2-SWN or SWN) and
 one or more manifestation labels drawn verbatim from a fixed twenty-term vocabulary: Bone
@@ -132,7 +200,7 @@ biology differs, and its consequences are quantified in Results.
 > manifestation attached is forced into "Other". We hit this repeatedly in Phase 1b. If a
 > term is added before submission, every count in this draft changes.
 
-### 2.2 Public expression dataset inventory (Phase 1a)
+### 2.3 Public expression dataset inventory (Phase 1a)
 
 Twenty-seven E-utilities queries against GEO DataSets, one per manifestation plus
 disease-level and mouse-model catch-alls, restricted to series records and expression assay
@@ -145,7 +213,7 @@ experiments not mirrored from GEO, curated by hand. Superseries and subseries pa
 samples, so datasets were deduplicated for counting. Scripts and tables are listed in the
 Phase 1a write-up.
 
-### 2.3 Literature-derived target identification (Phase 1b)
+### 2.4 Literature-derived target identification (Phase 1b)
 
 Thirty-two PubMed queries spanning the three diseases crossed with the manifestation
 vocabulary, relevance-sorted and restricted to 2005 onward, returned 492 articles; abstracts
@@ -184,7 +252,7 @@ own extracted mechanism together with known pharmacology, reviewed by hand, with
 overridden. These flags are curated judgement rather than extracted evidence, and are
 superseded by the Phase 4 tractability data where the two disagree.
 
-### 2.4 Expression data ingestion and preprocessing (Phase 2)
+### 2.5 Expression data ingestion and preprocessing (Phase 2)
 
 > `[OUTLINE]` Depends on the Phase 3b organism decision. Will cover:
 >
@@ -198,7 +266,7 @@ superseded by the Phase 4 tractability data where the two disagree.
 > - `[FILL IN]` Whether a no-control dataset may contribute to a candidate at all, or only
 >   corroborate one derived from a controlled comparison.
 
-### 2.5 Expression-derived candidate identification (Phase 3)
+### 2.6 Expression-derived candidate identification (Phase 3)
 
 > `[OUTLINE]` Will cover: differential expression method and thresholds; pathway enrichment,
 > extending the existing KEGG mapping step to run from expression rather than pre-selected
@@ -210,7 +278,7 @@ superseded by the Phase 4 tractability data where the two disagree.
 > analysis after batch correction. This was flagged as an open methodological decision in the
 > plan review and is not yet resolved.
 
-### 2.6 Evidence coverage review and manifestation prioritisation (Phase 3b)
+### 2.7 Evidence coverage review and manifestation prioritisation (Phase 3b)
 
 > `[OUTLINE]` A human decision point by design. Will cover: the aggregation of literature
 > evidence from Phase 1b and expression evidence from Phase 3 per disease and manifestation;
@@ -220,7 +288,7 @@ superseded by the Phase 4 tractability data where the two disagree.
 >
 > `[FILL IN]` The decision itself and its reasoning.
 
-### 2.7 Drug interaction, selectivity and tractability layer (Phase 4)
+### 2.8 Drug interaction, selectivity and tractability layer (Phase 4)
 
 > `[OUTLINE]` Will cover, for candidates from the selected manifestations only: known drug
 > interactions; curated selectivity; clinical stage; approval and availability status; safety
@@ -238,7 +306,7 @@ superseded by the Phase 4 tractability data where the two disagree.
 > as unassessed. These are different claims and the distinction matters for the rare-disease
 > audience, where an untractable target may still be the right biology.
 
-### 2.8 Cross-disease mechanistic validation (Phase 5)
+### 2.9 Cross-disease mechanistic validation (Phase 5)
 
 > `[OUTLINE]` Will cover: disease-term standardisation through Mondo; mechanistic
 > cross-checks against related rare diseases; and the Monarch knowledge graph as a partial
@@ -246,7 +314,7 @@ superseded by the Phase 4 tractability data where the two disagree.
 > acts in a cullin-RING complex that ubiquitinates RAS and therefore places schwannomatosis
 > on the same pathway as NF1.
 
-### 2.9 Evidence strength scoring (Phase 6)
+### 2.10 Evidence strength scoring (Phase 6)
 
 > `[OUTLINE]` Will cover the rubric combining drug-interaction evidence, tractability,
 > clinical stage, approval status, cross-disease support, safety and the delivery-route flag
@@ -258,7 +326,7 @@ superseded by the Phase 4 tractability data where the two disagree.
 > one; whether a biomarker-flagged target is downweighted or excluded; and whether a
 > preprint-only row can clear the threshold at all.
 
-### 2.10 Convergence of expression and literature evidence (Phase 7)
+### 2.11 Convergence of expression and literature evidence (Phase 7)
 
 > `[OUTLINE]` Will cover the comparison of the expression-derived and literature-derived
 > candidate lists: overlap, and targets found by only one route. Literature-only matches are
@@ -266,7 +334,7 @@ superseded by the Phase 4 tractability data where the two disagree.
 > differently from one with a full-text-supported row. Expression-only candidates are the
 > genuinely new material and need their own treatment.
 
-### 2.11 Agent operation and reproducibility (Phase 8)
+### 2.12 Agent operation and reproducibility (Phase 8)
 
 > `[OUTLINE]` Will cover how the pipeline runs as an agent-operated workflow, and the
 > reproducibility arrangements. The latter is partly in place and can be described now:
@@ -429,6 +497,28 @@ flags are a first attempt at separating these; Phase 4 tractability data will do
 > `[OUTLINE]` Position against Open Targets, DGIdb and any NF-specific target compilations.
 > `[CHECK]` I have not surveyed NF-specific target resources, and if one exists this section
 > becomes load-bearing: the paper then has to say what it adds rather than what it builds.
+
+### 4.2 Transferability beyond NF
+
+The evidence map is NF-specific. The protocol is not, and the conditions under which it pays
+off are statable: a disease whose literature is small enough that every retrieved paper can
+be read, heterogeneous enough that claims arrive at different levels of evidence, and uneven
+enough across subphenotypes that counting papers gives the wrong ranking. Most rare diseases
+meet those conditions; common-disease oncology largely does not, because the corpus is too
+large to verify exhaustively.
+
+Three components should transfer with no modification: the retrieval ladder, the per-paper
+verdict rubric, and the flag-plus-derived-table pattern for scope filters. The fixed
+manifestation vocabulary transfers as a pattern but not as content, since it has to be
+rebuilt per disease, ideally from an existing clinical standard rather than drafted fresh.
+The target annotation flags are the least transferable, since the biomarker-versus-target
+judgement depends on the pharmacology of the specific gene set.
+
+> `[FILL IN]` Whether to make the transfer claim concrete by applying the protocol to a
+> second disease before submission. One worked second case would move this section from an
+> argument to a demonstration, and would also test whether the vocabulary step is as
+> mechanical as I have claimed. It is also the single most expensive thing this paper could
+> ask for, so it may be a follow-up rather than part of this work.
 
 ## 5. Limitations
 
