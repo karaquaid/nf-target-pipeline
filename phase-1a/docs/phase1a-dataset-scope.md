@@ -1,6 +1,8 @@
 # Phase 1a: Public expression-dataset scope for NF1 / NF2-SWN / schwannomatosis
 
-**Status:** complete, pending review. **Sweep date:** 2026-09-29 (first run 2026-09-24).
+**Status:** complete, pending review. **Sweep date:** 2026-10-02 (first run 2026-09-24; the
+2026-09-29 and 2026-10-02 re-runs returned the same 415 series and identical hit counts for all 27
+queries).
 **Scripts:** `phase-1a/scripts/phase1a_geo_search.py` (search), `phase-1a/scripts/phase1a_classify.py` (rubric +
 cache restore), `phase-1a/scripts/phase1a_build_tables.py` (tables).
 **Tables:** `phase-1a/data/phase1a-datasets.csv`, `phase-1a/data/phase1a-dataset-labels.csv`, `phase-1a/data/phase1a-samples.csv`,
@@ -93,6 +95,14 @@ Dataset count is not analysis capacity. Of the 160 counted datasets:
   7 other supplementary formats, 2 nothing (RNA-seq raw reads remain reachable via SRA for 40).
 - **Single-cell/single-nucleus:** 28 datasets, collected and marked, deferred for compute per the
   plan.
+- **Assay class:** `assay_class` normalises the archive-specific assay strings into one matchable
+  value, because GEO's "Expression profiling by array" and ArrayExpress's "transcription profiling by
+  array" name the same assay and multi-assay GEO series concatenate several types into one field.
+  Across the 185 rows: 108 bulk RNA-seq, 44 expression array (41 GEO + 3 ArrayExpress), 32
+  single-cell RNA-seq (30 + 2), 1 carrying both array and RNA-seq. The values name the measured
+  quantity ("expression_array" rather than "array") since methylation and genotyping arrays exist and
+  are not expression data. Platform-level detail for Phase 2 preprocessing stays in `platforms`
+  (GPL accessions, GEO rows only).
 
 Leading human comparative candidates (largest in-scope sample counts):
 
@@ -150,12 +160,18 @@ GSE78901 (plexiform neurofibroma, 21).
 - **The ArrayExpress additions have no sample-level labels**, so they contribute to dataset counts
   and not to sample counts. Their `n_samples` is an assay/hybridisation count, which is not the same
   as a biological sample count.
+- **Non-expression assays in the same series.** 18 datasets deposit another assay alongside the
+  expression data: 9 ChIP/genome-binding, 3 methylation, 3 "Other", 1 non-coding RNA array, and 2
+  combinations of those. They are flagged in `co_assays` (`none` for the other 167). Their
+  supplementary archives mix data types, so Phase 2 has to select the expression files rather than
+  ingesting the whole `_RAW.tar`.
 - **Keyword recall.** A series that never names its disease, manifestation or an NF gene in title,
   summary or sample metadata is invisible to this sweep. The five zero-coverage manifestations
   (cardiovascular, sleep, ependymoma, GIST, pulmonary) match the thin literature Phase 1b found in
   the same areas, which is consistent with a real absence rather than a search artefact — but it is
   keyword evidence, not proof.
-- **GEO moves.** The 2026-09-24 run returned 414 series; the 2026-09-29 re-run returned 415. The new
+- **GEO moves.** The 2026-09-24 run returned 414 series; the 2026-09-29 re-run returned 415, and the
+  2026-10-02 re-run returned the same 415 with identical per-query hit counts. The new
   record (GSE344687, NF2-associated vestibular schwannoma multiome) was classified by hand and is
   recorded in `phase-1a/data/phase1a-manual-classifications.json`. LLM classification is not deterministic, so
   the committed tables — not a re-run — are the record of this sweep.

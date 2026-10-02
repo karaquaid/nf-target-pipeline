@@ -1,228 +1,228 @@
-accession,disease,manifestation,organism,study_design,n_samples_in_scope,counted_in_coverage
-GSE100181,NF1,Other,human,in_vitro_perturbation,9,True
-GSE102345,NF1,Optic pathway glioma,mouse,tumor_vs_normal,67,True
-GSE108524,NF2-SWN,Vestibular schwannoma,human,tumor_vs_normal,21,True
-GSE115359,NF2-SWN,Vestibular schwannoma,human,in_vitro_perturbation,4,True
-GSE116000,NF2-SWN,Other,human,in_vitro_perturbation,5,True
-GSE117322,NF1,Cutaneous neurofibroma,human,in_vitro_perturbation,6,True
-GSE117781,NF1,Cutaneous neurofibroma,mouse,xenograft_or_in_vivo_treatment,12,True
-GSE118185,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,16,False
-GSE118185,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,16,False
-GSE118186,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,18,True
-GSE118186,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,18,True
-GSE120685,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,6,False
-GSE120687,NF1,Cutaneous neurofibroma,human,subtype_or_grade_comparison,74,True
-GSE120687,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,74,True
-GSE120687,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,74,True
-GSE122730,NF1,Plexiform neurofibroma,mouse,single_arm_profiling,1,True
-GSE122773,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,7,False
-GSE122774,NF1,Plexiform neurofibroma,mouse,tumor_vs_normal,3,False
-GSE122777,NF1,Plexiform neurofibroma,human+mouse,other,10,True
-GSE122999,NF1,Plexiform neurofibroma,mouse,subtype_or_grade_comparison,13,True
-GSE123044,SWN,Other,mouse,in_vitro_perturbation,6,True
-GSE125040,NF1,Malignant peripheral nerve sheath tumor (MPNST),zebrafish,in_vitro_perturbation,10,True
-GSE137152,NF1,Hematologic malignancies,mouse,tumor_vs_normal,6,True
-GSE138344,NF2-SWN,Non-vestibular schwannoma,human,subtype_or_grade_comparison,11,False
-GSE138344,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,11,False
-GSE138344,NF2-SWN,Pain,human,subtype_or_grade_comparison,11,False
-GSE138346,NF2-SWN,Pain,human,subtype_or_grade_comparison,7,False
-GSE138346,NF2-SWN,Non-vestibular schwannoma,human,subtype_or_grade_comparison,7,False
-GSE138347,NF2-SWN,Non-vestibular schwannoma,human,subtype_or_grade_comparison,18,True
-GSE138347,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,18,True
-GSE138347,NF2-SWN,Pain,human,subtype_or_grade_comparison,18,True
-GSE14038,NF1,Plexiform neurofibroma,human,tumor_vs_normal,76,True
-GSE14038,NF1,Cutaneous neurofibroma,human,tumor_vs_normal,76,True
-GSE14038,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,tumor_vs_normal,76,True
-GSE141437,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,24,False
-GSE141801,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,23,True
-GSE144601,NF1,Other,human,in_vitro_perturbation,12,True
-GSE145064,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,46,True
-GSE145064,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,46,True
-GSE147360,NF1,High grade glioma,mouse,single_arm_profiling,240,True
-GSE1482,NF1,Cognition / Behavioral / Learning,mouse,other,30,True
-GSE148249,NF1,Plexiform neurofibroma,mouse,subtype_or_grade_comparison,20,True
-GSE148249,NF1,ANNUBP / atypical neurofibroma,mouse,subtype_or_grade_comparison,20,True
-GSE148249,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,subtype_or_grade_comparison,20,True
-GSE149946,NF1,Optic pathway glioma,mouse,in_vitro_perturbation,9,True
-GSE152752,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,in_vitro_perturbation,10,True
-GSE156391,NF1,Plexiform neurofibroma,mouse,in_vitro_perturbation,6,True
-GSE156819,NF1,High grade glioma,mouse,in_vitro_perturbation,24,False
-GSE156821,NF1,High grade glioma,mouse,in_vitro_perturbation,80,True
-GSE157677,NF2-SWN,Other,mouse,in_vitro_perturbation,6,True
-GSE159021,NF1,Other,mouse,in_vitro_perturbation,4,False
-GSE159026,NF1,Other,mouse,in_vitro_perturbation,3,True
-GSE159896,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,6,True
-GSE161823,NF1,High grade glioma,mouse,other,26,True
-GSE163028,NF1,Cutaneous neurofibroma,human,single_arm_profiling,3,True
-GSE163071,NF1,Optic pathway glioma,human,subtype_or_grade_comparison,22,True
-GSE165826,NF1,ANNUBP / atypical neurofibroma,human,single_arm_profiling,1,True
-GSE166080,NF1,Cognition / Behavioral / Learning,human,in_vitro_perturbation,21,True
-GSE166551,NF1,Optic pathway glioma,mouse,in_vitro_perturbation,10,True
-GSE172221,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,subtype_or_grade_comparison,22,True
-GSE172221,NF1,Plexiform neurofibroma,human+mouse,subtype_or_grade_comparison,22,True
-GSE172221,NF1,Cutaneous neurofibroma,human+mouse,subtype_or_grade_comparison,22,True
-GSE173577,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,12,True
-GSE174100,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,12,True
-GSE174389,NF2-SWN,Vestibular schwannoma,human,in_vitro_perturbation,4,True
-GSE178989,NF1,Other,human,subtype_or_grade_comparison,8,False
-GSE178989,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,8,False
-GSE179033,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,14,False
-GSE179033,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,14,False
-GSE179041,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,subtype_or_grade_comparison,3,False
-GSE179043,NF1,Plexiform neurofibroma,human+mouse,subtype_or_grade_comparison,36,True
-GSE179043,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,subtype_or_grade_comparison,36,True
-GSE180338,NF2-SWN,Vestibular schwannoma,human,other,9,True
-GSE180338,NF2-SWN,Non-vestibular schwannoma,human,other,9,True
-GSE181985,NF1,Plexiform neurofibroma,human+mouse,tumor_vs_normal,31,True
-GSE181986,NF1,Plexiform neurofibroma,mouse,subtype_or_grade_comparison,14,True
-GSE183307,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,28,False
-GSE183309,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,90,True
-GSE184181,NF1,Optic pathway glioma,mouse,single_arm_profiling,1,True
-GSE18444,NF1,Other,human,tumor_vs_normal,18,False
-GSE18445,NF1,Other,human,other,6,False
-GSE18447,NF1,Other,mouse,other,12,False
-GSE18448,NF1,Other,human+mouse,in_vitro_perturbation,36,True
-GSE186107,NF2-SWN,Vestibular schwannoma,human,in_vitro_perturbation,6,True
-GSE186162,NF2-SWN,Other,mouse,xenograft_or_in_vivo_treatment,2,True
-GSE186189,NF2-SWN,Other,mouse,in_vitro_perturbation,6,True
-GSE192660,NF2-SWN,Other,mouse,xenograft_or_in_vivo_treatment,8,True
-GSE19305,NF2-SWN,Non-vestibular schwannoma,mouse,in_vitro_perturbation,18,True
-GSE196652,NF1,Bone defects,human,in_vitro_perturbation,317,True
-GSE201668,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,6,True
-GSE203647,NF1,Cognition / Behavioral / Learning,human,in_vitro_perturbation,11,True
-GSE205016,SWN,Hematologic malignancies,mouse,other,3,False
-GSE207400,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,26,True
-GSE207400,NF1,ANNUBP / atypical neurofibroma,human,subtype_or_grade_comparison,26,True
-GSE207400,NF1,Other,human,subtype_or_grade_comparison,26,True
-GSE210023,NF2-SWN,Other,mouse,other,6,True
-GSE212964,Not specified,Plexiform neurofibroma,human,subtype_or_grade_comparison,72,False
-GSE212964,Not specified,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,72,False
-GSE212964,Not specified,Vestibular schwannoma,human,subtype_or_grade_comparison,72,False
-GSE212965,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,single_arm_profiling,167,True
-GSE213786,NF1,Plexiform neurofibroma,mouse,tumor_vs_normal,12,False
-GSE213787,NF1,Plexiform neurofibroma,mouse,xenograft_or_in_vivo_treatment,24,False
-GSE213789,NF1,Plexiform neurofibroma,mouse,xenograft_or_in_vivo_treatment,36,True
-GSE213988,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,6,True
-GSE218493,NF1,Cutaneous neurofibroma,human,subtype_or_grade_comparison,2,True
-GSE218493,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,2,True
-GSE219135,NF2-SWN,Other,human,in_vitro_perturbation,4,False
-GSE219141,NF2-SWN,Other,human,in_vitro_perturbation,10,True
-GSE225747,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,in_vitro_perturbation,8,True
-GSE226980,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,subtype_or_grade_comparison,8,True
-GSE227456,NF1,Plexiform neurofibroma,mouse,single_arm_profiling,1,True
-GSE228630,NF2-SWN,Other,mouse,other,6,True
-GSE231603,NF1,Other,rat,tumor_vs_normal,80,True
-GSE232451,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,in_vitro_perturbation,9,True
-GSE232451,NF1,Plexiform neurofibroma,mouse,in_vitro_perturbation,9,True
-GSE232516,NF1,Bone defects,human,tumor_vs_normal,4,True
-GSE232517,NF1,Bone defects,mouse,single_arm_profiling,1,True
-GSE232528,NF2-SWN,Meningioma,human,subtype_or_grade_comparison,14,True
-GSE232707,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,tumor_vs_normal,18,True
-GSE232707,NF1,Plexiform neurofibroma,mouse,tumor_vs_normal,18,True
-GSE232766,NF1,Plexiform neurofibroma,human,single_arm_profiling,12,True
-GSE234071,NF1,Bone defects,human,tumor_vs_normal,4,True
-GSE239561,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,34,True
-GSE239561,NF1,ANNUBP / atypical neurofibroma,human,subtype_or_grade_comparison,34,True
-GSE239561,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,34,True
-GSE244362,NF2-SWN,Other,human,in_vitro_perturbation,41,True
-GSE244433,NF1,Optic pathway glioma,human+mouse,tumor_vs_normal,12,True
-GSE244829,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,xenograft_or_in_vivo_treatment,9,True
-GSE246610,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,xenograft_or_in_vivo_treatment,51,True
-GSE262030,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,51,True
-GSE263046,NF1,Cutaneous neurofibroma,human,xenograft_or_in_vivo_treatment,8,True
-GSE263107,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,32,True
-GSE263122,NF2-SWN,Meningioma,human,in_vitro_perturbation,6,True
-GSE265875,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,tumor_vs_normal,29,True
-GSE26676,NF1,High grade glioma,mouse,subtype_or_grade_comparison,11,True
-GSE269517,NF1,Optic pathway glioma,mouse,xenograft_or_in_vivo_treatment,6,True
-GSE270264,NF1,Optic pathway glioma,mouse,xenograft_or_in_vivo_treatment,2,True
-GSE270880,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,18,True
-GSE270880,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,18,True
-GSE275048,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,12,False
-GSE275049,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,14,True
-GSE275277,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,subtype_or_grade_comparison,18,True
-GSE277520,NF1,Plexiform neurofibroma,human,xenograft_or_in_vivo_treatment,47,True
-GSE277653,NF1,Bone defects,human,in_vitro_perturbation,45,True
-GSE278250,NF1,Plexiform neurofibroma,mouse,single_arm_profiling,1,True
-GSE282045,SWN,Non-vestibular schwannoma,mouse,xenograft_or_in_vivo_treatment,6,True
-GSE282456,NF1,Non-optic LGG,human,in_vitro_perturbation,40,True
-GSE283902,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,xenograft_or_in_vivo_treatment,31,True
-GSE2841,NF1,Other,human,subtype_or_grade_comparison,2,True
-GSE286371,NF1,Plexiform neurofibroma,mouse,xenograft_or_in_vivo_treatment,12,True
-GSE289387,NF2-SWN,Non-vestibular schwannoma,mouse,in_vitro_perturbation,24,True
-GSE289387,NF2-SWN,Vestibular schwannoma,mouse,in_vitro_perturbation,24,True
-GSE289794,NF1,Cutaneous neurofibroma,mouse,tumor_vs_normal,25,True
-GSE290674,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,10,True
-GSE290674,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,10,True
-GSE292071,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,0,True
-GSE292071,NF2-SWN,Non-vestibular schwannoma,human,subtype_or_grade_comparison,0,True
-GSE292315,NF2-SWN,Non-vestibular schwannoma,mouse,in_vitro_perturbation,12,True
-GSE292315,NF2-SWN,Vestibular schwannoma,mouse,in_vitro_perturbation,12,True
-GSE29343,NF1,Bone defects,mouse,tumor_vs_normal,8,True
-GSE295650,NF2-SWN,Bone defects,mouse,in_vitro_perturbation,6,True
-GSE302434,NF2-SWN,Non-vestibular schwannoma,human,in_vitro_perturbation,43,True
-GSE303054,NF1,Optic pathway glioma,mouse,xenograft_or_in_vivo_treatment,2,True
-GSE303418,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,36,True
-GSE305286,NF1,Bone defects,mouse,in_vitro_perturbation,4,True
-GSE305286,NF1,Plexiform neurofibroma,mouse,in_vitro_perturbation,4,True
-GSE305426,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,24,True
-GSE307286,NF2-SWN,Meningioma,human,in_vitro_perturbation,12,True
-GSE307569,NF1,Hematologic malignancies,human,xenograft_or_in_vivo_treatment,5,True
-GSE315579,NF2-SWN,Vestibular schwannoma,human,single_arm_profiling,4,True
-GSE317486,NF1,High grade glioma,mouse,xenograft_or_in_vivo_treatment,10,True
-GSE317549,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,3,True
-GSE317922,NF1,Cognition / Behavioral / Learning,zebrafish,in_vitro_perturbation,16,True
-GSE318927,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,14,True
-GSE318927,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,14,True
-GSE319151,NF2-SWN,Bone defects,mouse,in_vitro_perturbation,6,True
-GSE320094,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,12,True
-GSE320095,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,6,True
-GSE320122,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,6,True
-GSE320227,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,in_vitro_perturbation,6,True
-GSE320231,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,6,True
-GSE320235,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,6,True
-GSE320236,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,6,True
-GSE32029,NF1,Cutaneous neurofibroma,human,in_vitro_perturbation,36,True
-GSE325204,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,9,True
-GSE328707,NF1,Optic pathway glioma,mouse,xenograft_or_in_vivo_treatment,12,True
-GSE343216,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,xenograft_or_in_vivo_treatment,64,True
-GSE343216,NF1,Plexiform neurofibroma,mouse,xenograft_or_in_vivo_treatment,64,True
-GSE344687,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,11,True
-GSE39764,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,18,True
-GSE40187,NF2-SWN,Non-vestibular schwannoma,mouse,in_vitro_perturbation,4,True
-GSE41747,NF1,Cutaneous neurofibroma,human+mouse,tumor_vs_normal,83,True
-GSE41747,NF1,Plexiform neurofibroma,human+mouse,tumor_vs_normal,83,True
-GSE41747,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,tumor_vs_normal,83,True
-GSE46904,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,8,False
-GSE47477,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,16,True
-GSE48078,NF2-SWN,Other,mouse,other,6,True
-GSE50865,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,in_vitro_perturbation,12,True
-GSE52777,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,15,True
-GSE56598,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,20,True
-GSE56598,NF2-SWN,Non-vestibular schwannoma,human,subtype_or_grade_comparison,20,True
-GSE5675,NF1,Non-optic LGG,human,subtype_or_grade_comparison,0,True
-GSE57141,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,xenograft_or_in_vivo_treatment,8,True
-GSE58260,NF1,Optic pathway glioma,mouse,in_vitro_perturbation,9,True
-GSE60082,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,xenograft_or_in_vivo_treatment,7,True
-GSE61282,NF1,High grade glioma,mouse,tumor_vs_normal,14,True
-GSE61528,NF2-SWN,Non-vestibular schwannoma,mouse,in_vitro_perturbation,6,True
-GSE62500,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,9,False
-GSE65831,NF1,Optic pathway glioma,mouse,tumor_vs_normal,6,True
-GSE65865,NF1,Optic pathway glioma,mouse,in_vitro_perturbation,8,True
-GSE66743,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,25,True
-GSE70742,NF2-SWN,Other,mouse,tumor_vs_normal,16,True
-GSE77203,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,other,4,False
-GSE77205,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,subtype_or_grade_comparison,4,True
-GSE78895,NF1,High grade glioma,mouse,tumor_vs_normal,23,True
-GSE78901,NF1,Plexiform neurofibroma,mouse,tumor_vs_normal,21,True
-GSE84205,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,12,True
-GSE8717,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,13,True
-GSE94082,SWN,Other,mouse,single_arm_profiling,12,True
-GSE96738,NF1,Other,mouse,other,6,True
-E-MEXP-258,NF1,Other,human,other,0,True
-E-MEXP-2766,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,0,True
-E-MTAB-13334,NF1,Plexiform neurofibroma,mouse,tumor_vs_normal,0,True
-E-MTAB-14222,NF1,Plexiform neurofibroma,mouse,subtype_or_grade_comparison,0,True
-E-MTAB-14222,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,subtype_or_grade_comparison,0,True
-E-TABM-69,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,0,True
-E-TABM-69,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,0,True
+accession,disease,manifestation,organism,study_design,assay_class,n_samples_in_scope,counted_in_coverage
+GSE100181,NF1,Other,human,in_vitro_perturbation,bulk_rnaseq,9,True
+GSE102345,NF1,Optic pathway glioma,mouse,tumor_vs_normal,bulk_rnaseq,67,True
+GSE108524,NF2-SWN,Vestibular schwannoma,human,tumor_vs_normal,expression_array,21,True
+GSE115359,NF2-SWN,Vestibular schwannoma,human,in_vitro_perturbation,expression_array,4,True
+GSE116000,NF2-SWN,Other,human,in_vitro_perturbation,expression_array,5,True
+GSE117322,NF1,Cutaneous neurofibroma,human,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE117781,NF1,Cutaneous neurofibroma,mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,12,True
+GSE118185,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,bulk_rnaseq,16,False
+GSE118185,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,16,False
+GSE118186,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,bulk_rnaseq,18,True
+GSE118186,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,18,True
+GSE120685,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,6,False
+GSE120687,NF1,Cutaneous neurofibroma,human,subtype_or_grade_comparison,bulk_rnaseq,74,True
+GSE120687,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,bulk_rnaseq,74,True
+GSE120687,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,bulk_rnaseq,74,True
+GSE122730,NF1,Plexiform neurofibroma,mouse,single_arm_profiling,single_cell_rnaseq,1,True
+GSE122773,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,expression_array,7,False
+GSE122774,NF1,Plexiform neurofibroma,mouse,tumor_vs_normal,bulk_rnaseq,3,False
+GSE122777,NF1,Plexiform neurofibroma,human+mouse,other,expression_array_and_rnaseq,10,True
+GSE122999,NF1,Plexiform neurofibroma,mouse,subtype_or_grade_comparison,expression_array,13,True
+GSE123044,SWN,Other,mouse,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE125040,NF1,Malignant peripheral nerve sheath tumor (MPNST),zebrafish,in_vitro_perturbation,bulk_rnaseq,10,True
+GSE137152,NF1,Hematologic malignancies,mouse,tumor_vs_normal,bulk_rnaseq,6,True
+GSE138344,NF2-SWN,Non-vestibular schwannoma,human,subtype_or_grade_comparison,bulk_rnaseq,11,False
+GSE138344,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,bulk_rnaseq,11,False
+GSE138344,NF2-SWN,Pain,human,subtype_or_grade_comparison,bulk_rnaseq,11,False
+GSE138346,NF2-SWN,Pain,human,subtype_or_grade_comparison,bulk_rnaseq,7,False
+GSE138346,NF2-SWN,Non-vestibular schwannoma,human,subtype_or_grade_comparison,bulk_rnaseq,7,False
+GSE138347,NF2-SWN,Non-vestibular schwannoma,human,subtype_or_grade_comparison,bulk_rnaseq,18,True
+GSE138347,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,bulk_rnaseq,18,True
+GSE138347,NF2-SWN,Pain,human,subtype_or_grade_comparison,bulk_rnaseq,18,True
+GSE14038,NF1,Plexiform neurofibroma,human,tumor_vs_normal,expression_array,76,True
+GSE14038,NF1,Cutaneous neurofibroma,human,tumor_vs_normal,expression_array,76,True
+GSE14038,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,tumor_vs_normal,expression_array,76,True
+GSE141437,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,bulk_rnaseq,24,False
+GSE141801,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,expression_array,23,True
+GSE144601,NF1,Other,human,in_vitro_perturbation,bulk_rnaseq,12,True
+GSE145064,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,bulk_rnaseq,46,True
+GSE145064,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,bulk_rnaseq,46,True
+GSE147360,NF1,High grade glioma,mouse,single_arm_profiling,single_cell_rnaseq,240,True
+GSE1482,NF1,Cognition / Behavioral / Learning,mouse,other,expression_array,30,True
+GSE148249,NF1,Plexiform neurofibroma,mouse,subtype_or_grade_comparison,bulk_rnaseq,20,True
+GSE148249,NF1,ANNUBP / atypical neurofibroma,mouse,subtype_or_grade_comparison,bulk_rnaseq,20,True
+GSE148249,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,subtype_or_grade_comparison,bulk_rnaseq,20,True
+GSE149946,NF1,Optic pathway glioma,mouse,in_vitro_perturbation,bulk_rnaseq,9,True
+GSE152752,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,in_vitro_perturbation,bulk_rnaseq,10,True
+GSE156391,NF1,Plexiform neurofibroma,mouse,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE156819,NF1,High grade glioma,mouse,in_vitro_perturbation,bulk_rnaseq,24,False
+GSE156821,NF1,High grade glioma,mouse,in_vitro_perturbation,bulk_rnaseq,80,True
+GSE157677,NF2-SWN,Other,mouse,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE159021,NF1,Other,mouse,in_vitro_perturbation,bulk_rnaseq,4,False
+GSE159026,NF1,Other,mouse,in_vitro_perturbation,bulk_rnaseq,3,True
+GSE159896,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE161823,NF1,High grade glioma,mouse,other,bulk_rnaseq,26,True
+GSE163028,NF1,Cutaneous neurofibroma,human,single_arm_profiling,single_cell_rnaseq,3,True
+GSE163071,NF1,Optic pathway glioma,human,subtype_or_grade_comparison,bulk_rnaseq,22,True
+GSE165826,NF1,ANNUBP / atypical neurofibroma,human,single_arm_profiling,single_cell_rnaseq,1,True
+GSE166080,NF1,Cognition / Behavioral / Learning,human,in_vitro_perturbation,bulk_rnaseq,21,True
+GSE166551,NF1,Optic pathway glioma,mouse,in_vitro_perturbation,bulk_rnaseq,10,True
+GSE172221,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,subtype_or_grade_comparison,bulk_rnaseq,22,True
+GSE172221,NF1,Plexiform neurofibroma,human+mouse,subtype_or_grade_comparison,bulk_rnaseq,22,True
+GSE172221,NF1,Cutaneous neurofibroma,human+mouse,subtype_or_grade_comparison,bulk_rnaseq,22,True
+GSE173577,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,bulk_rnaseq,12,True
+GSE174100,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,12,True
+GSE174389,NF2-SWN,Vestibular schwannoma,human,in_vitro_perturbation,bulk_rnaseq,4,True
+GSE178989,NF1,Other,human,subtype_or_grade_comparison,bulk_rnaseq,8,False
+GSE178989,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,bulk_rnaseq,8,False
+GSE179033,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,single_cell_rnaseq,14,False
+GSE179033,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,single_cell_rnaseq,14,False
+GSE179041,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,subtype_or_grade_comparison,single_cell_rnaseq,3,False
+GSE179043,NF1,Plexiform neurofibroma,human+mouse,subtype_or_grade_comparison,bulk_rnaseq,36,True
+GSE179043,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,subtype_or_grade_comparison,bulk_rnaseq,36,True
+GSE180338,NF2-SWN,Vestibular schwannoma,human,other,bulk_rnaseq,9,True
+GSE180338,NF2-SWN,Non-vestibular schwannoma,human,other,bulk_rnaseq,9,True
+GSE181985,NF1,Plexiform neurofibroma,human+mouse,tumor_vs_normal,single_cell_rnaseq,31,True
+GSE181986,NF1,Plexiform neurofibroma,mouse,subtype_or_grade_comparison,bulk_rnaseq,14,True
+GSE183307,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,28,False
+GSE183309,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,90,True
+GSE184181,NF1,Optic pathway glioma,mouse,single_arm_profiling,single_cell_rnaseq,1,True
+GSE18444,NF1,Other,human,tumor_vs_normal,expression_array,18,False
+GSE18445,NF1,Other,human,other,expression_array,6,False
+GSE18447,NF1,Other,mouse,other,expression_array,12,False
+GSE18448,NF1,Other,human+mouse,in_vitro_perturbation,expression_array,36,True
+GSE186107,NF2-SWN,Vestibular schwannoma,human,in_vitro_perturbation,expression_array,6,True
+GSE186162,NF2-SWN,Other,mouse,xenograft_or_in_vivo_treatment,single_cell_rnaseq,2,True
+GSE186189,NF2-SWN,Other,mouse,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE192660,NF2-SWN,Other,mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,8,True
+GSE19305,NF2-SWN,Non-vestibular schwannoma,mouse,in_vitro_perturbation,expression_array,18,True
+GSE196652,NF1,Bone defects,human,in_vitro_perturbation,single_cell_rnaseq,317,True
+GSE201668,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE203647,NF1,Cognition / Behavioral / Learning,human,in_vitro_perturbation,bulk_rnaseq,11,True
+GSE205016,SWN,Hematologic malignancies,mouse,other,single_cell_rnaseq,3,False
+GSE207400,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,bulk_rnaseq,26,True
+GSE207400,NF1,ANNUBP / atypical neurofibroma,human,subtype_or_grade_comparison,bulk_rnaseq,26,True
+GSE207400,NF1,Other,human,subtype_or_grade_comparison,bulk_rnaseq,26,True
+GSE210023,NF2-SWN,Other,mouse,other,bulk_rnaseq,6,True
+GSE212964,Not specified,Plexiform neurofibroma,human,subtype_or_grade_comparison,single_cell_rnaseq,72,False
+GSE212964,Not specified,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,single_cell_rnaseq,72,False
+GSE212964,Not specified,Vestibular schwannoma,human,subtype_or_grade_comparison,single_cell_rnaseq,72,False
+GSE212965,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,single_arm_profiling,bulk_rnaseq,167,True
+GSE213786,NF1,Plexiform neurofibroma,mouse,tumor_vs_normal,bulk_rnaseq,12,False
+GSE213787,NF1,Plexiform neurofibroma,mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,24,False
+GSE213789,NF1,Plexiform neurofibroma,mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,36,True
+GSE213988,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE218493,NF1,Cutaneous neurofibroma,human,subtype_or_grade_comparison,single_cell_rnaseq,2,True
+GSE218493,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,single_cell_rnaseq,2,True
+GSE219135,NF2-SWN,Other,human,in_vitro_perturbation,bulk_rnaseq,4,False
+GSE219141,NF2-SWN,Other,human,in_vitro_perturbation,bulk_rnaseq,10,True
+GSE225747,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,in_vitro_perturbation,bulk_rnaseq,8,True
+GSE226980,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,subtype_or_grade_comparison,bulk_rnaseq,8,True
+GSE227456,NF1,Plexiform neurofibroma,mouse,single_arm_profiling,single_cell_rnaseq,1,True
+GSE228630,NF2-SWN,Other,mouse,other,bulk_rnaseq,6,True
+GSE231603,NF1,Other,rat,tumor_vs_normal,bulk_rnaseq,80,True
+GSE232451,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,in_vitro_perturbation,bulk_rnaseq,9,True
+GSE232451,NF1,Plexiform neurofibroma,mouse,in_vitro_perturbation,bulk_rnaseq,9,True
+GSE232516,NF1,Bone defects,human,tumor_vs_normal,single_cell_rnaseq,4,True
+GSE232517,NF1,Bone defects,mouse,single_arm_profiling,single_cell_rnaseq,1,True
+GSE232528,NF2-SWN,Meningioma,human,subtype_or_grade_comparison,bulk_rnaseq,14,True
+GSE232707,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,tumor_vs_normal,bulk_rnaseq,18,True
+GSE232707,NF1,Plexiform neurofibroma,mouse,tumor_vs_normal,bulk_rnaseq,18,True
+GSE232766,NF1,Plexiform neurofibroma,human,single_arm_profiling,single_cell_rnaseq,12,True
+GSE234071,NF1,Bone defects,human,tumor_vs_normal,bulk_rnaseq,4,True
+GSE239561,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,expression_array,34,True
+GSE239561,NF1,ANNUBP / atypical neurofibroma,human,subtype_or_grade_comparison,expression_array,34,True
+GSE239561,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,expression_array,34,True
+GSE244362,NF2-SWN,Other,human,in_vitro_perturbation,bulk_rnaseq,41,True
+GSE244433,NF1,Optic pathway glioma,human+mouse,tumor_vs_normal,single_cell_rnaseq,12,True
+GSE244829,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,9,True
+GSE246610,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,51,True
+GSE262030,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,51,True
+GSE263046,NF1,Cutaneous neurofibroma,human,xenograft_or_in_vivo_treatment,single_cell_rnaseq,8,True
+GSE263107,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,32,True
+GSE263122,NF2-SWN,Meningioma,human,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE265875,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,tumor_vs_normal,bulk_rnaseq,29,True
+GSE26676,NF1,High grade glioma,mouse,subtype_or_grade_comparison,expression_array,11,True
+GSE269517,NF1,Optic pathway glioma,mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,6,True
+GSE270264,NF1,Optic pathway glioma,mouse,xenograft_or_in_vivo_treatment,single_cell_rnaseq,2,True
+GSE270880,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,18,True
+GSE270880,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,bulk_rnaseq,18,True
+GSE275048,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,12,False
+GSE275049,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,14,True
+GSE275277,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,subtype_or_grade_comparison,bulk_rnaseq,18,True
+GSE277520,NF1,Plexiform neurofibroma,human,xenograft_or_in_vivo_treatment,bulk_rnaseq,47,True
+GSE277653,NF1,Bone defects,human,in_vitro_perturbation,bulk_rnaseq,45,True
+GSE278250,NF1,Plexiform neurofibroma,mouse,single_arm_profiling,single_cell_rnaseq,1,True
+GSE282045,SWN,Non-vestibular schwannoma,mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,6,True
+GSE282456,NF1,Non-optic LGG,human,in_vitro_perturbation,bulk_rnaseq,40,True
+GSE283902,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,31,True
+GSE2841,NF1,Other,human,subtype_or_grade_comparison,expression_array,2,True
+GSE286371,NF1,Plexiform neurofibroma,mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,12,True
+GSE289387,NF2-SWN,Non-vestibular schwannoma,mouse,in_vitro_perturbation,bulk_rnaseq,24,True
+GSE289387,NF2-SWN,Vestibular schwannoma,mouse,in_vitro_perturbation,bulk_rnaseq,24,True
+GSE289794,NF1,Cutaneous neurofibroma,mouse,tumor_vs_normal,single_cell_rnaseq,25,True
+GSE290674,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,bulk_rnaseq,10,True
+GSE290674,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,10,True
+GSE292071,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,single_cell_rnaseq,0,True
+GSE292071,NF2-SWN,Non-vestibular schwannoma,human,subtype_or_grade_comparison,single_cell_rnaseq,0,True
+GSE292315,NF2-SWN,Non-vestibular schwannoma,mouse,in_vitro_perturbation,bulk_rnaseq,12,True
+GSE292315,NF2-SWN,Vestibular schwannoma,mouse,in_vitro_perturbation,bulk_rnaseq,12,True
+GSE29343,NF1,Bone defects,mouse,tumor_vs_normal,expression_array,8,True
+GSE295650,NF2-SWN,Bone defects,mouse,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE302434,NF2-SWN,Non-vestibular schwannoma,human,in_vitro_perturbation,bulk_rnaseq,43,True
+GSE303054,NF1,Optic pathway glioma,mouse,xenograft_or_in_vivo_treatment,single_cell_rnaseq,2,True
+GSE303418,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,36,True
+GSE305286,NF1,Bone defects,mouse,in_vitro_perturbation,single_cell_rnaseq,4,True
+GSE305286,NF1,Plexiform neurofibroma,mouse,in_vitro_perturbation,single_cell_rnaseq,4,True
+GSE305426,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,24,True
+GSE307286,NF2-SWN,Meningioma,human,in_vitro_perturbation,bulk_rnaseq,12,True
+GSE307569,NF1,Hematologic malignancies,human,xenograft_or_in_vivo_treatment,bulk_rnaseq,5,True
+GSE315579,NF2-SWN,Vestibular schwannoma,human,single_arm_profiling,single_cell_rnaseq,4,True
+GSE317486,NF1,High grade glioma,mouse,xenograft_or_in_vivo_treatment,single_cell_rnaseq,10,True
+GSE317549,NF1,Plexiform neurofibroma,human,in_vitro_perturbation,single_cell_rnaseq,3,True
+GSE317922,NF1,Cognition / Behavioral / Learning,zebrafish,in_vitro_perturbation,bulk_rnaseq,16,True
+GSE318927,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,single_cell_rnaseq,14,True
+GSE318927,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,single_cell_rnaseq,14,True
+GSE319151,NF2-SWN,Bone defects,mouse,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE320094,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,12,True
+GSE320095,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE320122,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE320227,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE320231,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE320235,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE320236,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE32029,NF1,Cutaneous neurofibroma,human,in_vitro_perturbation,expression_array,36,True
+GSE325204,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,bulk_rnaseq,9,True
+GSE328707,NF1,Optic pathway glioma,mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,12,True
+GSE343216,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,64,True
+GSE343216,NF1,Plexiform neurofibroma,mouse,xenograft_or_in_vivo_treatment,bulk_rnaseq,64,True
+GSE344687,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,single_cell_rnaseq,11,True
+GSE39764,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,expression_array,18,True
+GSE40187,NF2-SWN,Non-vestibular schwannoma,mouse,in_vitro_perturbation,bulk_rnaseq,4,True
+GSE41747,NF1,Cutaneous neurofibroma,human+mouse,tumor_vs_normal,expression_array,83,True
+GSE41747,NF1,Plexiform neurofibroma,human+mouse,tumor_vs_normal,expression_array,83,True
+GSE41747,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,tumor_vs_normal,expression_array,83,True
+GSE46904,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,expression_array,8,False
+GSE47477,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,expression_array,16,True
+GSE48078,NF2-SWN,Other,mouse,other,expression_array,6,True
+GSE50865,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,in_vitro_perturbation,expression_array,12,True
+GSE52777,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,expression_array,15,True
+GSE56598,NF2-SWN,Vestibular schwannoma,human,subtype_or_grade_comparison,expression_array,20,True
+GSE56598,NF2-SWN,Non-vestibular schwannoma,human,subtype_or_grade_comparison,expression_array,20,True
+GSE5675,NF1,Non-optic LGG,human,subtype_or_grade_comparison,expression_array,0,True
+GSE57141,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,xenograft_or_in_vivo_treatment,expression_array,8,True
+GSE58260,NF1,Optic pathway glioma,mouse,in_vitro_perturbation,expression_array,9,True
+GSE60082,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,xenograft_or_in_vivo_treatment,expression_array,7,True
+GSE61282,NF1,High grade glioma,mouse,tumor_vs_normal,expression_array,14,True
+GSE61528,NF2-SWN,Non-vestibular schwannoma,mouse,in_vitro_perturbation,bulk_rnaseq,6,True
+GSE62500,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,expression_array,9,False
+GSE65831,NF1,Optic pathway glioma,mouse,tumor_vs_normal,bulk_rnaseq,6,True
+GSE65865,NF1,Optic pathway glioma,mouse,in_vitro_perturbation,bulk_rnaseq,8,True
+GSE66743,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,expression_array,25,True
+GSE70742,NF2-SWN,Other,mouse,tumor_vs_normal,expression_array,16,True
+GSE77203,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,other,expression_array,4,False
+GSE77205,NF1,Malignant peripheral nerve sheath tumor (MPNST),human+mouse,subtype_or_grade_comparison,expression_array,4,True
+GSE78895,NF1,High grade glioma,mouse,tumor_vs_normal,expression_array,23,True
+GSE78901,NF1,Plexiform neurofibroma,mouse,tumor_vs_normal,expression_array,21,True
+GSE84205,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,expression_array,12,True
+GSE8717,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,expression_array,13,True
+GSE94082,SWN,Other,mouse,single_arm_profiling,bulk_rnaseq,12,True
+GSE96738,NF1,Other,mouse,other,bulk_rnaseq,6,True
+E-MEXP-258,NF1,Other,human,other,expression_array,0,True
+E-MEXP-2766,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,in_vitro_perturbation,expression_array,0,True
+E-MTAB-13334,NF1,Plexiform neurofibroma,mouse,tumor_vs_normal,single_cell_rnaseq,0,True
+E-MTAB-14222,NF1,Plexiform neurofibroma,mouse,subtype_or_grade_comparison,single_cell_rnaseq,0,True
+E-MTAB-14222,NF1,Malignant peripheral nerve sheath tumor (MPNST),mouse,subtype_or_grade_comparison,single_cell_rnaseq,0,True
+E-TABM-69,NF1,Plexiform neurofibroma,human,subtype_or_grade_comparison,expression_array,0,True
+E-TABM-69,NF1,Malignant peripheral nerve sheath tumor (MPNST),human,subtype_or_grade_comparison,expression_array,0,True
