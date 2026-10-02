@@ -38,17 +38,22 @@ which are regenerated from the tables, rather than editing them here by hand.
 
 ## Title
 
-This is a resource paper with two resources: the NF evidence map (the tables) and the method
-that produced it (the protocol and the code). Both claims have to be made explicitly, because
-a reader who takes it for a findings paper will ask why there is no validated hit, and a
-reader who takes it for a pure data descriptor will not reuse the protocol.
+**An evidence-graded target map for the neurofibromatoses, and a protocol for building one in
+a rare disease**
 
-> `[FILL IN]` Pick one. Both say resource plus method; they differ in which leads.
->
-> 1. "An evidence-graded map of candidate drug targets in neurofibromatosis, and a
->    provenance-tracking protocol for building one in a rare disease"
-> 2. "Grading the evidence behind rare-disease drug targets: a neurofibromatosis target map
->    and a reusable verification protocol"
+This is a resource paper with two resources: the evidence map (the tables) and the method that
+produced it (the protocol and the code). Both claims are in the title deliberately, because a
+reader who takes this for a findings paper will ask why there is no validated hit, and a reader
+who takes it for a pure data descriptor will not reuse the protocol.
+
+"The neurofibromatoses" is used as the umbrella for NF1, NF2-related schwannomatosis and
+schwannomatosis. Since the 2022 nomenclature revision separated schwannomatosis from NF2-SWN,
+the three diseases must be named in full at first use in the Abstract and the Introduction, and
+listed in the keywords, so the paper is searchable on each.
+
+> `[CHECK]` Two things to confirm against the target journal before submission: that the title
+> is within its length limit, and that it permits a title naming a method and a resource
+> together rather than requiring one claim.
 
 **Authors:** `[FILL IN]`
 **Affiliations:** `[FILL IN]`
@@ -72,6 +77,10 @@ as the methods behind our tables.
 > - Numbers, 2 sentences: pull the final counts from the phase write-ups.
 > - What it means, 2 sentences: where the evidence actually is, and which manifestations
 >   cannot be prioritised on current evidence regardless of method.
+
+**Keywords:** `[FILL IN]` Suggested, trim to the journal's limit: neurofibromatosis type 1;
+NF2-related schwannomatosis; schwannomatosis; drug target prioritisation; evidence grading;
+full-text verification; gene expression; rare disease; reproducible research.
 
 ## 1. Introduction
 
