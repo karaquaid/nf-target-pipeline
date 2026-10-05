@@ -29,7 +29,7 @@ GSE163071,GSM4971676,PA_24,Human tumor tissue,Yes,PA,case,True,NF1-associated pi
 GSE163071,GSM4971677,PA_25,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
 GSE163071,GSM4971678,PA_26,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
 GSE163071,GSM4971679,PA_27,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
-GSE163071,GSM4971680,CTL_11,Human control tissue,CTL,PA,unresolved,False,"self-inconsistent: source='Human control tissue', nf1=CTL, tumor=PA; held out pending a ruling",agent,2026-10-05
+GSE163071,GSM4971680,CTL_11,Human control tissue,CTL,PA,excluded_ambiguous,False,"self-inconsistent in GEO: source='Human control tissue', nf1=CTL, tumor=PA; excluded per Kara 2026-10-05, same logic as PA_33",Kara,2026-10-05
 GSE163071,GSM4971681,PA_28,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
 GSE163071,GSM4971682,PA_29,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
 GSE163071,GSM4971683,PA_30,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
