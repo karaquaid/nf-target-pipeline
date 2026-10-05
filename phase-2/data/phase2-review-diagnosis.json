@@ -180,6 +180,20 @@
    "date": "2026-10-05",
    "contrast": "MPNST vs plexiform neurofibroma (between-subtype, within NF1)",
    "implementation": "Sample-level labels derived from the SDRF and recorded in phase-2/data/phase2-non-geo-samples.csv: 10 two-colour arrays, cy5 carrying one tumour each (6 plexiform neurofibroma: PN-3, PN-4, PN-5, PN-6, PN-M-1, PN-M-2; 4 MPNST: MPNST-1, -2, -4, -5) against a cy3 pool of dermal neurofibromas shared by every array. Because both arms share that reference it cancels in the between-arm contrast, so the missing control arm does not block this dataset; it does mean no tumour-vs-normal contrast is possible here, since the reference is itself NF tumour tissue. Key the arrays on Array Data File - the SDRF's Hybridization Name repeats one slide barcode across nine arrays."
+  },
+  "GSE145064": {
+   "decision": "include",
+   "by": "Kara (resolved by full-text check)",
+   "date": "2026-10-05",
+   "contrast": "MPNST vs patient-matched plexiform neurofibroma, paired on patient",
+   "implementation": "Germline question settled from the linked publication (PMID 32086342, full text via NCBI PMC - the article is not open access on Europe PMC, whose fullTextXML returns 500): the cohort is 12 NF1 patients from the Iowa NF Clinic plus 3 unpaired cases, 15 patients in total, and the RNA-seq was run on FFPE cores adjacent to the TMA cores from those same patients. No per-patient germline sequencing is reported, so germline_basis moves from 'inferred' to 'stated_nf_cohort' rather than to 'per_sample_nf_status' (correction recorded in phase-2/data/phase2-label-corrections.csv). GEO composition: 46 samples, 21 plexiform neurofibroma and 25 MPNST across 15 patients, 10 of whom contribute both arms, so the contrast can be run paired. No normal-tissue arm exists in the series (the paper's normal peripheral nerve was on the TMA, not in the RNA-seq), so it stays a no-control-fallback dataset. Library is FFPE exome-capture RNA-seq (Agilent SureSelect RNA Direct, All Exon V6 + COSMIC), not poly-A, which is another reason it must not be pooled into a shared matrix; the authors' own analysis used Kallisto plus Sleuth. The 3 ANNUBPs identified on pathology review are not separable from the GEO disease_state field, which carries only the two labels."
+  },
+  "GSE120687": {
+   "decision": "on hold - see finding",
+   "by": "agent",
+   "date": "2026-10-05",
+   "contrast": "none available: the series has no transcript-abundance arm",
+   "implementation": "Kara asked for this one to be included, but checking all 86 samples first shows there is nothing for Phase 2 to ingest. The 40 array samples are every one of them immunoprecipitations - 20 HuR IP and 20 matched IgG IP across dermal neurofibroma (4+4), plexiform neurofibroma (4+4), NF1-derived MPNST (6+6) and sporadic MPNST (6+6) - so the measured quantity is HuR-bound transcript enrichment, not transcript abundance, and there is no total-RNA or input arm. The 6 RNA-seq samples are ST88-14 shHuR versus shControl, an in vitro perturbation on one cell line. The remaining 40 are ChIP-seq. This also explains the flagged control_types defect: the 23 samples labelled 'control_isogenic_engineered' are IgG IP controls. Consequence if confirmed: study_design should be in_vitro_perturbation rather than subtype_or_grade_comparison, comparative_design becomes false, and the dataset leaves the comparative set (49 -> 48, human launch set 29 -> 28). The 3-vs-3 shHuR RNA-seq arm remains useful later as target-validation evidence, not as a differential-expression input."
   }
  }
 }
