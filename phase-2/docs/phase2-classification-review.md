@@ -6,6 +6,8 @@ These are the datasets Phase 2 would ingest, so the labels that matter here are 
 
 **How to read the audit lines.** Phase 1a stored a confidence value but not the reasoning behind it. The *why it is not a clean call* text below is a fresh audit of each GEO record (record text plus the stored labels), so it is a hypothesis about where the uncertainty sits, not a recovered value. Where that audit claimed a stored field looks wrong (10 datasets), the claim was checked and carries an adjudication line.
 
+**1 of 18 reviewed so far.** Datasets you have ruled on carry a **Decision** line naming the contrast they enter Phase 2 with.
+
 | verdict | meaning |
 |---|---|
 | likely defect in the stored label | the stored value is probably wrong and should be corrected |
@@ -26,6 +28,8 @@ These are the datasets Phase 2 would ingest, so the labels that matter here are 
 - **Why it is not a clean call:** NF1 status is stated once at series level and never per sample, and the ArrayExpress rows carry no sample-level labels at all, so no case/control split exists for this dataset.
 - **Also:** Two-colour arrays against a pooled 'pool-cut' reference channel, which is a technical reference, not a biological control arm.
 - **What would settle it:** Read the SDRF for per-sample tumour type and NF1 status, then decide whether the pooled-reference design can enter a per-dataset DE contrast at all.
+- **Decision (Kara): include** - contrast: MPNST vs plexiform neurofibroma (between-subtype, within NF1)
+  - Sample-level labels derived from the SDRF and recorded in phase-2/data/phase2-non-geo-samples.csv: 10 two-colour arrays, cy5 carrying one tumour each (6 plexiform neurofibroma: PN-3, PN-4, PN-5, PN-6, PN-M-1, PN-M-2; 4 MPNST: MPNST-1, -2, -4, -5) against a cy3 pool of dermal neurofibromas shared by every array. Because both arms share that reference it cancels in the between-arm contrast, so the missing control arm does not block this dataset; it does mean no tumour-vs-normal contrast is possible here, since the reference is itself NF tumour tissue. Key the arrays on Array Data File - the SDRF's Hybridization Name repeats one slide barcode across nine arrays.
 
 ### [GSE120687](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE120687) - medium confidence
 

@@ -172,5 +172,14 @@
    "verdict": "needs_human_check",
    "comment": "The in-scope count assumes all 8 neurofibromas are NF1-associated, which the stored notes themselves flag as unknown."
   }
+ },
+ "decisions": {
+  "E-TABM-69": {
+   "decision": "include",
+   "by": "Kara",
+   "date": "2026-10-05",
+   "contrast": "MPNST vs plexiform neurofibroma (between-subtype, within NF1)",
+   "implementation": "Sample-level labels derived from the SDRF and recorded in phase-2/data/phase2-non-geo-samples.csv: 10 two-colour arrays, cy5 carrying one tumour each (6 plexiform neurofibroma: PN-3, PN-4, PN-5, PN-6, PN-M-1, PN-M-2; 4 MPNST: MPNST-1, -2, -4, -5) against a cy3 pool of dermal neurofibromas shared by every array. Because both arms share that reference it cancels in the between-arm contrast, so the missing control arm does not block this dataset; it does mean no tumour-vs-normal contrast is possible here, since the reference is itself NF tumour tissue. Key the arrays on Array Data File - the SDRF's Hybridization Name repeats one slide barcode across nine arrays."
+  }
  }
 }

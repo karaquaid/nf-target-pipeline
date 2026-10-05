@@ -57,6 +57,7 @@ def main() -> int:
     samples = read_csv(p1a / "phase1a-samples.csv")
     payload = json.loads(Path(args.diagnosis).read_text())
     diagnosis, adjudication = payload["diagnosis"], payload["adjudication"]
+    decisions = payload.get("decisions", {})
 
     review = [d for d in datasets
               if truthy(d["counted_in_coverage"]) and truthy(d["comparative_design"])
@@ -72,6 +73,7 @@ def main() -> int:
         acc = d["accession"]
         dia = diagnosis.get(acc, {})
         adj = adjudication.get(acc, {})
+        dec = decisions.get(acc, {})
         rows.append({
             "accession": acc,
             "confidence": d["confidence"],
@@ -99,6 +101,9 @@ def main() -> int:
             "audit_what_would_settle_it": dia.get("what_would_settle_it", ""),
             "audit_flags_stored_label": dia.get("label_looks_wrong", ""),
             "audit_label_comment": dia.get("label_comment", ""),
+            "decision": dec.get("decision", ""),
+            "decision_contrast": dec.get("contrast", ""),
+            "decision_by": dec.get("by", ""),
             "adjudication": adj.get("verdict", ""),
             "adjudication_comment": adj.get("comment", ""),
             "url": d["url"],
@@ -114,6 +119,7 @@ def main() -> int:
 
     n_launch = sum(1 for r in rows if r["in_launch_set"])
     n_flagged = sum(1 for r in rows if r["adjudication"])
+    n_decided = sum(1 for r in rows if r["decision"])
     md = [
         "# Phase 2 pre-flight: classification review packet",
         "",
@@ -130,6 +136,10 @@ def main() -> int:
         "(record text plus the stored labels), so it is a hypothesis about where the uncertainty sits, "
         f"not a recovered value. Where that audit claimed a stored field looks wrong ({n_flagged} "
         "datasets), the claim was checked and carries an adjudication line.",
+        "",
+        (f"**{n_decided} of {len(rows)} reviewed so far.** Datasets you have ruled on carry a "
+         "**Decision** line naming the contrast they enter Phase 2 with."
+         if n_decided else "No datasets have been ruled on yet."),
         "",
         "| verdict | meaning |",
         "|---|---|",
@@ -166,6 +176,12 @@ def main() -> int:
                 md += [f"- **Also:** {r['audit_secondary']}"]
             if r["audit_what_would_settle_it"]:
                 md += [f"- **What would settle it:** {r['audit_what_would_settle_it']}"]
+            if r["decision"]:
+                md += [f"- **Decision ({r['decision_by'] or 'reviewer'}): {r['decision']}** - "
+                       f"contrast: {r['decision_contrast']}"]
+                impl = decisions.get(r["accession"], {}).get("implementation", "")
+                if impl:
+                    md += [f"  - {impl}"]
             if r["adjudication"]:
                 md += [f"- **Flagged stored field** - {VERDICT_LABEL.get(r['adjudication'], r['adjudication'])}: "
                        f"{r['adjudication_comment']}"]
