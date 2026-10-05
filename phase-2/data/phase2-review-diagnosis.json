@@ -1,0 +1,199 @@
+{
+ "_note": "Audit of the Phase 1a datasets whose classification confidence came out medium or low AND whose study design is comparative, i.e. the ones Phase 2 would ingest. The original confidence reasoning was NOT stored by the Phase 1a pass, so the 'ambiguity' fields here are a fresh reading of each GEO record (LLM pass, reasoning model, one call per series, record text plus the stored labels) and are a hypothesis about why the call was not clean - not a recovered value. 'adjudication' is the agent's own check of each label_looks_wrong claim. E-TABM-69 has no GEO record to audit, so its entry was written from the stored ArrayExpress record and is marked with _basis.",
+ "_generated": "2026-10-05",
+ "diagnosis": {
+  "GSE172221": {
+   "ambiguity": "Human MPNST/PNF/NF samples (diagnosis=MPNST only, no genotype field) lack any stated germline NF1 status, so they could be sporadic tumors with somatic loss",
+   "secondary": "Lats-Nes/Lats-Plp arms are Lats1/2 conditional knockouts, not Nf1/Trp53 models, yet are folded into the in-scope count alongside NP-Plp/NPcis",
+   "what_would_settle_it": "Check linked publication (GSE172221) methods/patient table for human sample NF1 germline/clinical status; confirm whether Lats-PNST arms are intended as NF-pathway models",
+   "label_looks_wrong": true,
+   "label_comment": "n_samples_in_scope/n_nf_case_samples=22 likely includes Lats-Nes/Lats-Plp (non-Nf1 Lats1/2 KO) tumors that aren't germline NF1-engineered models"
+  },
+  "GSE207400": {
+   "ambiguity": "genotype field just says 'NF1' per sample with no indication whether this means germline NF1 syndrome or merely somatic/tumor NF1 mutation status",
+   "secondary": "No patient-level clinical/germline testing data given; 'NF1' vs 'Sporadic' could reflect tumor genotyping rather than syndromic diagnosis",
+   "what_would_settle_it": "Check the associated publication/methods for how genotype was determined (germline testing vs tumor NF1 mutation/LOH) for each sample",
+   "label_looks_wrong": false,
+   "label_comment": ""
+  },
+  "GSE2841": {
+   "ambiguity": "Only P167 is visible as 'genetic class=NF1' among 28/76 shown samples; the stored n_nf_case_samples=2 can't be verified from the truncated list, and classification basis (germline-confirmed vs clinical NF1 diagnosis) isn't stated.",
+   "secondary": "Genetic class labels (MEN2A, VHL, B_SDHB, NF1, SPOR) look like clinical/syndromic groupings, not confirmed molecular germline testing results.",
+   "what_would_settle_it": "Pull full 76-sample metadata table and the linked paper's methods to see how 'genetic class=NF1' was assigned (germline sequencing vs clinical dx).",
+   "label_looks_wrong": false,
+   "label_comment": ""
+  },
+  "GSE292071": {
+   "ambiguity": "Cohort mixes NF2-related schwannomatosis, non-NF2-related schwannomatosis, and sporadic cases, but per-sample diagnosis isn't given in sample metadata (all 151 tissue entries just say 'Schwannoma/tumor')",
+   "secondary": "Can't tell how many of the 22 patients are germline NF2-SWN vs sporadic, so in-scope sample count is unknown rather than truly zero",
+   "what_would_settle_it": "Check supplementary patient table or paper's cohort table mapping patient IDs (SCHW001, SCHW2-5 etc.) to NF2-SWN/non-NF2-SWN/sporadic diagnosis",
+   "label_looks_wrong": true,
+   "label_comment": "n_samples_in_scope=0 likely wrong; NF2-SWN patients are explicitly in cohort, so some samples should be in scope once mapped, not zero"
+  },
+  "GSE5675": {
+   "ambiguity": "Cohort explicitly mixes sporadic and NF1-associated PAs but sample-level NF1 status isn't given in the shown sample titles/metadata, so in-scope N can't be determined",
+   "secondary": "n_samples_in_scope/n_nf_case_samples/n_sporadic_samples_excluded all stored as 0 despite summary stating NF1 patients are included, suggesting counts weren't actually extracted",
+   "what_would_settle_it": "Check full sample metadata via GEO 'Web Link' (supplementary table) for per-sample NF1 status to split the 41 into NF1 vs sporadic",
+   "label_looks_wrong": true,
+   "label_comment": "n_nf_case_samples=0 and n_samples_in_scope=0 contradict evidence text confirming NF1 patients present; should be >0 once sample-level data is checked"
+  },
+  "GSE77205": {
+   "ambiguity": "MPNST 830/937/1080/1082 are labeled 'sample type=NF1 patient' but the study is about EWS/ATF1 clear cell sarcoma biology; no confirmation these are germline NF1 vs sporadic NF1-associated MPNST used only as a histologic comparator",
+   "secondary": "ASSAY and ORGANISM fields are blank at the SuperSeries level, so assay_class='expression_array' can't be confirmed from this record (samples look like ChIP-seq, e.g. input DNA)",
+   "what_would_settle_it": "Open the MPNST SubSeries/sample GEO pages and linked publication methods to check if NF1 status is germline-confirmed and what assay was run on these 4 samples",
+   "label_looks_wrong": true,
+   "label_comment": "assay_class listed as 'expression_array' but samples include ChIP-seq-style 'input DNA' and Dox time-course binding experiments; likely should be ChIP-seq"
+  },
+  "GSE137152": {
+   "ambiguity": "Sample sheet just labels genotype as generic 'JMML' vs 'WT' without specifying which Pten/Nf1 allelic combination each of the 3 JMML replicates carries, despite the summary describing multiple distinct genotype combinations (Pten+/-;Nf1LOH, Pten-/-;Nf1LOH, etc.)",
+   "secondary": "ORGANISM and ASSAY fields are blank in the record, so species and assay type are only inferable from context, not stated",
+   "what_would_settle_it": "Check the GEO sample characteristics/supplementary table or linked paper for the exact genotype of each N3xx/N4xx sample ID used in the JMML group",
+   "label_looks_wrong": false,
+   "label_comment": ""
+  },
+  "GSE265875": {
+   "ambiguity": "SuperSeries bundles unrelated GEM sarcoma models (ASPSCR1-TFE3, KRAS, BCOR, Nf1); only 3 of the claimed 17 Nf1 samples are visible in the shown 28/195 records, so NF1 scope/count can't be confirmed from text.",
+   "secondary": "Title/summary never mention NF1 or neurofibromatosis - sgNf1;sgp53 appears used as a generic tumor-suppressor-loss sarcoma driver alongside p53/BCOR/KRAS, not as a disease-focused NF1 model.",
+   "what_would_settle_it": "Pull the full 195-sample metadata table (or the Nf1-specific SubSeries GSE) to confirm actual n of sgNf1;sgp53 tumor and matched control samples.",
+   "label_looks_wrong": true,
+   "label_comment": "n_nf_case_samples=17 and control=12 are unverifiable - only 3 Nf1 tumors and 6 muscle controls appear in the shown records; counts may be extrapolated."
+  },
+  "GSE120687": {
+   "ambiguity": "SuperSeries gives only 28/86 samples; cell type labels like 'MPNST_NF1-derived' don't state germline vs somatic NF1 loss, so NF status is inferred from naming only",
+   "secondary": "control_types='control_isogenic_engineered' is asserted but no engineered/isogenic line appears in the shown samples (only IgG IP controls)",
+   "what_would_settle_it": "Pull full sample list (all 86 GSMs) and check SubSeries descriptions/linked publication for how 'NF1-derived' vs 'sporadic' MPNST lines were defined",
+   "label_looks_wrong": true,
+   "label_comment": "control_types='control_isogenic_engineered' unsupported; visible controls are IgG IP, not isogenic engineered lines",
+   "": ""
+  },
+  "GSE145064": {
+   "ambiguity": "No NF1 mention anywhere in title/summary/design or sample metadata; disease state fields only say 'Plexiform Neurofibroma' or 'MPNST', not NF1 status per patient",
+   "secondary": "Not all 14 patients shown have both PNF and MPNST samples (e.g. PT12, PT15, PT8, PT9 variants) so matched-progression inference may not hold uniformly",
+   "what_would_settle_it": "Read linked publication's patient table/methods for explicit NF1 germline status per patient",
+   "label_looks_wrong": false,
+   "label_comment": ""
+  },
+  "GSE163071": {
+   "ambiguity": "Per-sample 'nf1=Yes/No' field doesn't state whether it reflects germline NF1 diagnosis or tumor's somatic NF1 mutation status, yet scope requires germline-only cases.",
+   "secondary": "CTL_8/9/10 are listed as 'Human tumor tissue' with tumor=PA, not non-neoplastic brain, conflicting with stored control_type 'control_unaffected_donor_normal'.",
+   "what_would_settle_it": "Check linked publication/methods or full GEO characteristics for how NF1 status was determined (clinical diagnosis vs tumor sequencing) and confirm CTL sample origin.",
+   "label_looks_wrong": true,
+   "label_comment": "control_types says unaffected donor normal but CTL samples shown have tumor=PA; likely a different tumor cohort, not normal brain controls."
+  },
+  "GSE325204": {
+   "ambiguity": "Record text never states NF1 status for any line; PRC2 WT/LoF is the only genotype given, so NF-case assignment for S462/908TL/SNF962 relies on outside knowledge, not the record",
+   "secondary": "HSSCH2, JH-2-002, JH-2-079-c NF status is completely unstated, yet 9 of 21 samples were counted as NF-case and 9 as 'other_or_unclear'",
+   "what_would_settle_it": "Check original publication/cell line repository (Cellosaurus/ATCC) for documented NF1 germline status of each of the 7 lines, esp. HSSCH2, JH-2-002, JH-2-079-c",
+   "label_looks_wrong": true,
+   "label_comment": "n_nf_case_samples=9 but notes list only 3 lines (S462,908TL,SNF962)=9 samples as known NF1; HSSCH2/JH-2-002/JH-2-079-c status unverified, not confirmed NF-case"
+  },
+  "GSE56598": {
+   "ambiguity": "Record is a SuperSeries ('Refer to individual Series') with only 28/89 samples shown, so NF2-vs-sporadic status for most samples is unverifiable from this text alone.",
+   "secondary": "assay_class='expression_array' contradicts the title 'Wide methylation analysis in vestibular schwannoma', suggesting wrong/merged metadata.",
+   "what_would_settle_it": "Open the individual SubSeries records (platform + full sample sheet) to confirm assay type and get per-sample NF2 status for all 89 samples.",
+   "label_looks_wrong": true,
+   "label_comment": "assay_class should likely be 'methylation_array' per title, not 'expression_array'; also no unaffected-donor-normal samples are visible to support control_unaffected_donor_normal=14."
+  },
+  "GSE66743": {
+   "ambiguity": "The 8 neurofibroma samples have no hereditary-status field anywhere in the record (notes admit 'not shown/unknown'), yet n_samples_in_scope=25 = 17 NF1 MPNST + all 8 neurofibromas treated as in-scope.",
+   "secondary": "Sample list shows only 28/38 records, all MPNST; the hereditary status of the 2 unlisted MPNST patients can't be verified from this record.",
+   "what_would_settle_it": "Check full GEO sample metadata/supplementary clinical table for the 8 neurofibroma samples' hereditary status and the 2 missing MPNST entries.",
+   "label_looks_wrong": true,
+   "label_comment": "n_samples_in_scope/n_nf_case_samples=25 silently assumes all 8 neurofibromas are NF1-associated despite notes flagging that status as unknown."
+  },
+  "GSE231603": {
+   "ambiguity": "Genotype codes IF, PS, IFPS are undefined abbreviations for the three 'Nf1-mutated rat lines' - unclear what alleles/mutations they represent or if all are true germline monoallelic Nf1 models",
+   "secondary": "ORGANISM and ASSAY fields are blank in the record, leaving species/platform only inferable from free-text DESIGN line",
+   "what_would_settle_it": "Check GEO sample characteristics/legend or the associated paper's methods for the IF/PS/IFPS rat line definitions and their Nf1 allele structure",
+   "label_looks_wrong": false,
+   "label_comment": ""
+  },
+  "GSE179043": {
+   "ambiguity": "SuperSeries defers all design detail to subseries ('Refer to individual Series'); per-sample NF1 germline status is inferred only from ID prefixes (NF1-, pNF-2-) vs unlabeled MPNST-x names, not stated directly.",
+   "secondary": "Lats1/2-deficient mouse model sample is a Hippo-pathway knockout, not a canonical engineered NF1/NF2 genotype, so its in/out-of-scope status is unclear.",
+   "what_would_settle_it": "Open each subseries' sample characteristics (or linked publication) to confirm germline NF1 status for MPNST-2..12 and genotype rationale for the Lats1/2 mouse tumor.",
+   "label_looks_wrong": false,
+   "label_comment": ""
+  },
+  "GSE78895": {
+   "ambiguity": "Genotype shown is 'Nf1+/flox' (one null, one floxed allele) with hGFAP-cre; text never confirms Cre excises the remaining flox allele to give biallelic Nf1 loss in the tumor.",
+   "secondary": "Only 28/32 samples listed; visible Nf1+/flox 'Astrocytoma' group is 9, but stored label claims 13 NF-case samples - the 4 unseen samples can't be checked.",
+   "what_would_settle_it": "Pull full GSM list/sample metadata for all 32 samples and check the paper's methods for confirmed biallelic Nf1 deletion (LOH/IHC) in the Nf1+/flox tumors.",
+   "label_looks_wrong": false,
+   "label_comment": ""
+  },
+  "E-TABM-69": {
+   "ambiguity": "NF1 status is stated once at series level and never per sample, and the ArrayExpress rows carry no sample-level labels at all, so no case/control split exists for this dataset.",
+   "secondary": "Two-colour arrays against a pooled 'pool-cut' reference channel, which is a technical reference, not a biological control arm.",
+   "what_would_settle_it": "Read the SDRF for per-sample tumour type and NF1 status, then decide whether the pooled-reference design can enter a per-dataset DE contrast at all.",
+   "label_looks_wrong": false,
+   "label_comment": "",
+   "_basis": "written by the agent from the stored ArrayExpress record; the LLM audit covered the 17 GEO records only, since there is no GEO metadata for this accession"
+  }
+ },
+ "adjudication": {
+  "GSE56598": {
+   "verdict": "explained_by_column_definition",
+   "comment": "assay_class is correct as expression_array: the series' GEO DataSet Type is 'Methylation profiling by genome tiling array; Expression profiling by array', and the methylation content is already flagged in co_assays. The control_types claim stands as a check: the visible samples are tumours, not unaffected-donor normals."
+  },
+  "GSE77205": {
+   "verdict": "explained_by_column_definition",
+   "comment": "Not a false positive: the stored notes already record that 4 of 35 samples are NF1-patient MPNSTs used as comparators inside a clear-cell-sarcoma (EWS/ATF1) study. assay_class expression_array is right and the ChIP content is flagged in co_assays. The Phase 2 question is whether 4 samples with no control arm are worth ingesting."
+  },
+  "GSE120687": {
+   "verdict": "likely_defect",
+   "comment": "control_types='control_isogenic_engineered' is not supported by the visible samples, which are IgG immunoprecipitation controls from the ChIP arm of a superseries. If so this dataset has no biological control arm and belongs in the no-control fallback."
+  },
+  "GSE163071": {
+   "verdict": "needs_human_check",
+   "comment": "Control samples are labelled unaffected-donor normal but carry tumor=PA (pilocytic astrocytoma) in their characteristics, which would make them a comparator tumour cohort rather than normal tissue."
+  },
+  "GSE292071": {
+   "verdict": "needs_human_check",
+   "comment": "Zero in-scope samples despite an NF2-SWN cohort: per-sample diagnosis is absent from the sample metadata, so the count is unknown rather than truly zero. Resolve from the paper's cohort table before Phase 2 drops the dataset."
+  },
+  "GSE5675": {
+   "verdict": "needs_human_check",
+   "comment": "Same shape as GSE292071: the summary states NF1-associated pilocytic astrocytomas are included, but no per-sample NF1 status is in the metadata, so every sample fell out of scope and the dataset would contribute nothing."
+  },
+  "GSE172221": {
+   "verdict": "needs_human_check",
+   "comment": "In-scope count may include Lats1/2-conditional-knockout arms that are not NF-genotype models, and the human MPNST samples carry no stated germline NF1 status."
+  },
+  "GSE265875": {
+   "verdict": "needs_human_check",
+   "comment": "Case and control counts (17/12) exceed what is visible in the fetched sample records (3 Nf1 tumours, 6 muscle controls); the rest of the series was not shown to the classifier."
+  },
+  "GSE325204": {
+   "verdict": "needs_human_check",
+   "comment": "Three of six cell lines (HS-Sch-2, JH-2-002, JH-2-079-c) have unverified NF1 provenance; only S462, 90-8TL and sNF96.2 are established NF1-patient lines."
+  },
+  "GSE66743": {
+   "verdict": "needs_human_check",
+   "comment": "The in-scope count assumes all 8 neurofibromas are NF1-associated, which the stored notes themselves flag as unknown."
+  }
+ },
+ "decisions": {
+  "E-TABM-69": {
+   "decision": "include",
+   "by": "Kara",
+   "date": "2026-10-05",
+   "contrast": "MPNST vs plexiform neurofibroma (between-subtype, within NF1)",
+   "implementation": "Sample-level labels derived from the SDRF and recorded in phase-2/data/phase2-non-geo-samples.csv: 10 two-colour arrays, cy5 carrying one tumour each (6 plexiform neurofibroma: PN-3, PN-4, PN-5, PN-6, PN-M-1, PN-M-2; 4 MPNST: MPNST-1, -2, -4, -5) against a cy3 pool of dermal neurofibromas shared by every array. Because both arms share that reference it cancels in the between-arm contrast, so the missing control arm does not block this dataset; it does mean no tumour-vs-normal contrast is possible here, since the reference is itself NF tumour tissue. Key the arrays on Array Data File - the SDRF's Hybridization Name repeats one slide barcode across nine arrays."
+  },
+  "GSE145064": {
+   "decision": "include",
+   "by": "Kara (resolved by full-text check)",
+   "date": "2026-10-05",
+   "contrast": "MPNST vs patient-matched plexiform neurofibroma, paired on patient",
+   "implementation": "Germline question settled from the linked publication (PMID 32086342, full text via NCBI PMC - the article is not open access on Europe PMC, whose fullTextXML returns 500): the cohort is 12 NF1 patients from the Iowa NF Clinic plus 3 unpaired cases, 15 patients in total, and the RNA-seq was run on FFPE cores adjacent to the TMA cores from those same patients. No per-patient germline sequencing is reported, so germline_basis moves from 'inferred' to 'stated_nf_cohort' rather than to 'per_sample_nf_status' (correction recorded in phase-2/data/phase2-label-corrections.csv). GEO composition: 46 samples, 21 plexiform neurofibroma and 25 MPNST across 15 patients, 10 of whom contribute both arms, so the contrast can be run paired. No normal-tissue arm exists in the series (the paper's normal peripheral nerve was on the TMA, not in the RNA-seq), so it stays a no-control-fallback dataset. Library is FFPE exome-capture RNA-seq (Agilent SureSelect RNA Direct, All Exon V6 + COSMIC), not poly-A, which is another reason it must not be pooled into a shared matrix; the authors' own analysis used Kallisto plus Sleuth. The 3 ANNUBPs identified on pathology review are not separable from the GEO disease_state field, which carries only the two labels."
+  },
+  "GSE120687": {
+   "decision": "on hold - see finding",
+   "by": "agent",
+   "date": "2026-10-05",
+   "contrast": "none available: the series has no transcript-abundance arm",
+   "implementation": "Kara asked for this one to be included, but checking all 86 samples first shows there is nothing for Phase 2 to ingest. The 40 array samples are every one of them immunoprecipitations - 20 HuR IP and 20 matched IgG IP across dermal neurofibroma (4+4), plexiform neurofibroma (4+4), NF1-derived MPNST (6+6) and sporadic MPNST (6+6) - so the measured quantity is HuR-bound transcript enrichment, not transcript abundance, and there is no total-RNA or input arm. The 6 RNA-seq samples are ST88-14 shHuR versus shControl, an in vitro perturbation on one cell line. The remaining 40 are ChIP-seq. This also explains the flagged control_types defect: the 23 samples labelled 'control_isogenic_engineered' are IgG IP controls. Consequence if confirmed: study_design should be in_vitro_perturbation rather than subtype_or_grade_comparison, comparative_design becomes false, and the dataset leaves the comparative set (49 -> 48, human launch set 29 -> 28). The 3-vs-3 shHuR RNA-seq arm remains useful later as target-validation evidence, not as a differential-expression input."
+  }
+ }
+}
