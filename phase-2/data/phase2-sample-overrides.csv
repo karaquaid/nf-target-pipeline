@@ -1,0 +1,45 @@
+series,gsm,title,source,nf1,tumor,de_role,use_in_phase2,reason,decided_by,date
+GSE163071,GSM4971650,PA_1,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971651,PA_2,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971652,PA_3,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971653,PA_4,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971654,PA_5,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971655,PA_6,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971656,PA_7,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971657,PA_8,Human tumor tissue,No,Glioblastoma,excluded_comparator,False,"glioblastoma comparator, not an NF manifestation here",agent,2026-10-05
+GSE163071,GSM4971658,PA_9,Human tumor tissue,No,Glioblastoma,excluded_comparator,False,"glioblastoma comparator, not an NF manifestation here",agent,2026-10-05
+GSE163071,GSM4971659,PA_10,Human tumor tissue,No,Glioblastoma,excluded_comparator,False,"glioblastoma comparator, not an NF manifestation here",agent,2026-10-05
+GSE163071,GSM4971660,PA_11,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971661,PA_12,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971662,PA_13,Human tumor tissue,No,Glioblastoma,excluded_comparator,False,"glioblastoma comparator, not an NF manifestation here",agent,2026-10-05
+GSE163071,GSM4971663,PA_14,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971664,PA_15,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971665,CTL_8,Human tumor tissue,No,PA,excluded_sporadic,False,"sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05 - note the CTL_* title is misleading, the annotation is tumour tissue",Kara,2026-10-05
+GSE163071,GSM4971666,CTL_9,Human tumor tissue,No,PA,excluded_sporadic,False,"sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05 - note the CTL_* title is misleading, the annotation is tumour tissue",Kara,2026-10-05
+GSE163071,GSM4971667,CTL_10,Human tumor tissue,No,PA,excluded_sporadic,False,"sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05 - note the CTL_* title is misleading, the annotation is tumour tissue",Kara,2026-10-05
+GSE163071,GSM4971668,PA_16,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971669,PA_17,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971670,PA_18,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971671,PA_19,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971672,PA_20,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971673,PA_21,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971674,PA_22,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971675,PA_23,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971676,PA_24,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971677,PA_25,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971678,PA_26,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971679,PA_27,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971680,CTL_11,Human control tissue,CTL,PA,unresolved,False,"self-inconsistent: source='Human control tissue', nf1=CTL, tumor=PA; held out pending a ruling",agent,2026-10-05
+GSE163071,GSM4971681,PA_28,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971682,PA_29,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971683,PA_30,Human tumor tissue,Yes,PA,case,True,NF1-associated pilocytic astrocytoma,agent,2026-10-05
+GSE163071,GSM4971684,PA_31,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971685,PA_32,Human tumor tissue,No,PA,excluded_sporadic,False,sporadic pilocytic astrocytoma (nf1=No); removed per Kara 2026-10-05,Kara,2026-10-05
+GSE163071,GSM4971686,PA_33,Human control tissue,CTL,CTL,excluded_ambiguous,False,"annotated control tissue (nf1=CTL, tumor=CTL) but titled PA; removed as ambiguous per Kara 2026-10-05",Kara,2026-10-05
+GSE163071,GSM4971687,CTL_1,Human control tissue,CTL,CTL,control,True,non-neoplastic brain (see control_types correction: mostly DIPG frontal cortex),agent,2026-10-05
+GSE163071,GSM4971688,CTL_2,Human control tissue,CTL,CTL,control,True,non-neoplastic brain (see control_types correction: mostly DIPG frontal cortex),agent,2026-10-05
+GSE163071,GSM4971689,CTL_3,Human control tissue,CTL,CTL,control,True,non-neoplastic brain (see control_types correction: mostly DIPG frontal cortex),agent,2026-10-05
+GSE163071,GSM4971690,CTL_4,Human control tissue,CTL,CTL,control,True,non-neoplastic brain (see control_types correction: mostly DIPG frontal cortex),agent,2026-10-05
+GSE163071,GSM4971691,CTL_5,Human control tissue,CTL,CTL,control,True,non-neoplastic brain (see control_types correction: mostly DIPG frontal cortex),agent,2026-10-05
+GSE163071,GSM4971692,CTL_6,Human control tissue,CTL,CTL,control,True,non-neoplastic brain (see control_types correction: mostly DIPG frontal cortex),agent,2026-10-05
+GSE163071,GSM4971693,CTL_7,Human control tissue,CTL,CTL,control,True,non-neoplastic brain (see control_types correction: mostly DIPG frontal cortex),agent,2026-10-05
