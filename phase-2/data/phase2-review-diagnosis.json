@@ -142,7 +142,7 @@
   },
   "GSE120687": {
    "verdict": "likely_defect",
-   "comment": "control_types='control_isogenic_engineered' is not supported by the visible samples, which are IgG immunoprecipitation controls from the ChIP arm of a superseries. If so this dataset has no biological control arm and belongs in the no-control fallback."
+   "comment": "control_types='control_isogenic_engineered' is not supported by the sample list: the series' only controls are assay controls - 20 IgG immunoprecipitation samples in the RIP/array arm and 6 inputs in the ChIP arm, which carries no IgG antibody - and no isogenic or engineered line appears in any of the 86 samples. The stored count of 23 matches neither set. If so this dataset has no biological control arm and belongs in the no-control fallback."
   },
   "GSE163071": {
    "verdict": "likely_defect",
