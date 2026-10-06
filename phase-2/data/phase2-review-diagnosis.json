@@ -201,6 +201,13 @@
    "date": "2026-10-05",
    "contrast": "NF1-associated pilocytic astrocytoma (13) vs non-neoplastic brain (7)",
    "implementation": "Kara's ruling on the three annotation traps, plus CTL_11: remove the sporadic pilocytic astrocytomas, the ambiguously labelled PA_33, and CTL_11. Applied in phase-2/data/phase2-sample-overrides.csv over the 44 GEO samples: 13 NF1-associated PA kept as cases; 7 non-neoplastic brain kept as controls (CTL_1 to CTL_7); 18 sporadic PA removed, which includes CTL_8, CTL_9 and CTL_10 whose CTL titles contradict their tumour annotation; 4 glioblastoma removed as comparators; PA_33 removed as annotated control tissue titled PA; CTL_11 removed as source='Human control tissue' with nf1=CTL but tumor=PA. In-scope samples fall from the stored 22 to 20 and controls from 9 to 7; no sample is left unresolved. Reading the contrast: the controls are cortex from DIPG patients plus one matched normal, not optic pathway tissue, so tissue source is confounded with case/control status - see the control_types correction."
+  },
+  "GSE172221": {
+   "decision": "defer to the mouse pass - excluded from the first pass, retained in the logs",
+   "by": "Kara",
+   "date": "2026-10-06",
+   "contrast": "none in the first pass; Nf1;Trp53 GEM-MPNST vs the models' own comparators if the mouse track opens",
+   "implementation": "Deferred, not dropped. The 12 Nf1;Trp53 mouse tumours (9 NP-Plp, 3 NPcis) carry de_role 'case_mouse_deferred' in phase-2/data/phase2-sample-overrides.csv, so they are recoverable by that tag rather than by re-reading the paper. The 10 Lats1;2 samples stay 'excluded_not_nf_model' whether or not mouse data is admitted later, since the publication's own finding is that they are transcriptomically distinct from Nf1;p53-driven tumours and cluster with human PNF/NF. The 22 human samples stay 'excluded_nf_status_unstated' and would need the authors to resolve. The n_samples_in_scope correction to 12 in phase-2/data/phase2-label-corrections.csv is written to apply when the mouse track opens; it has no effect on the human-only first pass, where this dataset contributes zero samples. If the mouse track does open, note the remaining limit: NP-Plp spans two genotypes mimicking sporadic ([Nf1;Trp53]fl/+) and NF1-associated ([Nf1;Trp53]fl/Nf1-) MPNST, which GEO's 'mouse line=NP-Plp' does not distinguish."
   }
  }
 }
