@@ -193,7 +193,8 @@
    "by": "Kara (ChIP) + agent (consequence applied)",
    "date": "2026-10-06",
    "contrast": "none usable for Phase 2; the only abundance contrast is a 3-vs-3 shHuR knockdown in one cell line",
-   "implementation": "Kara: the ChIP data is not needed. Applied to all 86 samples in phase-2/data/phase2-sample-overrides.csv: 40 ChIP-seq samples excluded as 'excluded_chip' (BRD2, BRD3, BRD4, H3K27ac, H3K4me3, H3K4me1 and inputs). Dropping them does not by itself make the series usable, because the 40 array samples are also immunoprecipitations - 20 HuR IP and 20 matched IgG IP across dermal neurofibroma (4+4), plexiform neurofibroma (4+4), NF1-derived MPNST (6+6) and sporadic MPNST (6+6) - so they measure HuR-bound transcript enrichment, not abundance, and are tagged 'excluded_rip_not_abundance'. What remains is the 6 RNA-seq samples, a 3-vs-3 shHuR versus shControl knockdown in ST88-14, tagged 'perturbation_arm_deferred' and kept in the logs as later target-validation evidence (does knocking down a candidate move the gene set?) rather than as a case/control input. Consequence applied: study_design in_vitro_perturbation, comparative_design false, so the comparative set goes 49 -> 48 and the human launch set 29 -> 28. Reversible if you want the series kept as a DE input - but there is no abundance contrast in it to run."
+   "implementation": "Kara: the ChIP data is not needed. Applied to all 86 samples in phase-2/data/phase2-sample-overrides.csv: 40 ChIP-seq samples excluded as 'excluded_chip' (BRD2, BRD3, BRD4, H3K27ac, H3K4me3, H3K4me1 and inputs). Dropping them does not by itself make the series usable, because the 40 array samples are also immunoprecipitations - 20 HuR IP and 20 matched IgG IP across dermal neurofibroma (4+4), plexiform neurofibroma (4+4), NF1-derived MPNST (6+6) and sporadic MPNST (6+6) - so they measure HuR-bound transcript enrichment, not abundance, and are tagged 'excluded_rip_not_abundance'. What remains is the 6 RNA-seq samples, a 3-vs-3 shHuR versus shControl knockdown in ST88-14, tagged 'perturbation_arm_deferred' and kept in the logs as later target-validation evidence (does knocking down a candidate move the gene set?) rather than as a case/control input. Consequence applied: study_design in_vitro_perturbation, comparative_design false, so the comparative set goes 49 -> 48 and the human launch set 29 -> 28. Reversible if you want the series kept as a DE input - but there is no abundance contrast in it to run.",
+   "in_launch_set": false
   },
   "GSE163071": {
    "decision": "include, with sample-level removals (all traps resolved)",
@@ -207,7 +208,104 @@
    "by": "Kara",
    "date": "2026-10-06",
    "contrast": "none in the first pass; Nf1;Trp53 GEM-MPNST vs the models' own comparators if the mouse track opens",
-   "implementation": "Deferred, not dropped. The 12 Nf1;Trp53 mouse tumours (9 NP-Plp, 3 NPcis) carry de_role 'case_mouse_deferred' in phase-2/data/phase2-sample-overrides.csv, so they are recoverable by that tag rather than by re-reading the paper. The 10 Lats1;2 samples stay 'excluded_not_nf_model' whether or not mouse data is admitted later, since the publication's own finding is that they are transcriptomically distinct from Nf1;p53-driven tumours and cluster with human PNF/NF. The 22 human samples stay 'excluded_nf_status_unstated' and would need the authors to resolve. The n_samples_in_scope correction to 12 in phase-2/data/phase2-label-corrections.csv is written to apply when the mouse track opens; it has no effect on the human-only first pass, where this dataset contributes zero samples. If the mouse track does open, note the remaining limit: NP-Plp spans two genotypes mimicking sporadic ([Nf1;Trp53]fl/+) and NF1-associated ([Nf1;Trp53]fl/Nf1-) MPNST, which GEO's 'mouse line=NP-Plp' does not distinguish."
+   "implementation": "Deferred, not dropped. The 12 Nf1;Trp53 mouse tumours (9 NP-Plp, 3 NPcis) carry de_role 'case_mouse_deferred' in phase-2/data/phase2-sample-overrides.csv, so they are recoverable by that tag rather than by re-reading the paper. The 10 Lats1;2 samples stay 'excluded_not_nf_model' whether or not mouse data is admitted later, since the publication's own finding is that they are transcriptomically distinct from Nf1;p53-driven tumours and cluster with human PNF/NF. The 22 human samples stay 'excluded_nf_status_unstated' and would need the authors to resolve. The n_samples_in_scope correction to 12 in phase-2/data/phase2-label-corrections.csv is written to apply when the mouse track opens; it has no effect on the human-only first pass, where this dataset contributes zero samples. If the mouse track does open, note the remaining limit: NP-Plp spans two genotypes mimicking sporadic ([Nf1;Trp53]fl/+) and NF1-associated ([Nf1;Trp53]fl/Nf1-) MPNST, which GEO's 'mouse line=NP-Plp' does not distinguish.",
+   "in_launch_set": false
+  },
+  "GSE179043": {
+   "decision": "include",
+   "by": "agent, from source evidence",
+   "date": "2026-10-08",
+   "contrast": "MPNST vs plexiform/benign neurofibroma (between-subtype, within NF1); no normal control arm",
+   "implementation": "Settle-it ran against Wu et al. (PMID 36322658). The paper describes the human cohort only at cohort level - 'NF1-mutated PNF' and 'NF1-associated MPNST' - with no per-sample genotype, so germline_basis drops to stated_nf_cohort and confidence stays medium. 31 human RNA-seq samples enter: a bulk arm (8 benign NF: NF1-6..NF1-16; 9 MPNST: MPNST-2..MPNST-12) and a single-cell arm (10 pNF-2-0xx; 4 MPNST-2-0xx) - the two arms are separate matrices and must not be pooled before pseudobulk. The 2 human ATAC-seq samples are dropped as non-abundance. On the mouse side the paper presents the Lats1/2-deficient model as a YAP/TAZ comparator alongside the Nf1-driven models, not as an NF model, so its 14 samples are excluded_not_nf_model (the same ruling as GSE172221) and only the Nf1-mut and NPE-mut samples (n=3) carry forward to the mouse pass."
+  },
+  "GSE207400": {
+   "decision": "include",
+   "by": "agent, from source evidence",
+   "date": "2026-10-08",
+   "contrast": "MPNST and low-grade MPNST vs atypical neurofibroma vs neurofibroma (progression series, within NF1); no normal control arm",
+   "implementation": "GEO carries a per-sample genotype field: NF1 26, Sporadic 22. Within the NF1 subset all four stages are present (MPNST 8, Low-Grade MPNST 2, Atypical_NF 9, Neurofibroma 7), so the dataset supports the progression contrast on its own. The 22 sporadic samples drop at sample level. The primary publication is Suppiah et al. 2023 (PMC10172395), which lists GSE207400 in its data availability but never states how NF1 versus sporadic status was assigned, and its reported cohort (108 samples) does not match this 48-sample RNA-seq series; the GEO genotype field is therefore the only source for the split and confidence stays medium."
+  },
+  "GSE292071": {
+   "decision": "include",
+   "by": "agent, from source evidence",
+   "date": "2026-10-08",
+   "contrast": "NF2-related schwannomatosis vs non-NF2-related schwannomatosis (between-genotype); no normal control arm",
+   "implementation": "The GEO record carries no genetic background at all, but Table S1 of the primary publication (Genome Medicine 2025, PMC11992879, Additional file 1, retrieved via the Europe PMC supplementary-files endpoint) assigns a tumour predisposition syndrome to each of the 22 patients, and every sample title carries its patient id. 11 patients are NF2-related schwannomatosis (77 plates) and 5 non-NF2-related schwannomatosis (27 plates), giving 104 in-scope plates; 6 patients are recorded as sporadic (SCHW20), sporadic with prior radiotherapy (SCHW21) or with no predisposition data (SCHW9, SCHW11, SCHW16, SCHW19) and their 47 plates drop. This moves the series from 'in scope but zero usable samples' into the launch set. Plates are Smart-seq wells, so several plates per patient: pseudobulk to the patient, not the plate."
+  },
+  "GSE66743": {
+   "decision": "include",
+   "by": "agent, from source evidence",
+   "date": "2026-10-08",
+   "contrast": "MPNST vs neurofibroma (between-subtype, within NF1); no normal control arm",
+   "implementation": "GEO carries a per-sample 'hereditary status' field: Neurofibromatosis type 1 25, Sporadic 13. Within the NF1 subset both arms are present - 15 primary tumours and 2 recurrences against 7 dermal and 1 plexiform neurofibroma - so the audit's worry that the neurofibromas might be sporadic is answered by the record itself. The 13 sporadic samples drop at sample level."
+  },
+  "GSE2841": {
+   "decision": "exclude",
+   "by": "Kara (standing conservative rule), applied by agent",
+   "date": "2026-10-08",
+   "contrast": "none usable",
+   "implementation": "Dahia et al. (PMID 16103922) assigned the genetic classes by clinical features of the familial syndromes; their sequencing covered RET, VHL, SDHD and SDHB only, with no NF1 sequencing. That leaves 2 clinically attributed NF1 pheochromocytomas out of 76 samples, no NF contrast within the series, and a manifestation that maps only to 'Other'. The 2 samples are tagged case_no_contrast_deferred so they stay findable if a pooled cross-dataset analysis is ever run.",
+   "in_launch_set": false
+  },
+  "GSE325204": {
+   "decision": "exclude",
+   "by": "Kara (standing conservative rule), applied by agent",
+   "date": "2026-10-08",
+   "contrast": "none usable",
+   "implementation": "The only contrast in this cell-line series is PRC2 LoF versus PRC2 WT, and the WT arm is HS-Sch-2 and STS-26T, both of which Cellosaurus classifies as melanoma (HS-Sch-2 as desmoplastic melanoma) and neither of which is NF1-derived. Of the five PRC2 LoF lines, S462, sNF96.2 and 90-8TL are confirmed NF1 MPNST lines in Cellosaurus while JH-2-002 and JH-2-079-c have no registry record, so their NF1 provenance is unverified. What remains is a single NF1 arm with no valid comparator. The 9 samples from the three confirmed lines are tagged case_cellline_deferred.",
+   "in_launch_set": false
+  },
+  "GSE56598": {
+   "decision": "exclude",
+   "by": "Kara (standing conservative rule), applied by agent",
+   "date": "2026-10-08",
+   "contrast": "none usable",
+   "implementation": "The series is a methylation/expression superseries and the NF2-associated versus sporadic subtype annotation sits only on the 45 Illumina 450K samples (GPL13534). The 44 expression arrays (GPL10739) carry no genotype field, and their titles (S_1..S_31, N_*, NonV1-4, N_HSC) do not bridge to the methylation titles (VestibularSchwannoma_NF2_1 etc.), so no expression sample can be assigned an NF2 status. The publication (PMID 25533176) is closed access and could not be checked. The stored counts (20 in scope, 6 cases, 14 controls) mixed the two arms and are corrected to zero; revisit if an expression-arm sample table becomes available.",
+   "in_launch_set": false
+  },
+  "GSE5675": {
+   "decision": "exclude",
+   "by": "Kara (standing conservative rule), applied by agent",
+   "date": "2026-10-08",
+   "contrast": "none usable",
+   "implementation": "The 41 samples carry a single unnamed characteristic ('Brain tumor, WHO grade I, Pilocytic astrocytoma') and titles of the form 'Pilocytic astrocytoma chip N'; GEO holds no per-sample NF1 status. The abstract confirms the cohort mixes sporadic and NF1-associated tumours, and the publication (PMID 17283119, doi 10.1158/0008-5472.can-06-0973) is not openly accessible - fetch attempts returned no body. The NF1 subset cannot be identified, so the series contributes nothing to the human pass.",
+   "in_launch_set": false
+  },
+  "GSE77205": {
+   "decision": "exclude",
+   "by": "Kara (standing conservative rule), applied by agent",
+   "date": "2026-10-08",
+   "contrast": "none usable",
+   "implementation": "This is a clear cell sarcoma study. Four human MPNST arrays are annotated 'sample type = NF1 patient' (MPNST 830, 937, 1080, 1082) but the only comparator inside the series is 8 human clear cell sarcomas, with the rest being EWS/ATF1 mouse models, the MP-CCS-SY line and 9 ChIP-seq samples. There is no NF contrast to run; the 4 samples are tagged case_no_contrast_deferred.",
+   "in_launch_set": false
+  },
+  "GSE265875": {
+   "decision": "defer",
+   "by": "agent, from source evidence",
+   "date": "2026-10-08",
+   "contrast": "deferred to the mouse pass",
+   "implementation": "Nf1 loss here is somatic - sgNf1/sgTrp53 tumours generated by muscle electroporation in the EPO-GEMM platform - so nf_association becomes engineered_nf_model rather than mixed_nf_and_sporadic. The genotype field names only 6 sgNf1 samples among 195, against the stored 29 in scope; the count is corrected to 6. The paper does not state a total for the sgNf1/sgTrp53 cohort (it reports IHC fractions of 3/5 and 4/5) and the stored 12 controls are not reproducible from the genotype field (WT = 6), so the control count is left to be re-derived in the mouse pass rather than guessed."
+  },
+  "GSE137152": {
+   "decision": "defer",
+   "by": "agent, from source evidence",
+   "date": "2026-10-08",
+   "contrast": "deferred to the mouse pass",
+   "implementation": "Nf1 is genuinely part of this model: the study turns on Pten copy number together with Nf1 loss of heterozygosity during the fetal-to-adult haematopoiesis switch, with Nf1 LOH driving the monocytosis. The 6 samples split 3 JMML-phenotype against 3 wild-type littermates, matching the stored counts. The publication (PMID 32777070) has no retrievable full text - both Europe PMC and NCBI returned no body - so this rests on the GEO genotype field and the abstract."
+  },
+  "GSE231603": {
+   "decision": "defer",
+   "by": "agent, from source evidence",
+   "date": "2026-10-08",
+   "contrast": "deferred to the mouse pass (rat)",
+   "implementation": "The settle-it question is answered: IF, PS and IFPS are three germline CRISPR Nf1 exon-20 indel rat lines - Nf1-IF a 54 bp in-frame deletion, Nf1-PS an 8 bp deletion with a premature stop, Nf1-IFPS a 57 bp exon 20 plus 140 bp exon 21 deletion - so engineered_nf_model is correct and the 15 wild-type samples are isogenic controls. The material is mammary tumour and mammary tissue, which maps to 'Other' in the manifestation list; it stays in the animal track."
+  },
+  "GSE78895": {
+   "decision": "defer",
+   "by": "agent, from source evidence",
+   "date": "2026-10-08",
+   "contrast": "deferred to the mouse pass",
+   "implementation": "The paper reports no LOH, sequencing or IHC confirmation of biallelic Nf1 loss in the tumours: the 'Nf1-/-' label follows from the breeding design (germline Nf1 null or floxed allele recombined by hGFAP-cre), and the genotyping described targets p53 and Rictor recombination. That is recorded as a standing caveat rather than a disqualification. nf_association moves to engineered_nf_model because every arm is engineered - the hGFAP-cre;p53flox/flox samples are an isogenic comparator, not sporadic material. Sample structure: 13 Nf1-genotype tumours, 9 p53-only tumours, 10 normal brain controls (7 forebrain, 3 cerebellum)."
   }
  }
 }

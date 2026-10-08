@@ -60,17 +60,26 @@ A dataset or target can carry more than one manifestation label if it's genuinel
 
 ## Phase 2: Data Ingestion and Preprocessing
 
+**Status:** pre-flight review complete (2026-10-08). All 18 medium/low-confidence comparative datasets were adjudicated one by one in `phase-2/docs/phase2-classification-review.md`; the rulings live in `phase-2/data/phase2-review-diagnosis.json`, the resulting label changes in `phase-2/data/phase2-label-corrections.csv`, and the per-sample inclusion/exclusion calls in `phase-2/data/phase2-sample-overrides.csv`.
+
 **Claude tools:** Claude Code (writing/debugging ingestion and preprocessing scripts)
 
-- Build ingestion scripts to pull and standardize raw expression data from selected GEO datasets
-- Implement (as secondary capability) batch-effect correction methods and a fallback approach for datasets lacking healthy controls
-- Establish a reproducible preprocessing pipeline that outputs a clean expression matrix ready for downstream analysis
+- **First pass is human-only.** Mouse and rat datasets are a separate later track, not a parallel one. Datasets deferred there (GSE172221, GSE265875, GSE137152, GSE231603, GSE78895, and the mouse arms of mixed series) stay in the logs with their sample labels so the mouse pass starts from a finished manifest rather than a fresh sweep
+- **Launch set: 22 datasets.** All comparative-design datasets containing human material (29, including E-TABM-69 from ArrayExpress), minus the 7 the pre-flight review took out: GSE120687 (immunoprecipitation arms only, no abundance contrast), GSE172221 (human arm's NF status unstated), GSE2841 (2 clinically attributed NF1 pheochromocytomas, no NF contrast), GSE325204 (comparator arm is two non-NF1 lines Cellosaurus classifies as melanoma), GSE56598 (NF2 status annotated only on the methylation arm), GSE5675 (no per-sample NF1 status, publication closed), GSE77205 (4 NF1 MPNSTs whose only in-series comparator is clear cell sarcoma)
+- **`phase2-sample-overrides.csv` is authoritative** for which samples enter a contrast, overriding the Phase 1a per-sample labels. Sporadic samples inside mixed cohorts, mouse samples inside mixed-organism series, non-expression assays (ChIP, ATAC, methylation, RIP) and ambiguously labelled samples are excluded there with a reason, never deleted
+- **No single merged matrix.** The 29 comparative human datasets span 28 distinct GPL platforms, so the pipeline runs per-dataset differential expression and combines the results by rank-based meta-analysis in Phase 3. Preprocessing therefore standardizes each dataset to its own normalized matrix plus a sample table, not to a common gene-by-sample matrix
+- Single-cell datasets in the launch set are pseudobulked to one profile per patient (not per plate, well or library) before entering the per-dataset contrast
+- Batch-effect correction applies within a dataset (platform, batch, FFPE vs fresh), not across them; cross-dataset heterogeneity is handled by the meta-analysis step instead
+- Keep the fallback for datasets with no control arm explicit: only 11 of the launch set carry any control sample, so most contrasts are between-subtype (MPNST vs neurofibroma, NF2-SWN vs non-NF2 schwannomatosis) rather than tumour vs normal. Write down what that assumes before running it
+- Remaining pre-ingestion items: expression-file selection for multi-assay series, the 5 processed-matrix-only datasets, verifying raw downloads resolve for every launch-set dataset, and labelling or excluding the 5 ArrayExpress datasets
+- Establish a reproducible preprocessing pipeline per dataset, with the ingestion manifest, the per-dataset normalized matrix and the sample table all written to disk so Phase 3 can be re-run without re-downloading
 
 ## Phase 3: Candidate Target Identification
 
 **Claude tools:** Claude Code (analysis scripts for differential expression/pathway enrichment)
 
 - Extend the existing KEGG-based pathway mapping step to work directly from raw expression data rather than pre-selected target names
+- Run differential expression once per dataset against that dataset's own contrast (recorded in `phase-2/data/phase2-review-diagnosis.json`), then combine across datasets by rank-based meta-analysis rather than pooling samples; the launch set spans 28 platforms and most contrasts are between-subtype rather than tumour vs normal, so effect sizes are not comparable on a common scale
 - Generate an initial candidate gene/target list from expression signal (e.g., differential expression, pathway enrichment)
 - Label each candidate with disease (NF1, NF2-SWN, or SWN) and manifestation(s) per the labeling standard above, based on which dataset(s) it was derived from
 
