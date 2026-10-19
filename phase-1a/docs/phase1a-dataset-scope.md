@@ -198,8 +198,12 @@ GSE78901 (plexiform neurofibroma, 21).
 - **Bulk and single-cell RNA-seq are not separable at sample level.** Both read `RNA-Seq` as library
   strategy on the same sequencer platforms, so `sample_assay` takes `single_cell_rnaseq` from the
   series flag. A series depositing both arms therefore reads `bulk_rnaseq` throughout; GSE179043 is
-  the one known instance (its 14 single-cell samples are recorded in
-  `phase-2/data/phase2-sample-overrides.csv`). The 49 samples whose library strategy is GEO's
+  the one known instance, and its single-cell arm is identified only in that dataset's Phase 2
+  decision record (`phase-2/data/phase2-review-diagnosis.json`), from the linked publication rather
+  than from GEO: the 10 `pNF-2-0xx` and 4 `MPNST-2-0xx` samples (GSM5404031-GSM5404044) are 10x
+  single-cell, while the 8 `NF1-*` and 9 `MPNST-*` samples are bulk. The sample manifest reads
+  `bulk_rnaseq` for all 17 of those, and `phase2-sample-overrides.csv` records their inclusion but
+  not their assay. The 49 samples whose library strategy is GEO's
   `OTHER` are left as `other_sequencing`: the record says only that the series' DataSet Type includes
   "Other", not which assay the sample is, and the four whose titles name an antibody or an input are
   the exception that could be read directly.
