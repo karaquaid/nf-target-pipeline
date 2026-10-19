@@ -14,7 +14,7 @@ Every dataset and every target is labelled with its disease and with one or more
 
 ## Status
 
-Early. Two stages are complete: the literature-derived target list (Phase 1b, see [`phase-1b/docs/phase1b-literature-targets.md`](phase-1b/docs/phase1b-literature-targets.md)) and the public expression-dataset scope (Phase 1a, see [`phase-1a/docs/phase1a-dataset-scope.md`](phase-1a/docs/phase1a-dataset-scope.md)). Ingestion and the expression-derived arm are in progress. The phase-by-phase plan in [`docs/project-plan.md`](docs/project-plan.md) is the source of truth for scope and ordering, and is updated in place as decisions change.
+Early. Two stages are complete: the literature-derived target list (Phase 1b, see [`phase-1b/docs/phase1b-literature-targets.md`](phase-1b/docs/phase1b-literature-targets.md)) and the public expression-dataset scope (Phase 1a, see [`phase-1a/docs/phase1a-dataset-scope.md`](phase-1a/docs/phase1a-dataset-scope.md)). Ingestion and the expression-derived arm are in progress: the Phase 2 pre-flight review is finished (see [`phase-2/docs/phase2-classification-review.md`](phase-2/docs/phase2-classification-review.md)), and the launch set and its remaining blockers are recorded in the plan. The phase-by-phase plan in [`docs/project-plan.md`](docs/project-plan.md) is the source of truth for scope and ordering, and is updated in place as decisions change.
 
 ## Layout
 
