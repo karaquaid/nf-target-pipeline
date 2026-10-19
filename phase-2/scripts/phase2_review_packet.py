@@ -77,7 +77,8 @@ def main() -> int:
         rows.append({
             "accession": acc,
             "confidence": d["confidence"],
-            "in_launch_set": d["organism"] in HUMAN_ORGANISMS,
+            # organism decides eligibility; a recorded decision can take a dataset back out
+            "in_launch_set": bool(dec.get("in_launch_set", d["organism"] in HUMAN_ORGANISMS)),
             "organism": d["organism"],
             "title": d["title"],
             "disease": d["disease"],
@@ -124,8 +125,10 @@ def main() -> int:
         "# Phase 2 pre-flight: classification review packet",
         "",
         f"**{len(rows)} datasets** - every comparative-design dataset whose Phase 1a confidence came out "
-        f"medium or low. {n_launch} are in the human-only first-pass set; the rest are mouse-model "
-        "datasets, deferred with the rest of the mouse track but listed so the review is complete.",
+        f"medium or low. After the review, {n_launch} remain in the human-only first-pass set; the rest "
+        f"({len(rows) - n_launch}) are out of it - mouse-model datasets deferred with the rest of the "
+        "mouse track, and human datasets the review itself excluded. All are listed so the review is "
+        "complete and each exclusion stays auditable.",
         "",
         "These are the datasets Phase 2 would ingest, so the labels that matter here are the ones that "
         "decide a differential-expression contrast: which samples are NF cases, which are controls, and "
@@ -148,7 +151,8 @@ def main() -> int:
         "| checked, consistent with the column definition | the audit's claim does not hold |",
         "",
     ]
-    for group, title in ((True, "Human-only first-pass set"), (False, "Mouse-model datasets (deferred)")):
+    for group, title in ((True, "Human-only first-pass set"),
+                         (False, "Out of the first-pass set (excluded by review, or deferred to the mouse track)")):
         group_rows = [r for r in rows if r["in_launch_set"] is group]
         if not group_rows:
             continue

@@ -1,0 +1,23 @@
+accession,source,assay_class,data_availability,control_types,platforms,human_cases,human_controls,human_other,mouse_in_scope,distinct_labels_in_scope,override_rows,override_cases_kept,override_controls_kept,override_arm_rows,non_geo_label_rows,preflight_decision,stated_contrast,blocker
+E-MEXP-258,ArrayExpress,expression_array,raw_array_files,control_unaffected_donor_normal,,0,0,0,0,0,0,0,0,0,0,,,no sample-level labels (ArrayExpress); control arm unconfirmed; no contrast derivable from labels
+E-TABM-69,ArrayExpress,expression_array,raw_array_files,none,,0,0,0,0,0,0,0,0,0,20,include,"MPNST vs plexiform neurofibroma (between-subtype, within NF1)",ready
+GSE108524,GEO,expression_array,raw_array_files,control_unaffected_donor_normal,GPL17586,17,4,0,0,2,0,0,0,0,0,,,ready
+GSE138347,GEO,bulk_rnaseq,raw_array_files,none,GPL18573,18,0,0,0,1,0,0,0,0,0,,,no contrast derivable from labels
+GSE14038,GEO,expression_array,raw_array_files,control_unaffected_donor_normal,GPL7869,66,10,0,0,2,0,0,0,0,0,,,ready
+GSE141801,GEO,expression_array,raw_array_files,control_unaffected_donor_normal,GPL13667,13,7,3,0,3,0,0,0,0,0,,,ready
+GSE145064,GEO,bulk_rnaseq,raw_array_files,none,GPL20301,46,0,0,0,1,0,0,0,0,0,include,"MPNST vs patient-matched plexiform neurofibroma, paired on patient",stated contrast has no per-sample arm assignment
+GSE163071,GEO,bulk_rnaseq,raw_counts,control_unaffected_donor_normal,GPL24676,13,9,0,0,2,44,13,7,0,0,"include, with sample-level removals (all traps resolved)",NF1-associated pilocytic astrocytoma (13) vs non-neoplastic brain (7),stated contrast has no per-sample arm assignment
+GSE179043,GEO,bulk_rnaseq,raw_array_files,none,GPL19057;GPL23227;GPL24247;GPL24676,33,0,0,3,1,50,31,0,0,0,include,"MPNST vs plexiform/benign neurofibroma (between-subtype, within NF1); no normal control arm",stated contrast has no per-sample arm assignment; 3 mouse samples need a deferral tag
+GSE181985,GEO,single_cell_rnaseq,raw_array_files,control_isogenic_engineered,GPL17021;GPL18573,23,0,0,8,2,0,0,0,0,0,,,8 mouse samples need a deferral tag
+GSE207400,GEO,bulk_rnaseq,processed_matrix_only,none,GPL18573,26,0,0,0,1,48,26,0,0,0,include,"MPNST and low-grade MPNST vs atypical neurofibroma vs neurofibroma (progression series, within NF1); no normal control arm",stated contrast has no per-sample arm assignment; processed matrix only
+GSE218493,GEO,single_cell_rnaseq,raw_array_files,none,GPL20795,2,0,0,0,1,0,0,0,0,0,,,no contrast derivable from labels
+GSE232516,GEO,single_cell_rnaseq,raw_array_files,control_matched_adjacent_normal,GPL24676,2,2,0,0,2,0,0,0,0,0,,,ready
+GSE232528,GEO,bulk_rnaseq,raw_array_files,none,GPL24676,14,0,0,0,1,0,0,0,0,0,,,no contrast derivable from labels
+GSE234071,GEO,bulk_rnaseq,raw_counts,control_matched_adjacent_normal,GPL24676,2,2,0,0,2,0,0,0,0,0,,,ready
+GSE239561,GEO,expression_array,raw_array_files,none,GPL32069,34,0,0,0,1,0,0,0,0,0,,,no contrast derivable from labels
+GSE244433,GEO,single_cell_rnaseq,raw_array_files,control_isogenic_engineered,GPL24247;GPL24676,1,0,0,11,3,0,0,0,0,0,,,"single human sample, no contrast; 11 mouse samples need a deferral tag"
+GSE292071,GEO,single_cell_rnaseq,processed_matrix_only,none,GPL30173,0,0,0,0,0,151,104,0,0,0,include,NF2-related schwannomatosis vs non-NF2-related schwannomatosis (between-genotype); no normal control arm,stated contrast has no per-sample arm assignment; processed matrix only
+GSE318927,GEO,single_cell_rnaseq,raw_array_files,none,GPL24676,14,0,0,0,1,0,0,0,0,0,,,no contrast derivable from labels
+GSE344687,GEO,single_cell_rnaseq,raw_array_files,none,GPL37309,11,0,0,0,1,0,0,0,0,0,,,no contrast derivable from labels
+GSE41747,GEO,expression_array,raw_array_files,control_isogenic_engineered;control_unaffected_donor_normal,GPL10371;GPL14757,32,3,0,48,3,0,0,0,0,0,,,48 mouse samples need a deferral tag
+GSE66743,GEO,expression_array,raw_array_files,none,GPL2986,25,0,0,0,1,38,25,0,0,0,include,"MPNST vs neurofibroma (between-subtype, within NF1); no normal control arm",stated contrast has no per-sample arm assignment
