@@ -217,8 +217,15 @@ GSE78901 (plexiform neurofibroma, 21).
   record (GSE344687, NF2-associated vestibular schwannoma multiome) was classified by hand and is
   recorded in `phase-1a/data/phase1a-manual-classifications.json`. LLM classification is not deterministic, so
   the committed tables — not a re-run — are the record of this sweep. The 2026-10-19 re-run (made to
-  fetch the platform records) returned 418 series: **GSE329232, GSE350684 and GSE350838 are new and
-  are not yet classified**, so they appear in no table here. Everything else matched.
+  fetch the platform records) returned 418 series: GSE329232, GSE350684 and GSE350838 are new.
+  They were classified on 2026-10-19 against the same rubric and are held in
+  `phase-1a/data/phase1a-sweep-2026-10-19.json` rather than merged into the tables here, which would
+  change what those tables are a record of. Result: GSE329232 (virotherapy in NF1 MPNST lines and
+  isogenic NF1-null Schwann cell models) and GSE350684 (PRC2-loss MPNST lines, S462 and 90-8TL
+  against sporadic STS26T and HSSCH2) are in scope; GSE350838 is out of scope, a synovial sarcoma
+  PDX study that mentions MPNST only as a comparator for YAP1 expression. **Neither in-scope series
+  changes the Phase 2 launch set**: both are `in_vitro_perturbation` designs, and only
+  `tumor_vs_normal` and `subtype_or_grade_comparison` count as comparative. Everything else matched.
 
 ## Open decisions
 

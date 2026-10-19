@@ -306,6 +306,13 @@
    "date": "2026-10-08",
    "contrast": "deferred to the mouse pass",
    "implementation": "The paper reports no LOH, sequencing or IHC confirmation of biallelic Nf1 loss in the tumours: the 'Nf1-/-' label follows from the breeding design (germline Nf1 null or floxed allele recombined by hGFAP-cre), and the genotyping described targets p53 and Rictor recombination. That is recorded as a standing caveat rather than a disqualification. nf_association moves to engineered_nf_model because every arm is engineered - the hGFAP-cre;p53flox/flox samples are an isogenic comparator, not sporadic material. Sample structure: 13 Nf1-genotype tumours, 9 p53-only tumours, 10 normal brain controls (7 forebrain, 3 cerebellum)."
+  },
+  "GSE244433": {
+   "decision": "hold for the mouse decision - out of the human-only first pass, retained in the logs",
+   "by": "Kara",
+   "date": "2026-10-19",
+   "contrast": "none in the first pass; Nf1-OPG optic nerve tumour vs wild-type and heterozygous littermate optic nerve if the mouse track opens",
+   "implementation": "Deferred, not dropped, and not part of the 18-dataset review packet: this came out of the launch-set readiness pass. Of 16 samples, 11 are mouse and in scope (5 Nf1-OPG optic nerve tumours, 3 NF-genotype non-tumour samples - 6-week optic nerve, meningeal dura, blood - and 3 wild-type or heterozygous littermate controls), tagged case_mouse_deferred and control_mouse_deferred in phase-2/data/phase2-sample-overrides.csv so they are recoverable by tag rather than by re-reading the record. The one human NF1 OPG sample (GSM7816068, human_H966) is tagged case_no_contrast_deferred: the series' only other human samples are 4 sporadic paediatric optic pathway gliomas, excluded by the scope rule whether or not the mouse track opens, so there is no human contrast to run. The dataset therefore contributes zero samples to the human-only first pass and the launch set is 21. Coverage consequence: optic pathway glioma keeps GSE163071 (13 NF1-associated pilocytic astrocytomas vs 7 non-neoplastic brain), so the manifestation is not lost from the first pass; what the hold defers is the only tumour-vs-normal OPG design in the launch set."
   }
  }
 }

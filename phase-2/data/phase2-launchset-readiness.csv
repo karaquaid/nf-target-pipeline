@@ -15,7 +15,6 @@ GSE232516,GEO,single_cell_rnaseq,raw_array_files,control_matched_adjacent_normal
 GSE232528,GEO,bulk_rnaseq,raw_array_files,none,GPL24676,14,0,0,0,1,0,0,0,0,0,,,no contrast derivable from labels
 GSE234071,GEO,bulk_rnaseq,raw_counts,control_matched_adjacent_normal,GPL24676,2,2,0,0,2,0,0,0,0,0,,,ready
 GSE239561,GEO,expression_array,raw_array_files,none,GPL32069,34,0,0,0,1,0,0,0,0,0,,,no contrast derivable from labels
-GSE244433,GEO,single_cell_rnaseq,raw_array_files,control_isogenic_engineered,GPL24247;GPL24676,1,0,0,11,3,0,0,0,0,0,,,"single human sample, no contrast; 11 mouse samples need a deferral tag"
 GSE292071,GEO,single_cell_rnaseq,processed_matrix_only,none,GPL30173,0,0,0,0,0,151,104,0,0,0,include,NF2-related schwannomatosis vs non-NF2-related schwannomatosis (between-genotype); no normal control arm,stated contrast has no per-sample arm assignment; processed matrix only
 GSE318927,GEO,single_cell_rnaseq,raw_array_files,none,GPL24676,14,0,0,0,1,0,0,0,0,0,,,no contrast derivable from labels
 GSE344687,GEO,single_cell_rnaseq,raw_array_files,none,GPL37309,11,0,0,0,1,0,0,0,0,0,,,no contrast derivable from labels

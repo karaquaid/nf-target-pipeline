@@ -1,0 +1,1057 @@
+{
+ "_note": "Three GEO series returned by the 2026-10-19 re-run of phase1a_geo_search.py that are not in the committed Phase 1a tables (the record of the 2026-09-29 sweep, 415 series; the re-run returned 418). Classified on 2026-10-19 with the same SYSTEM_PROMPT and SAMPLE_LABEL_SPEC from phase1a_classify.py, one reasoning-model call per series plus one per sample block. Held here rather than merged: folding them into phase1a-datasets.csv would change what that table is a record of. Consequence for Phase 2: none. Both in-scope series are in_vitro_perturbation designs, and COMPARATIVE_DESIGNS in phase1a_build_tables.py admits only tumor_vs_normal and subtype_or_grade_comparison, so neither is a launch-set candidate.",
+ "_sweep_date": "2026-10-19",
+ "_classified_by": "agent, same rubric as the 2026-09-29 pass",
+ "series": {
+  "GSE329232": {
+   "record": {
+    "accession": "GSE329232",
+    "title": "Biomarker driven and gene-enhanced virotherapy for malignant peripheral nerve sheath tumor",
+    "summary": "Malignant Peripheral Nerve Sheath Tumors (MPNST) are a leading cause of Neurofibromatosis Type 1-related mortality and require targeted interventions. High-grade MPNST is defined by PRC2 loss, which normally represses gene transcription via H3K27me3. We hypothesized that PRC2 loss sensitizes MPNST to oncolytic virotherapy via viral gene transcriptional permissiveness. HSV G47\u0394 sensitivity was investigated using inducible PRC2 rescue, pharmacologic inhibition, and Schwann cell isogenic deletion models. Viability assays, flow cytometry, Cut&Run, and RNA-seq determined viral therapeutic parameters, epigenetic interactions, and resistance mechanisms. Xenografts and syngeneic models assessed in vivo efficacy. All MPNST lines showed a therapeutic window with HSV G47\u0394 versus human Schwann cells. PRC2 deficiency decreased IC50 by approximately 10-fold across all modular systems (p < 0.001). HSV spread after low dose significantly outperforms in the PRC2 deficient context (>95% vs. <10% spread at 72hr, p<0.001), suggesting an early replication advantage. Cut&Run confirmed host histones associate with viral DNA and undergo PRC2-dependent H3K27 trimethylation. However, inadequate viral spread was observed by immunohistochemistry among PRC2-deficient MPNST xenografts. RNA-sequencing of uninfected and infected PRC2 modular systems identified integrated stress response hyperactivation as a key mechanism of resistance, promoting translational arrest and counteracting the benefit of transcriptional permissiveness.",
+    "overall_design": "PRC2 modular MPNST models were infected with HSV G47\u00ce\u0094 at sub-lethal, cell line optimized dosing. TY5005 (S462-TY parental) includes a doxycycline inducible SUZ12 cassette to restore H3K27me3. MPNST724 (PRC2 proficient) is pharmacologically pretreated with 1 micromolar valemetostat for 7 days to deplete H3K27me3. N32WT1 (NF1 gene deletion) and N32-3 (NF1 and SUZ12 gene deletions) represent isogenic models derived from hTert immortalized human Schwann cells. Following in vitro infection, flow cytometry (TY5005, MPNST724) or x-gal staining (N32 system) were utilized to quantify percent of live infected cells on technical replicate wells. Cell pellets for 6 biological replicates per group and condition (uninfected and infected) were collected when viral spread was >90% without viability loss to achieve equal viral input. RNA-sequencing reads are quality-filtered and aligned to a hybrid Human (GRCh38) and HSV-1 (Strain F) reference genome using STAR to simultaneously quantify host and viral transcript abundances. Differential expression analysis is performed using host-specific normalization to ensure that changes in the host transcriptome are accurately resolved from dominant viral signatures.",
+    "gds_type": "Expression profiling by high throughput sequencing",
+    "taxon": "Homo sapiens",
+    "n_samples": 72,
+    "pdat": "2026/10/12",
+    "platforms": "GPL34295",
+    "pubmed_ids": "",
+    "relations": "BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1458188",
+    "supplementary_files": "GSE329232_DE_tables.xlsx;GSE329232_featureCounts.xlsx",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE329232"
+   },
+   "classification": {
+    "nf_association": "nf_derived_cell_line",
+    "germline_basis": "engineered_genotype",
+    "in_scope": true,
+    "exclusion_reason": "",
+    "disease": "NF1",
+    "manifestations": [
+     "Malignant peripheral nerve sheath tumor (MPNST)"
+    ],
+    "organism_class": "human",
+    "material": "immortalized_cell_line",
+    "study_design": "in_vitro_perturbation",
+    "single_cell": false,
+    "control_types": [
+     "isogenic_or_engineered_control"
+    ],
+    "n_nf_samples_est": null,
+    "n_control_samples_est": null,
+    "confidence": "medium",
+    "evidence": "TY5005 (S462-TY parental); N32WT1 (NF1 gene deletion) and N32-3 (NF1 and SUZ12 deletions) isogenic Schwann cell models",
+    "notes": "S462-derived TY5005 and engineered NF1-null N32 lines are clearly NF1-linked; MPNST724's NF1/patient provenance is not stated in record."
+   }
+  },
+  "GSE350684": {
+   "record": {
+    "accession": "GSE350684",
+    "title": "PRC2 Loss in MPNST Is Accompanied by SWI/SNF Complex Rewiring and Sensitization to SMARCA2/4 and BET Inhibition In Vivo",
+    "summary": "This SuperSeries is composed of the SubSeries listed below.",
+    "overall_design": "Refer to individual Series",
+    "gds_type": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+    "taxon": "Homo sapiens",
+    "n_samples": 61,
+    "pdat": "2026/10/13",
+    "platforms": "GPL24676;GPL34284",
+    "pubmed_ids": "",
+    "relations": "SuperSeries of: GSE320307;SuperSeries of: GSE325204;BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1543557",
+    "supplementary_files": "GSE350684_RAW.tar",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE350684"
+   },
+   "classification": {
+    "nf_association": "mixed_nf_and_sporadic",
+    "germline_basis": "cell_line_provenance",
+    "in_scope": true,
+    "exclusion_reason": "",
+    "disease": "NF1",
+    "manifestations": [
+     "Malignant peripheral nerve sheath tumor (MPNST)"
+    ],
+    "organism_class": "human",
+    "material": "immortalized_cell_line",
+    "study_design": "in_vitro_perturbation",
+    "single_cell": false,
+    "control_types": [
+     "non_nf_tumor_comparator"
+    ],
+    "n_nf_samples_est": 30,
+    "n_control_samples_est": 30,
+    "confidence": "medium",
+    "evidence": "cell line: S462/908TL (90-8TL), cell type: MPNST, PRC2 LOF; STS26T/HSSCH2 are non-NF1 MPNST lines used as WT comparators",
+    "notes": "S462 and 90-8TL are established NF1 patient-derived MPNST lines; STS26T and HSSCH2 are sporadic MPNST lines, no stated NF1 germline status"
+   }
+  },
+  "GSE350838": {
+   "record": {
+    "accession": "GSE350838",
+    "title": "Evaluating the toxicity and efficacy of the YAP inhibitor verteporfin in combination with pazopanib in a synovial sarcoma xenograft model (UZLX-STS7)",
+    "summary": "Nuclear Yes-associated protein1 (YAP1) is expressed at higher levels in synovial sarcoma, myxoid liposarcoma, and malignant peripheral nerve sheath tumors than in other soft tissue sarcomas. To further characterize YAP1 activity, we had used RNA sequencing from 45 synovial sarcoma patient samples.15 samples with high YAP1 pathway activity scores had enriched gene sets that related to vasculature, including FGF2. Pazopanib is currently used as a single-agent therapy for synovial sarcoma and targets growth factor receptors. Therefore, we investigated the potential relationship between YAP1 and pazopanib. This data is from the in vivo experiment that evaluated the toxicity and efficacy of the YAP inhibitor verteporfin in combination with pazopanib in a synovial sarcoma xenograft model (UZLX-STS7).",
+    "overall_design": "An efficacy study  was performed to evaluate the efficacy of the combination treatment with pazopanib and verteporfin in NMRI nu/nu mice transplanted bilaterally with the SynSa patient-derived xenograft model UZLX-STS7. This model retains stable histopathological and molecular features similar to synovial sarcoma patients. Animals were randomized into treatment groups (7-8 mice/group) on day 1 and treated for 23 days with vehicle, pazopanib, verteporfin, or a combination of pazopanib and verteporfin. Pazopanib was purchased from Carbosynth (Compton, UK) and prepared as 10 mg/ml solution in 1% hydroxypropylmethylcellulose and 0.1% Tween 80 (vehicle). Verteporfin was purchased from Adooq Bioscience (California, USA) and dissolved in 10% dimethylsulfoxide (DMSO) to 100 mg/ml concentration as a stock solution; before administration it was diluted 10X with aqua ad injectabilia (10 mg/ml). Pazopanib at a dose of 100 mg/kg once daily by oral gavage; verteporfin was given at 75 mg/kg every two days by intraperitoneal (i.p.) injection. Dosing was based on previous literature, where the drugs were used either as monotherapy or in combination with other agents, such as doxorubicin. Two mice from each treatment group were evaluated with RNA sequencing.",
+    "gds_type": "Expression profiling by high throughput sequencing",
+    "taxon": "Mus musculus",
+    "n_samples": 8,
+    "pdat": "2026/10/14",
+    "platforms": "GPL24247",
+    "pubmed_ids": "",
+    "relations": "BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1544072",
+    "supplementary_files": "GSE350838_RAW.tar",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE350838"
+   },
+   "classification": {
+    "nf_association": "not_nf_related",
+    "germline_basis": "none",
+    "in_scope": false,
+    "exclusion_reason": "synovial sarcoma PDX, not NF-associated; MPNST only mentioned as comparator for YAP1 expression",
+    "disease": "Not specified",
+    "manifestations": [
+     "Other"
+    ],
+    "organism_class": "mouse",
+    "material": "pdx_or_xenograft",
+    "study_design": "xenograft_or_in_vivo_treatment",
+    "single_cell": false,
+    "control_types": [
+     "none"
+    ],
+    "n_nf_samples_est": 0,
+    "n_control_samples_est": 2,
+    "confidence": "high",
+    "evidence": "synovial sarcoma xenograft model (UZLX-STS7); YAP1 higher in synovial sarcoma, myxoid liposarcoma, and MPNST than other sarcomas",
+    "notes": "MPNST mentioned only as comparator tumor type for YAP1 expression; no NF1/NF2 germline or engineered model involved"
+   }
+  }
+ },
+ "samples": [
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699724",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699725",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699726",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699727",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699728",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699729",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699730",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699731",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699732",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699733",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699734",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699735",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699736",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699737",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699738",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699739",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699740",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699741",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699742",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699743",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699744",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699745",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699746",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699747",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699748",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699749",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699750",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699751",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699752",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699753",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699754",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699755",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699756",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699757",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699758",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699759",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699760",
+   "label": "nf_case_tumor",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699761",
+   "label": "nf_case_tumor",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699762",
+   "label": "nf_case_tumor",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699763",
+   "label": "nf_case_tumor",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699764",
+   "label": "nf_case_tumor",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699765",
+   "label": "nf_case_tumor",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699766",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699767",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699768",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699769",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699770",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699771",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699772",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699773",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699774",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699775",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699776",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699777",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699778",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699779",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699780",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699781",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699782",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699783",
+   "label": "treated_or_perturbed",
+   "sporadic": "unknown",
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699784",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699785",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699786",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699787",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699788",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699789",
+   "label": "treated_or_perturbed",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699790",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699791",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699792",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699793",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699794",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE329232",
+   "gsm": "GSM9699795",
+   "label": "control_isogenic_engineered",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540309",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540310",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540311",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540312",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540313",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540314",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540315",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540316",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540317",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540318",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540319",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540320",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540321",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540322",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540323",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540324",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540325",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540326",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540327",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540328",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540329",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540330",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540331",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540332",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540333",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540334",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540335",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540336",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540337",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540338",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540339",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540340",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540341",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540342",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540343",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540344",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540345",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540346",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540347",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9540348",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597793",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597794",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597795",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597796",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597797",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597798",
+   "label": "comparator_sporadic_same_tumor",
+   "sporadic": true,
+   "in_scope_sample": false
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597799",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597800",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597801",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597802",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597803",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597804",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597805",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597806",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597807",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597808",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597809",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597810",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597811",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597812",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  },
+  {
+   "series": "GSE350684",
+   "gsm": "GSM9597813",
+   "label": "nf_case_tumor",
+   "sporadic": false,
+   "in_scope_sample": true
+  }
+ ]
+}

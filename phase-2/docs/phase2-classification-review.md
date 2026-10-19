@@ -297,3 +297,16 @@ These are the datasets Phase 2 would ingest, so the labels that matter here are 
 - **What would settle it:** Pull full GSM list/sample metadata for all 32 samples and check the paper's methods for confirmed biallelic Nf1 deletion (LOH/IHC) in the Nf1+/flox tumors.
 - **Decision (agent, from source evidence): defer** - contrast: deferred to the mouse pass
   - The paper reports no LOH, sequencing or IHC confirmation of biallelic Nf1 loss in the tumours: the 'Nf1-/-' label follows from the breeding design (germline Nf1 null or floxed allele recombined by hGFAP-cre), and the genotyping described targets p53 and Rictor recombination. That is recorded as a standing caveat rather than a disqualification. nf_association moves to engineered_nf_model because every arm is engineered - the hGFAP-cre;p53flox/flox samples are an isogenic comparator, not sporadic material. Sample structure: 13 Nf1-genotype tumours, 9 p53-only tumours, 10 normal brain controls (7 forebrain, 3 cerebellum).
+
+## Resolved outside the review packet
+
+Datasets whose Phase 1a confidence was high, so they are not part of the 18-dataset packet above, but which later needed a ruling of their own.
+
+### [GSE244433](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE244433) - high confidence
+
+*Human single cell RNA-sequencing reveals a targetable CD8+ exhausted T cell population that maintains murine low-grade glioma growth*
+
+- **Labels:** NF1 / Optic pathway glioma | human+mouse | tumor_vs_normal | single_cell_rnaseq
+- **Samples:** 16 in the series, 12 in scope
+- **Decision (Kara): hold for the mouse decision - out of the human-only first pass, retained in the logs** - contrast: none in the first pass; Nf1-OPG optic nerve tumour vs wild-type and heterozygous littermate optic nerve if the mouse track opens
+  - Deferred, not dropped, and not part of the 18-dataset review packet: this came out of the launch-set readiness pass. Of 16 samples, 11 are mouse and in scope (5 Nf1-OPG optic nerve tumours, 3 NF-genotype non-tumour samples - 6-week optic nerve, meningeal dura, blood - and 3 wild-type or heterozygous littermate controls), tagged case_mouse_deferred and control_mouse_deferred in phase-2/data/phase2-sample-overrides.csv so they are recoverable by tag rather than by re-reading the record. The one human NF1 OPG sample (GSM7816068, human_H966) is tagged case_no_contrast_deferred: the series' only other human samples are 4 sporadic paediatric optic pathway gliomas, excluded by the scope rule whether or not the mouse track opens, so there is no human contrast to run. The dataset therefore contributes zero samples to the human-only first pass and the launch set is 21. Coverage consequence: optic pathway glioma keeps GSE163071 (13 NF1-associated pilocytic astrocytomas vs 7 non-neoplastic brain), so the manifestation is not lost from the first pass; what the hold defers is the only tumour-vs-normal OPG design in the launch set.

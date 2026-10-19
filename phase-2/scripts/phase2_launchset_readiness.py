@@ -41,6 +41,14 @@ EXCLUDED = [
     "GSE77205",
 ]
 
+# Held back after the pre-flight review, for reasons recorded in the decisions block
+# of phase2-review-diagnosis.json. Deferred, not dropped: their samples keep their
+# tags in phase2-sample-overrides.csv so the later pass starts from a finished manifest.
+DEFERRED = {
+    "GSE244433": "held for the mouse decision (Kara, 2026-10-19): once the mouse arm is "
+                 "deferred the series has 1 human sample and no contrast",
+}
+
 HUMAN = "Homo sapiens"
 MOUSE = "Mus musculus"
 
@@ -53,7 +61,8 @@ def launch_set(datasets):
     comparative = datasets[truthy(datasets.comparative_design)]
     human = comparative[comparative.organism.astype(str).str.contains("human", case=False)]
     counted = human[truthy(human.counted_in_coverage)]
-    return counted[~counted.accession.isin(EXCLUDED)].copy()
+    keep = counted[~counted.accession.isin(EXCLUDED + list(DEFERRED))]
+    return keep.copy()
 
 
 def blockers(row):
@@ -132,6 +141,8 @@ def main():
 
     ready = int((readiness.blocker == "ready").sum())
     print(f"{len(readiness)} datasets in the launch set, {ready} ready as labelled")
+    for acc, why in sorted(DEFERRED.items()):
+        print(f"  deferred: {acc} - {why}")
     print(f"wrote {OUT.relative_to(ROOT)}")
 
 
