@@ -202,7 +202,7 @@ GSE78901 (plexiform neurofibroma, 21).
   decision record (`phase-2/data/phase2-review-diagnosis.json`), from the linked publication rather
   than from GEO: the 10 `pNF-2-0xx` and 4 `MPNST-2-0xx` samples (GSM5404031-GSM5404044) are 10x
   single-cell, while the 8 `NF1-*` and 9 `MPNST-*` samples are bulk. The sample manifest reads
-  `bulk_rnaseq` for all 17 of those, and `phase2-sample-overrides.csv` records their inclusion but
+  `bulk_rnaseq` for all 31 of its human RNA-seq samples, and `phase2-sample-overrides.csv` records their inclusion but
   not their assay. The 49 samples whose library strategy is GEO's
   `OTHER` are left as `other_sequencing`: the record says only that the series' DataSet Type includes
   "Other", not which assay the sample is, and the four whose titles name an antibody or an input are
