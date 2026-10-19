@@ -1,0 +1,120 @@
+platform,title,technology,organism
+GPL10332,Agilent-026652 Whole Human Genome Microarray 4x44K v2 (Feature Number version),in situ oligonucleotide,Homo sapiens
+GPL10371,Affymetrix Human Genome U133 Plus 2.0 Array [CDF: HGU133Plus2_Hs_REFSEQ_11.0.1],in situ oligonucleotide,Homo sapiens
+GPL10558,Illumina HumanHT-12 V4.0 expression beadchip,oligonucleotide beads,Homo sapiens
+GPL10739,[HuGene-1_0-st] Affymetrix Human Gene 1.0 ST Array [probe set (exon) version],in situ oligonucleotide,Homo sapiens
+GPL10904,Illumina HumanHT-12 V4.0 expression beadchip (gene symbol),oligonucleotide beads,Homo sapiens
+GPL10999,Illumina Genome Analyzer IIx (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL11028,"[HuEx-1_0-st] Affymetrix Human Exon 1.0 ST Array [HuEx-1_0-st-v2,coreR3,A20071112,EP.cdf]",in situ oligonucleotide,Homo sapiens
+GPL11154,Illumina HiSeq 2000 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL11180,[HT_MG-430_PM] Affymetrix HT MG-430 PM Array Plate,in situ oligonucleotide,Mus musculus
+GPL11383,Agi-perou-lab-custom-MM-144K-arrays-BARCODE25503,in situ oligonucleotide,Mus musculus
+GPL11531,Agilent-012799 Mouse Developmental Microarray 44K (Gene name version),in situ oligonucleotide,Mus musculus
+GPL1261,[Mouse430_2] Affymetrix Mouse Genome 430 2.0 Array,in situ oligonucleotide,Mus musculus
+GPL13112,Illumina HiSeq 2000 (Mus musculus),high-throughput sequencing,Mus musculus
+GPL1319,[Zebrafish] Affymetrix Zebrafish Genome Array,in situ oligonucleotide,Danio rerio
+GPL13534,Illumina HumanMethylation450 BeadChip (HumanMethylation450_15017482),oligonucleotide beads,Homo sapiens
+GPL1355,[Rat230_2] Affymetrix Rat Genome 230 2.0 Array,in situ oligonucleotide,Rattus norvegicus
+GPL13667,[HG-U219] Affymetrix Human Genome U219 Array,in situ oligonucleotide,Homo sapiens
+GPL14602,AB SOLiD 4 System (Mus musculus),high-throughput sequencing,Mus musculus
+GPL14664,Agilent-026437 D. rerio (Zebrafish) Oligo Microarray V3 (Probe Name version),in situ oligonucleotide,Danio rerio
+GPL14757,Affymetrix GeneChip Mouse Genome 430 2.0 Array [CDF: Mouse4302_Mm_REFSEQ_v11],in situ oligonucleotide,Mus musculus
+GPL14951,Illumina HumanHT-12 WG-DASL V4.0 R2 expression beadchip,oligonucleotide beads,Homo sapiens
+GPL15456,Illumina HiScanSQ (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL16185,Illumina Genome Analyzer II (Human herpesvirus 5),high-throughput sequencing,Human betaherpesvirus 5
+GPL16186,Illumina HiSeq 2000 (Human herpesvirus 5),high-throughput sequencing,Human betaherpesvirus 5
+GPL16417,Illumina MiSeq (Mus musculus),high-throughput sequencing,Mus musculus
+GPL16570,[MoGene-2_0-st] Affymetrix Mouse Gene 2.0 ST Array [transcript (gene) version],in situ oligonucleotide,Mus musculus
+GPL16686,[HuGene-2_0-st] Affymetrix Human Gene 2.0 ST Array [transcript (gene) version],in situ oligonucleotide,Homo sapiens
+GPL16790,AB 5500 Genetic Analyzer (Mus musculus),high-throughput sequencing,Mus musculus
+GPL16791,Illumina HiSeq 2500 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL16890,Agilent-033850 Tetranychus urticae 63K array,in situ oligonucleotide,Tetranychus urticae
+GPL17021,Illumina HiSeq 2500 (Mus musculus),high-throughput sequencing,Mus musculus
+GPL17197,The M.D. Anderson Cancer Center (MDACC) miRNA Expression Bioarrays,spotted oligonucleotide,Homo sapiens
+GPL17586,[HTA-2_0] Affymetrix Human Transcriptome Array 2.0 [transcript (gene) version],in situ oligonucleotide,Homo sapiens
+GPL17639,Illumina HiSeq 2500 (Arabidopsis thaliana),high-throughput sequencing,Arabidopsis thaliana
+GPL18413,Illumina HiSeq 2500 (Danio rerio),high-throughput sequencing,Danio rerio
+GPL18460,Illumina HiSeq 1500 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL18573,Illumina NextSeq 500 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL19057,Illumina NextSeq 500 (Mus musculus),high-throughput sequencing,Mus musculus
+GPL19132,Illumina NextSeq 500 (Drosophila melanogaster),high-throughput sequencing,Drosophila melanogaster
+GPL19163,Agilent-015062 Mouse Dev Gene Expression Microarray (Probe name version),in situ oligonucleotide,Mus musculus
+GPL1930,Homo sapiens 4.8K 02-01 amplified cDNA,spotted DNA/cDNA,Homo sapiens
+GPL1977,NHGRI 12k cDNA Custom Array,spotted DNA/cDNA,Homo sapiens
+GPL200,[Celegans] Affymetrix C. elegans Genome Array,in situ oligonucleotide,Caenorhabditis elegans
+GPL20275,NanoString nCounter Human miRNA Expression Assay v2 [mRNA ID],other,Homo sapiens
+GPL20301,Illumina HiSeq 4000 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL20795,HiSeq X Ten (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL20828,Illumina NextSeq 500 (Danio rerio),high-throughput sequencing,Danio rerio
+GPL21103,Illumina HiSeq 4000 (Mus musculus),high-throughput sequencing,Mus musculus
+GPL21145,Infinium MethylationEPIC,oligonucleotide beads,Homo sapiens
+GPL21273,HiSeq X Ten (Mus musculus),high-throughput sequencing,Mus musculus
+GPL21290,Illumina HiSeq 3000 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL21493,Illumina HiSeq 3000 (Mus musculus),high-throughput sequencing,Mus musculus
+GPL21626,NextSeq 550 (Mus musculus),high-throughput sequencing,Mus musculus
+GPL21697,NextSeq 550 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL21785,Illumina HiSeq 4000 (Arabidopsis thaliana),high-throughput sequencing,Arabidopsis thaliana
+GPL23227,BGISEQ-500 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL23976,Illumina Infinium HumanMethylation850 BeadChip,oligonucleotide beads,Homo sapiens
+GPL24247,Illumina NovaSeq 6000 (Mus musculus),high-throughput sequencing,Mus musculus
+GPL24676,Illumina NovaSeq 6000 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL24958,Illumina NextSeq 500 (Homo sapiens; Human betaherpesvirus 5),high-throughput sequencing,Homo sapiens Human betaherpesvirus 5
+GPL24995,Illumina NovaSeq 6000 (Danio rerio),high-throughput sequencing,Danio rerio
+GPL2507,Sentrix Human-6 Expression BeadChip,oligonucleotide beads,Homo sapiens
+GPL25526,Illumina NovaSeq 6000 (Homo sapiens; Mus musculus),high-throughput sequencing,Homo sapiens Mus musculus
+GPL25611,Illumina HiSeq 2500 (Danaus plexippus),high-throughput sequencing,Danaus plexippus
+GPL25760,Illumina NovaSeq 6000 (Canis lupus familiaris),high-throughput sequencing,Canis lupus familiaris
+GPL25853,[Mouse430_2] Affymetrix Mouse Genome 430 2.0 Array [CDF: Brainarray ENTREZG v10],in situ oligonucleotide,Mus musculus
+GPL25947,Illumina NovaSeq 6000 (Rattus norvegicus),high-throughput sequencing,Rattus norvegicus
+GPL26926,Illumina NextSeq 500 (Murid betaherpesvirus 1; Mus musculus),high-throughput sequencing,Mus musculus Murid betaherpesvirus 1
+GPL27956,NanoString Human nCounter PanCancer IO 360 Panel [NS_IO_360],other,Homo sapiens
+GPL28038,DNBSEQ-G400 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL28457,DNBSEQ-G400 (Mus musculus),high-throughput sequencing,Mus musculus
+GPL2868,SHAM,spotted DNA/cDNA,Homo sapiens
+GPL2933,SHAL,spotted DNA/cDNA,Homo sapiens
+GPL2934,SHAY,spotted DNA/cDNA,Homo sapiens
+GPL2935,SHAO,spotted DNA/cDNA,Homo sapiens
+GPL2936,SHAE,spotted DNA/cDNA,Homo sapiens
+GPL2937,SHBH,spotted DNA/cDNA,Homo sapiens
+GPL2938,SHBJ,spotted DNA/cDNA,Homo sapiens
+GPL29480,DNBSEQ-T7 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL29636,Illumina HiSeq 4000 (Homo sapiens; Human herpesvirus 5 strain Merlin),high-throughput sequencing,Homo sapiens Human herpesvirus 5 strain Merlin
+GPL29637,Illumina NovaSeq 6000 (Homo sapiens; Human herpesvirus 5 strain Merlin),high-throughput sequencing,Homo sapiens Human herpesvirus 5 strain Merlin
+GPL2986,ABI Human Genome Survey Microarray Version 2,spotted oligonucleotide,Homo sapiens
+GPL30172,NextSeq 2000 (Mus musculus),high-throughput sequencing,Mus musculus
+GPL30173,NextSeq 2000 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL32069,NanoString Human nCounter PanCancer IO360 Panel,other,Homo sapiens
+GPL32171,NanoString nCounter MAX/FLEX,other,Homo sapiens
+GPL32685,Illumina Infinium MouseMethylation array (MouseMethylation-12v1-0_A2),oligonucleotide beads,Mus musculus
+GPL33022,Illumina Infinium MethylationEPIC version 2,oligonucleotide beads,Homo sapiens
+GPL341,[RAE230A] Affymetrix Rat Expression 230A Array,in situ oligonucleotide,Rattus norvegicus
+GPL34281,Illumina NovaSeq X (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL34284,Illumina NovaSeq X Plus (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL34290,Illumina NovaSeq X Plus (Mus musculus),high-throughput sequencing,Mus musculus
+GPL34295,Element AVITI (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL34328,Illumina NovaSeq X (Mus musculus),high-throughput sequencing,Mus musculus
+GPL35351,Illumina NovaSeq X Plus (Canis lupus familiaris),high-throughput sequencing,Canis lupus familiaris
+GPL35984,[HTA-2_0] Affymetrix Human Transcriptome Array 2.0 [CDF: hta20_Hs_ENTREZG_25.0.0],in situ oligonucleotide,Homo sapiens
+GPL36640,The nCounter FLEX Analysis System,other,Homo sapiens
+GPL37309,NextSeq 500 (Homo sapiens),high-throughput sequencing,Homo sapiens
+GPL4133,Agilent-014850 Whole Human Genome Microarray 4x44K G4112F (Feature Number version),in situ oligonucleotide,Homo sapiens
+GPL570,[HG-U133_Plus_2] Affymetrix Human Genome U133 Plus 2.0 Array,in situ oligonucleotide,Homo sapiens
+GPL6101,Illumina ratRef-12 v1.0 expression beadchip,oligonucleotide beads,Rattus norvegicus
+GPL6193,[MoEx-1_0-st] Affymetrix Mouse Exon 1.0 ST Array [probe set (exon) version],in situ oligonucleotide,Mus musculus
+GPL6244,[HuGene-1_0-st] Affymetrix Human Gene 1.0 ST Array [transcript (gene) version],in situ oligonucleotide,Homo sapiens
+GPL6246,[MoGene-1_0-st] Affymetrix Mouse Gene 1.0 ST Array [transcript (gene) version],in situ oligonucleotide,Mus musculus
+GPL6333,Illumina Mouse Ref-6 V1,oligonucleotide beads,Mus musculus
+GPL6480,Agilent-014850 Whole Human Genome Microarray 4x44K G4112F (Probe Name version),in situ oligonucleotide,Homo sapiens
+GPL6780,VMSR Compugen Human Oligo P6G5,spotted oligonucleotide,Homo sapiens
+GPL6887,Illumina MouseWG-6 v2.0 expression beadchip,oligonucleotide beads,Mus musculus
+GPL6947,Illumina HumanHT-12 V3.0 expression beadchip,oligonucleotide beads,Homo sapiens
+GPL7217,VMSR Human 30k oligonucleotide microarray,spotted oligonucleotide,Homo sapiens
+GPL7869,Affymetrix GeneChip Human Genome U133 Plus 2.0 Array [CDF: Hs133P_Hs_REFSEQ_8],in situ oligonucleotide,Homo sapiens
+GPL81,[MG_U74Av2] Affymetrix Murine Genome U74A Version 2 Array,in situ oligonucleotide,Mus musculus
+GPL8321,[Mouse430A_2] Affymetrix Mouse Genome 430A 2.0 Array,in situ oligonucleotide,Mus musculus
+GPL8432,Illumina HumanRef-8 WG-DASL v3.0,oligonucleotide beads,Homo sapiens
+GPL8490,Illumina HumanMethylation27 BeadChip (HumanMethylation27_270596_v.1.2),oligonucleotide beads,Homo sapiens
+GPL9128,Agilent-014693 Human Genome CGH Microarray 244A (Probe name version),in situ oligonucleotide,Homo sapiens
+GPL9250,Illumina Genome Analyzer II (Mus musculus),high-throughput sequencing,Mus musculus
+GPL9523,[Mouse430_2] Affymetrix GeneChip Mouse Genome 430 2.0 Array [Alternative CDF: affy9618alt],in situ oligonucleotide,Mus musculus
+GPL96,[HG-U133A] Affymetrix Human Genome U133A Array,in situ oligonucleotide,Homo sapiens

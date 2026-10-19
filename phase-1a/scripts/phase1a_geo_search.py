@@ -317,8 +317,28 @@ def main() -> int:
         if i % 25 == 0:
             print(f"[detail] {i}/{len(hits)}", flush=True)
 
+    # Platform records: a GSM's library_strategy is blank for every array sample and
+    # reads "RNA-Seq" for bulk and single-cell alike, so the per-sample assay cannot be
+    # read off the sample record. The platform's own technology field is what separates
+    # an expression array from a methylation or miRNA array.
+    gpls = sorted({g for r in sample_rows for g in r["platform"].split() if g.startswith("GPL")})
+    platform_rows = []
+    for i, gpl in enumerate(gpls, 1):
+        ent = parse_soft(ncbi.soft(gpl, "self"))
+        e = ent[0] if ent else {}
+        platform_rows.append({
+            "platform": gpl,
+            "title": " ".join(e.get("Platform_title", [])),
+            "technology": " ".join(e.get("Platform_technology", [])),
+            "organism": " ".join(e.get("Platform_organism", [])),
+        })
+        if i % 25 == 0:
+            print(f"[platform] {i}/{len(gpls)}", flush=True)
+
     (outdir / "series.json").write_text(json.dumps(series_rows, indent=2))
     (outdir / "samples.json").write_text(json.dumps(sample_rows))
+    (outdir / "platforms.json").write_text(json.dumps(platform_rows, indent=2))
+    print(f"[platforms] {len(platform_rows)} GEO platforms described", flush=True)
     print(f"[done] {len(series_rows)} series, {len(sample_rows)} samples, "
           f"{len(skipped)} series too large for per-sample fetch", flush=True)
     return 0

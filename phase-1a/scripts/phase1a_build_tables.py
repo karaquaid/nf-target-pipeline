@@ -12,6 +12,7 @@ Outputs (in phase-1a/data):
     phase1a-datasets.csv         one row per in-scope dataset
     phase1a-dataset-labels.csv   long dataset x disease x manifestation
     phase1a-samples.csv          per-sample manifest for in-scope datasets (Phase 2 input list)
+    phase1a-platforms.csv        GEO platform reference (title, technology) behind sample_assay
     phase1a-excluded.csv         everything the sweep returned and the reason it was dropped
     phase1a-coverage.csv         disease x manifestation x organism counts, zeros included
     phase1a-queries.csv          search provenance
@@ -77,6 +78,58 @@ def assay_class(assay_type: str, single_cell: bool) -> str:
     return "unclear"
 
 
+def sample_assay(library_strategy: str, platform: str, title: str,
+                 platforms: dict[str, dict], series_single_cell: bool) -> str:
+    """Per-sample measured quantity, for the sample manifest.
+
+    assay_class is a property of the series; a multi-assay series carries samples of
+    several kinds, so Phase 2 needs the assay per sample to pick the files that hold
+    abundance. Two GEO fields decide it and neither is sufficient alone: a GSM's
+    library_strategy is blank for every array sample and reads "RNA-Seq" for bulk and
+    single-cell alike, while the platform's technology field separates an expression
+    array from a methylation or miRNA array but says nothing about sequencing libraries.
+
+    Known limit: bulk and single-cell RNA-seq samples are indistinguishable at sample
+    level (same library_strategy, same sequencer platform), so single_cell_rnaseq is
+    assigned from the series flag. A series depositing both arms - GSE179043 is the one
+    we know of - therefore reads bulk_rnaseq for all of its RNA-seq samples.
+    """
+    strat = (library_strategy or "").strip().upper()
+    if strat == "CHIP-SEQ":
+        return "chip_seq"
+    if strat == "ATAC-SEQ":
+        return "atac_seq"
+    if strat == "MEDIP-SEQ":
+        return "medip_seq"
+    if strat == "RNA-SEQ":
+        return "single_cell_rnaseq" if series_single_cell else "bulk_rnaseq"
+    if strat == "OTHER":
+        # GEO's "OTHER" says only that the series' DataSet Type includes "Other"; use the
+        # sample title where it names the assay outright, and stay honest otherwise.
+        t = (title or "").lower()
+        if re.search(r"h3k\d|input|chip", t):
+            return "chip_seq"
+        if "spatial" in t:
+            return "spatial_transcriptomics"
+        return "other_sequencing"
+    if strat:
+        return "other_sequencing"
+    # No library strategy: an array (or array-like) hybridisation. The platform decides.
+    p = platforms.get((platform or "").strip(), {})
+    text = f"{p.get('title', '')} {p.get('technology', '')}".lower()
+    if not text.strip():
+        return "unclear"
+    if "methylation" in text:
+        return "methylation_array"
+    if re.search(r"\bmirna\b|microrna|non-?coding", text):
+        return "ncrna_array"
+    if "nanostring" in text or "ncounter" in text:
+        return "expression_panel_targeted"
+    if re.search(r"oligonucleotide|cdna|bead ?chip|beads|array", text):
+        return "expression_array"
+    return "unclear"
+
+
 def co_assays(assay_type: str) -> str:
     """Non-expression assays deposited in the same series.
 
@@ -136,6 +189,18 @@ def main() -> int:
     samples = json.loads((B / "samples.json").read_text())
     labels = {(r["series"], r["gsm"]): r
               for r in json.loads((B / "samples_labelled.json").read_text())}
+
+    # Platform records come from the sweep when the cache has them, otherwise from the
+    # committed reference table, so the sample assay column survives a cache rebuild.
+    plat_cache, plat_ref = B / "platforms.json", D / "phase1a-platforms.csv"
+    if plat_cache.exists():
+        platform_rows = json.loads(plat_cache.read_text())
+    elif plat_ref.exists():
+        with plat_ref.open() as fh:
+            platform_rows = list(csv.DictReader(fh))
+    else:
+        platform_rows = []
+    platforms = {r["platform"]: r for r in platform_rows}
 
     samples_by_series = defaultdict(list)
     for s in samples:
@@ -219,6 +284,9 @@ def main() -> int:
             sample_rows.append({**{k: s[k] for k in
                                    ("series", "gsm", "title", "source", "organism",
                                     "characteristics", "library_strategy", "platform")},
+                                "sample_assay": sample_assay(
+                                    s.get("library_strategy", ""), s.get("platform", ""),
+                                    s.get("title", ""), platforms, bool(cls.get("single_cell"))),
                                 "label": x.get("label", "unlabelled"),
                                 "sporadic": x.get("sporadic", "unknown"),
                                 "in_scope_sample": x.get("in_scope_sample", "")})
@@ -292,7 +360,8 @@ def main() -> int:
                        ("phase1a-samples.csv", sample_rows),
                        ("phase1a-excluded.csv", excluded_rows),
                        ("phase1a-coverage.csv", cov_rows),
-                       ("phase1a-queries.csv", q_rows)]:
+                       ("phase1a-queries.csv", q_rows),
+                       ("phase1a-platforms.csv", platform_rows)]:
         path, n = write(name, rows)
         print(f"[write] {path} {n} rows")
     return 0
