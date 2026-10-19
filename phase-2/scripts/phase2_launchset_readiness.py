@@ -80,10 +80,19 @@ def blockers(row):
         row["human_controls"] == 0
         and row["distinct_labels_in_scope"] <= 1
         and not row["stated_contrast"]
+        and row["override_arms"] == 0
     ):
         found.append("no contrast derivable from labels")
     if row["stated_contrast"] and row["override_arm_rows"] == 0 and row["non_geo_label_rows"] == 0:
         found.append("stated contrast has no per-sample arm assignment")
+    # Arms are recorded, but one arm cannot be contrasted, and a contrast needs two
+    # arms of at least two samples. A singleton arm inside a larger series (e.g. one
+    # cellular neurofibroma in a progression series) drops out of the test, it does
+    # not block the dataset.
+    if row["override_arms"] == 1:
+        found.append("single arm; no within-dataset contrast")
+    elif row["override_arms"] > 1 and row["arms_with_n_ge_2"] < 2:
+        found.append("no two arms with 2 or more samples; no differential-expression test")
     if row["mouse_in_scope"]:
         found.append(f"{row['mouse_in_scope']} mouse samples need a deferral tag")
     if row["data_availability"] == "processed_matrix_only":
@@ -109,6 +118,10 @@ def main():
         human = mine[mine.organism == HUMAN]
         arm = human.label.astype(str).str.split("_").str[0]
         kept_here = kept[kept.series == accession]
+        # de_arm: which side of the contrast a kept sample sits on. Absent on rows
+        # written before the column existed, so treat blanks as "no arm recorded".
+        arms = (kept_here["de_arm"].replace("", pd.NA).dropna()
+                if "de_arm" in overrides.columns else pd.Series(dtype=object))
         decision = decisions.get(accession, {})
         rows.append(
             {
@@ -126,9 +139,10 @@ def main():
                 "override_rows": int((overrides.series == accession).sum()),
                 "override_cases_kept": int((kept_here.de_role == "case").sum()),
                 "override_controls_kept": int((kept_here.de_role == "control").sum()),
-                "override_arm_rows": int(kept_here["de_arm"].notna().sum())
-                if "de_arm" in overrides.columns
-                else 0,
+                "override_arm_rows": int(arms.notna().sum()),
+                "override_arms": int(arms.nunique()),
+                "min_arm_n": int(arms.value_counts().min()) if len(arms) else 0,
+                "arms_with_n_ge_2": int((arms.value_counts() >= 2).sum()),
                 "non_geo_label_rows": int((non_geo.series == accession).sum()),
                 "preflight_decision": decision.get("decision", ""),
                 "stated_contrast": decision.get("contrast", ""),
