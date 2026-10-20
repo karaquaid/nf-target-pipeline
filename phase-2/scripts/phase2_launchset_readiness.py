@@ -97,6 +97,9 @@ def blockers(row):
         found.append(f"{row['mouse_in_scope']} mouse samples need a deferral tag")
     if row["data_availability"] == "processed_matrix_only":
         found.append("processed matrix only")
+    if row["targeted_panel"]:
+        found.append("targeted expression panel, not genome-wide: needs its own normalization "
+                     "route and a Phase 3 gene-space ruling")
     return "; ".join(found) or "ready"
 
 
@@ -122,6 +125,10 @@ def main():
         # written before the column existed, so treat blanks as "no arm recorded".
         arms = (kept_here["de_arm"].replace("", pd.NA).dropna()
                 if "de_arm" in overrides.columns else pd.Series(dtype=object))
+        # Dataset-level assay_class can disagree with what the samples actually are:
+        # GSE239561 is recorded as an expression array but every sample is a NanoString
+        # panel, which needs a different normalization route and a smaller gene space.
+        assay_mix = mine.sample_assay.value_counts() if "sample_assay" in samples.columns else pd.Series(dtype=int)
         decision = decisions.get(accession, {})
         rows.append(
             {
@@ -144,6 +151,8 @@ def main():
                 "min_arm_n": int(arms.value_counts().min()) if len(arms) else 0,
                 "arms_with_n_ge_2": int((arms.value_counts() >= 2).sum()),
                 "non_geo_label_rows": int((non_geo.series == accession).sum()),
+                "sample_assay": ";".join(f"{k}:{v}" for k, v in assay_mix.items()),
+                "targeted_panel": bool(len(assay_mix) and assay_mix.idxmax() == "expression_panel_targeted"),
                 "preflight_decision": decision.get("decision", ""),
                 "stated_contrast": decision.get("contrast", ""),
             }

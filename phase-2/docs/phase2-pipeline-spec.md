@@ -17,6 +17,14 @@ first. The reasoning behind each call is in the Phase 2 section of `docs/project
 A sample enters a contrast only if an override (or non-GEO) row says so. Absence of a row means the
 Phase 1a label stands; absence of `de_arm` means the dataset has no contrast yet and is not runnable.
 
+`phase-2/scripts/phase2_verify_arms.py` is the gate on the arm assignment: it compares every arm label and
+arm size against the contrast recorded for that dataset and exits non-zero on a disagreement. Run it after any
+edit to `de_arm`, before the pipeline reads the file.
+
+`phase-2/scripts/phase2_raw_file_check.py` is the equivalent gate on the inputs: it confirms that every
+dataset's archive files resolve and that what they hold matches the recorded `data_availability`. As of
+2026-10-20 all 21 resolve, 20.2 GB in total.
+
 ## Per-dataset pipeline
 
 One pass per dataset, no cross-dataset pooling at any step.
@@ -39,6 +47,10 @@ One pass per dataset, no cross-dataset pooling at any step.
    - expression array: `limma`, `trend=TRUE`
    - raw counts: `DESeq2`
    - pseudobulked single-cell: `limma-trend` on log-CPM
+   - targeted panel (GSE239561, NanoString nCounter PanCancer IO360, 770 genes): housekeeping-gene
+     normalization first, then `limma` on the log2 normalized counts. Not the plain array route, and
+     `gene_space` in the manifest records that the result covers 770 genes rather than the
+     transcriptome, so Phase 3 cannot read an absent gene as a low rank
    Contrast is `de_arm` vs the dataset's declared reference arm. Arms with fewer than 2 samples are
    excluded from the test and named in the manifest.
 6. **Write outputs** (below), then stop. Ranking across datasets is Phase 3.
@@ -56,9 +68,9 @@ Per dataset, written to disk so Phase 3 re-runs without re-downloading:
   `source_id`, `statistic` (signed), `log2fc`, `p_value`, `fdr`, `rank`, `direction`. Rank aggregation
   in Phase 3 reads this file and nothing else.
 - one row appended to `phase-2/data/phase2-ingestion-manifest.csv`: accession, assay class, engine and
-  version, reference arm, `effect_type` (`disease_vs_normal` or `between_state`), n per arm, Ensembl
-  release, mapping losses, ComBat applied or the reason it was not, patient rule, raw-file provenance,
-  and run date.
+  version, reference arm, `effect_type` (`disease_vs_normal` or `between_state`), `gene_space`
+  (`transcriptome` or `panel:<n>`), n per arm, Ensembl release, mapping losses, ComBat applied or the
+  reason it was not, patient rule, raw-file provenance, and run date.
 
 `effect_type` is load-bearing: 7 of the 21 datasets carry a human control arm and the rest compare two
 tumour states, and Phase 3 may not mix the two readings in one ranking without saying so.
