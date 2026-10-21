@@ -201,6 +201,8 @@ def main() -> int:
                f"{len(rows)}-dataset packet above, but which later needed a ruling of their own.", ""]
         for acc in sorted(outside):
             d, dec = by_acc.get(acc, {}), decisions[acc]
+            if "decision" not in dec:  # a metadata-only entry (e.g. a patient rule), nothing to render
+                continue
             md += [f"### [{acc}]({d.get('url', '')}) - {d.get('confidence', 'unknown')} confidence", ""]
             if d.get("title"):
                 md += [f"*{d['title']}*", ""]
