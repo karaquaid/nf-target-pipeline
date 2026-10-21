@@ -165,13 +165,42 @@ read_counts <- function() {
 
 read_array_matrix <- function() {
   cels <- files_in("\\.(CEL|cel)(\\.gz)?$")
-  if (length(cels) > 0) {
-    stop_with(length(cels), " Affymetrix CEL files are present, which need oligo or affy plus the ",
-              "platform's pd./cdf annotation package. Neither resolved from bioconda on this machine ",
-              "(bioconductor-oligo is absent from the channel), so this route is unvalidated: install ",
-              "the Bioconductor packages, then re-run. The rest of the pipeline does not depend on it.")
-  }
+  if (length(cels) > 0) return(rma_from_cels(cels))
   read_author_matrix()
+}
+
+#' RMA from CEL files.
+#'
+#' affy handles 3-prime arrays (HG-U219, HG-U133 and the custom CDFs some series ship with
+#' their raw data). Whole-transcript arrays such as HTA 2.0 need oligo and its pd.* package;
+#' oligo is not installable as a conda build here, and the Bioconductor mac binaries link
+#' against CRAN's R.framework rather than a conda R, so that case stops with a message.
+rma_from_cels <- function(cels) {
+  suppressPackageStartupMessages(library(affy))
+  batch <- try(ReadAffy(filenames = cels), silent = TRUE)
+  if (inherits(batch, "try-error")) {
+    stop_with("affy could not read these CEL files (", as.character(batch), "). Whole-transcript ",
+              "arrays such as HTA 2.0 need oligo plus the platform's pd.* package; see the route ",
+              "table in phase-2/docs/phase2-pipeline-spec.md.")
+  }
+  cdf <- cleancdfname(cdfName(batch))
+  message("  ", length(cels), " CEL files, CDF ", cdf)
+  if (!requireNamespace(cdf, quietly = TRUE)) {
+    shipped <- files_in("\\.(CDF|cdf)(\\.gz)?$")
+    if (length(shipped) == 0) {
+      stop_with("CDF package ", cdf, " is not installed and the series ships no CDF file. Install it ",
+                "with install.packages(\"", cdf, "\", repos = ",
+                "\"https://bioconductor.org/packages/3.20/data/annotation\", type = \"source\").")
+    }
+    message("  using the CDF shipped with the series: ", basename(shipped[[1]]))
+    batch@cdfName <- "series_cdf"
+    assign("series_cdf", make.cdf.env(shipped[[1]], verbose = FALSE), envir = globalenv())
+  }
+  eset <- rma(batch)
+  mat <- exprs(eset)
+  colnames(mat) <- sub("\\.(CEL|cel)(\\.gz)?$", "", basename(colnames(mat)))
+  message("  RMA matrix: ", nrow(mat), " probesets x ", ncol(mat), " arrays")
+  align_to_samples(mat, samples)
 }
 
 read_author_matrix <- function() {

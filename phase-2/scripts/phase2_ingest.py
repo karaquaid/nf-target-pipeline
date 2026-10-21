@@ -27,6 +27,7 @@ import argparse
 import hashlib
 import json
 import re
+import os
 import subprocess
 import sys
 import tarfile
@@ -297,7 +298,8 @@ def write_sample_table(ds: Dataset) -> Path:
     return out
 
 
-def run_r(ds: Dataset, sample_table: Path, combat: str | None, rscript: str = "Rscript") -> Path:
+def run_r(ds: Dataset, sample_table: Path, combat: str | None, rscript: str = "Rscript",
+          rlibs: str = "") -> Path:
     de_path = ds.dir / f"{ds.accession}_de.csv"
     cmd = [rscript, str(R_WORKER), "--accession", ds.accession, "--engine", ds.engine,
            "--indir", str(ds.dir), "--samples", str(sample_table), "--reference", ds.reference_arm,
@@ -305,7 +307,10 @@ def run_r(ds: Dataset, sample_table: Path, combat: str | None, rscript: str = "R
     if combat:
         cmd += ["--combat", combat]
     print("  " + " ".join(cmd[:6]) + " ...")
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    env = dict(os.environ)
+    if rlibs:
+        env["R_LIBS_USER"] = rlibs
+    result = subprocess.run(cmd, capture_output=True, text=True, env=env)
     sys.stdout.write(result.stdout[-4000:])
     if result.returncode != 0:
         sys.stderr.write(result.stderr[-4000:])
@@ -339,7 +344,7 @@ def append_manifest(ds: Dataset, files: list[dict], de_path: Path | None, combat
 
 
 def ingest(accession: str, download: bool, dry_run: bool, combat: str | None,
-           rscript: str = "Rscript") -> None:
+           rscript: str = "Rscript", rlibs: str = "") -> None:
     ds = Dataset(accession)
     print(f"[{accession}] engine={ds.engine} role={ds.row.pipeline_role} "
           f"arms={ds.samples.de_arm.value_counts().to_dict()} reference={ds.reference_arm} "
@@ -351,7 +356,7 @@ def ingest(accession: str, download: bool, dry_run: bool, combat: str | None,
     if dry_run:
         print(f"  dry run: wrote {sample_table.relative_to(ROOT)}, skipped R")
         return
-    de_path = run_r(ds, sample_table, combat, rscript) if ds.produces_ranking else None
+    de_path = run_r(ds, sample_table, combat, rscript, rlibs) if ds.produces_ranking else None
     notes = ("" if ds.produces_ranking else
              f"no ranking by ruling: {ds.row.blocker}. Ingested for coverage and Phase 7")
     append_manifest(ds, files, de_path, combat, notes)
@@ -367,6 +372,9 @@ def main() -> int:
     ap.add_argument("--combat", help="column of the sample table to correct on (within dataset only)")
     ap.add_argument("--rscript", default="Rscript",
                     help="Rscript to use; point this at the env holding limma, DESeq2, edgeR and sva")
+    ap.add_argument("--rlibs", default=os.environ.get("R_LIBS_USER", ""),
+                    help="extra R library path (absolute) holding packages installed outside conda, "
+                         "e.g. affy CDF packages; passed to the worker as R_LIBS_USER")
     ap.add_argument("--skip-existing", action="store_true")
     args = ap.parse_args()
 
@@ -385,7 +393,7 @@ def main() -> int:
             print(f"[{accession}] already in the manifest, skipping")
             continue
         ingest(accession, download=not args.no_download, dry_run=args.dry_run, combat=args.combat,
-               rscript=args.rscript)
+               rscript=args.rscript, rlibs=args.rlibs)
     return 0
 
 

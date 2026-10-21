@@ -117,8 +117,24 @@ python phase-2/scripts/phase2_ingest.py --accession GSE41747 --combat batch   # 
 | `nanostring_housekeeping_limma` | GSE239561 | **validated**: 750 endogenous genes over 5 contrasts |
 | `pseudobulk_limma_trend` | 4 single-cell | **validated** on GSE232516: 4 10x libraries, 36,591 rows |
 | `pseudobulk_author_matrix` | GSE292071 | implemented, unrun: the deposit is one `.mtx.gz` with no features or barcodes file, so the gene and plate axes cannot be recovered from the series-level file yet |
-| `limma_trend` | 6 expression arrays | implemented, unrun: the CEL route needs oligo or affy plus the platform annotation package, and `bioconductor-oligo` does not resolve from bioconda on this machine. The engine stops with that message rather than falling back to a processed file |
+| `limma_trend`, 3-prime arrays | GSE141801, GSE14038, GSE41747 | **validated** on GSE141801: RMA over 74 CELs, 98,772 rows over 2 contrasts, via `affy` plus `hgu219cdf`. GSE14038 and GSE41747 ship their own CDF, which the engine loads with `make.cdf.env` |
+| `limma_trend`, whole-transcript arrays | GSE108524 (HTA 2.0) | blocked on `oligo`: `bioconductor-oligo` is absent from bioconda, Bioconductor's macOS binaries link against CRAN's `R.framework/libRlapack.dylib` and so will not load under a conda R, and the source build of its dependency `affxparser` fails in the conda toolchain. A BrainArray custom CDF would let `affy` read these arrays without `oligo` |
 | `two_colour_limma` | E-TABM-69, E-MEXP-258 | reader only: both are legacy Tab2MAGE exports whose per-array column names must be read off the file before `limma::read.maimages` is pointed at them |
+
+### Known gap: identifiers are not mapped yet
+
+Ratified call 3 maps every dataset to HGNC symbols through a pinned Ensembl release, keeping the
+original probe id. The worker currently writes whatever the matrix rows are keyed on, which is already
+symbols for the count and panel datasets but probeset ids for the arrays (GSE141801's rows are
+`11730415_s_at`). The mapping step and the `source_id` column are the next piece of work; until they
+land, array results are ranked on probesets and must not be joined to the other datasets.
+
+### R library note
+
+`affy`, DESeq2, limma, edgeR and sva come from conda in the `nf-phase2` environment. The CDF
+annotation packages are installed into a separate library because Bioconductor serves them as source
+only; pass that path with `--rlibs` (the worker reads `R_LIBS_USER`). That library lives in the
+session workspace, so archive it if it needs to survive a workspace cleanup.
 
 ### Three things the first runs settled
 
