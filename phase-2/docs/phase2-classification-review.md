@@ -297,3 +297,70 @@ These are the datasets Phase 2 would ingest, so the labels that matter here are 
 - **What would settle it:** Pull full GSM list/sample metadata for all 32 samples and check the paper's methods for confirmed biallelic Nf1 deletion (LOH/IHC) in the Nf1+/flox tumors.
 - **Decision (agent, from source evidence): defer** - contrast: deferred to the mouse pass
   - The paper reports no LOH, sequencing or IHC confirmation of biallelic Nf1 loss in the tumours: the 'Nf1-/-' label follows from the breeding design (germline Nf1 null or floxed allele recombined by hGFAP-cre), and the genotyping described targets p53 and Rictor recombination. That is recorded as a standing caveat rather than a disqualification. nf_association moves to engineered_nf_model because every arm is engineered - the hGFAP-cre;p53flox/flox samples are an isogenic comparator, not sporadic material. Sample structure: 13 Nf1-genotype tumours, 9 p53-only tumours, 10 normal brain controls (7 forebrain, 3 cerebellum).
+
+## Resolved outside the review packet
+
+Datasets whose Phase 1a confidence was high, so they are not part of the 18-dataset packet above, but which later needed a ruling of their own.
+
+### [GSE138347](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE138347) - high confidence
+
+*The transcriptomic signature of painful and non-painful human NF2 schwannomas*
+
+- **Labels:** NF2-SWN / Non-vestibular schwannoma;Vestibular schwannoma;Pain | human | subtype_or_grade_comparison | bulk_rnaseq
+- **Samples:** 18 in the series, 18 in scope
+- **Decision (Kara): include** - contrast: painful vs non-painful NF2 tumour (between-state, within NF2-SWN)
+  - Arm read from the sample titles and written to de_arm in phase2-sample-overrides.csv: 7 painful, 11 non-painful, all 18 samples kept. The set1/set2 suffix is a batch marker and is the within-dataset correction covariate, not an arm. This is the launch set's only dataset addressing the Pain manifestation.
+
+### [GSE218493](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE218493) - high confidence
+
+*Distinct transcriptional profiles in the different phenotypes of neurofibroma from the same neurofibromatosis 1 subject*
+
+- **Labels:** NF1 / Cutaneous neurofibroma;Plexiform neurofibroma | human | subtype_or_grade_comparison | single_cell_rnaseq
+- **Samples:** 2 in the series, 2 in scope
+- **Decision (Kara): include, single arm in the first pass** - contrast: cutaneous vs plexiform neurofibroma (between-subtype, within NF1), 1 sample per arm
+  - Kept at Kara's instruction (2026-10-19) rather than deferred. Both samples are retained with de_arm set, but with one sample per arm no differential-expression test is possible: the dataset contributes to coverage and to cross-dataset comparison, not to the meta-analysis ranking.
+
+### [GSE232528](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE232528) - high confidence
+
+*"Immunogenic subtype" characterised by macrophages infiltration predominantly comprise meningiomas in neurofibromatosis type 2 patients*
+
+- **Labels:** NF2-SWN / Meningioma | human | subtype_or_grade_comparison | bulk_rnaseq
+- **Samples:** 29 in the series, 14 in scope
+- **Decision (Kara): include** - contrast: none within the dataset in the first pass; 14 NF2-patient meningiomas as a single arm
+  - Kara 2026-10-19: keep the in-scope samples, exclude the 15 sporadic meningiomas, and do not use sporadic material as a reference arm. The dataset therefore enters the manifest with one arm (de_arm nf2_meningioma) and yields no within-dataset differential expression. It remains available for cross-dataset comparison and for Phase 7. Consequence to carry: NF2-SWN meningioma has no contrast-bearing dataset in the first pass.
+
+### [GSE239561](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE239561) - high confidence
+
+*Spatial gene expression profiling unveils immuno-oncogenic programs of NF1-associated peripheral nerve sheath tumor progression*
+
+- **Labels:** NF1 / Plexiform neurofibroma;ANNUBP / atypical neurofibroma;Malignant peripheral nerve sheath tumor (MPNST) | human | subtype_or_grade_comparison | expression_array
+- **Samples:** 35 in the series, 34 in scope
+- **Decision (Kara): include** - contrast: progression series within NF1: PNF, cellular NF, NF with atypia, ANNUBP, high-grade MPNST
+  - Arm read from the record's diagnosis field and written to de_arm: PNF 10, ANNUBP 9, NF with atypia 6, high-grade MPNST 6, NF 2, cellular NF 1, 34 samples kept. One sporadic ANNUBP sample is excluded_sporadic. Which adjacent pairs to test is a Phase 3 question; the arms are recorded so any pairing is available.
+
+### [GSE244433](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE244433) - high confidence
+
+*Human single cell RNA-sequencing reveals a targetable CD8+ exhausted T cell population that maintains murine low-grade glioma growth*
+
+- **Labels:** NF1 / Optic pathway glioma | human+mouse | tumor_vs_normal | single_cell_rnaseq
+- **Samples:** 16 in the series, 12 in scope
+- **Decision (Kara): hold for the mouse decision - out of the human-only first pass, retained in the logs** - contrast: none in the first pass; Nf1-OPG optic nerve tumour vs wild-type and heterozygous littermate optic nerve if the mouse track opens
+  - Deferred, not dropped, and not part of the 18-dataset review packet: this came out of the launch-set readiness pass. Of 16 samples, 11 are mouse and in scope (5 Nf1-OPG optic nerve tumours, 3 NF-genotype non-tumour samples - 6-week optic nerve, meningeal dura, blood - and 3 wild-type or heterozygous littermate controls), tagged case_mouse_deferred and control_mouse_deferred in phase-2/data/phase2-sample-overrides.csv so they are recoverable by tag rather than by re-reading the record. The one human NF1 OPG sample (GSM7816068, human_H966) is tagged case_no_contrast_deferred: the series' only other human samples are 4 sporadic paediatric optic pathway gliomas, excluded by the scope rule whether or not the mouse track opens, so there is no human contrast to run. The dataset therefore contributes zero samples to the human-only first pass and the launch set is 21. Coverage consequence: optic pathway glioma keeps GSE163071 (13 NF1-associated pilocytic astrocytomas vs 7 non-neoplastic brain), so the manifestation is not lost from the first pass; what the hold defers is the only tumour-vs-normal OPG design in the launch set.
+
+### [GSE318927](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318927) - high confidence
+
+*Macrophages in Neurofibroma Malignant Progression*
+
+- **Labels:** NF1 / Plexiform neurofibroma;Malignant peripheral nerve sheath tumor (MPNST) | human | subtype_or_grade_comparison | single_cell_rnaseq
+- **Samples:** 14 in the series, 14 in scope
+- **Decision (Kara): include** - contrast: MPNST vs plexiform neurofibroma (between-subtype, within NF1)
+  - Arm read from the sample titles (MPNST_sample1-5, PNF_sample1-9) and written to de_arm; all 14 samples kept. Single-cell, so pseudobulk to one profile per patient before the contrast.
+
+### [GSE344687](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE344687) - high confidence
+
+*Functional merlin depletion defines a TEAD1-dependent tumor Schwann cell state driving schwannoma progression: single cell RNAseq and ATACseq*
+
+- **Labels:** NF2-SWN / Vestibular schwannoma | human | subtype_or_grade_comparison | single_cell_rnaseq
+- **Samples:** 27 in the series, 11 in scope
+- **Decision (Kara): include** - contrast: none within the dataset in the first pass; 11 NF2-associated vestibular schwannoma libraries as a single arm
+  - Same ruling as GSE232528: the 8 sporadic vestibular schwannomas are excluded rather than used as the reference. The 8 ATAC arms of the multiome are tagged excluded_non_expression_assay. 11 expression libraries kept under de_arm nf2_vestibular_schwannoma; single-cell, so pseudobulk per patient.

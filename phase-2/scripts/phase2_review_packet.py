@@ -190,6 +190,30 @@ def main() -> int:
                 md += [f"- **Flagged stored field** - {VERDICT_LABEL.get(r['adjudication'], r['adjudication'])}: "
                        f"{r['adjudication_comment']}"]
             md += [""]
+    # Rulings on datasets outside the medium/low-confidence packet (they came out of
+    # later passes, e.g. launch-set readiness). Rendered so every decision in the
+    # diagnosis file is visible in one document, not only the 18 reviewed here.
+    by_acc = {d["accession"]: d for d in datasets}
+    outside = [acc for acc in decisions if acc not in {r["accession"] for r in rows}]
+    if outside:
+        md += ["## Resolved outside the review packet", "",
+               "Datasets whose Phase 1a confidence was high, so they are not part of the "
+               f"{len(rows)}-dataset packet above, but which later needed a ruling of their own.", ""]
+        for acc in sorted(outside):
+            d, dec = by_acc.get(acc, {}), decisions[acc]
+            md += [f"### [{acc}]({d.get('url', '')}) - {d.get('confidence', 'unknown')} confidence", ""]
+            if d.get("title"):
+                md += [f"*{d['title']}*", ""]
+            if d:
+                md += [f"- **Labels:** {d['disease']} / {d['manifestations']} | {d['organism']} | "
+                       f"{d['study_design']} | {d['assay_class']}",
+                       f"- **Samples:** {d['n_samples']} in the series, {d['n_samples_in_scope']} in scope"]
+            md += [f"- **Decision ({dec.get('by', 'reviewer')}): {dec['decision']}** - "
+                   f"contrast: {dec.get('contrast', '(none recorded)')}"]
+            if dec.get("implementation"):
+                md += [f"  - {dec['implementation']}"]
+            md += [""]
+
     md_path = Path(args.outdocs) / "phase2-classification-review.md"
     md_path.write_text("\n".join(md))
     print(f"[write] {md_path} {len(md)} lines")
