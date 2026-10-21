@@ -187,7 +187,7 @@ def make_figure(counts: pd.DataFrame, n_rows: int) -> plt.Figure:
         alignment="left",
     )
     fig.suptitle(
-        f"After excluding the germline NF genes: {n_rows} candidate rows, "
+        f"After the scope exclusions: {n_rows} candidate rows, "
         f"{pct_supported}% anchored in full text",
         x=0.006,
         ha="left",
