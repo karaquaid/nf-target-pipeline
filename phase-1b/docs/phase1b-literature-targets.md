@@ -8,19 +8,20 @@ one-sided findings between the two derivations are examined. Every target carrie
 disease label (NF1, NF2-SWN, SWN) and one or more manifestations from the project's
 fixed twenty-term vocabulary, applied verbatim.
 
-The phase is complete. It produced a **candidate list of 309 gene x disease x
-manifestation rows over 182 target labels covering 247 distinct
+The phase is complete. It produced a **candidate list of 303 gene x disease x
+manifestation rows over 180 target labels covering 245 distinct
 gene symbols, drawn from 234 papers**, of which 155 were read
-in full. 244 of the 309 rows are anchored in at least one paper
-verified against its complete text; 65 rest on abstracts alone
+in full. 244 of the 303 rows are anchored in at least one paper
+verified against its complete text; 59 rest on abstracts alone
 and are labelled as such. A wider annotated table of 348 rows is retained
-for audit, the difference being the germline NF genes excluded as targets.
+for audit, the difference being the rows excluded on scope grounds: germline NF genes,
+rows contradicted by their own full text, and rows whose only supporting paper is not about NF.
 
 ## Outputs
 
 | File | What it holds |
 |---|---|
-| `phase-1b/data/phase1b-candidate-targets.csv` | The prioritisation input. 309 rows, germline NF genes excluded. |
+| `phase-1b/data/phase1b-candidate-targets.csv` | The prioritisation input. 303 rows, after the scope exclusions. |
 | `phase-1b/data/phase1b-literature-targets.csv` | All 348 verified rows with a `driver_gene` flag, for audit. |
 | `phase-1b/data/phase1b-references.csv` | 234 papers: DOI, PMC id, access route, preprint status, targets supported, manifestations covered, resolvable link. |
 | `phase-1b/data/phase1b-coverage.csv` | The coverage matrix below, machine-readable. |
@@ -34,7 +35,7 @@ for audit, the difference being the germline NF genes excluded as targets.
 
 1. **Search.** 32 PubMed queries spanning NF1, NF2-SWN and SWN crossed with the fixed manifestation vocabulary, relevance-sorted, 18 results per query, `date_from=2005`, returned 492 unique PMIDs; metadata and abstracts were retrieved for 482. 303 of those papers named at least one molecular target presented as a driver, modifier or therapeutic target.
 2. **Abstract extraction.** Each abstract was passed to a model extraction step returning gene, disease, manifestation(s) from the fixed list, role, mechanism and study system, with explicit instructions not to extract cohort-defining gene mentions or assay reagents. Calls that failed transiently were re-run rather than dropped.
-3. **Symbol normalisation.** Gene strings were mapped through an alias table and validated against official HGNC symbols. Alias-permissive matching was rejected after it mapped common shorthand onto unrelated genes, so validation uses official symbols only with the residue curated by hand. Labels that are genuinely a family, complex or pathway are kept as the label and expanded in `constituent_genes`, with `label_type` recording which kind of entity each is: gene (216), family (52), pathway (22), complex (13), drug (3), other (2), miRNA (1). Two labels are not gene products at all. HYALURONAN, a glycosaminoglycan, carries the enzymes that synthesise and degrade it in `constituent_genes` (HAS1-3, HYAL1-4, SPAM1, CEMIP, CEMIP2) so that later phases have something to query, and those symbols are curated rather than extracted from the paper, which measures the polysaccharide itself. The clemastine row names a drug effect with no target attached and is still unexpanded.
+3. **Symbol normalisation.** Gene strings were mapped through an alias table and validated against official HGNC symbols. Alias-permissive matching was rejected after it mapped common shorthand onto unrelated genes, so validation uses official symbols only with the residue curated by hand. Labels that are genuinely a family, complex or pathway are kept as the label and expanded in `constituent_genes`, with `label_type` recording which kind of entity each is: gene (210), family (52), pathway (22), complex (13), drug (3), other (2), miRNA (1). Two labels are not gene products at all. HYALURONAN, a glycosaminoglycan, carries the enzymes that synthesise and degrade it in `constituent_genes` (HAS1-3, HYAL1-4, SPAM1, CEMIP, CEMIP2) so that later phases have something to query, and those symbols are curated rather than extracted from the paper, which measures the polysaccharide itself. The clemastine row names a drug effect with no target attached and is still unexpanded.
 4. **First verification round.** Full text was sought through the PubMed connector's NCBI PMC route, which reached 56 papers. Part of that round was judged from short gene-centred excerpts rather than complete articles, which left those verdicts provisional. Both limits were later traced to the retrieval route rather than to access.
 5. **Review round.** Four scope decisions were applied: rows whose disease could not be attributed were dropped, excluding sporadic tumours from the project (168 rows, from a first version of 547); 2 rows that failed verification outright were dropped; manifestation labels were corrected from full text at the level of the individual paper rather than the whole row; and family labels were kept with the `constituent_genes` column added.
 6. **Whole-text verification.** Europe PMC's `/{PMCID}/fullTextXML` endpoint holds a larger open-access subset than the NCBI route, and 89 of the papers proved retrievable there. All 254 row-paper pairs among them were re-judged against complete bodies, reference sections stripped, one reasoning pass per paper, no excerpting. 20 single-paper rows were dropped as contradicted by their own paper on full reading.
@@ -53,9 +54,9 @@ Verdicts from a later round override earlier ones, and 292 of the row-paper pair
 |---|---|
 | full text - supported | 194 |
 | full text - partial | 50 |
-| abstract only | 65 |
+| abstract only | 59 |
 
-By disease: NF1 214 rows, NF2-SWN 89,
+By disease: NF1 208 rows, NF2-SWN 89,
 SWN 6. No row here is contradicted by its own papers: rows whose
 full text does not support the claim are excluded from the candidate list and kept only in
 the audit table, where their tier and supporting papers remain visible. The
@@ -85,16 +86,16 @@ manifestation attribution is looser than the row claims.
 | Pulmonary disease | 2 | 0 | 0 | 2 |
 | Non-vestibular schwannoma | 0 | 17 | 2 | 19 |
 | Vestibular schwannoma | 0 | 40 | 0 | 40 |
-| Other | 17 | 0 | 0 | 17 |
+| Other | 11 | 0 | 0 | 11 |
 
 ![Stacked horizontal bars of candidate target rows per manifestation, one panel per disease, shaded by whether the strongest supporting paper was read in full text or only as an abstract](figures/phase1b-coverage-verification.png)
 
 **Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is
-the number of candidate target rows (n = 309 claims, germline NF genes
-excluded); shading is the provenance of the strongest supporting paper behind each row.
+the number of candidate target rows (n = 303 claims, after the scope
+exclusions); shading is the provenance of the strongest supporting paper behind each row.
 Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a
 manifestation with no rows at all in that disease. 194 of
-309 rows (63 percent) are anchored in a paper read in full, and
+303 rows (64 percent) are anchored in a paper read in full, and
 in the 4 manifestations holding 20 or more rows that share runs from
 69 to 76 percent, so the principal tumour types are well evidenced.
 What the figure shows is how sharply coverage falls away from them: Hematologic malignancies (2), Pulmonary disease (2), Ependymoma (3), Gastrointestinal stromal tumor (GIST) (4), Non-optic LGG (4), Bone defects (5), Cardiovascular issues (5), Cognition / Behavioral / Learning (6), ANNUBP / atypical neurofibroma (9) rows
@@ -105,7 +106,7 @@ for Gastrointestinal stromal tumor (GIST).
 
 ### NF1
 
-214 rows. The MEK1/2 axis dominates and is the only NF-relevant target
+208 rows. The MEK1/2 axis dominates and is the only NF-relevant target
 in this sweep with regulatory-grade human evidence. Selumetinib in inoperable plexiform
 neurofibroma is the strongest row in the list (34 supporting
 papers), running from the phase 1 dose-finding cohort
@@ -178,12 +179,12 @@ so changing a call means editing that file, not a row.
 
 | Flag | Labels | Rows | What it means |
 |---|---|---|---|
-| `likely_biomarker` | 55 of 182 | 82 | More useful for stratification, diagnosis or monitoring than as something a drug acts on. Dominated by tumour-suppressor losses, where the lesion is an absence, and by proliferation and lineage markers. |
-| `mutation_restricted` | 19 | 34 | Relevant only to patients carrying a particular genotype. `mutation_context` names it, for example PRC2 (EED/SUZ12/EZH2) (Biallelic somatic SV-mediated inactivation of EED/SUZ12 (PRC2 loss)); CDKN2A (CDKN2A/9p21 (p16) homozygous deletion); TP53 (TP53 inactivating mutation/deletion in TP53-altered MPNST); SUZ12 (SUZ12 (or EED) inactivating mutation causing PRC2 loss-of-function). |
-| `tme_target` | 42 | 68 | A drug would act on the microenvironment (endothelium, macrophages, mast cells, T cells, matrix) rather than on the Schwann-lineage tumour cell. |
+| `likely_biomarker` | 54 of 180 | 79 | More useful for stratification, diagnosis or monitoring than as something a drug acts on. Dominated by tumour-suppressor losses, where the lesion is an absence, and by proliferation and lineage markers. |
+| `mutation_restricted` | 19 | 32 | Relevant only to patients carrying a particular genotype. `mutation_context` names it, for example PRC2 (EED/SUZ12/EZH2) (Biallelic somatic SV-mediated inactivation of EED/SUZ12 (PRC2 loss)); CDKN2A (CDKN2A/9p21 (p16) homozygous deletion); TP53 (TP53 inactivating mutation/deletion in TP53-altered MPNST); SUZ12 (SUZ12 (or EED) inactivating mutation causing PRC2 loss-of-function). |
+| `tme_target` | 40 | 65 | A drug would act on the microenvironment (endothelium, macrophages, mast cells, T cells, matrix) rather than on the Schwann-lineage tumour cell. |
 
 93 labels carry none of the three, and those are the closest thing this phase has
-to conventional tumour-cell drug targets. 13 labels carry both the
+to conventional tumour-cell drug targets. 12 labels carry both the
 biomarker and microenvironment flags, typically secreted or immune markers measured in serum.
 
 The flags are properties of the target, not of a manifestation, so a label that behaves
@@ -218,6 +219,7 @@ because the excluded evidence is retained rather than deleted.
 2. **Germline NF genes are excluded as candidates.** 37 rows: NF1 (15), NF2 (10), SMARCB1 (6), LZTR1 (5), SPRED1 (1). 26 of them were full-text supported, so this removed well-evidenced rows on scope grounds. They are retained in `phase1b-literature-targets.csv` with `driver_gene = True`.
 3. **Recurrent somatic drivers are kept.** CDKN2A and CDKN2B, PRC2 components, TP53, MTAP, PTEN, RB1 and the RAS genes remain candidates despite being well described in NF tumour genetics, because they carry the malignant-progression signal Phase 6 stratification depends on.
 4. **Rows contradicted by full text are excluded.** Where the papers read do not support the claim, the row leaves the candidate list even if a co-supporting paper is still unread, on the grounds that a contradicted claim should not be prioritised while it waits for confirmation it is unlikely to get. It keeps its row, tier and papers in the audit table, so re-reading a remaining paper can restore it.
+5. **Papers that are not about NF are excluded, and with them the rows they alone support.** A paper can work on NF-adjacent biology without studying NF. PMID 30306639 (Ma 2018, *Glia*) is the case found so far: it studies Eed/PRC2 in normal mouse Schwann cells and axon regeneration after nerve injury, and reaches NF1 and MPNST only in framing and discussion citing other groups. 6 rows rested on it alone and left the candidate list, taking *BDNF* and *NRG1* out of the list entirely; the two rows it co-supported, PRC2 and *EED* in MPNST, keep their place with that paper and its full-text-partial verdict removed from their counts. Papers ruled this way carry `nf_relevant = False` and the reason in the references table, and the candidate script fails if any candidate row still cites one.
 
 ## Limitations
 
@@ -226,7 +228,7 @@ full text, with no second reader and no adjudication. Recall against a gold stan
 been measured in either direction.
 
 Rows in the abstract-only tier are not weaker claims about biology; they are claims nobody
-has checked. The 65 rows in that tier should not be weighed
+has checked. The 59 rows in that tier should not be weighed
 against the 194 confirmed rows as though the difference
 were biological.
 
