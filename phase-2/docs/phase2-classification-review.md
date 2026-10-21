@@ -302,6 +302,15 @@ These are the datasets Phase 2 would ingest, so the labels that matter here are 
 
 Datasets whose Phase 1a confidence was high, so they are not part of the 18-dataset packet above, but which later needed a ruling of their own.
 
+### [E-MEXP-258](https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MEXP-258) - high confidence
+
+*Transcription profiling of human NF1 heterozygous (NF1+/-) melanocytes from a neurofibromatosis type 1 patient and NF1 wild type melanocytes*
+
+- **Labels:** NF1 / Other | human | other | expression_array
+- **Samples:** 16 in the series, 0 in scope
+- **Decision (agent, from the SDRF and IDF): include, labelled, outside the ranking** - contrast: NF1 heterozygous vs wild-type melanocytes, with skin site (cafe-au-lait macule vs normal) as the second factor; 1 donor per genotype, so the genotype effect is not replicated across individuals
+  - Labelled from E-MEXP-258.sdrf.txt (retrieved via the BioStudies FIRE path on ftp.ebi.ac.uk, since www.ebi.ac.uk/biostudies/files/ returns 404): 8 two-colour arrays, 16 labelled extracts, in a loop design over 4 melanocyte cultures. The IDF states the material is from one NF1 patient and one healthy control donor, cultured from normally pigmented and from hyperpigmented cafe-au-lait skin. Arms recorded per channel in phase2-non-geo-samples.csv as nf1_het_calm_skin, nf1_het_normal_skin, wild_type_calm_skin, wild_type_normal_skin, with patient_id naming the donor. The control arm the Phase 1a control_types field predicted is therefore real, which settles that question, but it is a single unaffected donor: the dataset is ingested and labelled and stays out of the Phase 3 ranking, like GSE218493, because a one-donor-per-arm comparison cannot support a disease-vs-control inference. Kara may overrule and admit it; the effect would be an unreplicated ranking entering the aggregation.
+
 ### [GSE138347](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE138347) - high confidence
 
 *The transcriptomic signature of painful and non-painful human NF2 schwannomas*
@@ -311,6 +320,20 @@ Datasets whose Phase 1a confidence was high, so they are not part of the 18-data
 - **Decision (Kara): include** - contrast: painful vs non-painful NF2 tumour (between-state, within NF2-SWN)
   - Arm read from the sample titles and written to de_arm in phase2-sample-overrides.csv: 7 painful, 11 non-painful, all 18 samples kept. The set1/set2 suffix is a batch marker and is the within-dataset correction covariate, not an arm. This is the launch set's only dataset addressing the Pain manifestation.
 
+### [GSE181985](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE181985) - high confidence
+
+*Multiple Nf1 Schwann cell populations reprogram the plexiform neurofibroma tumor microenvironment*
+
+- **Labels:** NF1 / Plexiform neurofibroma | human+mouse | tumor_vs_normal | single_cell_rnaseq
+- **Samples:** 31 in the series, 31 in scope
+- **Decision (agent, applying Kara's human-only ruling): include, single arm in the first pass** - contrast: none within the dataset; 23 human plexiform neurofibroma libraries from 4 tumours as a single arm
+  - The 2 controls are mouse isogenic and leave with the mouse track (6 case_mouse_deferred, 2 control_mouse_deferred), so the human material is one arm: plexiform neurofibroma, 23 libraries from tumour samples 1 to 4, which are the pseudobulk unit. Ingested and available for cross-dataset comparison and Phase 7, absent from the Phase 3 ranking, like GSE232528 and GSE344687.
+
+### [GSE207400_processed]() - unknown confidence
+
+- **Decision (agent, from the raw-file check): processed-matrix policy (applies to GSE207400 and GSE292071)** - contrast: not a dataset entry; this records the policy for datasets with no raw files
+  - GSE207400 (GSE207400_Matrix.txt.gz, 5.3 MB) and GSE292071 (GSE292071_SCHW_samples.mtx.gz, 247.3 MB) deposit no raw data, confirmed by the 2026-10-20 raw-file check. Policy: accept the authors' normalization as given, skip the normalization step for these two, record normalization = 'author-provided, not reproduced' and the file name and checksum in the ingestion manifest, and never silently rescale a matrix whose transformation is unknown. If a matrix turns out to be already log-transformed, the manifest records that rather than the pipeline inferring it.
+
 ### [GSE218493](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE218493) - high confidence
 
 *Distinct transcriptional profiles in the different phenotypes of neurofibroma from the same neurofibromatosis 1 subject*
@@ -319,6 +342,15 @@ Datasets whose Phase 1a confidence was high, so they are not part of the 18-data
 - **Samples:** 2 in the series, 2 in scope
 - **Decision (Kara): include, single arm in the first pass** - contrast: cutaneous vs plexiform neurofibroma (between-subtype, within NF1), 1 sample per arm
   - Kept at Kara's instruction (2026-10-19) rather than deferred. Both samples are retained with de_arm set, but with one sample per arm no differential-expression test is possible: the dataset contributes to coverage and to cross-dataset comparison, not to the meta-analysis ranking.
+
+### [GSE232516](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE232516) - high confidence
+
+*Single nuclei RNAseq of the human periosteum from patients with congenital pseudarthrosis of the tibia*
+
+- **Labels:** NF1 / Bone defects | human | tumor_vs_normal | single_cell_rnaseq
+- **Samples:** 4 in the series, 4 in scope
+- **Decision (agent, from the GEO record): include** - contrast: NF1 pseudarthrosis periosteum vs iliac-crest periosteum (between-site, within NF1)
+  - Arms are the Phase 1a case/control split: 2 pseudarthrosis periosteum samples against 2 iliac-crest periosteum controls, 10x libraries pseudobulked per patient per arm. Patient P13 contributes to both arms, so the design is partially paired; at 4 profiles blocking on patient saturates the model, so the block is dropped and the pairing is recorded in the sample table instead. Nothing clears FDR at this n, which is the expected outcome and is reported rather than worked around.
 
 ### [GSE232528](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE232528) - high confidence
 
@@ -335,8 +367,8 @@ Datasets whose Phase 1a confidence was high, so they are not part of the 18-data
 
 - **Labels:** NF1 / Plexiform neurofibroma;ANNUBP / atypical neurofibroma;Malignant peripheral nerve sheath tumor (MPNST) | human | subtype_or_grade_comparison | expression_array
 - **Samples:** 35 in the series, 34 in scope
-- **Decision (Kara): include** - contrast: progression series within NF1: PNF, cellular NF, NF with atypia, ANNUBP, high-grade MPNST
-  - Arm read from the record's diagnosis field and written to de_arm: PNF 10, ANNUBP 9, NF with atypia 6, high-grade MPNST 6, NF 2, cellular NF 1, 34 samples kept. One sporadic ANNUBP sample is excluded_sporadic. Which adjacent pairs to test is a Phase 3 question; the arms are recorded so any pairing is available.
+- **Decision (Kara): include** - contrast: progression series within NF1: PNF, cellular NF, NF with atypia, ANNUBP, high-grade MPNST; targeted panel, so the ranking covers 770 genes
+  - Arm read from the record's diagnosis field and written to de_arm: PNF 10, ANNUBP 9, NF with atypia 6, high-grade MPNST 6, NF 2, cellular NF 1, 34 samples kept. One sporadic ANNUBP sample is excluded_sporadic. Which adjacent pairs to test is a Phase 3 question; the arms are recorded so any pairing is available. Raw-file check 2026-10-20: the series holds 34 NanoString .RCC files (GPL32069, nCounter PanCancer IO360, 770 genes), so the dataset-level assay_class of expression_array is misleading and every sample's sample_assay is expression_panel_targeted. Kara ruled on 2026-10-20 to keep it and let it contribute to the Phase 3 ranking inside its own gene space: housekeeping-gene normalization then limma on log2 normalized counts, gene_space recorded as panel:770 in the ingestion manifest, and rank aggregation treats off-panel genes as not measured rather than as ranked low.
 
 ### [GSE244433](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE244433) - high confidence
 
@@ -364,3 +396,12 @@ Datasets whose Phase 1a confidence was high, so they are not part of the 18-data
 - **Samples:** 27 in the series, 11 in scope
 - **Decision (Kara): include** - contrast: none within the dataset in the first pass; 11 NF2-associated vestibular schwannoma libraries as a single arm
   - Same ruling as GSE232528: the 8 sporadic vestibular schwannomas are excluded rather than used as the reference. The 8 ATAC arms of the multiome are tagged excluded_non_expression_assay. 11 expression libraries kept under de_arm nf2_vestibular_schwannoma; single-cell, so pseudobulk per patient.
+
+### [GSE41747](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE41747) - high confidence
+
+*MEK inhibition exhibits efficacy in human and mouse neurofibromatosis tumors, despite transcriptional feedback onto ERK.*
+
+- **Labels:** NF1 / Cutaneous neurofibroma;Plexiform neurofibroma;Malignant peripheral nerve sheath tumor (MPNST) | human+mouse | tumor_vs_normal | expression_array
+- **Samples:** 83 in the series, 83 in scope
+- **Decision (agent, applying Kara's human-only ruling): include** - contrast: neurofibroma and MPNST vs normal human nerve (tumour vs normal, within NF1)
+  - Human arm kept: 26 neurofibroma, 6 MPNST, 3 normal human nerve, arms from the record's tissue field. The 48 mouse samples are tagged case_mouse_deferred (33) and control_mouse_deferred (15) in phase2-sample-overrides.csv, so 15 of the series' 18 controls leave with the mouse track and 3 human normal nerves remain. The title prefix (batch1a through batch3c, plus jan) is the within-dataset batch covariate and is the clearest ComBat case in the launch set; it is not confounded with arm, since normal nerves sit in the jan batch and tumours spread across the rest. Note for any result: with 3 normal nerves against 32 tumours the control arm is small.
