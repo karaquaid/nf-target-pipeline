@@ -97,9 +97,9 @@ def blockers(row):
         found.append(f"{row['mouse_in_scope']} mouse samples need a deferral tag")
     if row["data_availability"] == "processed_matrix_only":
         found.append("processed matrix only")
-    if row["targeted_panel"]:
-        found.append("targeted expression panel, not genome-wide: needs its own normalization "
-                     "route and a Phase 3 gene-space ruling")
+    # A targeted panel is no longer a blocker: the normalization route and the gene-space
+    # handling were ruled on 2026-10-20 and are in phase2-pipeline-spec.md. The column stays
+    # so the dataset is never silently handed the genome-wide array route.
     return "; ".join(found) or "ready"
 
 

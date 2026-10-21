@@ -48,9 +48,10 @@ One pass per dataset, no cross-dataset pooling at any step.
    - raw counts: `DESeq2`
    - pseudobulked single-cell: `limma-trend` on log-CPM
    - targeted panel (GSE239561, NanoString nCounter PanCancer IO360, 770 genes): housekeeping-gene
-     normalization first, then `limma` on the log2 normalized counts. Not the plain array route, and
-     `gene_space` in the manifest records that the result covers 770 genes rather than the
-     transcriptome, so Phase 3 cannot read an absent gene as a low rank
+     normalization first, then `limma` on the log2 normalized counts. Not the plain array route. Kept in the
+     ranking by Kara's ruling of 2026-10-20, with `gene_space = panel:770` in the manifest: Phase 3 restricts
+     this dataset's contribution to the panel genes and treats every off-panel gene as not measured here,
+     never as ranked low
    Contrast is `de_arm` vs the dataset's declared reference arm. Arms with fewer than 2 samples are
    excluded from the test and named in the manifest.
 6. **Write outputs** (below), then stop. Ranking across datasets is Phase 3.

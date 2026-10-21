@@ -335,8 +335,8 @@ Datasets whose Phase 1a confidence was high, so they are not part of the 18-data
 
 - **Labels:** NF1 / Plexiform neurofibroma;ANNUBP / atypical neurofibroma;Malignant peripheral nerve sheath tumor (MPNST) | human | subtype_or_grade_comparison | expression_array
 - **Samples:** 35 in the series, 34 in scope
-- **Decision (Kara): include** - contrast: progression series within NF1: PNF, cellular NF, NF with atypia, ANNUBP, high-grade MPNST
-  - Arm read from the record's diagnosis field and written to de_arm: PNF 10, ANNUBP 9, NF with atypia 6, high-grade MPNST 6, NF 2, cellular NF 1, 34 samples kept. One sporadic ANNUBP sample is excluded_sporadic. Which adjacent pairs to test is a Phase 3 question; the arms are recorded so any pairing is available.
+- **Decision (Kara): include** - contrast: progression series within NF1: PNF, cellular NF, NF with atypia, ANNUBP, high-grade MPNST; targeted panel, so the ranking covers 770 genes
+  - Arm read from the record's diagnosis field and written to de_arm: PNF 10, ANNUBP 9, NF with atypia 6, high-grade MPNST 6, NF 2, cellular NF 1, 34 samples kept. One sporadic ANNUBP sample is excluded_sporadic. Which adjacent pairs to test is a Phase 3 question; the arms are recorded so any pairing is available. Raw-file check 2026-10-20: the series holds 34 NanoString .RCC files (GPL32069, nCounter PanCancer IO360, 770 genes), so the dataset-level assay_class of expression_array is misleading and every sample's sample_assay is expression_panel_targeted. Kara ruled on 2026-10-20 to keep it and let it contribute to the Phase 3 ranking inside its own gene space: housekeeping-gene normalization then limma on log2 normalized counts, gene_space recorded as panel:770 in the ingestion manifest, and rank aggregation treats off-panel genes as not measured rather than as ranked low.
 
 ### [GSE244433](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE244433) - high confidence
 
