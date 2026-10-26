@@ -152,9 +152,57 @@ read_tenx_libraries <- function() {
   mat
 }
 
+#' Per-sample count files, one file per GSM, assembled into a matrix.
+#'
+#' Several series deposit a file per sample rather than one matrix (GSE145064 ships 46 TSVs,
+#' GSE232528 29 TXTs). Each file is keyed by the GSM in its name, the gene column is chosen
+#' by name like any other matrix, and the count column is the last numeric column unless a
+#' column is named like a count. Files whose GSM is not in the sample table are ignored, and
+#' a sample with no file is reported rather than silently dropped.
+read_per_sample_files <- function() {
+  candidates <- files_in("^GSM[0-9]+.*\\.(txt|tsv|csv|tab)(\\.gz)?$")
+  candidates <- candidates[!grepl("matrix\\.mtx|barcodes|features|genes\\.tsv", candidates)]
+  wanted <- as.character(samples$sample_id)
+  by_gsm <- regmatches(basename(candidates), regexpr("GSM[0-9]+", basename(candidates)))
+  keep <- by_gsm %in% wanted
+  if (sum(keep) < 2) return(NULL)
+  candidates <- candidates[keep]; by_gsm <- by_gsm[keep]
+  message("  ", length(candidates), " per-sample files for ", length(unique(by_gsm)), " of ",
+          length(wanted), " samples")
+  per_file <- Map(function(path, gsm) {
+    tab <- fread(path, data.table = FALSE)
+    if (ncol(tab) < 2) stop_with("could not parse ", basename(path))
+    lower <- tolower(trimws(names(tab)))
+    id_col <- which(lower %in% ID_COLUMN_PREFERENCE)
+    id_col <- if (length(id_col)) id_col[order(match(lower[id_col], ID_COLUMN_PREFERENCE))][1] else 1L
+    numeric_cols <- which(vapply(tab, is.numeric, logical(1)))
+    numeric_cols <- setdiff(numeric_cols, id_col)
+    if (length(numeric_cols) == 0) stop_with("no numeric column in ", basename(path))
+    named_count <- numeric_cols[grepl("count|reads|expected", lower[numeric_cols])]
+    value_col <- if (length(named_count)) named_count[1] else numeric_cols[length(numeric_cols)]
+    data.table(gene = as.character(tab[[id_col]]), value = as.numeric(tab[[value_col]]), sample = gsm)
+  }, candidates, by_gsm)
+  long <- rbindlist(per_file)
+  long <- long[, .(value = sum(value)), by = .(gene, sample)]   # one file per sample, so this is a no-op guard
+  wide <- dcast(long, gene ~ sample, value.var = "value")
+  mat <- as.matrix(wide[, -1, with = FALSE])
+  mode(mat) <- "numeric"
+  rownames(mat) <- wide$gene
+  missing <- setdiff(wanted, colnames(mat))
+  if (length(missing)) {
+    stop_with(length(missing), " samples have no per-sample file: ",
+              paste(head(missing, 5), collapse = ", "))
+  }
+  mat[is.na(mat)] <- 0
+  message("  assembled ", nrow(mat), " features x ", ncol(mat), " samples from per-sample files")
+  mat
+}
+
 read_counts <- function() {
   tenx <- read_tenx_libraries()
   if (!is.null(tenx)) return(align_to_samples(tenx, samples))
+  per_sample <- read_per_sample_files()
+  if (!is.null(per_sample)) return(align_to_samples(per_sample, samples))
   candidates <- files_in("(count|Count|COUNT|tpm|TPM|fpkm|FPKM).*\\.(txt|tsv|csv)(\\.gz)?$")
   if (length(candidates) == 0) candidates <- files_in("\\.(txt|tsv|csv)(\\.gz)?$")
   if (length(candidates) == 0) stop_with("no count-like file found in ", indir)

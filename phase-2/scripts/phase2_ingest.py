@@ -45,6 +45,10 @@ NON_GEO = DATA / "phase2-non-geo-samples.csv"
 DIAGNOSIS = DATA / "phase2-review-diagnosis.json"
 PHASE1A_SAMPLES = ROOT / "phase-1a" / "data" / "phase1a-samples.csv"
 MANIFEST = DATA / "phase2-ingestion-manifest.csv"
+ENSEMBL_RELEASE = "113"   # pinned by ratified call 3; rebuild maps with phase2_build_idmap.py
+TX2GENE = DATA / f"ensembl-{ENSEMBL_RELEASE}-tx2gene.tsv.gz"
+GENE2SYMBOL = DATA / f"ensembl-{ENSEMBL_RELEASE}-gene2symbol.tsv.gz"
+PLATFORM_CACHE = ROOT / "build" / "phase2" / "_platforms"
 BUILD = ROOT / "build" / "phase2"
 R_WORKER = ROOT / "phase-2" / "scripts" / "phase2_de.R"
 
@@ -289,6 +293,87 @@ class Dataset:
         return out
 
 
+def id_kind(ids: pd.Series) -> str:
+    """What the rows of a result file are keyed on. Decided from the ids themselves,
+    because the same assay class appears with different identifier spaces."""
+    sample = ids.astype(str).head(200)
+    if sample.str.startswith("ENST").mean() > 0.5:
+        return "ensembl_transcript"
+    if sample.str.startswith("ENSG").mean() > 0.5:
+        return "ensembl_gene"
+    if (sample.str.contains("_at$|_x_at$|_s_at$", regex=True) | sample.str.startswith(("TC", "PSR", "JUC"))).mean() > 0.5:
+        return "affy_probe"
+    return "symbol"
+
+
+def platform_table(gpl: str) -> pd.DataFrame:
+    """The GEO platform annotation table, cached. Array probe ids are platform-specific,
+    so Ensembl cannot map them; the archive's own table is the authority."""
+    PLATFORM_CACHE.mkdir(parents=True, exist_ok=True)
+    cache = PLATFORM_CACHE / f"{gpl}.tsv.gz"
+    if not cache.exists():
+        time.sleep(0.34)
+        r = requests.get(GEO_ACC, params={"acc": gpl, "targ": "self", "form": "text", "view": "data"},
+                         timeout=900)
+        r.raise_for_status()
+        lines = r.text.splitlines()
+        start = next(i for i, line in enumerate(lines) if line.startswith("ID\t"))
+        import gzip as _gzip
+        with _gzip.open(cache, "wt") as fh:
+            fh.write("\n".join(lines[start:]))
+    table = pd.read_csv(cache, sep="\t", dtype=str, low_memory=False)
+    symbol_cols = [c for c in table.columns
+                   if c.lower() in ("gene symbol", "gene_symbol", "symbol", "gene")]
+    if symbol_cols:
+        out = table[["ID", symbol_cols[0]]].rename(columns={symbol_cols[0]: "gene_symbol"})
+    elif "gene_assignment" in [c.lower() for c in table.columns]:
+        col = [c for c in table.columns if c.lower() == "gene_assignment"][0]
+        # gene_assignment packs several "accession // symbol // description" records per probe.
+        out = pd.DataFrame({"ID": table["ID"],
+                            "gene_symbol": table[col].fillna("").str.split("//").str[1].str.strip()})
+    else:
+        raise SystemExit(f"{gpl}: no gene symbol column in the platform table "
+                         f"(columns: {list(table.columns)[:12]})")
+    out = out.rename(columns={"ID": "source_id"})
+    out["gene_symbol"] = out.gene_symbol.fillna("").replace({"---": "", "nan": ""})
+    return out[out.source_id.notna()]
+
+
+def map_identifiers(ds: Dataset, de_path: Path) -> dict:
+    """Add gene_symbol and source_id to a ranked list, per ratified call 3.
+
+    The original id is never discarded, and rows that do not map keep an empty symbol and
+    are counted in the manifest rather than dropped: Phase 3 needs to know how much of a
+    dataset's ranking is addressable by symbol.
+    """
+    de = pd.read_csv(de_path)
+    de = de.rename(columns={"gene_symbol": "source_id"}) if "source_id" not in de.columns else de
+    kind = id_kind(de.source_id)
+    if kind == "symbol":
+        de["gene_symbol"] = de.source_id
+        mapped_from = "already HGNC symbols as deposited"
+    elif kind in ("ensembl_transcript", "ensembl_gene"):
+        table = pd.read_csv(TX2GENE if kind == "ensembl_transcript" else GENE2SYMBOL, sep="\t", dtype=str)
+        key = "transcript_id" if kind == "ensembl_transcript" else "gene_id"
+        lookup = dict(zip(table[key], table.gene_symbol.fillna("")))
+        stripped = de.source_id.astype(str).str.replace(r"\.\d+$", "", regex=True)
+        de["gene_symbol"] = stripped.map(lookup).fillna("")
+        mapped_from = f"Ensembl release {ENSEMBL_RELEASE} ({key})"
+    else:
+        gpl = str(ds.row.platforms).split(";")[0]
+        lookup = platform_table(gpl)
+        de = de.merge(lookup.drop_duplicates("source_id"), on="source_id", how="left")
+        de["gene_symbol"] = de.gene_symbol.fillna("")
+        mapped_from = f"GEO platform table {gpl}"
+    columns = ["gene_symbol", "source_id"] + [c for c in de.columns if c not in ("gene_symbol", "source_id")]
+    de[columns].to_csv(de_path, index=False)
+    mapped = int((de.gene_symbol.astype(str).str.len() > 0).sum())
+    print(f"  identifiers: {kind}, {mapped} of {len(de)} rows carry a symbol via {mapped_from}")
+    return {"id_kind": kind, "id_map_source": mapped_from,
+            "rows_total": len(de), "rows_with_symbol": mapped,
+            "symbols_distinct": int(de.loc[de.gene_symbol.astype(str).str.len() > 0, "gene_symbol"].nunique())}
+
+
 def write_sample_table(ds: Dataset) -> Path:
     out = ds.dir / f"{ds.accession}_samples.csv"
     table = ds.samples.copy()
@@ -318,7 +403,8 @@ def run_r(ds: Dataset, sample_table: Path, combat: str | None, rscript: str = "R
     return de_path
 
 
-def append_manifest(ds: Dataset, files: list[dict], de_path: Path | None, combat: str | None, notes: str) -> None:
+def append_manifest(ds: Dataset, files: list[dict], de_path: Path | None, combat: str | None, notes: str,
+                    mapping: dict | None = None) -> None:
     arms = ds.samples.de_arm.value_counts().to_dict()
     row = {
         "accession": ds.accession, "source": ds.source, "assay_class": ds.row.assay_class,
@@ -333,6 +419,11 @@ def append_manifest(ds: Dataset, files: list[dict], de_path: Path | None, combat
         "de_file": de_path.name if de_path else "",
         "normalization": ("author-provided, not reproduced" if ds.engine == PROCESSED_ENGINE
                           else "computed by phase2_de.R"),
+        "id_kind": (mapping or {}).get("id_kind", ""),
+        "id_map_source": (mapping or {}).get("id_map_source", ""),
+        "rows_total": (mapping or {}).get("rows_total", ""),
+        "rows_with_symbol": (mapping or {}).get("rows_with_symbol", ""),
+        "symbols_distinct": (mapping or {}).get("symbols_distinct", ""),
         "notes": notes, "run_date": time.strftime("%Y-%m-%d"),
     }
     frame = pd.DataFrame([row])
@@ -341,6 +432,21 @@ def append_manifest(ds: Dataset, files: list[dict], de_path: Path | None, combat
         prior = prior[prior.accession != ds.accession]
         frame = pd.concat([prior, frame], ignore_index=True).sort_values("accession")
     frame.to_csv(MANIFEST, index=False)
+
+
+def remap(accession: str) -> None:
+    """Rows written before the mapping step carry no symbol; this refreshes them in place."""
+    ds = Dataset(accession)
+    de_path = ds.dir / f"{ds.accession}_de.csv"
+    if not de_path.exists():
+        print(f"[{accession}] no {de_path.name} on disk, nothing to remap")
+        return
+    mapping = map_identifiers(ds, de_path)
+    files = [{"name": p.name, "bytes": p.stat().st_size, "sha256": sha256(p), "url": "local", "reused": True}
+             for p in sorted(ds.dir.glob("*")) if p.is_file() and p.suffix != ".csv"]
+    append_manifest(ds, files, de_path, None,
+                    "" if ds.produces_ranking else f"no ranking by ruling: {ds.row.blocker}", mapping)
+    print(f"  manifest row refreshed for {accession}")
 
 
 def ingest(accession: str, download: bool, dry_run: bool, combat: str | None,
@@ -357,9 +463,10 @@ def ingest(accession: str, download: bool, dry_run: bool, combat: str | None,
         print(f"  dry run: wrote {sample_table.relative_to(ROOT)}, skipped R")
         return
     de_path = run_r(ds, sample_table, combat, rscript, rlibs) if ds.produces_ranking else None
+    mapping = map_identifiers(ds, de_path) if de_path else {}
     notes = ("" if ds.produces_ranking else
              f"no ranking by ruling: {ds.row.blocker}. Ingested for coverage and Phase 7")
-    append_manifest(ds, files, de_path, combat, notes)
+    append_manifest(ds, files, de_path, combat, notes, mapping)
     print(f"  manifest row written for {accession}")
 
 
@@ -376,6 +483,9 @@ def main() -> int:
                     help="extra R library path (absolute) holding packages installed outside conda, "
                          "e.g. affy CDF packages; passed to the worker as R_LIBS_USER")
     ap.add_argument("--skip-existing", action="store_true")
+    ap.add_argument("--remap-only", action="store_true",
+                    help="re-apply identifier mapping to an existing <acc>_de.csv and refresh the "
+                         "manifest row, without re-fetching or re-testing")
     args = ap.parse_args()
 
     if args.all:
@@ -391,6 +501,9 @@ def main() -> int:
     for accession in targets:
         if accession in done:
             print(f"[{accession}] already in the manifest, skipping")
+            continue
+        if args.remap_only:
+            remap(accession)
             continue
         ingest(accession, download=not args.no_download, dry_run=args.dry_run, combat=args.combat,
                rscript=args.rscript, rlibs=args.rlibs)

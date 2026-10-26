@@ -112,22 +112,38 @@ python phase-2/scripts/phase2_ingest.py --accession GSE41747 --combat batch   # 
 
 | engine | datasets | state |
 |---|---|---|
-| `deseq2` | 5 bulk RNA-seq | **validated** on GSE163071: 29,542 genes, 1 contrast |
+| `deseq2` | 5 bulk RNA-seq | **validated** on GSE163071 (one deposited matrix, 29,542 genes) and GSE145064 (46 per-sample kallisto `abundance.tsv` files, 174,208 transcripts, paired on patient) |
 | `author_matrix_limma_trend` | GSE207400 | **validated**: 44,985 rows over 3 contrasts |
 | `nanostring_housekeeping_limma` | GSE239561 | **validated**: 750 endogenous genes over 5 contrasts |
 | `pseudobulk_limma_trend` | 4 single-cell | **validated** on GSE232516: 4 10x libraries, 36,591 rows |
+| per-sample files | GSE145064, GSE232528, GSE179043 | **validated** on GSE145064: files keyed by the GSM in their name, gene column chosen by name, count column preferred over TPM where both are present |
 | `pseudobulk_author_matrix` | GSE292071 | implemented, unrun: the deposit is one `.mtx.gz` with no features or barcodes file, so the gene and plate axes cannot be recovered from the series-level file yet |
 | `limma_trend`, 3-prime arrays | GSE141801, GSE14038, GSE41747 | **validated** on GSE141801: RMA over 74 CELs, 98,772 rows over 2 contrasts, via `affy` plus `hgu219cdf`. GSE14038 and GSE41747 ship their own CDF, which the engine loads with `make.cdf.env` |
 | `limma_trend`, whole-transcript arrays | GSE108524 (HTA 2.0) | `oligo` 1.70.1 now builds from source in the conda toolchain; see the build note below |
 | `two_colour_limma` | E-TABM-69, E-MEXP-258 | reader only: both are legacy Tab2MAGE exports whose per-array column names must be read off the file before `limma::read.maimages` is pointed at them |
 
-### Known gap: identifiers are not mapped yet
+### Identifier mapping
 
-Ratified call 3 maps every dataset to HGNC symbols through a pinned Ensembl release, keeping the
-original probe id. The worker currently writes whatever the matrix rows are keyed on, which is already
-symbols for the count and panel datasets but probeset ids for the arrays (GSE141801's rows are
-`11730415_s_at`). The mapping step and the `source_id` column are the next piece of work; until they
-land, array results are ranked on probesets and must not be joined to the other datasets.
+Ratified call 3, implemented 2026-10-26 in `map_identifiers()`, which runs after the worker and
+before the manifest row is written. The original id is never discarded: every ranked list carries
+`source_id` alongside `gene_symbol`, rows that do not map keep an empty symbol rather than being
+dropped, and the manifest records how much of each ranking is addressable by symbol.
+
+The map is chosen from the ids themselves, because the same assay class turns up in different
+identifier spaces:
+
+| ids look like | mapped through | note |
+|---|---|---|
+| `ENST…` | `phase-2/data/ensembl-113-tx2gene.tsv.gz` | version suffix stripped before lookup; GSE145064 maps 149,071 of 174,208 rows |
+| `ENSG…` | `phase-2/data/ensembl-113-gene2symbol.tsv.gz` | |
+| `…_at`, `TC…` | the GEO platform table for that dataset's GPL, cached under `build/phase2/_platforms/` | probe ids are platform-specific, so Ensembl cannot resolve them; `gene_assignment` is split on `//` for whole-transcript arrays |
+| anything else | identity | counts and the NanoString panel are deposited as symbols |
+
+Both Ensembl tables are built by `phase-2/scripts/phase2_build_idmap.py --release 113` from that
+release's GTF, so the release is pinned in the filename and recorded per dataset in the manifest. A
+remap is a visible change, not silent drift. Release 113 names a symbol for 275,704 of 387,944
+transcripts and 42,745 of 78,932 genes; the remainder are unnamed non-coding features, which is why
+a dataset quantified at transcript level does not reach 100% symbol coverage.
 
 ### Building oligo in a conda R
 
