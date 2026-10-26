@@ -198,6 +198,47 @@ read_per_sample_files <- function() {
   mat
 }
 
+#' Applied Biosystems 1700 chemiluminescent arrays (GPL2986), one file per sample.
+#'
+#' Each file carries Probe_ID, Gene_ID and three per-sample columns whose names embed the
+#' sample: Signal_<id>, S_N_<id> and Flags_<id>. The signal is a one-colour chemiluminescent
+#' intensity, so neither RMA nor a count model applies: values are masked where the
+#' instrument flagged the spot, then log2-transformed and quantile-normalized across arrays.
+#'
+#' Masking thresholds (Kara, 2026-10-26): Flags > 0 or signal-to-noise < 3.
+ABI_MIN_SN <- 3
+read_abi_signal <- function() {
+  paths <- files_in("^GSM[0-9]+.*\\.(txt|TXT)(\\.gz)?$")
+  if (length(paths) == 0) return(NULL)
+  first <- names(fread(paths[[1]], nrows = 1, data.table = FALSE))
+  if (!any(grepl("^Signal", first)) || !"Probe_ID" %in% first) return(NULL)
+  masked_total <- 0; measured_total <- 0
+  per_file <- lapply(paths, function(path) {
+    tab <- fread(path, data.table = FALSE)
+    signal_col <- grep("^Signal", names(tab), value = TRUE)[1]
+    sn_col <- grep("^S_N", names(tab), value = TRUE)[1]
+    flag_col <- grep("^Flags", names(tab), value = TRUE)[1]
+    value <- as.numeric(tab[[signal_col]])
+    bad <- rep(FALSE, length(value))
+    if (!is.na(flag_col)) bad <- bad | as.numeric(tab[[flag_col]]) > 0
+    if (!is.na(sn_col)) bad <- bad | as.numeric(tab[[sn_col]]) < ABI_MIN_SN
+    value[bad | value <= 0] <- NA_real_
+    masked_total <<- masked_total + sum(bad, na.rm = TRUE)
+    measured_total <<- measured_total + length(value)
+    gsm <- regmatches(basename(path), regexpr("GSM[0-9]+", basename(path)))
+    data.table(probe = as.character(tab$Probe_ID), value = value, sample = gsm)
+  })
+  wide <- dcast(rbindlist(per_file), probe ~ sample, value.var = "value")
+  mat <- as.matrix(wide[, -1, with = FALSE])
+  mode(mat) <- "numeric"
+  rownames(mat) <- wide$probe
+  message("  ", length(paths), " ABI signal files, ", nrow(mat), " probes; masked ",
+          masked_total, " of ", measured_total, " spot values (",
+          sprintf("%.1f%%", 100 * masked_total / max(measured_total, 1)),
+          ") on Flags > 0 or S/N < ", ABI_MIN_SN)
+  mat
+}
+
 read_counts <- function() {
   tenx <- read_tenx_libraries()
   if (!is.null(tenx)) return(align_to_samples(tenx, samples))
@@ -215,6 +256,16 @@ read_array_matrix <- function() {
   cels <- files_in("\\.(CEL|cel)(\\.gz)?$")
   if (length(cels) > 0) return(rma_from_cels(cels))
   read_author_matrix()
+}
+
+#' log2 then quantile normalization across arrays: the route for a one-colour signal that
+#' arrives already summarized per probe, where RMA has nothing to do.
+normalize_signal <- function(mat) {
+  keep <- rowMeans(is.na(mat)) <= 0.5
+  message("  dropping ", sum(!keep), " probes missing in more than half the arrays; ",
+          sum(keep), " kept")
+  logged <- log2(mat[keep, , drop = FALSE])
+  normalizeBetweenArrays(logged, method = "quantile")
 }
 
 #' RMA from CEL files.
@@ -470,6 +521,12 @@ result <- switch(engine,
     run_limma(pb$matrix, pb$samples, "pseudobulk of an author matrix")
   },
   two_colour_limma = run_two_colour(),
+  abi_signal_limma = {
+    signal <- read_abi_signal()
+    if (is.null(signal)) stop_with("no ABI signal files found; expected per-sample text files with ",
+                                   "Probe_ID and Signal_<sample> columns")
+    run_limma(normalize_signal(align_to_samples(signal, samples)), samples, "ABI signal")
+  },
   stop_with("unknown engine ", engine)
 )
 

@@ -47,6 +47,10 @@ One pass per dataset, no cross-dataset pooling at any step.
    - expression array: `limma`, `trend=TRUE`
    - raw counts: `DESeq2`
    - pseudobulked single-cell: `limma-trend` on log-CPM
+   - one-colour chemiluminescent signal (GSE66743, Applied Biosystems 1700 on GPL2986): spot values
+     masked where the instrument flagged them (`Flags > 0`) or signal-to-noise is below 3, then log2
+     and quantile normalization across arrays. Probes missing in more than half the arrays are
+     dropped and the count is logged; RMA does not apply to an already-summarized signal
    - targeted panel (GSE239561, NanoString nCounter PanCancer IO360, 770 genes): housekeeping-gene
      normalization first, then `limma` on the log2 normalized counts. Not the plain array route. Kept in the
      ranking by Kara's ruling of 2026-10-20, with `gene_space = panel:770` in the manifest: Phase 3 restricts
@@ -120,6 +124,7 @@ python phase-2/scripts/phase2_ingest.py --accession GSE41747 --combat batch   # 
 | `pseudobulk_author_matrix` | GSE292071 | implemented, unrun: the deposit is one `.mtx.gz` with no features or barcodes file, so the gene and plate axes cannot be recovered from the series-level file yet |
 | `limma_trend`, 3-prime arrays | GSE141801, GSE14038, GSE41747 | **validated** on GSE141801: RMA over 74 CELs, 98,772 rows over 2 contrasts, via `affy` plus `hgu219cdf`. GSE14038 and GSE41747 ship their own CDF, which the engine loads with `make.cdf.env` |
 | `limma_trend`, whole-transcript arrays | GSE108524 (HTA 2.0) | `oligo` 1.70.1 now builds from source in the conda toolchain; see the build note below |
+| `abi_signal_limma` | GSE66743 | **validated**: 38 Applied Biosystems 1700 signal files, log2 then quantile normalization across arrays, spot values masked where `Flags > 0` or S/N < 3 (43.1% of spots), 18,923 probes kept |
 | `two_colour_limma` | E-TABM-69, E-MEXP-258 | reader only: both are legacy Tab2MAGE exports whose per-array column names must be read off the file before `limma::read.maimages` is pointed at them |
 
 ### Identifier mapping

@@ -67,6 +67,10 @@ ENGINE_BY_ASSAY = {
     "single_cell_rnaseq": "pseudobulk_limma_trend",
 }
 PANEL_ENGINE = "nanostring_housekeeping_limma"
+# Some platforms deposit a format no generic reader can infer. The platform, not the assay
+# class, is what fixes the route: GPL2986 is the Applied Biosystems 1700 chemiluminescent
+# array, whose per-sample files carry Signal / S_N / Flags columns rather than CELs.
+ENGINE_BY_PLATFORM = {"GPL2986": "abi_signal_limma"}
 PROCESSED_ENGINE = "author_matrix_limma_trend"
 
 # Arms are recorded per sample for most datasets. Where they are not, the contrast is the
@@ -198,6 +202,9 @@ class Dataset:
         self.samples["patient_id"] = extracted.values
 
     def _engine(self) -> str:
+        for platform in str(self.row.platforms).split(";"):
+            if platform in ENGINE_BY_PLATFORM:
+                return ENGINE_BY_PLATFORM[platform]
         if bool(self.row.get("targeted_panel", False)):
             return PANEL_ENGINE
         if self.row.data_availability == "processed_matrix_only":
@@ -303,6 +310,9 @@ def id_kind(ids: pd.Series) -> str:
         return "ensembl_gene"
     if (sample.str.contains("_at$|_x_at$|_s_at$", regex=True) | sample.str.startswith(("TC", "PSR", "JUC"))).mean() > 0.5:
         return "affy_probe"
+    # Bare numeric ids are platform probe ids (GPL2986 keys on Probe_ID), not symbols.
+    if sample.str.fullmatch(r"\d+").mean() > 0.5:
+        return "platform_probe"
     return "symbol"
 
 
@@ -322,8 +332,11 @@ def platform_table(gpl: str) -> pd.DataFrame:
         with _gzip.open(cache, "wt") as fh:
             fh.write("\n".join(lines[start:]))
     table = pd.read_csv(cache, sep="\t", dtype=str, low_memory=False)
-    symbol_cols = [c for c in table.columns
-                   if c.lower() in ("gene symbol", "gene_symbol", "symbol", "gene")]
+    # Order matters: GPL2986 carries both GENE (an Entrez id) and Gene Symbol, and taking
+    # whichever appears first in the file put Entrez ids in the symbol column.
+    preference = ("gene symbol", "gene_symbol", "symbol", "genesymbol", "gene")
+    symbol_cols = sorted((c for c in table.columns if c.lower().strip() in preference),
+                         key=lambda c: preference.index(c.lower().strip()))
     if symbol_cols:
         out = table[["ID", symbol_cols[0]]].rename(columns={symbol_cols[0]: "gene_symbol"})
     elif "gene_assignment" in [c.lower() for c in table.columns]:
@@ -364,7 +377,7 @@ def map_identifiers(ds: Dataset, de_path: Path) -> dict:
         stripped = de.source_id.astype(str).str.replace(r"\.\d+$", "", regex=True)
         de["gene_symbol"] = stripped.map(lookup).fillna("")
         mapped_from = f"Ensembl release {ENSEMBL_RELEASE} ({key})"
-    else:
+    else:  # affy_probe or platform_probe: the archive's own platform table is the authority
         gpl = str(ds.row.platforms).split(";")[0]
         lookup = platform_table(gpl)
         de = de.merge(lookup.drop_duplicates("source_id"), on="source_id", how="left")
