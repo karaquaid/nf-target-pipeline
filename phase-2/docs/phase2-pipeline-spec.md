@@ -48,9 +48,10 @@ One pass per dataset, no cross-dataset pooling at any step.
    - raw counts: `DESeq2`
    - pseudobulked single-cell: `limma-trend` on log-CPM
    - targeted panel (GSE239561, NanoString nCounter PanCancer IO360, 770 genes): housekeeping-gene
-     normalization first, then `limma` on the log2 normalized counts. Not the plain array route, and
-     `gene_space` in the manifest records that the result covers 770 genes rather than the
-     transcriptome, so Phase 3 cannot read an absent gene as a low rank
+     normalization first, then `limma` on the log2 normalized counts. Not the plain array route. Kept in the
+     ranking by Kara's ruling of 2026-10-20, with `gene_space = panel:770` in the manifest: Phase 3 restricts
+     this dataset's contribution to the panel genes and treats every off-panel gene as not measured here,
+     never as ranked low
    Contrast is `de_arm` vs the dataset's declared reference arm. Arms with fewer than 2 samples are
    excluded from the test and named in the manifest.
 6. **Write outputs** (below), then stop. Ranking across datasets is Phase 3.
@@ -89,3 +90,65 @@ In the manifest and the matrix, absent from the Phase 3 meta-analysis, by ruling
 Before writing a preprocessing function, fetch the current documentation for the package it calls
 (GEOquery or GEOparse, limma, DESeq2, sva/ComBat) and cite the version and doc source in the script
 header. Package APIs shift across versions, and a remembered signature is not evidence.
+
+## Implementation
+
+Two scripts, file-based interface, run from the repo root.
+
+- `phase-2/scripts/phase2_ingest.py` resolves the design, downloads into `build/phase2/<accession>/`,
+  writes `<accession>_samples.csv`, calls the R worker, and appends the manifest row. It decides
+  nothing biological: membership, arms, reference arm and patient rule all come from the committed
+  tables, and it exits with an explanation rather than guessing when one is missing.
+- `phase-2/scripts/phase2_de.R` owns normalization and testing. It needs limma, DESeq2, edgeR, sva,
+  data.table, Matrix and R.utils; pass `--rscript` to point the orchestrator at that environment.
+
+```
+python phase-2/scripts/phase2_ingest.py --accession GSE163071 --rscript <env>/bin/Rscript
+python phase-2/scripts/phase2_ingest.py --all --skip-existing --rscript <env>/bin/Rscript
+python phase-2/scripts/phase2_ingest.py --accession GSE41747 --combat batch   # within-dataset only
+```
+
+### Route status, 2026-10-21
+
+| engine | datasets | state |
+|---|---|---|
+| `deseq2` | 5 bulk RNA-seq | **validated** on GSE163071: 29,542 genes, 1 contrast |
+| `author_matrix_limma_trend` | GSE207400 | **validated**: 44,985 rows over 3 contrasts |
+| `nanostring_housekeeping_limma` | GSE239561 | **validated**: 750 endogenous genes over 5 contrasts |
+| `pseudobulk_limma_trend` | 4 single-cell | **validated** on GSE232516: 4 10x libraries, 36,591 rows |
+| `pseudobulk_author_matrix` | GSE292071 | implemented, unrun: the deposit is one `.mtx.gz` with no features or barcodes file, so the gene and plate axes cannot be recovered from the series-level file yet |
+| `limma_trend`, 3-prime arrays | GSE141801, GSE14038, GSE41747 | **validated** on GSE141801: RMA over 74 CELs, 98,772 rows over 2 contrasts, via `affy` plus `hgu219cdf`. GSE14038 and GSE41747 ship their own CDF, which the engine loads with `make.cdf.env` |
+| `limma_trend`, whole-transcript arrays | GSE108524 (HTA 2.0) | blocked on `oligo`: `bioconductor-oligo` is absent from bioconda, Bioconductor's macOS binaries link against CRAN's `R.framework/libRlapack.dylib` and so will not load under a conda R, and the source build of its dependency `affxparser` fails in the conda toolchain. A BrainArray custom CDF would let `affy` read these arrays without `oligo` |
+| `two_colour_limma` | E-TABM-69, E-MEXP-258 | reader only: both are legacy Tab2MAGE exports whose per-array column names must be read off the file before `limma::read.maimages` is pointed at them |
+
+### Known gap: identifiers are not mapped yet
+
+Ratified call 3 maps every dataset to HGNC symbols through a pinned Ensembl release, keeping the
+original probe id. The worker currently writes whatever the matrix rows are keyed on, which is already
+symbols for the count and panel datasets but probeset ids for the arrays (GSE141801's rows are
+`11730415_s_at`). The mapping step and the `source_id` column are the next piece of work; until they
+land, array results are ranked on probesets and must not be joined to the other datasets.
+
+### R library note
+
+`affy`, DESeq2, limma, edgeR and sva come from conda in the `nf-phase2` environment. The CDF
+annotation packages are installed into a separate library because Bioconductor serves them as source
+only; pass that path with `--rlibs` (the worker reads `R_LIBS_USER`). That library lives in the
+session workspace, so archive it if it needs to survive a workspace cleanup.
+
+### Three things the first runs settled
+
+1. **Matrix columns are matched on four keys.** Deposited matrices name their columns by GSM, by
+   sample title, or by an internal id that appears only in `Sample_description` (GSE163071's columns
+   are `Lb3303` and the like; GSE207400's are `M1014` for "Tumor Sample M1014"). The orchestrator
+   fetches the series SOFT header and carries title, `soft_title` and `description`; the worker
+   matches on all of them, exactly first, then by unique substring in either direction, and reports
+   what it could not match rather than dropping samples.
+2. **The gene identifier column is chosen by name.** GSE163071's counts lead with Chromosome, Start,
+   Stop, Strand and then Gene Symbol; taking column 1 silently produced chromosome numbers as gene
+   names in the first run.
+3. **Pseudobulk is one profile per patient per arm.** GSE232516's patient P13 contributes both a
+   pseudarthrosis and an iliac-crest sample, so collapsing to the patient would merge a case with a
+   control. Profiles stay separate and the patient enters the model as a blocking factor, but only
+   where at least 2 residual degrees of freedom survive it; at n=4 the block is dropped with a logged
+   reason instead of saturating the design.

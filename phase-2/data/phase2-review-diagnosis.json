@@ -179,14 +179,20 @@
    "by": "Kara",
    "date": "2026-10-05",
    "contrast": "MPNST vs plexiform neurofibroma (between-subtype, within NF1)",
-   "implementation": "Sample-level labels derived from the SDRF and recorded in phase-2/data/phase2-non-geo-samples.csv: 10 two-colour arrays, cy5 carrying one tumour each (6 plexiform neurofibroma: PN-3, PN-4, PN-5, PN-6, PN-M-1, PN-M-2; 4 MPNST: MPNST-1, -2, -4, -5) against a cy3 pool of dermal neurofibromas shared by every array. Because both arms share that reference it cancels in the between-arm contrast, so the missing control arm does not block this dataset; it does mean no tumour-vs-normal contrast is possible here, since the reference is itself NF tumour tissue. Either Hybridization Name or Array Data File works as the array key: the SDRF holds 10 distinct Hybridization Name values, each carrying exactly the cy3/cy5 pair of one array."
+   "implementation": "Sample-level labels derived from the SDRF and recorded in phase-2/data/phase2-non-geo-samples.csv: 10 two-colour arrays, cy5 carrying one tumour each (6 plexiform neurofibroma: PN-3, PN-4, PN-5, PN-6, PN-M-1, PN-M-2; 4 MPNST: MPNST-1, -2, -4, -5) against a cy3 pool of dermal neurofibromas shared by every array. Because both arms share that reference it cancels in the between-arm contrast, so the missing control arm does not block this dataset; it does mean no tumour-vs-normal contrast is possible here, since the reference is itself NF tumour tissue. Either Hybridization Name or Array Data File works as the array key: the SDRF holds 10 distinct Hybridization Name values, each carrying exactly the cy3/cy5 pair of one array.",
+   "reference_arm": "Plexiform neurofibroma",
+   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it"
   },
   "GSE145064": {
    "decision": "include",
    "by": "Kara (resolved by full-text check)",
    "date": "2026-10-05",
    "contrast": "MPNST vs patient-matched plexiform neurofibroma, paired on patient",
-   "implementation": "Germline question settled at cohort level from the linked publication (PMID 32086342, full text via NCBI PMC - the article is not open access on Europe PMC, whose fullTextXML returns 500). The paper's Results state the tissue microarray was 'of 32 patient-matched NF/PNF and MPNST pairs that included 3 ANNUBPs from 12 NF1 patients cared for at the Iowa NF Clinic', its Methods add '12 paired neurofibromas and MPNSTs ..., 1 unpaired neurofibroma and 2 unpaired MPNSTs' from the University of Iowa Department of Pathology under IRB 201507708, and the results section is headed 'in NF1 patient specimens'. The RNA-seq (deposited as GSE145064) was run on FFPE cores adjacent to those TMA cores. Two counts do not reconcile in the retrieved text: the paper ties the phrase '12 NF1 patients' to the paired TMA cohort, while the GEO series carries 15 distinct patient ids, and nothing in the full text says the 3 unpaired specimens came from 3 further patients or that the cohort totals 15. So germline_basis moves from 'inferred' to 'stated_nf_cohort' - a cohort-level statement, not per-patient sequencing, since the word 'germline' never appears - and confidence stays medium until the patient mapping is settled, which needs the paper's supplementary material or the authors. GEO composition: 46 samples, 21 plexiform neurofibroma and 25 MPNST across 15 patient ids, 10 of which carry both arms, so the contrast can be run paired. No normal-tissue arm exists in the series (the paper's normal peripheral nerve was on the TMA, not in the RNA-seq), so it stays a no-control-fallback dataset. Library is FFPE exome-capture RNA-seq (Agilent SureSelect RNA Direct, All Exon V6 + COSMIC), not poly-A, which is another reason it must not be pooled into a shared matrix; the authors' own analysis used Kallisto plus Sleuth. The 3 ANNUBPs identified on pathology review are not separable from the GEO disease_state field, which carries only the two labels."
+   "implementation": "Germline question settled at cohort level from the linked publication (PMID 32086342, full text via NCBI PMC - the article is not open access on Europe PMC, whose fullTextXML returns 500). The paper's Results state the tissue microarray was 'of 32 patient-matched NF/PNF and MPNST pairs that included 3 ANNUBPs from 12 NF1 patients cared for at the Iowa NF Clinic', its Methods add '12 paired neurofibromas and MPNSTs ..., 1 unpaired neurofibroma and 2 unpaired MPNSTs' from the University of Iowa Department of Pathology under IRB 201507708, and the results section is headed 'in NF1 patient specimens'. The RNA-seq (deposited as GSE145064) was run on FFPE cores adjacent to those TMA cores. Two counts do not reconcile in the retrieved text: the paper ties the phrase '12 NF1 patients' to the paired TMA cohort, while the GEO series carries 15 distinct patient ids, and nothing in the full text says the 3 unpaired specimens came from 3 further patients or that the cohort totals 15. So germline_basis moves from 'inferred' to 'stated_nf_cohort' - a cohort-level statement, not per-patient sequencing, since the word 'germline' never appears - and confidence stays medium until the patient mapping is settled, which needs the paper's supplementary material or the authors. GEO composition: 46 samples, 21 plexiform neurofibroma and 25 MPNST across 15 patient ids, 10 of which carry both arms, so the contrast can be run paired. No normal-tissue arm exists in the series (the paper's normal peripheral nerve was on the TMA, not in the RNA-seq), so it stays a no-control-fallback dataset. Library is FFPE exome-capture RNA-seq (Agilent SureSelect RNA Direct, All Exon V6 + COSMIC), not poly-A, which is another reason it must not be pooled into a shared matrix; the authors' own analysis used Kallisto plus Sleuth. The 3 ANNUBPs identified on pathology review are not separable from the GEO disease_state field, which carries only the two labels.",
+   "reference_arm": "plexiform_neurofibroma",
+   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it",
+   "patient_rule": "^(PT\\d+)_",
+   "patient_rule_note": "paired design, set 2026-10-21: the stated contrast is MPNST vs patient-matched plexiform neurofibroma, and the patient is the PT prefix of the sample title; the engine blocks on patient where the residual degrees of freedom allow it"
   },
   "GSE120687": {
    "decision": "ChIP data dropped per Kara; dataset leaves the comparative launch set, perturbation arm retained in the logs",
@@ -216,28 +222,38 @@
    "by": "agent, from source evidence",
    "date": "2026-10-08",
    "contrast": "MPNST vs plexiform/benign neurofibroma (between-subtype, within NF1); no normal control arm",
-   "implementation": "Settle-it ran against Wu et al. (PMID 36322658). The paper describes the human cohort only at cohort level - 'NF1-mutated PNF' and 'NF1-associated MPNST' - with no per-sample genotype, so germline_basis drops to stated_nf_cohort and confidence stays medium. 31 human RNA-seq samples enter: a bulk arm (8 benign NF: NF1-6..NF1-16; 9 MPNST: MPNST-2..MPNST-12) and a single-cell arm (10 pNF-2-0xx; 4 MPNST-2-0xx) - the two arms are separate matrices and must not be pooled before pseudobulk. The 2 human ATAC-seq samples are dropped as non-abundance. On the mouse side the paper presents the Lats1/2-deficient model as a YAP/TAZ comparator alongside the Nf1-driven models, not as an NF model, so its 14 samples are excluded_not_nf_model (the same ruling as GSE172221) and only the Nf1-mut and NPE-mut samples (n=3) carry forward to the mouse pass."
+   "implementation": "Settle-it ran against Wu et al. (PMID 36322658). The paper describes the human cohort only at cohort level - 'NF1-mutated PNF' and 'NF1-associated MPNST' - with no per-sample genotype, so germline_basis drops to stated_nf_cohort and confidence stays medium. 31 human RNA-seq samples enter: a bulk arm (8 benign NF: NF1-6..NF1-16; 9 MPNST: MPNST-2..MPNST-12) and a single-cell arm (10 pNF-2-0xx; 4 MPNST-2-0xx) - the two arms are separate matrices and must not be pooled before pseudobulk. The 2 human ATAC-seq samples are dropped as non-abundance. On the mouse side the paper presents the Lats1/2-deficient model as a YAP/TAZ comparator alongside the Nf1-driven models, not as an NF model, so its 14 samples are excluded_not_nf_model (the same ruling as GSE172221) and only the Nf1-mut and NPE-mut samples (n=3) carry forward to the mouse pass.",
+   "reference_arm": "plexiform_neurofibroma",
+   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it"
   },
   "GSE207400": {
    "decision": "include",
    "by": "agent, from source evidence",
    "date": "2026-10-08",
    "contrast": "MPNST and low-grade MPNST vs atypical neurofibroma vs neurofibroma (progression series, within NF1); no normal control arm",
-   "implementation": "GEO carries a per-sample genotype field: NF1 26, Sporadic 22. Within the NF1 subset all four stages are present (MPNST 8, Low-Grade MPNST 2, Atypical_NF 9, Neurofibroma 7), so the dataset supports the progression contrast on its own. The 22 sporadic samples drop at sample level. The primary publication is Suppiah et al. 2023 (PMC10172395), which lists GSE207400 in its data availability but never states how NF1 versus sporadic status was assigned, and its reported cohort (108 samples) does not match this 48-sample RNA-seq series; the GEO genotype field is therefore the only source for the split and confidence stays medium."
+   "implementation": "GEO carries a per-sample genotype field: NF1 26, Sporadic 22. Within the NF1 subset all four stages are present (MPNST 8, Low-Grade MPNST 2, Atypical_NF 9, Neurofibroma 7), so the dataset supports the progression contrast on its own. The 22 sporadic samples drop at sample level. The primary publication is Suppiah et al. 2023 (PMC10172395), which lists GSE207400 in its data availability but never states how NF1 versus sporadic status was assigned, and its reported cohort (108 samples) does not match this 48-sample RNA-seq series; the GEO genotype field is therefore the only source for the split and confidence stays medium.",
+   "reference_arm": "benign_nf_g4",
+   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it"
   },
   "GSE292071": {
    "decision": "include",
    "by": "agent, from source evidence",
    "date": "2026-10-08",
    "contrast": "NF2-related schwannomatosis vs non-NF2-related schwannomatosis (between-genotype); no normal control arm",
-   "implementation": "The GEO record carries no genetic background at all, but Table S1 of the primary publication (Genome Medicine 2025, PMC11992879, Additional file 1, retrieved via the Europe PMC supplementary-files endpoint) assigns a tumour predisposition syndrome to each of the 22 patients, and every sample title carries its patient id. 11 patients are NF2-related schwannomatosis (77 plates) and 5 non-NF2-related schwannomatosis (27 plates), giving 104 in-scope plates; 6 patients are recorded as sporadic (SCHW20), sporadic with prior radiotherapy (SCHW21) or with no predisposition data (SCHW9, SCHW11, SCHW16, SCHW19) and their 47 plates drop. This moves the series from 'in scope but zero usable samples' into the launch set. Plates are Smart-seq wells, so several plates per patient: pseudobulk to the patient, not the plate."
+   "implementation": "The GEO record carries no genetic background at all, but Table S1 of the primary publication (Genome Medicine 2025, PMC11992879, Additional file 1, retrieved via the Europe PMC supplementary-files endpoint) assigns a tumour predisposition syndrome to each of the 22 patients, and every sample title carries its patient id. 11 patients are NF2-related schwannomatosis (77 plates) and 5 non-NF2-related schwannomatosis (27 plates), giving 104 in-scope plates; 6 patients are recorded as sporadic (SCHW20), sporadic with prior radiotherapy (SCHW21) or with no predisposition data (SCHW9, SCHW11, SCHW16, SCHW19) and their 47 plates drop. This moves the series from 'in scope but zero usable samples' into the launch set. Plates are Smart-seq wells, so several plates per patient: pseudobulk to the patient, not the plate.",
+   "reference_arm": "swn",
+   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it",
+   "patient_rule": "^(SCHW\\d+)",
+   "patient_rule_note": "pseudobulk unit, set 2026-10-21: patient prefix of the plate title (SCHW001, SCHW2, ...); several Smart-seq plates per patient"
   },
   "GSE66743": {
    "decision": "include",
    "by": "agent, from source evidence",
    "date": "2026-10-08",
    "contrast": "MPNST vs neurofibroma (between-subtype, within NF1); no normal control arm",
-   "implementation": "GEO carries a per-sample 'hereditary status' field: Neurofibromatosis type 1 25, Sporadic 13. Within the NF1 subset both arms are present - 15 primary tumours and 2 recurrences against 7 dermal and 1 plexiform neurofibroma - so the audit's worry that the neurofibromas might be sporadic is answered by the record itself. The 13 sporadic samples drop at sample level."
+   "implementation": "GEO carries a per-sample 'hereditary status' field: Neurofibromatosis type 1 25, Sporadic 13. Within the NF1 subset both arms are present - 15 primary tumours and 2 recurrences against 7 dermal and 1 plexiform neurofibroma - so the audit's worry that the neurofibromas might be sporadic is answered by the record itself. The 13 sporadic samples drop at sample level.",
+   "reference_arm": "neurofibroma",
+   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it"
   },
   "GSE2841": {
    "decision": "exclude",
@@ -319,21 +335,29 @@
    "by": "Kara",
    "date": "2026-10-19",
    "contrast": "painful vs non-painful NF2 tumour (between-state, within NF2-SWN)",
-   "implementation": "Arm read from the sample titles and written to de_arm in phase2-sample-overrides.csv: 7 painful, 11 non-painful, all 18 samples kept. The set1/set2 suffix is a batch marker and is the within-dataset correction covariate, not an arm. This is the launch set's only dataset addressing the Pain manifestation."
+   "implementation": "Arm read from the sample titles and written to de_arm in phase2-sample-overrides.csv: 7 painful, 11 non-painful, all 18 samples kept. The set1/set2 suffix is a batch marker and is the within-dataset correction covariate, not an arm. This is the launch set's only dataset addressing the Pain manifestation.",
+   "reference_arm": "non_painful",
+   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it"
   },
   "GSE318927": {
    "decision": "include",
    "by": "Kara",
    "date": "2026-10-19",
    "contrast": "MPNST vs plexiform neurofibroma (between-subtype, within NF1)",
-   "implementation": "Arm read from the sample titles (MPNST_sample1-5, PNF_sample1-9) and written to de_arm; all 14 samples kept. Single-cell, so pseudobulk to one profile per patient before the contrast."
+   "implementation": "Arm read from the sample titles (MPNST_sample1-5, PNF_sample1-9) and written to de_arm; all 14 samples kept. Single-cell, so pseudobulk to one profile per patient before the contrast.",
+   "reference_arm": "plexiform_neurofibroma",
+   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it",
+   "patient_rule": "^(\\w+_sample\\d+)$",
+   "patient_rule_note": "pseudobulk unit, set 2026-10-21: one patient per library here, so the pseudobulk unit is the library itself; the titles carry no patient id beyond the sample number"
   },
   "GSE239561": {
    "decision": "include",
    "by": "Kara",
    "date": "2026-10-19",
-   "contrast": "progression series within NF1: PNF, cellular NF, NF with atypia, ANNUBP, high-grade MPNST",
-   "implementation": "Arm read from the record's diagnosis field and written to de_arm: PNF 10, ANNUBP 9, NF with atypia 6, high-grade MPNST 6, NF 2, cellular NF 1, 34 samples kept. One sporadic ANNUBP sample is excluded_sporadic. Which adjacent pairs to test is a Phase 3 question; the arms are recorded so any pairing is available."
+   "contrast": "progression series within NF1: PNF, cellular NF, NF with atypia, ANNUBP, high-grade MPNST; targeted panel, so the ranking covers 770 genes",
+   "implementation": "Arm read from the record's diagnosis field and written to de_arm: PNF 10, ANNUBP 9, NF with atypia 6, high-grade MPNST 6, NF 2, cellular NF 1, 34 samples kept. One sporadic ANNUBP sample is excluded_sporadic. Which adjacent pairs to test is a Phase 3 question; the arms are recorded so any pairing is available. Raw-file check 2026-10-20: the series holds 34 NanoString .RCC files (GPL32069, nCounter PanCancer IO360, 770 genes), so the dataset-level assay_class of expression_array is misleading and every sample's sample_assay is expression_panel_targeted. Kara ruled on 2026-10-20 to keep it and let it contribute to the Phase 3 ranking inside its own gene space: housekeeping-gene normalization then limma on log2 normalized counts, gene_space recorded as panel:770 in the ingestion manifest, and rank aggregation treats off-panel genes as not measured rather than as ranked low.",
+   "reference_arm": "pnf",
+   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it"
   },
   "GSE232528": {
    "decision": "include",
@@ -347,7 +371,9 @@
    "by": "Kara",
    "date": "2026-10-19",
    "contrast": "none within the dataset in the first pass; 11 NF2-associated vestibular schwannoma libraries as a single arm",
-   "implementation": "Same ruling as GSE232528: the 8 sporadic vestibular schwannomas are excluded rather than used as the reference. The 8 ATAC arms of the multiome are tagged excluded_non_expression_assay. 11 expression libraries kept under de_arm nf2_vestibular_schwannoma; single-cell, so pseudobulk per patient."
+   "implementation": "Same ruling as GSE232528: the 8 sporadic vestibular schwannomas are excluded rather than used as the reference. The 8 ATAC arms of the multiome are tagged excluded_non_expression_assay. 11 expression libraries kept under de_arm nf2_vestibular_schwannoma; single-cell, so pseudobulk per patient.",
+   "patient_rule": "(VS\\d+)",
+   "patient_rule_note": "pseudobulk unit, set 2026-10-21: the VS id in the sample title, one tumour per id"
   },
   "GSE218493": {
    "decision": "include, single arm in the first pass",
@@ -355,6 +381,45 @@
    "date": "2026-10-19",
    "contrast": "cutaneous vs plexiform neurofibroma (between-subtype, within NF1), 1 sample per arm",
    "implementation": "Kept at Kara's instruction (2026-10-19) rather than deferred. Both samples are retained with de_arm set, but with one sample per arm no differential-expression test is possible: the dataset contributes to coverage and to cross-dataset comparison, not to the meta-analysis ranking."
+  },
+  "GSE41747": {
+   "decision": "include",
+   "by": "agent, applying Kara's human-only ruling",
+   "date": "2026-10-21",
+   "contrast": "neurofibroma and MPNST vs normal human nerve (tumour vs normal, within NF1)",
+   "implementation": "Human arm kept: 26 neurofibroma, 6 MPNST, 3 normal human nerve, arms from the record's tissue field. The 48 mouse samples are tagged case_mouse_deferred (33) and control_mouse_deferred (15) in phase2-sample-overrides.csv, so 15 of the series' 18 controls leave with the mouse track and 3 human normal nerves remain. The title prefix (batch1a through batch3c, plus jan) is the within-dataset batch covariate and is the clearest ComBat case in the launch set; it is not confounded with arm, since normal nerves sit in the jan batch and tumours spread across the rest. Note for any result: with 3 normal nerves against 32 tumours the control arm is small."
+  },
+  "GSE181985": {
+   "decision": "include, single arm in the first pass",
+   "by": "agent, applying Kara's human-only ruling",
+   "date": "2026-10-21",
+   "contrast": "none within the dataset; 23 human plexiform neurofibroma libraries from 4 tumours as a single arm",
+   "implementation": "The 2 controls are mouse isogenic and leave with the mouse track (6 case_mouse_deferred, 2 control_mouse_deferred), so the human material is one arm: plexiform neurofibroma, 23 libraries from tumour samples 1 to 4, which are the pseudobulk unit. Ingested and available for cross-dataset comparison and Phase 7, absent from the Phase 3 ranking, like GSE232528 and GSE344687.",
+   "patient_rule": "Tumor (\\d+)",
+   "patient_rule_note": "pseudobulk unit, set 2026-10-21: the record's 'tumor sample' field names 4 tumours across 23 libraries"
+  },
+  "E-MEXP-258": {
+   "decision": "include, labelled, outside the ranking",
+   "by": "agent, from the SDRF and IDF",
+   "date": "2026-10-21",
+   "contrast": "NF1 heterozygous vs wild-type melanocytes, with skin site (cafe-au-lait macule vs normal) as the second factor; 1 donor per genotype, so the genotype effect is not replicated across individuals",
+   "implementation": "Labelled from E-MEXP-258.sdrf.txt (retrieved via the BioStudies FIRE path on ftp.ebi.ac.uk, since www.ebi.ac.uk/biostudies/files/ returns 404): 8 two-colour arrays, 16 labelled extracts, in a loop design over 4 melanocyte cultures. The IDF states the material is from one NF1 patient and one healthy control donor, cultured from normally pigmented and from hyperpigmented cafe-au-lait skin. Arms recorded per channel in phase2-non-geo-samples.csv as nf1_het_calm_skin, nf1_het_normal_skin, wild_type_calm_skin, wild_type_normal_skin, with patient_id naming the donor. The control arm the Phase 1a control_types field predicted is therefore real, which settles that question, but it is a single unaffected donor: the dataset is ingested and labelled and stays out of the Phase 3 ranking, like GSE218493, because a one-donor-per-arm comparison cannot support a disease-vs-control inference. Kara may overrule and admit it; the effect would be an unreplicated ranking entering the aggregation."
+  },
+  "GSE207400_processed": {
+   "decision": "processed-matrix policy (applies to GSE207400 and GSE292071)",
+   "by": "agent, from the raw-file check",
+   "date": "2026-10-21",
+   "contrast": "not a dataset entry; this records the policy for datasets with no raw files",
+   "implementation": "GSE207400 (GSE207400_Matrix.txt.gz, 5.3 MB) and GSE292071 (GSE292071_SCHW_samples.mtx.gz, 247.3 MB) deposit no raw data, confirmed by the 2026-10-20 raw-file check. Policy: accept the authors' normalization as given, skip the normalization step for these two, record normalization = 'author-provided, not reproduced' and the file name and checksum in the ingestion manifest, and never silently rescale a matrix whose transformation is unknown. If a matrix turns out to be already log-transformed, the manifest records that rather than the pipeline inferring it."
+  },
+  "GSE232516": {
+   "patient_rule": "^(P\\d+)_",
+   "patient_rule_note": "pseudobulk unit, set 2026-10-21: patient prefix of the sample title (P5, P13, P15); the same patient contributes both a pseudarthrosis and an iliac-crest periosteum sample, so site is the arm and patient is paired",
+   "decision": "include",
+   "contrast": "NF1 pseudarthrosis periosteum vs iliac-crest periosteum (between-site, within NF1)",
+   "implementation": "Arms are the Phase 1a case/control split: 2 pseudarthrosis periosteum samples against 2 iliac-crest periosteum controls, 10x libraries pseudobulked per patient per arm. Patient P13 contributes to both arms, so the design is partially paired; at 4 profiles blocking on patient saturates the model, so the block is dropped and the pairing is recorded in the sample table instead. Nothing clears FDR at this n, which is the expected outcome and is reported rather than worked around.",
+   "by": "agent, from the GEO record",
+   "date": "2026-10-21"
   }
  }
 }
