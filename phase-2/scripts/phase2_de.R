@@ -177,6 +177,22 @@ read_array_matrix <- function() {
 #' against CRAN's R.framework rather than a conda R, so that case stops with a message.
 rma_from_cels <- function(cels) {
   suppressPackageStartupMessages(library(affy))
+  # Whole-transcript arrays (HTA, Gene ST) need oligo and the platform's pd.* package;
+  # 3-prime arrays go through affy. The CEL header says which chip this is.
+  chip <- tryCatch(affyio::read.celfile.header(cels[[1]])$cdfName, error = function(e) NA_character_)
+  if (!is.na(chip)) {
+    pd <- gsub("[^a-z0-9]+", ".", tolower(chip))
+    pd <- paste0("pd.", gsub("^\\.|\\.$", "", pd))
+    if (requireNamespace(pd, quietly = TRUE) && requireNamespace("oligo", quietly = TRUE)) {
+      suppressPackageStartupMessages(library(oligo))
+      message("  ", length(cels), " CEL files, chip ", chip, ", read with oligo via ", pd)
+      eset <- oligo::rma(oligo::read.celfiles(cels, verbose = FALSE))
+      mat <- Biobase::exprs(eset)
+      colnames(mat) <- sub("\\.(CEL|cel)(\\.gz)?$", "", basename(colnames(mat)))
+      message("  RMA matrix: ", nrow(mat), " probesets x ", ncol(mat), " arrays")
+      return(align_to_samples(mat, samples))
+    }
+  }
   batch <- try(ReadAffy(filenames = cels), silent = TRUE)
   if (inherits(batch, "try-error")) {
     stop_with("affy could not read these CEL files (", as.character(batch), "). Whole-transcript ",

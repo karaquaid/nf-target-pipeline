@@ -118,7 +118,7 @@ python phase-2/scripts/phase2_ingest.py --accession GSE41747 --combat batch   # 
 | `pseudobulk_limma_trend` | 4 single-cell | **validated** on GSE232516: 4 10x libraries, 36,591 rows |
 | `pseudobulk_author_matrix` | GSE292071 | implemented, unrun: the deposit is one `.mtx.gz` with no features or barcodes file, so the gene and plate axes cannot be recovered from the series-level file yet |
 | `limma_trend`, 3-prime arrays | GSE141801, GSE14038, GSE41747 | **validated** on GSE141801: RMA over 74 CELs, 98,772 rows over 2 contrasts, via `affy` plus `hgu219cdf`. GSE14038 and GSE41747 ship their own CDF, which the engine loads with `make.cdf.env` |
-| `limma_trend`, whole-transcript arrays | GSE108524 (HTA 2.0) | blocked on `oligo`: `bioconductor-oligo` is absent from bioconda, Bioconductor's macOS binaries link against CRAN's `R.framework/libRlapack.dylib` and so will not load under a conda R, and the source build of its dependency `affxparser` fails in the conda toolchain. A BrainArray custom CDF would let `affy` read these arrays without `oligo` |
+| `limma_trend`, whole-transcript arrays | GSE108524 (HTA 2.0) | `oligo` 1.70.1 now builds from source in the conda toolchain; see the build note below |
 | `two_colour_limma` | E-TABM-69, E-MEXP-258 | reader only: both are legacy Tab2MAGE exports whose per-array column names must be read off the file before `limma::read.maimages` is pointed at them |
 
 ### Known gap: identifiers are not mapped yet
@@ -128,6 +128,23 @@ original probe id. The worker currently writes whatever the matrix rows are keye
 symbols for the count and panel datasets but probeset ids for the arrays (GSE141801's rows are
 `11730415_s_at`). The mapping step and the `source_id` column are the next piece of work; until they
 land, array results are ranked on probesets and must not be joined to the other datasets.
+
+### Building oligo in a conda R
+
+`bioconductor-oligo` is absent from bioconda, and Bioconductor's macOS binaries link against CRAN's
+`R.framework/libRlapack.dylib`, so they do not load under a conda R. Building from source works once
+three things are set, all of them recorded in `phase-2/scripts/r-build/` and reproducible:
+
+1. The conda compiler toolchain (`clang_osx-arm64`, `clangxx_osx-arm64`, `gfortran_osx-arm64`, `make`,
+   `pkg-config`) in the environment.
+2. `R_MAKEVARS_USER` pointing at `phase-2/scripts/r-build/Makevars`, which defines the endianness
+   macros the Affymetrix Fusion SDK reads (`affxparser` fails with `"BYTE_ORDER is not set"` without
+   them, because the conda macOS sysroot only exposes it under `_DARWIN_C_SOURCE`).
+3. One source patch to `oligo`: `src/ParserXYS.c` calls R's `error()` unprefixed, and R 4.4 ships
+   `R_NO_REMAP` by default, so the symbol is missing at load time (`symbol not found in flat
+   namespace '_error'`). `phase-2/scripts/r-build/oligo-ParserXYS-error.patch` includes
+   `R_ext/Error.h` and maps `error` to `Rf_error`. Suppressing the compiler warning is not enough;
+   the failure is at link time.
 
 ### R library note
 

@@ -1,0 +1,10 @@
+# Affymetrix Fusion SDK (affxparser) reads BYTE_ORDER, which the conda macOS sysroot only
+# exposes under _DARWIN_C_SOURCE; define the endianness macros the SDK expects instead.
+PKG_CPPFLAGS += -D_DARWIN_C_SOURCE -DBYTE_ORDER=1234 -DLITTLE_ENDIAN=1234 -DBIG_ENDIAN=4321 -DPDP_ENDIAN=3412
+# oligo's ParserXYS.c calls R's error() without including R_ext/Error.h, which clang 16+
+# treats as a hard error under C99 rules rather than a warning.
+PKG_CFLAGS += -Wno-implicit-function-declaration
+CFLAGS += -Wno-implicit-function-declaration
+# macOS resolves package symbols in a flat namespace, so a translation unit that calls R's
+# error() without declaring it needs libR linked explicitly.
+PKG_LIBS += -L$(R_HOME)/lib -lR
