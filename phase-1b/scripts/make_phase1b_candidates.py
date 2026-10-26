@@ -11,6 +11,14 @@ classes of row, and is what later phases consume:
 * **Rows contradicted by full text** (`evidence_tier == "full text - not
   supported"`). The papers read do not support the claim, so the row is not a
   candidate even where a co-supporting paper is still unread.
+* **Rows whose only support is a paper ruled not NF-relevant**
+  (`out_of_scope_paper`). A paper can be about NF-adjacent biology without
+  studying NF: PMID 30306639 (Ma 2018, Glia) works on Eed/PRC2 in normal mouse
+  Schwann cells and axon regeneration after nerve injury, and reaches NF1 and
+  MPNST only in framing and discussion. Papers ruled this way carry
+  `nf_relevant = False` in the reference table with the reason; rows they
+  co-support keep their place with that paper and its verdict removed from the
+  counts.
 
 Neither class is deleted. Both keep their rows, flags and tiers in the full
 table, so an exclusion can be reversed or widened by changing this filter.
@@ -84,8 +92,16 @@ def derive(targets: pd.DataFrame) -> pd.DataFrame:
         if column not in targets.columns:
             raise ValueError(f"full target table is missing column {column!r}")
 
-    keep = ~targets.driver_gene.astype(bool) & ~targets.evidence_tier.isin(EXCLUDED_TIERS)
-    candidates = targets[keep].drop(columns=["driver_gene"]).reset_index(drop=True)
+    out_of_scope = (targets.out_of_scope_paper.astype(bool)
+                    if "out_of_scope_paper" in targets.columns
+                    else pd.Series(False, index=targets.index))
+    keep = (~targets.driver_gene.astype(bool)
+            & ~targets.evidence_tier.isin(EXCLUDED_TIERS)
+            & ~out_of_scope)
+    candidates = (targets[keep]
+                  .drop(columns=[c for c in ("driver_gene", "out_of_scope_paper",
+                                             "out_of_scope_reason") if c in targets.columns])
+                  .reset_index(drop=True))
     candidates = candidates.sort_values(
         ["n_fulltext_supported", "n_supporting_papers", "gene_target"],
         ascending=[False, False, True],
@@ -151,11 +167,20 @@ def main() -> None:
     excluded = len(targets) - len(candidates)
     drivers = int(targets.driver_gene.astype(bool).sum())
     contradicted = int(targets.evidence_tier.isin(EXCLUDED_TIERS).sum())
+    off_scope = int(targets.get("out_of_scope_paper", pd.Series(dtype=bool)).astype(bool).sum())
     print(
         f"{len(candidates)} candidate rows over {candidates.gene_target.nunique()} labels "
         f"({excluded} excluded from {len(targets)}: {drivers} germline driver rows, "
-        f"{contradicted} contradicted by full text)"
+        f"{contradicted} contradicted by full text, {off_scope} supported only by a paper "
+        f"ruled not NF-relevant)"
     )
+    # Guard against drift: no candidate row may cite a paper ruled not NF-relevant.
+    if "nf_relevant" in refs.columns:
+        dropped = set(refs.loc[~refs.nf_relevant.astype(bool), "pmid"].astype(str))
+        offenders = [(r.gene_target, r.manifestation, p) for r in candidates.itertuples()
+                     for p in str(r.supporting_pmids).split(";") if p in dropped]
+        if offenders:
+            raise ValueError(f"candidate rows still cite papers ruled not NF-relevant: {offenders[:5]}")
     print(
         f"{int((~refs.supports_candidate_rows).sum())} of {len(refs)} papers now back "
         "no candidate row"

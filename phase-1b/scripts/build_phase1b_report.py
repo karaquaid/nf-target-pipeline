@@ -147,6 +147,10 @@ def collect(targets: pd.DataFrame, candidates: pd.DataFrame, refs: pd.DataFrame,
         "n_drivers": len(drivers),
         "driver_counts": drivers.gene_target.value_counts().to_dict(),
         "driver_supported": int((drivers.evidence_tier == "full text - supported").sum()),
+        "rows_paper_not_nf_relevant": int(targets.get(
+            "out_of_scope_paper", pd.Series(dtype=bool)).astype(bool).sum()),
+        "papers_not_nf_relevant": int((~refs.get(
+            "nf_relevant", pd.Series(True, index=refs.index)).astype(bool)).sum()),
         "n_preprints": int(refs.is_preprint.sum()),
         # Detection reports bioRxiv under two DOI prefixes; collapse to one name.
         "preprint_servers": (
@@ -205,13 +209,14 @@ gene symbols, drawn from {s['n_papers']} papers**, of which {s['read_in_full']} 
 in full. {s['anchored']} of the {s['n_rows']} rows are anchored in at least one paper
 verified against its complete text; {s['tiers']['abstract only']} rest on abstracts alone
 and are labelled as such. A wider annotated table of {s['n_rows_full']} rows is retained
-for audit, the difference being the germline NF genes excluded as targets.
+for audit, the difference being the rows excluded on scope grounds: germline NF genes,
+rows contradicted by their own full text, and rows whose only supporting paper is not about NF.
 
 ## Outputs
 
 | File | What it holds |
 |---|---|
-| `phase-1b/data/phase1b-candidate-targets.csv` | The prioritisation input. {s['n_rows']} rows, germline NF genes excluded. |
+| `phase-1b/data/phase1b-candidate-targets.csv` | The prioritisation input. {s['n_rows']} rows, after the scope exclusions. |
 | `phase-1b/data/phase1b-literature-targets.csv` | All {s['n_rows_full']} verified rows with a `driver_gene` flag, for audit. |
 | `phase-1b/data/phase1b-references.csv` | {s['n_papers']} papers: DOI, PMC id, access route, preprint status, targets supported, manifestations covered, resolvable link. |
 | `phase-1b/data/phase1b-coverage.csv` | The coverage matrix below, machine-readable. |
@@ -260,8 +265,8 @@ manifestation attribution is looser than the row claims.
 ![Stacked horizontal bars of candidate target rows per manifestation, one panel per disease, shaded by whether the strongest supporting paper was read in full text or only as an abstract](figures/phase1b-coverage-verification.png)
 
 **Figure 1. Coverage and verification depth by disease and manifestation.** Bar length is
-the number of candidate target rows (n = {s['n_rows']} claims, germline NF genes
-excluded); shading is the provenance of the strongest supporting paper behind each row.
+the number of candidate target rows (n = {s['n_rows']} claims, after the scope
+exclusions); shading is the provenance of the strongest supporting paper behind each row.
 Panels share an x axis, so bar lengths are comparable across diseases; a grey dot marks a
 manifestation with no rows at all in that disease. {s['tiers']['full text - supported']} of
 {s['n_rows']} rows ({s['pct_supported']} percent) are anchored in a paper read in full, and
@@ -388,6 +393,7 @@ because the excluded evidence is retained rather than deleted.
 2. **Germline NF genes are excluded as candidates.** {s['n_drivers']} rows: {phrase(s['driver_counts'])}. {s['driver_supported']} of them were full-text supported, so this removed well-evidenced rows on scope grounds. They are retained in `phase1b-literature-targets.csv` with `driver_gene = True`.
 3. **Recurrent somatic drivers are kept.** CDKN2A and CDKN2B, PRC2 components, TP53, MTAP, PTEN, RB1 and the RAS genes remain candidates despite being well described in NF tumour genetics, because they carry the malignant-progression signal Phase 6 stratification depends on.
 4. **Rows contradicted by full text are excluded.** Where the papers read do not support the claim, the row leaves the candidate list even if a co-supporting paper is still unread, on the grounds that a contradicted claim should not be prioritised while it waits for confirmation it is unlikely to get. It keeps its row, tier and papers in the audit table, so re-reading a remaining paper can restore it.
+5. **Papers that are not about NF are excluded, and with them the rows they alone support.** A paper can work on NF-adjacent biology without studying NF. PMID 30306639 (Ma 2018, *Glia*) is the case found so far: it studies Eed/PRC2 in normal mouse Schwann cells and axon regeneration after nerve injury, and reaches NF1 and MPNST only in framing and discussion citing other groups. {s['rows_paper_not_nf_relevant']} rows rested on it alone and left the candidate list, taking *BDNF* and *NRG1* out of the list entirely; the two rows it co-supported, PRC2 and *EED* in MPNST, keep their place with that paper and its full-text-partial verdict removed from their counts. Papers ruled this way carry `nf_relevant = False` and the reason in the references table, and the candidate script fails if any candidate row still cites one.
 
 ## Limitations
 
