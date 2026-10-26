@@ -347,7 +347,12 @@ def map_identifiers(ds: Dataset, de_path: Path) -> dict:
     dataset's ranking is addressable by symbol.
     """
     de = pd.read_csv(de_path)
-    de = de.rename(columns={"gene_symbol": "source_id"}) if "source_id" not in de.columns else de
+    # Idempotent: a file mapped once already has source_id, so the stale gene_symbol is
+    # dropped rather than merged onto (which would produce gene_symbol_x / _y).
+    if "source_id" in de.columns:
+        de = de.drop(columns=[c for c in de.columns if c.startswith("gene_symbol")])
+    else:
+        de = de.rename(columns={"gene_symbol": "source_id"})
     kind = id_kind(de.source_id)
     if kind == "symbol":
         de["gene_symbol"] = de.source_id

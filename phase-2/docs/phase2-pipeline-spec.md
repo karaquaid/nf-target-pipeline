@@ -139,6 +139,11 @@ identifier spaces:
 | `…_at`, `TC…` | the GEO platform table for that dataset's GPL, cached under `build/phase2/_platforms/` | probe ids are platform-specific, so Ensembl cannot resolve them; `gene_assignment` is split on `//` for whole-transcript arrays |
 | anything else | identity | counts and the NanoString panel are deposited as symbols |
 
+Symbol coverage varies by platform and is recorded per dataset: GSE141801 maps 97,568 of 98,772
+probesets, while GSE108524's HTA 2.0 maps 32,670 of 70,523 transcript clusters, because many clusters
+carry no gene assignment. `--remap-only` re-applies the mapping to an existing ranked list without
+re-fetching or re-testing, and is idempotent.
+
 Both Ensembl tables are built by `phase-2/scripts/phase2_build_idmap.py --release 113` from that
 release's GTF, so the release is pinned in the filename and recorded per dataset in the manifest. A
 remap is a visible change, not silent drift. Release 113 names a symbol for 275,704 of 387,944
