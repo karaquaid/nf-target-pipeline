@@ -12,6 +12,13 @@ of phase2-review-diagnosis.json. Those two can drift apart, so this script compa
   declared in ARM_SYNONYMS below rather than inferred
 * where the contrast states arm sizes as "(n)", those must equal the arm sizes on disk
 
+A second pass asks a different question: can the arm be recovered from the evidence recorded
+beside it? For each dataset it looks for an annotation key, or the title, whose value decides
+the arm. A dataset where nothing decides it has labels that cannot be reproduced from the row
+they sit on. This is what caught GSE179043, where four samples annotated "tissue: MPNST" and
+titled MPNST-2-nnn were carried in the plexiform_neurofibroma arm: the contrast check passed
+because both arms belong to the stated contrast, and only the evidence check saw the clash.
+
 Exits non-zero if any dataset fails, so it can gate a commit. Run from the repo root:
     python phase-2/scripts/phase2_verify_arms.py
 """
@@ -47,6 +54,53 @@ def tokens(text: str) -> set[str]:
     return set(re.sub(r"[^a-z0-9]+", " ", text.lower()).split())
 
 
+def annotation_pairs(annotation: str) -> dict[str, str]:
+    """Record fields as key/value, from either "key: value | key: value" or "key=value; ..."."""
+    out = {}
+    for part in re.split(r"\s*\|\s*|;\s*", str(annotation)):
+        hit = re.match(r"\s*([^=:]+?)\s*[=:]\s*(.*)", part)
+        if hit:
+            out[hit.group(1).strip().lower()] = hit.group(2).strip().lower()
+    return out
+
+
+def determining_fields(group: pd.DataFrame) -> list[str]:
+    """Which recorded fields decide the arm: a field whose value is constant within an arm,
+    never shared between arms, and present on every row."""
+    parsed = group.annotation.map(annotation_pairs)
+    found = []
+    for key in sorted(set().union(*parsed) if len(parsed) else set()):
+        values = parsed.map(lambda fields: fields.get(key))
+        if values.isna().any():
+            continue
+        pair = pd.DataFrame({"value": values.values, "arm": group.de_arm.values})
+        if pair.groupby("value").arm.nunique().max() == 1 and pair.value.nunique() >= group.de_arm.nunique():
+            found.append(key)
+    titles = group.title.astype(str).str.lower()
+    if titles.nunique() == len(group) and len(group) > 1:
+        prefix = titles.str.replace(r"[^a-z]+.*$", "", regex=True)
+        if prefix.nunique() > 1 and pd.crosstab(prefix, group.de_arm).gt(0).sum(axis=1).max() == 1:
+            found.append("title")
+    return found
+
+
+def check_evidence(kept: pd.DataFrame, decisions: dict) -> None:
+    print("\n[verify] can each arm be recovered from the evidence recorded beside it?")
+    for accession, group in kept.groupby("series"):
+        if group.de_arm.nunique() < 2:
+            continue
+        fields = determining_fields(group)
+        if fields:
+            print(f"ok   {accession}: arm follows from {', '.join(fields)}")
+        elif decisions.get(accession, {}).get("label_provenance_note"):
+            print(f"note {accession}: no recorded field decides the arm; the decisions block says "
+                  f"where the split comes from")
+        else:
+            print(f"WARN {accession}: no recorded field or title decides the arm. Either the arms "
+                  f"were read from something not written down, or a row contradicts its own "
+                  f"annotation. Record the provenance in the decisions block or fix the row")
+
+
 def main() -> int:
     overrides = pd.read_csv(OVERRIDES, keep_default_na=False)
     decisions = json.loads(DIAGNOSIS.read_text())["decisions"]
@@ -78,6 +132,7 @@ def main() -> int:
             failures.append(accession)
     print(f"[verify] {len(kept.series.unique()) - len(failures)} of {len(kept.series.unique())} "
           f"datasets with arms agree with their recorded contrast")
+    check_evidence(kept, decisions)
     return 1 if failures else 0
 
 
