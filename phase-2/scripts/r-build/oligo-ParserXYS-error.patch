@@ -1,0 +1,15 @@
+--- /dev/fd/63	2026-10-26 13:24:33
++++ src/ParserXYS.c	2026-10-26 13:23:37
+@@ -31,6 +31,12 @@
+ #include <R.h>
+ #include <Rdefines.h>
+ #include <Rinternals.h>
++#include <R_ext/Error.h>
++/* R 4.4 ships R_NO_REMAP by default, so the unprefixed error() this file calls is not
++   remapped and the symbol is missing at load time. Map it explicitly. */
++#ifndef error
++#define error Rf_error
++#endif
+ 
+ #define LINEMAX 20001
+ #define WORD 32

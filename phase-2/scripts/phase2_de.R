@@ -152,9 +152,98 @@ read_tenx_libraries <- function() {
   mat
 }
 
+#' Per-sample count files, one file per GSM, assembled into a matrix.
+#'
+#' Several series deposit a file per sample rather than one matrix (GSE145064 ships 46 TSVs,
+#' GSE232528 29 TXTs). Each file is keyed by the GSM in its name, the gene column is chosen
+#' by name like any other matrix, and the count column is the last numeric column unless a
+#' column is named like a count. Files whose GSM is not in the sample table are ignored, and
+#' a sample with no file is reported rather than silently dropped.
+read_per_sample_files <- function() {
+  candidates <- files_in("^GSM[0-9]+.*\\.(txt|tsv|csv|tab)(\\.gz)?$")
+  candidates <- candidates[!grepl("matrix\\.mtx|barcodes|features|genes\\.tsv", candidates)]
+  wanted <- as.character(samples$sample_id)
+  by_gsm <- regmatches(basename(candidates), regexpr("GSM[0-9]+", basename(candidates)))
+  keep <- by_gsm %in% wanted
+  if (sum(keep) < 2) return(NULL)
+  candidates <- candidates[keep]; by_gsm <- by_gsm[keep]
+  message("  ", length(candidates), " per-sample files for ", length(unique(by_gsm)), " of ",
+          length(wanted), " samples")
+  per_file <- Map(function(path, gsm) {
+    tab <- fread(path, data.table = FALSE)
+    if (ncol(tab) < 2) stop_with("could not parse ", basename(path))
+    lower <- tolower(trimws(names(tab)))
+    id_col <- which(lower %in% ID_COLUMN_PREFERENCE)
+    id_col <- if (length(id_col)) id_col[order(match(lower[id_col], ID_COLUMN_PREFERENCE))][1] else 1L
+    numeric_cols <- which(vapply(tab, is.numeric, logical(1)))
+    numeric_cols <- setdiff(numeric_cols, id_col)
+    if (length(numeric_cols) == 0) stop_with("no numeric column in ", basename(path))
+    named_count <- numeric_cols[grepl("count|reads|expected", lower[numeric_cols])]
+    value_col <- if (length(named_count)) named_count[1] else numeric_cols[length(numeric_cols)]
+    data.table(gene = as.character(tab[[id_col]]), value = as.numeric(tab[[value_col]]), sample = gsm)
+  }, candidates, by_gsm)
+  long <- rbindlist(per_file)
+  long <- long[, .(value = sum(value)), by = .(gene, sample)]   # one file per sample, so this is a no-op guard
+  wide <- dcast(long, gene ~ sample, value.var = "value")
+  mat <- as.matrix(wide[, -1, with = FALSE])
+  mode(mat) <- "numeric"
+  rownames(mat) <- wide$gene
+  missing <- setdiff(wanted, colnames(mat))
+  if (length(missing)) {
+    stop_with(length(missing), " samples have no per-sample file: ",
+              paste(head(missing, 5), collapse = ", "))
+  }
+  mat[is.na(mat)] <- 0
+  message("  assembled ", nrow(mat), " features x ", ncol(mat), " samples from per-sample files")
+  mat
+}
+
+#' Applied Biosystems 1700 chemiluminescent arrays (GPL2986), one file per sample.
+#'
+#' Each file carries Probe_ID, Gene_ID and three per-sample columns whose names embed the
+#' sample: Signal_<id>, S_N_<id> and Flags_<id>. The signal is a one-colour chemiluminescent
+#' intensity, so neither RMA nor a count model applies: values are masked where the
+#' instrument flagged the spot, then log2-transformed and quantile-normalized across arrays.
+#'
+#' Masking thresholds (Kara, 2026-10-26): Flags > 0 or signal-to-noise < 3.
+ABI_MIN_SN <- 3
+read_abi_signal <- function() {
+  paths <- files_in("^GSM[0-9]+.*\\.(txt|TXT)(\\.gz)?$")
+  if (length(paths) == 0) return(NULL)
+  first <- names(fread(paths[[1]], nrows = 1, data.table = FALSE))
+  if (!any(grepl("^Signal", first)) || !"Probe_ID" %in% first) return(NULL)
+  masked_total <- 0; measured_total <- 0
+  per_file <- lapply(paths, function(path) {
+    tab <- fread(path, data.table = FALSE)
+    signal_col <- grep("^Signal", names(tab), value = TRUE)[1]
+    sn_col <- grep("^S_N", names(tab), value = TRUE)[1]
+    flag_col <- grep("^Flags", names(tab), value = TRUE)[1]
+    value <- as.numeric(tab[[signal_col]])
+    bad <- rep(FALSE, length(value))
+    if (!is.na(flag_col)) bad <- bad | as.numeric(tab[[flag_col]]) > 0
+    if (!is.na(sn_col)) bad <- bad | as.numeric(tab[[sn_col]]) < ABI_MIN_SN
+    value[bad | value <= 0] <- NA_real_
+    masked_total <<- masked_total + sum(bad, na.rm = TRUE)
+    measured_total <<- measured_total + length(value)
+    gsm <- regmatches(basename(path), regexpr("GSM[0-9]+", basename(path)))
+    data.table(probe = as.character(tab$Probe_ID), value = value, sample = gsm)
+  })
+  wide <- dcast(rbindlist(per_file), probe ~ sample, value.var = "value")
+  mat <- as.matrix(wide[, -1, with = FALSE])
+  mode(mat) <- "numeric"
+  rownames(mat) <- wide$probe
+  message("  ", length(paths), " ABI signal files, ", nrow(mat), " probes; masked ",
+          masked_total, " of ", measured_total, " spot values (",
+          sprintf("%.1f%%", 100 * masked_total / max(measured_total, 1)),
+          ") on Flags > 0 or S/N < ", ABI_MIN_SN)
+  mat
+}
+
 read_counts <- function() {
   tenx <- read_tenx_libraries()
   if (!is.null(tenx)) return(align_to_samples(tenx, samples))
+  per_sample <- read_per_sample_files()
+  if (!is.null(per_sample)) return(align_to_samples(per_sample, samples))
   candidates <- files_in("(count|Count|COUNT|tpm|TPM|fpkm|FPKM).*\\.(txt|tsv|csv)(\\.gz)?$")
   if (length(candidates) == 0) candidates <- files_in("\\.(txt|tsv|csv)(\\.gz)?$")
   if (length(candidates) == 0) stop_with("no count-like file found in ", indir)
@@ -169,6 +258,16 @@ read_array_matrix <- function() {
   read_author_matrix()
 }
 
+#' log2 then quantile normalization across arrays: the route for a one-colour signal that
+#' arrives already summarized per probe, where RMA has nothing to do.
+normalize_signal <- function(mat) {
+  keep <- rowMeans(is.na(mat)) <= 0.5
+  message("  dropping ", sum(!keep), " probes missing in more than half the arrays; ",
+          sum(keep), " kept")
+  logged <- log2(mat[keep, , drop = FALSE])
+  normalizeBetweenArrays(logged, method = "quantile")
+}
+
 #' RMA from CEL files.
 #'
 #' affy handles 3-prime arrays (HG-U219, HG-U133 and the custom CDFs some series ship with
@@ -177,6 +276,22 @@ read_array_matrix <- function() {
 #' against CRAN's R.framework rather than a conda R, so that case stops with a message.
 rma_from_cels <- function(cels) {
   suppressPackageStartupMessages(library(affy))
+  # Whole-transcript arrays (HTA, Gene ST) need oligo and the platform's pd.* package;
+  # 3-prime arrays go through affy. The CEL header says which chip this is.
+  chip <- tryCatch(affyio::read.celfile.header(cels[[1]])$cdfName, error = function(e) NA_character_)
+  if (!is.na(chip)) {
+    pd <- gsub("[^a-z0-9]+", ".", tolower(chip))
+    pd <- paste0("pd.", gsub("^\\.|\\.$", "", pd))
+    if (requireNamespace(pd, quietly = TRUE) && requireNamespace("oligo", quietly = TRUE)) {
+      suppressPackageStartupMessages(library(oligo))
+      message("  ", length(cels), " CEL files, chip ", chip, ", read with oligo via ", pd)
+      eset <- oligo::rma(oligo::read.celfiles(cels, verbose = FALSE))
+      mat <- Biobase::exprs(eset)
+      colnames(mat) <- sub("\\.(CEL|cel)(\\.gz)?$", "", basename(colnames(mat)))
+      message("  RMA matrix: ", nrow(mat), " probesets x ", ncol(mat), " arrays")
+      return(align_to_samples(mat, samples))
+    }
+  }
   batch <- try(ReadAffy(filenames = cels), silent = TRUE)
   if (inherits(batch, "try-error")) {
     stop_with("affy could not read these CEL files (", as.character(batch), "). Whole-transcript ",
@@ -406,6 +521,12 @@ result <- switch(engine,
     run_limma(pb$matrix, pb$samples, "pseudobulk of an author matrix")
   },
   two_colour_limma = run_two_colour(),
+  abi_signal_limma = {
+    signal <- read_abi_signal()
+    if (is.null(signal)) stop_with("no ABI signal files found; expected per-sample text files with ",
+                                   "Probe_ID and Signal_<sample> columns")
+    run_limma(normalize_signal(align_to_samples(signal, samples)), samples, "ABI signal")
+  },
   stop_with("unknown engine ", engine)
 )
 

@@ -253,7 +253,8 @@
    "contrast": "MPNST vs neurofibroma (between-subtype, within NF1); no normal control arm",
    "implementation": "GEO carries a per-sample 'hereditary status' field: Neurofibromatosis type 1 25, Sporadic 13. Within the NF1 subset both arms are present - 15 primary tumours and 2 recurrences against 7 dermal and 1 plexiform neurofibroma - so the audit's worry that the neurofibromas might be sporadic is answered by the record itself. The 13 sporadic samples drop at sample level.",
    "reference_arm": "neurofibroma",
-   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it"
+   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it",
+   "abi_signal_policy": "Kara, 2026-10-26: this ABI 1700 chemiluminescent array (GPL2986) is normalized as log2 signal then quantile-normalized across arrays, since neither RMA nor a count model applies to a one-colour summarized signal. Spot values are masked to missing where the instrument's Flags column is greater than 0 or signal-to-noise is below 3, rather than treated as measurements. On this series that masks 542,822 of 1,259,890 spot values (43.1%) and drops 14,232 of 33,155 probes for being missing in more than half the arrays, leaving 18,923. The masking is recorded here and in the ingestion manifest so it travels with any result."
   },
   "GSE2841": {
    "decision": "exclude",

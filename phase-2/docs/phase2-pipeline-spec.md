@@ -47,6 +47,10 @@ One pass per dataset, no cross-dataset pooling at any step.
    - expression array: `limma`, `trend=TRUE`
    - raw counts: `DESeq2`
    - pseudobulked single-cell: `limma-trend` on log-CPM
+   - one-colour chemiluminescent signal (GSE66743, Applied Biosystems 1700 on GPL2986): spot values
+     masked where the instrument flagged them (`Flags > 0`) or signal-to-noise is below 3, then log2
+     and quantile normalization across arrays. Probes missing in more than half the arrays are
+     dropped and the count is logged; RMA does not apply to an already-summarized signal
    - targeted panel (GSE239561, NanoString nCounter PanCancer IO360, 770 genes): housekeeping-gene
      normalization first, then `limma` on the log2 normalized counts. Not the plain array route. Kept in the
      ranking by Kara's ruling of 2026-10-20, with `gene_space = panel:770` in the manifest: Phase 3 restricts
@@ -112,22 +116,61 @@ python phase-2/scripts/phase2_ingest.py --accession GSE41747 --combat batch   # 
 
 | engine | datasets | state |
 |---|---|---|
-| `deseq2` | 5 bulk RNA-seq | **validated** on GSE163071: 29,542 genes, 1 contrast |
+| `deseq2` | 5 bulk RNA-seq | **validated** on GSE163071 (one deposited matrix, 29,542 genes) and GSE145064 (46 per-sample kallisto `abundance.tsv` files, 174,208 transcripts, paired on patient) |
 | `author_matrix_limma_trend` | GSE207400 | **validated**: 44,985 rows over 3 contrasts |
 | `nanostring_housekeeping_limma` | GSE239561 | **validated**: 750 endogenous genes over 5 contrasts |
 | `pseudobulk_limma_trend` | 4 single-cell | **validated** on GSE232516: 4 10x libraries, 36,591 rows |
+| per-sample files | GSE145064, GSE232528, GSE179043 | **validated** on GSE145064: files keyed by the GSM in their name, gene column chosen by name, count column preferred over TPM where both are present |
 | `pseudobulk_author_matrix` | GSE292071 | implemented, unrun: the deposit is one `.mtx.gz` with no features or barcodes file, so the gene and plate axes cannot be recovered from the series-level file yet |
 | `limma_trend`, 3-prime arrays | GSE141801, GSE14038, GSE41747 | **validated** on GSE141801: RMA over 74 CELs, 98,772 rows over 2 contrasts, via `affy` plus `hgu219cdf`. GSE14038 and GSE41747 ship their own CDF, which the engine loads with `make.cdf.env` |
-| `limma_trend`, whole-transcript arrays | GSE108524 (HTA 2.0) | blocked on `oligo`: `bioconductor-oligo` is absent from bioconda, Bioconductor's macOS binaries link against CRAN's `R.framework/libRlapack.dylib` and so will not load under a conda R, and the source build of its dependency `affxparser` fails in the conda toolchain. A BrainArray custom CDF would let `affy` read these arrays without `oligo` |
+| `limma_trend`, whole-transcript arrays | GSE108524 (HTA 2.0) | `oligo` 1.70.1 now builds from source in the conda toolchain; see the build note below |
+| `abi_signal_limma` | GSE66743 | **validated**: 38 Applied Biosystems 1700 signal files, log2 then quantile normalization across arrays, spot values masked where `Flags > 0` or S/N < 3 (43.1% of spots), 18,923 probes kept |
 | `two_colour_limma` | E-TABM-69, E-MEXP-258 | reader only: both are legacy Tab2MAGE exports whose per-array column names must be read off the file before `limma::read.maimages` is pointed at them |
 
-### Known gap: identifiers are not mapped yet
+### Identifier mapping
 
-Ratified call 3 maps every dataset to HGNC symbols through a pinned Ensembl release, keeping the
-original probe id. The worker currently writes whatever the matrix rows are keyed on, which is already
-symbols for the count and panel datasets but probeset ids for the arrays (GSE141801's rows are
-`11730415_s_at`). The mapping step and the `source_id` column are the next piece of work; until they
-land, array results are ranked on probesets and must not be joined to the other datasets.
+Ratified call 3, implemented 2026-10-26 in `map_identifiers()`, which runs after the worker and
+before the manifest row is written. The original id is never discarded: every ranked list carries
+`source_id` alongside `gene_symbol`, rows that do not map keep an empty symbol rather than being
+dropped, and the manifest records how much of each ranking is addressable by symbol.
+
+The map is chosen from the ids themselves, because the same assay class turns up in different
+identifier spaces:
+
+| ids look like | mapped through | note |
+|---|---|---|
+| `ENST…` | `phase-2/data/ensembl-113-tx2gene.tsv.gz` | version suffix stripped before lookup; GSE145064 maps 149,071 of 174,208 rows |
+| `ENSG…` | `phase-2/data/ensembl-113-gene2symbol.tsv.gz` | |
+| `…_at`, `TC…` | the GEO platform table for that dataset's GPL, cached under `build/phase2/_platforms/` | probe ids are platform-specific, so Ensembl cannot resolve them; `gene_assignment` is split on `//` for whole-transcript arrays |
+| anything else | identity | counts and the NanoString panel are deposited as symbols |
+
+Symbol coverage varies by platform and is recorded per dataset: GSE141801 maps 97,568 of 98,772
+probesets, while GSE108524's HTA 2.0 maps 32,670 of 70,523 transcript clusters, because many clusters
+carry no gene assignment. `--remap-only` re-applies the mapping to an existing ranked list without
+re-fetching or re-testing, and is idempotent.
+
+Both Ensembl tables are built by `phase-2/scripts/phase2_build_idmap.py --release 113` from that
+release's GTF, so the release is pinned in the filename and recorded per dataset in the manifest. A
+remap is a visible change, not silent drift. Release 113 names a symbol for 275,704 of 387,944
+transcripts and 42,745 of 78,932 genes; the remainder are unnamed non-coding features, which is why
+a dataset quantified at transcript level does not reach 100% symbol coverage.
+
+### Building oligo in a conda R
+
+`bioconductor-oligo` is absent from bioconda, and Bioconductor's macOS binaries link against CRAN's
+`R.framework/libRlapack.dylib`, so they do not load under a conda R. Building from source works once
+three things are set, all of them recorded in `phase-2/scripts/r-build/` and reproducible:
+
+1. The conda compiler toolchain (`clang_osx-arm64`, `clangxx_osx-arm64`, `gfortran_osx-arm64`, `make`,
+   `pkg-config`) in the environment.
+2. `R_MAKEVARS_USER` pointing at `phase-2/scripts/r-build/Makevars`, which defines the endianness
+   macros the Affymetrix Fusion SDK reads (`affxparser` fails with `"BYTE_ORDER is not set"` without
+   them, because the conda macOS sysroot only exposes it under `_DARWIN_C_SOURCE`).
+3. One source patch to `oligo`: `src/ParserXYS.c` calls R's `error()` unprefixed, and R 4.4 ships
+   `R_NO_REMAP` by default, so the symbol is missing at load time (`symbol not found in flat
+   namespace '_error'`). `phase-2/scripts/r-build/oligo-ParserXYS-error.patch` includes
+   `R_ext/Error.h` and maps `error` to `Rf_error`. Suppressing the compiler warning is not enough;
+   the failure is at link time.
 
 ### R library note
 
