@@ -224,7 +224,8 @@
    "contrast": "MPNST vs plexiform/benign neurofibroma (between-subtype, within NF1); no normal control arm",
    "implementation": "Settle-it ran against Wu et al. (PMID 36322658). The paper describes the human cohort only at cohort level - 'NF1-mutated PNF' and 'NF1-associated MPNST' - with no per-sample genotype, so germline_basis drops to stated_nf_cohort and confidence stays medium. 31 human RNA-seq samples enter: a bulk arm (8 benign NF: NF1-6..NF1-16; 9 MPNST: MPNST-2..MPNST-12) and a single-cell arm (10 pNF-2-0xx; 4 MPNST-2-0xx) - the two arms are separate matrices and must not be pooled before pseudobulk. The 2 human ATAC-seq samples are dropped as non-abundance. On the mouse side the paper presents the Lats1/2-deficient model as a YAP/TAZ comparator alongside the Nf1-driven models, not as an NF model, so its 14 samples are excluded_not_nf_model (the same ruling as GSE172221) and only the Nf1-mut and NPE-mut samples (n=3) carry forward to the mouse pass.",
    "reference_arm": "plexiform_neurofibroma",
-   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it"
+   "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-28: the benign lesion is the baseline and MPNST the progressed state, matching the direction used for GSE145064 and GSE318927",
+   "deposit_note": "Checked 2026-10-28 against the downloaded series. Of the 31 human samples, only 14 carry a processed matrix (GSM5404031-GSM5404044, 10x filtered_feature_bc_matrix tarballs); the other 17 (GSM5402773-GSM5402789) have Sample_supplementary_file = NONE and exist as SRA reads only, so they are out of Phase 2, which does not align FASTQ. Four of the 14 (GSM5404041-44) were recorded as plexiform_neurofibroma while their own records read tissue: MPNST and their titles read MPNST-2-nnn; the arm was corrected to mpnst on 2026-10-28. What remains is 10 plexiform neurofibroma against 4 MPNST, cell-aggregated per library, which is the contrast this dataset now contributes. The series also contains 3 scATAC-seq samples, which carry no expression and were never in scope."
   },
   "GSE207400": {
    "decision": "include",
@@ -244,7 +245,8 @@
    "reference_arm": "swn",
    "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it",
    "patient_rule": "^(SCHW\\d+)",
-   "patient_rule_note": "pseudobulk unit, set 2026-10-21: patient prefix of the plate title (SCHW001, SCHW2, ...); several Smart-seq plates per patient"
+   "patient_rule_note": "pseudobulk unit, set 2026-10-21: patient prefix of the plate title (SCHW001, SCHW2, ...); several Smart-seq plates per patient",
+   "label_provenance_note": "Checked 2026-10-28: every GSM record carries the same characteristics (tissue=Schwannoma; tissue type=tumor), so the nf2_swn against swn split cannot be reproduced from the GSM records alone and rests on the patient genotypes given in the source publication. Moot while the deposit is unusable, but it should be restated if the matrix ever becomes readable."
   },
   "GSE66743": {
    "decision": "include",
@@ -348,8 +350,8 @@
    "implementation": "Arm read from the sample titles (MPNST_sample1-5, PNF_sample1-9) and written to de_arm; all 14 samples kept. Single-cell, so pseudobulk to one profile per patient before the contrast.",
    "reference_arm": "plexiform_neurofibroma",
    "reference_arm_rationale": "baseline arm for a between-state contrast, set 2026-10-21: the benign or earliest state in this dataset's own design, so every other arm is reported as a change away from it",
-   "patient_rule": "^(\\w+_sample\\d+)$",
-   "patient_rule_note": "pseudobulk unit, set 2026-10-21: one patient per library here, so the pseudobulk unit is the library itself; the titles carry no patient id beyond the sample number"
+   "patient_rule": "^(.+)$",
+   "patient_rule_note": "pseudobulk unit, set 2026-10-28: the whole title. Each of the 14 libraries is one patient's tumour (MPNST_sample1-5, PNF_sample1-9), so library and patient are the same unit here; the rule is declared rather than inferred so that n is not silently inflated by cells."
   },
   "GSE239561": {
    "decision": "include",
