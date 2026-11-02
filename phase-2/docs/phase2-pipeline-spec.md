@@ -112,20 +112,20 @@ python phase-2/scripts/phase2_ingest.py --all --skip-existing --rscript <env>/bi
 python phase-2/scripts/phase2_ingest.py --accession GSE41747 --combat batch   # within-dataset only
 ```
 
-### Route status, 2026-10-21
+### Route status, 2026-10-28
 
 | engine | datasets | state |
 |---|---|---|
-| `deseq2` | 5 bulk RNA-seq | **validated** on GSE163071 (one deposited matrix, 29,542 genes) and GSE145064 (46 per-sample kallisto `abundance.tsv` files, 174,208 transcripts, paired on patient) |
+| `deseq2` | 6 bulk RNA-seq | **validated** on GSE163071 (one deposited matrix, 29,542 genes), GSE145064 (46 per-sample kallisto `abundance.tsv` files, 174,208 transcripts, paired on patient), GSE234071, GSE138347 and GSE179043 |
 | `author_matrix_limma_trend` | GSE207400 | **validated**: 44,985 rows over 3 contrasts |
 | `nanostring_housekeeping_limma` | GSE239561 | **validated**: 750 endogenous genes over 5 contrasts |
-| `pseudobulk_limma_trend` | 4 single-cell | **validated** on GSE232516: 4 10x libraries, 36,591 rows |
+| `pseudobulk_limma_trend` | 4 single-cell | **validated** on GSE232516 (4 10x libraries, 36,591 rows) and GSE318927 (14 libraries, 9 plexiform neurofibroma against 5 MPNST) |
 | per-sample files | GSE145064, GSE232528, GSE179043 | **validated** on GSE145064: files keyed by the GSM in their name, gene column chosen by name, count column preferred over TPM where both are present |
-| `pseudobulk_author_matrix` | GSE292071 | implemented, unrun: the deposit is one `.mtx.gz` with no features or barcodes file, so the gene and plate axes cannot be recovered from the series-level file yet |
-| `limma_trend`, 3-prime arrays | GSE141801, GSE14038, GSE41747 | **validated** on GSE141801: RMA over 74 CELs, 98,772 rows over 2 contrasts, via `affy` plus `hgu219cdf`. GSE14038 and GSE41747 ship their own CDF, which the engine loads with `make.cdf.env` |
+| `pseudobulk_author_matrix` | GSE292071 | implemented, **blocked**: the deposit is one 23,686 x 19,389 `.mtx.gz` of log(TP100K+1) values with no features or barcodes file, and every GSM record reads `Sample_supplementary_file = NONE`, so neither axis is identifiable. Recovering it needs the authors |
+| `limma_trend`, 3-prime arrays | GSE141801, GSE14038, GSE41747 | **validated** on all three. GSE141801 is RMA over 74 CELs via `affy` plus `hgu219cdf`; GSE14038 (76 arrays) and GSE41747 (35 arrays) use the custom REFSEQ CDF each series ships, built with `makecdfenv::make.cdf.env` and bound under both the chip name and the package-style name because `affy` looks it up by either |
 | `limma_trend`, whole-transcript arrays | GSE108524 (HTA 2.0) | `oligo` 1.70.1 now builds from source in the conda toolchain; see the build note below |
 | `abi_signal_limma` | GSE66743 | **validated**: 38 Applied Biosystems 1700 signal files, log2 then quantile normalization across arrays, spot values masked where `Flags > 0` or S/N < 3 (43.1% of spots), 18,923 probes kept |
-| `two_colour_limma` | E-TABM-69, E-MEXP-258 | reader only: both are legacy Tab2MAGE exports whose per-array column names must be read off the file before `limma::read.maimages` is pointed at them |
+| `two_colour_limma` | E-TABM-69 | **validated**: 10 Agilent arrays, each one tumour in Cy5 against a pooled dermal-neurofibroma reference in Cy3. Column names carry a `Feature Extraction Software:` prefix, so the foreground columns are found by name rather than through `read.maimages`; loess within arrays then Aquantile between them, 19,061 reporters. E-MEXP-258 is a loop design and is out of the ranking by ruling, so it is not run through this route |
 
 ### Identifier mapping
 
@@ -141,13 +141,35 @@ identifier spaces:
 |---|---|---|
 | `ENST…` | `phase-2/data/ensembl-113-tx2gene.tsv.gz` | version suffix stripped before lookup; GSE145064 maps 149,071 of 174,208 rows |
 | `ENSG…` | `phase-2/data/ensembl-113-gene2symbol.tsv.gz` | |
-| `…_at`, `TC…` | the GEO platform table for that dataset's GPL, cached under `build/phase2/_platforms/` | probe ids are platform-specific, so Ensembl cannot resolve them; `gene_assignment` is split on `//` for whole-transcript arrays |
+| `…_at`, `TC…`, bare numbers | the GEO platform table for that dataset's GPL, cached under `build/phase2/_platforms/` | probe ids are platform-specific, so Ensembl cannot resolve them; `gene_assignment` is split on `//` for whole-transcript arrays. Candidate symbol columns are ordered by preference, since GPL2986 carries both `GENE` (Entrez) and `Gene Symbol` |
+| `NM_…_at` | `phase-2/data/ensembl-113-refseq2symbol.tsv.gz` | custom REFSEQ CDFs name probesets by RefSeq accession and those platforms' GEO tables carry no symbol column, so the accession is the way in. GSE14038 maps 16,235 of 19,048, GSE41747 33,796 of 38,612 |
+| `A_23_P…` | the ArrayExpress array design file named in the series SDRF, cached under `build/phase2/_platforms/` | ArrayExpress has no platform table; the ADF's `locus` entry is the submitter's symbol. E-TABM-69 maps 15,105 of 19,061 through A-AGIL-14 |
+| `ENST…\|ENSG…\|…` | the GENCODE header itself | GSE138347's rows are whole pipe-delimited FASTA headers; field 6 is the symbol the counts were quantified against, so taking it from the header keeps symbol and quantification in one annotation (178,216 of 178,216) |
 | anything else | identity | counts and the NanoString panel are deposited as symbols |
 
 Symbol coverage varies by platform and is recorded per dataset: GSE141801 maps 97,568 of 98,772
 probesets, while GSE108524's HTA 2.0 maps 32,670 of 70,523 transcript clusters, because many clusters
 carry no gene assignment. `--remap-only` re-applies the mapping to an existing ranked list without
 re-fetching or re-testing, and is idempotent.
+
+### Reading the deposit, not the label
+
+Three rules earned by datasets whose deposit disagreed with the dataset-level record:
+
+1. **Only the arrays the sample table names are read.** GSE41747 ships 83 CEL files for 35 human
+   samples because the same series carries a mouse MOE430 arm, and reading them together fails on
+   the grid dimensions. Where a series ships more than one CDF, the one used is the one whose
+   `[Chip] Name` matches the chip the CEL headers name.
+2. **A 10x library can arrive as one tarball per sample.** GSE179043 deposits
+   `GSM…_filtered_feature_bc_matrix.tar.gz`; each is unpacked into a directory named for its GSM,
+   and the reader keys the library on the path, since the triplet inside carries no sample id.
+   Where libraries were quantified against different references, only the genes every library
+   carries are kept: GSE179043 keeps 32,643 of 56,638 and the rest are reported as dropped, because
+   a gene absent from one library's feature list was not measured there rather than measured zero.
+3. **Samples with no processed deposit are out.** 17 of GSE179043's 31 human samples read
+   `Sample_supplementary_file = NONE` and exist as SRA reads only; Phase 2 does not align FASTQ, so
+   they are marked `use_in_phase2 = False` with that reason and the dataset contributes its 14
+   matrix-bearing samples.
 
 Both Ensembl tables are built by `phase-2/scripts/phase2_build_idmap.py --release 113` from that
 release's GTF, so the release is pinned in the filename and recorded per dataset in the manifest. A

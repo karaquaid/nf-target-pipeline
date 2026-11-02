@@ -48,6 +48,7 @@ MANIFEST = DATA / "phase2-ingestion-manifest.csv"
 ENSEMBL_RELEASE = "113"   # pinned by ratified call 3; rebuild maps with phase2_build_idmap.py
 TX2GENE = DATA / f"ensembl-{ENSEMBL_RELEASE}-tx2gene.tsv.gz"
 GENE2SYMBOL = DATA / f"ensembl-{ENSEMBL_RELEASE}-gene2symbol.tsv.gz"
+REFSEQ2SYMBOL = DATA / f"ensembl-{ENSEMBL_RELEASE}-refseq2symbol.tsv.gz"
 PLATFORM_CACHE = ROOT / "build" / "phase2" / "_platforms"
 BUILD = ROOT / "build" / "phase2"
 R_WORKER = ROOT / "phase-2" / "scripts" / "phase2_de.R"
@@ -170,7 +171,8 @@ class Dataset:
             return pd.DataFrame({"sample_id": mine.sample_id, "title": mine.title,
                                  "file": "", "channel": "",
                                  "de_role": mine.de_role, "de_arm": arms,
-                                 "patient_id": "", "batch": ""})
+                                 "patient_id": "", "batch": "",
+                                 "annotation": mine.annotation})
         # No overrides: the frozen Phase 1a labels stand, and the arm is the case/control split.
         phase1a = pd.read_csv(PHASE1A_SAMPLES)
         mine = phase1a[(phase1a.series == self.accession) & truthy(phase1a.in_scope_sample)
@@ -194,12 +196,26 @@ class Dataset:
         titles = self.samples.get("title", pd.Series("", index=self.samples.index)).astype(str)
         if "soft_title" in self.samples.columns:
             titles = titles.where(titles.str.len() > 0, self.samples.soft_title.astype(str))
-        extracted = titles.str.extract(rule, expand=False)
-        if extracted.isna().any():
-            raise SystemExit(f"{self.accession}: patient_rule {rule!r} did not match "
-                             f"{int(extracted.isna().sum())} of {len(extracted)} titles, e.g. "
-                             f"{titles[extracted.isna()].head(3).tolist()}")
-        self.samples["patient_id"] = extracted.values
+        # The patient can be named in the title (GSE232516's P13_) or only in the record fields
+        # (GSE181985 titles its samples CS022514_S01 and carries "tumor sample: Tumor 1" in the
+        # characteristics), so the rule is tried against each in turn and the first field it
+        # matches on every row wins.
+        candidates = [("title", titles)]
+        for column in ("annotation", "description", "soft_title"):
+            if column in self.samples.columns:
+                candidates.append((column, self.samples[column].astype(str)))
+        tried = []
+        for name, text in candidates:
+            extracted = text.str.extract(rule, expand=False)
+            if not extracted.isna().any():
+                self.samples["patient_id"] = extracted.values
+                if name != "title":
+                    print(f"  patient id read from the {name} field")
+                return
+            tried.append(f"{name} ({int(extracted.isna().sum())} of {len(extracted)} unmatched, "
+                         f"e.g. {text[extracted.isna()].head(2).tolist()})")
+        raise SystemExit(f"{self.accession}: patient_rule {rule!r} matched no field: "
+                         + "; ".join(tried))
 
     def _engine(self) -> str:
         for platform in str(self.row.platforms).split(";"):
@@ -229,6 +245,10 @@ class Dataset:
         if len(controls):
             return controls.iloc[0]
         declared = self.decision.get("reference_arm")
+        if not declared and not self.produces_ranking:
+            # A dataset kept for coverage runs no contrast, so it needs no baseline. GSE232528
+            # and GSE344687 are single-arm once the sporadic material is out (Kara, 2026-10-19).
+            return ""
         if not declared:
             raise SystemExit(
                 f"{self.accession}: no control arm and no reference_arm in the decisions block. "
@@ -263,6 +283,17 @@ class Dataset:
         for tar in [f for f in self.dir.glob("*_RAW.tar")]:
             with tarfile.open(tar) as t:
                 t.extractall(self.dir / "raw", filter="data")
+        # A 10x library is often deposited as one tarball per sample holding the usual
+        # barcodes/features/matrix triplet (GSE179043). The triplet inside carries no sample
+        # id, so each is extracted into a directory named for its GSM and the reader keys the
+        # library on the path rather than the file name.
+        for tar in sorted(self.dir.glob("raw/*feature_bc_matrix.tar.gz")):
+            gsm = re.match(r"(GSM\d+)", tar.name)
+            target = self.dir / "raw" / (gsm.group(1) if gsm else tar.name.split(".")[0])
+            if target.exists():
+                continue
+            with tarfile.open(tar) as t:
+                t.extractall(target, filter="data")
         return files
 
     def _get(self, url: str, dest: Path) -> dict:
@@ -288,8 +319,10 @@ class Dataset:
     def _fetch_arrayexpress(self) -> list[dict]:
         items = requests.get(BIOSTUDIES_FILES.format(acc=self.accession), timeout=120).json()["items"]
         wanted = set(self.samples.file) | {f"{self.accession}.sdrf.txt", f"{self.accession}.idf.txt"}
-        kind, digits = re.match(r"([A-Z]+)-([A-Z]+)-(\d+)", self.accession).groups()[:2], self.accession.split("-")[-1]
+        # BioStudies buckets files under fire/<prefix>/<serial zero-padded to three digits>/,
+        # so E-TABM-69 lives under 069 and not 69, which is a plain 404.
         prefix = "-".join(self.accession.split("-")[:2]) + "-"
+        digits = self.accession.split("-")[-1].zfill(3)[-3:]
         out = []
         for item in items:
             name = item.get("path", "")
@@ -304,6 +337,17 @@ def id_kind(ids: pd.Series) -> str:
     """What the rows of a result file are keyed on. Decided from the ids themselves,
     because the same assay class appears with different identifier spaces."""
     sample = ids.astype(str).head(200)
+    # GSE138347's rows are whole GENCODE FASTA headers: the transcript id, the gene id and
+    # the symbol packed into one pipe-delimited string. They start with ENST but matching
+    # the whole string against Ensembl maps nothing, so they are their own kind.
+    if (sample.str.startswith("ENST") & sample.str.contains("|", regex=False)).mean() > 0.5:
+        return "gencode_header"
+    if sample.str.fullmatch(r"A_\d+_P\d+").mean() > 0.5:
+        return "adf_probe"
+    # Custom REFSEQ CDFs name their probesets by RefSeq accession (NM_182982_at). The GEO
+    # tables for those platforms carry no symbol column, so the accession is the way in.
+    if sample.str.fullmatch(r"[NX][MR]_\d+(\.\d+)?(_at)?").mean() > 0.5:
+        return "refseq_probe"
     if sample.str.startswith("ENST").mean() > 0.5:
         return "ensembl_transcript"
     if sample.str.startswith("ENSG").mean() > 0.5:
@@ -352,6 +396,41 @@ def platform_table(gpl: str) -> pd.DataFrame:
     return out[out.source_id.notna()]
 
 
+def adf_table(ds: Dataset) -> tuple[pd.DataFrame, str]:
+    """Reporter-to-symbol map for an ArrayExpress array design, read from the ADF.
+
+    ArrayExpress has no equivalent of a GEO platform table; the array design file carries
+    the annotation, and the design is named per array in the series' own SDRF, so the
+    accession is read off the downloaded file rather than assumed.
+    """
+    sdrf = next(iter(ds.dir.glob("*.sdrf.txt")), None)
+    if sdrf is None:
+        raise SystemExit(f"{ds.accession}: no SDRF in {ds.dir}, so the array design is unknown")
+    designs = pd.read_csv(sdrf, sep="\t", dtype=str)["Array Design REF"].dropna().unique()
+    if len(designs) != 1:
+        raise SystemExit(f"{ds.accession}: expected one array design, SDRF names {list(designs)}")
+    design = designs[0]
+    PLATFORM_CACHE.mkdir(parents=True, exist_ok=True)
+    cache = PLATFORM_CACHE / f"{design}.adf.txt"
+    if not cache.exists():
+        time.sleep(0.34)
+        prefix = "-".join(design.split("-")[:2]) + "-"
+        url = BIOSTUDIES_FIRE.format(stem=prefix, tail=design.split("-")[-1].zfill(3)[-3:],
+                                     acc=design, name=f"{design}.adf.txt")
+        r = requests.get(url, timeout=900)
+        r.raise_for_status()
+        cache.write_text(r.text)
+    lines = cache.read_text().splitlines()
+    main = next(i for i, line in enumerate(lines) if line.startswith("[main]"))
+    table = pd.read_csv(cache, sep="\t", skiprows=main + 1, dtype=str, low_memory=False)
+    # The ADF's locus entry is the submitter's gene symbol for the composite element.
+    symbol_col = next((c for c in table.columns if c.lower().startswith("composite element database entry[locus")), None)
+    if symbol_col is None:
+        raise SystemExit(f"{design}: no locus column in the ADF (columns: {list(table.columns)[:14]})")
+    out = pd.DataFrame({"source_id": table["Reporter Name"], "gene_symbol": table[symbol_col].fillna("")})
+    return out[out.source_id.notna()], design
+
+
 def map_identifiers(ds: Dataset, de_path: Path) -> dict:
     """Add gene_symbol and source_id to a ranked list, per ratified call 3.
 
@@ -377,6 +456,24 @@ def map_identifiers(ds: Dataset, de_path: Path) -> dict:
         stripped = de.source_id.astype(str).str.replace(r"\.\d+$", "", regex=True)
         de["gene_symbol"] = stripped.map(lookup).fillna("")
         mapped_from = f"Ensembl release {ENSEMBL_RELEASE} ({key})"
+    elif kind == "gencode_header":
+        # Field 6 of a GENCODE header is the gene symbol, which is the annotation the counts
+        # were produced against. Taking it from the header itself keeps the symbol and the
+        # quantification in the same annotation rather than crossing two releases.
+        de["gene_symbol"] = de.source_id.astype(str).str.split("|").str[5].fillna("")
+        mapped_from = "the GENCODE FASTA header the counts were quantified against (field 6)"
+    elif kind == "refseq_probe":
+        table = pd.read_csv(REFSEQ2SYMBOL, sep="\t", dtype=str)
+        lookup = dict(zip(table.refseq_id, table.gene_symbol.fillna("")))
+        stripped = de.source_id.astype(str).str.replace(r"_at$", "", regex=True) \
+                               .str.replace(r"\.\d+$", "", regex=True)
+        de["gene_symbol"] = stripped.map(lookup).fillna("")
+        mapped_from = f"Ensembl release {ENSEMBL_RELEASE} RefSeq mRNA cross-references"
+    elif kind == "adf_probe":
+        lookup, design = adf_table(ds)
+        de = de.merge(lookup.drop_duplicates("source_id"), on="source_id", how="left")
+        de["gene_symbol"] = de.gene_symbol.fillna("")
+        mapped_from = f"ArrayExpress array design file {design} (locus entry)"
     else:  # affy_probe or platform_probe: the archive's own platform table is the authority
         gpl = str(ds.row.platforms).split(";")[0]
         lookup = platform_table(gpl)
@@ -513,7 +610,7 @@ def main() -> int:
     else:
         raise SystemExit("pass --accession <id> or --all")
 
-    done = set()
+    done, failures = set(), []
     if args.skip_existing and MANIFEST.exists():
         done = set(pd.read_csv(MANIFEST).accession)
     for accession in targets:
@@ -523,8 +620,18 @@ def main() -> int:
         if args.remap_only:
             remap(accession)
             continue
-        ingest(accession, download=not args.no_download, dry_run=args.dry_run, combat=args.combat,
-               rscript=args.rscript, rlibs=args.rlibs)
+        try:
+            ingest(accession, download=not args.no_download, dry_run=args.dry_run, combat=args.combat,
+                   rscript=args.rscript, rlibs=args.rlibs)
+        except Exception as exc:                        # noqa: BLE001 - one dataset must not stop a batch
+            if len(targets) == 1:
+                raise
+            failures.append((accession, f"{type(exc).__name__}: {exc}"))
+            print(f"[{accession}] FAILED, continuing: {type(exc).__name__}: {exc}", flush=True)
+    if failures:
+        print(f"\n{len(failures)} of {len(targets)} datasets failed:")
+        for accession, message in failures:
+            print(f"  {accession}: {message.splitlines()[0][:200]}")
     return 0
 
 

@@ -138,7 +138,9 @@ read_tenx_libraries <- function() {
     }
     gene <- if (ncol(features) >= 2) features[[2]] else features[[1]]
     summed <- Matrix::rowSums(counts)
-    library_id <- regmatches(basename(path), regexpr("GSM[0-9]+", basename(path)))
+    # The GSM can be on the directory rather than the file: a per-sample tarball unpacks to
+    # barcodes/features/matrix with no sample id in the names.
+    library_id <- regmatches(path, regexpr("GSM[0-9]+", path))
     data.table(gene = gene, count = as.numeric(summed),
                library = if (length(library_id)) library_id else basename(prefix))
   })
@@ -147,6 +149,16 @@ read_tenx_libraries <- function() {
   mat <- as.matrix(wide[, -1, with = FALSE])
   mode(mat) <- "numeric"
   rownames(mat) <- wide$gene
+  # Libraries quantified against different references do not carry the same feature list.
+  # A gene absent from one library's features was not measured there, which is not the same
+  # as measured zero, so the matrix is cut to the genes every library carries.
+  shared <- stats::complete.cases(mat)
+  if (!all(shared)) {
+    message("  ", sum(!shared), " of ", nrow(mat), " genes are absent from at least one library's ",
+            "feature list and are dropped; ", sum(shared), " genes are shared by all ",
+            ncol(mat), " libraries")
+    mat <- mat[shared, , drop = FALSE]
+  }
   message("  ", length(mtx), " 10x libraries summed to cell-aggregated columns: ",
           paste(head(colnames(mat), 3), collapse = ", "))
   mat
@@ -252,10 +264,52 @@ read_counts <- function() {
   align_to_samples(mat, samples)
 }
 
+#' A series tar can hold arrays the sample table does not claim. GSE41747 ships 83 CEL
+#' files for 35 human samples because the same series carries a mouse MOE430 arm, and
+#' reading them together fails on the grid dimensions. Only the arrays named by the sample
+#' table are read.
+cels_for_samples <- function(cels) {
+  ids <- as.character(samples$sample_id)
+  ids <- ids[grepl("^GSM", ids)]
+  if (length(ids) == 0) return(cels)
+  keep <- cels[vapply(cels, function(path) any(startsWith(basename(path), ids)), logical(1))]
+  if (length(keep) == 0)
+    stop_with("none of the ", length(cels), " CEL files are named for a sample in the table ",
+              "(first file ", basename(cels[[1]]), ", first sample ", ids[1], ")")
+  if (length(keep) < length(cels))
+    message("  ", length(cels) - length(keep), " of ", length(cels), " CEL files belong to samples ",
+            "outside this analysis and are not read")
+  keep
+}
+
 read_array_matrix <- function() {
   cels <- files_in("\\.(CEL|cel)(\\.gz)?$")
-  if (length(cels) > 0) return(rma_from_cels(cels))
+  if (length(cels) > 0) return(rma_from_cels(cels_for_samples(cels)))
   read_author_matrix()
+}
+
+#' The chip an ASCII CDF describes, from its [Chip] Name entry. A series can ship one CDF
+#' per platform (GSE41747 ships a human and a mouse one), so the right file is the one
+#' naming the chip the CEL headers name, rather than whichever comes first.
+cdf_chip_name <- function(path) {
+  con <- if (grepl("\\.gz$", path)) gzfile(path, "rt") else file(path, "rt")
+  on.exit(close(con), add = TRUE)
+  lines <- readLines(con, n = 40, warn = FALSE)
+  hit <- grep("^Name=", lines, value = TRUE)
+  if (length(hit) == 0) NA_character_ else trimws(sub("^Name=", "", hit[1]))
+}
+
+#' Build an affy CDF environment from a CDF file shipped with a series. Custom REFSEQ CDFs
+#' (GPL7869, GPL10371) redefine the probesets on a standard Affymetrix grid, so the array
+#' reads normally but the probeset ids become RefSeq accessions.
+shipped_cdf_env <- function(path) {
+  suppressPackageStartupMessages(library(makecdfenv))
+  src <- path
+  if (grepl("\\.gz$", path)) {
+    src <- file.path(tempdir(), sub("\\.gz$", "", basename(path)))
+    R.utils::gunzip(path, destname = src, overwrite = TRUE, remove = FALSE)
+  }
+  make.cdf.env(basename(src), cdf.path = dirname(src), verbose = FALSE)
 }
 
 #' log2 then quantile normalization across arrays: the route for a one-colour signal that
@@ -307,9 +361,20 @@ rma_from_cels <- function(cels) {
                 "with install.packages(\"", cdf, "\", repos = ",
                 "\"https://bioconductor.org/packages/3.20/data/annotation\", type = \"source\").")
     }
-    message("  using the CDF shipped with the series: ", basename(shipped[[1]]))
-    batch@cdfName <- "series_cdf"
-    assign("series_cdf", make.cdf.env(shipped[[1]], verbose = FALSE), envir = globalenv())
+    chips <- vapply(shipped, cdf_chip_name, character(1))
+    pick <- which(chips == chip)
+    if (length(pick) == 0)
+      stop_with("the series ships ", length(shipped), " CDF file(s) describing ",
+                paste(unique(chips), collapse = ", "), ", none of them the ", chip,
+                " the CEL headers name")
+    message("  using the CDF shipped with the series: ", basename(shipped[[pick[1]]]),
+            " (describes ", chips[pick[1]], ")")
+    # affy looks the environment up by the chip name the CEL headers carry as well as by the
+    # cleaned package-style name, depending on which probesloc entry it reaches first, so the
+    # environment is bound under both.
+    env <- shipped_cdf_env(shipped[[pick[1]]])
+    assign(cdf, env, envir = globalenv())
+    assign(chip, env, envir = globalenv())
   }
   eset <- rma(batch)
   mat <- exprs(eset)
@@ -497,14 +562,112 @@ run_nanostring <- function() {
   run_limma(align_to_samples(endogenous, samples), samples, "panel")
 }
 
-run_two_colour <- function() {
+#' Two-colour arrays against a common reference.
+#'
+#' E-TABM-69 hybridizes each tumour (Cy5) against one pooled dermal-neurofibroma
+#' reference (Cy3), so the per-array log-ratio is already a tumour-over-reference
+#' measure and the between-group test is a linear model on M. The deposited files are
+#' legacy Tab2MAGE exports of Agilent Feature Extraction output: the column names carry
+#' a software prefix ("Feature Extraction Software:gProcessedSignal"), which is why
+#' limma::read.maimages cannot be pointed at them without naming the columns first.
+#' Everything after the colon is the Agilent column name, so the prefix is stripped and
+#' the foreground columns are found by name.
+#'
+#' Feature Extraction's ProcessedSignal is already background-corrected and
+#' dye-bias-corrected per array, so no background subtraction is applied on top of it.
+#' Normalization follows the limma guide for Agilent two-colour data: loess within
+#' arrays, then Aquantile between arrays, which scales the A values while leaving each
+#' array's log-ratios intact.
+FG_PREFERENCE <- list(R = c("rprocessedsignal", "rmeansignal"),
+                      G = c("gprocessedsignal", "gmeansignal"))
+
+pick_channel_column <- function(stripped, channel) {
+  for (want in FG_PREFERENCE[[channel]]) {
+    hit <- which(tolower(stripped) == want)
+    if (length(hit)) return(hit[1])
+  }
+  NA_integer_
+}
+
+read_two_colour <- function() {
   raw <- files_in("-raw-data-.*\\.txt$")
   if (length(raw) == 0) stop_with("no ArrayExpress raw-data files in ", indir)
-  stop_with("two-colour route is implemented up to the reader only. The 8 arrays are present, ",
-            "but the per-array column names must be read off the file before limma::read.maimages ",
-            "can be pointed at them (E-MEXP-258 and E-TABM-69 are legacy Tab2MAGE exports with ",
-            "study-specific headers). Inspect head(", basename(raw[[1]]), ") and set the ",
-            "columns argument before running this engine.")
+  if (!all(c("channel", "file", "de_role") %in% names(samples)))
+    stop_with("the two-colour route needs channel, file and de_role columns in the sample table")
+
+  # The sample table carries only the channels under analysis; a common reference channel is
+  # not a sample and is filtered out upstream. So the reference is identified positionally:
+  # exactly one experimental channel per array means the other channel is the reference, and
+  # an array with two experimental channels (a loop or dye-swap design such as E-MEXP-258)
+  # fails this check rather than being averaged into something meaningless.
+  case_rows <- samples[!grepl("reference", samples$de_role), ]
+  per_array <- table(case_rows$file)
+  if (any(per_array != 1))
+    stop_with("expected exactly one experimental channel per array, found ",
+              paste(sprintf("%s=%d", names(per_array), as.integer(per_array)), collapse = ", "),
+              ". This route handles common-reference designs only; a loop or dye-swap design ",
+              "needs a design matrix over the labelled extracts instead")
+
+  R <- G <- NULL
+  reporters <- NULL
+  kept <- character()
+  fg_names <- NULL
+  nonpositive <- 0
+  total <- 0
+  for (path in raw) {
+    row <- case_rows[case_rows$file == basename(path), ]
+    if (nrow(row) != 1) next
+    tab <- fread(path, data.table = FALSE, check.names = FALSE)
+    stripped <- sub(".*:", "", names(tab))
+    red <- pick_channel_column(stripped, "R")
+    green <- pick_channel_column(stripped, "G")
+    rep_col <- which(tolower(stripped) %in% c("reporter identifier", "reporter name"))
+    if (is.na(red) || is.na(green) || length(rep_col) == 0)
+      stop_with("could not find foreground and reporter columns in ", basename(path),
+                "; column names after stripping the software prefix are: ",
+                paste(utils::head(stripped, 40), collapse = ", "))
+    this_reporter <- sub(".*:", "", as.character(tab[[rep_col[1]]]))
+    if (is.null(reporters)) {
+      reporters <- this_reporter
+    } else if (!identical(this_reporter, reporters)) {
+      stop_with("array ", basename(path), " does not carry the features in the same order as the ",
+                "first array; this route assumes one array design across the series")
+    }
+    if (is.null(fg_names)) fg_names <- c(names(tab)[red], names(tab)[green])
+    red_values <- as.numeric(tab[[red]])
+    green_values <- as.numeric(tab[[green]])
+    total <- total + length(red_values) * 2
+    nonpositive <- nonpositive + sum(red_values <= 0, na.rm = TRUE) + sum(green_values <= 0, na.rm = TRUE)
+    red_values[red_values <= 0] <- NA
+    green_values[green_values <= 0] <- NA
+    R <- cbind(R, red_values)
+    G <- cbind(G, green_values)
+    kept <- c(kept, as.character(row$sample_id))
+    if (!identical(tolower(as.character(row$channel)), "cy5") &&
+        !identical(tolower(as.character(row$channel)), "cy3"))
+      stop_with("unexpected channel ", row$channel, " on ", basename(path))
+  }
+  if (is.null(R)) stop_with("none of the raw-data files matched the sample table's file column")
+  colnames(R) <- colnames(G) <- kept
+  message(sprintf("  %d two-colour arrays, %d features; foreground read from %s and %s",
+                  ncol(R), nrow(R), fg_names[1], fg_names[2]))
+  if (nonpositive > 0)
+    message(sprintf("  %d of %d foreground values are not positive and are read as missing (%.2f%%)",
+                    nonpositive, total, 100 * nonpositive / total))
+
+  RG <- new("RGList", list(R = R, G = G, genes = data.frame(reporter = reporters)))
+  MA <- normalizeBetweenArrays(normalizeWithinArrays(RG, method = "loess"), method = "Aquantile")
+  M <- MA$M
+  rownames(M) <- make.unique(reporters)
+  # M is log2(Cy5 / Cy3). Where the experimental channel is Cy3 the ratio points the wrong
+  # way and the sign is flipped, so every column reads as sample over common reference.
+  channels <- tolower(as.character(case_rows$channel[match(kept, as.character(case_rows$sample_id))]))
+  flip <- channels == "cy3"
+  if (any(flip)) {
+    M[, flip] <- -M[, flip]
+    message("  sign flipped on ", sum(flip), " array(s) whose experimental channel is Cy3")
+  }
+  list(M = M, samples = case_rows[match(kept, as.character(case_rows$sample_id)), ])
 }
 
 result <- switch(engine,
@@ -520,7 +683,10 @@ result <- switch(engine,
     pb <- pseudobulk(read_author_matrix(), samples)
     run_limma(pb$matrix, pb$samples, "pseudobulk of an author matrix")
   },
-  two_colour_limma = run_two_colour(),
+  two_colour_limma = {
+    tc <- read_two_colour()
+    run_limma(tc$M, tc$samples, "two-colour log-ratios against a common reference")
+  },
   abi_signal_limma = {
     signal <- read_abi_signal()
     if (is.null(signal)) stop_with("no ABI signal files found; expected per-sample text files with ",
