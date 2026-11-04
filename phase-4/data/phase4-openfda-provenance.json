@@ -11,7 +11,13 @@
   "api_requests_made": 252,
   "drugs_with_a_label": 491,
   "drugs_with_a_drugsfda_record": 470,
-  "drugs_with_faers_reports": 0,
+  "drugs_with_faers_reports": 463,
+  "api_key_used": true,
+  "cached_batch_responses_used": 0,
+  "cache_note": "no cache; every response came from a live request",
+  "failed_requests": 0,
+  "failed_request_sample": [],
+  "coverage_caveat": "every request returned a response",
   "unavailable_sources": {
     "DrugBank Open Data": "go.drugbank.com not on the sandbox allowlist; download also requires account registration. Approval status rests on Drugs@FDA alone.",
     "SIDER": "sideeffects.embl.de not on the sandbox allowlist. No package-insert side-effect frequency data in this phase."

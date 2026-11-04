@@ -16,10 +16,9 @@ Of those genes, 1,861 resolved to a current HGNC symbol directly and 41 through 
 | Open Targets | known drugs, tractability buckets, chemical probes | 286 of 1,892 targets with a drug, 51,436 tractability assignments |
 | ChEMBL | drug records, max_phase, route booleans, mechanisms of action | 4,005 molecules, 1,680 with a mechanism, 984 approved |
 | ClinicalTrials.gov | NF-relevant interventional trials and their drugs | 456 trials, 346 drug interventions, 79 matching a candidate drug |
-| openFDA | labels with route of administration, Drugs@FDA approvals, FAERS | 491 labels, 470 approval records, 0 drugs with FAERS reports, over 1,255 drugs in scope |
+| openFDA | labels with route of administration, Drugs@FDA approvals, FAERS | 491 labels, 470 approval records, 463 drugs with FAERS reports, over 1,255 drugs in scope |
 | Guide to Pharmacology | curated affinities and ligand selectivity profiles | 461 of 1,929 symbols matched a target, 4,379 interactions, 2,000 ligands profiled |
 
-**The openFDA row is not complete coverage.** That pass ran without an API key, against a budget of 1,000 requests per day per IP, and the budget ran out during the run. The version of the script that recorded failures did not exist yet, so the exact shortfall is not known. The drugs it did not reach are unassessed: absent label, approval or adverse-event data for a drug in this build does not mean none exists. The re-run with a key is outstanding.
 
 ## What the drug layer found
 
@@ -71,7 +70,7 @@ Optic pathway glioma is the only selected manifestation that triggers the CNS re
 
 Safety signals attach to the drug, not the target. Across the flagged target-drug pairs, 1,736 involve a drug whose openFDA label carries a boxed warning and 179 involve a drug ChEMBL records as withdrawn from a market.
 
-FAERS returned no usable counts in this build, so post-market adverse event data is not assessed.
+FAERS report counts were retrieved for 463 drugs. A report count is a count of reports mentioning the drug. It has no denominator, and it rises with how widely and how long a drug has been used, so it is a signal for Phase 6 to weight rather than a safety verdict.
 
 ## Sources named in the plan that are not in this phase
 
@@ -81,10 +80,10 @@ FAERS returned no usable counts in this build, so post-market adverse event data
 
 - **Amass Connector**: The Amass Connector the plan suggested evaluating as a single replacement for ClinicalTrials.gov, openFDA and DrugBank does not exist in this deployment's connector catalogue, so the three sources were wired separately.
 
-Two integration surprises worth recording, one resolved during the run and one not:
+Two integration surprises worth recording, both resolved with a key obtained mid-run:
 
 - The Guide to Pharmacology REST API stopped being open: it now returns HTTP 401 without a registered API key, which is issued manually on request. The project plan described it as a live open query. Kara obtained a key rather than substituting a different selectivity source.
-- The openFDA pass ran anonymously and exhausted the request budget (1,000 per day per IP) partway through, so the FAERS layer returned nothing and the label and approval coverage below is partial. The script was changed to record failed requests rather than treat them as empty results, and an API key was obtained, but the key was not reachable from the analysis environment in this session, so the clean re-run is OUTSTANDING. Do not read the openFDA numbers in this build as complete.
+- The first openFDA pass ran anonymously and exhausted the request budget (1,000 per day per IP) partway through, so the FAERS layer returned nothing: an empty result that would have read as an absence of adverse events. The script was changed to record a failed request as a failure rather than collapse it into an empty result, and the whole pass was re-run the same day with an API key. All 252 requests returned, none failed, and the FAERS layer is populated. The label and approval counts are unchanged from the first pass, which confirms those two endpoints had completed before the budget ran out; 491 labels and 470 approval records over 1,255 drugs in scope is genuine openFDA coverage, not a truncated fetch.
 
 A third is a schema drift rather than an access problem: Open Targets no longer exposes Target.knownDrugs. The field is Target.drugAndClinicalCandidates, and Drug.isApproved, Drug.maximumClinicalTrialPhase and Drug.hasBeenWithdrawn are gone, replaced by Drug.maximumClinicalStage. Code written from older documentation fails against the current API.
 

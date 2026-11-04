@@ -28,13 +28,15 @@ PROCESS_HISTORY = {
         "substituting a different selectivity source."
     ),
     "openfda_budget": (
-        "The openFDA pass ran anonymously and exhausted the request budget (1,000 per day "
-        "per IP) partway through, so the FAERS layer returned nothing and the label and "
-        "approval coverage below is partial. The script was changed to record failed "
-        "requests rather than treat them as empty results, and an API key was obtained, but "
-        "the key was not reachable from the analysis environment in this session, so the "
-        "clean re-run is OUTSTANDING. Do not read the openFDA numbers in this build as "
-        "complete."
+        "The first openFDA pass ran anonymously and exhausted the request budget (1,000 per "
+        "day per IP) partway through, so the FAERS layer returned nothing: an empty result "
+        "that would have read as an absence of adverse events. The script was changed to "
+        "record a failed request as a failure rather than collapse it into an empty result, "
+        "and the whole pass was re-run the same day with an API key. All 252 requests "
+        "returned, none failed, and the FAERS layer is populated. The label and approval "
+        "counts are unchanged from the first pass, which confirms those two endpoints had "
+        "completed before the budget ran out; 491 labels and 470 approval records over "
+        "1,255 drugs in scope is genuine openFDA coverage, not a truncated fetch."
     ),
     "amass": (
         "The Amass Connector the plan suggested evaluating as a single replacement for "
@@ -350,7 +352,7 @@ def build(root: Path) -> str:
     add("")
     add(f"- **Amass Connector**: {PROCESS_HISTORY['amass']}")
     add("")
-    add("Two integration surprises worth recording, one resolved during the run and one not:")
+    add("Two integration surprises worth recording, both resolved with a key obtained mid-run:")
     add("")
     add(f"- {PROCESS_HISTORY['gtop_key']}")
     add(f"- {PROCESS_HISTORY['openfda_budget']}")
