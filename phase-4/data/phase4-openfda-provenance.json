@@ -1,0 +1,19 @@
+{
+  "endpoints": {
+    "label": "https://api.fda.gov/drug/label.json",
+    "drugsfda": "https://api.fda.gov/drug/drugsfda.json",
+    "event": "https://api.fda.gov/drug/event.json"
+  },
+  "verified": "live on 2026-11-04",
+  "scope_rule": "ChEMBL max_phase >= 3.0 or named in an NF trial",
+  "drugs_in_scope": 1255,
+  "drugs_total": 4005,
+  "api_requests_made": 252,
+  "drugs_with_a_label": 491,
+  "drugs_with_a_drugsfda_record": 470,
+  "drugs_with_faers_reports": 0,
+  "unavailable_sources": {
+    "DrugBank Open Data": "go.drugbank.com not on the sandbox allowlist; download also requires account registration. Approval status rests on Drugs@FDA alone.",
+    "SIDER": "sideeffects.embl.de not on the sandbox allowlist. No package-insert side-effect frequency data in this phase."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "base_url": "https://www.ebi.ac.uk/chembl/api/data",
+  "data_kind": "ChEMBL calculated molecular properties, not measured pharmacokinetics",
+  "cns_rule": {
+    "max_tpsa": 90.0,
+    "max_mw_freebase": 450.0,
+    "logp_range": [
+      1.0,
+      5.0
+    ],
+    "max_hbd": 3,
+    "logp_source": "cx_logp where present, otherwise alogp",
+    "caveat": "a prediction from physicochemical properties, never a permeability measurement"
+  },
+  "molecules_requested": 4005,
+  "molecules_returned": 4005,
+  "flag_counts": {
+    "predicted_permeant": 1773,
+    "predicted_non_permeant": 1771,
+    "unknown": 240,
+    "not_applicable_biologic": 221
+  }
+}

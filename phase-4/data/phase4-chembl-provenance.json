@@ -1,0 +1,13 @@
+{
+  "base_url": "https://www.ebi.ac.uk/chembl/api/data",
+  "fields_verified": "live record inspection on 2026-11-04",
+  "drug_ids_requested": 4005,
+  "drug_ids_from_open_targets": 1625,
+  "drug_ids_from_dgidb": 3200,
+  "dgidb_drugs_without_a_chembl_id": 5653,
+  "molecules_returned": 4005,
+  "mechanism_rows": 2519,
+  "drugs_with_a_mechanism": 1680,
+  "approved_drugs": 984,
+  "failed_chunks": []
+}

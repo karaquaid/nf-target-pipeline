@@ -1,0 +1,4 @@
+gene_symbol,corrected_symbol,queryable,basis
+March 1,MARCHF1,True,"Spreadsheet date corruption of MARCH1 (HGNC:17083, now MARCHF1). Reaches Phase 3 from the GEO platform table for GSE141801 (GPL13667/HG-U219) and is the only date-corrupted symbol in the Phase 3 candidate list. No row named MARCH1 or MARCHF1 exists anywhere in the Phase 3 output, so the correction creates no duplicate."
+TPSAB1/B2,TPSAB1,True,"Composite probe annotation from the GSE239561 NanoString PanCancer IO360 panel naming tryptase alpha/beta-1 and beta-2 on one probe. Queried as TPSAB1; the probe cannot distinguish the two paralogues, so any drug claim inherits that ambiguity. Neither TPSAB1 nor TPSB2 appears separately in the Phase 3 output."
+Oligodendrocyte differentiation (clemastine target),,False,"Phase 1b literature label with label_type 'other': a process, not a gene product. Carried into Phase 4 as an explicitly unqueryable row rather than forced onto a gene symbol."

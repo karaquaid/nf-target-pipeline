@@ -1,0 +1,61 @@
+disease,manifestation,lit_targets,lit_targets_fulltext,lit_papers,lit_top_targets,expr_targets,expr_targets_tier_a,expr_targets_tier_b,expr_targets_tier_c,expr_datasets,expr_strata,expr_top_targets,overlap_genes,overlap_gene_names,has_both_kinds
+NF1,Bone defects,5,3,4,MAP2K1/2 (MEK1/2); PTPN11; TGFB1; RAS (pan); RAS pathway,81,0,0,81,2,nf1_bone_vs_normal,JPH2; PTGFR; RASD2; SCX; MEIS2,0,,True
+NF1,Cardiovascular issues,5,2,2,APOCYNIN; Simvastatin; MAPK pathway; RAS (pan); RAS-MAPK pathway,0,0,0,0,0,,,0,,False
+NF1,Cognition / Behavioral / Learning,6,2,8,MAP2K1/2 (MEK1/2); RAS (pan); ALK; MAPK1/3 (ERK1/2); PI3K-AKT-MTOR axis,0,0,0,0,0,,,0,,False
+NF1,Sleep,0,0,0,,0,0,0,0,0,,,0,,False
+NF1,Cutaneous neurofibroma,17,10,11,RAS (pan); YAP1; TP53; MAPK1/3 (ERK1/2); MAPK pathway,398,0,386,12,2,nf1_pnst_vs_normal,CRYGS; PTGFRN; GFAP; TWIST1; TMC7,0,,True
+NF1,Ependymoma,0,0,0,,0,0,0,0,0,,,0,,False
+NF1,Gastrointestinal stromal tumor (GIST),4,0,8,KIT; MAP2K1/2 (MEK1/2); MDM2; MYC,0,0,0,0,0,,,0,,False
+NF1,Hematologic malignancies,2,1,2,MAP2K1/2 (MEK1/2); EVI2B,0,0,0,0,0,,,0,,False
+NF1,High grade glioma,10,5,7,MAP2K1/2 (MEK1/2); AKT/mTOR; CCL5; CD44; RAD51,0,0,0,0,0,,,0,,False
+NF1,Malignant peripheral nerve sheath tumor (MPNST),66,47,54,PRC2 (EED/SUZ12/EZH2); CDKN2A; MAP2K1/2 (MEK1/2); TP53; SUZ12,780,121,650,14,9,nf1_mpnst_vs_benign_pnst; nf1_pnst_vs_normal,ADH1B; BIRC5; LMOD1; RRM2; TNXB,11,BIRC5; CENPF; DLK1; E2F1; EZH2; PLK1; PTEN; RRM2; SOX10; SPP1,True
+NF1,Meningioma,0,0,0,,0,0,0,0,0,,,0,,False
+NF1,Optic pathway glioma,13,4,15,MAP2K1/2 (MEK1/2); MTOR; RAS (pan); VEGFA; AKT1,400,0,0,400,1,nf1_glioma_vs_normal_brain,EMX1; TIMP4; NRGN; STK32A; PSD,1,MAPK3,True
+NF1,Non-optic LGG,4,3,9,MAP2K1/2 (MEK1/2); MTOR; VEGFA; MAPK pathway,0,0,0,0,0,,,0,,False
+NF1,Pain,9,5,18,MAP2K1/2 (MEK1/2); CACNA1B; CRMP2; GDNF; GFRA1,0,0,0,0,0,,,0,,False
+NF1,Plexiform neurofibroma,45,34,64,MAP2K1/2 (MEK1/2); RAS (pan); CD274; KRAS; AXL,743,97,598,65,9,nf1_atypical_vs_benign_pnst; nf1_mpnst_vs_benign_pnst; nf1_pnst_vs_normal,BIRC5; LMOD1; RRM2; TNXB; CENPF,8,BIRC5; EGFR; FGFR1; KIT; POSTN; PROS1; SOX10; SPP1,True
+NF1,ANNUBP / atypical neurofibroma,9,6,14,CDKN2A; PRC2 (EED/SUZ12/EZH2); TP53; CDKN2A/B; MTAP,54,0,0,54,2,nf1_atypical_vs_benign_pnst,CPA3; TP53; TPM1; WNT2B; SFRP4,1,TP53,True
+NF1,Pulmonary disease,2,1,2,BMPR2; ABCC8,0,0,0,0,0,,,0,,False
+NF1,Non-vestibular schwannoma,0,0,0,,0,0,0,0,0,,,0,,False
+NF1,Vestibular schwannoma,0,0,0,,0,0,0,0,0,,,0,,False
+NF1,Other,11,6,7,RAS (pan); AKT1; MRVI1; RNF213; SOS2,0,0,0,0,0,,,0,,False
+NF2-SWN,Bone defects,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Cardiovascular issues,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Cognition / Behavioral / Learning,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Sleep,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Cutaneous neurofibroma,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Ependymoma,3,2,2,MAP2K1/2 (MEK1/2); MTOR; VEGFA,0,0,0,0,0,,,0,,False
+NF2-SWN,Gastrointestinal stromal tumor (GIST),0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Hematologic malignancies,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,High grade glioma,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Malignant peripheral nerve sheath tumor (MPNST),0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Meningioma,29,20,18,MTOR; VEGFA; PTK2 (FAK); EPHA2; SRC,0,0,0,0,0,,,0,,False
+NF2-SWN,Optic pathway glioma,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Non-optic LGG,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Pain,0,0,0,,192,0,0,192,1,nf2swn_painful_vs_non_painful_schwannoma,KRT6A; ST3GAL6; KRT6B; CDH7; SDCBP,0,,False
+NF2-SWN,Plexiform neurofibroma,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,ANNUBP / atypical neurofibroma,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Pulmonary disease,0,0,0,,0,0,0,0,0,,,0,,False
+NF2-SWN,Non-vestibular schwannoma,17,8,8,VEGFA; ABL1; PAK1/2; MTOR; MAP2K1/2 (MEK1/2),192,0,0,192,1,nf2swn_painful_vs_non_painful_schwannoma,KRT6A; ST3GAL6; KRT6B; CDH7; SDCBP,0,,True
+NF2-SWN,Vestibular schwannoma,40,29,35,VEGFA; MTOR; PI3K (family); PAK (family); YAP1,585,10,311,271,3,nf2swn_painful_vs_non_painful_schwannoma; nf2swn_schwannoma_vs_normal,SLC2A1; RAB31; AKR1C1; SORL1; SVIP,6,CD44; CEMIP; EGFR; PAK3; WWTR1; YAP1,True
+NF2-SWN,Other,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Bone defects,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Cardiovascular issues,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Cognition / Behavioral / Learning,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Sleep,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Cutaneous neurofibroma,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Ependymoma,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Gastrointestinal stromal tumor (GIST),0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Hematologic malignancies,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,High grade glioma,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Malignant peripheral nerve sheath tumor (MPNST),0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Meningioma,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Optic pathway glioma,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Non-optic LGG,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Pain,4,4,1,CCL2; EGFR; HMGB1; IL6,0,0,0,0,0,,,0,,False
+SWN,Plexiform neurofibroma,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,ANNUBP / atypical neurofibroma,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Pulmonary disease,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Non-vestibular schwannoma,2,2,3,RAS (pan); EGFR,0,0,0,0,0,,,0,,False
+SWN,Vestibular schwannoma,0,0,0,,0,0,0,0,0,,,0,,False
+SWN,Other,0,0,0,,0,0,0,0,0,,,0,,False
