@@ -1,0 +1,18 @@
+{
+  "fetched": "2026-11-03",
+  "kegg_pathway_db_info": "pathway KEGG pathway maps | path 587 entries | Last update 2026/10/28",
+  "endpoints": {
+    "info": "https://rest.kegg.jp/info/pathway",
+    "pathways": "https://rest.kegg.jp/list/pathway/hsa",
+    "genes": "https://rest.kegg.jp/list/hsa",
+    "gene_pathway": "https://rest.kegg.jp/link/pathway/hsa"
+  },
+  "documentation_verified_against": "https://www.kegg.jp/kegg/rest/keggapi.html",
+  "human_pathways": 372,
+  "human_gene_entries": 24252,
+  "gene_entries_with_symbol": 22826,
+  "gene_pathway_links": 39671,
+  "rows_written": 39437,
+  "distinct_symbols": 9289,
+  "distinct_pathways": 372
+}

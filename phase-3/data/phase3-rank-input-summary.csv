@@ -1,0 +1,24 @@
+accession,contrast,comparison_class,usable_for_candidates,gene_space,rows_in_ranked_list,rows_with_symbol,rows_dropped_no_symbol,rows_dropped_no_statistic,symbols_measured,rows_collapsed_to_symbol
+GSE207400,premalignant_nf_g3_vs_benign_nf_g4,nf1_atypical_vs_benign_pnst,True,transcriptome,14995,14995,0,0,14995,0
+GSE239561,annubp_vs_pnf,nf1_atypical_vs_benign_pnst,True,panel:770,750,750,0,0,750,0
+GSE239561,nf_with_atypia_vs_pnf,nf1_atypical_vs_benign_pnst,True,panel:770,750,750,0,0,750,0
+GSE239561,cellular_nf_vs_pnf,nf1_benign_subtype_vs_pnf,False,panel:770,750,750,0,0,750,0
+GSE239561,nf_vs_pnf,nf1_benign_subtype_vs_pnf,True,panel:770,750,750,0,0,750,0
+GSE232516,nf_case_vs_control,nf1_bone_vs_normal,True,transcriptome,36591,36591,0,0,36591,0
+GSE234071,nf_case_vs_control,nf1_bone_vs_normal,True,transcriptome,28088,22860,5228,0,22728,132
+GSE163071,nf1_pilocytic_astrocytoma_vs_non_neoplastic_brain,nf1_glioma_vs_normal_brain,True,transcriptome,29542,29542,0,0,29542,0
+E-TABM-69,Malignant peripheral nerve sheath tumor (MPNST)_vs_Plexiform neurofibroma,nf1_mpnst_vs_benign_pnst,True,transcriptome,19061,15105,3956,0,14514,591
+GSE145064,mpnst_vs_plexiform_neurofibroma,nf1_mpnst_vs_benign_pnst,True,transcriptome,174208,149071,25137,0,28777,120294
+GSE179043,mpnst_vs_plexiform_neurofibroma,nf1_mpnst_vs_benign_pnst,True,transcriptome,30320,30320,0,0,30320,0
+GSE207400,mpnst_g1_vs_benign_nf_g4,nf1_mpnst_vs_benign_pnst,True,transcriptome,14995,14995,0,0,14995,0
+GSE207400,mpnst_g2_vs_benign_nf_g4,nf1_mpnst_vs_benign_pnst,True,transcriptome,14995,14995,0,0,14995,0
+GSE239561,mpnst_high_grade_vs_pnf,nf1_mpnst_vs_benign_pnst,True,panel:770,750,750,0,0,750,0
+GSE318927,mpnst_vs_plexiform_neurofibroma,nf1_mpnst_vs_benign_pnst,True,transcriptome,36591,36591,0,0,36591,0
+GSE66743,mpnst_vs_neurofibroma,nf1_mpnst_vs_benign_pnst,True,transcriptome,18923,12496,6427,9,11630,857
+GSE14038,nf_case_vs_control,nf1_pnst_vs_normal,True,transcriptome,19048,16235,2813,0,15423,812
+GSE41747,mpnst_vs_normal_nerve,nf1_pnst_vs_normal,True,transcriptome,19306,16898,2408,0,16020,878
+GSE41747,neurofibroma_vs_normal_nerve,nf1_pnst_vs_normal,True,transcriptome,19306,16898,2408,0,16020,878
+GSE141801,treated_vs_control,nf2swn_invitro_perturbation,False,transcriptome,49386,48784,602,0,20033,28751
+GSE138347,painful_vs_non_painful,nf2swn_painful_vs_non_painful_schwannoma,True,transcriptome,178216,178216,0,0,53228,124988
+GSE108524,nf_case_vs_control,nf2swn_schwannoma_vs_normal,True,transcriptome,70523,32670,37853,0,30905,1765
+GSE141801,nf_case_vs_control,nf2swn_schwannoma_vs_normal,True,transcriptome,49386,48784,602,0,20033,28751
