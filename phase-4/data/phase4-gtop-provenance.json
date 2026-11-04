@@ -1,0 +1,18 @@
+{
+  "base_url": "https://www.guidetopharmacology.org/services",
+  "auth": "GTP-API-Key request header (key read from GTP_API_KEY, never recorded here)",
+  "docs_verified": "https://www.guidetopharmacology.org/webServices.jsp on 2026-11-04",
+  "rate_limit_respected_s": 1.05,
+  "comparable_window_log_units": 1.0,
+  "selectivity_method": "Ligands reaching affinity >= 6.0 at a candidate target were queried again from the ligand side, so n_targets_total and n_targets_within_window count every human target the database records for that ligand, not only the ones in this project's list.",
+  "ligands_profiled": 2000,
+  "ligand_pass_capped": true,
+  "failed_requests": 0,
+  "failed_request_sample": [],
+  "coverage_caveat": "every request returned a response",
+  "symbols_queried": 1929,
+  "symbols_with_a_gtop_target": 461,
+  "symbols_without_a_gtop_target": 1595,
+  "interaction_rows": 4379,
+  "distinct_ligands": 2779
+}

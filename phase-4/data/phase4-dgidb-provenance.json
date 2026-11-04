@@ -1,0 +1,10 @@
+{
+  "endpoint": "https://dgidb.org/api/graphql",
+  "schema_verified": "introspection on 2026-11-04",
+  "query": "query($genes:[String!], $first:Int, $after:String){\n  interactions(geneNames:$genes, first:$first, after:$after){\n    pageInfo{ hasNextPage endCursor }\n    nodes{\n      gene{ name conceptId }\n      drug{ name conceptId approved immunotherapy antiNeoplastic }\n      interactionScore\n      interactionTypes{ type directionality }\n      sources{ sourceDbName }\n      publications{ pmid }\n    }\n  }\n}",
+  "genes_queried": 1929,
+  "genes_failed": [],
+  "genes_with_interaction": 844,
+  "interaction_rows": 18295,
+  "distinct_drugs": 8224
+}

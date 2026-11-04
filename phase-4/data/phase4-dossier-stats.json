@@ -1,0 +1,21 @@
+{
+  "dossier_rows": 3752,
+  "distinct_targets": 1930,
+  "rows_with_a_drug": 1676,
+  "rows_with_no_drug_match": 2030,
+  "rows_not_queryable": 46,
+  "targets_with_a_drug": 848,
+  "targets_with_tractability_bucket": 1757,
+  "undrugged_but_tractable_targets": 932,
+  "route_flag_counts": {
+    "route_unknown": 33349,
+    "appropriate_systemic": 4823,
+    "cns_penetration_unknown": 391,
+    "excluded_topical_only": 267,
+    "excluded_not_bbb_penetrant": 144,
+    "appropriate_systemic_cns": 110,
+    "appropriate_topical": 38,
+    "excluded_biologic_cns": 16
+  },
+  "drug_rows_flagged": 39138
+}

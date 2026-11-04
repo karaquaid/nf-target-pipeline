@@ -1,0 +1,18 @@
+{
+  "endpoint": "https://api.platform.opentargets.org/api/v4/graphql",
+  "schema_verified": "live introspection on 2026-11-04",
+  "query": "query($id:String!){\n  target(ensemblId:$id){\n    id approvedSymbol\n    tractability{ label value modality }\n    chemicalProbes{ id isHighQuality }\n    drugAndClinicalCandidates{\n      count\n      rows{\n        maxClinicalStage\n        drug{ id name drugType maximumClinicalStage }\n        diseases{ disease{ id name } }\n      }\n    }\n  }\n}",
+  "targets_queried": 1892,
+  "targets_returned_null": [
+    "CCL15",
+    "CCL3",
+    "HLA-DPA1",
+    "HLA-DPB1"
+  ],
+  "targets_failed": [],
+  "tractability_rows": 51436,
+  "drug_rows": 2531,
+  "probe_rows": 325,
+  "targets_with_a_drug": 286,
+  "distinct_drugs": 1625
+}

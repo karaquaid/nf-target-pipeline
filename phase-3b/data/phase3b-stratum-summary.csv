@@ -1,0 +1,9 @@
+comparison_class,disease,n_contrasts,n_datasets,datasets,candidate_rows,candidate_genes,expr_targets_tier_a,expr_targets_tier_b,expr_targets_tier_c,manifestations
+nf1_glioma_vs_normal_brain,NF1,1,1,GSE163071,400,400,0,0,400,Optic pathway glioma
+nf1_mpnst_vs_benign_pnst,NF1,8,7,E-TABM-69; GSE145064; GSE179043; GSE207400; GSE239561; GSE318927; GSE66743,400,400,121,279,0,Malignant peripheral nerve sheath tumor (MPNST); Plexiform neurofibroma
+nf1_pnst_vs_normal,NF1,3,2,GSE14038; GSE41747,400,400,0,386,14,Cutaneous neurofibroma; Malignant peripheral nerve sheath tumor (MPNST); Plexiform neurofibroma
+nf2swn_schwannoma_vs_normal,NF2-SWN,2,2,GSE108524; GSE141801,400,400,10,311,79,Vestibular schwannoma
+nf2swn_painful_vs_non_painful_schwannoma,NF2-SWN,1,1,GSE138347,192,192,0,0,192,Non-vestibular schwannoma; Pain; Vestibular schwannoma
+nf1_bone_vs_normal,NF1,2,2,GSE232516; GSE234071,81,81,0,0,81,Bone defects
+nf1_atypical_vs_benign_pnst,NF1,3,2,GSE207400; GSE239561,54,54,0,0,54,ANNUBP / atypical neurofibroma; Plexiform neurofibroma
+nf1_benign_subtype_vs_pnf,NF1,1,1,GSE239561,0,0,0,0,0,

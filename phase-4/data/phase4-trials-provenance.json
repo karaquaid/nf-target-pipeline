@@ -1,0 +1,24 @@
+{
+  "endpoint": "https://clinicaltrials.gov/api/v2/studies",
+  "syntax_verified": "ClinicalTrials.gov API v2 on 2026-11-04; counts cross-checked against the Clinical Trials MCP connector",
+  "queries": {
+    "Malignant peripheral nerve sheath tumor (MPNST)": "malignant peripheral nerve sheath tumor",
+    "Plexiform neurofibroma": "plexiform neurofibroma",
+    "Cutaneous neurofibroma": "cutaneous neurofibroma",
+    "ANNUBP / atypical neurofibroma": "atypical neurofibroma OR atypical neurofibromatous neoplasm",
+    "Optic pathway glioma": "optic pathway glioma OR optic nerve glioma",
+    "Bone defects": "neurofibromatosis AND (pseudarthrosis OR tibial dysplasia)",
+    "Vestibular schwannoma": "vestibular schwannoma OR acoustic neuroma",
+    "Non-vestibular schwannoma": "schwannoma NOT vestibular",
+    "Pain": "schwannomatosis AND pain",
+    "_disease_NF1": "neurofibromatosis type 1",
+    "_disease_NF2-SWN": "neurofibromatosis type 2 OR NF2-related schwannomatosis",
+    "_disease_SWN": "schwannomatosis"
+  },
+  "errors": {},
+  "trial_rows": 716,
+  "distinct_trials": 456,
+  "drug_intervention_rows": 916,
+  "distinct_interventions": 346,
+  "interventions_matching_a_phase4_drug": 79
+}
