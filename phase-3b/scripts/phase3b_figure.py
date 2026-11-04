@@ -109,7 +109,7 @@ def main() -> None:
     root = Path(args.repo).resolve()
 
     coverage = pd.read_csv(root / "phase-3b/data/phase3b-coverage.csv")
-    coverage["cross_dataset"] = coverage["expr_targets_tier_a"] + coverage["expr_targets_tier_b"]
+    coverage["cross_dataset"] = coverage["expr_targets_cross_dataset"]
 
     try:
         from figure_style import apply_figure_style, panel_letter

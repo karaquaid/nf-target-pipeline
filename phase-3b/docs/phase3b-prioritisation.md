@@ -14,8 +14,8 @@ Deprioritised combinations are deferred, not dropped: their Phase 1b rows stay i
 
 | Disease | Manifestation | Literature targets | Expression targets | Cross-dataset supported | Datasets | Overlap genes |
 | --- | --- | --- | --- | --- | --- | --- |
-| NF1 | Malignant peripheral nerve sheath tumor (MPNST) | 66 | 780 | 771 | 9 | 11 |
-| NF1 | Plexiform neurofibroma | 45 | 743 | 695 | 9 | 8 |
+| NF1 | Malignant peripheral nerve sheath tumor (MPNST) | 66 | 780 | 766 | 9 | 11 |
+| NF1 | Plexiform neurofibroma | 45 | 743 | 690 | 9 | 8 |
 | NF1 | Cutaneous neurofibroma | 17 | 398 | 386 | 2 | 0 |
 | NF1 | Bone defects | 5 | 81 | 0 | 2 | 0 |
 | NF1 | Optic pathway glioma | 13 | 400 | 0 | 1 | 1 |

@@ -59,6 +59,9 @@ TIER_COLS = {
     "C_single_dataset": "expr_targets_tier_c",
 }
 
+# The tiers that mean more than one dataset backed the gene.
+CROSS_DATASET_TIERS = ["A_aggregated", "B_replicated"]
+
 
 def check_vocabulary(values, where: str) -> None:
     unknown = sorted(set(values) - set(MANIFESTATIONS))
@@ -117,6 +120,7 @@ def expression_cell(rows: pd.DataFrame) -> dict:
             "expr_targets_tier_a": 0,
             "expr_targets_tier_b": 0,
             "expr_targets_tier_c": 0,
+            "expr_targets_cross_dataset": 0,
             "expr_datasets": 0,
             "expr_strata": "",
             "expr_top_targets": "",
@@ -124,6 +128,14 @@ def expression_cell(rows: pd.DataFrame) -> dict:
     cell = {"expr_targets": rows["gene_symbol"].nunique()}
     for tier, col in TIER_COLS.items():
         cell[col] = rows.loc[rows["evidence_tier"] == tier, "gene_symbol"].nunique()
+    # Distinct genes with cross-dataset support, counted here rather than left to
+    # consumers to add the tier A and tier B columns together. A manifestation can
+    # draw on several strata, and a gene can be tier A in one and tier B in another,
+    # so those two columns overlap and their sum double-counts such a gene. Five
+    # genes currently sit in both for NF1 MPNST and plexiform neurofibroma.
+    cell["expr_targets_cross_dataset"] = rows.loc[
+        rows["evidence_tier"].isin(CROSS_DATASET_TIERS), "gene_symbol"
+    ].nunique()
     cell["expr_datasets"] = len(split_ids(rows["measuring_datasets"], ";"))
     cell["expr_strata"] = "; ".join(sorted(rows["comparison_class"].unique()))
     best = rows.sort_values(["evidence_tier", "rank_in_stratum"])

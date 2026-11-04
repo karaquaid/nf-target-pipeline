@@ -41,7 +41,7 @@ def fmt_int(value) -> str:
 def build(root: Path) -> str:
     cov = pd.read_csv(root / "phase-3b/data/phase3b-coverage.csv")
     strata = pd.read_csv(root / "phase-3b/data/phase3b-stratum-summary.csv")
-    cov["cross_dataset"] = cov["expr_targets_tier_a"] + cov["expr_targets_tier_b"]
+    cov["cross_dataset"] = cov["expr_targets_cross_dataset"]
 
     selected = cov[cov["expr_targets"] > 0].copy()
     deferred_lit_only = cov[(cov["expr_targets"] == 0) & (cov["lit_targets"] > 0)].copy()
