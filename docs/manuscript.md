@@ -565,8 +565,45 @@ All code, tables and per-phase write-ups are in the repository at
 committed scripts, so every count in the write-ups traces to a table in the same commit. Raw
 expression data is not redistributed; the inventory lists accessions.
 
-> `[FILL IN]` Whether to archive a release at Zenodo for a citable DOI at submission, and
-> whether the supplied PDFs stay out of the repository, which they must for copyright.
+**Every table this paper cites is identified by commit hash, not by path.** A path names
+whatever the file contains today; a hash names the bytes the numbers in this paper were read
+from, and a reader can check it. The tables below are frozen: later literature updates are
+merged under `literature-watch/`, which this paper does not cite, so the cited directories do
+not move.
+
+| What the paper cites | Commit | Last changed |
+|---|---|---|
+| Dataset inventory, `phase-1a/` | `778b118bce55cb6a11dd2916fc7143f2eed79744` | 2026-10-19 |
+| Literature target map, `phase-1b/` | `ab0263f944f71c2dfdafac9779ad0e2fdaa54e97` | 2026-10-21 |
+| Analysis scripts, `phase-1b/scripts/` | `ab0263f944f71c2dfdafac9779ad0e2fdaa54e97` | 2026-10-21 |
+
+Permanent link to the cited snapshot:
+`https://github.com/karaquaid/nf-target-pipeline/tree/ab0263f944f71c2dfdafac9779ad0e2fdaa54e97/phase-1b`
+
+A reader reproduces the published tables with:
+
+    git clone https://github.com/karaquaid/nf-target-pipeline
+    cd nf-target-pipeline && git checkout ab0263f944f7
+    python phase-1b/scripts/make_phase1b_candidates.py
+    python phase-1b/scripts/build_phase1b_report.py
+    python phase-1b/scripts/make_phase1b_figure.py
+
+which should rewrite the committed tables, write-up and figure without changing them.
+
+> `[CHECK]` Refresh these hashes immediately before submission, and again at proof stage if
+> anything under the cited directories changed in between. Verify with
+> `git log -1 --format=%H -- phase-1b/`. A hash quoted from an earlier draft is worse than no
+> hash, because it looks checkable and is wrong.
+
+> `[FILL IN]` Whether to archive a release at Zenodo for a citable DOI at submission. A commit
+> hash is checkable but not durable: it depends on this GitHub repository continuing to exist
+> and its history not being rewritten. Several journals require a DOI-bearing archive for
+> exactly that reason, and a Zenodo deposit of the tagged release would give one. My
+> recommendation is to do both, citing the DOI in the text and keeping the hash table here.
+
+> `[FILL IN]` Confirm the supplied PDFs stay out of the repository, which they must for
+> copyright. The reference table records which papers were read from a supplied PDF, so the
+> provenance survives without redistributing the files.
 
 ## 7. Author contributions, funding and competing interests
 
