@@ -1,0 +1,66 @@
+# Template config: copy this, change everything, keep the shape.
+#
+# The worked example below is tuberous sclerosis complex, chosen because it has the same
+# structure as the NF study: a germline tumour-suppressor syndrome with several distinct
+# manifestations whose literatures are very unevenly sized. The manifestation list here is
+# ILLUSTRATIVE. Build yours from a standard your field already uses, for example the
+# diagnostic criteria or a registry's phenotype list, rather than drafting one from scratch.
+# A vocabulary invented for one analysis cannot be compared with anyone else's.
+
+[study]
+name = "tsc-example"
+description = "Template. Candidate targets in tuberous sclerosis complex."
+
+[labels]
+# One label per disease entity you want to count separately. Keep "Not specified" out of this
+# list: claims that cannot be attributed to one of these are dropped, which is a scope
+# decision the monitor makes explicit rather than silently pooling them.
+diseases = ["TSC"]
+# Keep a catch-all "Other". The share of rows landing there tells you whether the vocabulary
+# fits the literature; a large Other bucket means it does not.
+manifestations = [
+  "Subependymal giant cell astrocytoma",
+  "Cortical tuber / epilepsy",
+  "Renal angiomyolipoma",
+  "Lymphangioleiomyomatosis",
+  "Cardiac rhabdomyoma",
+  "Facial angiofibroma",
+  "Neuropsychiatric (TAND)",
+  "Other",
+]
+
+[extraction]
+entity = "gene/protein/molecular target that the abstract presents as a disease driver, disease modifier, or therapeutic target in tuberous sclerosis complex"
+exclude_guidance = "the disease gene itself when merely used to define the cohort; cell-type markers; assay reagents; genes mentioned only as background citation"
+
+[scope]
+# Labels everyone already knows about, excluded from the candidate list and kept in the audit
+# table with a flag so the exclusion is reversible.
+exclude_labels = ["TSC1", "TSC2"]
+exclude_labels_reason = "germline disease gene"
+excluded_tiers = ["full text - not supported"]
+
+[paths]
+workdir = "tsc-watch"
+# No baseline: a cold start builds the tables from nothing. Point this at a directory of
+# existing CSVs if you have a corpus to carry forward.
+# baseline = "some/existing/data"
+frozen = []
+
+# One query per disease and manifestation combination you care about, plus a broad one.
+# PubMed syntax, used verbatim. Write them once and do not edit them between runs: a changed
+# query changes what the corpus means, and counts stop being comparable across runs.
+[[queries]]
+disease = "TSC"
+manifestation = "broad"
+query = "(tuberous sclerosis[Title/Abstract]) AND (therapeutic target[Title/Abstract] OR drug target[Title/Abstract] OR targeted therapy[Title/Abstract])"
+
+[[queries]]
+disease = "TSC"
+manifestation = "Subependymal giant cell astrocytoma"
+query = "(subependymal giant cell astrocytoma[Title/Abstract] OR SEGA[Title/Abstract]) AND (inhibitor[Title/Abstract] OR target[Title/Abstract] OR mTOR[Title/Abstract])"
+
+[[queries]]
+disease = "TSC"
+manifestation = "Lymphangioleiomyomatosis"
+query = "(lymphangioleiomyomatosis[Title/Abstract]) AND (therapeutic target[Title/Abstract] OR inhibitor[Title/Abstract] OR signaling[Title/Abstract])"

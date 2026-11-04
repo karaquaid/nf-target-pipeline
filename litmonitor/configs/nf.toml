@@ -1,0 +1,209 @@
+# Neurofibromatosis target map. The worked example, and the config the published
+# phase-1b snapshot was built with.
+
+[study]
+name = "nf"
+description = "Candidate drug targets in NF1, NF2-related schwannomatosis and schwannomatosis"
+
+[labels]
+diseases = ["NF1", "NF2-SWN", "SWN"]
+manifestations = [
+  "Bone defects",
+  "Cardiovascular issues",
+  "Cognition / Behavioral / Learning",
+  "Sleep",
+  "Cutaneous neurofibroma",
+  "Ependymoma",
+  "Gastrointestinal stromal tumor (GIST)",
+  "Hematologic malignancies",
+  "High grade glioma",
+  "Malignant peripheral nerve sheath tumor (MPNST)",
+  "Meningioma",
+  "Optic pathway glioma",
+  "Non-optic LGG",
+  "Pain",
+  "Plexiform neurofibroma",
+  "ANNUBP / atypical neurofibroma",
+  "Pulmonary disease",
+  "Non-vestibular schwannoma",
+  "Vestibular schwannoma",
+  "Other"
+]
+
+[extraction]
+entity = "gene/protein/molecular target that the abstract presents as a disease driver, disease modifier, or therapeutic target in neurofibromatosis"
+exclude_guidance = "the disease gene itself when merely used to define the cohort (e.g. 'NF1 patients'); cell-type markers; assay reagents; genes mentioned only as background citation"
+
+[scope]
+# Germline disease genes: established, so not candidates. Kept in the audit table with a flag.
+exclude_labels = ["NF1", "NF2", "SMARCB1", "LZTR1", "SPRED1"]
+exclude_labels_reason = "germline disease gene"
+excluded_tiers = ["full text - not supported"]
+# This repository has its own derivation script; the review gate imports the rule from it
+# rather than restating it. Drop this line and the generic rule above applies.
+derive_module = "phase-1b/scripts/make_phase1b_candidates.py"
+
+[paths]
+workdir = "literature-watch"
+baseline = "phase-1b/data"
+frozen = ["phase-1a", "phase-1b", "phase-2"]
+
+[[queries]]
+disease = "NF1"
+manifestation = "broad"
+query = "(neurofibromatosis type 1[Title/Abstract] OR NF1[Title/Abstract]) AND (therapeutic target[Title/Abstract] OR drug target[Title/Abstract] OR targeted therapy[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Plexiform neurofibroma"
+query = "plexiform neurofibroma[Title/Abstract] AND (therapeutic target[Title/Abstract] OR inhibitor[Title/Abstract] OR signaling[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Cutaneous neurofibroma"
+query = "cutaneous neurofibroma[Title/Abstract] AND (target[Title/Abstract] OR therapy[Title/Abstract] OR pathogenesis[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Malignant peripheral nerve sheath tumor (MPNST)"
+query = "(MPNST[Title/Abstract] OR malignant peripheral nerve sheath tumor[Title/Abstract]) AND (therapeutic target[Title/Abstract] OR drug target[Title/Abstract] OR inhibitor[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "ANNUBP / atypical neurofibroma"
+query = "(atypical neurofibroma[Title/Abstract] OR ANNUBP[Title/Abstract] OR atypical neurofibromatous neoplasm[Title/Abstract]) AND (CDKN2A[Title/Abstract] OR progression[Title/Abstract] OR target[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Optic pathway glioma"
+query = "optic pathway glioma[Title/Abstract] AND (NF1[Title/Abstract] OR neurofibromatosis[Title/Abstract]) AND (target[Title/Abstract] OR therapy[Title/Abstract] OR mechanism[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Non-optic LGG"
+query = "(low-grade glioma[Title/Abstract] AND neurofibromatosis type 1[Title/Abstract]) AND (MEK[Title/Abstract] OR BRAF[Title/Abstract] OR mTOR[Title/Abstract] OR target[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "High grade glioma"
+query = "(high-grade glioma[Title/Abstract] OR glioblastoma[Title/Abstract]) AND NF1[Title/Abstract] AND (therapeutic target[Title/Abstract] OR driver[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Hematologic malignancies"
+query = "(juvenile myelomonocytic leukemia[Title/Abstract] OR JMML[Title/Abstract]) AND (NF1[Title/Abstract] OR RAS[Title/Abstract]) AND (target[Title/Abstract] OR inhibitor[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Gastrointestinal stromal tumor (GIST)"
+query = "gastrointestinal stromal tumor[Title/Abstract] AND (neurofibromatosis[Title/Abstract] OR NF1[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Bone defects"
+query = "(tibial pseudarthrosis[Title/Abstract] OR bone[Title/Abstract] OR osteoporosis[Title/Abstract] OR skeletal[Title/Abstract]) AND neurofibromatosis type 1[Title/Abstract] AND (mechanism[Title/Abstract] OR target[Title/Abstract] OR treatment[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Cognition / Behavioral / Learning"
+query = "neurofibromatosis type 1[Title/Abstract] AND (learning[Title/Abstract] OR cognitive[Title/Abstract] OR behavioral[Title/Abstract]) AND (target[Title/Abstract] OR treatment[Title/Abstract] OR mechanism[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Pain"
+query = "neurofibromatosis[Title/Abstract] AND pain[Title/Abstract] AND (mechanism[Title/Abstract] OR target[Title/Abstract] OR nociception[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Cardiovascular issues"
+query = "neurofibromatosis type 1[Title/Abstract] AND (vasculopathy[Title/Abstract] OR cardiovascular[Title/Abstract] OR vascular[Title/Abstract]) AND (mechanism[Title/Abstract] OR target[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Pulmonary disease"
+query = "neurofibromatosis[Title/Abstract] AND (pulmonary[Title/Abstract] OR lung[Title/Abstract]) AND (mechanism[Title/Abstract] OR disease[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Sleep"
+query = "neurofibromatosis[Title/Abstract] AND (sleep[Title/Abstract] OR sleep disturbance[Title/Abstract])"
+
+[[queries]]
+disease = "NF2-SWN"
+manifestation = "Vestibular schwannoma"
+query = "vestibular schwannoma[Title/Abstract] AND (therapeutic target[Title/Abstract] OR drug target[Title/Abstract] OR inhibitor[Title/Abstract])"
+
+[[queries]]
+disease = "NF2-SWN"
+manifestation = "Meningioma"
+query = "meningioma[Title/Abstract] AND (NF2[Title/Abstract] OR merlin[Title/Abstract]) AND (therapeutic target[Title/Abstract] OR inhibitor[Title/Abstract])"
+
+[[queries]]
+disease = "NF2-SWN"
+manifestation = "Ependymoma"
+query = "ependymoma[Title/Abstract] AND (NF2[Title/Abstract] OR neurofibromatosis type 2[Title/Abstract])"
+
+[[queries]]
+disease = "NF2-SWN"
+manifestation = "broad"
+query = "(neurofibromatosis type 2[Title/Abstract] OR merlin[Title/Abstract] OR NF2 gene[Title/Abstract]) AND (therapeutic target[Title/Abstract] OR signaling[Title/Abstract] OR YAP[Title/Abstract])"
+
+[[queries]]
+disease = "NF2-SWN"
+manifestation = "Non-vestibular schwannoma"
+query = "(spinal schwannoma[Title/Abstract] OR non-vestibular schwannoma[Title/Abstract] OR peripheral schwannoma[Title/Abstract]) AND (NF2[Title/Abstract] OR target[Title/Abstract])"
+
+[[queries]]
+disease = "NF2-SWN"
+manifestation = "Vestibular schwannoma"
+query = "vestibular schwannoma[Title/Abstract] AND (bevacizumab[Title/Abstract] OR VEGF[Title/Abstract] OR brigatinib[Title/Abstract] OR everolimus[Title/Abstract] OR clinical trial[Title/Abstract])"
+
+[[queries]]
+disease = "SWN"
+manifestation = "broad"
+query = "(schwannomatosis[Title/Abstract]) AND (SMARCB1[Title/Abstract] OR LZTR1[Title/Abstract] OR mechanism[Title/Abstract] OR target[Title/Abstract])"
+
+[[queries]]
+disease = "SWN"
+manifestation = "Pain"
+query = "schwannomatosis[Title/Abstract] AND pain[Title/Abstract]"
+
+[[queries]]
+disease = "SWN"
+manifestation = "broad"
+query = "LZTR1[Title/Abstract] AND (RAS[Title/Abstract] OR degradation[Title/Abstract] OR ubiquitin[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Plexiform neurofibroma"
+query = "(selumetinib[Title/Abstract] OR mirdametinib[Title/Abstract] OR trametinib[Title/Abstract] OR binimetinib[Title/Abstract]) AND neurofibroma[Title/Abstract]"
+
+[[queries]]
+disease = "NF1"
+manifestation = "broad"
+query = "neurofibromatosis[Title/Abstract] AND (mTOR[Title/Abstract] OR everolimus[Title/Abstract] OR sirolimus[Title/Abstract] OR rapamycin[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Plexiform neurofibroma"
+query = "neurofibroma[Title/Abstract] AND (macrophage[Title/Abstract] OR CSF1R[Title/Abstract] OR mast cell[Title/Abstract] OR KIT[Title/Abstract] OR imatinib[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "Malignant peripheral nerve sheath tumor (MPNST)"
+query = "MPNST[Title/Abstract] AND (PRC2[Title/Abstract] OR EED[Title/Abstract] OR SUZ12[Title/Abstract] OR EZH2[Title/Abstract] OR CDK4[Title/Abstract] OR aurora[Title/Abstract])"
+
+[[queries]]
+disease = "NF2-SWN"
+manifestation = "Meningioma"
+query = "meningioma[Title/Abstract] AND (FAK[Title/Abstract] OR GSK2256098[Title/Abstract] OR mTOR[Title/Abstract] OR vistusertib[Title/Abstract] OR CDK[Title/Abstract])"
+
+[[queries]]
+disease = "NF1"
+manifestation = "broad"
+query = "neurofibromatosis type 1[Title/Abstract] AND (RAS[Title/Abstract] OR RAF[Title/Abstract] OR SHP2[Title/Abstract] OR SOS1[Title/Abstract]) AND (inhibitor[Title/Abstract] OR target[Title/Abstract])"
+
+[[queries]]
+disease = "NF2-SWN"
+manifestation = "broad"
+query = "NF2[Title/Abstract] AND (Hippo[Title/Abstract] OR YAP[Title/Abstract] OR TEAD[Title/Abstract]) AND (inhibitor[Title/Abstract] OR target[Title/Abstract])"
