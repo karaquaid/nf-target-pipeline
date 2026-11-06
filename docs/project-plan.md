@@ -196,6 +196,8 @@ Phase 3b is implemented as `phase-3b/scripts/phase3b_coverage.py`, `phase3b_figu
 - Exclude or heavily downweight candidates flagged as delivery-inappropriate in Phase 4 (e.g., topical-only for a non-skin manifestation) rather than scoring them on the same footing as appropriate candidates
 - Flag candidates with insufficient evidence rather than presenting all hits as equally strong
 - Preserve each candidate's disease and manifestation labels through scoring so the final output can be filtered/grouped by both, not just ranked by score
+- **Rank within disease, not across diseases** (decided 2026-11-06). Phase 5 evidence coverage differs by disease — NF1 has both Monarch and DisMech, NF2-SWN has Monarch at disease level and DisMech only through its manifestation entries, SWN has DisMech only because Monarch carries no SMARCB1/LZTR1 schwannomatosis edge — so a composite score built from a different number of contributing sources is not comparable across NF1, NF2-SWN and SWN
+- Carry a per-candidate coverage field recording which evidence sources *could* have spoken for that candidate, so a zero from a source that has no data for the disease is distinguishable from a zero from a source that looked and found nothing. This is the Phase 6 expression of the project-wide rule that absence is not negative evidence; do not special-case which sources count per disease
 
 ## Phase 7: Literature Validation Layer
 
