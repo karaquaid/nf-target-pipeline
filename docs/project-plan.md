@@ -170,11 +170,23 @@ Phase 3b is implemented as `phase-3b/scripts/phase3b_coverage.py`, `phase3b_figu
 
 ## Phase 5: Cross-Disease Mechanistic Validation (Monarch Integration)
 
-**Claude tools:** Claude Code (Mondo/DisMech/Monarch KG API integration)
+**Claude tools:** Claude Code (Monarch KG REST integration; DisMech release-asset integration)
 
-- Standardize disease terms using Mondo
+- Standardize disease terms using Mondo. Verified CURIEs: NF1 = MONDO:0018975, NF2-SWN = MONDO:0007039, SWN = MONDO:0008075 (grouping term; molecular subtypes are SMARCB1 MONDO:0024517, LZTR1 MONDO:0014299, 22q MONDO:1030016)
 - Run DisMech mechanistic cross-checks to see whether similar mechanisms appear in related rare diseases
 - Use Monarch KG as a partial ground-truth source to sanity-check candidate targets
+
+**Resolved integration decisions (2026-11-06):**
+
+- Code and outputs live in `phase-5-mechanistic-validation/` (`data`, `docs`, `scripts`), following the existing phase-folder layout
+- Monarch KG: REST at `https://api-v3.monarchinitiative.org/v3/api`, no auth, allowlisted on request. The pre-2024 Biolink API at `api.monarchinitiative.org` is retired and `api-v2` does not exist. Client: `phase-5-mechanistic-validation/scripts/monarch_client.py`. Cite `/version` (KG release + API version) with every claim
+- DisMech has **no API**. It is a curated YAML knowledge base in `github.com/monarch-initiative/dismech` (BSD-3) rendered as a static site. Access is the GitHub contents API for one disorder, or pinned release assets for the whole KB (`mondo_emc.tsv` for the Mondo join, `kb.zip` for mechanism indexing, `dismech_{nodes,edges,sepio}.jsonl` for the KGX graph). Pin release **v0.1.46** (2026-10-29): `main` is pushed daily and carries roughly 200 more disorder YAMLs than the latest release, so figures computed off `main` drift day to day. Client: `phase-5-mechanistic-validation/scripts/dismech_client.py`
+- DisMech is **not** ingested into the Monarch KG (`primary_knowledge_source=infores:dismech` returns 0 in KG 2026-10-07). These are two separate integrations joined on Mondo CURIEs. Note the case mismatch when joining genes: DisMech writes `hgnc:11103`, Monarch writes `HGNC:11103`
+- Coverage is uneven across the three diseases, and absence of an edge is uninformative rather than negative evidence:
+  - NF1 (MONDO:0018975): full coverage in both. Monarch has the causal gene edge and 380 disease-phenotype annotations; DisMech has 12 pathophysiology nodes
+  - NF2-SWN (MONDO:0007039): Monarch has the NF2 causal edge and 76 phenotype annotations. DisMech has **no NF2-SWN entry**, so route it through its manifestation entries instead (acoustic neuroma MONDO:0001569, schwannoma MONDO:0002546, meningioma MONDO:0016642, ependymoma MONDO:0016698, MPNST MONDO:0017827)
+  - SWN (MONDO:0008075): Monarch has **no** causal gene edge for SMARCB1 or LZTR1 to any schwannomatosis term, in either direction. DisMech does cover it — its Schwannomatosis entry carries SMARCB1 SWI/SNF and LZTR1-CUL3 mechanism nodes plus a CAUSATIVE genetic section. So DisMech, not Monarch, is the evidence source for SWN
+  - Two manifestation labels map only approximately: DisMech's Neurofibroma entry is not subtyped into cutaneous vs plexiform, and Pilocytic_Astrocytoma is not optic-pathway-glioma-specific
 
 ## Phase 6: Evidence Strength Scoring
 
@@ -295,7 +307,7 @@ Phase 3b is implemented as `phase-3b/scripts/phase3b_coverage.py`, `phase3b_figu
 
 **Model/modality guidance:** Claude Code with Sonnet 5 for the API wiring; Opus 5 for interpreting DisMech mechanistic cross-check results, since judging whether two diseases share a mechanism is a reasoning task, not routine code.
 
-**Minimizing hallucination:** No Monarch-specific connector exists. Have Claude fetch current Mondo, DisMech, and Monarch KG API documentation directly before writing integration code, rather than relying on remembered endpoint structures.
+**Minimizing hallucination:** No Monarch-specific connector exists, and DisMech has no API at all — see the resolved integration decisions under Phase 5 above. Endpoint syntax for Monarch came from the live `/openapi.json`, and the DisMech asset list from the live GitHub releases API; keep doing it that way rather than relying on remembered endpoint structures. Note the name collision: "DisMech" is also an unrelated soft-robotics physics simulator, so a web search for the name alone will return the wrong project.
 
 > Standardize the candidate targets' associated disease terms using Mondo, then run DisMech mechanistic cross-checks to identify whether the same mechanism appears in other rare diseases. Use Monarch KG as a partial ground-truth check. Verify all three APIs' current endpoint syntax against their own documentation before writing the integration code, and report the source/version for each API call.
 
