@@ -3,3 +3,6 @@
 build/
 __pycache__/
 .DS_Store
+
+# Phase 4 resume cache: regenerable, not a record
+phase-4/data/phase4-gtop-cache.jsonl

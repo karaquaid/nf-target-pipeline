@@ -99,7 +99,7 @@ These six fix what every per-dataset output file contains, so they are the spec 
 
 ## Phase 3: Candidate Target Identification
 
-**Status:** run end to end on 2026-11-03. The write-up is `phase-3/docs/phase3-expression-targets.md`, the deliverable Phase 3b consumes is `phase-3/data/phase3-candidate-targets.csv` (1,755 distinct genes), and the full audit table behind it is `phase-3/data/phase3-expression-targets.csv`. Eight scripts in `phase-3/scripts/`, run in the order listed in the write-up. The Phase 2 ranked lists are the input and are not committed; they are the artifact `phase2-ranked-lists.tar.gz`.
+**Status:** run end to end on 2026-11-03. The write-up is `phase-3/docs/phase3-expression-targets.md`, the deliverable Phase 3b consumes is `phase-3/data/phase3-candidate-targets.csv` (1,755 distinct genes), and the full audit table behind it is `phase-3/data/phase3-expression-targets.csv.gz`. Eight scripts in `phase-3/scripts/`, run in the order listed in the write-up. The Phase 2 ranked lists are the input and are not committed; they are the artifact `phase2-ranked-lists.tar.gz`.
 
 **Claude tools:** Claude Code (analysis scripts for differential expression/pathway enrichment)
 
@@ -130,6 +130,17 @@ These six fix what every per-dataset output file contains, so they are the spec 
 - This is a human decision point, not something Claude should decide unprompted; document the decision and rationale (e.g., in `/docs`) so deprioritized manifestations are clearly deferred, not silently dropped
 - Only the manifestation(s) selected here carry forward into Phases 4–7; deferred manifestations' candidate lists stay in the repo for a future pass
 
+**Decision, settled 2026-11-04 by Kara.** All seven Phase 3 strata that produced a candidate carry into Phase 4. No candidate-bearing stratum is deferred. This selects nine disease and manifestation combinations: NF1 MPNST, plexiform neurofibroma, cutaneous neurofibroma, ANNUBP / atypical neurofibroma, optic pathway glioma and bone defects; NF2-SWN vestibular schwannoma, non-vestibular schwannoma and pain. The eighth stratum, `nf1_benign_subtype_vs_pnf`, produced no significant gene and so selects nothing.
+
+Consequences recorded with the decision, in `phase-3b/docs/phase3b-prioritisation.md`:
+
+- Four of the seven producing strata carry no cross-dataset support, so most of what Phase 4 annotates is tier C evidence that Phase 6 should be expected to downweight. That is the intended cost of the wide selection
+- Thirteen combinations have literature targets but no expression contrast anywhere in the Phase 2 launch set and are deferred, the largest being NF2-SWN meningioma (29 targets, 18 papers), which lost its only dataset to the standing rule that sporadic material is never a reference arm
+- Schwannomatosis contributes nothing: 6 literature targets, no usable dataset anywhere
+- Cutaneous neurofibroma's expression evidence comes entirely from a stratum labelled for MPNST, plexiform and cutaneous neurofibroma together, so those genes are a shared nerve sheath tumour signature rather than a cutaneous-specific one. The same caveat applies to NF2-SWN pain and non-vestibular schwannoma, which rest on one dataset whose strongest pathway is a skin signature
+
+Phase 3b is implemented as `phase-3b/scripts/phase3b_coverage.py`, `phase3b_figure.py` and `build_phase3b_report.py`, writing `phase-3b/data/phase3b-coverage.csv` (all 60 combinations, zeros included), `phase3b-stratum-summary.csv`, `phase-3b/docs/figures/phase3b-coverage.png` and the decision record.
+
 ## Phase 4: Drug Interaction, Selectivity, and Tractability Layer
 
 **Claude tools:** Claude Code (building/testing the DGIdb, Guide to Pharmacology, ClinicalTrials.gov, openFDA/DailyMed, and DrugBank API integrations), **ChEMBL connector** (compound_search, drug_search, get_mechanism, target_search, get_bioactivity, get_admet, grounds queries directly in the database instead of Claude's training data), **ClinicalTrials.gov connector** (search_trials, get_trial_details, search_by_sponsor, grounds clinical-stage queries directly in the database)
@@ -144,6 +155,18 @@ These six fix what every per-dataset output file contains, so they are the spec 
 - **Consolidation option:** before wiring ClinicalTrials.gov, openFDA, and DrugBank separately, evaluate the **Amass Connector** (unifies drugs, trials, regulatory approvals, genes, and patents: `get_amass_drugcore_record`, `get_amass_trialcore_record`, `get_amass_regulatorycore_record`), which may cover the same ground as those three sources through one connector instead of three separate scrapers
 - **Delivery route and CNS-penetration filter:** pull the route-of-administration field from DailyMed/openFDA labels for each candidate drug, then cross-reference against the candidate's manifestation label from Phase 1b/3. Skin-localized manifestations (Cutaneous neurofibroma, ANNUBP/atypical neurofibroma) accept topical delivery; every other manifestation requires a systemic route (oral, IV, subcutaneous, etc.). For CNS-relevant manifestations specifically (Optic pathway glioma, High grade glioma, Non-optic LGG, Cognition/Behavioral/Learning), additionally check blood-brain-barrier penetration via ChEMBL's `get_admet` data, since a systemic drug that can't cross the BBB is still inappropriate for those targets. Flag mismatches explicitly (e.g., "topical-only, excluded for GIST target") rather than silently dropping them, so the rationale is auditable later
 - Open gap: still need a source for tractability assessment on targets with no existing probe or drug; Compound VALET remains a candidate for this once it has more documentation, otherwise evaluate alternatives or literature-based review
+
+**Phase 4 integration rulings, settled 2026-11-04 during the run.** The full write-up is `phase-4/docs/phase4-drug-tractability.md`.
+
+1. **Tractability gap is closed by Open Targets, not Compound VALET.** The Open Targets connector supplies per-modality tractability buckets for every target including undrugged ones, which is exactly the assessment the open gap described. Compound VALET is no longer needed for this and is dropped rather than deferred.
+2. **The Amass Connector does not exist** in this deployment's connector catalogue, so ClinicalTrials.gov, openFDA and DrugBank were evaluated separately rather than through one connector. That open item is closed.
+3. **DGIdb and Guide to Pharmacology required network-allowlist approvals**, both granted. Guide to Pharmacology additionally now requires a registered API key (HTTP 401 without one), issued manually on request; it is read from the environment and never written to any output. The plan's description of it as an open live query is out of date.
+4. **DrugBank Open Data and SIDER stay unavailable.** Both domains are outside the sandbox allowlist and DrugBank's download also requires account registration. Approval status therefore rests on Drugs@FDA alone and post-market safety on FAERS alone, with no package-insert side-effect frequencies. ProbeMiner was not attempted; Open Targets chemical probes and Guide to Pharmacology affinities cover the selectivity question at this depth.
+5. **openFDA needs an API key for a run of this size.** The anonymous budget is 1,000 requests per day per IP; the first pass exhausted it and silently returned no FAERS data. The script now records failed requests rather than treating them as empty results, because a failed request is not an absence of adverse events.
+6. **The CNS filter is a prediction, not a measurement.** ChEMBL's ADMET data is calculated molecular properties; it holds no experimental blood-brain-barrier measurement. The flag applies stated CNS drug-likeness thresholds (TPSA, molecular weight, logP, hydrogen-bond donors) and is labelled predicted everywhere it appears.
+7. **Route data has two sources, used in order.** ChEMBL's oral / parenteral / topical booleans cover every drug with clinical data; openFDA label routes add detail for marketed products. A preclinical compound has no route by construction, so its route verdict is `route_unknown` with that reason stated, never `inappropriate`.
+8. **Phase 4 annotates the union of the expression-derived and literature-derived candidates** for the selected combinations, not the expression list alone, since the delivery filter in this section already refers to manifestation labels from Phase 1b and Phase 3 together.
+9. **Absence is distinguished from failure throughout.** The dossier separates `no drug found in any source` from `target not queryable` from `not assessed because a source was unavailable`. No blank is left where a negative finding could be read into it.
 
 ## Phase 5: Cross-Disease Mechanistic Validation (Monarch Integration)
 
@@ -194,16 +217,19 @@ These six fix what every per-dataset output file contains, so they are the spec 
 
 ## Open Items to Resolve
 
-- Revisit Compound VALET once it has more documentation for the remaining tractability gap; safety is now largely covered by ChEMBL's ADMET data, openFDA FAERS, and SIDER. A real Open Targets connector also exists if you want to reconsider it for tractability despite moving away from it earlier
-- Evaluate the Amass Connector as a possible single replacement for the separate ClinicalTrials.gov, openFDA, and DrugBank integrations before building all three
+- Resolved 2026-11-04: Compound VALET is dropped, not deferred. Open Targets tractability buckets close the gap for undrugged targets, and the Open Targets connector is now wired into Phase 4
+- Resolved 2026-11-04: the Amass Connector does not exist in this deployment, so ClinicalTrials.gov and openFDA were wired separately and DrugBank remains unavailable
+- Resolved 2026-11-04: DGIdb and Guide to Pharmacology domains are allowlisted. Guide to Pharmacology needs a manually issued API key; openFDA needs a free self-service key for any run above about 1,000 requests a day. Both are stored as credentials and read from the environment
+- Still open: DrugBank Open Data and SIDER remain unreachable, so approval status rests on Drugs@FDA alone and post-market safety on FAERS alone. If package-insert side-effect frequencies matter to the Phase 6 rubric, this is the gap to close
+- Still open for Phase 5: Monarch, Mondo and DisMech domains have not been requested yet and api-v2.monarchinitiative.org was blocked at the last check
 - Resolved: the launch set is the 21 datasets named in Phase 2, and mouse-model datasets do not carry into the Phase 2-3 first pass; they are a separate later track off the same manifest. Both are recorded in the Phase 2 section rather than here
 - Resolved 2026-10-19: GSE244433 is held for the mouse decision, so the launch set is 21
 - Resolved 2026-10-19: sporadic material is never a reference arm, the in-record arms for GSE239561, GSE318927 and GSE138347 are extracted into `de_arm`, and GSE218493 is kept rather than deferred
 - Resolved 2026-10-19: the six methodological calls are ratified; the resulting contract, including the per-dataset output schema, is `phase-2/docs/phase2-pipeline-spec.md`
 - Resolved 2026-10-20: GSE239561 is kept and contributes to the Phase 3 ranking inside its 770-gene panel space
 - Resolved 2026-11-03: the nine Phase 3 methodological calls are settled and recorded in the Phase 3 section, including the stratum scheme, Robust Rank Aggregation as the combining method, the three evidence tiers, and the decision not to threshold fold change
-- Open for Phase 3b: SWN has no dataset in the launch set and therefore no expression-derived candidate, and three manifestations (Optic pathway glioma, Bone defects, ANNUBP / atypical neurofibroma) have candidates from one dataset only. Those are explicit zeros and explicit thin rows for the coverage chart, not omissions
-- Several sources named in Phases 4-5 have no connector on this platform (DGIdb, Guide to Pharmacology, DrugBank, SIDER, ProbeMiner, Monarch/Mondo/DisMech, the Amass Connector) and several of their domains are blocked by the sandbox network allowlist. Each needs either an approved domain or a substitute (Open Targets, openFDA, ChEMBL, ClinicalTrials.gov and KEGG are reachable) before Phase 4-5 wiring starts
+- Resolved 2026-11-04: Phase 3b carries all seven candidate-bearing strata into Phase 4, selecting nine disease and manifestation combinations; the record is `phase-3b/docs/phase3b-prioritisation.md`. SWN still has no dataset in the launch set and so no expression-derived candidate, and the combinations with literature targets but no expression contrast are deferred, not dropped
+- Still open: ProbeMiner has no connector and its domain was blocked at the last check, so chemical-probe evidence is not wired in
 
 ## Appendix: Phase 1a / 1b Prompts
 

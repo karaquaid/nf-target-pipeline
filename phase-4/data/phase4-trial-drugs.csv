@@ -1,0 +1,917 @@
+query_label,nct_id,phases,status,intervention_name,intervention_type,intervention_key,matches_phase4_drug
+Malignant peripheral nerve sheath tumor (MPNST),NCT00837148,PHASE2,COMPLETED,Sorafenib and Dacarbazine,DRUG,SORAFENIB AND DACARBAZINE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00031915,PHASE2,COMPLETED,imatinib mesylate,DRUG,IMATINIB MESYLATE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT01132547,PHASE3,TERMINATED,cyproheptadine hydrochloride,DRUG,CYPROHEPTADINE HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT06735820,PHASE1; PHASE2,RECRUITING,APG-115,DRUG,APG-,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT06735820,PHASE1; PHASE2,RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00474994,PHASE2,COMPLETED,sunitinib malate,DRUG,SUNITINIB MALATE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT06638931,PHASE2,ACTIVE_NOT_RECRUITING,Nivolumab,DRUG,NIVOLUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04420975,PHASE1,ACTIVE_NOT_RECRUITING,Nanoplexed Poly I:C BO-112,BIOLOGICAL,NANOPLEXED POLY I C BO-,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04420975,PHASE1,ACTIVE_NOT_RECRUITING,Nivolumab,BIOLOGICAL,NIVOLUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT03009201,PHASE1,COMPLETED,Doxorubicin Hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT03009201,PHASE1,COMPLETED,Ribociclib,DRUG,RIBOCICLIB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT05011019,PHASE1; PHASE2,TERMINATED,AL2846 capsules,DRUG,AL CAPSULES,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00003718,PHASE2,UNKNOWN,temozolomide,DRUG,TEMOZOLOMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00006357,PHASE1; PHASE2,COMPLETED,imatinib mesylate,DRUG,IMATINIB MESYLATE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00041236,PHASE2,COMPLETED,exatecan mesylate,DRUG,EXATECAN MESYLATE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00245102,PHASE2,COMPLETED,sorafenib tosylate,DRUG,SORAFENIB TOSYLATE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT05245500,PHASE1,RECRUITING,MRTX1719,DRUG,MRTX,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT07493447,EARLY_PHASE1,RECRUITING,Panitumumab-IRDye800,DRUG,PANITUMUMAB-IRDYE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT06693284,EARLY_PHASE1,RECRUITING,mirdametinib and vorinostat,DRUG,MIRDAMETINIB AND VORINOSTAT,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00450736,PHASE1,COMPLETED,celecoxib,DRUG,CELECOXIB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT05107037,PHASE1,UNKNOWN,TQ-B3234 capsule,DRUG,TQ-B,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01189253,PHASE2; PHASE3,TERMINATED,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT01189253,PHASE2; PHASE3,TERMINATED,trabectedin,DRUG,TRABECTEDIN,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02700230,PHASE1,COMPLETED,Oncolytic Measles Virus Encoding Thyroidal Sodium Iodide Symporter,BIOLOGICAL,ONCOLYTIC MEASLES VIRUS ENCODING THYROIDAL SODIUM IODIDE SYMPORTER,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01883518,PHASE1; PHASE2,UNKNOWN,Autologous dendritic cell vaccine,BIOLOGICAL,AUTOLOGOUS DENDRITIC CELL VACCINE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00427583,PHASE2; PHASE3,TERMINATED,imatinib mesylate,DRUG,IMATINIB MESYLATE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT03880123,PHASE1,WITHDRAWN,Selinexor,DRUG,SELINEXOR,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT03880123,PHASE1,WITHDRAWN,Ixazomib,DRUG,IXAZOMIB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT05985161,PHASE2,RECRUITING,Selinexor,DRUG,SELINEXOR,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT02691026,PHASE2,TERMINATED,Pembrolizumab,DRUG,PEMBROLIZUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT03433183,PHASE2,COMPLETED,Selumetinib,DRUG,SELUMETINIB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT03433183,PHASE2,COMPLETED,Sirolimus,DRUG,SIROLIMUS,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01532687,PHASE2,COMPLETED,Gemcitabine,DRUG,GEMCITABINE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT01532687,PHASE2,COMPLETED,Gemcitabine Hydrochloride,DRUG,GEMCITABINE HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT01532687,PHASE2,COMPLETED,Pazopanib,DRUG,PAZOPANIB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT01532687,PHASE2,COMPLETED,Pazopanib Hydrochloride,DRUG,PAZOPANIB HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00030784,PHASE1,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00030784,PHASE1,COMPLETED,pegylated liposomal doxorubicin hydrochloride,DRUG,PEGYLATED LIPOSOMAL DOXORUBICIN HYDROCHLORIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT03611868,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Phase 1b: APG-115+pembrolizumab,DRUG,PHASE B APG- PEMBROLIZUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04872543,PHASE2,RECRUITING,ASTX727,DRUG,ASTX,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00589784,PHASE2,COMPLETED,Sunitinib,DRUG,SUNITINIB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT02584647,PHASE1; PHASE2,TERMINATED,PLX3397,DRUG,PLX,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02584647,PHASE1; PHASE2,TERMINATED,sirolimus,DRUG,SIROLIMUS,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT03651375,PHASE2,UNKNOWN,Sequential chemotherapy - 3 courses of AI,DRUG,SEQUENTIAL CHEMOTHERAPY - COURSES OF AI,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT06239272,PHASE1; PHASE2,RECRUITING,Pazopanib,DRUG,PAZOPANIB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT06239272,PHASE1; PHASE2,RECRUITING,Ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT06239272,PHASE1; PHASE2,RECRUITING,Doxorubicin,DRUG,DOXORUBICIN,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT06239272,PHASE1; PHASE2,RECRUITING,Selinexor,DRUG,SELINEXOR,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT03618381,PHASE1,ACTIVE_NOT_RECRUITING,second generation 4-1BBζ EGFR806-EGFRt,BIOLOGICAL,SECOND GENERATION - BB EGFR -EGFRT,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT03618381,PHASE1,ACTIVE_NOT_RECRUITING,second generation 4-1BBζ EGFR806-EGFRt and a second generation 4 1BBζ CD19-Her2tG,BIOLOGICAL,SECOND GENERATION - BB EGFR -EGFRT AND A SECOND GENERATION BB CD -HER TG,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00041249,PHASE2,COMPLETED,brostallicin,DRUG,BROSTALLICIN,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00346164,PHASE3,COMPLETED,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00346164,PHASE3,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02180867,PHASE2; PHASE3,COMPLETED,Doxorubicin,DRUG,DOXORUBICIN,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT02180867,PHASE2; PHASE3,COMPLETED,Doxorubicin Hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT02180867,PHASE2; PHASE3,COMPLETED,Ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02180867,PHASE2; PHASE3,COMPLETED,Pazopanib,DRUG,PAZOPANIB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT02180867,PHASE2; PHASE3,COMPLETED,Pazopanib Hydrochloride,DRUG,PAZOPANIB HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT06277154,PHASE2,RECRUITING,MASCT-I,BIOLOGICAL,MASCT-I,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT06277154,PHASE2,RECRUITING,Doxorubicin,DRUG,DOXORUBICIN,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT06277154,PHASE2,RECRUITING,Ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00053794,PHASE2,COMPLETED,perifosine,DRUG,PERIFOSINE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02211768,PHASE1,COMPLETED,[18F]-FLT-PET/CT scans,DRUG,F -FLT-PET CT SCANS,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04222413,PHASE1,RECRUITING,Metarrestin,DRUG,METARRESTIN,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02008877,PHASE1; PHASE2,COMPLETED,ganetespib,DRUG,GANETESPIB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02008877,PHASE1; PHASE2,COMPLETED,Sirolimus,DRUG,SIROLIMUS,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00740597,PHASE2,TERMINATED,gene expression analysis,GENETIC,GENE EXPRESSION ANALYSIS,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00740597,PHASE2,TERMINATED,polymerase chain reaction,GENETIC,POLYMERASE CHAIN REACTION,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00740597,PHASE2,TERMINATED,western blotting,GENETIC,WESTERN BLOTTING,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00003939,PHASE2,COMPLETED,trabectedin,DRUG,TRABECTEDIN,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT05253131,PHASE2,RECRUITING,Selumetinib + ZEN-3694 ± Durvalumab,COMBINATION_PRODUCT,SELUMETINIB ZEN- DURVALUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00931931,PHASE1,COMPLETED,HSV1716,BIOLOGICAL,HSV,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01661283,PHASE2,COMPLETED,everolimus,DRUG,EVEROLIMUS,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01661283,PHASE2,COMPLETED,bevacizumab,DRUG,BEVACIZUMAB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00004853,PHASE1,COMPLETED,Filgrastim,BIOLOGICAL,FILGRASTIM,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00004853,PHASE1,COMPLETED,Filgrastim-SD/01,BIOLOGICAL,FILGRASTIM-SD,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT05275478,PHASE1; PHASE2,TERMINATED,TNG908,DRUG,TNG,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT07244835,PHASE1,RECRUITING,DEG6498,DRUG,DEG,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT03719430,PHASE2,COMPLETED,Doxorubicin,DRUG,DOXORUBICIN,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT03719430,PHASE2,COMPLETED,APX005M,DRUG,APX M,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002898,PHASE3,COMPLETED,dactinomycin,BIOLOGICAL,DACTINOMYCIN,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002898,PHASE3,COMPLETED,carboplatin,DRUG,CARBOPLATIN,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002898,PHASE3,COMPLETED,cyclophosphamide,DRUG,CYCLOPHOSPHAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002898,PHASE3,COMPLETED,epirubicin hydrochloride,DRUG,EPIRUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002898,PHASE3,COMPLETED,etoposide,DRUG,ETOPOSIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002898,PHASE3,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002898,PHASE3,COMPLETED,vincristine sulfate,DRUG,VINCRISTINE SULFATE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00112463,PHASE2,COMPLETED,romidepsin,DRUG,ROMIDEPSIN,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT04530487,PHASE2,TERMINATED,Cyclosporine,DRUG,CYCLOSPORINE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04530487,PHASE2,TERMINATED,Etoposide,DRUG,ETOPOSIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT04530487,PHASE2,TERMINATED,Fludarabine Phosphate,DRUG,FLUDARABINE PHOSPHATE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT04530487,PHASE2,TERMINATED,Lapine T-Lymphocyte Immune Globulin,BIOLOGICAL,LAPINE T-LYMPHOCYTE IMMUNE GLOBULIN,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04530487,PHASE2,TERMINATED,Melphalan,DRUG,MELPHALAN,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04530487,PHASE2,TERMINATED,Mycophenolate Mofetil,DRUG,MYCOPHENOLATE MOFETIL,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04530487,PHASE2,TERMINATED,Tacrolimus,DRUG,TACROLIMUS,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04530487,PHASE2,TERMINATED,Thiotepa,DRUG,THIOTEPA,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02584309,PHASE2,COMPLETED,Dexrazoxane,DRUG,DEXRAZOXANE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT02584309,PHASE2,COMPLETED,Doxorubicin,DRUG,DOXORUBICIN,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00334984,NA,WITHDRAWN,glutamine,DRUG,GLUTAMINE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT06041516,PHASE1,RECRUITING,ADCT-701,DRUG,ADCT-,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT07549022,PHASE1; PHASE2,RECRUITING,BMS-986504,DRUG,BMS-,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04917042,PHASE2,ACTIVE_NOT_RECRUITING,Tazemetostat,DRUG,TAZEMETOSTAT,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT02601209,PHASE1; PHASE2,TERMINATED,Pazopanib,DRUG,PAZOPANIB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT02601209,PHASE1; PHASE2,TERMINATED,Pazopanib Hydrochloride,DRUG,PAZOPANIB HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT02601209,PHASE1; PHASE2,TERMINATED,Sapanisertib,DRUG,SAPANISERTIB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002764,PHASE3,COMPLETED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002764,PHASE3,COMPLETED,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002764,PHASE3,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00526149,PHASE2,COMPLETED,BI 2536,DRUG,BI,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04811196,PHASE1,COMPLETED,Selinexor,DRUG,SELINEXOR,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00003052,PHASE3,COMPLETED,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00003052,PHASE3,COMPLETED,etoposide,DRUG,ETOPOSIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00003052,PHASE3,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00061984,PHASE3,COMPLETED,pegfilgrastim,BIOLOGICAL,PEGFILGRASTIM,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00061984,PHASE3,COMPLETED,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00061984,PHASE3,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT06849986,PHASE2,RECRUITING,Tislelizumab+liposomal doxorubicin+ifosfamide,DRUG,TISLELIZUMAB LIPOSOMAL DOXORUBICIN IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04483778,PHASE1,ACTIVE_NOT_RECRUITING,second generation 4-1BBζ B7H3-EGFRt-DHFR,BIOLOGICAL,SECOND GENERATION - BB B H -EGFRT-DHFR,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04483778,PHASE1,ACTIVE_NOT_RECRUITING,second generation 4-1BBζ B7H3-EGFRt-DHFR(selected) and a second generation 4-1BBζ CD19-Her2tG,BIOLOGICAL,SECOND GENERATION - BB B H -EGFRT-DHFR AND A SECOND GENERATION - BB CD -HER TG,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04483778,PHASE1,ACTIVE_NOT_RECRUITING,Pembrolizumab,DRUG,PEMBROLIZUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00410462,PHASE2,UNKNOWN,brostallicin,DRUG,BROSTALLICIN,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00410462,PHASE2,UNKNOWN,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT05732831,PHASE1; PHASE2,RECRUITING,TNG462,DRUG,TNG,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT05732831,PHASE1; PHASE2,RECRUITING,Pembrolizumab,DRUG,PEMBROLIZUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01653028,PHASE2,COMPLETED,Alisertib,DRUG,ALISERTIB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT01119599,PHASE1,COMPLETED,Gamma-Secretase Inhibitor RO4929097,DRUG,GAMMA-SECRETASE INHIBITOR RO,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01119599,PHASE1,COMPLETED,Temozolomide,DRUG,TEMOZOLOMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00003212,PHASE3,COMPLETED,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00003212,PHASE3,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04465643,PHASE1,COMPLETED,Nivolumab,DRUG,NIVOLUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04465643,PHASE1,COMPLETED,Ipilimumab,DRUG,IPILIMUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00068367,PHASE2,COMPLETED,erlotinib hydrochloride,DRUG,ERLOTINIB HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT07743554,PHASE2,NOT_YET_RECRUITING,avutometinib capsule + defactinib tablet,DRUG,AVUTOMETINIB DEFACTINIB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02834013,PHASE2,ACTIVE_NOT_RECRUITING,Ipilimumab,BIOLOGICAL,IPILIMUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02834013,PHASE2,ACTIVE_NOT_RECRUITING,Nivolumab,BIOLOGICAL,NIVOLUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00334854,PHASE3,UNKNOWN,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00334854,PHASE3,UNKNOWN,ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04897321,PHASE1,RECRUITING,Fludarabine,DRUG,FLUDARABINE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04897321,PHASE1,RECRUITING,Cyclophosphamide,DRUG,CYCLOPHOSPHAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04897321,PHASE1,RECRUITING,MESNA,DRUG,MESNA,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT04897321,PHASE1,RECRUITING,B7-H3 CAR T cells,DRUG,B -H CAR T CELLS,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002641,PHASE3,COMPLETED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002641,PHASE3,COMPLETED,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002641,PHASE3,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00002641,PHASE3,COMPLETED,isolated perfusion,DRUG,ISOLATED PERFUSION,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01418001,PHASE1; PHASE2,TERMINATED,Pazopanib 400 mg QD - Gemcitabine and Docetaxel in Combination,DRUG,PAZOPANIB - GEMCITABINE AND DOCETAXEL IN COMBINATION,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01169584,PHASE1,COMPLETED,Recombinant Vaccinia GM-CSF; RAC VAC GM-CSF (JX-594),DRUG,RECOMBINANT VACCINIA GM-CSF RAC VAC GM-CSF,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00720174,PHASE1,COMPLETED,Cixutumumab,BIOLOGICAL,CIXUTUMUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00720174,PHASE1,COMPLETED,Doxorubicin Hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT01154452,PHASE1; PHASE2,COMPLETED,Gamma-Secretase Inhibitor RO4929097,DRUG,GAMMA-SECRETASE INHIBITOR RO,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01154452,PHASE1; PHASE2,COMPLETED,Vismodegib,DRUG,VISMODEGIB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00949325,PHASE1; PHASE2,COMPLETED,temsirolimus plus liposomal doxorubicin,DRUG,TEMSIROLIMUS PLUS LIPOSOMAL DOXORUBICIN,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00346125,NA,COMPLETED,pegfilgrastim,BIOLOGICAL,PEGFILGRASTIM,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00346125,NA,COMPLETED,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00346125,NA,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00346125,NA,COMPLETED,pegylated liposomal doxorubicin hydrochloride,DRUG,PEGYLATED LIPOSOMAL DOXORUBICIN HYDROCHLORIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00464620,PHASE2,COMPLETED,Dasatinib,DRUG,DASATINIB,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00304083,PHASE2,COMPLETED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00304083,PHASE2,COMPLETED,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00304083,PHASE2,COMPLETED,etoposide,DRUG,ETOPOSIDE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT00304083,PHASE2,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT05642455,PHASE1; PHASE2,RECRUITING,Afamitresgene autoleucel,GENETIC,AFAMITRESGENE AUTOLEUCEL,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01614795,PHASE2,COMPLETED,Cixutumumab,BIOLOGICAL,CIXUTUMUMAB,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT01614795,PHASE2,COMPLETED,Temsirolimus,DRUG,TEMSIROLIMUS,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02986919,PHASE2,WITHDRAWN,CPI-0610,DRUG,CPI-,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT00154388,PHASE2,COMPLETED,Imatinib mesylate,DRUG,IMATINIB MESYLATE,True
+Malignant peripheral nerve sheath tumor (MPNST),NCT03872427,PHASE2,ACTIVE_NOT_RECRUITING,Telaglenastat Hydrochloride,DRUG,TELAGLENASTAT HYDROCHLORIDE,False
+Malignant peripheral nerve sheath tumor (MPNST),NCT02452554,PHASE2,COMPLETED,Lorvotuzumab Mertansine,BIOLOGICAL,LORVOTUZUMAB MERTANSINE,False
+Plexiform neurofibroma,NCT01362803,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,AZD6244,DRUG,AZD,False
+Plexiform neurofibroma,NCT04954001,PHASE1; PHASE2,UNKNOWN,FCN-159,DRUG,FCN-,False
+Plexiform neurofibroma,NCT03109301,PHASE2,WITHDRAWN,Selumetinib (AZD6244 hyd sulfate) 50mg/dose,DRUG,SELUMETINIB,True
+Plexiform neurofibroma,NCT03109301,PHASE2,WITHDRAWN,Selumetinib (AZD6244 hyd sulfate) 25mg/m2,DRUG,SELUMETINIB M,False
+Plexiform neurofibroma,NCT02101736,PHASE2,COMPLETED,Cabozantinib,DRUG,CABOZANTINIB,True
+Plexiform neurofibroma,NCT05913037,PHASE3,ACTIVE_NOT_RECRUITING,"Test group (Group A): FCN-159 8 mg, orally, once daily;",DRUG,TEST GROUP FCN- ORALLY ONCE,False
+Plexiform neurofibroma,NCT05913037,PHASE3,ACTIVE_NOT_RECRUITING,"Control group (Group B): Placebo, orally, once daily;",DRUG,CONTROL GROUP ORALLY ONCE,False
+Plexiform neurofibroma,NCT02096471,PHASE2,COMPLETED,PD-0325901,DRUG,PD-,False
+Plexiform neurofibroma,NCT06104488,PHASE1,COMPLETED,Avutometinib,DRUG,AVUTOMETINIB,True
+Plexiform neurofibroma,NCT05331105,PHASE2,RECRUITING,HL-085,DRUG,HL-,False
+Plexiform neurofibroma,NCT04924608,PHASE3,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+Plexiform neurofibroma,NCT03962543,PHASE2,ACTIVE_NOT_RECRUITING,Mirdametinib (PD-0325901) oral capsule or dispersible tablet,DRUG,MIRDAMETINIB OR DISPERSIBLE,False
+Plexiform neurofibroma,NCT00030264,PHASE2,COMPLETED,Methotrexate,DRUG,METHOTREXATE,False
+Plexiform neurofibroma,NCT00030264,PHASE2,COMPLETED,Vinblastine,DRUG,VINBLASTINE,False
+Plexiform neurofibroma,NCT06502171,PHASE1,RECRUITING,Cabozantinib Oral Tablet,DRUG,CABOZANTINIB,True
+Plexiform neurofibroma,NCT06502171,PHASE1,RECRUITING,Selumetinib Oral Capsule,DRUG,SELUMETINIB,True
+Plexiform neurofibroma,NCT03741101,PHASE2,UNKNOWN,Trametinib,DRUG,TRAMETINIB,True
+Plexiform neurofibroma,NCT05309668,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Selumetinib granule formulation,DRUG,SELUMETINIB GRANULE FORMULATION,False
+Plexiform neurofibroma,NCT05309668,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Selumetinib capsule formulation,DRUG,SELUMETINIB FORMULATION,False
+Plexiform neurofibroma,NCT07407803,PHASE3,RECRUITING,TQ-B3234 capsules,DRUG,TQ-B CAPSULES,False
+Plexiform neurofibroma,NCT07407803,PHASE3,RECRUITING,TQ-B3234 placebo,DRUG,TQ-B,False
+Plexiform neurofibroma,NCT01140360,PHASE1; PHASE2,COMPLETED,Gleevec,DRUG,GLEEVEC,False
+Plexiform neurofibroma,NCT03688568,PHASE2,WITHDRAWN,Imatinib Mesylate,DRUG,IMATINIB MESYLATE,True
+Plexiform neurofibroma,NCT05825365,PHASE2,WITHDRAWN,Selumetinib,DRUG,SELUMETINIB,True
+Plexiform neurofibroma,NCT05825365,PHASE2,WITHDRAWN,Placebo,DRUG,,False
+Plexiform neurofibroma,NCT02180867,PHASE2; PHASE3,COMPLETED,Doxorubicin,DRUG,DOXORUBICIN,True
+Plexiform neurofibroma,NCT02180867,PHASE2; PHASE3,COMPLETED,Doxorubicin Hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Plexiform neurofibroma,NCT02180867,PHASE2; PHASE3,COMPLETED,Ifosfamide,DRUG,IFOSFAMIDE,False
+Plexiform neurofibroma,NCT02180867,PHASE2; PHASE3,COMPLETED,Pazopanib,DRUG,PAZOPANIB,True
+Plexiform neurofibroma,NCT02180867,PHASE2; PHASE3,COMPLETED,Pazopanib Hydrochloride,DRUG,PAZOPANIB HYDROCHLORIDE,True
+Plexiform neurofibroma,NCT03363217,PHASE2,ACTIVE_NOT_RECRUITING,Trametinib,DRUG,TRAMETINIB,True
+Plexiform neurofibroma,NCT02211768,PHASE1,COMPLETED,[18F]-FLT-PET/CT scans,DRUG,F -FLT-PET CT SCANS,False
+Plexiform neurofibroma,NCT00754780,PHASE2,COMPLETED,Pirfenidone,DRUG,PIRFENIDONE,False
+Plexiform neurofibroma,NCT00396019,PHASE2,COMPLETED,PEG-Intron,DRUG,PEG-INTRON,False
+Plexiform neurofibroma,NCT07024394,PHASE1; PHASE2,NOT_YET_RECRUITING,Luvometinib Tablets,DRUG,LUVOMETINIB TABLETS,False
+Plexiform neurofibroma,NCT00053937,PHASE1,COMPLETED,pirfenidone,DRUG,PIRFENIDONE,False
+Plexiform neurofibroma,NCT00253474,PHASE1,COMPLETED,PEG-interferon alfa-2a,BIOLOGICAL,PEG-INTERFERON ALFA- A,False
+Plexiform neurofibroma,NCT06188741,PHASE2,RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+Plexiform neurofibroma,NCT00021541,PHASE2,COMPLETED,tipifarnib,DRUG,TIPIFARNIB,False
+Plexiform neurofibroma,NCT03326388,PHASE1; PHASE2,COMPLETED,Selumetinib,DRUG,SELUMETINIB,True
+Plexiform neurofibroma,NCT01402817,PHASE2,TERMINATED,Sutent®/Sunitinib,DRUG,SUTENT SUNITINIB,False
+Plexiform neurofibroma,NCT06763315,PHASE2,NOT_YET_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+Plexiform neurofibroma,NCT05101148,PHASE1,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+Plexiform neurofibroma,NCT02177825,PHASE2,TERMINATED,Imatinib Mesylate,DRUG,IMATINIB MESYLATE,True
+Plexiform neurofibroma,NCT00634270,PHASE2,COMPLETED,Sirolimus,DRUG,SIROLIMUS,False
+Plexiform neurofibroma,NCT00076102,PHASE2,COMPLETED,Pirfenidone,DRUG,PIRFENIDONE,False
+Plexiform neurofibroma,NCT03231306,PHASE2,COMPLETED,Binimetinib,DRUG,BINIMETINIB,True
+Plexiform neurofibroma,NCT02124772,PHASE1; PHASE2,COMPLETED,Trametinib,DRUG,TRAMETINIB,True
+Plexiform neurofibroma,NCT02124772,PHASE1; PHASE2,COMPLETED,Dabrafenib,DRUG,DABRAFENIB,True
+Plexiform neurofibroma,NCT06541847,PHASE2,RECRUITING,HLX-1502,DRUG,HLX-,False
+Plexiform neurofibroma,NCT01275586,EARLY_PHASE1,COMPLETED,Tasigna,DRUG,TASIGNA,False
+Plexiform neurofibroma,NCT01412892,PHASE2,COMPLETED,RAD001: Everolimus,DRUG,RAD EVEROLIMUS,False
+Plexiform neurofibroma,NCT02407405,PHASE2,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+Plexiform neurofibroma,NCT03975829,PHASE4,ACTIVE_NOT_RECRUITING,dabrafenib,DRUG,DABRAFENIB,True
+Plexiform neurofibroma,NCT03975829,PHASE4,ACTIVE_NOT_RECRUITING,trametinib,DRUG,TRAMETINIB,True
+Plexiform neurofibroma,NCT01365468,PHASE2,TERMINATED,Everolimus (RAD001),DRUG,EVEROLIMUS,False
+Plexiform neurofibroma,NCT02390752,PHASE1,RECRUITING,TURALIO(R),DRUG,TURALIO,False
+Plexiform neurofibroma,NCT04590235,PHASE1,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+Plexiform neurofibroma,NCT00716469,PHASE1,TERMINATED,LS11,DRUG,LS,False
+Plexiform neurofibroma,NCT00326872,PHASE2,TERMINATED,Cediranib Maleate,DRUG,CEDIRANIB MALEATE,False
+Plexiform neurofibroma,NCT03649165,PHASE1,COMPLETED,Treatment A,DRUG,TREATMENT A,False
+Plexiform neurofibroma,NCT03649165,PHASE1,COMPLETED,Treatment B,DRUG,TREATMENT B,False
+Plexiform neurofibroma,NCT03649165,PHASE1,COMPLETED,Treatment C,DRUG,TREATMENT C,False
+Plexiform neurofibroma,NCT03649165,PHASE1,COMPLETED,Treatment D,DRUG,TREATMENT D,False
+Plexiform neurofibroma,NCT03649165,PHASE1,COMPLETED,Acetaminophen,DRUG,ACETAMINOPHEN,True
+Plexiform neurofibroma,NCT06961565,PHASE1,RECRUITING,PAS-004 Tablets,DRUG,PAS- TABLETS,False
+Plexiform neurofibroma,NCT06961565,PHASE1,RECRUITING,PAS-004 Capsule,DRUG,PAS-,False
+Plexiform neurofibroma,NCT01673009,PHASE2,COMPLETED,Gleevec,DRUG,GLEEVEC,False
+Plexiform neurofibroma,NCT07850635,PHASE1,NOT_YET_RECRUITING,Mirdametinib,DRUG,MIRDAMETINIB,True
+Plexiform neurofibroma,NCT00727233,PHASE1,COMPLETED,Nexavar (BAY 43-9006) (Sorafenib),DRUG,NEXAVAR,False
+Plexiform neurofibroma,NCT00727233,PHASE1,COMPLETED,"Toxicity, Pharmacokinetics",DRUG,TOXICITY PHARMACOKINETICS,False
+Plexiform neurofibroma,NCT00727233,PHASE1,COMPLETED,Pharmacodynamics,DRUG,PHARMACODYNAMICS,False
+Plexiform neurofibroma,NCT00727233,PHASE1,COMPLETED,Radiographic Evaluation,DRUG,RADIOGRAPHIC EVALUATION,False
+Plexiform neurofibroma,NCT00727233,PHASE1,COMPLETED,"QOL assessment, Neuropsychological",DRUG,QOL ASSESSMENT NEUROPSYCHOLOGICAL,False
+Plexiform neurofibroma,NCT00727233,PHASE1,COMPLETED,Bony Toxicity,DRUG,BONY TOXICITY,False
+Plexiform neurofibroma,NCT04495127,PHASE1,COMPLETED,Selumetinib,DRUG,SELUMETINIB,True
+Cutaneous neurofibroma,NCT06159166,PHASE1; PHASE2,RECRUITING,Mirdametinib,DRUG,MIRDAMETINIB,True
+Cutaneous neurofibroma,NCT02728388,PHASE2,TERMINATED,aminolevulinic acid,DRUG,AMINOLEVULINIC ACID,False
+Cutaneous neurofibroma,NCT02332902,PHASE2,COMPLETED,Everolimus,DRUG,EVEROLIMUS,False
+Cutaneous neurofibroma,NCT05521048,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Doxycycline Injection [Doxy],DRUG,DOXYCYCLINE DOXY,False
+Cutaneous neurofibroma,NCT00657202,EARLY_PHASE1,COMPLETED,Ranibizumab,DRUG,RANIBIZUMAB,True
+Cutaneous neurofibroma,NCT06120036,PHASE1,COMPLETED,Kybella,DRUG,KYBELLA,False
+Cutaneous neurofibroma,NCT06120036,PHASE1,COMPLETED,Asclera,DRUG,ASCLERA,False
+Cutaneous neurofibroma,NCT03090971,PHASE2,COMPLETED,Diclofenac Sodium,DRUG,DICLOFENAC SODIUM,True
+Cutaneous neurofibroma,NCT03090971,PHASE2,COMPLETED,Saline Solution,DRUG,SALINE,False
+Cutaneous neurofibroma,NCT06132165,PHASE1,COMPLETED,Deoxycholic Acid,DRUG,DEOXYCHOLIC ACID,False
+Cutaneous neurofibroma,NCT06132165,PHASE1,COMPLETED,Polidocanol,DRUG,POLIDOCANOL,False
+Cutaneous neurofibroma,NCT05438290,PHASE1,COMPLETED,DPCP,DRUG,DPCP,False
+Cutaneous neurofibroma,NCT04730583,PHASE1,COMPLETED,Kybella,DRUG,KYBELLA,False
+Cutaneous neurofibroma,NCT00865644,PHASE1,COMPLETED,Imiquimod 5% Cream,DRUG,IMIQUIMOD,False
+Cutaneous neurofibroma,NCT01031901,PHASE1,COMPLETED,Skincerity,DRUG,SKINCERITY,False
+Cutaneous neurofibroma,NCT01031901,PHASE1,COMPLETED,Skincerity plus sirolimus/rapamycin,DRUG,SKINCERITY PLUS SIROLIMUS RAPAMYCIN,False
+Cutaneous neurofibroma,NCT01031901,PHASE1,COMPLETED,Skinercity plus sirolimus/rapamycin,DRUG,SKINERCITY PLUS SIROLIMUS RAPAMYCIN,False
+Cutaneous neurofibroma,NCT03611868,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Phase 1b: APG-115+pembrolizumab,DRUG,PHASE B APG- PEMBROLIZUMAB,False
+Cutaneous neurofibroma,NCT02839720,PHASE2,COMPLETED,Selumetinib Sulfate,DRUG,SELUMETINIB SULFATE,True
+Cutaneous neurofibroma,NCT06300502,PHASE1,ENROLLING_BY_INVITATION,Kybella,DRUG,KYBELLA,False
+Cutaneous neurofibroma,NCT04435665,PHASE2,COMPLETED,NFX-179 Gel,DRUG,NFX-,False
+Cutaneous neurofibroma,NCT04435665,PHASE2,COMPLETED,Vehicle Gel,DRUG,VEHICLE,False
+Cutaneous neurofibroma,NCT05005845,PHASE2,COMPLETED,NFX-179 gel,DRUG,NFX-,False
+Cutaneous neurofibroma,NCT05005845,PHASE2,COMPLETED,Vehicle gel,DRUG,VEHICLE,False
+Cutaneous neurofibroma,NCT01682811,PHASE1,COMPLETED,Part 1 Levulan injection,DRUG,PART LEVULAN,False
+Cutaneous neurofibroma,NCT01682811,PHASE1,COMPLETED,Part 1 Levulan surface application,DRUG,PART LEVULAN SURFACE APPLICATION,False
+Cutaneous neurofibroma,NCT01682811,PHASE1,COMPLETED,Part 1 Levulan surface application twice,DRUG,PART LEVULAN SURFACE APPLICATION TWICE,False
+Cutaneous neurofibroma,NCT01682811,PHASE1,COMPLETED,Part 1 Levulan surface application twice with microneedling,DRUG,PART LEVULAN SURFACE APPLICATION TWICE WITH MICRONEEDLING,False
+Cutaneous neurofibroma,NCT01682811,PHASE1,COMPLETED,Levulan (5-aminolevulinic acid) photodynamic therapy - Dose level 1,DRUG,LEVULAN PHOTODYNAMIC THERAPY - LEVEL,False
+Cutaneous neurofibroma,NCT01682811,PHASE1,COMPLETED,Levulan (5-aminolevulinic acid) photodynamic therapy - Dose level 2,DRUG,LEVULAN PHOTODYNAMIC THERAPY - LEVEL,False
+Cutaneous neurofibroma,NCT01682811,PHASE1,COMPLETED,Levulan (5-aminolevulinic acid) photodynamic therapy - Dose level 3,DRUG,LEVULAN PHOTODYNAMIC THERAPY - LEVEL,False
+Cutaneous neurofibroma,NCT07102394,PHASE1,RECRUITING,Imlygic,DRUG,IMLYGIC,False
+Cutaneous neurofibroma,NCT06961565,PHASE1,RECRUITING,PAS-004 Tablets,DRUG,PAS- TABLETS,False
+Cutaneous neurofibroma,NCT06961565,PHASE1,RECRUITING,PAS-004 Capsule,DRUG,PAS-,False
+ANNUBP / atypical neurofibroma,NCT06735820,PHASE1; PHASE2,RECRUITING,APG-115,DRUG,APG-,False
+ANNUBP / atypical neurofibroma,NCT06735820,PHASE1; PHASE2,RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+ANNUBP / atypical neurofibroma,NCT06239272,PHASE1; PHASE2,RECRUITING,Pazopanib,DRUG,PAZOPANIB,True
+ANNUBP / atypical neurofibroma,NCT06239272,PHASE1; PHASE2,RECRUITING,Ifosfamide,DRUG,IFOSFAMIDE,False
+ANNUBP / atypical neurofibroma,NCT06239272,PHASE1; PHASE2,RECRUITING,Doxorubicin,DRUG,DOXORUBICIN,True
+ANNUBP / atypical neurofibroma,NCT06239272,PHASE1; PHASE2,RECRUITING,Selinexor,DRUG,SELINEXOR,True
+ANNUBP / atypical neurofibroma,NCT02180867,PHASE2; PHASE3,COMPLETED,Doxorubicin,DRUG,DOXORUBICIN,True
+ANNUBP / atypical neurofibroma,NCT02180867,PHASE2; PHASE3,COMPLETED,Doxorubicin Hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+ANNUBP / atypical neurofibroma,NCT02180867,PHASE2; PHASE3,COMPLETED,Ifosfamide,DRUG,IFOSFAMIDE,False
+ANNUBP / atypical neurofibroma,NCT02180867,PHASE2; PHASE3,COMPLETED,Pazopanib,DRUG,PAZOPANIB,True
+ANNUBP / atypical neurofibroma,NCT02180867,PHASE2; PHASE3,COMPLETED,Pazopanib Hydrochloride,DRUG,PAZOPANIB HYDROCHLORIDE,True
+ANNUBP / atypical neurofibroma,NCT04750928,PHASE1; PHASE2,RECRUITING,Abemaciclib,DRUG,ABEMACICLIB,True
+Optic pathway glioma,NCT03510208,PHASE1; PHASE2,RECRUITING,Panitumumab,BIOLOGICAL,PANITUMUMAB,True
+Optic pathway glioma,NCT03510208,PHASE1; PHASE2,RECRUITING,Panitumumab-IRDye800,DRUG,PANITUMUMAB-IRDYE,False
+Optic pathway glioma,NCT00112619,PHASE1,TERMINATED,topotecan hydrochloride,DRUG,TOPOTECAN HYDROCHLORIDE,True
+Optic pathway glioma,NCT00053963,PHASE1,COMPLETED,romidepsin,DRUG,ROMIDEPSIN,True
+Optic pathway glioma,NCT01132547,PHASE3,TERMINATED,cyproheptadine hydrochloride,DRUG,CYPROHEPTADINE HYDROCHLORIDE,True
+Optic pathway glioma,NCT05278715,PHASE2,UNKNOWN,Carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT05278715,PHASE2,UNKNOWN,Vincristine,DRUG,VINCRISTINE,False
+Optic pathway glioma,NCT05278715,PHASE2,UNKNOWN,Recombinant human endostatin,DRUG,RECOMBINANT HUMAN ENDOSTATIN,False
+Optic pathway glioma,NCT00445965,PHASE2,COMPLETED,DNA analysis,GENETIC,DNA ANALYSIS,False
+Optic pathway glioma,NCT01837862,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Mebendazole,DRUG,MEBENDAZOLE,False
+Optic pathway glioma,NCT01837862,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Vincristine,DRUG,VINCRISTINE,False
+Optic pathway glioma,NCT01837862,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT01837862,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT01837862,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Bevacizumab,DRUG,BEVACIZUMAB,True
+Optic pathway glioma,NCT01837862,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Irinotecan,DRUG,IRINOTECAN,False
+Optic pathway glioma,NCT01598454,PHASE1,COMPLETED,racotumomab,DRUG,RACOTUMOMAB,False
+Optic pathway glioma,NCT00019630,PHASE1,COMPLETED,doxorubicin HCl liposome,DRUG,DOXORUBICIN HCL LIPOSOME,False
+Optic pathway glioma,NCT00053118,PHASE1,COMPLETED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Optic pathway glioma,NCT00053118,PHASE1,COMPLETED,carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT00053118,PHASE1,COMPLETED,etoposide,DRUG,ETOPOSIDE,True
+Optic pathway glioma,NCT00073944,PHASE1,COMPLETED,forodesine hydrochloride,DRUG,FORODESINE HYDROCHLORIDE,False
+Optic pathway glioma,NCT01273090,PHASE1,COMPLETED,imetelstat sodium,DRUG,IMETELSTAT SODIUM,False
+Optic pathway glioma,NCT00929903,PHASE1,COMPLETED,pazopanib hydrochloride,DRUG,PAZOPANIB HYDROCHLORIDE,True
+Optic pathway glioma,NCT00019019,PHASE1,COMPLETED,carboxyamidotriazole,DRUG,CARBOXYAMIDOTRIAZOLE,False
+Optic pathway glioma,NCT00019019,PHASE1,COMPLETED,paclitaxel,DRUG,PACLITAXEL,False
+Optic pathway glioma,NCT00458744,PHASE1,WITHDRAWN,talotrexin,DRUG,TALOTREXIN,False
+Optic pathway glioma,NCT01088763,PHASE1,TERMINATED,gamma-secretase/Notch signalling pathway inhibitor RO4929097,DRUG,GAMMA-SECRETASE NOTCH SIGNALLING PATHWAY INHIBITOR RO,False
+Optic pathway glioma,NCT01088763,PHASE1,TERMINATED,dexamethasone,DRUG,DEXAMETHASONE,True
+Optic pathway glioma,NCT00019422,PHASE2,COMPLETED,carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT00019422,PHASE2,COMPLETED,lobradimil,DRUG,LOBRADIMIL,False
+Optic pathway glioma,NCT00994500,PHASE1,COMPLETED,vorinostat,DRUG,VORINOSTAT,True
+Optic pathway glioma,NCT00994500,PHASE1,COMPLETED,bortezomib,DRUG,BORTEZOMIB,False
+Optic pathway glioma,NCT05733572,PHASE2,ACTIVE_NOT_RECRUITING,CHF6467,DRUG,CHF,False
+Optic pathway glioma,NCT05733572,PHASE2,ACTIVE_NOT_RECRUITING,Placebo,DRUG,,False
+Optic pathway glioma,NCT06104488,PHASE1,COMPLETED,Avutometinib,DRUG,AVUTOMETINIB,True
+Optic pathway glioma,NCT02780804,PHASE1,COMPLETED,Entinostat,DRUG,ENTINOSTAT,True
+Optic pathway glioma,NCT00002749,PHASE2,COMPLETED,carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT07493447,EARLY_PHASE1,RECRUITING,Panitumumab-IRDye800,DRUG,PANITUMUMAB-IRDYE,False
+Optic pathway glioma,NCT02175745,NA,TERMINATED,18F-fluoro-dihydroxyphenylalanine,DRUG,F-FLUORO-DIHYDROXYPHENYLALANINE,False
+Optic pathway glioma,NCT01331616,EARLY_PHASE1,WITHDRAWN,Bevacizumab (Avastin),DRUG,BEVACIZUMAB,True
+Optic pathway glioma,NCT02584413,NA,TERMINATED,Gadolinium contrast,DRUG,GADOLINIUM CONTRAST,False
+Optic pathway glioma,NCT02976441,EARLY_PHASE1,WITHDRAWN,Temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT00004078,PHASE2,COMPLETED,irinotecan hydrochloride,DRUG,IRINOTECAN HYDROCHLORIDE,False
+Optic pathway glioma,NCT00790400,PHASE3,COMPLETED,Everolimus (RAD001),DRUG,EVEROLIMUS,False
+Optic pathway glioma,NCT00790400,PHASE3,COMPLETED,Everolimus Placebo,DRUG,EVEROLIMUS,False
+Optic pathway glioma,NCT00003597,PHASE1,COMPLETED,recombinant human thrombopoietin,BIOLOGICAL,RECOMBINANT HUMAN THROMBOPOIETIN,False
+Optic pathway glioma,NCT00003597,PHASE1,COMPLETED,carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT00003597,PHASE1,COMPLETED,etoposide,DRUG,ETOPOSIDE,True
+Optic pathway glioma,NCT00003597,PHASE1,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+Optic pathway glioma,NCT00003597,PHASE1,COMPLETED,G-CSF,BIOLOGICAL,G-CSF,False
+Optic pathway glioma,NCT00015899,PHASE1,COMPLETED,lonafarnib,DRUG,LONAFARNIB,False
+Optic pathway glioma,NCT00363272,PHASE1,COMPLETED,ispinesib,DRUG,ISPINESIB,True
+Optic pathway glioma,NCT00503724,PHASE1,COMPLETED,enzastaurin hydrochloride,DRUG,ENZASTAURIN HYDROCHLORIDE,False
+Optic pathway glioma,NCT00098761,PHASE1,COMPLETED,laromustine,DRUG,LAROMUSTINE,False
+Optic pathway glioma,NCT02029690,PHASE1,TERMINATED,ADI-PEG 20,DRUG,ADI-PEG,False
+Optic pathway glioma,NCT00006247,PHASE1,TERMINATED,semaxanib,DRUG,SEMAXANIB,True
+Optic pathway glioma,NCT01987596,PHASE3,TERMINATED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Optic pathway glioma,NCT00091182,PHASE2,COMPLETED,oxaliplatin,DRUG,OXALIPLATIN,False
+Optic pathway glioma,NCT00052780,PHASE1,COMPLETED,O6-benzylguanine,DRUG,O -BENZYLGUANINE,False
+Optic pathway glioma,NCT00052780,PHASE1,COMPLETED,temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT00052780,PHASE1,COMPLETED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Optic pathway glioma,NCT00024258,PHASE2,COMPLETED,arsenic trioxide,DRUG,ARSENIC TRIOXIDE,False
+Optic pathway glioma,NCT01553149,PHASE2,COMPLETED,Lenalidomide,DRUG,LENALIDOMIDE,False
+Optic pathway glioma,NCT00066248,PHASE2,COMPLETED,cyproheptadine hydrochloride,DRUG,CYPROHEPTADINE HYDROCHLORIDE,True
+Optic pathway glioma,NCT00066248,PHASE2,COMPLETED,megestrol acetate,DRUG,MEGESTROL ACETATE,True
+Optic pathway glioma,NCT00003477,PHASE2,COMPLETED,Antineoplaston therapy (Atengenal + Astugenal),DRUG,ANTINEOPLASTON THERAPY,False
+Optic pathway glioma,NCT01076530,PHASE1,COMPLETED,vorinostat,DRUG,VORINOSTAT,True
+Optic pathway glioma,NCT01076530,PHASE1,COMPLETED,temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT00326664,PHASE1,COMPLETED,Cediranib Maleate,DRUG,CEDIRANIB MALEATE,False
+Optic pathway glioma,NCT00017147,PHASE3,COMPLETED,carmustine,DRUG,CARMUSTINE,False
+Optic pathway glioma,NCT00017147,PHASE3,COMPLETED,O6-Benzylguanine,DRUG,O -BENZYLGUANINE,False
+Optic pathway glioma,NCT00238173,PHASE1,TERMINATED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Optic pathway glioma,NCT00238173,PHASE1,TERMINATED,acetylcysteine,DRUG,ACETYLCYSTEINE,False
+Optic pathway glioma,NCT00238173,PHASE1,TERMINATED,carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT00238173,PHASE1,TERMINATED,cyclophosphamide,DRUG,CYCLOPHOSPHAMIDE,False
+Optic pathway glioma,NCT00238173,PHASE1,TERMINATED,etoposide phosphate,DRUG,ETOPOSIDE PHOSPHATE,True
+Optic pathway glioma,NCT00238173,PHASE1,TERMINATED,mannitol,DRUG,MANNITOL,False
+Optic pathway glioma,NCT00238173,PHASE1,TERMINATED,sodium thiosulfate,DRUG,SODIUM THIOSULFATE,False
+Optic pathway glioma,NCT02839720,PHASE2,COMPLETED,Selumetinib Sulfate,DRUG,SELUMETINIB SULFATE,True
+Optic pathway glioma,NCT03363217,PHASE2,ACTIVE_NOT_RECRUITING,Trametinib,DRUG,TRAMETINIB,True
+Optic pathway glioma,NCT00036959,PHASE1,COMPLETED,ABT-751,DRUG,ABT-,False
+Optic pathway glioma,NCT00100880,PHASE1,COMPLETED,lenalidomide,DRUG,LENALIDOMIDE,False
+Optic pathway glioma,NCT00020150,PHASE1,COMPLETED,O6-benzylguanine,DRUG,O -BENZYLGUANINE,False
+Optic pathway glioma,NCT00020150,PHASE1,COMPLETED,temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT00020579,PHASE1,COMPLETED,entinostat,DRUG,ENTINOSTAT,True
+Optic pathway glioma,NCT01966809,PHASE2,TERMINATED,Photofrin photodynamic therapy.,DRUG,PHOTOFRIN PHOTODYNAMIC THERAPY,False
+Optic pathway glioma,NCT00030108,PHASE1,COMPLETED,ixabepilone,DRUG,IXABEPILONE,False
+Optic pathway glioma,NCT01331135,PHASE1,COMPLETED,sirolimus,DRUG,SIROLIMUS,False
+Optic pathway glioma,NCT00004212,PHASE1,COMPLETED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Optic pathway glioma,NCT00004212,PHASE1,COMPLETED,exatecan mesylate,DRUG,EXATECAN MESYLATE,False
+Optic pathway glioma,NCT02343224,PHASE2,COMPLETED,Pegylated interferon alpha-2b,DRUG,PEGYLATED INTERFERON ALPHA- B,False
+Optic pathway glioma,NCT02855086,PHASE1; PHASE2,TERMINATED,Cetuximab,BIOLOGICAL,CETUXIMAB,True
+Optic pathway glioma,NCT02855086,PHASE1; PHASE2,TERMINATED,Cetuximab-IRDye 800CW,DRUG,CETUXIMAB-IRDYE CW,False
+Optic pathway glioma,NCT00003466,PHASE2,COMPLETED,temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT00007813,PHASE1,COMPLETED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Optic pathway glioma,NCT00007813,PHASE1,COMPLETED,carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT00007813,PHASE1,COMPLETED,cyclophosphamide,DRUG,CYCLOPHOSPHAMIDE,False
+Optic pathway glioma,NCT00007813,PHASE1,COMPLETED,etoposide,DRUG,ETOPOSIDE,True
+Optic pathway glioma,NCT00101270,PHASE1,COMPLETED,irinotecan hydrochloride,DRUG,IRINOTECAN HYDROCHLORIDE,False
+Optic pathway glioma,NCT00101270,PHASE1,COMPLETED,oxaliplatin,DRUG,OXALIPLATIN,False
+Optic pathway glioma,NCT03419403,PHASE3,TERMINATED,Steroid eye drops,DRUG,STEROID EYE DROPS,False
+Optic pathway glioma,NCT03419403,PHASE3,TERMINATED,Vasoconstrictor eye drops,DRUG,VASOCONSTRICTOR EYE DROPS,False
+Optic pathway glioma,NCT03419403,PHASE3,TERMINATED,Ophthalmic steroid ointment,DRUG,OPHTHALMIC STEROID OINTMENT,False
+Optic pathway glioma,NCT03419403,PHASE3,TERMINATED,Depatuxizumab mafodotin,DRUG,DEPATUXIZUMAB MAFODOTIN,True
+Optic pathway glioma,NCT03419403,PHASE3,TERMINATED,Temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT03326388,PHASE1; PHASE2,COMPLETED,Selumetinib,DRUG,SELUMETINIB,True
+Optic pathway glioma,NCT01682746,PHASE1,COMPLETED,Photofrin (porfimer sodium) & photodynamic therapy.,DRUG,PHOTOFRIN PHOTODYNAMIC THERAPY,False
+Optic pathway glioma,NCT00003926,PHASE1,TERMINATED,amifostine trihydrate,DRUG,AMIFOSTINE TRIHYDRATE,False
+Optic pathway glioma,NCT00003926,PHASE1,TERMINATED,busulfan,DRUG,BUSULFAN,False
+Optic pathway glioma,NCT00003926,PHASE1,TERMINATED,filgrastim,DRUG,FILGRASTIM,False
+Optic pathway glioma,NCT00003926,PHASE1,TERMINATED,melphalan,DRUG,MELPHALAN,False
+Optic pathway glioma,NCT00003926,PHASE1,TERMINATED,thiotepa,DRUG,THIOTEPA,False
+Optic pathway glioma,NCT00006102,PHASE2,COMPLETED,becatecarin,DRUG,BECATECARIN,True
+Optic pathway glioma,NCT00005952,PHASE1; PHASE2,COMPLETED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Optic pathway glioma,NCT00005952,PHASE1; PHASE2,COMPLETED,temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT02415153,PHASE1,COMPLETED,Pomalidomide,DRUG,POMALIDOMIDE,False
+Optic pathway glioma,NCT01089101,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+Optic pathway glioma,NCT00623077,PHASE1,TERMINATED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Optic pathway glioma,NCT00623077,PHASE1,TERMINATED,busulfan,DRUG,BUSULFAN,False
+Optic pathway glioma,NCT00623077,PHASE1,TERMINATED,etoposide,DRUG,ETOPOSIDE,True
+Optic pathway glioma,NCT00623077,PHASE1,TERMINATED,ifosfamide,DRUG,IFOSFAMIDE,False
+Optic pathway glioma,NCT00623077,PHASE1,TERMINATED,melphalan,DRUG,MELPHALAN,False
+Optic pathway glioma,NCT00623077,PHASE1,TERMINATED,thiotepa,DRUG,THIOTEPA,False
+Optic pathway glioma,NCT00623077,PHASE1,TERMINATED,Mesna,DRUG,MESNA,False
+Optic pathway glioma,NCT00063973,PHASE1,COMPLETED,cilengitide,DRUG,CILENGITIDE,False
+Optic pathway glioma,NCT00003015,PHASE3,UNKNOWN,carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT00003015,PHASE3,UNKNOWN,vincristine sulfate,DRUG,VINCRISTINE SULFATE,True
+Optic pathway glioma,NCT00002608,PHASE2,COMPLETED,cisplatin,DRUG,CISPLATIN,False
+Optic pathway glioma,NCT00002608,PHASE2,COMPLETED,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+Optic pathway glioma,NCT00002608,PHASE2,COMPLETED,tamoxifen citrate,DRUG,TAMOXIFEN CITRATE,True
+Optic pathway glioma,NCT02372409,PHASE2,TERMINATED,Doxorubicin,DRUG,DOXORUBICIN,True
+Optic pathway glioma,NCT02372409,PHASE2,TERMINATED,Etoposide,DRUG,ETOPOSIDE,True
+Optic pathway glioma,NCT01661400,PHASE1,COMPLETED,Metronomic Cyclophosphamide,DRUG,METRONOMIC CYCLOPHOSPHAMIDE,False
+Optic pathway glioma,NCT01661400,PHASE1,COMPLETED,Thalidomide,DRUG,THALIDOMIDE,False
+Optic pathway glioma,NCT00002647,PHASE1,UNKNOWN,verteporfin,DRUG,VERTEPORFIN,False
+Optic pathway glioma,NCT00138216,PHASE1,COMPLETED,irinotecan hydrochloride,DRUG,IRINOTECAN HYDROCHLORIDE,False
+Optic pathway glioma,NCT00138216,PHASE1,COMPLETED,temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT00138216,PHASE1,COMPLETED,vincristine sulfate,DRUG,VINCRISTINE SULFATE,True
+Optic pathway glioma,NCT00679354,PHASE2,COMPLETED,cilengitide,DRUG,CILENGITIDE,False
+Optic pathway glioma,NCT01338857,PHASE2,TERMINATED,Sorafenib (Nexavar),DRUG,SORAFENIB,True
+Optic pathway glioma,NCT00360854,PHASE1,UNKNOWN,erlotinib hydrochloride,DRUG,ERLOTINIB HYDROCHLORIDE,True
+Optic pathway glioma,NCT00360854,PHASE1,UNKNOWN,mutation analysis,GENETIC,MUTATION ANALYSIS,False
+Optic pathway glioma,NCT00360854,PHASE1,UNKNOWN,polymorphism analysis,GENETIC,POLYMORPHISM ANALYSIS,False
+Optic pathway glioma,NCT00349024,NA,UNKNOWN,polyvinylpyrrolidone-sodium hyaluronate gel,DRUG,POLYVINYLPYRROLIDONE-SODIUM HYALURONATE,False
+Optic pathway glioma,NCT00012181,PHASE1,COMPLETED,alvocidib,DRUG,ALVOCIDIB,True
+Optic pathway glioma,NCT01505569,NA,COMPLETED,Ifosfamide,DRUG,IFOSFAMIDE,False
+Optic pathway glioma,NCT01505569,NA,COMPLETED,Etoposide,DRUG,ETOPOSIDE,True
+Optic pathway glioma,NCT01505569,NA,COMPLETED,Mesna,DRUG,MESNA,False
+Optic pathway glioma,NCT01505569,NA,COMPLETED,G-CSF,BIOLOGICAL,G-CSF,False
+Optic pathway glioma,NCT01505569,NA,COMPLETED,Busulfan,DRUG,BUSULFAN,False
+Optic pathway glioma,NCT01505569,NA,COMPLETED,Melphalan,DRUG,MELPHALAN,False
+Optic pathway glioma,NCT01505569,NA,COMPLETED,Thiotepa,DRUG,THIOTEPA,False
+Optic pathway glioma,NCT01505569,NA,COMPLETED,Autologous stem cell infusion,BIOLOGICAL,AUTOLOGOUS STEM CELL,False
+Optic pathway glioma,NCT01505569,NA,COMPLETED,Carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT01505569,NA,COMPLETED,Paclitaxel,DRUG,PACLITAXEL,False
+Optic pathway glioma,NCT01505569,NA,COMPLETED,Anti-seizure prophylaxis,DRUG,ANTI-SEIZURE PROPHYLAXIS,False
+Optic pathway glioma,NCT01505569,NA,COMPLETED,Ursodiol,DRUG,URSODIOL,False
+Optic pathway glioma,NCT01158300,PHASE1,COMPLETED,VEGF inhibitor PTC299,DRUG,VEGF INHIBITOR PTC,False
+Optic pathway glioma,NCT01260103,PHASE3,WITHDRAWN,Temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT01260103,PHASE3,WITHDRAWN,ANP Therapy,DRUG,ANP THERAPY,False
+Optic pathway glioma,NCT00946335,PHASE1,COMPLETED,veliparib,DRUG,VELIPARIB,True
+Optic pathway glioma,NCT00946335,PHASE1,COMPLETED,temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT00002944,PHASE3,COMPLETED,carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT00002944,PHASE3,COMPLETED,lomustine,DRUG,LOMUSTINE,False
+Optic pathway glioma,NCT00002944,PHASE3,COMPLETED,procarbazine hydrochloride,DRUG,PROCARBAZINE HYDROCHLORIDE,False
+Optic pathway glioma,NCT00002944,PHASE3,COMPLETED,thioguanine,DRUG,THIOGUANINE,False
+Optic pathway glioma,NCT00002944,PHASE3,COMPLETED,vincristine sulfate,DRUG,VINCRISTINE SULFATE,True
+Optic pathway glioma,NCT06684795,PHASE2,UNKNOWN,FG001 prior to surgery,DRUG,FG PRIOR TO SURGERY,False
+Optic pathway glioma,NCT00006246,PHASE1,COMPLETED,busulfan,DRUG,BUSULFAN,False
+Optic pathway glioma,NCT05199584,PHASE2,COMPLETED,ENV-101 (taladegib),DRUG,ENV-,False
+Optic pathway glioma,NCT00638898,PHASE1,COMPLETED,busulfan,DRUG,BUSULFAN,False
+Optic pathway glioma,NCT00638898,PHASE1,COMPLETED,melphalan,DRUG,MELPHALAN,False
+Optic pathway glioma,NCT00638898,PHASE1,COMPLETED,topotecan hydrochloride,DRUG,TOPOTECAN HYDROCHLORIDE,True
+Optic pathway glioma,NCT00638898,PHASE1,COMPLETED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+Optic pathway glioma,NCT00003765,PHASE1,COMPLETED,O6-benzylguanine,DRUG,O -BENZYLGUANINE,False
+Optic pathway glioma,NCT00003765,PHASE1,COMPLETED,carmustine,DRUG,CARMUSTINE,False
+Optic pathway glioma,NCT00107458,PHASE1,COMPLETED,valproic acid,DRUG,VALPROIC ACID,False
+Optic pathway glioma,NCT00276640,NA,COMPLETED,"vincristine, carboplatin",DRUG,VINCRISTINE CARBOPLATIN,False
+Optic pathway glioma,NCT00276640,NA,COMPLETED,"vincristine, carboplatin, etoposide",DRUG,VINCRISTINE CARBOPLATIN ETOPOSIDE,False
+Optic pathway glioma,NCT00314925,PHASE1,UNKNOWN,Seneca Valley Virus (biological agent),DRUG,SENECA VALLEY VIRUS,False
+Optic pathway glioma,NCT07609472,PHASE2,NOT_YET_RECRUITING,FG001,DRUG,FG,False
+Optic pathway glioma,NCT00538850,PHASE3,COMPLETED,Fentanyl sublingual spray,DRUG,FENTANYL SUBLINGUAL SPRAY,False
+Optic pathway glioma,NCT00538850,PHASE3,COMPLETED,Placebo,DRUG,,False
+Optic pathway glioma,NCT00070525,PHASE2,COMPLETED,tipifarnib,DRUG,TIPIFARNIB,False
+Optic pathway glioma,NCT00352495,PHASE1,COMPLETED,carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT00352495,PHASE1,COMPLETED,vinblastine sulfate,DRUG,VINBLASTINE SULFATE,True
+Optic pathway glioma,NCT00788125,PHASE1; PHASE2,TERMINATED,carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT00788125,PHASE1; PHASE2,TERMINATED,dasatinib,DRUG,DASATINIB,True
+Optic pathway glioma,NCT00788125,PHASE1; PHASE2,TERMINATED,etoposide phosphate,DRUG,ETOPOSIDE PHOSPHATE,True
+Optic pathway glioma,NCT00788125,PHASE1; PHASE2,TERMINATED,ifosfamide,DRUG,IFOSFAMIDE,False
+Optic pathway glioma,NCT00788125,PHASE1; PHASE2,TERMINATED,microarray analysis,GENETIC,MICROARRAY ANALYSIS,False
+Optic pathway glioma,NCT00788125,PHASE1; PHASE2,TERMINATED,western blotting,GENETIC,WESTERN BLOTTING,False
+Optic pathway glioma,NCT00572182,PHASE1,TERMINATED,MK-0752,DRUG,MK-,False
+Optic pathway glioma,NCT00452868,EARLY_PHASE1,COMPLETED,Donepezil,DRUG,DONEPEZIL,False
+Optic pathway glioma,NCT00303940,PHASE1,COMPLETED,carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT00303940,PHASE1,COMPLETED,talabostat mesylate,DRUG,TALABOSTAT MESYLATE,False
+Optic pathway glioma,NCT00303940,PHASE1,COMPLETED,temozolomide,DRUG,TEMOZOLOMIDE,False
+Optic pathway glioma,NCT03871257,PHASE3,ACTIVE_NOT_RECRUITING,Carboplatin,DRUG,CARBOPLATIN,False
+Optic pathway glioma,NCT03871257,PHASE3,ACTIVE_NOT_RECRUITING,Selumetinib Sulfate,DRUG,SELUMETINIB SULFATE,True
+Optic pathway glioma,NCT03871257,PHASE3,ACTIVE_NOT_RECRUITING,Vincristine Sulfate,DRUG,VINCRISTINE SULFATE,True
+Vestibular schwannoma,NCT05116878,NA,TERMINATED,Omega-3,DIETARY_SUPPLEMENT,OMEGA-,False
+Vestibular schwannoma,NCT05116878,NA,TERMINATED,Placebo,DIETARY_SUPPLEMENT,,False
+Vestibular schwannoma,NCT04148534,NA,COMPLETED,"Rocroniom, Non Depolarizing Muscle Relaxant",DRUG,ROCRONIOM NON DEPOLARIZING MUSCLE RELAXANT,False
+Vestibular schwannoma,NCT04374305,PHASE2,RECRUITING,Brigatinib,DRUG,BRIGATINIB,True
+Vestibular schwannoma,NCT04374305,PHASE2,RECRUITING,Neratinib,DRUG,NERATINIB,True
+Vestibular schwannoma,NCT04374305,PHASE2,RECRUITING,Retifanlimab,DRUG,RETIFANLIMAB,False
+Vestibular schwannoma,NCT04374305,PHASE2,RECRUITING,Bevacizumab,DRUG,BEVACIZUMAB,True
+Vestibular schwannoma,NCT07707947,PHASE2,NOT_YET_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+Vestibular schwannoma,NCT05521048,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Doxycycline Injection [Doxy],DRUG,DOXYCYCLINE DOXY,False
+Vestibular schwannoma,NCT02379754,PHASE4,WITHDRAWN,Gentamicins,DRUG,GENTAMICINS,False
+Vestibular schwannoma,NCT01083966,PHASE1,SUSPENDED,Bevacizumab (Avastin),DRUG,BEVACIZUMAB,True
+Vestibular schwannoma,NCT00911248,PHASE2,TERMINATED,PTC299,DRUG,PTC,False
+Vestibular schwannoma,NCT06517888,PHASE1; PHASE2,RECRUITING,AAVAnc80-antiVEGF via Akouos Delivery Device,COMBINATION_PRODUCT,AAVANC -ANTIVEGF VIA AKOUOS DELIVERY DEVICE,False
+Vestibular schwannoma,NCT04283669,PHASE2,COMPLETED,Crizotinib,DRUG,CRIZOTINIB,True
+Vestibular schwannoma,NCT07493447,EARLY_PHASE1,RECRUITING,Panitumumab-IRDye800,DRUG,PANITUMUMAB-IRDYE,False
+Vestibular schwannoma,NCT02831257,PHASE2,COMPLETED,AZD2014,DRUG,AZD,False
+Vestibular schwannoma,NCT01880749,EARLY_PHASE1,COMPLETED,RAD001,DRUG,RAD,False
+Vestibular schwannoma,NCT01199978,PHASE2,ACTIVE_NOT_RECRUITING,Losartan,DRUG,LOSARTAN,False
+Vestibular schwannoma,NCT03393689,PHASE2,UNKNOWN,One injection of 68Ga-NODAGA-E[c(RGDyK)]2,DRUG,ONE OF GA-NODAGA-E C,False
+Vestibular schwannoma,NCT07713745,PHASE2,NOT_YET_RECRUITING,Selumetinib 25mg/m2,DRUG,SELUMETINIB M,False
+Vestibular schwannoma,NCT07713745,PHASE2,NOT_YET_RECRUITING,Luvometinib,DRUG,LUVOMETINIB,False
+Vestibular schwannoma,NCT07713745,PHASE2,NOT_YET_RECRUITING,Serplulimab,DRUG,SERPLULIMAB,False
+Vestibular schwannoma,NCT05130866,PHASE2; PHASE3,TERMINATED,REC-2282,DRUG,REC-,False
+Vestibular schwannoma,NCT05130866,PHASE2; PHASE3,TERMINATED,Placebo,DRUG,,False
+Vestibular schwannoma,NCT02104323,PHASE2,COMPLETED,Endostatin,DRUG,ENDOSTATIN,False
+Vestibular schwannoma,NCT04801953,PHASE2,UNKNOWN,NiMODipine Injectable Solution,DRUG,NIMODIPINE INJECTABLE,False
+Vestibular schwannoma,NCT00589784,PHASE2,COMPLETED,Sunitinib,DRUG,SUNITINIB,True
+Vestibular schwannoma,NCT07116811,PHASE3,RECRUITING,Steroids therapy,DRUG,STEROIDS THERAPY,False
+Vestibular schwannoma,NCT07116811,PHASE3,RECRUITING,Placebo,DRUG,,False
+Vestibular schwannoma,NCT01207687,PHASE2,COMPLETED,bevacizumab,BIOLOGICAL,BEVACIZUMAB,True
+Vestibular schwannoma,NCT02129647,PHASE2,COMPLETED,Axitinib,DRUG,AXITINIB,True
+Vestibular schwannoma,NCT01345136,PHASE2,TERMINATED,"RAD001, everolimus",DRUG,RAD EVEROLIMUS,False
+Vestibular schwannoma,NCT01201538,PHASE2,TERMINATED,Nilotinib,DRUG,NILOTINIB,True
+Vestibular schwannoma,NCT07131722,PHASE1; PHASE2,NOT_YET_RECRUITING,Trineumin,DRUG,TRINEUMIN,False
+Vestibular schwannoma,NCT06322342,PHASE2,COMPLETED,RVP-001,DRUG,RVP-,False
+Vestibular schwannoma,NCT07708285,PHASE1; PHASE2,NOT_YET_RECRUITING,Luvometinib,DRUG,LUVOMETINIB,False
+Vestibular schwannoma,NCT07708285,PHASE1; PHASE2,NOT_YET_RECRUITING,Serplulimab,DRUG,SERPLULIMAB,False
+Vestibular schwannoma,NCT02415257,PHASE4,WITHDRAWN,Gentamicin,DRUG,GENTAMICIN,False
+Vestibular schwannoma,NCT01490476,PHASE2,COMPLETED,RAD001,DRUG,RAD,False
+Vestibular schwannoma,NCT02282917,EARLY_PHASE1,TERMINATED,AR-42,DRUG,AR-,False
+Vestibular schwannoma,NCT03095248,PHASE2,TERMINATED,Selumetinib,DRUG,SELUMETINIB,True
+Vestibular schwannoma,NCT03710564,PHASE3,TERMINATED,Brolucizumab,BIOLOGICAL,BROLUCIZUMAB,True
+Vestibular schwannoma,NCT03710564,PHASE3,TERMINATED,Aflibercept,BIOLOGICAL,AFLIBERCEPT,True
+Vestibular schwannoma,NCT01552434,PHASE1,TERMINATED,Bevacizumab,BIOLOGICAL,BEVACIZUMAB,True
+Vestibular schwannoma,NCT01552434,PHASE1,TERMINATED,Cetuximab,BIOLOGICAL,CETUXIMAB,True
+Vestibular schwannoma,NCT01552434,PHASE1,TERMINATED,Temsirolimus,DRUG,TEMSIROLIMUS,False
+Vestibular schwannoma,NCT01552434,PHASE1,TERMINATED,Valproic Acid,DRUG,VALPROIC ACID,False
+Vestibular schwannoma,NCT04658836,PHASE1,COMPLETED,Triamcinolone Acetonide 40mg/mL,DRUG,TRIAMCINOLONE ACETONIDE,True
+Vestibular schwannoma,NCT01419639,PHASE2,COMPLETED,"Everolimus (RAD001) , Afinitor®",DRUG,EVEROLIMUS AFINITOR,False
+Vestibular schwannoma,NCT00973739,PHASE2,COMPLETED,Lapatinib,DRUG,LAPATINIB,True
+Vestibular schwannoma,NCT02963896,NA,COMPLETED,gentamicin,DRUG,GENTAMICIN,False
+Vestibular schwannoma,NCT01125046,PHASE2,COMPLETED,bevacizumab,BIOLOGICAL,BEVACIZUMAB,True
+Vestibular schwannoma,NCT01119599,PHASE1,COMPLETED,Gamma-Secretase Inhibitor RO4929097,DRUG,GAMMA-SECRETASE INHIBITOR RO,False
+Vestibular schwannoma,NCT01119599,PHASE1,COMPLETED,Temozolomide,DRUG,TEMOZOLOMIDE,False
+Vestibular schwannoma,NCT00863122,EARLY_PHASE1,COMPLETED,lapatinib,DRUG,LAPATINIB,True
+Vestibular schwannoma,NCT04351373,PHASE2,COMPLETED,Fluorescein Sodium,DRUG,FLUORESCEIN SODIUM,True
+Vestibular schwannoma,NCT03079999,PHASE2,ACTIVE_NOT_RECRUITING,Aspirin,DRUG,ASPIRIN,True
+Vestibular schwannoma,NCT03079999,PHASE2,ACTIVE_NOT_RECRUITING,Placebo,DRUG,,False
+Vestibular schwannoma,NCT02934256,PHASE2,COMPLETED,Icotinib,DRUG,ICOTINIB,True
+Vestibular schwannoma,NCT00438087,PHASE3,COMPLETED,methylprednisolone,DRUG,METHYLPREDNISOLONE,True
+Vestibular schwannoma,NCT01767792,PHASE2,COMPLETED,Bevacizumab,DRUG,BEVACIZUMAB,True
+Vestibular schwannoma,NCT07479446,NA,RECRUITING,Oliceridine,DRUG,OLICERIDINE,False
+Vestibular schwannoma,NCT07479446,NA,RECRUITING,Sufentanil,DRUG,SUFENTANIL,False
+Vestibular schwannoma,NCT04743310,PHASE2,COMPLETED,tozuleristide,DRUG,TOZULERISTIDE,True
+Non-vestibular schwannoma,NCT04148534,NA,COMPLETED,"Rocroniom, Non Depolarizing Muscle Relaxant",DRUG,ROCRONIOM NON DEPOLARIZING MUSCLE RELAXANT,False
+Non-vestibular schwannoma,NCT05521048,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Doxycycline Injection [Doxy],DRUG,DOXYCYCLINE DOXY,False
+Non-vestibular schwannoma,NCT00911248,PHASE2,TERMINATED,PTC299,DRUG,PTC,False
+Non-vestibular schwannoma,NCT02988726,PHASE2,TERMINATED,Antineoplaston therapy (Atengenal + Astugenal),DRUG,ANTINEOPLASTON THERAPY,False
+Non-vestibular schwannoma,NCT07493447,EARLY_PHASE1,RECRUITING,Panitumumab-IRDye800,DRUG,PANITUMUMAB-IRDYE,False
+Non-vestibular schwannoma,NCT02831257,PHASE2,COMPLETED,AZD2014,DRUG,AZD,False
+Non-vestibular schwannoma,NCT05130866,PHASE2; PHASE3,TERMINATED,REC-2282,DRUG,REC-,False
+Non-vestibular schwannoma,NCT05130866,PHASE2; PHASE3,TERMINATED,Placebo,DRUG,,False
+Non-vestibular schwannoma,NCT05684692,PHASE2,RECRUITING,Siltuximab,DRUG,SILTUXIMAB,False
+Non-vestibular schwannoma,NCT05684692,PHASE2,RECRUITING,Erenumab-Aooe,DRUG,ERENUMAB-AOOE,False
+Non-vestibular schwannoma,NCT05684692,PHASE2,RECRUITING,Siltuximab Matching Placebo,DRUG,SILTUXIMAB MATCHING,False
+Non-vestibular schwannoma,NCT05684692,PHASE2,RECRUITING,Erenumab-Aooe Matching Placebo,DRUG,ERENUMAB-AOOE MATCHING,False
+Non-vestibular schwannoma,NCT04094610,PHASE1; PHASE2,RECRUITING,Oral repotrectinib (TPX-0005),DRUG,REPOTRECTINIB,True
+Non-vestibular schwannoma,NCT00589784,PHASE2,COMPLETED,Sunitinib,DRUG,SUNITINIB,True
+Non-vestibular schwannoma,NCT07131722,PHASE1; PHASE2,NOT_YET_RECRUITING,Trineumin,DRUG,TRINEUMIN,False
+Non-vestibular schwannoma,NCT06322342,PHASE2,COMPLETED,RVP-001,DRUG,RVP-,False
+Non-vestibular schwannoma,NCT03710564,PHASE3,TERMINATED,Brolucizumab,BIOLOGICAL,BROLUCIZUMAB,True
+Non-vestibular schwannoma,NCT03710564,PHASE3,TERMINATED,Aflibercept,BIOLOGICAL,AFLIBERCEPT,True
+Non-vestibular schwannoma,NCT01552434,PHASE1,TERMINATED,Bevacizumab,BIOLOGICAL,BEVACIZUMAB,True
+Non-vestibular schwannoma,NCT01552434,PHASE1,TERMINATED,Cetuximab,BIOLOGICAL,CETUXIMAB,True
+Non-vestibular schwannoma,NCT01552434,PHASE1,TERMINATED,Temsirolimus,DRUG,TEMSIROLIMUS,False
+Non-vestibular schwannoma,NCT01552434,PHASE1,TERMINATED,Valproic Acid,DRUG,VALPROIC ACID,False
+Non-vestibular schwannoma,NCT01419639,PHASE2,COMPLETED,"Everolimus (RAD001) , Afinitor®",DRUG,EVEROLIMUS AFINITOR,False
+Non-vestibular schwannoma,NCT04163419,PHASE2,UNKNOWN,Tanezumab,DRUG,TANEZUMAB,True
+Non-vestibular schwannoma,NCT04163419,PHASE2,UNKNOWN,Placebo,DRUG,,False
+Non-vestibular schwannoma,NCT03542773,PHASE1,COMPLETED,18F-DCFPyL Injection,DRUG,F-DCFPYL,False
+Non-vestibular schwannoma,NCT01125046,PHASE2,COMPLETED,bevacizumab,BIOLOGICAL,BEVACIZUMAB,True
+Non-vestibular schwannoma,NCT01119599,PHASE1,COMPLETED,Gamma-Secretase Inhibitor RO4929097,DRUG,GAMMA-SECRETASE INHIBITOR RO,False
+Non-vestibular schwannoma,NCT01119599,PHASE1,COMPLETED,Temozolomide,DRUG,TEMOZOLOMIDE,False
+Non-vestibular schwannoma,NCT00154388,PHASE2,COMPLETED,Imatinib mesylate,DRUG,IMATINIB MESYLATE,True
+Non-vestibular schwannoma,NCT07479446,NA,RECRUITING,Oliceridine,DRUG,OLICERIDINE,False
+Non-vestibular schwannoma,NCT07479446,NA,RECRUITING,Sufentanil,DRUG,SUFENTANIL,False
+Pain,NCT05684692,PHASE2,RECRUITING,Siltuximab,DRUG,SILTUXIMAB,False
+Pain,NCT05684692,PHASE2,RECRUITING,Erenumab-Aooe,DRUG,ERENUMAB-AOOE,False
+Pain,NCT05684692,PHASE2,RECRUITING,Siltuximab Matching Placebo,DRUG,SILTUXIMAB MATCHING,False
+Pain,NCT05684692,PHASE2,RECRUITING,Erenumab-Aooe Matching Placebo,DRUG,ERENUMAB-AOOE MATCHING,False
+Pain,NCT04163419,PHASE2,UNKNOWN,Tanezumab,DRUG,TANEZUMAB,True
+Pain,NCT04163419,PHASE2,UNKNOWN,Placebo,DRUG,,False
+_disease_NF1,NCT06159166,PHASE1; PHASE2,RECRUITING,Mirdametinib,DRUG,MIRDAMETINIB,True
+_disease_NF1,NCT01362803,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,AZD6244,DRUG,AZD,False
+_disease_NF1,NCT00901849,PHASE1,COMPLETED,Tarceva and Rapamycin,DRUG,TARCEVA AND RAPAMYCIN,False
+_disease_NF1,NCT02728388,PHASE2,TERMINATED,aminolevulinic acid,DRUG,AMINOLEVULINIC ACID,False
+_disease_NF1,NCT02332902,PHASE2,COMPLETED,Everolimus,DRUG,EVEROLIMUS,False
+_disease_NF1,NCT04374305,PHASE2,RECRUITING,Brigatinib,DRUG,BRIGATINIB,True
+_disease_NF1,NCT04374305,PHASE2,RECRUITING,Neratinib,DRUG,NERATINIB,True
+_disease_NF1,NCT04374305,PHASE2,RECRUITING,Retifanlimab,DRUG,RETIFANLIMAB,False
+_disease_NF1,NCT04374305,PHASE2,RECRUITING,Bevacizumab,DRUG,BEVACIZUMAB,True
+_disease_NF1,NCT06735820,PHASE1; PHASE2,RECRUITING,APG-115,DRUG,APG-,False
+_disease_NF1,NCT06735820,PHASE1; PHASE2,RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT07707947,PHASE2,NOT_YET_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT04954001,PHASE1; PHASE2,UNKNOWN,FCN-159,DRUG,FCN-,False
+_disease_NF1,NCT05521048,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Doxycycline Injection [Doxy],DRUG,DOXYCYCLINE DOXY,False
+_disease_NF1,NCT01968590,PHASE2,TERMINATED,Cholecalciferol,DRUG,CHOLECALCIFEROL,False
+_disease_NF1,NCT07237100,PHASE2,RECRUITING,Mirdametinib,DRUG,MIRDAMETINIB,True
+_disease_NF1,NCT03109301,PHASE2,WITHDRAWN,Selumetinib (AZD6244 hyd sulfate) 50mg/dose,DRUG,SELUMETINIB,True
+_disease_NF1,NCT03109301,PHASE2,WITHDRAWN,Selumetinib (AZD6244 hyd sulfate) 25mg/m2,DRUG,SELUMETINIB M,False
+_disease_NF1,NCT00657202,EARLY_PHASE1,COMPLETED,Ranibizumab,DRUG,RANIBIZUMAB,True
+_disease_NF1,NCT06120036,PHASE1,COMPLETED,Kybella,DRUG,KYBELLA,False
+_disease_NF1,NCT06120036,PHASE1,COMPLETED,Asclera,DRUG,ASCLERA,False
+_disease_NF1,NCT04201457,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Dabrafenib,DRUG,DABRAFENIB,True
+_disease_NF1,NCT04201457,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Trametinib,DRUG,TRAMETINIB,True
+_disease_NF1,NCT04201457,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Hydroxychloroquine,DRUG,HYDROXYCHLOROQUINE,False
+_disease_NF1,NCT02101736,PHASE2,COMPLETED,Cabozantinib,DRUG,CABOZANTINIB,True
+_disease_NF1,NCT04544007,PHASE2,TERMINATED,Poly ICLC,DRUG,POLY ICLC,False
+_disease_NF1,NCT05011019,PHASE1; PHASE2,TERMINATED,AL2846 capsules,DRUG,AL CAPSULES,False
+_disease_NF1,NCT00352599,PHASE1,COMPLETED,Lovastatin,DRUG,LOVASTATIN,True
+_disease_NF1,NCT00352599,PHASE1,COMPLETED,placebo pill,DRUG,PILL,False
+_disease_NF1,NCT00911248,PHASE2,TERMINATED,PTC299,DRUG,PTC,False
+_disease_NF1,NCT05913037,PHASE3,ACTIVE_NOT_RECRUITING,"Test group (Group A): FCN-159 8 mg, orally, once daily;",DRUG,TEST GROUP FCN- ORALLY ONCE,False
+_disease_NF1,NCT05913037,PHASE3,ACTIVE_NOT_RECRUITING,"Control group (Group B): Placebo, orally, once daily;",DRUG,CONTROL GROUP ORALLY ONCE,False
+_disease_NF1,NCT02096471,PHASE2,COMPLETED,PD-0325901,DRUG,PD-,False
+_disease_NF1,NCT05331105,PHASE2,RECRUITING,HL-085,DRUG,HL-,False
+_disease_NF1,NCT04924608,PHASE3,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT04283669,PHASE2,COMPLETED,Crizotinib,DRUG,CRIZOTINIB,True
+_disease_NF1,NCT02831257,PHASE2,COMPLETED,AZD2014,DRUG,AZD,False
+_disease_NF1,NCT03962543,PHASE2,ACTIVE_NOT_RECRUITING,Mirdametinib (PD-0325901) oral capsule or dispersible tablet,DRUG,MIRDAMETINIB OR DISPERSIBLE,False
+_disease_NF1,NCT00030264,PHASE2,COMPLETED,Methotrexate,DRUG,METHOTREXATE,False
+_disease_NF1,NCT00030264,PHASE2,COMPLETED,Vinblastine,DRUG,VINBLASTINE,False
+_disease_NF1,NCT01880749,EARLY_PHASE1,COMPLETED,RAD001,DRUG,RAD,False
+_disease_NF1,NCT03190915,PHASE2,ACTIVE_NOT_RECRUITING,Trametinib,DRUG,TRAMETINIB,True
+_disease_NF1,NCT04481035,PHASE2,COMPLETED,N-acetylcysteine (NAC),DRUG,N-ACETYLCYSTEINE,False
+_disease_NF1,NCT03090971,PHASE2,COMPLETED,Diclofenac Sodium,DRUG,DICLOFENAC SODIUM,True
+_disease_NF1,NCT03090971,PHASE2,COMPLETED,Saline Solution,DRUG,SALINE,False
+_disease_NF1,NCT06132165,PHASE1,COMPLETED,Deoxycholic Acid,DRUG,DEOXYCHOLIC ACID,False
+_disease_NF1,NCT06132165,PHASE1,COMPLETED,Polidocanol,DRUG,POLIDOCANOL,False
+_disease_NF1,NCT06502171,PHASE1,RECRUITING,Cabozantinib Oral Tablet,DRUG,CABOZANTINIB,True
+_disease_NF1,NCT06502171,PHASE1,RECRUITING,Selumetinib Oral Capsule,DRUG,SELUMETINIB,True
+_disease_NF1,NCT05107037,PHASE1,UNKNOWN,TQ-B3234 capsule,DRUG,TQ-B,False
+_disease_NF1,NCT02584413,NA,TERMINATED,Gadolinium contrast,DRUG,GADOLINIUM CONTRAST,False
+_disease_NF1,NCT05438290,PHASE1,COMPLETED,DPCP,DRUG,DPCP,False
+_disease_NF1,NCT03741101,PHASE2,UNKNOWN,Trametinib,DRUG,TRAMETINIB,True
+_disease_NF1,NCT02700230,PHASE1,COMPLETED,Oncolytic Measles Virus Encoding Thyroidal Sodium Iodide Symporter,BIOLOGICAL,ONCOLYTIC MEASLES VIRUS ENCODING THYROIDAL SODIUM IODIDE SYMPORTER,False
+_disease_NF1,NCT05309668,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Selumetinib granule formulation,DRUG,SELUMETINIB GRANULE FORMULATION,False
+_disease_NF1,NCT05309668,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Selumetinib capsule formulation,DRUG,SELUMETINIB FORMULATION,False
+_disease_NF1,NCT07407803,PHASE3,RECRUITING,TQ-B3234 capsules,DRUG,TQ-B CAPSULES,False
+_disease_NF1,NCT07407803,PHASE3,RECRUITING,TQ-B3234 placebo,DRUG,TQ-B,False
+_disease_NF1,NCT04800822,PHASE1,TERMINATED,PF-07284892,DRUG,PF-,False
+_disease_NF1,NCT04800822,PHASE1,TERMINATED,lorlatinib,DRUG,LORLATINIB,False
+_disease_NF1,NCT04800822,PHASE1,TERMINATED,binimetinib,DRUG,BINIMETINIB,True
+_disease_NF1,NCT04800822,PHASE1,TERMINATED,cetuximab,BIOLOGICAL,CETUXIMAB,True
+_disease_NF1,NCT04800822,PHASE1,TERMINATED,encorafenib,DRUG,ENCORAFENIB,True
+_disease_NF1,NCT04730583,PHASE1,COMPLETED,Kybella,DRUG,KYBELLA,False
+_disease_NF1,NCT00427583,PHASE2; PHASE3,TERMINATED,imatinib mesylate,DRUG,IMATINIB MESYLATE,True
+_disease_NF1,NCT01140360,PHASE1; PHASE2,COMPLETED,Gleevec,DRUG,GLEEVEC,False
+_disease_NF1,NCT03433183,PHASE2,COMPLETED,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT03433183,PHASE2,COMPLETED,Sirolimus,DRUG,SIROLIMUS,False
+_disease_NF1,NCT07713745,PHASE2,NOT_YET_RECRUITING,Selumetinib 25mg/m2,DRUG,SELUMETINIB M,False
+_disease_NF1,NCT07713745,PHASE2,NOT_YET_RECRUITING,Luvometinib,DRUG,LUVOMETINIB,False
+_disease_NF1,NCT07713745,PHASE2,NOT_YET_RECRUITING,Serplulimab,DRUG,SERPLULIMAB,False
+_disease_NF1,NCT00865644,PHASE1,COMPLETED,Imiquimod 5% Cream,DRUG,IMIQUIMOD,False
+_disease_NF1,NCT05130866,PHASE2; PHASE3,TERMINATED,REC-2282,DRUG,REC-,False
+_disease_NF1,NCT05130866,PHASE2; PHASE3,TERMINATED,Placebo,DRUG,,False
+_disease_NF1,NCT00169611,PHASE4,COMPLETED,methylphenidate,DRUG,METHYLPHENIDATE,False
+_disease_NF1,NCT02104323,PHASE2,COMPLETED,Endostatin,DRUG,ENDOSTATIN,False
+_disease_NF1,NCT04166409,PHASE3,RECRUITING,Carboplatin,DRUG,CARBOPLATIN,False
+_disease_NF1,NCT04166409,PHASE3,RECRUITING,Selumetinib Sulfate,DRUG,SELUMETINIB SULFATE,True
+_disease_NF1,NCT04166409,PHASE3,RECRUITING,Vincristine Sulfate,DRUG,VINCRISTINE SULFATE,True
+_disease_NF1,NCT01031901,PHASE1,COMPLETED,Skincerity,DRUG,SKINCERITY,False
+_disease_NF1,NCT01031901,PHASE1,COMPLETED,Skincerity plus sirolimus/rapamycin,DRUG,SKINCERITY PLUS SIROLIMUS RAPAMYCIN,False
+_disease_NF1,NCT01031901,PHASE1,COMPLETED,Skinercity plus sirolimus/rapamycin,DRUG,SKINERCITY PLUS SIROLIMUS RAPAMYCIN,False
+_disease_NF1,NCT01553149,PHASE2,COMPLETED,Lenalidomide,DRUG,LENALIDOMIDE,False
+_disease_NF1,NCT03634982,PHASE1,UNKNOWN,RMC-4630,DRUG,RMC-,False
+_disease_NF1,NCT03688568,PHASE2,WITHDRAWN,Imatinib Mesylate,DRUG,IMATINIB MESYLATE,True
+_disease_NF1,NCT04481048,PHASE2,COMPLETED,N-Acetyl cysteine,DRUG,N-ACETYL CYSTEINE,False
+_disease_NF1,NCT03826940,NA,COMPLETED,Lovastatin 60 MG,DRUG,LOVASTATIN,True
+_disease_NF1,NCT03826940,NA,COMPLETED,Placebos,DRUG,PLACEBOS,False
+_disease_NF1,NCT00589784,PHASE2,COMPLETED,Sunitinib,DRUG,SUNITINIB,True
+_disease_NF1,NCT01207687,PHASE2,COMPLETED,bevacizumab,BIOLOGICAL,BEVACIZUMAB,True
+_disease_NF1,NCT05825365,PHASE2,WITHDRAWN,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT05825365,PHASE2,WITHDRAWN,Placebo,DRUG,,False
+_disease_NF1,NCT02129647,PHASE2,COMPLETED,Axitinib,DRUG,AXITINIB,True
+_disease_NF1,NCT02839720,PHASE2,COMPLETED,Selumetinib Sulfate,DRUG,SELUMETINIB SULFATE,True
+_disease_NF1,NCT06300502,PHASE1,ENROLLING_BY_INVITATION,Kybella,DRUG,KYBELLA,False
+_disease_NF1,NCT03363217,PHASE2,ACTIVE_NOT_RECRUITING,Trametinib,DRUG,TRAMETINIB,True
+_disease_NF1,NCT04435665,PHASE2,COMPLETED,NFX-179 Gel,DRUG,NFX-,False
+_disease_NF1,NCT04435665,PHASE2,COMPLETED,Vehicle Gel,DRUG,VEHICLE,False
+_disease_NF1,NCT02211768,PHASE1,COMPLETED,[18F]-FLT-PET/CT scans,DRUG,F -FLT-PET CT SCANS,False
+_disease_NF1,NCT00754780,PHASE2,COMPLETED,Pirfenidone,DRUG,PIRFENIDONE,False
+_disease_NF1,NCT05735717,PHASE2,RECRUITING,Fludarabine,DRUG,FLUDARABINE,False
+_disease_NF1,NCT05735717,PHASE2,RECRUITING,Busulfan,DRUG,BUSULFAN,False
+_disease_NF1,NCT05735717,PHASE2,RECRUITING,Melphalan,DRUG,MELPHALAN,False
+_disease_NF1,NCT05735717,PHASE2,RECRUITING,Rituximab,DRUG,RITUXIMAB,False
+_disease_NF1,NCT05735717,PHASE2,RECRUITING,Levetiracetam,DRUG,LEVETIRACETAM,False
+_disease_NF1,NCT05735717,PHASE2,RECRUITING,Alpha/Beta T Cell-Depleted Hematopoietic Stem Cells,BIOLOGICAL,ALPHA BETA T CELL-DEPLETED HEMATOPOIETIC STEM CELLS,False
+_disease_NF1,NCT05735717,PHASE2,RECRUITING,Thymoglobulin,DRUG,THYMOGLOBULIN,False
+_disease_NF1,NCT05735717,PHASE2,RECRUITING,Cyclophosphamide,DRUG,CYCLOPHOSPHAMIDE,False
+_disease_NF1,NCT01345136,PHASE2,TERMINATED,"RAD001, everolimus",DRUG,RAD EVEROLIMUS,False
+_disease_NF1,NCT07131722,PHASE1; PHASE2,NOT_YET_RECRUITING,Trineumin,DRUG,TRINEUMIN,False
+_disease_NF1,NCT07024394,PHASE1; PHASE2,NOT_YET_RECRUITING,Luvometinib Tablets,DRUG,LUVOMETINIB TABLETS,False
+_disease_NF1,NCT05005845,PHASE2,COMPLETED,NFX-179 gel,DRUG,NFX-,False
+_disease_NF1,NCT05005845,PHASE2,COMPLETED,Vehicle gel,DRUG,VEHICLE,False
+_disease_NF1,NCT05253131,PHASE2,RECRUITING,Selumetinib + ZEN-3694 ± Durvalumab,COMBINATION_PRODUCT,SELUMETINIB ZEN- DURVALUMAB,False
+_disease_NF1,NCT00053937,PHASE1,COMPLETED,pirfenidone,DRUG,PIRFENIDONE,False
+_disease_NF1,NCT07708285,PHASE1; PHASE2,NOT_YET_RECRUITING,Luvometinib,DRUG,LUVOMETINIB,False
+_disease_NF1,NCT07708285,PHASE1; PHASE2,NOT_YET_RECRUITING,Serplulimab,DRUG,SERPLULIMAB,False
+_disease_NF1,NCT06621082,PHASE2,NOT_YET_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT01661283,PHASE2,COMPLETED,everolimus,DRUG,EVEROLIMUS,False
+_disease_NF1,NCT01661283,PHASE2,COMPLETED,bevacizumab,DRUG,BEVACIZUMAB,True
+_disease_NF1,NCT06188741,PHASE2,RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT00588172,PHASE4,WITHDRAWN,Metformin,DRUG,METFORMIN,True
+_disease_NF1,NCT00021541,PHASE2,COMPLETED,tipifarnib,DRUG,TIPIFARNIB,False
+_disease_NF1,NCT03326388,PHASE1; PHASE2,COMPLETED,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT01402817,PHASE2,TERMINATED,Sutent®/Sunitinib,DRUG,SUTENT SUNITINIB,False
+_disease_NF1,NCT04085159,PHASE1; PHASE2,TERMINATED,Antigen-specific T cells CART/CTL and DCvac,BIOLOGICAL,ANTIGEN-SPECIFIC T CELLS CART CTL AND DCVAC,False
+_disease_NF1,NCT06763315,PHASE2,NOT_YET_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT05101148,PHASE1,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT01490476,PHASE2,COMPLETED,RAD001,DRUG,RAD,False
+_disease_NF1,NCT02177825,PHASE2,TERMINATED,Imatinib Mesylate,DRUG,IMATINIB MESYLATE,True
+_disease_NF1,NCT02282917,EARLY_PHASE1,TERMINATED,AR-42,DRUG,AR-,False
+_disease_NF1,NCT03504501,PHASE2,TERMINATED,Lovastatin,DRUG,LOVASTATIN,True
+_disease_NF1,NCT03504501,PHASE2,TERMINATED,Lamotrigine,DRUG,LAMOTRIGINE,True
+_disease_NF1,NCT02415153,PHASE1,COMPLETED,Pomalidomide,DRUG,POMALIDOMIDE,False
+_disease_NF1,NCT01089101,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT01158651,PHASE2,COMPLETED,RAD001 (Everolimus),DRUG,RAD,False
+_disease_NF1,NCT00634270,PHASE2,COMPLETED,Sirolimus,DRUG,SIROLIMUS,False
+_disease_NF1,NCT03095248,PHASE2,TERMINATED,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT02256124,PHASE2; PHASE3,TERMINATED,Lamotrigine,DRUG,LAMOTRIGINE,True
+_disease_NF1,NCT02256124,PHASE2; PHASE3,TERMINATED,Placebo,DRUG,,False
+_disease_NF1,NCT03710564,PHASE3,TERMINATED,Brolucizumab,BIOLOGICAL,BROLUCIZUMAB,True
+_disease_NF1,NCT03710564,PHASE3,TERMINATED,Aflibercept,BIOLOGICAL,AFLIBERCEPT,True
+_disease_NF1,NCT00076102,PHASE2,COMPLETED,Pirfenidone,DRUG,PIRFENIDONE,False
+_disease_NF1,NCT06834438,NA,NOT_YET_RECRUITING,ST002,GENETIC,ST,False
+_disease_NF1,NCT04461886,PHASE3,TERMINATED,NPC-12G gel,DRUG,NPC- G,False
+_disease_NF1,NCT04750928,PHASE1; PHASE2,RECRUITING,Abemaciclib,DRUG,ABEMACICLIB,True
+_disease_NF1,NCT01552434,PHASE1,TERMINATED,Bevacizumab,BIOLOGICAL,BEVACIZUMAB,True
+_disease_NF1,NCT01552434,PHASE1,TERMINATED,Cetuximab,BIOLOGICAL,CETUXIMAB,True
+_disease_NF1,NCT01552434,PHASE1,TERMINATED,Temsirolimus,DRUG,TEMSIROLIMUS,False
+_disease_NF1,NCT01552434,PHASE1,TERMINATED,Valproic Acid,DRUG,VALPROIC ACID,False
+_disease_NF1,NCT03231306,PHASE2,COMPLETED,Binimetinib,DRUG,BINIMETINIB,True
+_disease_NF1,NCT00846430,PHASE2,COMPLETED,Peg-Interferon alpha-2b,DRUG,PEG-INTERFERON ALPHA- B,False
+_disease_NF1,NCT00846430,PHASE2,COMPLETED,Celecoxib (Celebrex),DRUG,CELECOXIB,False
+_disease_NF1,NCT00846430,PHASE2,COMPLETED,Temozolomide (temodar),DRUG,TEMOZOLOMIDE,False
+_disease_NF1,NCT00846430,PHASE2,COMPLETED,Vincristine Sulfate (Oncovin),DRUG,VINCRISTINE SULFATE,True
+_disease_NF1,NCT06287463,PHASE1,TERMINATED,DCC-3084,DRUG,DCC-,False
+_disease_NF1,NCT06541847,PHASE2,RECRUITING,HLX-1502,DRUG,HLX-,False
+_disease_NF1,NCT01419639,PHASE2,COMPLETED,"Everolimus (RAD001) , Afinitor®",DRUG,EVEROLIMUS AFINITOR,False
+_disease_NF1,NCT00973739,PHASE2,COMPLETED,Lapatinib,DRUG,LAPATINIB,True
+_disease_NF1,NCT03232892,PHASE2,TERMINATED,Trametinib,DRUG,TRAMETINIB,True
+_disease_NF1,NCT01275586,EARLY_PHASE1,COMPLETED,Tasigna,DRUG,TASIGNA,False
+_disease_NF1,NCT01125046,PHASE2,COMPLETED,bevacizumab,BIOLOGICAL,BEVACIZUMAB,True
+_disease_NF1,NCT01412892,PHASE2,COMPLETED,RAD001: Everolimus,DRUG,RAD EVEROLIMUS,False
+_disease_NF1,NCT02422732,NA,COMPLETED,genetic analysis,GENETIC,GENETIC ANALYSIS,False
+_disease_NF1,NCT02964884,PHASE2,ACTIVE_NOT_RECRUITING,Lovastatin,DRUG,LOVASTATIN,True
+_disease_NF1,NCT02964884,PHASE2,ACTIVE_NOT_RECRUITING,Placebo Oral Tablet,DRUG,,False
+_disease_NF1,NCT07743554,PHASE2,NOT_YET_RECRUITING,avutometinib capsule + defactinib tablet,DRUG,AVUTOMETINIB DEFACTINIB,False
+_disease_NF1,NCT02407405,PHASE2,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT03975829,PHASE4,ACTIVE_NOT_RECRUITING,dabrafenib,DRUG,DABRAFENIB,True
+_disease_NF1,NCT03975829,PHASE4,ACTIVE_NOT_RECRUITING,trametinib,DRUG,TRAMETINIB,True
+_disease_NF1,NCT05180825,PHASE2,RECRUITING,Trametinib,DRUG,TRAMETINIB,True
+_disease_NF1,NCT05180825,PHASE2,RECRUITING,Vinblastine,DRUG,VINBLASTINE,False
+_disease_NF1,NCT05363267,PHASE1,ACTIVE_NOT_RECRUITING,"curcumin, high phenolic extra virgin olive oil (HP-EVOO)",DIETARY_SUPPLEMENT,CURCUMIN HIGH PHENOLIC EXTRA VIRGIN OLIVE OIL,False
+_disease_NF1,NCT00863122,EARLY_PHASE1,COMPLETED,lapatinib,DRUG,LAPATINIB,True
+_disease_NF1,NCT01365468,PHASE2,TERMINATED,Everolimus (RAD001),DRUG,EVEROLIMUS,False
+_disease_NF1,NCT02390752,PHASE1,RECRUITING,TURALIO(R),DRUG,TURALIO,False
+_disease_NF1,NCT04590235,PHASE1,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT00326872,PHASE2,TERMINATED,Cediranib Maleate,DRUG,CEDIRANIB MALEATE,False
+_disease_NF1,NCT03649165,PHASE1,COMPLETED,Treatment A,DRUG,TREATMENT A,False
+_disease_NF1,NCT03649165,PHASE1,COMPLETED,Treatment B,DRUG,TREATMENT B,False
+_disease_NF1,NCT03649165,PHASE1,COMPLETED,Treatment C,DRUG,TREATMENT C,False
+_disease_NF1,NCT03649165,PHASE1,COMPLETED,Treatment D,DRUG,TREATMENT D,False
+_disease_NF1,NCT03649165,PHASE1,COMPLETED,Acetaminophen,DRUG,ACETAMINOPHEN,True
+_disease_NF1,NCT03079999,PHASE2,ACTIVE_NOT_RECRUITING,Aspirin,DRUG,ASPIRIN,True
+_disease_NF1,NCT03079999,PHASE2,ACTIVE_NOT_RECRUITING,Placebo,DRUG,,False
+_disease_NF1,NCT02934256,PHASE2,COMPLETED,Icotinib,DRUG,ICOTINIB,True
+_disease_NF1,NCT07102394,PHASE1,RECRUITING,Imlygic,DRUG,IMLYGIC,False
+_disease_NF1,NCT01767792,PHASE2,COMPLETED,Bevacizumab,DRUG,BEVACIZUMAB,True
+_disease_NF1,NCT07521657,PHASE2,NOT_YET_RECRUITING,mirdametinib with radiation,COMBINATION_PRODUCT,MIRDAMETINIB WITH RADIATION,False
+_disease_NF1,NCT07521657,PHASE2,NOT_YET_RECRUITING,mirdametinib,DRUG,MIRDAMETINIB,True
+_disease_NF1,NCT00352495,PHASE1,COMPLETED,carboplatin,DRUG,CARBOPLATIN,False
+_disease_NF1,NCT00352495,PHASE1,COMPLETED,vinblastine sulfate,DRUG,VINBLASTINE SULFATE,True
+_disease_NF1,NCT00853580,PHASE2,COMPLETED,Lovastatin ™,DRUG,LOVASTATIN,True
+_disease_NF1,NCT00304083,PHASE2,COMPLETED,filgrastim,BIOLOGICAL,FILGRASTIM,False
+_disease_NF1,NCT00304083,PHASE2,COMPLETED,doxorubicin hydrochloride,DRUG,DOXORUBICIN HYDROCHLORIDE,True
+_disease_NF1,NCT00304083,PHASE2,COMPLETED,etoposide,DRUG,ETOPOSIDE,True
+_disease_NF1,NCT00304083,PHASE2,COMPLETED,ifosfamide,DRUG,IFOSFAMIDE,False
+_disease_NF1,NCT05849662,PHASE1; PHASE2,RECRUITING,Trametinib,DRUG,TRAMETINIB,True
+_disease_NF1,NCT05849662,PHASE1; PHASE2,RECRUITING,Azacitidine,DRUG,AZACITIDINE,False
+_disease_NF1,NCT05849662,PHASE1; PHASE2,RECRUITING,Fludarabine,DRUG,FLUDARABINE,False
+_disease_NF1,NCT05849662,PHASE1; PHASE2,RECRUITING,Cytarabine,DRUG,CYTARABINE,True
+_disease_NF1,NCT06620354,PHASE2,NOT_YET_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF1,NCT06961565,PHASE1,RECRUITING,PAS-004 Tablets,DRUG,PAS- TABLETS,False
+_disease_NF1,NCT06961565,PHASE1,RECRUITING,PAS-004 Capsule,DRUG,PAS-,False
+_disease_NF1,NCT01673009,PHASE2,COMPLETED,Gleevec,DRUG,GLEEVEC,False
+_disease_NF1,NCT07850635,PHASE1,NOT_YET_RECRUITING,Mirdametinib,DRUG,MIRDAMETINIB,True
+_disease_NF1,NCT00727233,PHASE1,COMPLETED,Nexavar (BAY 43-9006) (Sorafenib),DRUG,NEXAVAR,False
+_disease_NF1,NCT00727233,PHASE1,COMPLETED,"Toxicity, Pharmacokinetics",DRUG,TOXICITY PHARMACOKINETICS,False
+_disease_NF1,NCT00727233,PHASE1,COMPLETED,Pharmacodynamics,DRUG,PHARMACODYNAMICS,False
+_disease_NF1,NCT00727233,PHASE1,COMPLETED,Radiographic Evaluation,DRUG,RADIOGRAPHIC EVALUATION,False
+_disease_NF1,NCT00727233,PHASE1,COMPLETED,"QOL assessment, Neuropsychological",DRUG,QOL ASSESSMENT NEUROPSYCHOLOGICAL,False
+_disease_NF1,NCT00727233,PHASE1,COMPLETED,Bony Toxicity,DRUG,BONY TOXICITY,False
+_disease_NF1,NCT03871257,PHASE3,ACTIVE_NOT_RECRUITING,Carboplatin,DRUG,CARBOPLATIN,False
+_disease_NF1,NCT03871257,PHASE3,ACTIVE_NOT_RECRUITING,Selumetinib Sulfate,DRUG,SELUMETINIB SULFATE,True
+_disease_NF1,NCT03871257,PHASE3,ACTIVE_NOT_RECRUITING,Vincristine Sulfate,DRUG,VINCRISTINE SULFATE,True
+_disease_NF1,NCT02986919,PHASE2,WITHDRAWN,CPI-0610,DRUG,CPI-,False
+_disease_NF1,NCT04495127,PHASE1,COMPLETED,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF2-SWN,NCT06381570,EARLY_PHASE1,RECRUITING,Tovorafenib,DRUG,TOVORAFENIB,True
+_disease_NF2-SWN,NCT06381570,EARLY_PHASE1,RECRUITING,Vinblastine,DRUG,VINBLASTINE,False
+_disease_NF2-SWN,NCT04374305,PHASE2,RECRUITING,Brigatinib,DRUG,BRIGATINIB,True
+_disease_NF2-SWN,NCT04374305,PHASE2,RECRUITING,Neratinib,DRUG,NERATINIB,True
+_disease_NF2-SWN,NCT04374305,PHASE2,RECRUITING,Retifanlimab,DRUG,RETIFANLIMAB,False
+_disease_NF2-SWN,NCT04374305,PHASE2,RECRUITING,Bevacizumab,DRUG,BEVACIZUMAB,True
+_disease_NF2-SWN,NCT07707947,PHASE2,NOT_YET_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF2-SWN,NCT05521048,PHASE1; PHASE2,ACTIVE_NOT_RECRUITING,Doxycycline Injection [Doxy],DRUG,DOXYCYCLINE DOXY,False
+_disease_NF2-SWN,NCT03109301,PHASE2,WITHDRAWN,Selumetinib (AZD6244 hyd sulfate) 50mg/dose,DRUG,SELUMETINIB,True
+_disease_NF2-SWN,NCT03109301,PHASE2,WITHDRAWN,Selumetinib (AZD6244 hyd sulfate) 25mg/m2,DRUG,SELUMETINIB M,False
+_disease_NF2-SWN,NCT01024946,PHASE2,COMPLETED,everolimus,DRUG,EVEROLIMUS,False
+_disease_NF2-SWN,NCT00911248,PHASE2,TERMINATED,PTC299,DRUG,PTC,False
+_disease_NF2-SWN,NCT02096471,PHASE2,COMPLETED,PD-0325901,DRUG,PD-,False
+_disease_NF2-SWN,NCT06104488,PHASE1,COMPLETED,Avutometinib,DRUG,AVUTOMETINIB,True
+_disease_NF2-SWN,NCT04924608,PHASE3,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF2-SWN,NCT04283669,PHASE2,COMPLETED,Crizotinib,DRUG,CRIZOTINIB,True
+_disease_NF2-SWN,NCT02831257,PHASE2,COMPLETED,AZD2014,DRUG,AZD,False
+_disease_NF2-SWN,NCT03962543,PHASE2,ACTIVE_NOT_RECRUITING,Mirdametinib (PD-0325901) oral capsule or dispersible tablet,DRUG,MIRDAMETINIB OR DISPERSIBLE,False
+_disease_NF2-SWN,NCT01880749,EARLY_PHASE1,COMPLETED,RAD001,DRUG,RAD,False
+_disease_NF2-SWN,NCT03989115,PHASE1; PHASE2,COMPLETED,RMC-4630,DRUG,RMC-,False
+_disease_NF2-SWN,NCT03989115,PHASE1; PHASE2,COMPLETED,Cobimetinib,DRUG,COBIMETINIB,True
+_disease_NF2-SWN,NCT03989115,PHASE1; PHASE2,COMPLETED,Drug: Osimertinib,DRUG,DRUG OSIMERTINIB,False
+_disease_NF2-SWN,NCT03190915,PHASE2,ACTIVE_NOT_RECRUITING,Trametinib,DRUG,TRAMETINIB,True
+_disease_NF2-SWN,NCT02523014,PHASE2,RECRUITING,Vismodegib,DRUG,VISMODEGIB,False
+_disease_NF2-SWN,NCT02523014,PHASE2,RECRUITING,FAK Inhibitor GSK2256098,DRUG,FAK INHIBITOR GSK,False
+_disease_NF2-SWN,NCT02523014,PHASE2,RECRUITING,Capivasertib,DRUG,CAPIVASERTIB,True
+_disease_NF2-SWN,NCT02523014,PHASE2,RECRUITING,Abemaciclib,DRUG,ABEMACICLIB,True
+_disease_NF2-SWN,NCT06502171,PHASE1,RECRUITING,Cabozantinib Oral Tablet,DRUG,CABOZANTINIB,True
+_disease_NF2-SWN,NCT06502171,PHASE1,RECRUITING,Selumetinib Oral Capsule,DRUG,SELUMETINIB,True
+_disease_NF2-SWN,NCT04439331,PHASE2,ACTIVE_NOT_RECRUITING,Defactinib Hydrochloride,DRUG,DEFACTINIB HYDROCHLORIDE,False
+_disease_NF2-SWN,NCT03433183,PHASE2,COMPLETED,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF2-SWN,NCT03433183,PHASE2,COMPLETED,Sirolimus,DRUG,SIROLIMUS,False
+_disease_NF2-SWN,NCT07713745,PHASE2,NOT_YET_RECRUITING,Selumetinib 25mg/m2,DRUG,SELUMETINIB M,False
+_disease_NF2-SWN,NCT07713745,PHASE2,NOT_YET_RECRUITING,Luvometinib,DRUG,LUVOMETINIB,False
+_disease_NF2-SWN,NCT07713745,PHASE2,NOT_YET_RECRUITING,Serplulimab,DRUG,SERPLULIMAB,False
+_disease_NF2-SWN,NCT05130866,PHASE2; PHASE3,TERMINATED,REC-2282,DRUG,REC-,False
+_disease_NF2-SWN,NCT05130866,PHASE2; PHASE3,TERMINATED,Placebo,DRUG,,False
+_disease_NF2-SWN,NCT02104323,PHASE2,COMPLETED,Endostatin,DRUG,ENDOSTATIN,False
+_disease_NF2-SWN,NCT04166409,PHASE3,RECRUITING,Carboplatin,DRUG,CARBOPLATIN,False
+_disease_NF2-SWN,NCT04166409,PHASE3,RECRUITING,Selumetinib Sulfate,DRUG,SELUMETINIB SULFATE,True
+_disease_NF2-SWN,NCT04166409,PHASE3,RECRUITING,Vincristine Sulfate,DRUG,VINCRISTINE SULFATE,True
+_disease_NF2-SWN,NCT03688568,PHASE2,WITHDRAWN,Imatinib Mesylate,DRUG,IMATINIB MESYLATE,True
+_disease_NF2-SWN,NCT00589784,PHASE2,COMPLETED,Sunitinib,DRUG,SUNITINIB,True
+_disease_NF2-SWN,NCT01207687,PHASE2,COMPLETED,bevacizumab,BIOLOGICAL,BEVACIZUMAB,True
+_disease_NF2-SWN,NCT06553365,PHASE2,RECRUITING,FCN-159,DRUG,FCN-,False
+_disease_NF2-SWN,NCT02129647,PHASE2,COMPLETED,Axitinib,DRUG,AXITINIB,True
+_disease_NF2-SWN,NCT02839720,PHASE2,COMPLETED,Selumetinib Sulfate,DRUG,SELUMETINIB SULFATE,True
+_disease_NF2-SWN,NCT03363217,PHASE2,ACTIVE_NOT_RECRUITING,Trametinib,DRUG,TRAMETINIB,True
+_disease_NF2-SWN,NCT01345136,PHASE2,TERMINATED,"RAD001, everolimus",DRUG,RAD EVEROLIMUS,False
+_disease_NF2-SWN,NCT07131722,PHASE1; PHASE2,NOT_YET_RECRUITING,Trineumin,DRUG,TRINEUMIN,False
+_disease_NF2-SWN,NCT05005845,PHASE2,COMPLETED,NFX-179 gel,DRUG,NFX-,False
+_disease_NF2-SWN,NCT05005845,PHASE2,COMPLETED,Vehicle gel,DRUG,VEHICLE,False
+_disease_NF2-SWN,NCT05253131,PHASE2,RECRUITING,Selumetinib + ZEN-3694 ± Durvalumab,COMBINATION_PRODUCT,SELUMETINIB ZEN- DURVALUMAB,False
+_disease_NF2-SWN,NCT07708285,PHASE1; PHASE2,NOT_YET_RECRUITING,Luvometinib,DRUG,LUVOMETINIB,False
+_disease_NF2-SWN,NCT07708285,PHASE1; PHASE2,NOT_YET_RECRUITING,Serplulimab,DRUG,SERPLULIMAB,False
+_disease_NF2-SWN,NCT01661283,PHASE2,COMPLETED,everolimus,DRUG,EVEROLIMUS,False
+_disease_NF2-SWN,NCT01661283,PHASE2,COMPLETED,bevacizumab,DRUG,BEVACIZUMAB,True
+_disease_NF2-SWN,NCT06188741,PHASE2,RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF2-SWN,NCT00588172,PHASE4,WITHDRAWN,Metformin,DRUG,METFORMIN,True
+_disease_NF2-SWN,NCT01490476,PHASE2,COMPLETED,RAD001,DRUG,RAD,False
+_disease_NF2-SWN,NCT02177825,PHASE2,TERMINATED,Imatinib Mesylate,DRUG,IMATINIB MESYLATE,True
+_disease_NF2-SWN,NCT02282917,EARLY_PHASE1,TERMINATED,AR-42,DRUG,AR-,False
+_disease_NF2-SWN,NCT03095248,PHASE2,TERMINATED,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF2-SWN,NCT03710564,PHASE3,TERMINATED,Brolucizumab,BIOLOGICAL,BROLUCIZUMAB,True
+_disease_NF2-SWN,NCT03710564,PHASE3,TERMINATED,Aflibercept,BIOLOGICAL,AFLIBERCEPT,True
+_disease_NF2-SWN,NCT06834438,NA,NOT_YET_RECRUITING,ST002,GENETIC,ST,False
+_disease_NF2-SWN,NCT01552434,PHASE1,TERMINATED,Bevacizumab,BIOLOGICAL,BEVACIZUMAB,True
+_disease_NF2-SWN,NCT01552434,PHASE1,TERMINATED,Cetuximab,BIOLOGICAL,CETUXIMAB,True
+_disease_NF2-SWN,NCT01552434,PHASE1,TERMINATED,Temsirolimus,DRUG,TEMSIROLIMUS,False
+_disease_NF2-SWN,NCT01552434,PHASE1,TERMINATED,Valproic Acid,DRUG,VALPROIC ACID,False
+_disease_NF2-SWN,NCT06287463,PHASE1,TERMINATED,DCC-3084,DRUG,DCC-,False
+_disease_NF2-SWN,NCT06541847,PHASE2,RECRUITING,HLX-1502,DRUG,HLX-,False
+_disease_NF2-SWN,NCT05228015,PHASE1,TERMINATED,IK-930,DRUG,IK-,False
+_disease_NF2-SWN,NCT05228015,PHASE1,TERMINATED,Osimertinib,DRUG,OSIMERTINIB,True
+_disease_NF2-SWN,NCT01419639,PHASE2,COMPLETED,"Everolimus (RAD001) , Afinitor®",DRUG,EVEROLIMUS AFINITOR,False
+_disease_NF2-SWN,NCT00973739,PHASE2,COMPLETED,Lapatinib,DRUG,LAPATINIB,True
+_disease_NF2-SWN,NCT01125046,PHASE2,COMPLETED,bevacizumab,BIOLOGICAL,BEVACIZUMAB,True
+_disease_NF2-SWN,NCT02352844,PHASE2,COMPLETED,Everolimus,DRUG,EVEROLIMUS,False
+_disease_NF2-SWN,NCT02407405,PHASE2,ACTIVE_NOT_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_NF2-SWN,NCT00863122,EARLY_PHASE1,COMPLETED,lapatinib,DRUG,LAPATINIB,True
+_disease_NF2-SWN,NCT04857372,PHASE1,ACTIVE_NOT_RECRUITING,IAG933,DRUG,IAG,False
+_disease_NF2-SWN,NCT03079999,PHASE2,ACTIVE_NOT_RECRUITING,Aspirin,DRUG,ASPIRIN,True
+_disease_NF2-SWN,NCT03079999,PHASE2,ACTIVE_NOT_RECRUITING,Placebo,DRUG,,False
+_disease_NF2-SWN,NCT02934256,PHASE2,COMPLETED,Icotinib,DRUG,ICOTINIB,True
+_disease_NF2-SWN,NCT01767792,PHASE2,COMPLETED,Bevacizumab,DRUG,BEVACIZUMAB,True
+_disease_NF2-SWN,NCT05873686,PHASE1,ACTIVE_NOT_RECRUITING,NXP900,DRUG,NXP,False
+_disease_NF2-SWN,NCT06961565,PHASE1,RECRUITING,PAS-004 Tablets,DRUG,PAS- TABLETS,False
+_disease_NF2-SWN,NCT06961565,PHASE1,RECRUITING,PAS-004 Capsule,DRUG,PAS-,False
+_disease_NF2-SWN,NCT02986919,PHASE2,WITHDRAWN,CPI-0610,DRUG,CPI-,False
+_disease_SWN,NCT04374305,PHASE2,RECRUITING,Brigatinib,DRUG,BRIGATINIB,True
+_disease_SWN,NCT04374305,PHASE2,RECRUITING,Neratinib,DRUG,NERATINIB,True
+_disease_SWN,NCT04374305,PHASE2,RECRUITING,Retifanlimab,DRUG,RETIFANLIMAB,False
+_disease_SWN,NCT04374305,PHASE2,RECRUITING,Bevacizumab,DRUG,BEVACIZUMAB,True
+_disease_SWN,NCT07707947,PHASE2,NOT_YET_RECRUITING,Selumetinib,DRUG,SELUMETINIB,True
+_disease_SWN,NCT07713745,PHASE2,NOT_YET_RECRUITING,Selumetinib 25mg/m2,DRUG,SELUMETINIB M,False
+_disease_SWN,NCT07713745,PHASE2,NOT_YET_RECRUITING,Luvometinib,DRUG,LUVOMETINIB,False
+_disease_SWN,NCT07713745,PHASE2,NOT_YET_RECRUITING,Serplulimab,DRUG,SERPLULIMAB,False
+_disease_SWN,NCT05684692,PHASE2,RECRUITING,Siltuximab,DRUG,SILTUXIMAB,False
+_disease_SWN,NCT05684692,PHASE2,RECRUITING,Erenumab-Aooe,DRUG,ERENUMAB-AOOE,False
+_disease_SWN,NCT05684692,PHASE2,RECRUITING,Siltuximab Matching Placebo,DRUG,SILTUXIMAB MATCHING,False
+_disease_SWN,NCT05684692,PHASE2,RECRUITING,Erenumab-Aooe Matching Placebo,DRUG,ERENUMAB-AOOE MATCHING,False
+_disease_SWN,NCT07708285,PHASE1; PHASE2,NOT_YET_RECRUITING,Luvometinib,DRUG,LUVOMETINIB,False
+_disease_SWN,NCT07708285,PHASE1; PHASE2,NOT_YET_RECRUITING,Serplulimab,DRUG,SERPLULIMAB,False
+_disease_SWN,NCT00588172,PHASE4,WITHDRAWN,Metformin,DRUG,METFORMIN,True
+_disease_SWN,NCT04085159,PHASE1; PHASE2,TERMINATED,Antigen-specific T cells CART/CTL and DCvac,BIOLOGICAL,ANTIGEN-SPECIFIC T CELLS CART CTL AND DCVAC,False
+_disease_SWN,NCT04163419,PHASE2,UNKNOWN,Tanezumab,DRUG,TANEZUMAB,True
+_disease_SWN,NCT04163419,PHASE2,UNKNOWN,Placebo,DRUG,,False
