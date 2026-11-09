@@ -1,10 +1,10 @@
 disease,manifestation,A_mechanism,B_phenotype,C_other_only,D_no_edges,unassessed
-NF1,ANNUBP / atypical neurofibroma,2,1,29,30,1
-NF1,Bone defects,0,1,36,55,1
-NF1,Cutaneous neurofibroma,0,1,162,260,2
-NF1,Malignant peripheral nerve sheath tumor (MPNST),6,3,325,511,13
-NF1,Optic pathway glioma,2,0,115,287,20
-NF1,Plexiform neurofibroma,2,0,317,484,5
-NF2-SWN,Non-vestibular schwannoma,0,1,68,137,15
-NF2-SWN,Pain,0,0,52,125,15
-NF2-SWN,Vestibular schwannoma,0,0,202,430,36
+NF1,ANNUBP / atypical neurofibroma,2,1,29,31,0
+NF1,Bone defects,0,1,36,56,0
+NF1,Cutaneous neurofibroma,0,1,163,261,0
+NF1,Malignant peripheral nerve sheath tumor (MPNST),6,3,330,519,0
+NF1,Optic pathway glioma,2,0,115,292,15
+NF1,Plexiform neurofibroma,2,0,320,486,0
+NF2-SWN,Non-vestibular schwannoma,0,1,69,142,9
+NF2-SWN,Pain,0,0,53,130,9
+NF2-SWN,Vestibular schwannoma,0,0,207,448,13

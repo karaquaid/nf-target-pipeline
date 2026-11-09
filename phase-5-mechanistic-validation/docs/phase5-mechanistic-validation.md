@@ -16,13 +16,15 @@ It asks two questions of every candidate target: does the Monarch knowledge grap
 ## Inputs and identifier resolution
 
 - 3,752 dossier rows over 9 disease x manifestation strata, 1,930 distinct gene symbols
-- 1,859 symbols resolved to HGNC CURIEs by exact match; 71 did not resolve and are tiered `unassessed`
-- The unresolved set is dominated by clone-based locus identifiers (AC/AL-prefixed) and composite labels such as `TPSAB1/B2` that are not single HGNC genes. They were not dropped.
-- 25,479 association rows retrieved; 620 genes carry a causal gene-disease edge and 626 a gene-phenotype edge. 0 request errors.
+- 1,902 symbols resolved to HGNC CURIEs; 28 did not resolve and are tiered `unassessed`
+- 43 of those resolved only on the second attempt, using `phase4-identifiers.csv`'s `resolved_symbol`. A first pass that tried the literal label alone left 71 unresolved, and most were real genes under withdrawn or alias symbols that Monarch does not index under the old name - GBA (GBA1), SEPT9 (SEPTIN9), MLLT4 (AFDN), KIAA0101 (PCLAF), FOXO1A, DARC, IL1RL1, HIST1H2BD and the C#orf/KIAA/FLJ placeholders. Calling that set junk locus IDs would have hidden a real coverage gap; `resolved_via` records which spelling worked for each gene.
+- Two labels resolved only because Phase 4 had already diagnosed them: `March 1` is spreadsheet date corruption of MARCH1, now MARCHF1, and the composite `TPSAB1/B2` maps to TPSAB1 alone, so TPSB2 is not assessed under that row.
+- The 28 still unresolved are 25 clone-based locus identifiers (AC/AL/AP/RP11/LOC-style), the legacy placeholders FLJ41484 and MGC24103, and `Oligodendrocyte differentiation (clemastine target)` - a Phase 1b literature label that names a process rather than a gene product, already flagged `not_a_gene_symbol` in Phase 4. None was dropped from the tables.
+- 25,733 association rows retrieved; 630 genes carry a causal gene-disease edge and 635 a gene-phenotype edge. 0 request errors.
 
 ## A correction worth recording
 
-The phenotype-support flag was first defined as any shared HPO term between a candidate gene and the stratum disease's full phenotype profile. That flagged 981 of 3,752 rows, and the matches were dominated by pleiotropic terms - Seizure (245 rows), Global developmental delay (217), Intellectual disability (215), Hypertelorism (214) - which hundreds of Mendelian genes carry. Such a match says nothing about a gene as an NF target. The flag is now scoped to manifestation-specific HPO terms (`phase5-manifestation-hpo-map.csv`), and terms carried by more than 50 candidate genes are excluded from the tier while still being reported. Scoliosis, at 119 candidate genes, is the one such term. The broad-profile overlap is kept as `n_disease_profile_hpo_matches` and still covers 989 rows - it should not be read as support.
+The phenotype-support flag was first defined as any shared HPO term between a candidate gene and the stratum disease's full phenotype profile. That flagged 981 of 3,752 rows, and the matches were dominated by pleiotropic terms - Seizure (245 rows), Global developmental delay (217), Intellectual disability (215), Hypertelorism (214) - which hundreds of Mendelian genes carry. Such a match says nothing about a gene as an NF target. The flag is now scoped to manifestation-specific HPO terms (`phase5-manifestation-hpo-map.csv`), and terms carried by more than 50 candidate genes are excluded from the tier while still being reported. Scoliosis, at 120 candidate genes, is the one such term. The broad-profile overlap is kept as `n_disease_profile_hpo_matches` and still covers 996 rows - it should not be read as support.
 
 ## Support tiers
 
@@ -34,15 +36,15 @@ The phenotype-support flag was first defined as any shared HPO term between a ca
 
 | Disease | Manifestation | A | B | C | D | unassessed | DisMech nodes | DisMech coverage |
 |---|---|---|---|---|---|---|---|---|
-| NF1 | ANNUBP / atypical neurofibroma | 2 | 1 | 29 | 30 | 1 | 19 | `disease+shared_unsubtyped` |
-| NF1 | Bone defects | 0 | 1 | 36 | 55 | 1 | 12 | `disease` |
-| NF1 | Cutaneous neurofibroma | 0 | 1 | 162 | 260 | 2 | 19 | `disease+shared_unsubtyped` |
-| NF1 | Malignant peripheral nerve sheath tumor (MPNST) | 6 | 3 | 325 | 511 | 13 | 22 | `disease+manifestation` |
-| NF1 | Optic pathway glioma | 2 | 0 | 115 | 287 | 20 | 16 | `approximate+disease` |
-| NF1 | Plexiform neurofibroma | 2 | 0 | 317 | 484 | 5 | 19 | `disease+shared_unsubtyped` |
-| NF2-SWN | Non-vestibular schwannoma | 0 | 1 | 68 | 137 | 15 | 6 | `manifestation` |
-| NF2-SWN | Pain | 0 | 0 | 52 | 125 | 15 | 6 | `cross_disease_borrow` |
-| NF2-SWN | Vestibular schwannoma | 0 | 0 | 202 | 430 | 36 | 7 | `manifestation` |
+| NF1 | ANNUBP / atypical neurofibroma | 2 | 1 | 29 | 31 | 0 | 19 | `disease+shared_unsubtyped` |
+| NF1 | Bone defects | 0 | 1 | 36 | 56 | 0 | 12 | `disease` |
+| NF1 | Cutaneous neurofibroma | 0 | 1 | 163 | 261 | 0 | 19 | `disease+shared_unsubtyped` |
+| NF1 | Malignant peripheral nerve sheath tumor (MPNST) | 6 | 3 | 330 | 519 | 0 | 22 | `disease+manifestation` |
+| NF1 | Optic pathway glioma | 2 | 0 | 115 | 292 | 15 | 16 | `approximate+disease` |
+| NF1 | Plexiform neurofibroma | 2 | 0 | 320 | 486 | 0 | 19 | `disease+shared_unsubtyped` |
+| NF2-SWN | Non-vestibular schwannoma | 0 | 1 | 69 | 142 | 9 | 6 | `manifestation` |
+| NF2-SWN | Pain | 0 | 0 | 53 | 130 | 9 | 6 | `cross_disease_borrow` |
+| NF2-SWN | Vestibular schwannoma | 0 | 0 | 207 | 448 | 13 | 7 | `manifestation` |
 
 ### Every tier A and tier B candidate
 

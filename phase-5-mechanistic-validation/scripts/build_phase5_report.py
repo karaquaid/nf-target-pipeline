@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 
 import pandas as pd
@@ -114,10 +115,25 @@ def main() -> None:
     A("## Inputs and identifier resolution\n")
     A(f"- {inputs['dossier_rows']:,} dossier rows over {len(tiers)} disease x manifestation strata, "
       f"{inputs['distinct_genes']:,} distinct gene symbols")
-    A(f"- {mon['n_resolved']:,} symbols resolved to HGNC CURIEs by exact match; "
+    A(f"- {mon['n_resolved']:,} symbols resolved to HGNC CURIEs; "
       f"{len(mon['unresolved_symbols'])} did not resolve and are tiered `unassessed`")
-    A("- The unresolved set is dominated by clone-based locus identifiers (AC/AL-prefixed) and "
-      "composite labels such as `TPSAB1/B2` that are not single HGNC genes. They were not dropped.")
+    A(f"- {mon.get('n_resolved_via_phase4_alias', 0)} of those resolved only on the second attempt, "
+      "using `phase4-identifiers.csv`'s `resolved_symbol`. A first pass that tried the literal "
+      "label alone left 71 unresolved, and most were real genes under withdrawn or alias symbols "
+      "that Monarch does not index under the old name - GBA (GBA1), SEPT9 (SEPTIN9), MLLT4 (AFDN), "
+      "KIAA0101 (PCLAF), FOXO1A, DARC, IL1RL1, HIST1H2BD and the C#orf/KIAA/FLJ placeholders. "
+      "Calling that set junk locus IDs would have hidden a real coverage gap; `resolved_via` "
+      "records which spelling worked for each gene.")
+    A("- Two labels resolved only because Phase 4 had already diagnosed them: `March 1` is "
+      "spreadsheet date corruption of MARCH1, now MARCHF1, and the composite `TPSAB1/B2` maps to "
+      "TPSAB1 alone, so TPSB2 is not assessed under that row.")
+    clone_re = re.compile(r"^(AC|AL|AP|RP11|RP1|CTD|LINC|LOC)[0-9A-Z\-.]*$")
+    n_clone = sum(1 for s in mon["unresolved_symbols"] if clone_re.match(s))
+    A(f"- The {len(mon['unresolved_symbols'])} still unresolved are {n_clone} clone-based locus "
+      "identifiers (AC/AL/AP/RP11/LOC-style), the legacy placeholders FLJ41484 and MGC24103, and "
+      "`Oligodendrocyte differentiation (clemastine target)` - a Phase 1b literature label that "
+      "names a process rather than a gene product, already flagged `not_a_gene_symbol` in Phase 4. "
+      "None was dropped from the tables.")
     A(f"- {mon['n_association_rows']:,} association rows retrieved; "
       f"{mon['n_genes_with_disease_edge']} genes carry a causal gene-disease edge and "
       f"{mon['n_genes_with_phenotype_edge']} a gene-phenotype edge. "
