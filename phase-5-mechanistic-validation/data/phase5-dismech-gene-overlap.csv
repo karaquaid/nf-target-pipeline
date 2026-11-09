@@ -1,0 +1,13 @@
+disease,manifestation,gene_symbol,entry,entry_role
+NF1,Malignant peripheral nerve sheath tumor (MPNST),CDKN2A,Malignant_Peripheral_Nerve_Sheath_Tumor,manifestation
+NF1,Malignant peripheral nerve sheath tumor (MPNST),CDKN2B,Malignant_Peripheral_Nerve_Sheath_Tumor,manifestation
+NF1,Malignant peripheral nerve sheath tumor (MPNST),EED,Malignant_Peripheral_Nerve_Sheath_Tumor,manifestation
+NF1,Malignant peripheral nerve sheath tumor (MPNST),SUZ12,Malignant_Peripheral_Nerve_Sheath_Tumor,manifestation
+NF1,Malignant peripheral nerve sheath tumor (MPNST),TP53,Malignant_Peripheral_Nerve_Sheath_Tumor,manifestation
+NF1,Malignant peripheral nerve sheath tumor (MPNST),PTEN,Neurofibromatosis_Type_1,disease
+NF1,Plexiform neurofibroma,CDKN2A,Neurofibroma,shared_unsubtyped
+NF1,Plexiform neurofibroma,PTEN,Neurofibromatosis_Type_1,disease
+NF1,ANNUBP / atypical neurofibroma,CDKN2A,Neurofibroma,shared_unsubtyped
+NF1,ANNUBP / atypical neurofibroma,SUZ12,Neurofibroma,shared_unsubtyped
+NF1,Optic pathway glioma,BRAF,Pilocytic_Astrocytoma,approximate
+NF1,Optic pathway glioma,RAF1,Pilocytic_Astrocytoma,approximate
