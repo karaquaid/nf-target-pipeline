@@ -1,6 +1,7 @@
 manifestation,hpo_id,hpo_label,n_candidate_genes_with_term,specificity
 Malignant peripheral nerve sheath tumor (MPNST),HP:0100697,Malignant peripheral nerve sheath tumor,3,specific
 Plexiform neurofibroma,HP:0009732,Plexiform neurofibroma,0,absent_from_candidates
+Plexiform neurofibroma,HP:0001067,Neurofibroma,3,specific
 Cutaneous neurofibroma,HP:0100698,Subcutaneous neurofibroma,0,absent_from_candidates
 Cutaneous neurofibroma,HP:0001067,Neurofibroma,3,specific
 ANNUBP / atypical neurofibroma,HP:0007524,Atypical neurofibromatosis,0,absent_from_candidates
@@ -13,6 +14,7 @@ Bone defects,HP:0002650,Scoliosis,120,non_specific
 Vestibular schwannoma,HP:0009588,Vestibular schwannoma,1,specific
 Vestibular schwannoma,HP:0009589,Bilateral vestibular schwannoma,0,absent_from_candidates
 Vestibular schwannoma,HP:0009590,Unilateral vestibular schwannoma,0,absent_from_candidates
+Vestibular schwannoma,HP:0100008,Schwannoma,1,specific
 Non-vestibular schwannoma,HP:0100008,Schwannoma,1,specific
 Non-vestibular schwannoma,HP:0009593,Peripheral schwannoma,0,absent_from_candidates
 Non-vestibular schwannoma,HP:0025604,Orbital schwannoma,0,absent_from_candidates

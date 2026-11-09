@@ -44,10 +44,10 @@
     "cross_disease_rows": 10905,
     "support_tiers": {
       "D_no_edges": 2365,
-      "C_other_only": 1322,
+      "C_other_only": 1319,
       "unassessed": 46,
       "A_mechanism": 12,
-      "B_phenotype": 7
+      "B_phenotype": 10
     }
   },
   "unresolved_symbols": [

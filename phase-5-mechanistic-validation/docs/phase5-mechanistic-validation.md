@@ -41,10 +41,10 @@ The phenotype-support flag was first defined as any shared HPO term between a ca
 | NF1 | Cutaneous neurofibroma | 0 | 1 | 163 | 261 | 0 | 19 | `disease+shared_unsubtyped` |
 | NF1 | Malignant peripheral nerve sheath tumor (MPNST) | 6 | 3 | 330 | 519 | 0 | 22 | `disease+manifestation` |
 | NF1 | Optic pathway glioma | 2 | 0 | 115 | 292 | 15 | 16 | `approximate+disease` |
-| NF1 | Plexiform neurofibroma | 2 | 0 | 320 | 486 | 0 | 19 | `disease+shared_unsubtyped` |
+| NF1 | Plexiform neurofibroma | 2 | 2 | 318 | 486 | 0 | 19 | `disease+shared_unsubtyped` |
 | NF2-SWN | Non-vestibular schwannoma | 0 | 1 | 69 | 142 | 9 | 6 | `manifestation` |
 | NF2-SWN | Pain | 0 | 0 | 53 | 130 | 9 | 6 | `cross_disease_borrow` |
-| NF2-SWN | Vestibular schwannoma | 0 | 0 | 207 | 448 | 13 | 7 | `manifestation` |
+| NF2-SWN | Vestibular schwannoma | 0 | 1 | 206 | 448 | 13 | 7 | `manifestation` |
 
 ### Every tier A and tier B candidate
 
@@ -68,7 +68,10 @@ The phenotype-support flag was first defined as any shared HPO term between a ca
 | RAF1 | NF1 | Optic pathway glioma | A_mechanism | Pilocytic_Astrocytoma | - |
 | PTEN | NF1 | Plexiform neurofibroma | A_mechanism | Neurofibromatosis_Type_1 | - |
 | CDKN2A | NF1 | Plexiform neurofibroma | A_mechanism | Neurofibroma | - |
+| KIT | NF1 | Plexiform neurofibroma | B_phenotype | - | HP:0001067 |
+| SPRED1 | NF1 | Plexiform neurofibroma | B_phenotype | - | HP:0001067 |
 | MBD4 | NF2-SWN | Non-vestibular schwannoma | B_phenotype | - | HP:0100008 |
+| MBD4 | NF2-SWN | Vestibular schwannoma | B_phenotype | - | HP:0100008 |
 
 ## DisMech mechanism context
 
@@ -107,7 +110,7 @@ Most frequently co-occurring disorders at two shared terms:
 - `unassessed` must not score as a zero: 108 rows had no HGNC resolution and were never looked up
 - Three strata share one DisMech entry and one is approximate; their DisMech support is correlated, not independent
 - NF2-SWN Pain support would be a cross-disease borrow and is excluded from direct support
-- Tier A and B together cover 19 of 3,752 rows. Phase 5 confirms a small number of candidates against curated knowledge; it does not rank the bulk of the list.
+- Tier A and B together cover 22 of 3,752 rows. Phase 5 confirms a small number of candidates against curated knowledge; it does not rank the bulk of the list.
 
 ## Files
 

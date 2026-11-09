@@ -9,6 +9,10 @@ Intellectual disability (215), Hypertelorism (214). Hundreds of Mendelian genes
 carry those, so the match says nothing about the gene as an NF target. The flag
 is therefore scoped to HPO terms that name the manifestation itself.
 
+A parent term that applies to a tumour class is given to EVERY stratum of that
+class. Otherwise the tier depends on which stratum a reviewer happened to hand
+the generic term to rather than on the gene's edges.
+
 Term selection: each manifestation's candidate terms come from Monarch
 /search with category=biolink:PhenotypicFeature, filtered to HP: CURIEs whose
 label contains the query string, then hand-curated to drop body-site variants
@@ -47,18 +51,23 @@ QUERIES = {
                      "bowing of the long bones", "scoliosis"],
     "Vestibular schwannoma": ["vestibular schwannoma"],
     "Non-vestibular schwannoma": ["schwannoma", "peripheral schwannoma"],
+    # (the vestibular searches above also surface the generic Schwannoma term)
     "Pain": ["neuropathic pain", "chronic pain", "pain"],
 }
 
 # Hand-curated keep-lists, resolved from the searches above.
 CURATED = {
     "Malignant peripheral nerve sheath tumor (MPNST)": ["HP:0100697"],
-    "Plexiform neurofibroma": ["HP:0009732"],
+    # HP:0001067 (generic Neurofibroma) applies to every neurofibroma subtype
+    # stratum, not only some: giving it to cutaneous and ANNUBP but not plexiform
+    # made KIT tier B in two strata and tier C in the third on no data difference.
+    "Plexiform neurofibroma": ["HP:0009732", "HP:0001067"],
     "Cutaneous neurofibroma": ["HP:0100698", "HP:0001067"],
     "ANNUBP / atypical neurofibroma": ["HP:0007524", "HP:0001067"],
     "Optic pathway glioma": ["HP:0009734"],
     "Bone defects": ["HP:0009736", "HP:6001124", "HP:0006487", "HP:0002650"],
-    "Vestibular schwannoma": ["HP:0009588", "HP:0009589", "HP:0009590"],
+    # likewise HP:0100008 (generic Schwannoma) covers the vestibular stratum too
+    "Vestibular schwannoma": ["HP:0009588", "HP:0009589", "HP:0009590", "HP:0100008"],
     # vestibular terms deliberately excluded here
     "Non-vestibular schwannoma": ["HP:0100008", "HP:0009593", "HP:0025604", "HP:0100011"],
     # body-site-specific pains deliberately excluded

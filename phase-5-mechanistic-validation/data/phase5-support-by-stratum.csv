@@ -4,7 +4,7 @@ NF1,Bone defects,0,1,36,56,0
 NF1,Cutaneous neurofibroma,0,1,163,261,0
 NF1,Malignant peripheral nerve sheath tumor (MPNST),6,3,330,519,0
 NF1,Optic pathway glioma,2,0,115,292,15
-NF1,Plexiform neurofibroma,2,0,320,486,0
+NF1,Plexiform neurofibroma,2,2,318,486,0
 NF2-SWN,Non-vestibular schwannoma,0,1,69,142,9
 NF2-SWN,Pain,0,0,53,130,9
-NF2-SWN,Vestibular schwannoma,0,0,207,448,13
+NF2-SWN,Vestibular schwannoma,0,1,206,448,13
