@@ -7,5 +7,5 @@ __pycache__/
 # Phase 4 resume cache: regenerable, not a record
 phase-4/data/phase4-gtop-cache.jsonl
 
-# DisMech release assets cached locally (64 MB kb.zip, KGX exports)
-phase-5-mechanistic-validation/data/dismech-*
+# DisMech release assets and Monarch resume caches land in build/ (already ignored
+# above); phase5_*.py default to --builddir build/phase5

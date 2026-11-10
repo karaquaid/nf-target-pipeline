@@ -1,0 +1,83 @@
+{
+  "input_commit": "f552f88f734439a098c2e6c2aa0a10f4a5f70ef5",
+  "sources": {
+    "monarch": {
+      "endpoint": "https://api-v3.monarchinitiative.org/v3/api",
+      "kg_version": "2026-10-07",
+      "api_version": "1.31.1",
+      "auth": "none",
+      "access": "full records over REST; no field withheld",
+      "requests": {
+        "symbol_resolution": 1930,
+        "association_queries": 3804,
+        "disease_phenotype_profiles": 3
+      },
+      "errors": 0
+    },
+    "dismech": {
+      "repo": "github.com/monarch-initiative/dismech",
+      "release": "v0.1.46",
+      "released": "2026-10-29T02:26:35Z",
+      "access": "full YAML knowledge base from pinned release assets; no API exists",
+      "entries_fetched": [
+        "Acoustic_Neuroma",
+        "Malignant_Peripheral_Nerve_Sheath_Tumor",
+        "Neurofibroma",
+        "Neurofibromatosis_Type_1",
+        "Pilocytic_Astrocytoma",
+        "Schwannoma",
+        "Schwannomatosis"
+      ],
+      "disorders_indexed": 3777
+    }
+  },
+  "counts": {
+    "dossier_rows": 3752,
+    "distinct_genes": 1930,
+    "genes_resolved": 1902,
+    "genes_unresolved": 28,
+    "monarch_association_rows": 25733,
+    "genes_with_causal_disease_edge": 630,
+    "genes_with_phenotype_edge": 635,
+    "dismech_mechanism_nodes": 52,
+    "dismech_gene_overlap_rows": 12,
+    "cross_disease_rows": 10905,
+    "support_tiers": {
+      "D_no_edges": 2365,
+      "C_other_only": 1319,
+      "unassessed": 46,
+      "A_mechanism": 12,
+      "B_phenotype": 10
+    }
+  },
+  "unresolved_symbols": [
+    "AC000095.11",
+    "AC008780.1",
+    "AC018358.1",
+    "AC021683.1",
+    "AC091938.1",
+    "AC104002.3",
+    "AC134312.1",
+    "AC138647.1",
+    "AL117329.1",
+    "AL133465.1",
+    "AL353709.1",
+    "AL354863.1",
+    "AL583827.1",
+    "AL645768.1",
+    "AP000962.1",
+    "AP005242.4",
+    "FLJ41484",
+    "LOC100505573",
+    "LOC286052",
+    "MGC24103",
+    "Oligodendrocyte differentiation (clemastine target)",
+    "RP11-252P19.1",
+    "RP11-252P19.2",
+    "RP11-2E11.9",
+    "RP11-320G10.1",
+    "RP11-327I22.8",
+    "RP11-874J12.3",
+    "RP11-874J12.4"
+  ]
+}

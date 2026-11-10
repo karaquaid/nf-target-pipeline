@@ -1,0 +1,31 @@
+{
+  "input_rows": 3752,
+  "surviving_rows": 3647,
+  "excluded_rows": 105,
+  "excluded_by_rule": {
+    "R1_germline_driver": 1,
+    "R2_likely_biomarker": 92,
+    "R3_mutation_restricted": 34
+  },
+  "excluded_distinct_genes": 49,
+  "tme_rows_kept": 50,
+  "r5_phase1b_row_leaks": [],
+  "surviving_by_stratum": {
+    "NF1 | ANNUBP / atypical neurofibroma": 54,
+    "NF1 | Bone defects": 91,
+    "NF1 | Cutaneous neurofibroma": 416,
+    "NF1 | Malignant peripheral nerve sheath tumor (MPNST)": 824,
+    "NF1 | Optic pathway glioma": 418,
+    "NF1 | Plexiform neurofibroma": 783,
+    "NF2-SWN | Non-vestibular schwannoma": 217,
+    "NF2-SWN | Pain": 189,
+    "NF2-SWN | Vestibular schwannoma": 655
+  },
+  "surviving_by_tier": {
+    "D_no_edges": 2316,
+    "C_other_only": 1274,
+    "unassessed": 46,
+    "B_phenotype": 9,
+    "A_mechanism": 2
+  }
+}

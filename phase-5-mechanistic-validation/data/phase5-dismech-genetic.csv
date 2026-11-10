@@ -1,0 +1,20 @@
+entry,gene_curie,gene_label,association,relationship_type,n_evidence,evidence_refs
+Acoustic_Neuroma,HGNC:7773,NF2,Somatic NF2 pathogenic variants and allele loss drive the predominant sporadic tumor context.,SOMATIC_DRIVER,3,PMID:39941762|PMID:40295009|PMID:40295009
+Acoustic_Neuroma,HGNC:7773,NF2,Germline NF2 pathogenic variants predispose to bilateral vestibular schwannomas in the NF2-related syndrome context.,RISK_FACTOR,1,PMID:20301380
+Malignant_Peripheral_Nerve_Sheath_Tumor,HGNC:7765,NF1,Germline predisposition with biallelic tumor-suppressor loss,,1,PMID:24470531
+Malignant_Peripheral_Nerve_Sheath_Tumor,HGNC:1787,CDKN2A,Somatic deletion or loss,,1,PMID:25240281
+Malignant_Peripheral_Nerve_Sheath_Tumor,HGNC:11998,TP53,Somatic loss of function,,1,PMID:29118384
+Malignant_Peripheral_Nerve_Sheath_Tumor,HGNC:17101,SUZ12,Somatic PRC2-core loss of function,,1,PMID:25240281
+Malignant_Peripheral_Nerve_Sheath_Tumor,HGNC:3188,EED,Somatic PRC2-core loss of function,,1,PMID:25240281
+Malignant_Peripheral_Nerve_Sheath_Tumor,HGNC:11103,SMARCB1,Somatic loss of function in epithelioid subtype,,1,PMID:30864974
+Neurofibroma,HGNC:7765,NF1,Germline predisposition with biallelic tumor-suppressor loss,,1,PMID:35066574
+Neurofibromatosis_Type_1,HGNC:7765,NF1,Germline Loss-of-Function Mutations,,1,CGGV:assertion_367a3958-ce81-47fa-a505-a451ca67aab5-2019-03-05T170000.000Z
+Pilocytic_Astrocytoma,HGNC:1097,BRAF,Somatic activating fusion or mutation,SOMATIC_DRIVER,1,PMID:28448514
+Pilocytic_Astrocytoma,HGNC:22219,KIAA1549,Somatic fusion partner,COOPERATING,1,PMID:28448514
+Pilocytic_Astrocytoma,HGNC:7765,NF1,Germline tumor predisposition with biallelic tumor inactivation context,RISK_FACTOR,1,PMID:35945463
+Pilocytic_Astrocytoma,HGNC:9829,RAF1,Somatic fusion driver,SOMATIC_DRIVER,1,PMID:28448514
+Schwannoma,HGNC:7773,NF2,"Biallelic NF2 inactivation (germline plus somatic, or two somatic hits) is the central driver of sporadic schwannoma and NF2-related schwannomatosis.",CAUSATIVE,1,PMID:36148553
+Schwannoma,HGNC:11103,SMARCB1,Germline SMARCB1 variants cause SMARCB1-related schwannomatosis with multiple non-intradermal schwannomas; SMARCB1/INI1 loss characterizes epithelioid schwannoma. SMARCB1-related disease carries elevated malignancy and meningioma risk.,CAUSATIVE,1,PMID:29517885
+Schwannoma,HGNC:6742,LZTR1,"Germline LZTR1 variants cause LZTR1-related schwannomatosis with multiple non-intradermal schwannomas, including a risk of unilateral vestibular schwannoma.",CAUSATIVE,1,PMID:29517885
+Schwannomatosis,HGNC:11103,SMARCB1,"Germline loss-of-function variants in SMARCB1 cause SMARCB1-related schwannomatosis, with elevated malignancy and meningioma risk.",CAUSATIVE,2,PMID:29517885|PMID:39209702
+Schwannomatosis,HGNC:6742,LZTR1,"Germline loss-of-function variants in LZTR1 cause LZTR1-related schwannomatosis, including a risk of unilateral vestibular schwannoma.",CAUSATIVE,2,PMID:29517885|PMID:24362817

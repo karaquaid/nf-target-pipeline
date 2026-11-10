@@ -16,6 +16,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 BASE = "https://api-v3.monarchinitiative.org/v3/api"
+PAGE = 500  # hard maximum the API accepts for `limit`
 HUMAN = "NCBITaxon:9606"
 
 
@@ -35,6 +36,21 @@ class Monarch:
         r = self.s.get(f"{self.base}{path}", params=params, timeout=self.timeout)
         r.raise_for_status()
         return r.json()
+
+    def _paged(self, path: str, **params) -> list[dict]:
+        """Walk every page. The API caps `limit` at 500 (per its own openapi.json)
+        and silently returns a truncated page above that, so anything that can
+        exceed 500 edges must page rather than ask for more."""
+        items: list[dict] = []
+        offset = 0
+        while True:
+            r = self._get(path, limit=PAGE, offset=offset, **params)
+            batch = r.get("items", [])
+            items.extend(batch)
+            total = r.get("total", len(items))
+            offset += PAGE
+            if not batch or offset >= total:
+                return items
 
     # --- provenance -------------------------------------------------------
     def version(self) -> dict:
@@ -72,32 +88,31 @@ class Monarch:
         return self._get("/association", subject=subject, object=object,
                          category=category, limit=limit, **kw)
 
-    def gene_diseases(self, gene_curie: str, limit: int = 100) -> list[dict]:
+    def gene_diseases(self, gene_curie: str) -> list[dict]:
         """Diseases this gene is asserted to cause (ground-truth check)."""
-        r = self.associations(subject=gene_curie,
-                              category="biolink:CausalGeneToDiseaseAssociation", limit=limit)
+        items = self._paged("/association", subject=gene_curie,
+                            category="biolink:CausalGeneToDiseaseAssociation")
         return [{"disease": a["object"], "label": a["object_label"],
                  "predicate": a["predicate"],
-                 "source": a.get("primary_knowledge_source")} for a in r["items"]]
+                 "source": a.get("primary_knowledge_source")} for a in items]
 
-    def disease_genes(self, mondo_curie: str, limit: int = 200) -> list[dict]:
-        r = self.associations(object=mondo_curie,
-                              category="biolink:CausalGeneToDiseaseAssociation", limit=limit)
+    def disease_genes(self, mondo_curie: str) -> list[dict]:
+        items = self._paged("/association", object=mondo_curie,
+                            category="biolink:CausalGeneToDiseaseAssociation")
         return [{"gene": a["subject"], "label": a["subject_label"],
-                 "source": a.get("primary_knowledge_source")} for a in r["items"]]
+                 "source": a.get("primary_knowledge_source")} for a in items]
 
-    def gene_phenotypes(self, gene_curie: str, limit: int = 500) -> list[dict]:
-        r = self.associations(subject=gene_curie,
-                              category="biolink:GeneToPhenotypicFeatureAssociation", limit=limit)
+    def gene_phenotypes(self, gene_curie: str) -> list[dict]:
+        items = self._paged("/association", subject=gene_curie,
+                            category="biolink:GeneToPhenotypicFeatureAssociation")
         return [{"hpo": a["object"], "label": a["object_label"],
-                 "source": a.get("primary_knowledge_source")} for a in r["items"]]
+                 "source": a.get("primary_knowledge_source")} for a in items]
 
-    def disease_phenotypes(self, mondo_curie: str, limit: int = 500) -> list[dict]:
+    def disease_phenotypes(self, mondo_curie: str) -> list[dict]:
         """HPO profile of a disease — the hook for manifestation labelling."""
-        r = self._get(f"/entity/{mondo_curie}/biolink:DiseaseToPhenotypicFeatureAssociation",
-                      limit=limit)
+        items = self._paged(f"/entity/{mondo_curie}/biolink:DiseaseToPhenotypicFeatureAssociation")
         return [{"hpo": a["object"], "label": a["object_label"],
-                 "source": a.get("primary_knowledge_source")} for a in r["items"]]
+                 "source": a.get("primary_knowledge_source")} for a in items]
 
 
 # Mondo terms for the project's three disease labels, verified against the live API.
