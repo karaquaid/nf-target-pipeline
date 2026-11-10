@@ -1,0 +1,10 @@
+disease,manifestation,candidate_rows,rows_with_a_drug,drug_rows,distinct_drugs,route_appropriate_drug_rows,approved_or_phase3_appropriate,drug_rows_in_nf_trials
+NF1,ANNUBP / atypical neurofibroma,54,35,1078,884,147,72,67
+NF1,Bone defects,91,40,1643,1086,302,108,142
+NF1,Cutaneous neurofibroma,416,166,3791,2653,524,216,208
+NF1,Malignant peripheral nerve sheath tumor (MPNST),824,366,7149,4057,921,379,349
+NF1,Optic pathway glioma,418,170,4088,2472,110,110,226
+NF1,Plexiform neurofibroma,783,358,7403,4130,1041,439,418
+NF2-SWN,Non-vestibular schwannoma,217,91,2201,1160,329,158,181
+NF2-SWN,Pain,189,64,384,310,49,9,16
+NF2-SWN,Vestibular schwannoma,655,297,6655,3397,971,475,326

@@ -1,0 +1,17 @@
+{
+  "method": "join of phase4-drug-route-flags.csv.gz (sources queried live 2026-11-04) onto the Phase 1b-filtered candidate set; no source re-queried",
+  "candidate_rows": 3647,
+  "candidate_rows_with_a_drug": 1587,
+  "candidate_rows_no_drug_found": 2014,
+  "candidate_rows_not_queryable": 46,
+  "drug_rows": 34392,
+  "distinct_drugs": 7863,
+  "route_appropriate_drug_rows": 4394,
+  "route_appropriate_clinical_stage_rows": 1966,
+  "route_appropriate_rows_with_clinical_cns_override": 4418,
+  "clinical_stage_rows_with_clinical_cns_override": 1990,
+  "cns_rows_excluded_by_calculated_flag_but_in_an_nf_trial": 24,
+  "drug_rows_in_nf_trials": 1933,
+  "shortlist_rows": 77,
+  "shortlist_distinct_drugs": 30
+}
