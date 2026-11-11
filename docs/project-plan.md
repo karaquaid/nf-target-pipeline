@@ -190,6 +190,10 @@ Phase 3b is implemented as `phase-3b/scripts/phase3b_coverage.py`, `phase3b_figu
 
 ## Phase 6: Evidence Strength Scoring
 
+**Settled target-set rulings carried in from Phase 5 (2026-11-11):**
+
+- **SPRED2 remains excluded.** It was initially ruled a keeper on the grounds that it is not a germline NF disease gene, which is correct for R1. It leaves instead under R2: the composite Phase 1b label `SPRED1/2` that it inherits is itself flagged `likely_biomarker` ("tumour suppressors whose loss phenocopies NF1 loss; loss status is more useful as a classifier than a drug target"). Both SPRED rows stay in `phase5-drug-candidate-exclusions.csv`, SPRED1 under R1 and R2, SPRED2 under R2 alone. Do not reinstate either on the basis that SPRED2 passes the driver rule
+
 **Claude tools:** Claude Code (implementing/testing the scoring rubric)
 
 - Define a scoring rubric that combines drug-interaction evidence, tractability, clinical stage, approval status, cross-disease mechanistic support, safety data, and the delivery-route/CNS-penetration flag into a single confidence signal per candidate
