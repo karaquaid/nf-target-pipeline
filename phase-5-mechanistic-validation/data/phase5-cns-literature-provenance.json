@@ -1,0 +1,28 @@
+{
+  "source": "PubMed via the project's PubMed connector; full text from PubMed Central",
+  "query_bank": [
+    "SELUMETINIB AND (blood-brain barrier OR cerebrospinal fluid OR brain penetration OR CNS penetration)",
+    "SELUMETINIB AND (\"brain-to-plasma\" OR \"brain to plasma\" OR Kpuu OR \"unbound brain\" OR \"CSF concentration\")"
+  ],
+  "scope": "20 active moieties normalised from the 30 shortlist drug labels (salt forms collapsed)",
+  "moieties": 20,
+  "papers_screened": 150,
+  "papers_with_full_text": 54,
+  "claims": 452,
+  "claims_full_text": 271,
+  "claims_abstract_only": 181,
+  "claims_with_a_number": 162,
+  "moieties_with_no_claim": [
+    "PEXIDARTINIB",
+    "QUIZARTINIB"
+  ],
+  "unrecovered_failures": [
+    "SUNITINIB convert 41889884: RuntimeError",
+    "IMATINIB fulltext PMC4000600: KeyError"
+  ],
+  "caveat": "sentences are regex-selected and NOT adjudicated; direction is a keyword split, not a judgement of the finding. Every claim carries its PMID, DOI and access level so a human verifies it. Abstract-only claims are weaker evidence than full-text ones by design.",
+  "claims_attributed_to_the_drug": 124,
+  "attribution_rule": "the drug name or a known synonym must appear in the sentence itself; 73% of regex-matched sentences fail this and are retained but flagged, because a paper retrieved for one drug routinely discusses others",
+  "moieties_with_an_attributed_claim": 17,
+  "retry_note": "the first pass lost REGORAFENIB and SUNITINIB to a metadata KeyError on 12-16 id batches and showed them as zero-evidence; re-running in batches of 4 recovered both. Six full-text KeyErrors also recovered on retry. Two calls still fail and are listed."
+}
