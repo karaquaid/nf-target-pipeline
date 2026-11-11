@@ -1,0 +1,20 @@
+{
+  "rule": "three-state tractability; Open Targets buckets are positive-evidence assertions, so a missing bucket is not evidence of untractability",
+  "genes": 1883,
+  "candidate_rows": 3647,
+  "genes_by_state": {
+    "evidence_present": 1734,
+    "not_assessed": 85,
+    "assessed_no_evidence": 64
+  },
+  "rows_by_state": {
+    "evidence_present": 3389,
+    "not_assessed": 142,
+    "assessed_no_evidence": 116
+  },
+  "genes_rescued_by_drug_or_probe": 20,
+  "phase4_status_disagreement": {
+    "phase4_called_assessed_but_state_is_not_assessed": 0,
+    "phase4_called_no_bucket_but_state_is_evidence_present": 20
+  }
+}
