@@ -10,7 +10,9 @@ dossier without having to re-derive what was or was not checkable.
 
 Tiers, per candidate row:
   A_mechanism   gene named in a DisMech mechanism node or genetic section for
-                this stratum, or a Monarch causal edge to the stratum's disease
+                this stratum, or a Monarch causal edge to the stratum's disease.
+                The Monarch half never fires - see DISEASE_TERMS below - so in
+                practice this tier is DisMech mechanism-node membership
   B_phenotype   gene-to-HPO edge to a MANIFESTATION-specific HPO term (see
                 phase5_hpo_map.py). Terms tagged non_specific in that map, such
                 as Scoliosis at 119 candidate genes, are excluded: matching a
@@ -34,6 +36,22 @@ import pandas as pd
 # Specificity tags from the HPO map that are allowed to carry B_phenotype.
 TIERED_SPECIFICITY = {"specific", "moderate"}
 # Monarch disease terms that count as "this stratum's disease" for tier A.
+#
+# STRUCTURALLY VACUOUS, and kept deliberately. Monarch's
+# CausalGeneToDiseaseAssociation edges are Mendelian gene-disease assertions, so
+# for an NF disease term the only subjects are the causative germline genes -
+# NF1, NF2, SMARCB1, LZTR1, SPRED1 - which are exactly the genes the Phase 1b
+# driver rule removes from the candidate list. Verified against the live API:
+# each NF Mondo term has 2 causal edges naming 1 gene, the broader
+# GeneToDiseaseAssociation category is unpopulated, and the overlap with the
+# candidate set is 0. So monarch_disease_terms is empty for all 3,752 rows and
+# tier A is in practice DisMech mechanism-node membership alone.
+#
+# The clause stays because it costs nothing and will start firing if Monarch
+# ever ingests non-causal gene-disease associations. The count is written to
+# provenance so a future run notices when it stops being zero. What it must NOT
+# do is let a reader infer that Monarch looked for disease-level support and
+# found none: Monarch cannot express that support for a non-driver gene at all.
 DISEASE_TERMS = {
     "NF1": {"MONDO:0018975", "MONDO:0021061", "MONDO:0008078", "MONDO:0011035"},
     "NF2-SWN": {"MONDO:0007039", "MONDO:0859764", "MONDO:1030016"},
@@ -135,6 +153,16 @@ def main() -> None:
 
     tiers = sup.groupby(["disease", "manifestation"]).phase5_support_tier.value_counts().unstack(fill_value=0)
     tiers.to_csv(data / "phase5-support-by-stratum.csv")
+    json.dump({"rows": len(sup),
+               # these columns hold "" (not NaN) in memory, so count non-empty
+               "rows_with_monarch_disease_term": int((sup.monarch_disease_terms.fillna("") != "").sum()),
+               "rows_with_dismech_entry": int((sup.dismech_entries.fillna("") != "").sum()),
+               "rows_with_manifestation_hpo_term": int((sup.manifestation_hpo_terms.fillna("") != "").sum()),
+               "note": "rows_with_monarch_disease_term is expected to be 0: Monarch's causal "
+                       "gene-disease edges name only the germline NF genes, which the Phase 1b "
+                       "driver rule excludes. If it is ever non-zero, Monarch has gained "
+                       "non-causal gene-disease edges and tier A should be revisited."},
+              open(data / "phase5-support-column-coverage.json", "w"), indent=2)
     print(tiers.to_string())
     print("\nrows:", len(sup), "| tier totals:", sup.phase5_support_tier.value_counts().to_dict())
 

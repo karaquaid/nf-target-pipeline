@@ -1,0 +1,7 @@
+{
+  "rows": 3752,
+  "rows_with_monarch_disease_term": 0,
+  "rows_with_dismech_entry": 12,
+  "rows_with_manifestation_hpo_term": 10,
+  "note": "rows_with_monarch_disease_term is expected to be 0: Monarch's causal gene-disease edges name only the germline NF genes, which the Phase 1b driver rule excludes. If it is ever non-zero, Monarch has gained non-causal gene-disease edges and tier A should be revisited."
+}
