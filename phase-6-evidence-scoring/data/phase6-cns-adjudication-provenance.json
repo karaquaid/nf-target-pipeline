@@ -1,0 +1,34 @@
+{
+  "built_by": "phase-6-evidence-scoring/scripts/phase6_cns_adjudication_sheet.py",
+  "inputs": [
+    "phase-5-mechanistic-validation/data/phase5-cns-literature-claims.csv",
+    "phase-5-mechanistic-validation/data/phase5-cns-literature-by-drug.csv",
+    "phase-5-mechanistic-validation/data/phase5-label-cns-verdicts.csv",
+    "phase-5-mechanistic-validation/data/phase5-drug-matches.csv.gz"
+  ],
+  "verdict_vocabulary": [
+    "demonstrated",
+    "contradicted",
+    "unknown"
+  ],
+  "evidence_basis_vocabulary": [
+    "measured_pk_human",
+    "measured_pk_animal",
+    "clinical_cns_response",
+    "preclinical_cns_efficacy",
+    "mechanistic_assertion",
+    "review_restatement",
+    "design_or_prediction"
+  ],
+  "note": "No adjudication is performed here. Verdict columns ship blank; the Phase 5 keyword direction label is carried as a sorting aid only.",
+  "counts": {
+    "claims_total": 452,
+    "claims_attributed": 124,
+    "moieties_with_claims": 17,
+    "moieties_without_claims": 3,
+    "papers": 50,
+    "full_text": 59,
+    "abstract_only": 65,
+    "with_a_number": 65
+  }
+}
