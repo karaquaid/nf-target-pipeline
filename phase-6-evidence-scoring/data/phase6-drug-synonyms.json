@@ -1,0 +1,304 @@
+{
+ "source": "ChEMBL molecule search (www.ebi.ac.uk/chembl/api/data)",
+ "drugs": {
+  "VEMURAFENIB": {
+   "chembl_id": "CHEMBL1229517",
+   "synonyms": [
+    "PLX-4032",
+    "PLX4032",
+    "RG 7204",
+    "RG-7204",
+    "RO 5185426",
+    "RO-51-85426",
+    "RO-5185426",
+    "Vemurafenib",
+    "Zelboraf"
+   ]
+  },
+  "IMATINIB": {
+   "chembl_id": "CHEMBL941",
+   "synonyms": [
+    "CGP-57148B",
+    "CGP057148B",
+    "GLAMOX",
+    "GLEEVEC",
+    "GLEEVEC,STI-571",
+    "GLIVEC",
+    "Glamox",
+    "IMATINIB",
+    "IMATINIB (STI571)",
+    "IMATINIB MESYLATE",
+    "IMATINIB MESYLATEGLEEVECGLIVECIMATINIBSTI571CGP 571484-[(4-METHYL-1-PIPERAZINYL)METHYL]-N-[4-METHYL-3-[[4-(3-PYRIDINYL)-2-PYRIMIDINYL]AMINO]-PHENYL]BENZAMIDE",
+    "Imatinib",
+    "NSC-743414",
+    "NSC-759854",
+    "ST-1571",
+    "STI-571",
+    "STI571",
+    "STI571,GLEEVEC"
+   ]
+  },
+  "SORAFENIB": {
+   "chembl_id": "CHEMBL1336",
+   "synonyms": [
+    "BAY 43-9006",
+    "BAY-43-9006",
+    "Sorafenib"
+   ]
+  },
+  "PAZOPANIB": {
+   "chembl_id": "CHEMBL477772",
+   "synonyms": [
+    "GW-786034",
+    "GW786034",
+    "NSC-752782",
+    "Pazopanib",
+    "Votrient"
+   ]
+  },
+  "SUNITINIB": {
+   "chembl_id": "CHEMBL535",
+   "synonyms": [
+    "NSC-736511",
+    "NSC-750690",
+    "SU-011248",
+    "SU-11248",
+    "SU011248",
+    "Sunitinib",
+    "Sunitinib accord"
+   ]
+  },
+  "DASATINIB": {
+   "chembl_id": "CHEMBL5416410",
+   "synonyms": [
+    "BMS-354825 HYDRATE",
+    "BMS-354825-03",
+    "Dasatinib",
+    "Dasatinib accord healthcare",
+    "Dasatinib hydrate",
+    "Dasatinib monohydrate",
+    "NSC-759877",
+    "Sprycel"
+   ]
+  },
+  "AVAPRITINIB": {
+   "chembl_id": "CHEMBL4204794",
+   "synonyms": [
+    "70C366",
+    "Avapritinib",
+    "Ayvakit",
+    "Ayvakyt",
+    "BLU-285",
+    "C-366",
+    "X-720776",
+    "X720776"
+   ]
+  },
+  "REGORAFENIB": {
+   "chembl_id": "CHEMBL1946170",
+   "synonyms": [
+    "BAY 73-4506",
+    "BAY 73-4506 monohydrate",
+    "BAY-73-4506",
+    "BAY-73-4506 MONOHYDRATE",
+    "BAY-734506",
+    "BAY-734506 MONOHYDRATE",
+    "Regorafenib",
+    "Regorafenib anhydrous",
+    "Regorafenib hydrate",
+    "Regorafenib monohydrate",
+    "Stivarga"
+   ]
+  },
+  "ENCORAFENIB": {
+   "chembl_id": "CHEMBL3301612",
+   "synonyms": [
+    "Braftovi",
+    "Encorafenib",
+    "Lgx-818",
+    "Lgx818",
+    "NVP-LGX-818-NXA",
+    "NVP-LGX818",
+    "NVP-LGX818-NXA"
+   ]
+  },
+  "TOVORAFENIB": {
+   "chembl_id": "CHEMBL3348923",
+   "synonyms": [
+    "BIIB-024",
+    "BIIB024",
+    "Biib-024",
+    "DAY-101",
+    "DAY101",
+    "MLN-2480",
+    "Mln-2480",
+    "Mln2480",
+    "Ojemda",
+    "TAK-580",
+    "Tak 580",
+    "Tak-580",
+    "Tovorafenib"
+   ]
+  },
+  "COBIMETINIB": {
+   "chembl_id": "CHEMBL2146883",
+   "synonyms": [
+    "Cobimetinib",
+    "GDC-0973",
+    "Gdc 0623",
+    "Gdc 0973",
+    "Gdc-0623",
+    "RG 7420",
+    "RG-7420",
+    "RG7420",
+    "Xl 518",
+    "Xl518"
+   ]
+  },
+  "DABRAFENIB": {
+   "chembl_id": "CHEMBL2028663",
+   "synonyms": [
+    "Dabrafenib",
+    "GSK-2118436",
+    "GSK-2118436A",
+    "GSK2118436A",
+    "Gsk2118436",
+    "Tafinlar"
+   ]
+  },
+  "BINIMETINIB": {
+   "chembl_id": "CHEMBL3187723",
+   "synonyms": [
+    "ARRY 438162",
+    "ARRY-162",
+    "ARRY-438162",
+    "Binimetinib",
+    "MEK-162",
+    "MEK162",
+    "Mek-162",
+    "Mektovi",
+    "NVP-MEK162"
+   ]
+  },
+  "RIPRETINIB": {
+   "chembl_id": "CHEMBL4216467",
+   "synonyms": [
+    "DCC-2618",
+    "Dcc-2618",
+    "Qinlock",
+    "Ripretinib"
+   ]
+  },
+  "SELUMETINIB": {
+   "chembl_id": "CHEMBL1614701",
+   "synonyms": [
+    "ARRAY142886",
+    "ARRY-142886",
+    "ARRY-886",
+    "AZD 6244",
+    "AZD-6244",
+    "AZD-6244 HYD-SULFATE",
+    "AZD-6244 HYDROGEN SULFATE",
+    "AZD6244",
+    "AZD6244 (SELUMETINIB)",
+    "Azd-6244",
+    "SELUMETINIB",
+    "SELUMETINIB (AZD6244)",
+    "SELUMETINIB SULFATE",
+    "Selumetinib"
+   ]
+  },
+  "TRAMETINIB": {
+   "chembl_id": "CHEMBL2103875",
+   "synonyms": [
+    "CPD 8B",
+    "GSK 1120212",
+    "GSK-1120212",
+    "GSK-1120212TRAMETINIBMEKINISTA-1083G1357N-(3-{3-CYCLOPROPYL-5-[(2-FLUORO-4-IODOPHENYL)AMINO]-6,8-DIMETHYL-2,4,7-TRIOXO-3,4,6,7-TETRAHYDROPYRIDO[4,3-D]PYRIMIDIN-1(2H)-YL}PHENYL)ACETAMIDE GENERAL",
+    "GSK1120212",
+    "GSK1120212B",
+    "JTP 74057",
+    "JTP-74057",
+    "MEKINIST",
+    "Mekinist",
+    "TMT-212",
+    "TMT212",
+    "TRAMETINIB",
+    "TRAMETINIB (GSK1120212)",
+    "TRAMETINIB DIMETHYL SULFOXIDE",
+    "Tmt212",
+    "Trametinib"
+   ]
+  },
+  "TIVOZANIB": {
+   "chembl_id": "CHEMBL1289494",
+   "synonyms": [
+    "ASP-4130",
+    "AV-951",
+    "DC-001164TIVOZANIBAV9511-(2-CHLORO-4((6,7-DIMETHOXYQUINOLIN-4-YL)OXY)PHENYL)-3-(5-METHYLISOXAZO-3-YL)UREA",
+    "FOTIVDA",
+    "KIL-8951",
+    "KIL8951",
+    "KRN-951",
+    "KRN951",
+    "Kil-8951",
+    "Krn-951",
+    "OPHTHOTECH",
+    "TIVOZANIB",
+    "TIVOZANIB (AV-951)",
+    "TIVOZANIB (OPHTHALMIC)",
+    "TIVOZANIB HCL",
+    "Tivozanib"
+   ]
+  },
+  "MIDOSTAURIN": {
+   "chembl_id": "CHEMBL608533",
+   "synonyms": [
+    "CGP 41251",
+    "CGP-41251",
+    "Midostaurin",
+    "Midostaurina",
+    "Midostaurine",
+    "N-benzoylstaurosporine",
+    "NSC-656576",
+    "NVP-PKC412",
+    "PKC 412",
+    "PKC-412",
+    "Pkc-412",
+    "Rydapt"
+   ]
+  },
+  "PEXIDARTINIB": {
+   "chembl_id": "CHEMBL3813873",
+   "synonyms": [
+    "CML-261",
+    "PEXIDARTINIB",
+    "PEXIDARTINIB (PLX3397)",
+    "PEXIDARTINIBPLX-3397",
+    "PLX-3397",
+    "PLX3397",
+    "Pexidartinib",
+    "Plx-3397"
+   ]
+  },
+  "QUIZARTINIB": {
+   "chembl_id": "CHEMBL576982",
+   "synonyms": [
+    "AC 220",
+    "AC-010220",
+    "AC-220",
+    "AC010220",
+    "AC010220.2HCL",
+    "AC220",
+    "AC220 (QUIZARTINIB)",
+    "AC708",
+    "ASP-2689",
+    "Ac-220",
+    "QUIZARTINIB",
+    "QUIZARTINIB (AC220)",
+    "QUIZARTINIB DIHYDROCHLORIDE",
+    "Quizartinib"
+   ]
+  }
+ }
+}

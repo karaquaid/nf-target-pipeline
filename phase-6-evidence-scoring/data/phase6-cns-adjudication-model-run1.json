@@ -1,0 +1,33 @@
+{
+  "stage": "phase6_cns_adjudicate.py",
+  "model": "claude-sonnet-5",
+  "claims_submitted": 124,
+  "claims_returned": 124,
+  "errors": [],
+  "verdict_counts": {
+    "unknown": 54,
+    "contradicted": 52,
+    "demonstrated": 18
+  },
+  "basis_counts": {
+    "measured_pk_animal": 56,
+    "design_or_prediction": 17,
+    "measured_pk_human": 16,
+    "review_restatement": 15,
+    "mechanistic_assertion": 10,
+    "clinical_cns_response": 7,
+    "preclinical_cns_efficacy": 3
+  },
+  "needs_human_check": 39,
+  "drug_verdicts": {
+    "unknown": 7,
+    "contradicted": 6,
+    "demonstrated": 5,
+    "": 2
+  },
+  "conflicts": [
+    "PAZOPANIB",
+    "DASATINIB"
+  ],
+  "note": "Proposals only. Human verdict columns ship blank; the Phase 5 keyword direction label was not shown to the model."
+}

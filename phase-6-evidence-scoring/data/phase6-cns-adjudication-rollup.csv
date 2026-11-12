@@ -1,21 +1,21 @@
-moiety,label_variants,claims_attributed,claims_total,attributed_full_text,attributed_abstract_only,attributed_with_a_number,claim_id_range,chembl_calculated_flag,openfda_label_verdict,rows_with_cns_trial_evidence,n_rows_cns_required,n_nf_trials_max,drug_verdict,decisive_claim_ids,drug_rationale
-VEMURAFENIB,VEMURAFENIB,26,42,14,12,18,CNS-099-CNS-124,predicted_non_permeant,no_statement,0,10,0,,,
-IMATINIB,IMATINIB|IMATINIB MESYLATE,21,90,13,8,13,CNS-028-CNS-048,predicted_non_permeant,no_record,0,6,6,,,
-SORAFENIB,SORAFENIB|SORAFENIB TOSYLATE,13,44,6,7,4,CNS-069-CNS-081,predicted_non_permeant,no_label_found;no_statement,17,17,1,,,
-PAZOPANIB,PAZOPANIB|PAZOPANIB HYDROCHLORIDE,12,22,9,3,8,CNS-049-CNS-060,predicted_non_permeant,no_statement,7,7,4,,,
-SUNITINIB,SUNITINIB|SUNITINIB MALATE,11,25,3,8,6,CNS-082-CNS-092,predicted_permeant,no_label_found;no_statement,5,5,1,,,
-DASATINIB,DASATINIB ANHYDROUS,9,74,1,8,5,CNS-016-CNS-024,predicted_non_permeant,no_record,0,6,0,,,
-AVAPRITINIB,AVAPRITINIB,8,13,5,3,2,CNS-001-CNS-008,predicted_non_permeant,no_record,0,0,0,,,
-REGORAFENIB,REGORAFENIB,4,51,2,2,1,CNS-061-CNS-064,predicted_non_permeant,no_statement,0,9,0,,,
-ENCORAFENIB,ENCORAFENIB,3,9,1,2,1,CNS-025-CNS-027,predicted_non_permeant,no_statement,7,7,1,,,
-TOVORAFENIB,TOVORAFENIB,3,4,1,2,1,CNS-094-CNS-096,predicted_non_permeant,no_statement,7,7,1,,,
-COBIMETINIB,COBIMETINIB|COBIMETINIB FUMARATE,3,19,0,3,3,CNS-011-CNS-013,predicted_non_permeant,no_label_found;no_statement,12,14,1,,,
-DABRAFENIB,DABRAFENIB|DABRAFENIB MESYLATE,2,14,2,0,0,CNS-014-CNS-015,predicted_non_permeant,no_label_found;no_statement,10,11,3,,,
-BINIMETINIB,BINIMETINIB,2,14,1,1,2,CNS-009-CNS-010,predicted_permeant,no_statement,8,8,2,,,
-RIPRETINIB,RIPRETINIB,2,5,1,1,0,CNS-065-CNS-066,predicted_non_permeant,no_record,0,0,0,,,
-SELUMETINIB,SELUMETINIB|SELUMETINIB SULFATE,2,9,0,2,1,CNS-067-CNS-068,predicted_non_permeant,no_label_found;no_statement,12,12,18,,,
-TRAMETINIB,TRAMETINIB|TRAMETINIB DIMETHYL SULFOXIDE,2,13,0,2,0,CNS-097-CNS-098,predicted_non_permeant,no_label_found;no_statement,2,13,9,,,
-TIVOZANIB,TIVOZANIB|TIVOZANIB HYDROCHLORIDE,1,2,0,1,0,CNS-093-CNS-093,predicted_non_permeant,no_record,0,2,0,,,
-MIDOSTAURIN,MIDOSTAURIN,0,2,0,0,0,,predicted_non_permeant,no_label_found,0,6,0,,,
-PEXIDARTINIB,PEXIDARTINIB|PEXIDARTINIB HYDROCHLORIDE,0,0,0,0,0,,predicted_non_permeant,no_label_found;no_statement,0,2,0,,,
-QUIZARTINIB,QUIZARTINIB,0,0,0,0,0,,predicted_non_permeant,no_statement,0,3,0,,,
+moiety,label_variants,claims_attributed,claims_total,attributed_full_text,attributed_abstract_only,attributed_with_a_number,claim_id_range,chembl_calculated_flag,openfda_label_verdict,rows_with_cns_trial_evidence,n_rows_cns_required,n_nf_trials_max,drug_verdict,decisive_claim_ids,drug_rationale,proposed_drug_verdict,proposed_decisive_claim_ids,proposed_drug_rationale,proposal_conflict,disagrees_with_chembl_flag
+VEMURAFENIB,VEMURAFENIB,26,42,14,12,18,CNS-099-CNS-124,predicted_non_permeant,no_statement,0,10,0,,,,contradicted,"CNS-117, CNS-118, CNS-123, CNS-124","4 primary human claim(s), all contradicted.",False,False
+IMATINIB,IMATINIB|IMATINIB MESYLATE,21,90,13,8,13,CNS-028-CNS-048,predicted_non_permeant,no_record,0,6,6,,,,demonstrated,"CNS-035, CNS-036","2 primary human claim(s), all demonstrated.",False,True
+SORAFENIB,SORAFENIB|SORAFENIB TOSYLATE,13,44,6,7,4,CNS-069-CNS-081,predicted_non_permeant,no_label_found;no_statement,17,17,1,,,,contradicted,"CNS-075, CNS-076","2 primary mouse claim(s), all contradicted.",False,False
+PAZOPANIB,PAZOPANIB|PAZOPANIB HYDROCHLORIDE,12,22,9,3,8,CNS-049-CNS-060,predicted_non_permeant,no_statement,7,7,4,,,,,"CNS-049, CNS-050, CNS-051, CNS-053, CNS-055, CNS-056","Primary mouse claims disagree (contradicted, demonstrated); left for the reviewer rather than resolved by majority.",True,False
+SUNITINIB,SUNITINIB|SUNITINIB MALATE,11,25,3,8,6,CNS-082-CNS-092,predicted_permeant,no_label_found;no_statement,5,5,1,,,,contradicted,CNS-090,"1 primary mouse claim(s), all contradicted.",False,True
+DASATINIB,DASATINIB ANHYDROUS,9,74,1,8,5,CNS-016-CNS-024,predicted_non_permeant,no_record,0,6,0,,,,,"CNS-016, CNS-018, CNS-020, CNS-022, CNS-023, CNS-024","Primary human claims disagree (contradicted, demonstrated); left for the reviewer rather than resolved by majority.",True,False
+AVAPRITINIB,AVAPRITINIB,8,13,5,3,2,CNS-001-CNS-008,predicted_non_permeant,no_record,0,0,0,,,,demonstrated,"CNS-001, CNS-005, CNS-006, CNS-008","4 primary human claim(s), all demonstrated.",False,True
+REGORAFENIB,REGORAFENIB,4,51,2,2,1,CNS-061-CNS-064,predicted_non_permeant,no_statement,0,9,0,,,,demonstrated,CNS-061,"1 primary human claim(s), all demonstrated.",False,True
+ENCORAFENIB,ENCORAFENIB,3,9,1,2,1,CNS-025-CNS-027,predicted_non_permeant,no_statement,7,7,1,,,,contradicted,"CNS-026, CNS-027","2 primary mouse claim(s), all contradicted.",False,False
+TOVORAFENIB,TOVORAFENIB,3,4,1,2,1,CNS-094-CNS-096,predicted_non_permeant,no_statement,7,7,1,,,,contradicted,CNS-095,"1 primary mouse claim(s), all contradicted.",False,False
+COBIMETINIB,COBIMETINIB|COBIMETINIB FUMARATE,3,19,0,3,3,CNS-011-CNS-013,predicted_non_permeant,no_label_found;no_statement,12,14,1,,,,contradicted,"CNS-011, CNS-012","2 primary mouse claim(s), all contradicted.",False,False
+DABRAFENIB,DABRAFENIB|DABRAFENIB MESYLATE,2,14,2,0,0,CNS-014-CNS-015,predicted_non_permeant,no_label_found;no_statement,10,11,3,,,,demonstrated,CNS-014,"1 primary human claim(s), all demonstrated.",False,True
+BINIMETINIB,BINIMETINIB,2,14,1,1,2,CNS-009-CNS-010,predicted_permeant,no_statement,8,8,2,,,,unknown,,"No primary, normal-arm claim carries a measured or clinical finding.",False,False
+RIPRETINIB,RIPRETINIB,2,5,1,1,0,CNS-065-CNS-066,predicted_non_permeant,no_record,0,0,0,,,,unknown,,"No primary, normal-arm claim carries a measured or clinical finding.",False,False
+SELUMETINIB,SELUMETINIB|SELUMETINIB SULFATE,2,9,0,2,1,CNS-067-CNS-068,predicted_non_permeant,no_label_found;no_statement,12,12,18,,,,contradicted,CNS-067,"1 primary mouse claim(s), all contradicted.",False,False
+TRAMETINIB,TRAMETINIB|TRAMETINIB DIMETHYL SULFOXIDE,2,13,0,2,0,CNS-097-CNS-098,predicted_non_permeant,no_label_found;no_statement,2,13,9,,,,contradicted,CNS-097,"1 primary mouse claim(s), all contradicted.",False,False
+TIVOZANIB,TIVOZANIB|TIVOZANIB HYDROCHLORIDE,1,2,0,1,0,CNS-093-CNS-093,predicted_non_permeant,no_record,0,2,0,,,,contradicted,CNS-093,"1 primary mouse claim(s), all contradicted.",False,False
+MIDOSTAURIN,MIDOSTAURIN,0,2,0,0,0,,predicted_non_permeant,no_label_found,0,6,0,,,,unknown,,No attributed claim; nothing to read.,False,False
+PEXIDARTINIB,PEXIDARTINIB|PEXIDARTINIB HYDROCHLORIDE,0,0,0,0,0,,predicted_non_permeant,no_label_found;no_statement,0,2,0,,,,unknown,,No attributed claim; nothing to read.,False,False
+QUIZARTINIB,QUIZARTINIB,0,0,0,0,0,,predicted_non_permeant,no_statement,0,3,0,,,,unknown,,No attributed claim; nothing to read.,False,False

@@ -156,9 +156,24 @@ def build() -> dict:
 
     OUT_DATA.mkdir(parents=True, exist_ok=True)
     OUT_DOCS.mkdir(parents=True, exist_ok=True)
+
+    # Stage 2 (phase6_cns_adjudicate.py) adds proposed_* columns to the rollup and
+    # writes a proposals table. A rebuild of the sheet must not wipe them, so they
+    # are merged back in and the markdown renders each proposal under its claim.
+    roll_path = OUT_DATA / "phase6-cns-adjudication-rollup.csv"
+    if roll_path.exists():
+        prior = pd.read_csv(roll_path)
+        keep = [c for c in prior.columns if c.startswith("proposed_") or c in
+                ("proposal_conflict", "disagrees_with_chembl_flag")]
+        if keep:
+            rollup = rollup.merge(prior[["moiety", *keep]], on="moiety", how="left")
+
+    prop_path = OUT_DATA / "phase6-cns-adjudication-proposed.csv"
+    proposals = pd.read_csv(prop_path) if prop_path.exists() else None
+
     sheet.to_csv(OUT_DATA / "phase6-cns-adjudication-sheet.csv", index=False)
-    rollup.to_csv(OUT_DATA / "phase6-cns-adjudication-rollup.csv", index=False)
-    write_markdown(sheet, rollup)
+    rollup.to_csv(roll_path, index=False)
+    write_markdown(sheet, rollup, proposals)
 
     return {
         "claims_total": int(len(claims)),
@@ -172,7 +187,12 @@ def build() -> dict:
     }
 
 
-def write_markdown(sheet: pd.DataFrame, rollup: pd.DataFrame) -> None:
+def write_markdown(
+    sheet: pd.DataFrame, rollup: pd.DataFrame, proposals: pd.DataFrame | None = None
+) -> None:
+    prop = (
+        proposals.set_index("claim_id").to_dict("index") if proposals is not None else {}
+    )
     L: list[str] = []
     A = L.append
     A("# Phase 6 review sheet: adjudicating the CNS delivery claims\n")
@@ -257,7 +277,15 @@ def write_markdown(sheet: pd.DataFrame, rollup: pd.DataFrame) -> None:
             f"openFDA label: `{rr['openfda_label_verdict']}` · "
             f"CNS-manifestation trial evidence on {rr['rows_with_cns_trial_evidence']} drug rows\n"
         )
-        A("**Drug verdict:** _______  (`demonstrated` / `contradicted` / `unknown`), resting on claim id(s): _______\n")
+        pv = rr.get("proposed_drug_verdict") if hasattr(rr, "get") else None
+        if isinstance(pv, str) and pv:
+            A(
+                f"**Proposed drug verdict: `{pv}`** — {rr.get('proposed_drug_rationale','')} "
+                f"Decisive claim(s): {rr.get('proposed_decisive_claim_ids') or 'none'}.\n"
+            )
+        elif isinstance(rr.get("proposed_drug_rationale") if hasattr(rr, "get") else None, str):
+            A(f"**Proposed drug verdict: left blank** — {rr.get('proposed_drug_rationale','')}\n")
+        A("**Your drug verdict:** _______  (`demonstrated` / `contradicted` / `unknown`), resting on claim id(s): _______\n")
         for _, c in grp.iterrows():
             num = "number" if bool(c["has_number"]) else "no number"
             src = f"[PMID {c['pmid']}]({c['pubmed_url']})"
@@ -270,7 +298,28 @@ def write_markdown(sheet: pd.DataFrame, rollup: pd.DataFrame) -> None:
             quoted = " ".join(str(c["sentence"]).split())
             A(f"  - > {quoted}")
             A(f"  - *{c['title'].strip()}* — {c['journal_abbrev']} {c['pub_year']}")
-            A("  - verdict: _______ · basis: _______ · primary/restated: _______ · species: _______ · metric/value: _______")
+            p = prop.get(c["claim_id"], {})
+            if p.get("proposed_verdict"):
+                mv = f"{p.get('proposed_metric','')}"
+                if str(p.get("proposed_value", "")).strip():
+                    mv += f" = {p['proposed_value']}"
+                A(
+                    f"  - **proposed: `{p['proposed_verdict']}`** · basis "
+                    f"`{p.get('proposed_evidence_basis','')}` · {p.get('proposed_primary_or_restated','')}"
+                    f" · {p.get('proposed_species','')} · arm `{p.get('proposed_experimental_arm','')}`"
+                    f" · {mv.strip() or 'no metric'} · confidence {p.get('proposed_confidence','')}"
+                    + (" · **flagged for human check**" if p.get("proposed_needs_human_check") else "")
+                )
+                A(f"  - rationale: {str(p.get('proposed_rationale','')).strip()}")
+                if str(p.get("quoted_support", p.get("proposed_quoted_support", ""))).strip():
+                    qs = " ".join(str(p.get("proposed_quoted_support", "")).split())
+                    A(f"  - span relied on: \u201c{qs}\u201d")
+                A(
+                    f"  - read from: {p.get('context_source','')} / "
+                    f"{p.get('context_section','')} · **your verdict:** _______"
+                )
+            else:
+                A("  - verdict: _______ · basis: _______ · primary/restated: _______ · species: _______ · metric/value: _______")
         A("")
 
     (OUT_DOCS / "phase6-cns-adjudication-sheet.md").write_text("\n".join(L))
