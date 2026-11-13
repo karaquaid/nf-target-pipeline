@@ -285,9 +285,11 @@ def write_markdown(
         )
         if isinstance(rr.get("scored_band") if hasattr(rr, "get") else None, str):
             A(
-                f"**Evidence score: `{rr['scored_band']}`** — support {rr['support_weight']}, "
-                f"exclusion {rr['exclusion_weight']}, mass {rr['evidence_mass']}, "
-                f"direction {rr['direction_score']:+}. {rr['scored_rationale']}. "
+                f"**Evidence score: `{rr['scored_band']}`** ({rr.get('band_reason','')}) — "
+                f"best supporting claim {rr['best_support_weight']}, best contradicting "
+                f"{rr['best_exclusion_weight']}, direction {rr['direction_score']:+}. "
+                f"{rr['scored_rationale']}. Corroboration: {rr['evidence_mass']} total weight "
+                f"across {rr['claims_attributed']} claims (does not set the band). "
                 f"Heaviest claims: {rr.get('top_weighted_claim_ids') or 'none'}.\n"
             )
         pv = rr.get("proposed_drug_verdict") if hasattr(rr, "get") else None

@@ -75,11 +75,19 @@ ACCESS = {"full_text": 1.00, "abstract_only": 0.85}
 CONFIDENCE = {"high": 1.00, "medium": 0.85, "low": 0.60}
 SPAN = {"all_fragments_verbatim": 1.00, "no_span_quoted": 0.60, "fragment_not_found": 0.40}
 
-# Banding thresholds. MIN_MASS is roughly one mid-quality claim: below it a drug
-# is unassessed rather than scored. MIN_DIRECTION keeps a drug whose evidence
-# points both ways out of a one-sided verdict.
-MIN_MASS = 0.75
+# Banding thresholds. A drug is judged on its BEST evidence, not its most
+# (decided 2026-11-13, Kara): the band reads the single heaviest claim on each
+# side rather than the sum, so twenty weak mentions cannot outweigh one good
+# measurement and one good measurement is not diluted by weak company.
+# MIN_PEAK is the quality a single claim must reach to say anything at all: at
+# 0.50 an abstract-derived animal PK measurement clears it (~0.55) while a
+# hedged assertion or a prediction does not. MIN_DIRECTION keeps a drug whose
+# best evidence points both ways out of a one-sided verdict.
+# evidence_mass is still reported - it describes how much corroboration exists -
+# but it no longer decides the band.
+MIN_PEAK = 0.50
 MIN_DIRECTION = 0.35
+MIN_MASS = 0.75  # retained only for the comparison column mass_band
 
 FIRST_PERSON = re.compile(r"\b(we |our |this study|here we|in the present study)", re.I)
 
@@ -162,22 +170,57 @@ def main() -> None:
         support = float(sub.loc[sub["proposed_verdict"] == "demonstrated", "evidence_weight"].sum())
         exclusion = float(sub.loc[sub["proposed_verdict"] == "contradicted", "evidence_weight"].sum())
         mass = support + exclusion
-        direction = (support - exclusion) / mass if mass else 0.0
-        if mass < MIN_MASS:
-            band, why = "unknown", f"evidence mass {mass:.2f} below {MIN_MASS}; unassessed"
+        mass_direction = (support - exclusion) / mass if mass else 0.0
+        # Best evidence on each side, and the band that follows from it.
+        # `or 0` is wrong here: an empty side gives NaN, and NaN is truthy, so it
+        # propagates through max() and every comparison returns False - which put
+        # every drug in `contradicted` on the first run of this change.
+        def _best(verdict: str) -> float:
+            v = sub.loc[sub["proposed_verdict"] == verdict, "evidence_weight"].max()
+            return 0.0 if pd.isna(v) else float(v)
+
+        best_support, best_exclusion = _best("demonstrated"), _best("contradicted")
+        peak = max(best_support, best_exclusion)
+        direction = (best_support - best_exclusion) / peak if peak else 0.0
+        # Three ways to land in `unknown`, and Phase 6 must be able to tell them
+        # apart: a drug nobody measured, a drug measured only weakly, and a drug
+        # whose best evidence disagrees with itself. Collapsing them would repeat
+        # the mistake the three-state rule exists to prevent.
+        if peak == 0:
+            band, reason = "unknown", "no_claim_carries_a_verdict"
+            why = "no attributed claim carries a demonstrated or contradicted verdict"
+        elif peak < MIN_PEAK:
+            band, reason = "unknown", "below_peak_threshold"
+            why = f"best claim weighs {peak:.2f}, below {MIN_PEAK}; unassessed"
         elif abs(direction) < MIN_DIRECTION:
-            band, why = "unknown", f"evidence points both ways (direction {direction:+.2f}); unresolved"
+            band, reason = "unknown", "conflicting_best_evidence"
+            why = (
+                f"best evidence points both ways (support {best_support:.2f} vs "
+                f"exclusion {best_exclusion:.2f}); unresolved"
+            )
         else:
             band = "demonstrated" if direction > 0 else "contradicted"
-            why = f"mass {mass:.2f}, direction {direction:+.2f}"
+            reason = "resolved"
+            why = f"best claim {peak:.2f}, direction {direction:+.2f}"
+        mass_band = (
+            "unknown"
+            if mass < MIN_MASS or abs(mass_direction) < MIN_DIRECTION
+            else ("demonstrated" if mass_direction > 0 else "contradicted")
+        )
         top = sub.reindex(sub["evidence_weight"].sort_values(ascending=False).index).head(3)
         agg.append(
             {
                 "support_weight": round(support, 3),
                 "exclusion_weight": round(exclusion, 3),
                 "evidence_mass": round(mass, 3),
+                "best_support_weight": round(best_support, 3),
+                "best_exclusion_weight": round(best_exclusion, 3),
+                "peak_weight": round(peak, 3),
                 "direction_score": round(direction, 3),
+                "mass_direction_score": round(mass_direction, 3),
+                "mass_band": mass_band,
                 "scored_band": band,
+                "band_reason": reason,
                 "scored_rationale": why,
                 "top_weighted_claim_ids": ", ".join(
                     f"{c} ({w:.2f})" for c, w in zip(top["claim_id"], top["evidence_weight"]) if w > 0

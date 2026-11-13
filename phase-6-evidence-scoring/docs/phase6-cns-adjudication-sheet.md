@@ -56,7 +56,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 8 attributed of 13 retrieved sentences · 5 full text, 3 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `demonstrated`** — support 3.985, exclusion 0.0, mass 3.985, direction +1.0. mass 3.99, direction +1.00. Heaviest claims: CNS-001 (0.90), CNS-003 (0.68), CNS-008 (0.65).
+**Evidence score: `demonstrated`** (resolved) — best supporting claim 0.9, best contradicting 0.0, direction +1.0. best claim 0.90, direction +1.00. Corroboration: 3.985 total weight across 8 claims (does not set the band). Heaviest claims: CNS-001 (0.90), CNS-003 (0.68), CNS-008 (0.65).
 
 **Proposed drug verdict: `demonstrated`** — 4 primary human claim(s), all demonstrated. Decisive claim(s): CNS-001, CNS-005, CNS-006, CNS-008.
 
@@ -123,7 +123,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 2 attributed of 14 retrieved sentences · 1 full text, 1 abstract-only · ChEMBL calculated flag: `predicted_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 8 drug rows
 
-**Evidence score: `unknown`** — support 0.214, exclusion 0.0, mass 0.214, direction +1.0. evidence mass 0.21 below 0.75; unassessed. Heaviest claims: CNS-009 (0.21), CNS-010 (0.07).
+**Evidence score: `unknown`** (below_peak_threshold) — best supporting claim 0.214, best contradicting 0.0, direction +1.0. best claim weighs 0.21, below 0.5; unassessed. Corroboration: 0.214 total weight across 2 claims (does not set the band). Heaviest claims: CNS-009 (0.21), CNS-010 (0.07).
 
 **Proposed drug verdict: `unknown`** — No primary, normal-arm claim carries a measured or clinical finding. Decisive claim(s): nan.
 
@@ -148,7 +148,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 3 attributed of 19 retrieved sentences · 0 full text, 3 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 12 drug rows
 
-**Evidence score: `contradicted`** — support 0.0, exclusion 1.09, mass 1.09, direction -1.0. mass 1.09, direction -1.00. Heaviest claims: CNS-011 (0.55), CNS-012 (0.55), CNS-013 (0.03).
+**Evidence score: `contradicted`** (resolved) — best supporting claim 0.0, best contradicting 0.545, direction -1.0. best claim 0.55, direction -1.00. Corroboration: 1.09 total weight across 3 claims (does not set the band). Heaviest claims: CNS-011 (0.55), CNS-012 (0.55), CNS-013 (0.03).
 
 **Proposed drug verdict: `contradicted`** — 2 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-011, CNS-012.
 
@@ -180,7 +180,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 2 attributed of 14 retrieved sentences · 2 full text, 0 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 10 drug rows
 
-**Evidence score: `unknown`** — support 0.551, exclusion 0.0, mass 0.551, direction +1.0. evidence mass 0.55 below 0.75; unassessed. Heaviest claims: CNS-014 (0.55), CNS-015 (0.05).
+**Evidence score: `demonstrated`** (resolved) — best supporting claim 0.551, best contradicting 0.0, direction +1.0. best claim 0.55, direction +1.00. Corroboration: 0.551 total weight across 2 claims (does not set the band). Heaviest claims: CNS-014 (0.55), CNS-015 (0.05).
 
 **Proposed drug verdict: `demonstrated`** — 1 primary human claim(s), all demonstrated. Decisive claim(s): CNS-014.
 
@@ -205,7 +205,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 9 attributed of 74 retrieved sentences · 1 full text, 8 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `contradicted`** — support 0.95, exclusion 5.085, mass 6.035, direction -0.685. mass 6.04, direction -0.69. Heaviest claims: CNS-016 (0.95), CNS-020 (0.81), CNS-022 (0.81).
+**Evidence score: `unknown`** (conflicting_best_evidence) — best supporting claim 0.95, best contradicting 0.807, direction +0.15. best evidence points both ways (support 0.95 vs exclusion 0.81); unresolved. Corroboration: 6.035 total weight across 9 claims (does not set the band). Heaviest claims: CNS-016 (0.95), CNS-020 (0.81), CNS-022 (0.81).
 
 **Proposed drug verdict: left blank** — Primary human claims disagree (contradicted, demonstrated); left for the reviewer rather than resolved by majority.
 
@@ -279,7 +279,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 3 attributed of 9 retrieved sentences · 1 full text, 2 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 7 drug rows
 
-**Evidence score: `contradicted`** — support 0.214, exclusion 1.09, mass 1.304, direction -0.672. mass 1.30, direction -0.67. Heaviest claims: CNS-026 (0.55), CNS-027 (0.55), CNS-025 (0.21).
+**Evidence score: `contradicted`** (resolved) — best supporting claim 0.214, best contradicting 0.545, direction -0.607. best claim 0.55, direction -0.61. Corroboration: 1.304 total weight across 3 claims (does not set the band). Heaviest claims: CNS-026 (0.55), CNS-027 (0.55), CNS-025 (0.21).
 
 **Proposed drug verdict: `contradicted`** — 2 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-026, CNS-027.
 
@@ -311,7 +311,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 21 attributed of 90 retrieved sentences · 13 full text, 8 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `contradicted`** — support 1.85, exclusion 3.997, mass 5.847, direction -0.367. mass 5.85, direction -0.37. Heaviest claims: CNS-036 (0.95), CNS-035 (0.90), CNS-030 (0.68).
+**Evidence score: `unknown`** (conflicting_best_evidence) — best supporting claim 0.95, best contradicting 0.675, direction +0.289. best evidence points both ways (support 0.95 vs exclusion 0.68); unresolved. Corroboration: 5.847 total weight across 21 claims (does not set the band). Heaviest claims: CNS-036 (0.95), CNS-035 (0.90), CNS-030 (0.68).
 
 **Proposed drug verdict: `demonstrated`** — 2 primary human claim(s), all demonstrated. Decisive claim(s): CNS-035, CNS-036.
 
@@ -469,7 +469,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 12 attributed of 22 retrieved sentences · 9 full text, 3 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 7 drug rows
 
-**Evidence score: `contradicted`** — support 0.608, exclusion 3.153, mass 3.76, direction -0.677. mass 3.76, direction -0.68. Heaviest claims: CNS-049 (0.61), CNS-050 (0.61), CNS-051 (0.61).
+**Evidence score: `unknown`** (conflicting_best_evidence) — best supporting claim 0.608, best contradicting 0.608, direction +0.0. best evidence points both ways (support 0.61 vs exclusion 0.61); unresolved. Corroboration: 3.76 total weight across 12 claims (does not set the band). Heaviest claims: CNS-049 (0.61), CNS-050 (0.61), CNS-051 (0.61).
 
 **Proposed drug verdict: left blank** — Primary mouse claims disagree (contradicted, demonstrated); left for the reviewer rather than resolved by majority.
 
@@ -564,7 +564,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 4 attributed of 51 retrieved sentences · 2 full text, 2 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `demonstrated`** — support 0.95, exclusion 0.0, mass 0.95, direction +1.0. mass 0.95, direction +1.00. Heaviest claims: CNS-061 (0.95), CNS-063 (0.21), CNS-062 (0.08).
+**Evidence score: `demonstrated`** (resolved) — best supporting claim 0.95, best contradicting 0.0, direction +1.0. best claim 0.95, direction +1.00. Corroboration: 0.95 total weight across 4 claims (does not set the band). Heaviest claims: CNS-061 (0.95), CNS-063 (0.21), CNS-062 (0.08).
 
 **Proposed drug verdict: `demonstrated`** — 1 primary human claim(s), all demonstrated. Decisive claim(s): CNS-061.
 
@@ -603,7 +603,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 2 attributed of 5 retrieved sentences · 1 full text, 1 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `unknown`** — support 0.0, exclusion 0.0, mass 0.0, direction +0.0. evidence mass 0.00 below 0.75; unassessed. Heaviest claims: CNS-066 (0.08), CNS-065 (0.05).
+**Evidence score: `unknown`** (no_claim_carries_a_verdict) — best supporting claim 0.0, best contradicting 0.0, direction +0.0. no attributed claim carries a demonstrated or contradicted verdict. Corroboration: 0.0 total weight across 2 claims (does not set the band). Heaviest claims: CNS-066 (0.08), CNS-065 (0.05).
 
 **Proposed drug verdict: `unknown`** — No primary, normal-arm claim carries a measured or clinical finding. Decisive claim(s): nan.
 
@@ -628,7 +628,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 2 attributed of 9 retrieved sentences · 0 full text, 2 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 12 drug rows
 
-**Evidence score: `unknown`** — support 0.0, exclusion 0.484, mass 0.484, direction -1.0. evidence mass 0.48 below 0.75; unassessed. Heaviest claims: CNS-068 (0.49), CNS-067 (0.48).
+**Evidence score: `unknown`** (below_peak_threshold) — best supporting claim 0.0, best contradicting 0.484, direction -1.0. best claim weighs 0.48, below 0.5; unassessed. Corroboration: 0.484 total weight across 2 claims (does not set the band). Heaviest claims: CNS-068 (0.49), CNS-067 (0.48).
 
 **Proposed drug verdict: `contradicted`** — 1 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-067.
 
@@ -653,7 +653,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 13 attributed of 44 retrieved sentences · 6 full text, 7 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 17 drug rows
 
-**Evidence score: `contradicted`** — support 0.154, exclusion 3.997, mass 4.15, direction -0.926. mass 4.15, direction -0.93. Heaviest claims: CNS-075 (0.55), CNS-076 (0.55), CNS-069 (0.49).
+**Evidence score: `contradicted`** (resolved) — best supporting claim 0.154, best contradicting 0.545, direction -0.718. best claim 0.55, direction -0.72. Corroboration: 4.15 total weight across 13 claims (does not set the band). Heaviest claims: CNS-075 (0.55), CNS-076 (0.55), CNS-069 (0.49).
 
 **Proposed drug verdict: `contradicted`** — 2 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-075, CNS-076.
 
@@ -755,7 +755,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 11 attributed of 25 retrieved sentences · 3 full text, 8 abstract-only · ChEMBL calculated flag: `predicted_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 5 drug rows
 
-**Evidence score: `contradicted`** — support 0.312, exclusion 1.915, mass 2.227, direction -0.72. mass 2.23, direction -0.72. Heaviest claims: CNS-090 (0.46), CNS-086 (0.37), CNS-087 (0.37).
+**Evidence score: `unknown`** (below_peak_threshold) — best supporting claim 0.312, best contradicting 0.463, direction -0.326. best claim weighs 0.46, below 0.5; unassessed. Corroboration: 2.227 total weight across 11 claims (does not set the band). Heaviest claims: CNS-090 (0.46), CNS-086 (0.37), CNS-087 (0.37).
 
 **Proposed drug verdict: `contradicted`** — 1 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-090.
 
@@ -843,7 +843,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 1 attributed of 2 retrieved sentences · 0 full text, 1 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `unknown`** — support 0.0, exclusion 0.545, mass 0.545, direction -1.0. evidence mass 0.55 below 0.75; unassessed. Heaviest claims: CNS-093 (0.55).
+**Evidence score: `contradicted`** (resolved) — best supporting claim 0.0, best contradicting 0.545, direction -1.0. best claim 0.55, direction -1.00. Corroboration: 0.545 total weight across 1 claims (does not set the band). Heaviest claims: CNS-093 (0.55).
 
 **Proposed drug verdict: `contradicted`** — 1 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-093.
 
@@ -861,7 +861,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 3 attributed of 4 retrieved sentences · 1 full text, 2 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 7 drug rows
 
-**Evidence score: `unknown`** — support 0.0, exclusion 0.545, mass 0.545, direction -1.0. evidence mass 0.55 below 0.75; unassessed. Heaviest claims: CNS-095 (0.55), CNS-094 (0.05), CNS-096 (0.04).
+**Evidence score: `contradicted`** (resolved) — best supporting claim 0.0, best contradicting 0.545, direction -1.0. best claim 0.55, direction -1.00. Corroboration: 0.545 total weight across 3 claims (does not set the band). Heaviest claims: CNS-095 (0.55), CNS-094 (0.05), CNS-096 (0.04).
 
 **Proposed drug verdict: `contradicted`** — 1 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-095.
 
@@ -893,7 +893,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 2 attributed of 13 retrieved sentences · 0 full text, 2 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 2 drug rows
 
-**Evidence score: `unknown`** — support 0.0, exclusion 0.545, mass 0.545, direction -1.0. evidence mass 0.55 below 0.75; unassessed. Heaviest claims: CNS-097 (0.55), CNS-098 (0.11).
+**Evidence score: `contradicted`** (resolved) — best supporting claim 0.0, best contradicting 0.545, direction -1.0. best claim 0.55, direction -1.00. Corroboration: 0.545 total weight across 2 claims (does not set the band). Heaviest claims: CNS-097 (0.55), CNS-098 (0.11).
 
 **Proposed drug verdict: `contradicted`** — 1 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-097.
 
@@ -918,7 +918,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 26 attributed of 42 retrieved sentences · 14 full text, 12 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `contradicted`** — support 0.84, exclusion 8.618, mass 9.458, direction -0.822. mass 9.46, direction -0.82. Heaviest claims: CNS-124 (0.81), CNS-123 (0.81), CNS-118 (0.81).
+**Evidence score: `unknown`** (conflicting_best_evidence) — best supporting claim 0.608, best contradicting 0.807, direction -0.248. best evidence points both ways (support 0.61 vs exclusion 0.81); unresolved. Corroboration: 9.458 total weight across 26 claims (does not set the band). Heaviest claims: CNS-124 (0.81), CNS-123 (0.81), CNS-118 (0.81).
 
 **Proposed drug verdict: `contradicted`** — 4 primary human claim(s), all contradicted. Decisive claim(s): CNS-117, CNS-118, CNS-123, CNS-124.
 
