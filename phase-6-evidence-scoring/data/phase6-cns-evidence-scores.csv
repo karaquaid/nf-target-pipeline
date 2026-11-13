@@ -1,0 +1,125 @@
+claim_id,moiety,proposed_verdict,access,context_section,w_originality,w_corroboration,w_arm,w_species,w_basis,w_access,w_confidence,w_span,corroboration_reason,evidence_weight,signed_contribution
+CNS-001,AVAPRITINIB,demonstrated,full_text,Avapritinib shows radiographic response in a subset of pediatric and young adult HGG patients with PDGFRA alterations,1.0,0.9,1.0,1.0,1.0,1.0,1.0,1.0,seated_in_descriptive_section,0.9,0.9
+CNS-002,AVAPRITINIB,demonstrated,full_text,Introduction,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,not_applicable_label_not_primary,0.2142,0.2142
+CNS-003,AVAPRITINIB,demonstrated,full_text,Avapritinib treatment results in efficient brain penetrance and prolonged survival in PDGFRA -altered DMG models in vivo,1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,seated_in_results_or_table,0.675,0.675
+CNS-004,AVAPRITINIB,demonstrated,full_text,Avapritinib treatment results in efficient brain penetrance and prolonged survival in PDGFRA -altered DMG models in vivo,1.0,1.0,1.0,0.75,0.6,1.0,1.0,1.0,seated_in_results_or_table,0.45,0.45
+CNS-005,AVAPRITINIB,demonstrated,full_text,Case report,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,seated_in_descriptive_section,0.5508,0.5508
+CNS-006,AVAPRITINIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,1.0,0.8,0.85,0.85,1.0,abstract_with_first_person_study_language,0.5491,0.5491
+CNS-007,AVAPRITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.5,0.2,0.85,0.85,1.0,abstract_with_first_person_study_language,0.0618,0.0
+CNS-008,AVAPRITINIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,1.0,0.8,0.85,1.0,1.0,abstract_with_first_person_study_language,0.646,0.646
+CNS-009,BINIMETINIB,demonstrated,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,not_applicable_label_not_primary,0.2142,0.2142
+CNS-010,BINIMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.75,0.2,0.85,0.6,1.0,abstract_with_first_person_study_language,0.0654,0.0
+CNS-011,COBIMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-012,COBIMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-013,COBIMETINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.2,0.85,1.0,1.0,not_applicable_label_not_primary,0.0268,0.0
+CNS-014,DABRAFENIB,demonstrated,full_text,Resistance to targeted therapy in the brain,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,seated_in_descriptive_section,0.5508,0.5508
+CNS-015,DABRAFENIB,unknown,full_text,Background,0.35,1.0,0.9,0.5,0.3,1.0,1.0,1.0,not_applicable_label_not_primary,0.0473,0.0
+CNS-016,DASATINIB,demonstrated,full_text,Abstract,1.0,0.95,1.0,1.0,1.0,1.0,1.0,1.0,abstract_with_first_person_study_language,0.95,0.95
+CNS-017,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-018,DASATINIB,contradicted,abstract_only,Case description,1.0,0.9,1.0,1.0,1.0,0.85,1.0,1.0,seated_in_descriptive_section,0.765,-0.765
+CNS-019,DASATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.2,0.85,1.0,1.0,abstract_with_first_person_study_language,0.1454,0.0
+CNS-020,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-021,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-022,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-023,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-024,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-025,ENCORAFENIB,demonstrated,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,not_applicable_label_not_primary,0.2142,0.2142
+CNS-026,ENCORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-027,ENCORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-028,IMATINIB,unknown,full_text,Background,0.35,1.0,0.6,0.75,0.3,1.0,0.85,1.0,not_applicable_label_not_primary,0.0402,0.0
+CNS-029,IMATINIB,unknown,full_text,Background,0.35,1.0,0.45,0.6,0.3,1.0,0.85,1.0,not_applicable_label_not_primary,0.0241,0.0
+CNS-030,IMATINIB,contradicted,full_text,Results,1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,seated_in_results_or_table,0.675,-0.675
+CNS-031,IMATINIB,contradicted,full_text,TABLE,1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,seated_in_results_or_table,0.675,-0.675
+CNS-032,IMATINIB,unknown,full_text,Discussion,1.0,0.9,1.0,0.75,0.9,1.0,0.85,1.0,seated_in_discussion,0.5164,0.0
+CNS-033,IMATINIB,unknown,full_text,Discussion,0.35,1.0,0.45,0.75,0.3,1.0,0.85,1.0,not_applicable_label_not_primary,0.0301,0.0
+CNS-034,IMATINIB,unknown,full_text,Discussion,0.35,1.0,0.6,0.75,0.3,1.0,0.85,1.0,not_applicable_label_not_primary,0.0402,0.0
+CNS-035,IMATINIB,demonstrated,full_text,Quantitation of pharmaceuticals including free drug levels and metabolites,1.0,0.9,1.0,1.0,1.0,1.0,1.0,1.0,seated_in_descriptive_section,0.9,0.9
+CNS-036,IMATINIB,demonstrated,full_text,Abstract,1.0,0.95,1.0,1.0,1.0,1.0,1.0,1.0,abstract_with_first_person_study_language,0.95,0.95
+CNS-037,IMATINIB,contradicted,full_text,Background,0.35,1.0,1.0,0.6,0.3,1.0,0.6,1.0,not_applicable_label_not_primary,0.0378,-0.0378
+CNS-038,IMATINIB,unknown,full_text,Background,0.35,1.0,0.9,0.75,0.2,1.0,0.85,1.0,not_applicable_label_not_primary,0.0402,0.0
+CNS-039,IMATINIB,unknown,full_text,Discussion,0.35,1.0,1.0,0.75,0.2,1.0,0.85,1.0,not_applicable_label_not_primary,0.0446,0.0
+CNS-040,IMATINIB,unknown,full_text,Conclusion,1.0,0.9,0.6,0.75,0.2,1.0,0.85,1.0,seated_in_discussion,0.0689,0.0
+CNS-041,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.9,0.85,1.0,1.0,abstract_without_first_person_language,0.459,-0.459
+CNS-042,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.9,0.85,1.0,1.0,abstract_without_first_person_language,0.459,-0.459
+CNS-043,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.95,0.45,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.2453,-0.2453
+CNS-044,IMATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.45,0.75,0.9,0.85,0.85,1.0,abstract_with_first_person_study_language,0.2085,0.0
+CNS-045,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.6,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.436,-0.436
+CNS-046,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.6,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.436,-0.436
+CNS-047,IMATINIB,contradicted,abstract_only,Results,1.0,1.0,1.0,0.75,0.9,0.85,1.0,1.0,seated_in_results_or_table,0.5737,-0.5737
+CNS-048,IMATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.45,0.75,0.9,0.85,0.6,1.0,abstract_with_first_person_study_language,0.1472,0.0
+CNS-049,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,seated_in_discussion,0.6075,-0.6075
+CNS-050,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,seated_in_discussion,0.6075,-0.6075
+CNS-051,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,seated_in_discussion,0.6075,-0.6075
+CNS-052,PAZOPANIB,unknown,full_text,Introduction,0.6,1.0,1.0,0.75,0.3,1.0,0.85,1.0,not_applicable_label_not_primary,0.1147,0.0
+CNS-053,PAZOPANIB,demonstrated,full_text,Pazopanib penetrates the blood-brain barrier,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,seated_in_descriptive_section,0.6075,0.6075
+CNS-054,PAZOPANIB,unknown,full_text,4. Discussion,1.0,0.9,0.9,0.75,0.2,1.0,1.0,1.0,seated_in_discussion,0.1215,0.0
+CNS-055,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,0.85,1.0,seated_in_discussion,0.5164,-0.5164
+CNS-056,PAZOPANIB,contradicted,full_text,3.6 Method application,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,seated_in_descriptive_section,0.6075,-0.6075
+CNS-057,PAZOPANIB,unknown,full_text,1. INTRODUCTION,0.35,1.0,0.9,0.5,0.3,1.0,1.0,1.0,not_applicable_label_not_primary,0.0473,0.0
+CNS-058,PAZOPANIB,contradicted,abstract_only,Abstract,1.0,0.8,0.45,0.75,0.9,0.85,1.0,1.0,abstract_without_first_person_language,0.2066,-0.2066
+CNS-059,PAZOPANIB,unknown,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.9,0.85,0.6,1.0,abstract_without_first_person_language,0.2754,0.0
+CNS-060,PAZOPANIB,unknown,abstract_only,Introduction,0.6,1.0,1.0,0.75,0.2,0.85,0.85,1.0,not_applicable_label_not_primary,0.065,0.0
+CNS-061,REGORAFENIB,demonstrated,full_text,Abstract,1.0,0.95,1.0,1.0,1.0,1.0,1.0,1.0,abstract_with_first_person_study_language,0.95,0.95
+CNS-062,REGORAFENIB,unknown,full_text,Molecular signaling pathways and emerging therapeutic targets in GBM,0.35,1.0,0.9,1.0,0.3,1.0,0.85,1.0,not_applicable_label_not_primary,0.0803,0.0
+CNS-063,REGORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable_label_not_primary,0.2142,0.0
+CNS-064,REGORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.2,0.85,1.0,1.0,not_applicable_label_not_primary,0.0536,0.0
+CNS-065,RIPRETINIB,unknown,full_text,Discussion,0.35,1.0,0.9,0.5,0.3,1.0,1.0,1.0,not_applicable_label_not_primary,0.0473,0.0
+CNS-066,RIPRETINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,1.0,1.0,not_applicable_label_not_primary,0.0803,0.0
+CNS-067,SELUMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.8,0.85,1.0,1.0,abstract_with_first_person_study_language,0.4845,-0.4845
+CNS-068,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,abstract_with_first_person_study_language,0.4942,0.0
+CNS-069,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,seated_in_discussion,0.486,-0.486
+CNS-070,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,seated_in_discussion,0.486,-0.486
+CNS-071,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,seated_in_discussion,0.486,-0.486
+CNS-072,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,seated_in_discussion,0.486,-0.486
+CNS-073,SORAFENIB,contradicted,full_text,Discussion,0.35,1.0,0.45,0.75,0.9,1.0,0.85,1.0,not_applicable_label_not_primary,0.0904,-0.0904
+CNS-074,SORAFENIB,unknown,full_text,Discussion,0.6,1.0,0.9,0.75,0.2,1.0,1.0,1.0,not_applicable_label_not_primary,0.081,0.0
+CNS-075,SORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-076,SORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-077,SORAFENIB,contradicted,abstract_only,Results,1.0,1.0,1.0,0.6,0.9,0.85,1.0,1.0,seated_in_results_or_table,0.459,-0.459
+CNS-078,SORAFENIB,contradicted,abstract_only,Discussion,1.0,0.9,1.0,0.6,0.9,0.85,1.0,1.0,seated_in_discussion,0.4131,-0.4131
+CNS-079,SORAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.45,0.75,0.9,0.85,0.85,1.0,abstract_with_first_person_study_language,0.2085,0.0
+CNS-080,SORAFENIB,demonstrated,abstract_only,Key Points,1.0,0.9,0.35,0.75,0.9,0.85,0.85,1.0,seated_in_descriptive_section,0.1536,0.1536
+CNS-081,SORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.2,0.85,1.0,1.0,not_applicable_label_not_primary,0.0268,0.0
+CNS-082,SUNITINIB,contradicted,full_text,Sunitinib,0.35,1.0,1.0,0.6,0.9,1.0,1.0,1.0,not_applicable_label_not_primary,0.189,-0.189
+CNS-083,SUNITINIB,contradicted,full_text,Sunitinib,0.35,1.0,1.0,0.6,0.9,1.0,0.85,1.0,not_applicable_label_not_primary,0.1606,-0.1606
+CNS-084,SUNITINIB,unknown,full_text,Sunitinib,0.35,1.0,0.35,0.6,0.9,1.0,0.85,1.0,not_applicable_label_not_primary,0.0562,0.0
+CNS-085,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,0.6,abstract_with_first_person_study_language,0.3488,0.0
+CNS-086,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.6,0.9,0.85,1.0,1.0,abstract_without_first_person_language,0.3672,-0.3672
+CNS-087,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.6,0.9,0.85,1.0,1.0,abstract_without_first_person_language,0.3672,-0.3672
+CNS-088,SUNITINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.35,0.3,0.85,1.0,1.0,not_applicable_label_not_primary,0.0281,0.0
+CNS-089,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.45,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.2453,0.0
+CNS-090,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,abstract_with_first_person_study_language,0.4633,-0.4633
+CNS-091,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.6,0.9,0.85,1.0,1.0,abstract_without_first_person_language,0.3672,-0.3672
+CNS-092,SUNITINIB,demonstrated,abstract_only,Abstract,1.0,0.8,1.0,0.6,0.9,0.85,0.85,1.0,abstract_without_first_person_language,0.3121,0.3121
+CNS-093,TIVOZANIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-094,TOVORAFENIB,unknown,full_text,Background,0.35,1.0,0.9,0.5,0.3,1.0,1.0,1.0,not_applicable_label_not_primary,0.0473,0.0
+CNS-095,TOVORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-096,TOVORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.3,0.85,1.0,1.0,not_applicable_label_not_primary,0.0402,0.0
+CNS-097,TRAMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-098,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.35,0.75,0.6,0.85,0.85,1.0,abstract_with_first_person_study_language,0.1081,0.0
+CNS-099,VEMURAFENIB,unknown,full_text,The pharmacological impact of ABC drug transporters on the bioavailability and distribution of vemurafenib,0.35,1.0,0.45,0.75,0.3,1.0,0.85,1.0,not_applicable_label_not_primary,0.0301,0.0
+CNS-100,VEMURAFENIB,unknown,full_text,The pharmacological impact of ABC drug transporters on the bioavailability and distribution of vemurafenib,0.35,1.0,0.45,0.75,0.3,1.0,0.85,1.0,not_applicable_label_not_primary,0.0301,0.0
+CNS-101,VEMURAFENIB,unknown,full_text,Conclusions,0.35,1.0,0.9,0.5,0.3,1.0,1.0,1.0,not_applicable_label_not_primary,0.0473,0.0
+CNS-102,VEMURAFENIB,contradicted,full_text,(untitled section),0.35,1.0,1.0,1.0,0.3,1.0,0.85,1.0,not_applicable_label_not_primary,0.0892,-0.0892
+CNS-103,VEMURAFENIB,unknown,full_text,Vemurafenib has intrinsic antitumor potential against intracranial A375 tumors,0.35,1.0,0.45,0.75,0.3,1.0,1.0,1.0,not_applicable_label_not_primary,0.0354,0.0
+CNS-104,VEMURAFENIB,unknown,full_text,Dose adaptions between WT and Abcb1a/b;Abcg2 −/− mice are needed to level the systemic exposure of vemurafenib between strains,1.0,0.9,0.45,0.75,0.9,1.0,1.0,1.0,seated_in_descriptive_section,0.2734,0.0
+CNS-105,VEMURAFENIB,contradicted,full_text,P‐gp and BCRP reduce vemurafenib penetration in MBMs,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,seated_in_descriptive_section,0.6075,-0.6075
+CNS-106,VEMURAFENIB,demonstrated,full_text,Intracranial A375 tumors develop therapy resistance despite sufficient vemurafenib tumor penetration and target inhibition,1.0,0.9,0.45,0.75,0.9,1.0,0.85,1.0,seated_in_descriptive_section,0.2324,0.2324
+CNS-107,VEMURAFENIB,demonstrated,full_text,Intracranial A375 tumors develop therapy resistance despite sufficient vemurafenib tumor penetration and target inhibition,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,seated_in_descriptive_section,0.6075,0.6075
+CNS-108,VEMURAFENIB,contradicted,full_text,P‐gp and BCRP reduce vemurafenib penetration in MBMs,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,seated_in_descriptive_section,0.6075,-0.6075
+CNS-109,VEMURAFENIB,contradicted,full_text,(untitled section),0.35,1.0,1.0,1.0,1.0,1.0,1.0,1.0,not_applicable_label_not_primary,0.35,-0.35
+CNS-110,VEMURAFENIB,unknown,full_text,(untitled section),1.0,0.9,0.6,0.75,0.2,1.0,0.85,1.0,seated_in_descriptive_section,0.0689,0.0
+CNS-111,VEMURAFENIB,unknown,full_text,Dose adaptions between WT and Abcb1a/b;Abcg2 −/− mice are needed to level the systemic exposure of vemurafenib between strains,1.0,0.9,0.45,0.75,0.2,1.0,1.0,1.0,seated_in_descriptive_section,0.0608,0.0
+CNS-112,VEMURAFENIB,unknown,full_text,P‐gp and BCRP reduce vemurafenib penetration in MBMs,0.35,1.0,0.45,0.75,0.3,1.0,0.85,1.0,not_applicable_label_not_primary,0.0301,0.0
+CNS-113,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-114,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-115,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-116,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-117,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-118,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-119,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,abstract_with_first_person_study_language,0.4633,-0.4633
+CNS-120,VEMURAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.5,0.2,0.85,1.0,1.0,abstract_with_first_person_study_language,0.0727,0.0
+CNS-121,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-122,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-123,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-124,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,abstract_with_first_person_study_language,0.8075,-0.8075

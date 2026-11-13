@@ -163,13 +163,19 @@ def build() -> dict:
     roll_path = OUT_DATA / "phase6-cns-adjudication-rollup.csv"
     if roll_path.exists():
         prior = pd.read_csv(roll_path)
-        keep = [c for c in prior.columns if c.startswith("proposed_") or c in
-                ("proposal_conflict", "disagrees_with_chembl_flag")]
+        # Keep every column a later stage added, not a whitelist: the first
+        # version of this merge listed proposed_* explicitly and silently dropped
+        # the stage-4 score columns on the next rebuild.
+        keep = [c for c in prior.columns if c not in rollup.columns and c != "moiety"]
         if keep:
             rollup = rollup.merge(prior[["moiety", *keep]], on="moiety", how="left")
 
     prop_path = OUT_DATA / "phase6-cns-adjudication-proposed.csv"
     proposals = pd.read_csv(prop_path) if prop_path.exists() else None
+    score_path = OUT_DATA / "phase6-cns-evidence-scores.csv"
+    if proposals is not None and score_path.exists():
+        scores = pd.read_csv(score_path)[["claim_id", "evidence_weight", "corroboration_reason"]]
+        proposals = proposals.merge(scores, on="claim_id", how="left")
 
     sheet.to_csv(OUT_DATA / "phase6-cns-adjudication-sheet.csv", index=False)
     rollup.to_csv(roll_path, index=False)
@@ -277,6 +283,13 @@ def write_markdown(
             f"openFDA label: `{rr['openfda_label_verdict']}` · "
             f"CNS-manifestation trial evidence on {rr['rows_with_cns_trial_evidence']} drug rows\n"
         )
+        if isinstance(rr.get("scored_band") if hasattr(rr, "get") else None, str):
+            A(
+                f"**Evidence score: `{rr['scored_band']}`** — support {rr['support_weight']}, "
+                f"exclusion {rr['exclusion_weight']}, mass {rr['evidence_mass']}, "
+                f"direction {rr['direction_score']:+}. {rr['scored_rationale']}. "
+                f"Heaviest claims: {rr.get('top_weighted_claim_ids') or 'none'}.\n"
+            )
         pv = rr.get("proposed_drug_verdict") if hasattr(rr, "get") else None
         if isinstance(pv, str) and pv:
             A(
@@ -308,6 +321,7 @@ def write_markdown(
                     f"`{p.get('proposed_evidence_basis','')}` · {p.get('proposed_primary_or_restated','')}"
                     f" · {p.get('proposed_species','')} · arm `{p.get('proposed_experimental_arm','')}`"
                     f" · {mv.strip() or 'no metric'} · confidence {p.get('proposed_confidence','')}"
+                    + (f" · weight **{p['evidence_weight']:.2f}**" if p.get("evidence_weight") == p.get("evidence_weight") else "")
                     + (" · **flagged for human check**" if p.get("proposed_needs_human_check") else "")
                 )
                 A(f"  - rationale: {str(p.get('proposed_rationale','')).strip()}")
