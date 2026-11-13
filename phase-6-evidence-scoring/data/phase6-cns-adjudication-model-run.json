@@ -5,24 +5,24 @@
   "claims_returned": 124,
   "errors": [],
   "verdict_counts": {
-    "contradicted": 60,
-    "unknown": 45,
-    "demonstrated": 19
+    "contradicted": 61,
+    "unknown": 42,
+    "demonstrated": 21
   },
   "basis_counts": {
-    "measured_pk_animal": 61,
+    "measured_pk_animal": 66,
     "measured_pk_human": 15,
-    "design_or_prediction": 15,
-    "review_restatement": 15,
-    "clinical_cns_response": 11,
-    "mechanistic_assertion": 5,
+    "review_restatement": 13,
+    "design_or_prediction": 10,
+    "mechanistic_assertion": 9,
+    "clinical_cns_response": 9,
     "preclinical_cns_efficacy": 2
   },
-  "needs_human_check": 43,
+  "needs_human_check": 48,
   "drug_verdicts": {
-    "contradicted": 9,
+    "contradicted": 8,
+    "demonstrated": 5,
     "unknown": 5,
-    "demonstrated": 4,
     "": 2
   },
   "conflicts": [

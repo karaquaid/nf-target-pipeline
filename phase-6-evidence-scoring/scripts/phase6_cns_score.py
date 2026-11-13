@@ -89,6 +89,27 @@ MIN_PEAK = 0.50
 MIN_DIRECTION = 0.35
 MIN_MASS = 0.75  # retained only for the comparison column mass_band
 
+# Compartment classes. A drug excluded from CSF and normal brain can still reach
+# an intracranial tumour, where the barrier is disrupted; in this corpus that is
+# the rule rather than the exception - normal brain carries 24 contradicted
+# claims against 1 demonstrated, tumour tissue 9 demonstrated against 1. Scoring
+# the two together makes a coherent finding look like a self-contradiction, so
+# each class is banded separately (decided 2026-11-13, Kara).
+BARRIER_INTACT = {"csf", "normal_brain", "brain_unspecified"}
+TUMOUR = {"tumour_tissue"}
+# A clinical or preclinical CNS response is evidence about drug reaching tumour,
+# even though no compartment was sampled.
+TUMOUR_BASES = {"clinical_cns_response", "preclinical_cns_efficacy"}
+
+
+def compartment_class(compartment: str, basis: str) -> str:
+    if compartment in TUMOUR or basis in TUMOUR_BASES:
+        return "tumour"
+    if compartment in BARRIER_INTACT:
+        return "barrier_intact"
+    return "none"
+
+
 FIRST_PERSON = re.compile(r"\b(we |our |this study|here we|in the present study)", re.I)
 
 
@@ -153,6 +174,10 @@ def main() -> None:
                 "access": r.get("access"),
                 "context_section": p.get("context_section"),
                 **{f"w_{k}": round(v, 3) for k, v in f.items()},
+                "compartment": r.get("proposed_compartment"),
+                "compartment_class": compartment_class(
+                    r.get("proposed_compartment"), r.get("proposed_evidence_basis")
+                ),
                 "corroboration_reason": corr_reason,
                 "evidence_weight": round(weight, 4),
                 "signed_contribution": round(
@@ -175,10 +200,27 @@ def main() -> None:
         # `or 0` is wrong here: an empty side gives NaN, and NaN is truthy, so it
         # propagates through max() and every comparison returns False - which put
         # every drug in `contradicted` on the first run of this change.
-        def _best(verdict: str) -> float:
-            v = sub.loc[sub["proposed_verdict"] == verdict, "evidence_weight"].max()
+        def _best(verdict: str, frame=None) -> float:
+            f = sub if frame is None else frame
+            v = f.loc[f["proposed_verdict"] == verdict, "evidence_weight"].max()
             return 0.0 if pd.isna(v) else float(v)
 
+        def _band(frame) -> tuple:
+            bs, be = _best("demonstrated", frame), _best("contradicted", frame)
+            pk = max(bs, be)
+            dr = (bs - be) / pk if pk else 0.0
+            if pk == 0:
+                return "unknown", "no_claim_carries_a_verdict", bs, be, dr
+            if pk < MIN_PEAK:
+                return "unknown", "below_peak_threshold", bs, be, dr
+            if abs(dr) < MIN_DIRECTION:
+                return "unknown", "conflicting_best_evidence", bs, be, dr
+            return ("demonstrated" if dr > 0 else "contradicted"), "resolved", bs, be, dr
+
+        barrier = sub[sub["compartment_class"] == "barrier_intact"]
+        tumour = sub[sub["compartment_class"] == "tumour"]
+        b_band, b_reason, b_sup, b_exc, b_dir = _band(barrier)
+        t_band, t_reason, t_sup, t_exc, t_dir = _band(tumour)
         best_support, best_exclusion = _best("demonstrated"), _best("contradicted")
         peak = max(best_support, best_exclusion)
         direction = (best_support - best_exclusion) / peak if peak else 0.0
@@ -202,6 +244,21 @@ def main() -> None:
             band = "demonstrated" if direction > 0 else "contradicted"
             reason = "resolved"
             why = f"best claim {peak:.2f}, direction {direction:+.2f}"
+
+        # A difference BETWEEN compartments is a finding, not a conflict: record
+        # it as a split and let Phase 6 pick the compartment its manifestation
+        # needs, rather than cancelling one against the other.
+        resolved = [x for x in (b_band, t_band) if x != "unknown"]
+        if len(set(resolved)) == 2:
+            band, reason = "compartment_split", "compartment_split"
+            why = (
+                f"barrier-intact compartments read {b_band} "
+                f"(best {max(b_sup, b_exc):.2f}), tumour tissue reads {t_band} "
+                f"(best {max(t_sup, t_exc):.2f})"
+            )
+        elif reason == "conflicting_best_evidence" and len(set(resolved)) == 1:
+            band, reason = resolved[0], "resolved_within_compartment"
+            why = f"single compartment class resolves to {resolved[0]}; whole-drug best claims had looked contested"
         mass_band = (
             "unknown"
             if mass < MIN_MASS or abs(mass_direction) < MIN_DIRECTION
@@ -221,6 +278,14 @@ def main() -> None:
                 "mass_band": mass_band,
                 "scored_band": band,
                 "band_reason": reason,
+                "band_barrier_intact": b_band,
+                "band_barrier_reason": b_reason,
+                "barrier_best_support": round(b_sup, 3),
+                "barrier_best_exclusion": round(b_exc, 3),
+                "band_tumour": t_band,
+                "band_tumour_reason": t_reason,
+                "tumour_best_support": round(t_sup, 3),
+                "tumour_best_exclusion": round(t_exc, 3),
                 "scored_rationale": why,
                 "top_weighted_claim_ids": ", ".join(
                     f"{c} ({w:.2f})" for c, w in zip(top["claim_id"], top["evidence_weight"]) if w > 0

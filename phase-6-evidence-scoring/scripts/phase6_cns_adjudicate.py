@@ -78,6 +78,17 @@ A fourth trap, which cost the first run two wrong calls:
    drug reaches the CNS on its own: set experimental_arm to
    bbb_modifying_cointervention.
 
+A fifth distinction, which the first two runs could not express:
+5. Record which COMPARTMENT the exposure was measured in. A drug can be excluded
+   from cerebrospinal fluid and normal brain while still reaching an intracranial
+   tumour, where the barrier is disrupted - that is one of the commonest findings
+   in this literature and it is not a contradiction. Use `tumour_tissue` only when
+   the text says the measurement is in tumour or metastasis tissue, `csf` or
+   `normal_brain` when it names those, `brain_unspecified` when it says brain
+   without saying which, and `plasma_only` when no CNS compartment was sampled.
+   Judge the verdict for the compartment measured; do not downgrade a tumour
+   measurement because CSF exposure is low, or vice versa.
+
 Judge only from the text supplied. Do not use anything you know about this drug
 from elsewhere, EXCEPT that the development codes listed under "also known as"
 below name the same molecule - a paper using one of those codes is about this
@@ -127,6 +138,18 @@ TOOL = {
                 "type": "string",
                 "description": "The value as the text states it, verbatim, or an empty string.",
             },
+            "compartment": {
+                "type": "string",
+                "enum": [
+                    "csf",
+                    "normal_brain",
+                    "tumour_tissue",
+                    "brain_unspecified",
+                    "plasma_only",
+                    "not_applicable",
+                ],
+                "description": "Which compartment the exposure was measured in. tumour_tissue only when the text says the measurement is in tumour or metastasis tissue.",
+            },
             "basis_location": {
                 "type": "string",
                 "enum": ["matched_sentence", "surrounding_text", "both", "none"],
@@ -146,6 +169,7 @@ TOOL = {
             "primary_or_restated",
             "species",
             "experimental_arm",
+            "compartment",
             "basis_location",
             "metric",
             "value",
