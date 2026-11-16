@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Phase 6, stage 5c: adjudicate the OPG tumour-compartment claims.
+"""Phase 6, stage 5c: adjudicate the OPG tumor-compartment claims.
 
 Same rubric, same tool schema, same synonym list as the CNS pass - only the
 corpus differs. Run from the python kernel: import phase6_opg_adjudicate as m;

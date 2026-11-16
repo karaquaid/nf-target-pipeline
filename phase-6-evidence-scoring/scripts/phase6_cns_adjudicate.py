@@ -40,7 +40,7 @@ Score CNS delivery for the named drug in exactly one of three states.
 demonstrated - the supplied text reports measured exposure of the drug in the CNS
   compartment (CSF concentration, brain tissue concentration, Kp,uu, or a
   brain-to-plasma ratio that is not trivially low), or reports approval/clinical
-  activity against a CNS tumour or CNS disease site for this drug.
+  activity against a CNS tumor or CNS disease site for this drug.
 contradicted - the supplied text reports measured pharmacokinetics showing the
   drug is excluded from the CNS: a brain-to-plasma or CSF-to-plasma ratio that is
   low in absolute terms, drug not detectable in CSF, or exposure below the
@@ -81,12 +81,12 @@ A fourth trap, which cost the first run two wrong calls:
 A fifth distinction, which the first two runs could not express:
 5. Record which COMPARTMENT the exposure was measured in. A drug can be excluded
    from cerebrospinal fluid and normal brain while still reaching an intracranial
-   tumour, where the barrier is disrupted - that is one of the commonest findings
-   in this literature and it is not a contradiction. Use `tumour_tissue` only when
-   the text says the measurement is in tumour or metastasis tissue, `csf` or
+   tumor, where the barrier is disrupted - that is one of the commonest findings
+   in this literature and it is not a contradiction. Use `tumor_tissue` only when
+   the text says the measurement is in tumor or metastasis tissue, `csf` or
    `normal_brain` when it names those, `brain_unspecified` when it says brain
    without saying which, and `plasma_only` when no CNS compartment was sampled.
-   Judge the verdict for the compartment measured; do not downgrade a tumour
+   Judge the verdict for the compartment measured; do not downgrade a tumor
    measurement because CSF exposure is low, or vice versa.
 
 Judge only from the text supplied. Do not use anything you know about this drug
@@ -143,12 +143,12 @@ TOOL = {
                 "enum": [
                     "csf",
                     "normal_brain",
-                    "tumour_tissue",
+                    "tumor_tissue",
                     "brain_unspecified",
                     "plasma_only",
                     "not_applicable",
                 ],
-                "description": "Which compartment the exposure was measured in. tumour_tissue only when the text says the measurement is in tumour or metastasis tissue.",
+                "description": "Which compartment the exposure was measured in. tumor_tissue only when the text says the measurement is in tumor or metastasis tissue.",
             },
             "basis_location": {
                 "type": "string",

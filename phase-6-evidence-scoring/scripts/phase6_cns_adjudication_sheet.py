@@ -47,7 +47,7 @@ EVIDENCE_BASIS = [
     "measured_pk_human",        # CSF, brain tissue or Kp,uu measured in people
     "measured_pk_animal",       # brain:plasma or Kp,uu measured in an animal model
     "clinical_cns_response",    # intracranial response / CNS remission, no PK number
-    "preclinical_cns_efficacy", # survival or tumour control in an intracranial model
+    "preclinical_cns_efficacy", # survival or tumor control in an intracranial model
     "mechanistic_assertion",    # efflux-substrate or permeability claim, no exposure
     "review_restatement",       # restates another paper's finding
     "design_or_prediction",     # computed, designed-for or predicted penetration
@@ -369,7 +369,7 @@ def write_markdown(
             sub = opg[opg["moiety"] == moiety].sort_values("evidence_weight", ascending=False)
             if len(sub):
                 A("")
-                A(f"**OPG pass — tumour-compartment evidence ({len(sub)} claims carrying a verdict)**\n")
+                A(f"**OPG pass — tumor-compartment evidence ({len(sub)} claims carrying a verdict)**\n")
                 for _, o in sub.head(8).iterrows():
                     w = o.get("evidence_weight")
                     A(f"- **{o['claim_id']}** · [PMID {o['pmid']}](https://pubmed.ncbi.nlm.nih.gov/{o['pmid']}/)"

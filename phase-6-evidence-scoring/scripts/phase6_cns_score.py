@@ -90,21 +90,21 @@ MIN_DIRECTION = 0.35
 MIN_MASS = 0.75  # retained only for the comparison column mass_band
 
 # Compartment classes. A drug excluded from CSF and normal brain can still reach
-# an intracranial tumour, where the barrier is disrupted; in this corpus that is
+# an intracranial tumor, where the barrier is disrupted; in this corpus that is
 # the rule rather than the exception - normal brain carries 24 contradicted
-# claims against 1 demonstrated, tumour tissue 9 demonstrated against 1. Scoring
+# claims against 1 demonstrated, tumor tissue 9 demonstrated against 1. Scoring
 # the two together makes a coherent finding look like a self-contradiction, so
 # each class is banded separately (decided 2026-11-13, Kara).
 BARRIER_INTACT = {"csf", "normal_brain", "brain_unspecified"}
-TUMOUR = {"tumour_tissue"}
-# A clinical or preclinical CNS response is evidence about drug reaching tumour,
+TUMOR = {"tumor_tissue"}
+# A clinical or preclinical CNS response is evidence about drug reaching tumor,
 # even though no compartment was sampled.
-TUMOUR_BASES = {"clinical_cns_response", "preclinical_cns_efficacy"}
+TUMOR_BASES = {"clinical_cns_response", "preclinical_cns_efficacy"}
 
 
 def compartment_class(compartment: str, basis: str) -> str:
-    if compartment in TUMOUR or basis in TUMOUR_BASES:
-        return "tumour"
+    if compartment in TUMOR or basis in TUMOR_BASES:
+        return "tumor"
     if compartment in BARRIER_INTACT:
         return "barrier_intact"
     return "none"
@@ -142,7 +142,7 @@ def main() -> None:
     if "source_pass" not in prop.columns:
         prop["source_pass"] = "phase5_cns"
     packets = json.loads((DATA / "phase6-cns-claim-context.json").read_text())
-    # Stage 5 (OPG) asks the tumour-compartment question the Phase 5 pass never
+    # Stage 5 (OPG) asks the tumor-compartment question the Phase 5 pass never
     # asked. Its claims score on the same scale and feed the same bands.
     opg_p, opg_c = DATA / "phase6-opg-adjudicated.csv", DATA / "phase6-opg-claim-context.json"
     if opg_p.exists() and opg_c.exists():
@@ -227,9 +227,9 @@ def main() -> None:
             return ("demonstrated" if dr > 0 else "contradicted"), "resolved", bs, be, dr
 
         barrier = sub[sub["compartment_class"] == "barrier_intact"]
-        tumour = sub[sub["compartment_class"] == "tumour"]
+        tumor = sub[sub["compartment_class"] == "tumor"]
         b_band, b_reason, b_sup, b_exc, b_dir = _band(barrier)
-        t_band, t_reason, t_sup, t_exc, t_dir = _band(tumour)
+        t_band, t_reason, t_sup, t_exc, t_dir = _band(tumor)
         best_support, best_exclusion = _best("demonstrated"), _best("contradicted")
         peak = max(best_support, best_exclusion)
         direction = (best_support - best_exclusion) / peak if peak else 0.0
@@ -262,7 +262,7 @@ def main() -> None:
             band, reason = "compartment_split", "compartment_split"
             why = (
                 f"barrier-intact compartments read {b_band} "
-                f"(best {max(b_sup, b_exc):.2f}), tumour tissue reads {t_band} "
+                f"(best {max(b_sup, b_exc):.2f}), tumor tissue reads {t_band} "
                 f"(best {max(t_sup, t_exc):.2f})"
             )
         elif reason == "conflicting_best_evidence" and len(set(resolved)) == 1:
@@ -291,10 +291,10 @@ def main() -> None:
                 "band_barrier_reason": b_reason,
                 "barrier_best_support": round(b_sup, 3),
                 "barrier_best_exclusion": round(b_exc, 3),
-                "band_tumour": t_band,
-                "band_tumour_reason": t_reason,
-                "tumour_best_support": round(t_sup, 3),
-                "tumour_best_exclusion": round(t_exc, 3),
+                "band_tumor": t_band,
+                "band_tumor_reason": t_reason,
+                "tumor_best_support": round(t_sup, 3),
+                "tumor_best_exclusion": round(t_exc, 3),
                 "scored_rationale": why,
                 "top_weighted_claim_ids": ", ".join(
                     f"{c} ({w:.2f})" for c, w in zip(top["claim_id"], top["evidence_weight"]) if w > 0

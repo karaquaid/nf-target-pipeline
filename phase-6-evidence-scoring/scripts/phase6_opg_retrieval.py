@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Phase 6, stage 5: retrieve tumour-compartment evidence for the OPG stratum.
+"""Phase 6, stage 5: retrieve tumor-compartment evidence for the OPG stratum.
 
 The Phase 5 CNS pass asked whether a drug crosses the blood-brain barrier. For
 optic pathway glioma - the only stratum where CNS delivery applies at all - the
 operative question is different: does the drug act on an intracranial glioma,
 where the barrier is disrupted and clinical response is itself evidence of
 delivery. That literature was never retrieved, which is why 16 of the 18
-OPG-stratum drugs carry no tumour-compartment claim of any kind.
+OPG-stratum drugs carry no tumor-compartment claim of any kind.
 
 This pass runs a query bank built for that question - optic pathway glioma,
 paediatric low-grade glioma, pilocytic astrocytoma, intracranial response - over
@@ -42,7 +42,7 @@ QUERIES = [
     '("{d}") AND (intracranial OR "central nervous system") AND (response OR "response rate" OR efficacy OR "progression-free")',
 ]
 # A sentence is kept only if it could bear on whether the drug acts in, or reaches,
-# an intracranial tumour. Exposure words are kept alongside response words because
+# an intracranial tumor. Exposure words are kept alongside response words because
 # a CSF or tumour-tissue measurement in this literature is equally relevant.
 RELEVANT = re.compile(
     r"\b(respon\w+|partial response|complete response|objective response|progression[- ]free|PFS|"
@@ -173,7 +173,7 @@ def main() -> None:
     att = claims[claims["drug_named_in_sentence"]] if not claims.empty else claims
     prov = {
         "stage": "phase6_opg_retrieval.py",
-        "question": "does the drug act on, or reach, an intracranial glioma (tumour compartment)",
+        "question": "does the drug act on, or reach, an intracranial glioma (tumor compartment)",
         "moieties": len(moieties), "queries_per_moiety": len(QUERIES), "retmax": RETMAX,
         "papers": len(seen_pmids), "sentences": int(len(claims)),
         "attributed": int(len(att)),
