@@ -40,7 +40,14 @@ def fragments(span: str) -> list:
 
 def main() -> None:
     prop = pd.read_csv(DATA / "phase6-cns-adjudication-proposed.csv")
+    prop["source_pass"] = prop.get("source_pass", "phase5_cns")
     packets = json.loads((DATA / "phase6-cns-claim-context.json").read_text())
+    # The OPG pass (stage 5) produces claims in the same shape; audit both so no
+    # verdict enters scoring with an unchecked span.
+    opg_p, opg_c = DATA / "phase6-opg-adjudicated.csv", DATA / "phase6-opg-claim-context.json"
+    if opg_p.exists() and opg_c.exists():
+        prop = pd.concat([prop, pd.read_csv(opg_p)], ignore_index=True)
+        packets.update(json.loads(opg_c.read_text()))
 
     rows = []
     for _, r in prop.iterrows():

@@ -54,7 +54,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 ### AVAPRITINIB
 
-8 attributed of 13 retrieved sentences · 5 full text, 3 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
+Phase 5 CNS pass: 8 attributed of 13 retrieved sentences · OPG pass: 0 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
 
 **Evidence score: `demonstrated`** (resolved) — best supporting claim 0.9, best contradicting 0.0, direction +1.0. best claim 0.90, direction +1.00. Corroboration: 3.703 total weight across 8 claims (does not set the band). Heaviest claims: CNS-001 (0.90), CNS-003 (0.68), CNS-008 (0.65).
 
@@ -121,9 +121,9 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 ### BINIMETINIB
 
-2 attributed of 14 retrieved sentences · 1 full text, 1 abstract-only · ChEMBL calculated flag: `predicted_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 8 drug rows
+Phase 5 CNS pass: 2 attributed of 14 retrieved sentences · OPG pass: 16 claims carrying a verdict · ChEMBL calculated flag: `predicted_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 8 drug rows
 
-**Evidence score: `unknown`** (below_peak_threshold) — best supporting claim 0.214, best contradicting 0.0, direction +1.0. best claim weighs 0.21, below 0.5; unassessed. Corroboration: 0.214 total weight across 2 claims (does not set the band). Heaviest claims: CNS-009 (0.21), CNS-010 (0.06).
+**Evidence score: `demonstrated`** (resolved) — best supporting claim 0.648, best contradicting 0.0, direction +1.0. best claim 0.65, direction +1.00. Corroboration: 8.225 total weight across 2 claims (does not set the band). Heaviest claims: OPG-101 (0.65), OPG-099 (0.65), OPG-102 (0.65).
 
 **Proposed drug verdict: `unknown`** — No primary, normal-arm claim carries a measured or clinical finding. Decisive claim(s): nan.
 
@@ -136,7 +136,7 @@ A claim read from an abstract can still be decisive when the abstract states the
   - rationale: Meta-analysis reports clinical intracranial tumor response (combination therapy) for BRAF V600-mutant melanoma brain metastases, indicating CNS activity; this is a drug combination, so attribution to binimetinib alone is uncertain.
   - span relied on: “The intracranial CR rate observed with encorafenib plus binimetinib was higher than that reported in prior dual, triplet, or monotherapy studies, while intracranial ORR and PR were generally comparable”
   - read from: pmc_body / Discussion · **your verdict:** _______
-- **CNS-010** · [PMID 28921565](https://pubmed.ncbi.nlm.nih.gov/28921565/) · `abstract_only` · `supporting` · number
+- **CNS-010** · [PMID 28921565](https://pubmed.ncbi.nlm.nih.gov/28921565/) · `full_text (supplied PDF)` · `supporting` · number
   - > PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026): PD0325901 was the weakest substrate of P-gp and BCRP in vitro, its brain penetration was only marginally higher in Abcb1a/b;Abcg2mice, and efficient target inhibition in the brain could be achieved at clinically relevant plasma levels.
   - *The impact of P-glycoprotein and breast cancer resistance protein on the brain pharmacokinetics and pharmacodynamics of a panel of MEK inhibitors.* — Int J Cancer 2017
   - **proposed: `unknown`** · basis `mechanistic_assertion` · unclear · in_vitro · arm `not_applicable` · none = nan · confidence high · weight **0.06**
@@ -144,11 +144,39 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026)”
   - read from: supplied_fulltext / Results and Discussion (supplied full text, drug-specific extracts) · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (16 claims carrying a verdict)**
+
+- **OPG-099** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.65**
+  - > The 6 patients with an intervening therapy after the prior BRAF/MEK inhibitor therapy and before the receipt of encorafenib plus binimetinib had a partial response (n = 3) and stable disease (n = 3) as the best intracranial response.
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-101** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.65**
+  - > For example, a patient who progressed on dabrafenib and trametinib achieved a partial response with encorafenib plus binimetinib, with a 41% reduction in intracranial lesions (response ongoing).
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-102** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.65**
+  - > Another patient received encorafenib plus binimetinib after not tolerating dabrafenib plus trametinib and achieved a complete response (response ongoing).
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-030** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > We assessed the efficacy and safety of encorafenib plus binimetinib in patients with BRAFV600-mutant melanoma and brain metastasis (BM) and explored if radiotherapy improves the duration of response.
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-031** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > Patients received encorafenib 450 mg once daily plus binimetinib 45 mg BID, and those who achieved a partial response or stable disease at first tumor assessment were offered radiotherapy.
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-077** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.55**
+  - > The objective of this retrospective study was to assess the intracranial antitumor activity of encorafenib plus binimetinib in patients with BRAF ‐mutant melanoma harboring brain metastases.
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-079** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.55**
+  - > Retrospective data collection included patients’ demographic characteristics, clinical history of melanoma and brain metastases (including the clinical features at diagnosis, course of the disease, treatment received, and outcomes), and encorafenib‐binimetinib treatment exposure.
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-107** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.55**
+  - > In this retrospective case series, BRAF/MEK inhibition with the combination of encorafenib plus binimetinib demonstrated intracranial antitumor activity in BRAF ‐mutant patients with MBMs.
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- ...and 8 more in `phase6-opg-adjudicated.csv`
+
 ### COBIMETINIB
 
-3 attributed of 19 retrieved sentences · 0 full text, 3 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 12 drug rows
+Phase 5 CNS pass: 3 attributed of 19 retrieved sentences · OPG pass: 4 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 12 drug rows
 
-**Evidence score: `contradicted`** (resolved) — best supporting claim 0.0, best contradicting 0.545, direction -1.0. best claim 0.55, direction -1.00. Corroboration: 1.09 total weight across 3 claims (does not set the band). Heaviest claims: CNS-011 (0.55), CNS-012 (0.55), CNS-013 (0.02).
+**Evidence score: `contradicted`** (resolved_within_compartment) — best supporting claim 0.494, best contradicting 0.545, direction -0.093. single compartment class resolves to contradicted; whole-drug best claims had looked contested. Corroboration: 3.067 total weight across 3 claims (does not set the band). Heaviest claims: OPG-222 (0.61), CNS-011 (0.55), CNS-012 (0.55).
 
 **Proposed drug verdict: `contradicted`** — 2 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-011, CNS-012.
 
@@ -176,11 +204,26 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “we selected only the 11 which can cross the blood-brain barrier: cobimetinib, panobinostat, melphalan, rucaparib, alectinib, ponatinib, danazol, carboplatin, vandetanib, erlotinib, and gefitinib”
   - read from: pubmed_abstract / Abstract · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (4 claims carrying a verdict)**
+
+- **OPG-216** · [PMID 33869616](https://pubmed.ncbi.nlm.nih.gov/33869616/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > Treatment with vemurafenib combined with cobimetinib resulted in an intracranial progression-free survival of 10 mo.
+  - *Long-term control of melanoma brain metastases with co-occurring intracranial infection and involuntary drug reduction during COVID-19 pandemic: A case report.*
+- **OPG-229** · [PMID 35940183](https://pubmed.ncbi.nlm.nih.gov/35940183/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > INTERPRETATION: Adding atezolizumab to vemurafenib plus cobimetinib provided promising intracranial activity in patients with BRAF V600 -mutated melanoma with CNS metastases.
+  - *Atezolizumab, vemurafenib, and cobimetinib in patients with melanoma with CNS metastases (TRICOTEL): a multicentre, open-label, single-arm, phase 2 study.*
+- **OPG-231** · [PMID 36135991](https://pubmed.ncbi.nlm.nih.gov/36135991/) · `abstract_only` · `demonstrated` · brain_unspecified · weight **0.49**
+  - > She required multiple debulking procedures and eventually responded well to cobimetinib.
+  - *A Patient with Erdheim-Chester Disease Limited to Central Nervous System.*
+- **OPG-246** · [PMID 37459873](https://pubmed.ncbi.nlm.nih.gov/37459873/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > INTERPRETATION: Atezolizumab plus vemurafenib and cobimetinib provided intracranial activity in patients with BRAF V600 -mutated melanoma with CNS metastases.
+  - *Atezolizumab, vemurafenib, and cobimetinib in patients with melanoma with CNS metastases (TRICOTEL): a multicentre, open-label, single-arm, phase 2 study.*
+
 ### DABRAFENIB
 
-2 attributed of 14 retrieved sentences · 2 full text, 0 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 10 drug rows
+Phase 5 CNS pass: 2 attributed of 14 retrieved sentences · OPG pass: 20 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 10 drug rows
 
-**Evidence score: `demonstrated`** (resolved) — best supporting claim 0.612, best contradicting 0.0, direction +1.0. best claim 0.61, direction +1.00. Corroboration: 0.612 total weight across 2 claims (does not set the band). Heaviest claims: CNS-014 (0.61), CNS-015 (0.03).
+**Evidence score: `demonstrated`** (resolved) — best supporting claim 0.648, best contradicting 0.0, direction +1.0. best claim 0.65, direction +1.00. Corroboration: 8.836 total weight across 2 claims (does not set the band). Heaviest claims: OPG-785 (0.65), OPG-843 (0.65), CNS-014 (0.61).
 
 **Proposed drug verdict: `demonstrated`** — 1 primary human claim(s), all demonstrated. Decisive claim(s): CNS-014.
 
@@ -201,11 +244,39 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “tovorafenib had greater CNS penetration compared with the type I RAF inhibitor dabrafenib”
   - read from: pmc_body / Background · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (20 claims carrying a verdict)**
+
+- **OPG-785** · [PMID 40461758](https://pubmed.ncbi.nlm.nih.gov/40461758/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.65**
+  - > Median PFS in patients receiving dabrafenib–trametinib as first-line vs.
+  - *The safety and efficacy of dabrafenib plus trametinib for patients with brain metastatic melanoma: a systematic review and meta-analysis.*
+- **OPG-364** · [PMID 29040023](https://pubmed.ncbi.nlm.nih.gov/29040023/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > We report a patient with disseminated LGG with the BRAFV600E mutation, which was refractory to selumetinib, a MEK inhibitor, but subsequently showed immediate clinical and radiographic response to dabrafenib, a BRAF inhibitor, with sustained effect for 9 months prior to clinical progression.
+  - *Dramatic clinical and radiographic response to BRAF inhibition in a patient with progressive disseminated optic pathway glioma refractory to MEK inhibition.*
+- **OPG-461** · [PMID 41423525](https://pubmed.ncbi.nlm.nih.gov/41423525/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > CONCLUSION: Dabrafenib demonstrated clinical and radiographic efficacy and was generally well tolerated in pediatric patients with unresectable BRAFV600E-mutant CMTs.
+  - *Significant clinical and radiologic response to targeted therapy in pediatric cervicomedullary low-grade gliomas harboring the BRAFV600E mutation.*
+- **OPG-376** · [PMID 37065875](https://pubmed.ncbi.nlm.nih.gov/37065875/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > After the temporary withdrawal of dabrafenib and trametinib to avoid hepatic dysfunction, a new intracranial lesion appeared.
+  - *A Unique Case of Intracranial Amelanotic Melanoma with BRAF V600E Mutation Successfully Treated via Molecular-targeted Therapy.*
+- **OPG-802** · [PMID 40461758](https://pubmed.ncbi.nlm.nih.gov/40461758/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.55**
+  - > The PFS benefit in patients without lung metastases is in contrast to previous data on treatment with BRAF/MEK inhibitors, for example, a multivariate analysis of baseline factors in a pooled analysis of dabrafenib and trametinib trials [ 28 ], where patients with M1b disease show a better PFS outcome as patients with M1c disease.
+  - *The safety and efficacy of dabrafenib plus trametinib for patients with brain metastatic melanoma: a systematic review and meta-analysis.*
+- **OPG-803** · [PMID 40461758](https://pubmed.ncbi.nlm.nih.gov/40461758/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.55**
+  - > Median PFS in patients treated with first-line dabrafenib–trametinib was numerically lower than in those treated in second + third-line; conversely, median OS in first-line patients was numerically higher.
+  - *The safety and efficacy of dabrafenib plus trametinib for patients with brain metastatic melanoma: a systematic review and meta-analysis.*
+- **OPG-451** · [PMID 40844731](https://pubmed.ncbi.nlm.nih.gov/40844731/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.55**
+  - > CONCLUSIONS: Dabrafenib plus trametinib combination therapy demonstrated clinical effectiveness in patients with BRAF V600E-positive thyroid cancer, with response rates comparable to those observed in clinical trials.
+  - *A single-center retrospective study of dabrafenib plus trametinib combination therapy in patients with BRAF V600E-positive thyroid cancer.*
+- **OPG-394** · [PMID 38143440](https://pubmed.ncbi.nlm.nih.gov/38143440/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > Among the JH MTB cohort of patients with IDH1 wild-type high-grade gliomas who received targeted therapies, trametinib monotherapy or in combination with dabrafenib conferred radiographic partial response in 75% of patients harboring BRAF or NF1 actionable mutations.
+  - *Druggable genomic landscapes of high-grade gliomas.*
+- ...and 12 more in `phase6-opg-adjudicated.csv`
+
 ### DASATINIB
 
-9 attributed of 74 retrieved sentences · 1 full text, 8 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
+Phase 5 CNS pass: 9 attributed of 74 retrieved sentences · OPG pass: 3 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `unknown`** (conflicting_best_evidence) — best supporting claim 0.95, best contradicting 0.807, direction +0.15. best evidence points both ways (support 0.95 vs exclusion 0.81); unresolved. Corroboration: 6.035 total weight across 9 claims (does not set the band). Heaviest claims: CNS-016 (0.95), CNS-020 (0.81), CNS-022 (0.81).
+**Evidence score: `unknown`** (conflicting_best_evidence) — best supporting claim 0.95, best contradicting 0.807, direction +0.15. best evidence points both ways (support 0.95 vs exclusion 0.81); unresolved. Corroboration: 7.082 total weight across 9 claims (does not set the band). Heaviest claims: CNS-016 (0.95), CNS-020 (0.81), CNS-022 (0.81).
 
 **Proposed drug verdict: left blank** — Primary human claims disagree (contradicted, demonstrated); left for the reviewer rather than resolved by majority.
 
@@ -275,11 +346,23 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “In CSF, the mean dasatinib concentration was 0.5 ± 0.2 ng/mL at 2 h. The median paired plasma/CSF concentration ratio was 225:1 (98:1-406:1). In conclusion, despite therapeutic systemic levels, dasatinib penetrates poorly into CSF in children with Ph + ALL.”
   - read from: pubmed_abstract / Abstract · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (3 claims carrying a verdict)**
+
+- **OPG-953** · [PMID 36959735](https://pubmed.ncbi.nlm.nih.gov/36959735/) · `abstract_only` · `demonstrated` · csf · weight **0.49**
+  - > CONCLUSION: (1) Ph-positive CNSL patients seemed to have a high rate of response and postinduction MRD negativity with ponatinib and dasatinib, but ponatinib seemed to show a shorter time to achieve remission than dasatinib.
+  - *Comparison of the Efficacy and Safety of Ponatinib and Dasatinib in Philadelphia Chromosome-Positive Acute Lymphoblastic Leukemia With Central Nervous System Relapse: A Retrospective Study.*
+- **OPG-1099** · [PMID 40274471](https://pubmed.ncbi.nlm.nih.gov/40274471/) · `full_text` · `demonstrated` · csf · weight **0.35**
+  - > Dasatinib was also detected in the CSF in 80% of the participants after treatment; however, quercetin was not.
+  - *Evaluation of exploratory fluid biomarkers from a phase 1 senolytic trial in mild Alzheimer's disease.*
+- **OPG-966** · [PMID 40274471](https://pubmed.ncbi.nlm.nih.gov/40274471/) · `abstract_only` · `demonstrated` · csf · weight **0.20**
+  - > Results from the first open-label trial of senolytics, dasatinib plus quercetin (D ​+ ​Q), in older adults (N ​= ​5) with early AD demonstrated central nervous system penetration of dasatinib and favorable safety and tolerability.
+  - *Evaluation of exploratory fluid biomarkers from a phase 1 senolytic trial in mild Alzheimer's disease.*
+
 ### ENCORAFENIB
 
-3 attributed of 9 retrieved sentences · 1 full text, 2 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 7 drug rows
+Phase 5 CNS pass: 3 attributed of 9 retrieved sentences · OPG pass: 14 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 7 drug rows
 
-**Evidence score: `compartment_split`** (compartment_split) — best supporting claim 0.551, best contradicting 0.545, direction +0.01. barrier-intact compartments read contradicted (best 0.55), tumour tissue reads demonstrated (best 0.55). Corroboration: 1.641 total weight across 3 claims (does not set the band). Heaviest claims: CNS-025 (0.55), CNS-026 (0.55), CNS-027 (0.55).
+**Evidence score: `compartment_split`** (compartment_split) — best supporting claim 0.72, best contradicting 0.545, direction +0.243. barrier-intact compartments read contradicted (best 0.55), tumour tissue reads demonstrated (best 0.72). Corroboration: 8.624 total weight across 3 claims (does not set the band). Heaviest claims: OPG-1260 (0.72), OPG-1259 (0.72), OPG-1261 (0.65).
 
 **Proposed drug verdict: `demonstrated`** — 1 primary human claim(s), all demonstrated. Decisive claim(s): CNS-025.
 
@@ -307,11 +390,39 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “However, absolute brain concentrations and brain-to-plasma ratios remained very low in all strains, indicating intrinsically poor brain penetration of encorafenib.”
   - read from: pubmed_abstract / Abstract · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (14 claims carrying a verdict)**
+
+- **OPG-1259** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.72**
+  - > For example, a patient who progressed on dabrafenib and trametinib achieved a partial response with encorafenib plus binimetinib, with a 41% reduction in intracranial lesions (response ongoing).
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-1260** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.72**
+  - > Another patient received encorafenib plus binimetinib after not tolerating dabrafenib plus trametinib and achieved a complete response (response ongoing).
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-1257** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.65**
+  - > The 6 patients with an intervening therapy after the prior BRAF/MEK inhibitor therapy and before the receipt of encorafenib plus binimetinib had a partial response (n = 3) and stable disease (n = 3) as the best intracranial response.
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-1261** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.65**
+  - > The median LDH level before the initiation of treatment with encorafenib plus binimetinib was 190 U/L (range, 82‐774 U/L), whereas the median LDH level was 184 U/L (range, 69‐409 U/L) at response.
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-1196** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > We assessed the efficacy and safety of encorafenib plus binimetinib in patients with BRAFV600-mutant melanoma and brain metastasis (BM) and explored if radiotherapy improves the duration of response.
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-1197** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > Patients received encorafenib 450 mg once daily plus binimetinib 45 mg BID, and those who achieved a partial response or stable disease at first tumor assessment were offered radiotherapy.
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-1237** · [PMID 38946469](https://pubmed.ncbi.nlm.nih.gov/38946469/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.55**
+  - > Retrospective data collection included patients’ demographic characteristics, clinical history of melanoma and brain metastases (including the clinical features at diagnosis, course of the disease, treatment received, and outcomes), and encorafenib‐binimetinib treatment exposure.
+  - *Encorafenib and binimetinib followed by radiotherapy for patients with BRAFV600-mutant melanoma and brain metastases (E-BRAIN/GEM1802 phase II study).*
+- **OPG-1175** · [PMID 31658370](https://pubmed.ncbi.nlm.nih.gov/31658370/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > METHODS: A multicenter, retrospective case series investigation of consecutive BRAF-mutant patients with melanoma brain metastases (MBMs) treated with a combination of BRAF inhibitor encorafenib and MEK inhibitor binimetinib was conducted to evaluate the antitumor response.
+  - *Intracranial antitumor activity with encorafenib plus binimetinib in patients with melanoma brain metastases: A case series.*
+- ...and 6 more in `phase6-opg-adjudicated.csv`
+
 ### IMATINIB
 
-21 attributed of 90 retrieved sentences · 13 full text, 8 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
+Phase 5 CNS pass: 21 attributed of 90 retrieved sentences · OPG pass: 2 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `unknown`** (conflicting_best_evidence) — best supporting claim 0.95, best contradicting 0.675, direction +0.289. best evidence points both ways (support 0.95 vs exclusion 0.68); unresolved. Corroboration: 6.325 total weight across 21 claims (does not set the band). Heaviest claims: CNS-036 (0.95), CNS-035 (0.90), CNS-030 (0.68).
+**Evidence score: `unknown`** (conflicting_best_evidence) — best supporting claim 0.95, best contradicting 0.675, direction +0.289. best evidence points both ways (support 0.95 vs exclusion 0.68); unresolved. Corroboration: 7.204 total weight across 21 claims (does not set the band). Heaviest claims: CNS-036 (0.95), CNS-035 (0.90), CNS-030 (0.68).
 
 **Proposed drug verdict: `demonstrated`** — 2 primary human claim(s), all demonstrated. Decisive claim(s): CNS-035, CNS-036.
 
@@ -465,11 +576,20 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “The contribution of BCRP to the brain and CSF distribution of the dual P-glycoprotein/BCRP substrates, imatinib and prazosin, was similar to that of BCRP-specific substrates.”
   - read from: pubmed_abstract / Abstract · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (2 claims carrying a verdict)**
+
+- **OPG-1353** · [PMID 26546509](https://pubmed.ncbi.nlm.nih.gov/26546509/) · `abstract_only` · `contradicted` · normal_brain · weight **0.46**
+  - > Four of these were treated with the tyrosine kinase inhibitor imatinib, and showed rapid response of metastases outside the central nervous system.
+  - *A case series of anal melanoma including the results of treatment with imatinib in selected patients.*
+- **OPG-1392** · [PMID 42605749](https://pubmed.ncbi.nlm.nih.gov/42605749/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.42**
+  - > Liquid imatinib monotherapy led to resolution of lesions and continued treatment response after 3 years without adverse events or drug interruptions.
+  - *Infantile Central Nervous System Juvenile Xanthogranuloma With Somatic CSF1R Mutation Responsive to Imatinib Monotherapy.*
+
 ### PAZOPANIB
 
-12 attributed of 22 retrieved sentences · 9 full text, 3 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 7 drug rows
+Phase 5 CNS pass: 12 attributed of 22 retrieved sentences · OPG pass: 11 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 7 drug rows
 
-**Evidence score: `unknown`** (conflicting_best_evidence) — best supporting claim 0.608, best contradicting 0.608, direction +0.0. best evidence points both ways (support 0.61 vs exclusion 0.61); unresolved. Corroboration: 3.922 total weight across 12 claims (does not set the band). Heaviest claims: CNS-050 (0.61), CNS-051 (0.61), CNS-053 (0.61).
+**Evidence score: `unknown`** (conflicting_best_evidence) — best supporting claim 0.646, best contradicting 0.608, direction +0.06. best evidence points both ways (support 0.65 vs exclusion 0.61); unresolved. Corroboration: 9.248 total weight across 12 claims (does not set the band). Heaviest claims: OPG-1685 (0.65), CNS-051 (0.61), CNS-053 (0.61).
 
 **Proposed drug verdict: left blank** — Primary mouse claims disagree (contradicted, demonstrated); left for the reviewer rather than resolved by majority.
 
@@ -560,11 +680,39 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “pazopanib crosses the blood-brain barrier (BBB) with no detectable peripheral off-side effects, and reduces p-tau in TauP301L mice”
   - read from: pmc_body / Introduction · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (11 claims carrying a verdict)**
+
+- **OPG-1685** · [PMID 22374327](https://pubmed.ncbi.nlm.nih.gov/22374327/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.65**
+  - > Here we provide the first report demonstrating clinical and radiological anti-tumor response using pazopanib, a small molecule multi-receptor tyrosine kinase inhibitor, in a patient with treatment-refractory VHL-associated CNS hemangioblastoma.
+  - *Pazopanib therapy for cerebellar hemangioblastomas in von Hippel-Lindau disease: case report.*
+- **OPG-1686** · [PMID 22374327](https://pubmed.ncbi.nlm.nih.gov/22374327/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > Treatment initiation with daily oral pazopanib (800 mg/day) resulted in significant neurologic improvement and radiologic tumor volume reduction.
+  - *Pazopanib therapy for cerebellar hemangioblastomas in von Hippel-Lindau disease: case report.*
+- **OPG-1700** · [PMID 29700673](https://pubmed.ncbi.nlm.nih.gov/29700673/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > CONCLUSIONS: Two consecutive patients with untreatable central nervous system SFT/H showed a spectacular partial response to Pazopanib, an unprecedented result in SFT/H.
+  - *Pazopanib efficacy in recurrent central nervous system hemangiopericytomas.*
+- **OPG-1730** · [PMID 41791137](https://pubmed.ncbi.nlm.nih.gov/41791137/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > Pazopanib achieved partial response in one patient and stable disease in three patients, with treatment durations ranging from 7 months to over 2 years.
+  - *Pazopanib for recurrent central nervous system solitary fibrous tumors: A single-institution retrospective series.*
+- **OPG-1714** · [PMID 39554533](https://pubmed.ncbi.nlm.nih.gov/39554533/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.54**
+  - > Cases 2 and 3, meeting the Choi criteria, showed stable disease and achieved partial response after pazopanib initiation, respectively.
+  - *Imaging assessment of tumor densities and sizes following pazopanib treatment for central nervous system solitary fibrous tumors with multiple extracranial metastases: A case series.*
+- **OPG-1735** · [PMID 41795032](https://pubmed.ncbi.nlm.nih.gov/41795032/) · `abstract_only` · `contradicted` · tumour_tissue · weight **0.49**
+  - > No partial responses (PR) were observed upon ipilimumab/nivolumab (0%), and pazopanib (0%).
+  - *Immuno-molecular features and therapeutic implications of brain metastases in clear cell renal cell carcinoma patients.*
+- **OPG-1715** · [PMID 39554533](https://pubmed.ncbi.nlm.nih.gov/39554533/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > In Case 1, both intracranial and extracranial tumor CT densities decreased after initiation and resumption of pazopanib treatment.
+  - *Imaging assessment of tumor densities and sizes following pazopanib treatment for central nervous system solitary fibrous tumors with multiple extracranial metastases: A case series.*
+- **OPG-1741** · [PMID 41941836](https://pubmed.ncbi.nlm.nih.gov/41941836/) · `abstract_only` · `contradicted` · tumour_tissue · weight **0.46**
+  - > LESSONS: Pazopanib demonstrates site-dependent efficacy in metastatic CNS SFT, with marked response in visceral metastases and reduced progression of bone metastases; however, a limited effect on intracranial disease is observed, requiring continued stereotactic irradiation.
+  - *Long-term control of grade 3 intracranial solitary fibrous tumor achieved with pazopanib and stereotactic radiotherapy: illustrative case.*
+- ...and 3 more in `phase6-opg-adjudicated.csv`
+
 ### REGORAFENIB
 
-4 attributed of 51 retrieved sentences · 2 full text, 2 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 0 drug rows
+Phase 5 CNS pass: 4 attributed of 51 retrieved sentences · OPG pass: 5 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `demonstrated`** (resolved) — best supporting claim 0.95, best contradicting 0.0, direction +1.0. best claim 0.95, direction +1.00. Corroboration: 0.95 total weight across 4 claims (does not set the band). Heaviest claims: CNS-061 (0.95), CNS-063 (0.21), CNS-064 (0.14).
+**Evidence score: `demonstrated`** (resolved) — best supporting claim 0.95, best contradicting 0.0, direction +1.0. best claim 0.95, direction +1.00. Corroboration: 3.508 total weight across 4 claims (does not set the band). Heaviest claims: CNS-061 (0.95), OPG-2154 (0.58), OPG-2147 (0.49).
 
 **Proposed drug verdict: `demonstrated`** — 1 primary human claim(s), all demonstrated. Decisive claim(s): CNS-061.
 
@@ -599,9 +747,27 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “the suboptimal dosing of regorafenib, due to its poor penetration of the blood-brain barrier, may reduce the likelihood of effectively targeting certain PKs”
   - read from: pubmed_abstract / Abstract · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (5 claims carrying a verdict)**
+
+- **OPG-2154** · [PMID 42145873](https://pubmed.ncbi.nlm.nih.gov/42145873/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > Multivariable analysis demonstrated that CCND2 gene gain/amplification and chromosome 13 deletion, encompassing the RB1 gene, were associated with reduced PFS, while MDM2 gain/amplification was linked to diminished OS after regorafenib.
+  - *A methylome-based score to predict survival after regorafenib in recurrent glioblastoma.*
+- **OPG-2147** · [PMID 41506800](https://pubmed.ncbi.nlm.nih.gov/41506800/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > Neuroimaging markers predicting response to regorafenib in patients with glioma relapse remain scarce; we evaluated whether early changes in amino acid PET and MRI are associated with overall survival (OS).
+  - *Assessment of Response to Regorafenib in Patients with Glioma Relapse Using 18 F-FET PET and MRI.*
+- **OPG-2151** · [PMID 41506800](https://pubmed.ncbi.nlm.nih.gov/41506800/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > Conclusion: 18 F-FET PET parameters are clinically valuable for identifying responders to regorafenib early after treatment initiation.
+  - *Assessment of Response to Regorafenib in Patients with Glioma Relapse Using 18 F-FET PET and MRI.*
+- **OPG-2152** · [PMID 42145873](https://pubmed.ncbi.nlm.nih.gov/42145873/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > Identifying predictive factors for response to regorafenib is of paramount importance.
+  - *A methylome-based score to predict survival after regorafenib in recurrent glioblastoma.*
+- **OPG-2153** · [PMID 42145873](https://pubmed.ncbi.nlm.nih.gov/42145873/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > RESULTS: Median progression-free survival (PFS) and overall survival (OS) following regorafenib treatment were 3 and 7.5 months, respectively, aligning with findings from the REGOMA trial.
+  - *A methylome-based score to predict survival after regorafenib in recurrent glioblastoma.*
+
 ### RIPRETINIB
 
-2 attributed of 5 retrieved sentences · 1 full text, 1 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
+Phase 5 CNS pass: 2 attributed of 5 retrieved sentences · OPG pass: 0 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
 
 **Evidence score: `unknown`** (no_claim_carries_a_verdict) — best supporting claim 0.0, best contradicting 0.0, direction +0.0. no attributed claim carries a demonstrated or contradicted verdict. Corroboration: 0.0 total weight across 2 claims (does not set the band). Heaviest claims: CNS-066 (0.05), CNS-065 (0.03).
 
@@ -626,15 +792,15 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 ### SELUMETINIB
 
-2 attributed of 9 retrieved sentences · 0 full text, 2 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 12 drug rows
+Phase 5 CNS pass: 2 attributed of 9 retrieved sentences · OPG pass: 18 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 12 drug rows
 
-**Evidence score: `contradicted`** (resolved) — best supporting claim 0.0, best contradicting 0.675, direction -1.0. best claim 0.68, direction -1.00. Corroboration: 0.675 total weight across 2 claims (does not set the band). Heaviest claims: CNS-067 (0.68), CNS-068 (0.49).
+**Evidence score: `compartment_split`** (compartment_split) — best supporting claim 0.581, best contradicting 0.675, direction -0.139. barrier-intact compartments read contradicted (best 0.68), tumour tissue reads demonstrated (best 0.58). Corroboration: 6.302 total weight across 2 claims (does not set the band). Heaviest claims: CNS-067 (0.68), OPG-2257 (0.58), OPG-2300 (0.58).
 
 **Proposed drug verdict: `contradicted`** — 1 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-067.
 
 **Your drug verdict:** _______  (`demonstrated` / `contradicted` / `unknown`), resting on claim id(s): _______
 
-- **CNS-067** · [PMID 28921565](https://pubmed.ncbi.nlm.nih.gov/28921565/) · `abstract_only` · `supporting` · number
+- **CNS-067** · [PMID 28921565](https://pubmed.ncbi.nlm.nih.gov/28921565/) · `full_text (supplied PDF)` · `supporting` · number
   - > PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026): PD0325901 was the weakest substrate of P-gp and BCRP in vitro, its brain penetration was only marginally higher in Abcb1a/b;Abcg2mice, and efficient target inhibition in the brain could be achieved at clinically relevant plasma levels.
   - *The impact of P-glycoprotein and breast cancer resistance protein on the brain pharmacokinetics and pharmacodynamics of a panel of MEK inhibitors.* — Int J Cancer 2017
   - **proposed: `contradicted`** · basis `measured_pk_animal` · primary · mouse · arm `normal` · brain-to-plasma ratio = brain-to-plasma ratio of only 0.02-0.06 · confidence high · weight **0.68**
@@ -649,11 +815,39 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “Eighteen patients showed subtle to a marked improvement in SNF burden, 5 remained stable, and no worsening was observed during treatment.”
   - read from: pubmed_abstract / Abstract · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (18 claims carrying a verdict)**
+
+- **OPG-2300** · [PMID 40241281](https://pubmed.ncbi.nlm.nih.gov/40241281/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > CONCLUSIONS: Selumetinib provided stability and responses across many pLGG subgroups, and some patients achieved prolonged disease control without additional therapy.
+  - *A phase 2 PBTC study of selumetinib for recurrent/progressive pediatric low-grade glioma: Strata 2, 5, and 6 with long-term outcomes on strata 1, 3, and 4.*
+- **OPG-2270** · [PMID 33631016](https://pubmed.ncbi.nlm.nih.gov/33631016/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > CONCLUSIONS: Selumetinib was tolerable and led to responses and prolonged disease stability in children with recurrent/progressive OPHGs based upon radiographic response, PFS, and visual outcomes.
+  - *A phase II trial of selumetinib in children with recurrent optic pathway and hypothalamic low-grade glioma without NF1: a Pediatric Brain Tumor Consortium study.*
+- **OPG-2315** · [PMID 42176046](https://pubmed.ncbi.nlm.nih.gov/42176046/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > CONCLUSIONS: Selumetinib shows therapeutic potential against NF1-DN, although with a lower response than that observed against NF1-PN.
+  - *Therapeutic effects of selumetinib on diffuse neurofibroma and optic pathway glioma in neurofibromatosis type 1.*
+- **OPG-2271** · [PMID 35210278](https://pubmed.ncbi.nlm.nih.gov/35210278/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > We hypothesized that MR imaging-derived ADC histogram metrics would be associated with survival and response to treatment with selumetinib.
+  - *ADC Histogram Analysis of Pediatric Low-Grade Glioma Treated with Selumetinib: A Report from the Pediatric Brain Tumor Consortium.*
+- **OPG-2276** · [PMID 35210278](https://pubmed.ncbi.nlm.nih.gov/35210278/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > CONCLUSIONS: ADC histogram metrics are associated with progression-free survival and response to treatment with selumetinib in pediatric low-grade gliomas.
+  - *ADC Histogram Analysis of Pediatric Low-Grade Glioma Treated with Selumetinib: A Report from the Pediatric Brain Tumor Consortium.*
+- **OPG-2254** · [PMID 28921565](https://pubmed.ncbi.nlm.nih.gov/28921565/) · `abstract_only` · `contradicted` · brain_unspecified · weight **0.46**
+  - > PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026): PD0325901 was the weakest substrate of P-gp and BCRP in vitro, its brain penetration was only marginally higher in Abcb1a/b;Abcg2 -/- mice, and efficient target inhibition in the brain could be achieved at clinically relevant plasma levels.
+  - *The impact of P-glycoprotein and breast cancer resistance protein on the brain pharmacokinetics and pharmacodynamics of a panel of MEK inhibitors.*
+- **OPG-2267** · [PMID 33510214](https://pubmed.ncbi.nlm.nih.gov/33510214/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.31**
+  - > PDXs demonstrated response to radiation, response to selumetinib in tumors harboring KRAS G12C mutations and response to savolitinib in a tumor with MET exon 14 skipping mutation.
+  - *Development and characterization of patient-derived xenografts from non-small cell lung cancer brain metastases.*
+- **OPG-2264** · [PMID 32888253](https://pubmed.ncbi.nlm.nih.gov/32888253/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.26**
+  - > Selumetinib treatment showed tumor reduction effect in EGFR-positive glioblastoma xenograft mouse model.
+  - *Proteomics identifies EGF-like domain multiple 7 as a potential therapeutic target for epidermal growth factor receptor-positive glioma.*
+- ...and 10 more in `phase6-opg-adjudicated.csv`
+
 ### SORAFENIB
 
-13 attributed of 44 retrieved sentences · 6 full text, 7 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 17 drug rows
+Phase 5 CNS pass: 13 attributed of 44 retrieved sentences · OPG pass: 6 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 17 drug rows
 
-**Evidence score: `contradicted`** (resolved) — best supporting claim 0.154, best contradicting 0.545, direction -0.718. best claim 0.55, direction -0.72. Corroboration: 4.614 total weight across 13 claims (does not set the band). Heaviest claims: CNS-075 (0.55), CNS-076 (0.55), CNS-069 (0.49).
+**Evidence score: `contradicted`** (resolved_within_compartment) — best supporting claim 0.494, best contradicting 0.545, direction -0.093. single compartment class resolves to contradicted; whole-drug best claims had looked contested. Corroboration: 7.361 total weight across 13 claims (does not set the band). Heaviest claims: OPG-2647 (0.61), OPG-2646 (0.55), CNS-075 (0.55).
 
 **Proposed drug verdict: `contradicted`** — 3 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-075, CNS-076, CNS-079.
 
@@ -751,11 +945,32 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “the presence of the blood-brain barrier of the brain and the need to use high doses of sorafenib, the existence of mechanisms for the redistribution of sorafenib and its release in the brain tissue”
   - read from: pubmed_abstract / Abstract · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (6 claims carrying a verdict)**
+
+- **OPG-2578** · [PMID 20952483](https://pubmed.ncbi.nlm.nih.gov/20952483/) · `abstract_only` · `contradicted` · brain_unspecified · weight **0.55**
+  - > This study investigated the influence of P-gp and BCRP on the central nervous system (CNS) penetration of sorafenib, a multitargeted tyrosine kinase inhibitor currently being evaluated in clinical trials for glioma.
+  - *The role of the breast cancer resistance protein (ABCG2) in the distribution of sorafenib to the brain.*
+- **OPG-2580** · [PMID 20952483](https://pubmed.ncbi.nlm.nih.gov/20952483/) · `abstract_only` · `contradicted` · normal_brain · weight **0.55**
+  - > Steady-state brain-to-plasma concentration ratio of sorafenib was approximately 0.36 ± 0.056 in the Bcrp1(-/-) mice, 0.11 ± 0.021 in the Mdr1a/b(-/-) mice, and 0.91 ± 0.29 in the Mdr1a/b(-/-)Bcrp1(-/-) mice compared with 0.094 ± 0.007 in the wild-type mice.
+  - *The role of the breast cancer resistance protein (ABCG2) in the distribution of sorafenib to the brain.*
+- **OPG-2581** · [PMID 20952483](https://pubmed.ncbi.nlm.nih.gov/20952483/) · `abstract_only` · `contradicted` · normal_brain · weight **0.55**
+  - > Sorafenib brain-to-plasma ratios increased on coadministration of the dual P-gp/BCRP inhibitor elacridar such that the ratio in wild-type mice (0.76 ± 0.24), Bcrp1(-/-) mice (1.03 ± 0.33), Mdr1a/b(-/-) mice (1.3 ± 0.29), and Mdr1a/b(-/-)Bcrp1(-/-) mice (0.73 ± 0.35) were not significantly different.
+  - *The role of the breast cancer resistance protein (ABCG2) in the distribution of sorafenib to the brain.*
+- **OPG-2584** · [PMID 24441743](https://pubmed.ncbi.nlm.nih.gov/24441743/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > Progression-free survival (PFS), defined as the time from initiation of sorafenib to treatment discontinuation because of tumor progression or death, was selected as the endpoint.
+  - *Sorafenib for patients with pretreated recurrent or progressive high-grade glioma: a retrospective, single-institution study.*
+- **OPG-2575** · [PMID 20470863](https://pubmed.ncbi.nlm.nih.gov/20470863/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.31**
+  - > Most important, systemic delivery of sorafenib was well tolerated, and significantly suppressed intracranial glioma growth via inhibition of cell proliferation, induction of apoptosis and autophagy, and reduction of angiogenesis.
+  - *Sorafenib exerts anti-glioma activity in vitro and in vivo.*
+- **OPG-2576** · [PMID 20470863](https://pubmed.ncbi.nlm.nih.gov/20470863/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.31**
+  - > Furthermore, intracranial growth inhibition by sorafenib was accompanied by a significant reduction in ph-Stat3 (Tyr 705) levels.
+  - *Sorafenib exerts anti-glioma activity in vitro and in vivo.*
+
 ### SUNITINIB
 
-11 attributed of 25 retrieved sentences · 3 full text, 8 abstract-only · ChEMBL calculated flag: `predicted_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 5 drug rows
+Phase 5 CNS pass: 11 attributed of 25 retrieved sentences · OPG pass: 1 claims carrying a verdict · ChEMBL calculated flag: `predicted_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 5 drug rows
 
-**Evidence score: `unknown`** (below_peak_threshold) — best supporting claim 0.26, best contradicting 0.463, direction -0.439. best claim weighs 0.46, below 0.5; unassessed. Corroboration: 1.963 total weight across 11 claims (does not set the band). Heaviest claims: CNS-085 (0.58), CNS-090 (0.46), CNS-089 (0.33).
+**Evidence score: `demonstrated`** (resolved_within_compartment) — best supporting claim 0.612, best contradicting 0.463, direction +0.243. single compartment class resolves to demonstrated; whole-drug best claims had looked contested. Corroboration: 2.575 total weight across 11 claims (does not set the band). Heaviest claims: OPG-2899 (0.61), OPG-2711 (0.58), CNS-085 (0.58).
 
 **Proposed drug verdict: `contradicted`** — 1 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-090.
 
@@ -839,11 +1054,17 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “The cerebrospinal AUC0-t for sunitinib in groups I and II were 55.5 and 66.3 ng × h/mL, respectively... the degree of sunitinib penetration through the BAB and BBB was very low (< 5%) and comparable in both groups.”
   - read from: pubmed_abstract / Abstract · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (1 claims carrying a verdict)**
+
+- **OPG-2899** · [PMID 31031011](https://pubmed.ncbi.nlm.nih.gov/31031011/) · `full_text` · `demonstrated` · brain_unspecified · weight **0.61**
+  - > Reactivated reddish swollen and painful sentinel lesions responded again to lower doses of sunitinib, but three more weeks of reduced doses of the single agent sunitinib did not lead to any further regression of the regressed but still palpable skin lesions.
+  - *Somatic PDGFRB Activating Variants in Fusiform Cerebral Aneurysms.*
+
 ### TIVOZANIB
 
-1 attributed of 2 retrieved sentences · 0 full text, 1 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
+Phase 5 CNS pass: 1 attributed of 2 retrieved sentences · OPG pass: 0 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_record` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `contradicted`** (resolved) — best supporting claim 0.0, best contradicting 0.545, direction -1.0. best claim 0.55, direction -1.00. Corroboration: 0.545 total weight across 1 claims (does not set the band). Heaviest claims: CNS-093 (0.55).
+**Evidence score: `contradicted`** (resolved) — best supporting claim 0.0, best contradicting 0.545, direction -1.0. best claim 0.55, direction -1.00. Corroboration: 0.545 total weight across 1 claims (does not set the band). Heaviest claims: CNS-093 (0.55), OPG-3086 (0.26), OPG-3090 (0.26).
 
 **Proposed drug verdict: `contradicted`** — 1 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-093.
 
@@ -859,9 +1080,9 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 ### TOVORAFENIB
 
-3 attributed of 4 retrieved sentences · 1 full text, 2 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 7 drug rows
+Phase 5 CNS pass: 3 attributed of 4 retrieved sentences · OPG pass: 8 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 7 drug rows
 
-**Evidence score: `unknown`** (below_peak_threshold) — best supporting claim 0.0, best contradicting 0.463, direction -1.0. best claim weighs 0.46, below 0.5; unassessed. Corroboration: 0.463 total weight across 3 claims (does not set the band). Heaviest claims: CNS-095 (0.46), CNS-094 (0.03), CNS-096 (0.02).
+**Evidence score: `demonstrated`** (resolved_within_compartment) — best supporting claim 0.648, best contradicting 0.463, direction +0.285. single compartment class resolves to demonstrated; whole-drug best claims had looked contested. Corroboration: 3.067 total weight across 3 claims (does not set the band). Heaviest claims: OPG-3235 (0.65), OPG-3237 (0.55), CNS-095 (0.46).
 
 **Proposed drug verdict: `contradicted`** — 1 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-095.
 
@@ -889,11 +1110,38 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “demonstrating enhanced efficacy and better penetration of the blood-brain barrier”
   - read from: pubmed_abstract / Abstract · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (8 claims carrying a verdict)**
+
+- **OPG-3235** · [PMID 41749803](https://pubmed.ncbi.nlm.nih.gov/41749803/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.65**
+  - > NFCTC MEK162 I/II; NCT02285439 MEK162 for pLGG and other Ras/Raf/MAP pathway activated tumors Ongoing One-stage design; primary objective of phase I are to determine MTD, and of phase II: to determine the response rate - PBTC-029B [45] I/II; NCT01089101 Selumetinib for relapsed pLGG Completed One-stage design; primary objectives of phase I are RP2D and MTD, and of phase II is objective response (complete response + partial response) rate sustained for 8 weeks 25 pts; 6 pts w/ PR, 14 pts w/ SD, 5 pts w/ PD; Median treatment courses = 26; 2-y PFS 78% PBTC-055 I/II; NCT04201457 Dabrafenib, trametinib, hydroxychloroquine for relapsed BRAF-mutant pLGG after prior therapy with a RAF and/or MEK inhibitor Ongoing One-stage design; primary objectives of phase I are RP2D and MTD, and of phase II is sustained objective response rate defined as “better response” than the best response on prior RAF and/or MEK inhibitor - PNOC001 [56] II; NCT01734512 Everolimus for relapsed pLGG Completed Two-stage design; primary objective is to characterize PFS at 6 Months 65 pts (median age 9 y); PFS at 6 months 63%; 1 CR, 1 PR, 33 SD, 17 PD PNOC002 [46] I/II; NCT01748149 Vemurafenib; relapsed BRAFV600E-mutant pLGG Completed One-stage design; primary objectives are to determine the RP2D and DLTs, and characterize objective response rates I: 19 pts, RP2D 550 mg/m2 twice daily after DLT criteria adjustment for rash; 1 CR, 5 PR, 13 SD PNOC014 [57] I/II; NCT03429803 Tovorafenib/DAY101 (TAK-580/MLN2480) for relapsed RAS/RAF/MEK/ERK pathway activated pLGG Ongoing One stage design; primary objectives are to determine MTD and RP2D 9 pts treated at 280, 350, and 420 mg/m2.
+  - *From Diagnosis Delay to Targeted Therapy: A Retrospective Study of Pediatric DLGNT with a Comprehensive Literature Review.*
+- **OPG-3237** · [PMID 41749803](https://pubmed.ncbi.nlm.nih.gov/41749803/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.55**
+  - > - PNOC026 II; NCT04775485 Tovorafenib/DAY101 (TAK-580/MLN2480) for BRAF-altered relapsed pLGG Ongoing One-stage design; primary objectives are to define overall response rate by RANO and RECIST v1.1 criteria and characterize safety and tolerability - POETIC [58] II; NCT00782626 Everolimus for relapsed pLGG Completed One-stage design; primary objective is to determine if treatment demonstrated a response rate ≥25% 23 pts (median age 9.2 y); By week 48, response rate of 52% - 2 pts w/ PR, 10 w/ SD; median FU 1.8 years, 2-y PFS 39%, 2-y OS 93% CR, complete response; DLT, dose-limiting toxicity; FU, follow-up; m, months; MPNST, malignant peripheral nerve sheath tumor; MTD, maximum tolerated dose; NFCTC, Neurofibromatosis Clinical Trials Consortium; OS, overall survival; PBTC, Pediatric Brain Tumor Consortium; PFS, progression-free survival; PNOC, Pacific Pediatric Neuro-Oncology Consortium; POETIC, Pediatric Oncology Experimental Therapeutics Investigators' Consortium; PR, partial response; RCT, randomized controlled trial; RP2D, recommended phase 2 dose; SD, stable disease; w/, with; y, years
+  - *From Diagnosis Delay to Targeted Therapy: A Retrospective Study of Pediatric DLGNT with a Comprehensive Literature Review.*
+- **OPG-3121** · [PMID 38291372](https://pubmed.ncbi.nlm.nih.gov/38291372/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.42**
+  - > DISCUSSION: The promising tovorafenib activity data, CNS-penetration properties, strong scientific rationale combined with the manageable tolerability and safety profile seen in patients with pLGG led to the SIOPe-BTG-LGG working group to nominate tovorafenib for comparison with SoC chemotherapy in this first-line phase 3 trial.
+  - *LOGGIC/FIREFLY-2: a phase 3, randomized trial of tovorafenib vs. chemotherapy in pediatric and young adult patients with newly diagnosed low-grade glioma harboring an activating RAF alteration.*
+- **OPG-3124** · [PMID 39412085](https://pubmed.ncbi.nlm.nih.gov/39412085/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.26**
+  - > EXPERT OPINION: As the first and only FDA-approved medicine for children with BRAF fusions or rearrangements, which are the most common molecular alteration in pLGG, tovorafenib shows superior central nervous system penetration without the paradoxical activation of the MAPK pathway reported for type I BRAF inhibitors.
+  - *Type II RAF inhibitor tovorafenib for the treatment of pediatric low-grade glioma.*
+- **OPG-3114** · [PMID 37276325](https://pubmed.ncbi.nlm.nih.gov/37276325/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.18**
+  - > Meanwhile, in a pediatric low-grade glioma cohort of FIREFLY-1, a phase II trial, robust responses to the type II pan-RAF inhibitor tovorafenib were seen.
+  - *Targeted Options for Glioma Looking Good.*
+- **OPG-3118** · [PMID 38291372](https://pubmed.ncbi.nlm.nih.gov/38291372/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.18**
+  - > The type II RAF inhibitor, tovorafenib (formerly DAY101, TAK-580, MLN2480), has shown promising activity and good tolerability in patients with BRAF-altered pLGG in the phase 2 FIREFLY-1 study, with an objective response rate (ORR) per Response Assessment in Neuro-Oncology high-grade glioma (RANO-HGG) criteria of 67%.
+  - *LOGGIC/FIREFLY-2: a phase 3, randomized trial of tovorafenib vs. chemotherapy in pediatric and young adult patients with newly diagnosed low-grade glioma harboring an activating RAF alteration.*
+- **OPG-3132** · [PMID 41350326](https://pubmed.ncbi.nlm.nih.gov/41350326/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.18**
+  - > Tovorafenib is a type II RAF inhibitor recently approved by the FDA for relapsed or refractory paediatric low-grade glioma in children aged 6 months and older with BRAF fusions or V600E mutations, owing to its strong central nervous system penetration and absence of paradoxical MAPK pathway activation observed with type I inhibitors.
+  - *Eco-conscious AQbD-guided stability-indicating RP-UPLC method for analysing Tovorafenib in bulk and dosage forms.*
+- **OPG-3134** · [PMID 41362032](https://pubmed.ncbi.nlm.nih.gov/41362032/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.18**
+  - > Tovorafenib, a type II RAF inhibitor active in BRAF-altered tumors (including BRAFKIAA1549 fusion), achieved robust responses, thereby leading to FDA approval.
+  - *[Emerging Targeted Therapies and Ongoing Clinical Trials in Pediatric Brain Tumors].*
+
 ### TRAMETINIB
 
-2 attributed of 13 retrieved sentences · 0 full text, 2 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 2 drug rows
+Phase 5 CNS pass: 2 attributed of 13 retrieved sentences · OPG pass: 27 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 2 drug rows
 
-**Evidence score: `contradicted`** (resolved) — best supporting claim 0.0, best contradicting 0.545, direction -1.0. best claim 0.55, direction -1.00. Corroboration: 0.545 total weight across 2 claims (does not set the band). Heaviest claims: CNS-097 (0.55), CNS-098 (0.16).
+**Evidence score: `compartment_split`** (compartment_split) — best supporting claim 0.72, best contradicting 0.545, direction +0.243. barrier-intact compartments read contradicted (best 0.55), tumour tissue reads demonstrated (best 0.72). Corroboration: 11.808 total weight across 2 claims (does not set the band). Heaviest claims: OPG-3299 (0.81), OPG-3298 (0.73), OPG-3815 (0.72).
 
 **Proposed drug verdict: `contradicted`** — 1 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-097.
 
@@ -914,11 +1162,39 @@ A claim read from an abstract can still be decisive when the abstract states the
   - span relied on: “In vivo, PK analysis revealed enhanced blood-brain barrier penetration of trametinib after oHSV treatment.”
   - read from: pubmed_abstract / Abstract · **your verdict:** _______
 
+**OPG pass — tumour-compartment evidence (27 claims carrying a verdict)**
+
+- **OPG-3815** · [PMID 42328337](https://pubmed.ncbi.nlm.nih.gov/42328337/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.72**
+  - > Despite this dose reduction, trametinib continued to reduce the size of the tumor in the 3-monthly MRIs that followed the dose reduction ( Figure 2 ), maintaining a partial response even at this reduced dose.
+  - *Early-Onset Medullocervical Low-Grade Glioma With FGFR1 Mutation and Leptomeningeal Spread in an Infant: A Case Report.*
+- **OPG-3822** · [PMID 42328337](https://pubmed.ncbi.nlm.nih.gov/42328337/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.65**
+  - > To our knowledge, this case report represents the longest follow-up of a disseminated low-grade glioma patient who has maintained a continuous tumoral response to trametinib despite a dose reduction to 50% due to severe adverse events.
+  - *Early-Onset Medullocervical Low-Grade Glioma With FGFR1 Mutation and Leptomeningeal Spread in an Infant: A Case Report.*
+- **OPG-3820** · [PMID 42328337](https://pubmed.ncbi.nlm.nih.gov/42328337/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.65**
+  - > In our patient’s case, skin toxicity severely impaired his quality of life and obliged us to reduce trametinib’s dose as fully stopping treatment was a difficult option to take as he was responding very well to the drug.
+  - *Early-Onset Medullocervical Low-Grade Glioma With FGFR1 Mutation and Leptomeningeal Spread in an Infant: A Case Report.*
+- **OPG-3432** · [PMID 39399174](https://pubmed.ncbi.nlm.nih.gov/39399174/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.65**
+  - > The median independently assessed PFS was 16.4 months (95% CI, 3.2 to NR) in the trametinib monotherapy group (n = 13) and 36.9 months (95% CI, 36.0 to NR) in the combination therapy group (n = 36; Table 2 and Fig 3 ).
+  - *BRAF/MEK inhibitors use for pediatric gliomas; real world experience from a resource-limited country.*
+- **OPG-3266** · [PMID 38143440](https://pubmed.ncbi.nlm.nih.gov/38143440/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > Among the JH MTB cohort of patients with IDH1 wild-type high-grade gliomas who received targeted therapies, trametinib monotherapy or in combination with dabrafenib conferred radiographic partial response in 75% of patients harboring BRAF or NF1 actionable mutations.
+  - *Druggable genomic landscapes of high-grade gliomas.*
+- **OPG-3380** · [PMID 42858621](https://pubmed.ncbi.nlm.nih.gov/42858621/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > Trametinib achieved a radiological disease control rate of 78% (36/46), including 65% partial or minor responses and 13% stable disease, with activity even in heavily pretreated (up to 6 lines) and chemotherapy-refractory tumors.
+  - *Real-life efficacy and tolerance of trametinib in BRAF-rearranged low-grade gliomas: A multicenter study.*
+- **OPG-3369** · [PMID 42328337](https://pubmed.ncbi.nlm.nih.gov/42328337/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > Targeted therapy with trametinib achieved partial radiologic response before further progression.
+  - *Early-Onset Medullocervical Low-Grade Glioma With FGFR1 Mutation and Leptomeningeal Spread in an Infant: A Case Report.*
+- **OPG-3816** · [PMID 42328337](https://pubmed.ncbi.nlm.nih.gov/42328337/) · `full_text` · `demonstrated` · tumour_tissue · weight **0.55**
+  - > This report displays a continuous response to reduced-dose treatment with MEK-inhibitor trametinib in a patient with an initially localized pLGG, which spread over time along the neuroaxis and required a new treatment for controlling the disease.
+  - *Early-Onset Medullocervical Low-Grade Glioma With FGFR1 Mutation and Leptomeningeal Spread in an Infant: A Case Report.*
+- ...and 19 more in `phase6-opg-adjudicated.csv`
+
 ### VEMURAFENIB
 
-26 attributed of 42 retrieved sentences · 14 full text, 12 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 0 drug rows
+Phase 5 CNS pass: 26 attributed of 42 retrieved sentences · OPG pass: 21 claims carrying a verdict · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 0 drug rows
 
-**Evidence score: `contradicted`** (resolved_within_compartment) — best supporting claim 0.608, best contradicting 0.807, direction -0.248. single compartment class resolves to contradicted; whole-drug best claims had looked contested. Corroboration: 9.999 total weight across 26 claims (does not set the band). Heaviest claims: CNS-124 (0.81), CNS-123 (0.81), CNS-118 (0.81).
+**Evidence score: `contradicted`** (resolved_within_compartment) — best supporting claim 0.608, best contradicting 0.807, direction -0.248. single compartment class resolves to contradicted; whole-drug best claims had looked contested. Corroboration: 18.388 total weight across 26 claims (does not set the band). Heaviest claims: CNS-124 (0.81), CNS-117 (0.81), CNS-123 (0.81).
 
 **Proposed drug verdict: `contradicted`** — 4 primary human claim(s), all contradicted. Decisive claim(s): CNS-117, CNS-118, CNS-123, CNS-124.
 
@@ -1106,3 +1382,31 @@ A claim read from an abstract can still be decisive when the abstract states the
   - rationale: Primary human PK measurement in melanoma patients shows CSF:plasma ratio ~1%, explicitly described as low CSF penetration - direct evidence of CNS exclusion from this compartment.
   - span relied on: “The mean ratio of the CSF : plasma concentration was 0.98±0.84%...our preliminary results highlight for the first time a low CSF vemurafenib penetration rate”
   - read from: pubmed_abstract / Abstract · **your verdict:** _______
+
+**OPG pass — tumour-compartment evidence (21 claims carrying a verdict)**
+
+- **OPG-4099** · [PMID 37953496](https://pubmed.ncbi.nlm.nih.gov/37953496/) · `full_text` · `contradicted` · brain_unspecified · weight **0.61**
+  - > We observed in a subset of patients that vemurafenib yielded a partial or complete response in extracerebral metastases, but brain metastases developed.
+  - *Acquired and intrinsic resistance to vemurafenib in BRAF V600E -driven melanoma brain metastases.*
+- **OPG-3856** · [PMID 29392423](https://pubmed.ncbi.nlm.nih.gov/29392423/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > METHODS: Two children with OPG (BRAFV600E-mutated pilocytic astrocytoma) who did not respond to at least one frontline therapy were treated with the oral BRAFV600E inhibitor vemurafenib.
+  - *Marked functional recovery and imaging response of refractory optic pathway glioma to BRAFV600E inhibitor therapy: a report of two cases.*
+- **OPG-3906** · [PMID 35940183](https://pubmed.ncbi.nlm.nih.gov/35940183/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > INTERPRETATION: Adding atezolizumab to vemurafenib plus cobimetinib provided promising intracranial activity in patients with BRAF V600 -mutated melanoma with CNS metastases.
+  - *Atezolizumab, vemurafenib, and cobimetinib in patients with melanoma with CNS metastases (TRICOTEL): a multicentre, open-label, single-arm, phase 2 study.*
+- **OPG-3924** · [PMID 37459873](https://pubmed.ncbi.nlm.nih.gov/37459873/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > INTERPRETATION: Atezolizumab plus vemurafenib and cobimetinib provided intracranial activity in patients with BRAF V600 -mutated melanoma with CNS metastases.
+  - *Atezolizumab, vemurafenib, and cobimetinib in patients with melanoma with CNS metastases (TRICOTEL): a multicentre, open-label, single-arm, phase 2 study.*
+- **OPG-3864** · [PMID 30984614](https://pubmed.ncbi.nlm.nih.gov/30984614/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.58**
+  - > This is the first reported case of a response to vemurafenib in an adult with progressive spinal cord BRAF V600E -mutated ganglioglioma which was sustained after treatment discontinuation.
+  - *Prolonged Response Induced by Single Agent Vemurafenib in a BRAF V600E Spinal Ganglioglioma: A Case Report and Review of the Literature.*
+- **OPG-3958** · [PMID 42922835](https://pubmed.ncbi.nlm.nih.gov/42922835/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > These two cases add to the limited evidence on GHRT administration during BRAFi therapy by documenting prolonged concomitant GHRT and vemurafenib exposure in children with severe confirmed GHD and previously progressive chiasmatic-hypothalamic pLGG.
+  - *Case Report: Case series: growth hormone replacement for severe growth hormone deficiency during BRAF inhibitor therapy in pediatric low-grade glioma: long-term follow-up.*
+- **OPG-3878** · [PMID 33869616](https://pubmed.ncbi.nlm.nih.gov/33869616/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > CASE SUMMARY: Here we report a case of melanoma brain metastases in a patient harboring a BRAF V600E mutation, who experienced intracranial tumor progression despite previous combined treatment with a programmed death (PD)-1 inhibitor, axitinib, and vemurafenib.
+  - *Long-term control of melanoma brain metastases with co-occurring intracranial infection and involuntary drug reduction during COVID-19 pandemic: A case report.*
+- **OPG-3880** · [PMID 33869616](https://pubmed.ncbi.nlm.nih.gov/33869616/) · `abstract_only` · `demonstrated` · tumour_tissue · weight **0.49**
+  - > Treatment with vemurafenib combined with cobimetinib resulted in an intracranial progression-free survival of 10 mo.
+  - *Long-term control of melanoma brain metastases with co-occurring intracranial infection and involuntary drug reduction during COVID-19 pandemic: A case report.*
+- ...and 13 more in `phase6-opg-adjudicated.csv`

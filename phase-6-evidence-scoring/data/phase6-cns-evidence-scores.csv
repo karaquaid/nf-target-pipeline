@@ -1,125 +1,520 @@
-claim_id,moiety,proposed_verdict,access,context_section,w_originality,w_corroboration,w_arm,w_species,w_basis,w_access,w_confidence,w_span,compartment,compartment_class,corroboration_reason,evidence_weight,signed_contribution
-CNS-001,AVAPRITINIB,demonstrated,full_text,Avapritinib shows radiographic response in a subset of pediatric and young adult HGG patients with PDGFRA alterations,1.0,0.9,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,seated_in_descriptive_section,0.9,0.9
-CNS-002,AVAPRITINIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.3,1.0,0.85,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0803,0.0
-CNS-003,AVAPRITINIB,demonstrated,full_text,Avapritinib treatment results in efficient brain penetrance and prolonged survival in PDGFRA -altered DMG models in vivo,1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_results_or_table,0.675,0.675
-CNS-004,AVAPRITINIB,demonstrated,full_text,Avapritinib treatment results in efficient brain penetrance and prolonged survival in PDGFRA -altered DMG models in vivo,1.0,1.0,1.0,0.75,0.6,1.0,0.85,1.0,brain_unspecified,tumour,seated_in_results_or_table,0.3825,0.3825
-CNS-005,AVAPRITINIB,demonstrated,full_text,Case report,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,csf,tumour,seated_in_descriptive_section,0.5508,0.5508
-CNS-006,AVAPRITINIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5491,0.5491
-CNS-007,AVAPRITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.5,0.2,0.85,0.85,1.0,not_applicable,none,abstract_with_first_person_study_language,0.0618,0.0
-CNS-008,AVAPRITINIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,1.0,0.8,0.85,1.0,1.0,csf,tumour,abstract_with_first_person_study_language,0.646,0.646
-CNS-009,BINIMETINIB,demonstrated,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
-CNS-010,BINIMETINIB,unknown,full_text,"Results and Discussion (supplied full text, drug-specific extracts)",0.6,1.0,0.9,0.35,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
-CNS-011,COBIMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-012,COBIMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-013,COBIMETINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.2,0.85,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0161,0.0
-CNS-014,DABRAFENIB,demonstrated,full_text,Resistance to targeted therapy in the brain,1.0,0.9,1.0,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.612,0.612
-CNS-015,DABRAFENIB,unknown,full_text,Background,0.35,1.0,0.9,0.5,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0284,0.0
-CNS-016,DASATINIB,demonstrated,full_text,Abstract,1.0,0.95,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.95,0.95
-CNS-017,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-018,DASATINIB,contradicted,abstract_only,Case description,1.0,0.9,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,seated_in_descriptive_section,0.765,-0.765
-CNS-019,DASATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.2,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.1454,0.0
-CNS-020,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
-CNS-021,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-022,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
-CNS-023,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
-CNS-024,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
-CNS-025,ENCORAFENIB,demonstrated,full_text,Discussion,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_discussion,0.5508,0.5508
-CNS-026,ENCORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-027,ENCORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-028,IMATINIB,unknown,full_text,Background,0.35,1.0,0.6,0.6,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0227,0.0
-CNS-029,IMATINIB,unknown,full_text,Background,0.35,1.0,0.6,0.6,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0227,0.0
-CNS-030,IMATINIB,contradicted,full_text,Results,1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_results_or_table,0.675,-0.675
-CNS-031,IMATINIB,contradicted,full_text,TABLE,1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_results_or_table,0.675,-0.675
-CNS-032,IMATINIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,seated_in_discussion,0.5164,-0.5164
-CNS-033,IMATINIB,unknown,full_text,Discussion,0.35,1.0,0.45,0.75,0.3,1.0,0.85,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0301,0.0
-CNS-034,IMATINIB,unknown,full_text,Discussion,0.35,1.0,0.6,0.75,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0284,0.0
-CNS-035,IMATINIB,demonstrated,full_text,Quantitation of pharmaceuticals including free drug levels and metabolites,1.0,0.9,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,seated_in_descriptive_section,0.9,0.9
-CNS-036,IMATINIB,demonstrated,full_text,Abstract,1.0,0.95,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.95,0.95
-CNS-037,IMATINIB,unknown,full_text,Background,0.35,1.0,1.0,0.6,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0378,0.0
-CNS-038,IMATINIB,unknown,full_text,Background,0.35,1.0,0.9,0.75,0.2,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0284,0.0
-CNS-039,IMATINIB,unknown,full_text,Discussion,0.6,1.0,1.0,0.75,0.2,1.0,0.85,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0765,0.0
-CNS-040,IMATINIB,unknown,full_text,Conclusion,1.0,0.9,0.6,0.75,0.2,1.0,1.0,1.0,brain_unspecified,barrier_intact,seated_in_discussion,0.081,0.0
-CNS-041,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_without_first_person_language,0.459,-0.459
-CNS-042,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_without_first_person_language,0.459,-0.459
-CNS-043,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.95,0.45,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.2453,-0.2453
-CNS-044,IMATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.45,0.75,0.9,0.85,0.85,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.2085,0.0
-CNS-045,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.436,-0.436
-CNS-046,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.436,-0.436
-CNS-047,IMATINIB,contradicted,abstract_only,Results,1.0,1.0,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,seated_in_results_or_table,0.5737,-0.5737
-CNS-048,IMATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.6,0.75,0.9,0.85,0.6,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.1962,0.0
-CNS-049,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,seated_in_discussion,0.5164,-0.5164
-CNS-050,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_discussion,0.6075,-0.6075
-CNS-051,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_discussion,0.6075,-0.6075
-CNS-052,PAZOPANIB,unknown,full_text,Introduction,1.0,0.5,1.0,0.75,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,primary_label_contradicted_by_placement,0.0675,0.0
-CNS-053,PAZOPANIB,demonstrated,full_text,Pazopanib penetrates the blood-brain barrier,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,brain_unspecified,barrier_intact,seated_in_descriptive_section,0.6075,0.6075
-CNS-054,PAZOPANIB,unknown,full_text,4. Discussion,0.6,1.0,0.9,0.5,0.2,1.0,0.85,1.0,not_applicable,none,not_applicable_label_not_primary,0.0459,0.0
-CNS-055,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,seated_in_discussion,0.5164,-0.5164
-CNS-056,PAZOPANIB,contradicted,full_text,3.6 Method application,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_descriptive_section,0.6075,-0.6075
-CNS-057,PAZOPANIB,unknown,full_text,1. INTRODUCTION,0.35,1.0,0.9,0.5,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0473,0.0
-CNS-058,PAZOPANIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_without_first_person_language,0.459,-0.459
-CNS-059,PAZOPANIB,unknown,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.9,0.85,0.6,1.0,brain_unspecified,barrier_intact,abstract_without_first_person_language,0.2754,0.0
-CNS-060,PAZOPANIB,unknown,abstract_only,Introduction,1.0,0.5,1.0,0.75,0.3,0.85,0.85,1.0,brain_unspecified,barrier_intact,primary_label_contradicted_by_placement,0.0813,0.0
-CNS-061,REGORAFENIB,demonstrated,full_text,Abstract,1.0,0.95,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.95,0.95
-CNS-062,REGORAFENIB,unknown,full_text,Molecular signaling pathways and emerging therapeutic targets in GBM,0.35,1.0,0.9,1.0,0.3,1.0,0.6,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.0567,0.0
-CNS-063,REGORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.2142,0.0
-CNS-064,REGORAFENIB,unknown,abstract_only,Abstract,0.6,1.0,0.9,1.0,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.1377,0.0
-CNS-065,RIPRETINIB,unknown,full_text,Discussion,0.35,1.0,0.9,0.5,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0284,0.0
-CNS-066,RIPRETINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0482,0.0
-CNS-067,SELUMETINIB,contradicted,full_text,"Results and Discussion (supplied full text, drug-specific extracts)",1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_results_or_table,0.675,-0.675
-CNS-068,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.4942,0.0
-CNS-069,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.486,-0.486
-CNS-070,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.486,-0.486
-CNS-071,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.486,-0.486
-CNS-072,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.486,-0.486
-CNS-073,SORAFENIB,contradicted,full_text,Discussion,0.35,1.0,0.45,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,not_applicable_label_not_primary,0.0904,-0.0904
-CNS-074,SORAFENIB,unknown,full_text,Discussion,0.6,1.0,0.9,0.75,0.2,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.081,0.0
-CNS-075,SORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-076,SORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-077,SORAFENIB,contradicted,abstract_only,Results,1.0,1.0,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,seated_in_results_or_table,0.459,-0.459
-CNS-078,SORAFENIB,contradicted,abstract_only,Discussion,1.0,0.9,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.4131,-0.4131
-CNS-079,SORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.4633,-0.4633
-CNS-080,SORAFENIB,demonstrated,abstract_only,Key Points,1.0,0.9,0.35,0.75,0.9,0.85,0.85,1.0,brain_unspecified,barrier_intact,seated_in_descriptive_section,0.1536,0.1536
-CNS-081,SORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0402,0.0
-CNS-082,SUNITINIB,contradicted,full_text,Sunitinib,0.35,1.0,1.0,0.6,0.9,1.0,0.85,1.0,csf,barrier_intact,not_applicable_label_not_primary,0.1606,-0.1606
-CNS-083,SUNITINIB,contradicted,full_text,Sunitinib,0.35,1.0,1.0,0.6,0.9,1.0,0.85,1.0,csf,barrier_intact,not_applicable_label_not_primary,0.1606,-0.1606
-CNS-084,SUNITINIB,unknown,full_text,Sunitinib,0.35,1.0,0.35,0.5,0.9,1.0,0.85,1.0,csf,barrier_intact,not_applicable_label_not_primary,0.0469,0.0
-CNS-085,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
-CNS-086,SUNITINIB,demonstrated,abstract_only,Abstract,1.0,0.8,1.0,0.5,0.9,0.85,0.85,1.0,csf,barrier_intact,abstract_without_first_person_language,0.2601,0.2601
-CNS-087,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.5,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_without_first_person_language,0.306,-0.306
-CNS-088,SUNITINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.35,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0281,0.0
-CNS-089,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.6,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.327,0.0
-CNS-090,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.4633,-0.4633
-CNS-091,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.5,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_without_first_person_language,0.306,-0.306
-CNS-092,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.5,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_without_first_person_language,0.306,-0.306
-CNS-093,TIVOZANIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-094,TOVORAFENIB,unknown,full_text,Background,0.35,1.0,0.9,0.5,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0284,0.0
-CNS-095,TOVORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.4633,-0.4633
-CNS-096,TOVORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.3,0.85,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0241,0.0
-CNS-097,TRAMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-098,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.35,0.75,0.9,0.85,0.85,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.1622,0.0
-CNS-099,VEMURAFENIB,unknown,full_text,The pharmacological impact of ABC drug transporters on the bioavailability and distribution of vemurafenib,0.35,1.0,0.45,0.75,0.3,1.0,1.0,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0354,0.0
-CNS-100,VEMURAFENIB,contradicted,full_text,The pharmacological impact of ABC drug transporters on the bioavailability and distribution of vemurafenib,0.35,1.0,0.45,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,not_applicable_label_not_primary,0.1063,-0.1063
-CNS-101,VEMURAFENIB,unknown,full_text,Conclusions,0.35,1.0,0.9,0.5,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0284,0.0
-CNS-102,VEMURAFENIB,contradicted,full_text,(untitled section),0.35,1.0,1.0,1.0,0.3,1.0,0.85,1.0,csf,barrier_intact,not_applicable_label_not_primary,0.0892,-0.0892
-CNS-103,VEMURAFENIB,contradicted,full_text,Vemurafenib has intrinsic antitumor potential against intracranial A375 tumors,0.35,1.0,0.45,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,not_applicable_label_not_primary,0.0904,-0.0904
-CNS-104,VEMURAFENIB,unknown,full_text,Dose adaptions between WT and Abcb1a/b;Abcg2 −/− mice are needed to level the systemic exposure of vemurafenib between strains,1.0,0.9,0.45,0.75,0.9,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.2324,0.0
-CNS-105,VEMURAFENIB,demonstrated,full_text,P‐gp and BCRP reduce vemurafenib penetration in MBMs,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.6075,0.6075
-CNS-106,VEMURAFENIB,demonstrated,full_text,Intracranial A375 tumors develop therapy resistance despite sufficient vemurafenib tumor penetration and target inhibition,1.0,0.9,0.45,0.75,0.9,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.2324,0.2324
-CNS-107,VEMURAFENIB,demonstrated,full_text,Intracranial A375 tumors develop therapy resistance despite sufficient vemurafenib tumor penetration and target inhibition,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.6075,0.6075
-CNS-108,VEMURAFENIB,demonstrated,full_text,P‐gp and BCRP reduce vemurafenib penetration in MBMs,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.6075,0.6075
-CNS-109,VEMURAFENIB,contradicted,full_text,(untitled section),0.35,1.0,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,not_applicable_label_not_primary,0.35,-0.35
-CNS-110,VEMURAFENIB,demonstrated,full_text,(untitled section),1.0,0.9,1.0,0.75,0.6,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.3443,0.3443
-CNS-111,VEMURAFENIB,unknown,full_text,Dose adaptions between WT and Abcb1a/b;Abcg2 −/− mice are needed to level the systemic exposure of vemurafenib between strains,1.0,0.9,0.45,0.75,0.2,1.0,1.0,1.0,plasma_only,none,seated_in_descriptive_section,0.0608,0.0
-CNS-112,VEMURAFENIB,unknown,full_text,P‐gp and BCRP reduce vemurafenib penetration in MBMs,0.35,1.0,0.6,0.75,0.3,1.0,0.85,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0402,0.0
-CNS-113,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-114,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-115,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-116,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-117,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
-CNS-118,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
-CNS-119,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4633,-0.4633
-CNS-120,VEMURAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.5,0.2,0.85,1.0,1.0,not_applicable,none,abstract_with_first_person_study_language,0.0727,0.0
-CNS-121,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-122,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
-CNS-123,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
-CNS-124,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
+claim_id,source_pass,moiety,proposed_verdict,access,context_section,w_originality,w_corroboration,w_arm,w_species,w_basis,w_access,w_confidence,w_span,compartment,compartment_class,corroboration_reason,evidence_weight,signed_contribution
+CNS-001,phase5_cns,AVAPRITINIB,demonstrated,full_text,Avapritinib shows radiographic response in a subset of pediatric and young adult HGG patients with PDGFRA alterations,1.0,0.9,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,seated_in_descriptive_section,0.9,0.9
+CNS-002,phase5_cns,AVAPRITINIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.3,1.0,0.85,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0803,0.0
+CNS-003,phase5_cns,AVAPRITINIB,demonstrated,full_text,Avapritinib treatment results in efficient brain penetrance and prolonged survival in PDGFRA -altered DMG models in vivo,1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_results_or_table,0.675,0.675
+CNS-004,phase5_cns,AVAPRITINIB,demonstrated,full_text,Avapritinib treatment results in efficient brain penetrance and prolonged survival in PDGFRA -altered DMG models in vivo,1.0,1.0,1.0,0.75,0.6,1.0,0.85,1.0,brain_unspecified,tumour,seated_in_results_or_table,0.3825,0.3825
+CNS-005,phase5_cns,AVAPRITINIB,demonstrated,full_text,Case report,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,csf,tumour,seated_in_descriptive_section,0.5508,0.5508
+CNS-006,phase5_cns,AVAPRITINIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5491,0.5491
+CNS-007,phase5_cns,AVAPRITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.5,0.2,0.85,0.85,1.0,not_applicable,none,abstract_with_first_person_study_language,0.0618,0.0
+CNS-008,phase5_cns,AVAPRITINIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,1.0,0.8,0.85,1.0,1.0,csf,tumour,abstract_with_first_person_study_language,0.646,0.646
+CNS-009,phase5_cns,BINIMETINIB,demonstrated,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+CNS-010,phase5_cns,BINIMETINIB,unknown,full_text,"Results and Discussion (supplied full text, drug-specific extracts)",0.6,1.0,0.9,0.35,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+CNS-011,phase5_cns,COBIMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-012,phase5_cns,COBIMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-013,phase5_cns,COBIMETINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.2,0.85,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0161,0.0
+CNS-014,phase5_cns,DABRAFENIB,demonstrated,full_text,Resistance to targeted therapy in the brain,1.0,0.9,1.0,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.612,0.612
+CNS-015,phase5_cns,DABRAFENIB,unknown,full_text,Background,0.35,1.0,0.9,0.5,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0284,0.0
+CNS-016,phase5_cns,DASATINIB,demonstrated,full_text,Abstract,1.0,0.95,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.95,0.95
+CNS-017,phase5_cns,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-018,phase5_cns,DASATINIB,contradicted,abstract_only,Case description,1.0,0.9,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,seated_in_descriptive_section,0.765,-0.765
+CNS-019,phase5_cns,DASATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.2,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.1454,0.0
+CNS-020,phase5_cns,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-021,phase5_cns,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-022,phase5_cns,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-023,phase5_cns,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-024,phase5_cns,DASATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-025,phase5_cns,ENCORAFENIB,demonstrated,full_text,Discussion,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_discussion,0.5508,0.5508
+CNS-026,phase5_cns,ENCORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-027,phase5_cns,ENCORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-028,phase5_cns,IMATINIB,unknown,full_text,Background,0.35,1.0,0.6,0.6,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0227,0.0
+CNS-029,phase5_cns,IMATINIB,unknown,full_text,Background,0.35,1.0,0.6,0.6,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0227,0.0
+CNS-030,phase5_cns,IMATINIB,contradicted,full_text,Results,1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_results_or_table,0.675,-0.675
+CNS-031,phase5_cns,IMATINIB,contradicted,full_text,TABLE,1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_results_or_table,0.675,-0.675
+CNS-032,phase5_cns,IMATINIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,seated_in_discussion,0.5164,-0.5164
+CNS-033,phase5_cns,IMATINIB,unknown,full_text,Discussion,0.35,1.0,0.45,0.75,0.3,1.0,0.85,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0301,0.0
+CNS-034,phase5_cns,IMATINIB,unknown,full_text,Discussion,0.35,1.0,0.6,0.75,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0284,0.0
+CNS-035,phase5_cns,IMATINIB,demonstrated,full_text,Quantitation of pharmaceuticals including free drug levels and metabolites,1.0,0.9,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,seated_in_descriptive_section,0.9,0.9
+CNS-036,phase5_cns,IMATINIB,demonstrated,full_text,Abstract,1.0,0.95,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.95,0.95
+CNS-037,phase5_cns,IMATINIB,unknown,full_text,Background,0.35,1.0,1.0,0.6,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0378,0.0
+CNS-038,phase5_cns,IMATINIB,unknown,full_text,Background,0.35,1.0,0.9,0.75,0.2,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0284,0.0
+CNS-039,phase5_cns,IMATINIB,unknown,full_text,Discussion,0.6,1.0,1.0,0.75,0.2,1.0,0.85,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0765,0.0
+CNS-040,phase5_cns,IMATINIB,unknown,full_text,Conclusion,1.0,0.9,0.6,0.75,0.2,1.0,1.0,1.0,brain_unspecified,barrier_intact,seated_in_discussion,0.081,0.0
+CNS-041,phase5_cns,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_without_first_person_language,0.459,-0.459
+CNS-042,phase5_cns,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_without_first_person_language,0.459,-0.459
+CNS-043,phase5_cns,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.95,0.45,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.2453,-0.2453
+CNS-044,phase5_cns,IMATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.45,0.75,0.9,0.85,0.85,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.2085,0.0
+CNS-045,phase5_cns,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.436,-0.436
+CNS-046,phase5_cns,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.436,-0.436
+CNS-047,phase5_cns,IMATINIB,contradicted,abstract_only,Results,1.0,1.0,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,seated_in_results_or_table,0.5737,-0.5737
+CNS-048,phase5_cns,IMATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.6,0.75,0.9,0.85,0.6,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.1962,0.0
+CNS-049,phase5_cns,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,seated_in_discussion,0.5164,-0.5164
+CNS-050,phase5_cns,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_discussion,0.6075,-0.6075
+CNS-051,phase5_cns,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_discussion,0.6075,-0.6075
+CNS-052,phase5_cns,PAZOPANIB,unknown,full_text,Introduction,1.0,0.5,1.0,0.75,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,primary_label_contradicted_by_placement,0.0675,0.0
+CNS-053,phase5_cns,PAZOPANIB,demonstrated,full_text,Pazopanib penetrates the blood-brain barrier,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,brain_unspecified,barrier_intact,seated_in_descriptive_section,0.6075,0.6075
+CNS-054,phase5_cns,PAZOPANIB,unknown,full_text,4. Discussion,0.6,1.0,0.9,0.5,0.2,1.0,0.85,1.0,not_applicable,none,not_applicable_label_not_primary,0.0459,0.0
+CNS-055,phase5_cns,PAZOPANIB,contradicted,full_text,4. Discussion,1.0,0.9,1.0,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,seated_in_discussion,0.5164,-0.5164
+CNS-056,phase5_cns,PAZOPANIB,contradicted,full_text,3.6 Method application,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_descriptive_section,0.6075,-0.6075
+CNS-057,phase5_cns,PAZOPANIB,unknown,full_text,1. INTRODUCTION,0.35,1.0,0.9,0.5,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0473,0.0
+CNS-058,phase5_cns,PAZOPANIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_without_first_person_language,0.459,-0.459
+CNS-059,phase5_cns,PAZOPANIB,unknown,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.9,0.85,0.6,1.0,brain_unspecified,barrier_intact,abstract_without_first_person_language,0.2754,0.0
+CNS-060,phase5_cns,PAZOPANIB,unknown,abstract_only,Introduction,1.0,0.5,1.0,0.75,0.3,0.85,0.85,1.0,brain_unspecified,barrier_intact,primary_label_contradicted_by_placement,0.0813,0.0
+CNS-061,phase5_cns,REGORAFENIB,demonstrated,full_text,Abstract,1.0,0.95,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.95,0.95
+CNS-062,phase5_cns,REGORAFENIB,unknown,full_text,Molecular signaling pathways and emerging therapeutic targets in GBM,0.35,1.0,0.9,1.0,0.3,1.0,0.6,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.0567,0.0
+CNS-063,phase5_cns,REGORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.2142,0.0
+CNS-064,phase5_cns,REGORAFENIB,unknown,abstract_only,Abstract,0.6,1.0,0.9,1.0,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.1377,0.0
+CNS-065,phase5_cns,RIPRETINIB,unknown,full_text,Discussion,0.35,1.0,0.9,0.5,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0284,0.0
+CNS-066,phase5_cns,RIPRETINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0482,0.0
+CNS-067,phase5_cns,SELUMETINIB,contradicted,full_text,"Results and Discussion (supplied full text, drug-specific extracts)",1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_results_or_table,0.675,-0.675
+CNS-068,phase5_cns,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.4942,0.0
+CNS-069,phase5_cns,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.486,-0.486
+CNS-070,phase5_cns,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.486,-0.486
+CNS-071,phase5_cns,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.486,-0.486
+CNS-072,phase5_cns,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.486,-0.486
+CNS-073,phase5_cns,SORAFENIB,contradicted,full_text,Discussion,0.35,1.0,0.45,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,not_applicable_label_not_primary,0.0904,-0.0904
+CNS-074,phase5_cns,SORAFENIB,unknown,full_text,Discussion,0.6,1.0,0.9,0.75,0.2,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.081,0.0
+CNS-075,phase5_cns,SORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-076,phase5_cns,SORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-077,phase5_cns,SORAFENIB,contradicted,abstract_only,Results,1.0,1.0,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,seated_in_results_or_table,0.459,-0.459
+CNS-078,phase5_cns,SORAFENIB,contradicted,abstract_only,Discussion,1.0,0.9,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.4131,-0.4131
+CNS-079,phase5_cns,SORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.4633,-0.4633
+CNS-080,phase5_cns,SORAFENIB,demonstrated,abstract_only,Key Points,1.0,0.9,0.35,0.75,0.9,0.85,0.85,1.0,brain_unspecified,barrier_intact,seated_in_descriptive_section,0.1536,0.1536
+CNS-081,phase5_cns,SORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0402,0.0
+CNS-082,phase5_cns,SUNITINIB,contradicted,full_text,Sunitinib,0.35,1.0,1.0,0.6,0.9,1.0,0.85,1.0,csf,barrier_intact,not_applicable_label_not_primary,0.1606,-0.1606
+CNS-083,phase5_cns,SUNITINIB,contradicted,full_text,Sunitinib,0.35,1.0,1.0,0.6,0.9,1.0,0.85,1.0,csf,barrier_intact,not_applicable_label_not_primary,0.1606,-0.1606
+CNS-084,phase5_cns,SUNITINIB,unknown,full_text,Sunitinib,0.35,1.0,0.35,0.5,0.9,1.0,0.85,1.0,csf,barrier_intact,not_applicable_label_not_primary,0.0469,0.0
+CNS-085,phase5_cns,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+CNS-086,phase5_cns,SUNITINIB,demonstrated,abstract_only,Abstract,1.0,0.8,1.0,0.5,0.9,0.85,0.85,1.0,csf,barrier_intact,abstract_without_first_person_language,0.2601,0.2601
+CNS-087,phase5_cns,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.5,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_without_first_person_language,0.306,-0.306
+CNS-088,phase5_cns,SUNITINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.35,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0281,0.0
+CNS-089,phase5_cns,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.6,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.327,0.0
+CNS-090,phase5_cns,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.4633,-0.4633
+CNS-091,phase5_cns,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.5,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_without_first_person_language,0.306,-0.306
+CNS-092,phase5_cns,SUNITINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,0.5,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_without_first_person_language,0.306,-0.306
+CNS-093,phase5_cns,TIVOZANIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-094,phase5_cns,TOVORAFENIB,unknown,full_text,Background,0.35,1.0,0.9,0.5,0.3,1.0,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0284,0.0
+CNS-095,phase5_cns,TOVORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.4633,-0.4633
+CNS-096,phase5_cns,TOVORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.3,0.85,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0241,0.0
+CNS-097,phase5_cns,TRAMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-098,phase5_cns,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.35,0.75,0.9,0.85,0.85,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.1622,0.0
+CNS-099,phase5_cns,VEMURAFENIB,unknown,full_text,The pharmacological impact of ABC drug transporters on the bioavailability and distribution of vemurafenib,0.35,1.0,0.45,0.75,0.3,1.0,1.0,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0354,0.0
+CNS-100,phase5_cns,VEMURAFENIB,contradicted,full_text,The pharmacological impact of ABC drug transporters on the bioavailability and distribution of vemurafenib,0.35,1.0,0.45,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,not_applicable_label_not_primary,0.1063,-0.1063
+CNS-101,phase5_cns,VEMURAFENIB,unknown,full_text,Conclusions,0.35,1.0,0.9,0.5,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0284,0.0
+CNS-102,phase5_cns,VEMURAFENIB,contradicted,full_text,(untitled section),0.35,1.0,1.0,1.0,0.3,1.0,0.85,1.0,csf,barrier_intact,not_applicable_label_not_primary,0.0892,-0.0892
+CNS-103,phase5_cns,VEMURAFENIB,contradicted,full_text,Vemurafenib has intrinsic antitumor potential against intracranial A375 tumors,0.35,1.0,0.45,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,not_applicable_label_not_primary,0.0904,-0.0904
+CNS-104,phase5_cns,VEMURAFENIB,unknown,full_text,Dose adaptions between WT and Abcb1a/b;Abcg2 −/− mice are needed to level the systemic exposure of vemurafenib between strains,1.0,0.9,0.45,0.75,0.9,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.2324,0.0
+CNS-105,phase5_cns,VEMURAFENIB,demonstrated,full_text,P‐gp and BCRP reduce vemurafenib penetration in MBMs,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.6075,0.6075
+CNS-106,phase5_cns,VEMURAFENIB,demonstrated,full_text,Intracranial A375 tumors develop therapy resistance despite sufficient vemurafenib tumor penetration and target inhibition,1.0,0.9,0.45,0.75,0.9,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.2324,0.2324
+CNS-107,phase5_cns,VEMURAFENIB,demonstrated,full_text,Intracranial A375 tumors develop therapy resistance despite sufficient vemurafenib tumor penetration and target inhibition,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.6075,0.6075
+CNS-108,phase5_cns,VEMURAFENIB,demonstrated,full_text,P‐gp and BCRP reduce vemurafenib penetration in MBMs,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.6075,0.6075
+CNS-109,phase5_cns,VEMURAFENIB,contradicted,full_text,(untitled section),0.35,1.0,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,not_applicable_label_not_primary,0.35,-0.35
+CNS-110,phase5_cns,VEMURAFENIB,demonstrated,full_text,(untitled section),1.0,0.9,1.0,0.75,0.6,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.3443,0.3443
+CNS-111,phase5_cns,VEMURAFENIB,unknown,full_text,Dose adaptions between WT and Abcb1a/b;Abcg2 −/− mice are needed to level the systemic exposure of vemurafenib between strains,1.0,0.9,0.45,0.75,0.2,1.0,1.0,1.0,plasma_only,none,seated_in_descriptive_section,0.0608,0.0
+CNS-112,phase5_cns,VEMURAFENIB,unknown,full_text,P‐gp and BCRP reduce vemurafenib penetration in MBMs,0.35,1.0,0.6,0.75,0.3,1.0,0.85,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0402,0.0
+CNS-113,phase5_cns,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-114,phase5_cns,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-115,phase5_cns,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-116,phase5_cns,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-117,phase5_cns,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-118,phase5_cns,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-119,phase5_cns,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4633,-0.4633
+CNS-120,phase5_cns,VEMURAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.5,0.2,0.85,1.0,1.0,not_applicable,none,abstract_with_first_person_study_language,0.0727,0.0
+CNS-121,phase5_cns,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-122,phase5_cns,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+CNS-123,phase5_cns,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
+CNS-124,phase5_cns,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.8075,-0.8075
+OPG-003,phase6_opg,BINIMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.75,0.9,0.85,0.85,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.417,0.0
+OPG-006,phase6_opg,BINIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-012,phase6_opg,BINIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-013,phase6_opg,BINIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-017,phase6_opg,BINIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-028,phase6_opg,BINIMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.75,0.6,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.278,0.0
+OPG-030,phase6_opg,BINIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-031,phase6_opg,BINIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-038,phase6_opg,BINIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,1.0,0.8,0.85,0.85,1.0,csf,tumour,abstract_with_first_person_study_language,0.5491,0.5491
+OPG-040,phase6_opg,BINIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-044,phase6_opg,BINIMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.6,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.3488,0.0
+OPG-048,phase6_opg,BINIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.5,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,primary_label_contradicted_by_placement,0.2601,0.2601
+OPG-052,phase6_opg,BINIMETINIB,unknown,abstract_only,Abstract,0.6,1.0,0.9,1.0,0.8,0.85,0.6,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.2203,0.0
+OPG-077,phase6_opg,BINIMETINIB,demonstrated,full_text,Materials and Methods,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.5508,0.5508
+OPG-079,phase6_opg,BINIMETINIB,demonstrated,full_text,Materials and Methods,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.5508,0.5508
+OPG-082,phase6_opg,BINIMETINIB,unknown,full_text,Materials and Methods,1.0,0.9,0.9,1.0,0.2,1.0,1.0,0.6,not_applicable,none,seated_in_descriptive_section,0.0972,0.0
+OPG-099,phase6_opg,BINIMETINIB,demonstrated,full_text,Tumor Response,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.648,0.648
+OPG-101,phase6_opg,BINIMETINIB,demonstrated,full_text,Tumor Response,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.648,0.648
+OPG-102,phase6_opg,BINIMETINIB,demonstrated,full_text,Tumor Response,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.648,0.648
+OPG-103,phase6_opg,BINIMETINIB,unknown,full_text,Tumor Response,0.6,1.0,0.9,1.0,0.8,1.0,0.6,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.1555,0.0
+OPG-107,phase6_opg,BINIMETINIB,demonstrated,full_text,Discussion,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_discussion,0.5508,0.5508
+OPG-113,phase6_opg,BINIMETINIB,demonstrated,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-124,phase6_opg,BINIMETINIB,unknown,full_text,INTRODUCTION,0.35,1.0,0.9,1.0,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0378,0.0
+OPG-216,phase6_opg,COBIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-222,phase6_opg,COBIMETINIB,unknown,abstract_only,Abstract,1.0,0.8,0.9,1.0,1.0,0.85,1.0,1.0,plasma_only,none,abstract_without_first_person_language,0.612,0.0
+OPG-224,phase6_opg,COBIMETINIB,unknown,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_without_first_person_language,0.4162,0.0
+OPG-229,phase6_opg,COBIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-231,phase6_opg,COBIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,brain_unspecified,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-246,phase6_opg,COBIMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-288,phase6_opg,COBIMETINIB,unknown,full_text,Statistical Analysis,0.6,1.0,0.9,1.0,0.2,1.0,0.6,0.6,not_applicable,none,not_applicable_label_not_primary,0.0389,0.0
+OPG-297,phase6_opg,COBIMETINIB,unknown,full_text,Statistical Analysis,0.6,1.0,0.9,1.0,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0648,0.0
+OPG-364,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-368,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-374,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.35,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.1922,0.1922
+OPG-376,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-391,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-392,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-393,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-394,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-397,phase6_opg,DABRAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.4942,0.0
+OPG-398,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-414,phase6_opg,DABRAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.35,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.2261,0.0
+OPG-420,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-425,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-442,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-451,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5491,0.5491
+OPG-456,phase6_opg,DABRAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.4942,0.0
+OPG-461,phase6_opg,DABRAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-467,phase6_opg,DABRAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.6,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.436,0.0
+OPG-500,phase6_opg,DABRAFENIB,unknown,abstract_only,Abstract,1.0,0.5,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,primary_label_contradicted_by_placement,0.2601,0.0
+OPG-505,phase6_opg,DABRAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.6,1.0,brain_unspecified,tumour,abstract_with_first_person_study_language,0.3488,0.0
+OPG-522,phase6_opg,DABRAFENIB,unknown,full_text,Methods,1.0,0.9,0.9,1.0,0.2,1.0,1.0,0.6,plasma_only,none,seated_in_descriptive_section,0.0972,0.0
+OPG-536,phase6_opg,DABRAFENIB,unknown,full_text,INTRODUCTION,0.6,1.0,0.9,1.0,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0648,0.0
+OPG-645,phase6_opg,DABRAFENIB,unknown,full_text,Statistical Analysis,0.35,1.0,0.9,1.0,1.0,1.0,1.0,1.0,plasma_only,none,not_applicable_label_not_primary,0.315,0.0
+OPG-658,phase6_opg,DABRAFENIB,demonstrated,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-659,phase6_opg,DABRAFENIB,demonstrated,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-661,phase6_opg,DABRAFENIB,demonstrated,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-777,phase6_opg,DABRAFENIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-779,phase6_opg,DABRAFENIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-785,phase6_opg,DABRAFENIB,demonstrated,full_text,Efficacy,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.648,0.648
+OPG-796,phase6_opg,DABRAFENIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-802,phase6_opg,DABRAFENIB,demonstrated,full_text,Discussion,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_discussion,0.5508,0.5508
+OPG-803,phase6_opg,DABRAFENIB,demonstrated,full_text,Discussion,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_discussion,0.5508,0.5508
+OPG-810,phase6_opg,DABRAFENIB,unknown,full_text,1. Introduction,0.35,1.0,0.9,1.0,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-832,phase6_opg,DABRAFENIB,unknown,full_text,RESULTS,0.6,1.0,0.9,1.0,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0648,0.0
+OPG-835,phase6_opg,DABRAFENIB,unknown,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-840,phase6_opg,DABRAFENIB,unknown,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-841,phase6_opg,DABRAFENIB,unknown,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,1.0,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.1512,0.0
+OPG-843,phase6_opg,DABRAFENIB,unknown,full_text,3.4. G3–G5 Adverse Events,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,seated_in_descriptive_section,0.648,0.0
+OPG-847,phase6_opg,DABRAFENIB,unknown,full_text,Differential Diagnosis,1.0,0.9,0.9,1.0,0.8,1.0,1.0,0.6,not_applicable,tumour,seated_in_descriptive_section,0.3888,0.0
+OPG-848,phase6_opg,DABRAFENIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-934,phase6_opg,DABRAFENIB,unknown,full_text,3.4. G3–G5 Adverse Events,1.0,0.5,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,primary_label_contradicted_by_placement,0.36,0.0
+OPG-938,phase6_opg,DASATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.6,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.436,0.0
+OPG-939,phase6_opg,DASATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.6,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.436,0.0
+OPG-940,phase6_opg,DASATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.6,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.436,0.0
+OPG-941,phase6_opg,DASATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.6,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.436,0.0
+OPG-943,phase6_opg,DASATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.2,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.1454,0.0
+OPG-945,phase6_opg,DASATINIB,unknown,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.2,0.85,1.0,0.6,not_applicable,none,abstract_without_first_person_language,0.0734,0.0
+OPG-952,phase6_opg,DASATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-953,phase6_opg,DASATINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,csf,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-966,phase6_opg,DASATINIB,demonstrated,abstract_only,Abstract,0.35,1.0,1.0,1.0,0.8,0.85,0.85,1.0,csf,tumour,not_applicable_label_not_primary,0.2023,0.2023
+OPG-971,phase6_opg,DASATINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0803,0.0
+OPG-986,phase6_opg,DASATINIB,unknown,full_text,Background,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-1004,phase6_opg,DASATINIB,unknown,full_text,DISCUSSION,0.35,1.0,0.9,0.5,0.3,1.0,0.6,0.6,not_applicable,none,not_applicable_label_not_primary,0.017,0.0
+OPG-1057,phase6_opg,DASATINIB,unknown,full_text,Can cancer gene mutation status aid therapeutic decisions for CML?,0.35,1.0,0.9,0.75,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0709,0.0
+OPG-1099,phase6_opg,DASATINIB,demonstrated,full_text,PI3K and Src kinase inhibition.,0.35,1.0,1.0,1.0,1.0,1.0,1.0,1.0,csf,barrier_intact,not_applicable_label_not_primary,0.35,0.35
+OPG-1175,phase6_opg,ENCORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-1181,phase6_opg,ENCORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-1185,phase6_opg,ENCORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-1196,phase6_opg,ENCORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-1197,phase6_opg,ENCORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-1202,phase6_opg,ENCORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-1206,phase6_opg,ENCORAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.4942,0.0
+OPG-1210,phase6_opg,ENCORAFENIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-1235,phase6_opg,ENCORAFENIB,unknown,full_text,Materials and Methods,1.0,0.9,0.9,1.0,0.2,1.0,0.85,1.0,not_applicable,none,seated_in_descriptive_section,0.1377,0.0
+OPG-1237,phase6_opg,ENCORAFENIB,demonstrated,full_text,Materials and Methods,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.5508,0.5508
+OPG-1240,phase6_opg,ENCORAFENIB,unknown,full_text,Materials and Methods,1.0,0.9,0.9,1.0,0.2,1.0,0.6,0.6,not_applicable,none,seated_in_descriptive_section,0.0583,0.0
+OPG-1257,phase6_opg,ENCORAFENIB,demonstrated,full_text,Tumor Response,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.648,0.648
+OPG-1259,phase6_opg,ENCORAFENIB,demonstrated,full_text,Tumor Response,1.0,0.9,1.0,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.72,0.72
+OPG-1260,phase6_opg,ENCORAFENIB,demonstrated,full_text,Tumor Response,1.0,0.9,1.0,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.72,0.72
+OPG-1261,phase6_opg,ENCORAFENIB,demonstrated,full_text,Tumor Response,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.648,0.648
+OPG-1265,phase6_opg,ENCORAFENIB,demonstrated,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.252,0.252
+OPG-1271,phase6_opg,ENCORAFENIB,demonstrated,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-1274,phase6_opg,ENCORAFENIB,unknown,full_text,INTRODUCTION,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-1333,phase6_opg,ENCORAFENIB,unknown,full_text,RAF Inhibitor Treatment of Activated Non-V600 BRAF Mutated Tumors,1.0,0.9,0.9,0.35,0.6,1.0,1.0,0.6,not_applicable,tumour,seated_in_descriptive_section,0.1021,0.0
+OPG-1351,phase6_opg,IMATINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0803,0.0
+OPG-1353,phase6_opg,IMATINIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,1.0,0.8,0.85,0.85,1.0,normal_brain,tumour,abstract_without_first_person_language,0.4624,-0.4624
+OPG-1356,phase6_opg,IMATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-1357,phase6_opg,IMATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,0.6,not_applicable,tumour,abstract_with_first_person_study_language,0.3488,0.0
+OPG-1365,phase6_opg,IMATINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,0.85,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0683,0.0
+OPG-1366,phase6_opg,IMATINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,1.0,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.0803,0.0
+OPG-1379,phase6_opg,IMATINIB,unknown,abstract_only,Abstract,0.6,1.0,0.9,1.0,0.8,0.85,0.6,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.2203,0.0
+OPG-1381,phase6_opg,IMATINIB,unknown,abstract_only,Abstract,0.6,1.0,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.3672,0.0
+OPG-1382,phase6_opg,IMATINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-1392,phase6_opg,IMATINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-1496,phase6_opg,IMATINIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-1497,phase6_opg,IMATINIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-1498,phase6_opg,IMATINIB,unknown,full_text,Discussion,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,seated_in_discussion,0.648,0.0
+OPG-1510,phase6_opg,IMATINIB,unknown,full_text,3. Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-1515,phase6_opg,IMATINIB,unknown,full_text,3. Discussion,0.35,1.0,0.9,0.5,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0284,0.0
+OPG-1578,phase6_opg,IMATINIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-1582,phase6_opg,IMATINIB,unknown,full_text,TKI + Interferon,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-1583,phase6_opg,IMATINIB,unknown,full_text,TKI + Interferon,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-1586,phase6_opg,IMATINIB,unknown,full_text,Homoharringtonine and Omacetaxin,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-1597,phase6_opg,IMATINIB,unknown,full_text,3. Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-1598,phase6_opg,IMATINIB,unknown,full_text,3. Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-1599,phase6_opg,IMATINIB,unknown,full_text,3. Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-1620,phase6_opg,IMATINIB,unknown,full_text,"First generation TKIs for treatment of PDGFRA-mutated GISTs: Imatinib, sunitinib, and regorafenib",0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-1637,phase6_opg,IMATINIB,unknown,full_text,Dasatinib,0.35,1.0,0.9,1.0,0.8,1.0,0.6,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.0907,0.0
+OPG-1642,phase6_opg,IMATINIB,unknown,full_text,Dovitinib,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-1644,phase6_opg,IMATINIB,unknown,full_text,Dovitinib,0.35,1.0,0.9,1.0,0.8,1.0,0.6,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.0907,0.0
+OPG-1650,phase6_opg,IMATINIB,unknown,full_text,Future of advanced GIST treatment,0.35,1.0,0.9,1.0,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-1685,phase6_opg,PAZOPANIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.646,0.646
+OPG-1686,phase6_opg,PAZOPANIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-1688,phase6_opg,PAZOPANIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.2,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0536,0.0
+OPG-1691,phase6_opg,PAZOPANIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.6,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.3089,0.3089
+OPG-1692,phase6_opg,PAZOPANIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.75,0.6,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.278,0.0
+OPG-1700,phase6_opg,PAZOPANIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-1712,phase6_opg,PAZOPANIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-1713,phase6_opg,PAZOPANIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-1714,phase6_opg,PAZOPANIB,demonstrated,abstract_only,Abstract,1.0,0.8,1.0,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.544,0.544
+OPG-1715,phase6_opg,PAZOPANIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-1717,phase6_opg,PAZOPANIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-1722,phase6_opg,PAZOPANIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-1727,phase6_opg,PAZOPANIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,0.6,not_applicable,tumour,abstract_with_first_person_study_language,0.3488,0.0
+OPG-1730,phase6_opg,PAZOPANIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-1735,phase6_opg,PAZOPANIB,contradicted,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,-0.4942
+OPG-1741,phase6_opg,PAZOPANIB,contradicted,abstract_only,Abstract,1.0,0.8,1.0,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4624,-0.4624
+OPG-1744,phase6_opg,PAZOPANIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-1754,phase6_opg,PAZOPANIB,unknown,full_text,Effect on human bone marrow progenitor cell growth,1.0,0.9,0.9,0.35,0.6,1.0,1.0,1.0,not_applicable,tumour,seated_in_descriptive_section,0.1701,0.0
+OPG-1755,phase6_opg,PAZOPANIB,unknown,full_text,Effect on human bone marrow progenitor cell growth,1.0,0.9,0.9,1.0,0.6,1.0,1.0,1.0,not_applicable,tumour,seated_in_descriptive_section,0.486,0.0
+OPG-1760,phase6_opg,PAZOPANIB,unknown,full_text,Effect on human bone marrow progenitor cell growth,0.6,1.0,0.9,0.35,0.6,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.1134,0.0
+OPG-1761,phase6_opg,PAZOPANIB,unknown,full_text,Effect on human bone marrow progenitor cell growth,1.0,0.9,0.9,0.35,0.6,1.0,1.0,0.6,not_applicable,tumour,seated_in_descriptive_section,0.1021,0.0
+OPG-1770,phase6_opg,PAZOPANIB,unknown,full_text,Discussion,0.6,1.0,0.9,0.35,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.034,0.0
+OPG-1806,phase6_opg,PAZOPANIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-1807,phase6_opg,PAZOPANIB,unknown,full_text,Case report,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,not_applicable,tumour,seated_in_descriptive_section,0.5508,0.0
+OPG-1809,phase6_opg,PAZOPANIB,unknown,full_text,Discussion,0.6,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.432,0.0
+OPG-1810,phase6_opg,PAZOPANIB,demonstrated,full_text,Discussion,1.0,0.9,0.9,1.0,0.8,1.0,0.85,0.4,tumour_tissue,tumour,seated_in_discussion,0.2203,0.2203
+OPG-1811,phase6_opg,PAZOPANIB,unknown,full_text,Conclusion,1.0,0.9,0.9,1.0,0.3,1.0,0.85,1.0,not_applicable,none,seated_in_discussion,0.2065,0.0
+OPG-1815,phase6_opg,PAZOPANIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-1990,phase6_opg,PEXIDARTINIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.6,0.85,0.85,1.0,brain_unspecified,tumour,abstract_with_first_person_study_language,0.3089,0.3089
+OPG-1992,phase6_opg,PEXIDARTINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.436,-0.436
+OPG-1993,phase6_opg,PEXIDARTINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.436,-0.436
+OPG-1996,phase6_opg,PEXIDARTINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.436,-0.436
+OPG-1997,phase6_opg,PEXIDARTINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.6,0.9,0.85,1.0,1.0,csf,barrier_intact,abstract_with_first_person_study_language,0.436,-0.436
+OPG-1999,phase6_opg,PEXIDARTINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,brain_unspecified,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-2008,phase6_opg,PEXIDARTINIB,unknown,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.6,0.85,0.85,1.0,brain_unspecified,tumour,abstract_with_first_person_study_language,0.3089,0.0
+OPG-2051,phase6_opg,PEXIDARTINIB,unknown,full_text,Intragastric Administration of PLX3397 Is Not Selectively Affecting PVN Microglia,1.0,0.9,0.9,0.75,0.3,1.0,1.0,1.0,not_applicable,none,seated_in_descriptive_section,0.1822,0.0
+OPG-2052,phase6_opg,PEXIDARTINIB,unknown,full_text,Experimental Microglia Depletion by PLX3397 (Intracerebroventricular) in the PVN Attenuated MI ‐Induced Inflammation,1.0,0.9,0.35,0.75,0.6,1.0,1.0,1.0,not_applicable,tumour,seated_in_descriptive_section,0.1418,0.0
+OPG-2055,phase6_opg,PEXIDARTINIB,unknown,full_text,Discussion,0.35,1.0,0.9,0.6,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.034,0.0
+OPG-2147,phase6_opg,REGORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-2151,phase6_opg,REGORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-2152,phase6_opg,REGORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-2153,phase6_opg,REGORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-2154,phase6_opg,REGORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-2219,phase6_opg,REGORAFENIB,unknown,full_text,Efficacy,0.35,1.0,0.9,1.0,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0378,0.0
+OPG-2254,phase6_opg,SELUMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.4633,-0.4633
+OPG-2257,phase6_opg,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-2263,phase6_opg,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.8,0.9,0.75,0.6,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.2341,0.0
+OPG-2264,phase6_opg,SELUMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,1.0,0.75,0.6,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.2601,0.2601
+OPG-2265,phase6_opg,SELUMETINIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-2267,phase6_opg,SELUMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.6,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.3089,0.3089
+OPG-2270,phase6_opg,SELUMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-2271,phase6_opg,SELUMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-2276,phase6_opg,SELUMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-2277,phase6_opg,SELUMETINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,0.85,1.0,not_applicable,none,not_applicable_label_not_primary,0.0683,0.0
+OPG-2278,phase6_opg,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_without_first_person_language,0.4896,0.0
+OPG-2283,phase6_opg,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_without_first_person_language,0.4896,0.0
+OPG-2288,phase6_opg,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.3,0.85,1.0,0.6,not_applicable,none,abstract_without_first_person_language,0.1102,0.0
+OPG-2300,phase6_opg,SELUMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-2302,phase6_opg,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.75,0.6,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.278,0.0
+OPG-2303,phase6_opg,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.75,0.6,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.278,0.0
+OPG-2309,phase6_opg,SELUMETINIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-2315,phase6_opg,SELUMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-2327,phase6_opg,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.5,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,primary_label_contradicted_by_placement,0.2601,0.0
+OPG-2352,phase6_opg,SELUMETINIB,demonstrated,full_text,Main Text,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-2419,phase6_opg,SELUMETINIB,demonstrated,full_text,Targeting the MAPK/ERK pathway,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-2454,phase6_opg,SELUMETINIB,demonstrated,full_text,Low‐Grade Gliomas,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-2457,phase6_opg,SELUMETINIB,demonstrated,full_text,Plexiform Neurofibromas,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-2458,phase6_opg,SELUMETINIB,demonstrated,full_text,Plexiform Neurofibromas,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-2459,phase6_opg,SELUMETINIB,demonstrated,full_text,Plexiform Neurofibromas,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-2471,phase6_opg,SELUMETINIB,demonstrated,full_text,Introduction,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-2473,phase6_opg,SELUMETINIB,unknown,full_text,Procedures,1.0,0.5,0.9,1.0,0.2,1.0,1.0,0.6,not_applicable,none,primary_label_contradicted_by_placement,0.054,0.0
+OPG-2481,phase6_opg,SELUMETINIB,unknown,full_text,Outcomes,0.35,1.0,0.9,1.0,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0378,0.0
+OPG-2482,phase6_opg,SELUMETINIB,unknown,full_text,Outcomes,0.35,1.0,0.9,1.0,0.2,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.063,0.0
+OPG-2502,phase6_opg,SELUMETINIB,unknown,full_text,Results,0.35,1.0,0.9,1.0,1.0,1.0,1.0,1.0,plasma_only,none,not_applicable_label_not_primary,0.315,0.0
+OPG-2517,phase6_opg,SELUMETINIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.6,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.1512,0.0
+OPG-2518,phase6_opg,SELUMETINIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-2520,phase6_opg,SELUMETINIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-2521,phase6_opg,SELUMETINIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-2568,phase6_opg,SELUMETINIB,demonstrated,full_text,Treatment,0.35,1.0,0.9,1.0,0.8,1.0,0.85,0.4,tumour_tissue,tumour,not_applicable_label_not_primary,0.0857,0.0857
+OPG-2575,phase6_opg,SORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.6,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.3089,0.3089
+OPG-2576,phase6_opg,SORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.6,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.3089,0.3089
+OPG-2578,phase6_opg,SORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+OPG-2580,phase6_opg,SORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+OPG-2581,phase6_opg,SORAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,normal_brain,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
+OPG-2582,phase6_opg,SORAFENIB,unknown,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_without_first_person_language,0.4896,0.0
+OPG-2584,phase6_opg,SORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-2585,phase6_opg,SORAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.4942,0.0
+OPG-2586,phase6_opg,SORAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.4942,0.0
+OPG-2587,phase6_opg,SORAFENIB,unknown,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.2,0.85,1.0,1.0,not_applicable,none,abstract_without_first_person_language,0.1224,0.0
+OPG-2590,phase6_opg,SORAFENIB,unknown,abstract_only,Abstract,0.6,1.0,0.9,1.0,0.8,0.85,0.6,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.2203,0.0
+OPG-2594,phase6_opg,SORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0402,0.0
+OPG-2595,phase6_opg,SORAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.2,0.85,1.0,1.0,not_applicable,none,abstract_with_first_person_study_language,0.1454,0.0
+OPG-2605,phase6_opg,SORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.2142,0.0
+OPG-2617,phase6_opg,SORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.1821,0.0
+OPG-2620,phase6_opg,SORAFENIB,unknown,full_text,Sorafenib inhibits proliferation and induces apoptosis in D283 and Daoy cells,1.0,0.9,0.9,0.35,0.6,1.0,1.0,1.0,not_applicable,tumour,seated_in_descriptive_section,0.1701,0.0
+OPG-2621,phase6_opg,SORAFENIB,unknown,full_text,Sorafenib inhibits phosphorylation of STAT3 at Tyr705 in D283 and Daoy cells,1.0,0.9,0.9,0.35,0.6,1.0,1.0,1.0,not_applicable,tumour,seated_in_descriptive_section,0.1701,0.0
+OPG-2623,phase6_opg,SORAFENIB,unknown,full_text,Sorafenib inhibits cell proliferation and survival in a primary culture of human medulloblastoma,1.0,0.9,0.9,0.35,0.6,1.0,1.0,1.0,not_applicable,tumour,seated_in_descriptive_section,0.1701,0.0
+OPG-2624,phase6_opg,SORAFENIB,unknown,full_text,Discussion,1.0,0.9,0.9,0.35,0.6,1.0,1.0,1.0,not_applicable,tumour,seated_in_discussion,0.1701,0.0
+OPG-2626,phase6_opg,SORAFENIB,unknown,full_text,Discussion,1.0,0.9,0.9,0.5,0.2,1.0,1.0,1.0,not_applicable,none,seated_in_discussion,0.081,0.0
+OPG-2627,phase6_opg,SORAFENIB,unknown,full_text,Sorafenib inhibits proliferation and induces apoptosis in D283 and Daoy cells,1.0,0.9,0.9,0.35,0.6,1.0,1.0,1.0,not_applicable,tumour,seated_in_descriptive_section,0.1701,0.0
+OPG-2628,phase6_opg,SORAFENIB,unknown,full_text,Sorafenib inhibits phosphorylation of STAT3 at Tyr705 in D283 and Daoy cells,1.0,0.9,0.9,0.35,0.6,1.0,1.0,1.0,not_applicable,tumour,seated_in_descriptive_section,0.1701,0.0
+OPG-2630,phase6_opg,SORAFENIB,unknown,full_text,Sorafenib inhibits cell proliferation and survival in a primary culture of human medulloblastoma,1.0,0.9,0.9,0.35,0.6,1.0,1.0,1.0,not_applicable,tumour,seated_in_descriptive_section,0.1701,0.0
+OPG-2631,phase6_opg,SORAFENIB,unknown,full_text,Discussion,1.0,0.9,0.9,1.0,0.6,1.0,1.0,1.0,not_applicable,tumour,seated_in_discussion,0.486,0.0
+OPG-2633,phase6_opg,SORAFENIB,unknown,full_text,Discussion,0.6,1.0,0.9,0.5,0.2,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.054,0.0
+OPG-2646,phase6_opg,SORAFENIB,unknown,full_text,Sorafenib significantly decreases the neurofibroma growth rate in Nf1 flox/flox ;DhhCre mice,1.0,0.9,0.9,0.75,0.9,1.0,1.0,1.0,plasma_only,none,seated_in_descriptive_section,0.5468,0.0
+OPG-2647,phase6_opg,SORAFENIB,unknown,full_text,Sorafenib significantly decreases the neurofibroma growth rate in Nf1 flox/flox ;DhhCre mice,1.0,0.9,1.0,0.75,0.9,1.0,1.0,1.0,plasma_only,none,seated_in_descriptive_section,0.6075,0.0
+OPG-2649,phase6_opg,SORAFENIB,unknown,full_text,Sorafenib significantly decreases the neurofibroma growth rate in Nf1 flox/flox ;DhhCre mice,1.0,0.9,1.0,0.75,0.6,1.0,0.85,1.0,not_applicable,tumour,seated_in_descriptive_section,0.3443,0.0
+OPG-2650,phase6_opg,SORAFENIB,unknown,full_text,Sorafenib significantly decreases the neurofibroma growth rate in Nf1 flox/flox ;DhhCre mice,1.0,0.9,1.0,0.75,0.6,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.3443,0.0
+OPG-2654,phase6_opg,SORAFENIB,unknown,full_text,Discussion,0.35,1.0,0.9,0.75,0.2,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0473,0.0
+OPG-2658,phase6_opg,SORAFENIB,unknown,full_text,Introduction,1.0,0.5,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,primary_label_contradicted_by_placement,0.36,0.0
+OPG-2665,phase6_opg,SORAFENIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.2142,0.0
+OPG-2667,phase6_opg,SORAFENIB,unknown,full_text,Discussion,0.6,1.0,0.9,0.5,0.2,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.054,0.0
+OPG-2703,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.2,0.85,1.0,0.6,not_applicable,none,abstract_with_first_person_study_language,0.0872,0.0
+OPG-2705,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.35,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.2261,0.0
+OPG-2708,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.35,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.2261,0.0
+OPG-2711,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-2715,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_without_first_person_language,0.4162,0.0
+OPG-2718,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0482,0.0
+OPG-2720,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_without_first_person_language,0.4896,0.0
+OPG-2722,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-2724,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0803,0.0
+OPG-2729,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.35,0.3,0.85,1.0,1.0,not_applicable,none,abstract_with_first_person_study_language,0.0763,0.0
+OPG-2746,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0402,0.0
+OPG-2759,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.6,0.85,0.85,1.0,brain_unspecified,tumour,abstract_with_first_person_study_language,0.3089,0.0
+OPG-2760,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.75,0.6,0.85,0.85,1.0,brain_unspecified,tumour,abstract_with_first_person_study_language,0.278,0.0
+OPG-2761,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.75,0.6,0.85,0.85,1.0,brain_unspecified,tumour,abstract_with_first_person_study_language,0.278,0.0
+OPG-2762,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.75,0.6,0.85,0.85,1.0,brain_unspecified,tumour,abstract_with_first_person_study_language,0.278,0.0
+OPG-2771,phase6_opg,SUNITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-2789,phase6_opg,SUNITINIB,unknown,full_text,Discussion,0.6,1.0,0.9,1.0,0.8,1.0,0.6,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.1555,0.0
+OPG-2893,phase6_opg,SUNITINIB,unknown,full_text,Background,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-2894,phase6_opg,SUNITINIB,unknown,full_text,Background,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-2895,phase6_opg,SUNITINIB,unknown,full_text,Background,0.35,1.0,0.9,1.0,0.8,1.0,0.6,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.1512,0.0
+OPG-2899,phase6_opg,SUNITINIB,demonstrated,full_text,Case presentation,1.0,0.9,1.0,1.0,0.8,1.0,0.85,1.0,brain_unspecified,tumour,seated_in_descriptive_section,0.612,0.612
+OPG-2902,phase6_opg,SUNITINIB,unknown,full_text,Case presentation,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,not_applicable,tumour,seated_in_descriptive_section,0.5508,0.0
+OPG-2908,phase6_opg,SUNITINIB,unknown,full_text,Discussion and conclusions,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,not_applicable,tumour,seated_in_discussion,0.5508,0.0
+OPG-2921,phase6_opg,SUNITINIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,1.0,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.1512,0.0
+OPG-3073,phase6_opg,TIVOZANIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.35,0.2,0.85,1.0,1.0,not_applicable,none,abstract_with_first_person_study_language,0.0509,0.0
+OPG-3076,phase6_opg,TIVOZANIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.75,0.6,0.85,0.6,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.1962,0.0
+OPG-3077,phase6_opg,TIVOZANIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-3078,phase6_opg,TIVOZANIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-3079,phase6_opg,TIVOZANIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-3084,phase6_opg,TIVOZANIB,unknown,full_text,Reduction in the frequency and number of Tregs and MDSCs following Tivozanib treatment is associated with downregulation of c-Kit/ERK2 signaling pathway,0.6,1.0,0.9,1.0,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0972,0.0
+OPG-3085,phase6_opg,TIVOZANIB,unknown,full_text,Reduction in the frequency and number of Tregs and MDSCs following Tivozanib treatment is associated with downregulation of c-Kit/ERK2 signaling pathway,0.35,1.0,0.9,1.0,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-3086,phase6_opg,TIVOZANIB,unknown,full_text,Predictive and prognostic immune correlates of survival in HCC patients,0.6,1.0,0.9,1.0,0.8,1.0,1.0,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.2592,0.0
+OPG-3087,phase6_opg,TIVOZANIB,unknown,full_text,Predictive and prognostic immune correlates of survival in HCC patients,0.6,1.0,0.9,1.0,0.8,1.0,1.0,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.2592,0.0
+OPG-3089,phase6_opg,TIVOZANIB,unknown,full_text,Predictive and prognostic immune correlates of survival in HCC patients,0.6,1.0,0.9,1.0,0.8,1.0,1.0,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.2592,0.0
+OPG-3090,phase6_opg,TIVOZANIB,unknown,full_text,Predictive and prognostic immune correlates of survival in HCC patients,0.6,1.0,0.9,1.0,0.8,1.0,1.0,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.2592,0.0
+OPG-3096,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-3097,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-3102,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-3103,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-3104,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-3105,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-3106,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,1.0,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.1512,0.0
+OPG-3108,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-3109,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.6,1.0,0.9,1.0,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0648,0.0
+OPG-3110,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.35,1.0,0.9,0.5,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0189,0.0
+OPG-3111,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,plasma_only,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-3112,phase6_opg,TIVOZANIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-3114,phase6_opg,TOVORAFENIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-3118,phase6_opg,TOVORAFENIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-3121,phase6_opg,TOVORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-3124,phase6_opg,TOVORAFENIB,demonstrated,abstract_only,Abstract,1.0,0.5,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,primary_label_contradicted_by_placement,0.2601,0.2601
+OPG-3130,phase6_opg,TOVORAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.75,0.3,0.85,1.0,1.0,not_applicable,none,abstract_with_first_person_study_language,0.1635,0.0
+OPG-3132,phase6_opg,TOVORAFENIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-3134,phase6_opg,TOVORAFENIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-3139,phase6_opg,TOVORAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.6,0.6,not_applicable,tumour,abstract_with_first_person_study_language,0.2093,0.0
+OPG-3235,phase6_opg,TOVORAFENIB,demonstrated,full_text,Molecularly-targeted clinical trials in pLGG,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.648,0.648
+OPG-3237,phase6_opg,TOVORAFENIB,demonstrated,full_text,Molecularly-targeted clinical trials in pLGG,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.5508,0.5508
+OPG-3257,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-3262,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-3263,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-3264,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-3266,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-3269,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-3282,phase6_opg,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.35,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.1922,0.0
+OPG-3283,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.35,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.1922,0.1922
+OPG-3284,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.35,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.1922,0.1922
+OPG-3290,phase6_opg,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.6,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.3488,0.0
+OPG-3293,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-3298,phase6_opg,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,1.0,0.85,1.0,1.0,plasma_only,none,abstract_with_first_person_study_language,0.7268,0.0
+OPG-3299,phase6_opg,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,1.0,1.0,1.0,0.85,1.0,1.0,plasma_only,none,abstract_with_first_person_study_language,0.8075,0.0
+OPG-3309,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-3312,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-3321,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-3326,phase6_opg,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-3339,phase6_opg,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.4942,0.0
+OPG-3358,phase6_opg,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.6,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.3488,0.0
+OPG-3364,phase6_opg,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-3369,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-3374,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-3380,phase6_opg,TRAMETINIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-3388,phase6_opg,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.5,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,primary_label_contradicted_by_placement,0.2601,0.0
+OPG-3393,phase6_opg,TRAMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.6,1.0,brain_unspecified,tumour,abstract_with_first_person_study_language,0.3488,0.0
+OPG-3397,phase6_opg,TRAMETINIB,demonstrated,full_text,Low‐Grade Gliomas,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-3405,phase6_opg,TRAMETINIB,unknown,full_text,Plexiform Neurofibromas,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.2142,0.0
+OPG-3419,phase6_opg,TRAMETINIB,unknown,full_text,Study Objectives,1.0,0.9,0.9,1.0,0.2,1.0,1.0,1.0,not_applicable,none,seated_in_descriptive_section,0.162,0.0
+OPG-3421,phase6_opg,TRAMETINIB,unknown,full_text,Statistical Analysis,0.35,1.0,0.9,1.0,0.2,1.0,1.0,1.0,plasma_only,none,not_applicable_label_not_primary,0.063,0.0
+OPG-3428,phase6_opg,TRAMETINIB,unknown,full_text,All Patients in Dose-Finding Parts (A and C): DLTs and RP2Ds of Trametinib With or Without Dabrafenib,1.0,0.9,0.9,1.0,0.2,1.0,1.0,1.0,plasma_only,none,seated_in_descriptive_section,0.162,0.0
+OPG-3432,phase6_opg,TRAMETINIB,demonstrated,full_text,BRAF V600–Mutant LGG (Parts A-D): Efficacy and Safety of Trametinib With or Without Dabrafenib,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.648,0.648
+OPG-3434,phase6_opg,TRAMETINIB,demonstrated,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-3435,phase6_opg,TRAMETINIB,demonstrated,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-3436,phase6_opg,TRAMETINIB,demonstrated,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-3539,phase6_opg,TRAMETINIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.3,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-3541,phase6_opg,TRAMETINIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-3547,phase6_opg,TRAMETINIB,unknown,full_text,Efficacy,1.0,0.9,0.9,1.0,0.8,1.0,0.6,0.6,not_applicable,tumour,seated_in_descriptive_section,0.2333,0.0
+OPG-3558,phase6_opg,TRAMETINIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.6,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.1512,0.0
+OPG-3564,phase6_opg,TRAMETINIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.6,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.0907,0.0
+OPG-3565,phase6_opg,TRAMETINIB,demonstrated,full_text,Discussion,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_discussion,0.5508,0.5508
+OPG-3642,phase6_opg,TRAMETINIB,unknown,full_text,1. Introduction,0.35,1.0,0.9,1.0,0.8,1.0,0.6,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.1512,0.0
+OPG-3664,phase6_opg,TRAMETINIB,unknown,full_text,RESULTS,1.0,1.0,0.9,1.0,0.2,1.0,1.0,0.6,not_applicable,none,seated_in_results_or_table,0.108,0.0
+OPG-3667,phase6_opg,TRAMETINIB,unknown,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-3672,phase6_opg,TRAMETINIB,unknown,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,1.0,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.1512,0.0
+OPG-3673,phase6_opg,TRAMETINIB,unknown,full_text,DISCUSSION,0.35,1.0,0.9,1.0,0.8,1.0,1.0,0.6,not_applicable,tumour,not_applicable_label_not_primary,0.1512,0.0
+OPG-3706,phase6_opg,TRAMETINIB,unknown,full_text,Trametinib Robustly Extends Lifespan in Females But Not Males.,0.6,1.0,0.9,0.6,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0389,0.0
+OPG-3707,phase6_opg,TRAMETINIB,unknown,full_text,Trametinib Robustly Extends Lifespan in Females But Not Males.,0.6,1.0,0.9,0.6,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0389,0.0
+OPG-3708,phase6_opg,TRAMETINIB,unknown,full_text,Trametinib Robustly Extends Lifespan in Females But Not Males.,0.6,1.0,0.9,0.6,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0389,0.0
+OPG-3710,phase6_opg,TRAMETINIB,unknown,full_text,Downregulation of Ras/MAPK Signaling in ISCs Is Sufficient to Extend Lifespan and Improve Gut Pathology.,0.6,1.0,0.9,0.6,0.3,1.0,0.6,0.6,not_applicable,none,not_applicable_label_not_primary,0.035,0.0
+OPG-3711,phase6_opg,TRAMETINIB,unknown,full_text,Discussion,0.6,1.0,0.9,0.6,0.2,1.0,1.0,0.6,not_applicable,none,not_applicable_label_not_primary,0.0389,0.0
+OPG-3712,phase6_opg,TRAMETINIB,unknown,full_text,Discussion,0.6,1.0,0.9,0.5,0.2,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.054,0.0
+OPG-3811,phase6_opg,TRAMETINIB,demonstrated,full_text,Introduction,1.0,0.5,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,primary_label_contradicted_by_placement,0.306,0.306
+OPG-3815,phase6_opg,TRAMETINIB,demonstrated,full_text,Case description,1.0,0.9,1.0,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_descriptive_section,0.72,0.72
+OPG-3816,phase6_opg,TRAMETINIB,demonstrated,full_text,Discussion,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,seated_in_discussion,0.5508,0.5508
+OPG-3818,phase6_opg,TRAMETINIB,demonstrated,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-3820,phase6_opg,TRAMETINIB,demonstrated,full_text,Discussion,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_discussion,0.648,0.648
+OPG-3822,phase6_opg,TRAMETINIB,demonstrated,full_text,Discussion,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,seated_in_discussion,0.648,0.648
+OPG-3846,phase6_opg,TRAMETINIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.252,0.0
+OPG-3856,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-3864,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-3865,phase6_opg,VEMURAFENIB,unknown,abstract_only,Abstract,0.6,1.0,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,not_applicable_label_not_primary,0.3121,0.0
+OPG-3869,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-3874,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.35,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.1922,0.1922
+OPG-3878,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-3880,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-3881,phase6_opg,VEMURAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.0
+OPG-3890,phase6_opg,VEMURAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.4942,0.0
+OPG-3898,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-3906,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-3913,phase6_opg,VEMURAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0482,0.0
+OPG-3914,phase6_opg,VEMURAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.5814,0.0
+OPG-3924,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.5814,0.5814
+OPG-3926,phase6_opg,VEMURAFENIB,contradicted,abstract_only,Abstract,1.0,0.95,0.45,0.75,0.9,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.2085,-0.2085
+OPG-3930,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-3944,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-3946,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,1.0,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4896,0.4896
+OPG-3947,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.8,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_without_first_person_language,0.4162,0.4162
+OPG-3951,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.1821,0.1821
+OPG-3957,phase6_opg,VEMURAFENIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,1.0,0.6,not_applicable,tumour,abstract_with_first_person_study_language,0.3488,0.0
+OPG-3958,phase6_opg,VEMURAFENIB,demonstrated,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,tumour_tissue,tumour,abstract_with_first_person_study_language,0.4942,0.4942
+OPG-3959,phase6_opg,VEMURAFENIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-3960,phase6_opg,VEMURAFENIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-3966,phase6_opg,VEMURAFENIB,unknown,full_text,Increased IGF-1R expression and phoshorylation of AKT correlate with resistance to BRAF inhibitors in one out of five paired tissue samples from relapsed patients,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,not_applicable,tumour,seated_in_descriptive_section,0.5508,0.0
+OPG-3967,phase6_opg,VEMURAFENIB,unknown,full_text,Increased IGF-1R expression and phoshorylation of AKT correlate with resistance to BRAF inhibitors in one out of five paired tissue samples from relapsed patients,1.0,0.9,0.9,1.0,0.8,1.0,0.85,1.0,not_applicable,tumour,seated_in_descriptive_section,0.5508,0.0
+OPG-3968,phase6_opg,VEMURAFENIB,unknown,full_text,Discussion,0.35,1.0,0.9,1.0,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
+OPG-3981,phase6_opg,VEMURAFENIB,unknown,full_text,INTRODUCTION,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-4022,phase6_opg,VEMURAFENIB,demonstrated,full_text,Background,1.0,0.5,0.9,1.0,0.8,1.0,1.0,1.0,tumour_tissue,tumour,primary_label_contradicted_by_placement,0.36,0.36
+OPG-4028,phase6_opg,VEMURAFENIB,demonstrated,full_text,Conclusions,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
+OPG-4094,phase6_opg,VEMURAFENIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0945,0.0
+OPG-4095,phase6_opg,VEMURAFENIB,unknown,full_text,Introduction,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,brain_unspecified,tumour,not_applicable_label_not_primary,0.2142,0.0
+OPG-4097,phase6_opg,VEMURAFENIB,unknown,full_text,Case report 2,1.0,0.9,0.9,1.0,0.8,1.0,1.0,1.0,not_applicable,tumour,seated_in_descriptive_section,0.648,0.0
+OPG-4099,phase6_opg,VEMURAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,1.0,0.8,1.0,0.85,1.0,brain_unspecified,tumour,seated_in_discussion,0.612,-0.612
+OPG-4100,phase6_opg,VEMURAFENIB,contradicted,full_text,Discussion,0.35,1.0,1.0,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,not_applicable_label_not_primary,0.2008,-0.2008
+OPG-4101,phase6_opg,VEMURAFENIB,contradicted,full_text,Discussion,0.35,1.0,1.0,0.75,0.9,1.0,0.85,1.0,normal_brain,barrier_intact,not_applicable_label_not_primary,0.2008,-0.2008

@@ -189,9 +189,21 @@ def build() -> dict:
         scores = pd.read_csv(score_path)[["claim_id", "evidence_weight", "corroboration_reason"]]
         proposals = proposals.merge(scores, on="claim_id", how="left")
 
+    # Stage 5's OPG claims set bands too, so the reading surface has to show the
+    # ones that carry a verdict; the unknowns stay in the OPG table.
+    opg_path = OUT_DATA / "phase6-opg-adjudicated.csv"
+    opg = None
+    if opg_path.exists():
+        opg = pd.read_csv(opg_path)
+        opg = opg[opg["proposed_verdict"].isin(["demonstrated", "contradicted"])]
+        score_p = OUT_DATA / "phase6-cns-evidence-scores.csv"
+        if score_p.exists():
+            w = pd.read_csv(score_p)[["claim_id", "evidence_weight", "compartment_class"]]
+            opg = opg.merge(w, on="claim_id", how="left")
+
     sheet.to_csv(OUT_DATA / "phase6-cns-adjudication-sheet.csv", index=False)
     rollup.to_csv(roll_path, index=False)
-    write_markdown(sheet, rollup, proposals)
+    write_markdown(sheet, rollup, proposals, opg)
 
     return {
         "claims_total": int(len(claims)),
@@ -206,7 +218,8 @@ def build() -> dict:
 
 
 def write_markdown(
-    sheet: pd.DataFrame, rollup: pd.DataFrame, proposals: pd.DataFrame | None = None
+    sheet: pd.DataFrame, rollup: pd.DataFrame, proposals: pd.DataFrame | None = None,
+    opg: pd.DataFrame | None = None,
 ) -> None:
     prop = (
         proposals.set_index("claim_id").to_dict("index") if proposals is not None else {}
@@ -288,10 +301,10 @@ def write_markdown(
     for moiety, grp in sheet[sheet["moiety"] != ""].groupby("moiety", sort=False):
         rr = rollup[rollup["moiety"] == moiety].iloc[0]
         A(f"### {moiety}\n")
+        n_opg = 0 if opg is None else int((opg["moiety"] == moiety).sum())
         A(
-            f"{len(grp)} attributed of {rr['claims_total']} retrieved sentences · "
-            f"{rr['attributed_full_text']} full text, {rr['attributed_abstract_only']} "
-            f"abstract-only · ChEMBL calculated flag: `{rr['chembl_calculated_flag'] or 'none'}` · "
+            f"Phase 5 CNS pass: {len(grp)} attributed of {rr['claims_total']} retrieved sentences · "
+            f"OPG pass: {n_opg} claims carrying a verdict · ChEMBL calculated flag: `{rr['chembl_calculated_flag'] or 'none'}` · "
             f"openFDA label: `{rr['openfda_label_verdict']}` · "
             f"CNS-manifestation trial evidence on {rr['rows_with_cns_trial_evidence']} drug rows\n"
         )
@@ -315,10 +328,14 @@ def write_markdown(
         A("**Your drug verdict:** _______  (`demonstrated` / `contradicted` / `unknown`), resting on claim id(s): _______\n")
         for _, c in grp.iterrows():
             num = "number" if bool(c["has_number"]) else "no number"
+            pr_ = prop.get(c["claim_id"], {})
+            access_now = pr_.get("access") or c["access"]
+            if access_now != c["access"]:
+                access_now = f"{access_now} (supplied PDF)"
             src = f"[PMID {c['pmid']}]({c['pubmed_url']})"
             if c["pmc_url"]:
                 src += f" · [PMC]({c['pmc_url']})"
-            A(f"- **{c['claim_id']}** · {src} · `{c['access']}` · `{c['keyword_direction']}` · {num}")
+            A(f"- **{c['claim_id']}** · {src} · `{access_now}` · `{c['keyword_direction']}` · {num}")
             # 11 of the 124 sentences carry line breaks from the PMC full text; they
             # would split the blockquote, so whitespace is collapsed for display only.
             # The CSV keeps the sentence exactly as Phase 5 extracted it.
@@ -348,6 +365,22 @@ def write_markdown(
                 )
             else:
                 A("  - verdict: _______ · basis: _______ · primary/restated: _______ · species: _______ · metric/value: _______")
+        if opg is not None:
+            sub = opg[opg["moiety"] == moiety].sort_values("evidence_weight", ascending=False)
+            if len(sub):
+                A("")
+                A(f"**OPG pass — tumour-compartment evidence ({len(sub)} claims carrying a verdict)**\n")
+                for _, o in sub.head(8).iterrows():
+                    w = o.get("evidence_weight")
+                    A(f"- **{o['claim_id']}** · [PMID {o['pmid']}](https://pubmed.ncbi.nlm.nih.gov/{o['pmid']}/)"
+                      f" · `{o['access']}` · `{o['proposed_verdict']}`"
+                      f" · {o.get('proposed_compartment','')} · weight **{w:.2f}**"
+                      if pd.notna(w) else
+                      f"- **{o['claim_id']}** · `{o['proposed_verdict']}`")
+                    A(f"  - > {' '.join(str(o['sentence']).split())}")
+                    A(f"  - *{str(o['title']).strip()}*")
+                if len(sub) > 8:
+                    A(f"- ...and {len(sub) - 8} more in `phase6-opg-adjudicated.csv`")
         A("")
 
     (OUT_DOCS / "phase6-cns-adjudication-sheet.md").write_text("\n".join(L))

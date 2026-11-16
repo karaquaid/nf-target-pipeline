@@ -139,7 +139,15 @@ def corroboration(label: str, section: str, pub_types: str, context: str) -> tup
 
 def main() -> None:
     prop = pd.read_csv(DATA / "phase6-cns-adjudication-proposed.csv")
+    if "source_pass" not in prop.columns:
+        prop["source_pass"] = "phase5_cns"
     packets = json.loads((DATA / "phase6-cns-claim-context.json").read_text())
+    # Stage 5 (OPG) asks the tumour-compartment question the Phase 5 pass never
+    # asked. Its claims score on the same scale and feed the same bands.
+    opg_p, opg_c = DATA / "phase6-opg-adjudicated.csv", DATA / "phase6-opg-claim-context.json"
+    if opg_p.exists() and opg_c.exists():
+        prop = pd.concat([prop, pd.read_csv(opg_p)], ignore_index=True)
+        packets.update(json.loads(opg_c.read_text()))
     audit = pd.read_csv(DATA / "phase6-cns-span-audit.csv").set_index("claim_id")["span_status"].to_dict()
 
     rows = []
@@ -169,6 +177,7 @@ def main() -> None:
         rows.append(
             {
                 "claim_id": cid,
+                "source_pass": r.get("source_pass", "phase5_cns"),
                 "moiety": r["moiety"],
                 "proposed_verdict": verdict,
                 "access": r.get("access"),
