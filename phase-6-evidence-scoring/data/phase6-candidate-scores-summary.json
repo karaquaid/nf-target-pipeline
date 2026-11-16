@@ -154,5 +154,20 @@
       "score": 0.8143
     }
   ],
-  "note": "Delivery enters only in bbb_required strata. A positive delivery score whose delivery_basis is tumor_clinical rests on the same trials that score clinical stage - recorded rather than hidden, per Kara 2026-11-16."
+  "note": "Delivery enters only in bbb_required strata. A positive delivery score whose delivery_basis is tumor_clinical rests on the same trials that score clinical stage - recorded rather than hidden, per Kara 2026-11-16.",
+  "delivery_rank_effect": {
+    "moved_5_or_more_ranks": 21,
+    "improved": 12,
+    "improved_by_basis": {
+      "tumor_clinical": 11,
+      "unassessed": 1
+    },
+    "worsened": 9,
+    "worsened_by_basis": {
+      "no_assessed_drug": 5,
+      "tumor_contradicted": 3,
+      "unassessed": 1
+    },
+    "note": "Candidates that worsened carry no delivery score of their own; they fall because peers with tumor_clinical evidence rose past them. An earlier commit message and memory note wrongly said all 21 moved upward on tumor_clinical."
+  }
 }
