@@ -170,6 +170,18 @@ def build() -> dict:
         if keep:
             rollup = rollup.merge(prior[["moiety", *keep]], on="moiety", how="left")
 
+    # Human verdicts live in their own decisions file and are merged in here, so
+    # the rollup stays fully regenerable and nobody hand-edits a derived table.
+    hv_path = OUT_DATA / "phase6-cns-human-verdicts.csv"
+    if hv_path.exists():
+        hv = pd.read_csv(hv_path)
+        rollup = rollup.drop(columns=[c for c in ("drug_verdict", "decisive_claim_ids", "drug_rationale",
+                                                  "decided_on", "decided_by") if c in rollup.columns])
+        hv = hv.rename(columns={"human_verdict": "drug_verdict", "rationale": "drug_rationale"})
+        rollup = rollup.merge(
+            hv[["moiety", "drug_verdict", "decisive_claim_ids", "drug_rationale", "decided_on", "decided_by"]],
+            on="moiety", how="left")
+
     prop_path = OUT_DATA / "phase6-cns-adjudication-proposed.csv"
     proposals = pd.read_csv(prop_path) if prop_path.exists() else None
     score_path = OUT_DATA / "phase6-cns-evidence-scores.csv"
