@@ -180,7 +180,7 @@
   "moiety": "BINIMETINIB",
   "pmid": "28921565",
   "pmcid": null,
-  "access": "abstract_only",
+  "access": "full_text",
   "title": "The impact of P-glycoprotein and breast cancer resistance protein on the brain pharmacokinetics and pharmacodynamics of a panel of MEK inhibitors.",
   "journal": "Int J Cancer",
   "year": "2017",
@@ -188,10 +188,10 @@
    "Journal Article"
   ],
   "sentence": "PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026): PD0325901 was the weakest substrate of P-gp and BCRP in vitro, its brain penetration was only marginally higher in Abcb1a/b;Abcg2mice, and efficient target inhibition in the brain could be achieved at clinically relevant plasma levels.",
-  "context_source": "pubmed_abstract",
-  "context_section": "Abstract",
+  "context_source": "supplied_fulltext",
+  "context_section": "Results and Discussion (supplied full text, drug-specific extracts)",
   "context_kind": "abstract",
-  "context_text": "Mitogen/extracellular signal-regulated kinase (MEK) inhibitors have been tested in clinical trials for treatment of intracranial neoplasms, including glioblastoma (GBM), but efficacy of these drugs has not yet been demonstrated. The blood-brain barrier (BBB) is a major impediment to adequate delivery of drugs into the brain and may thereby also limit the successful implementation of MEK inhibitors against intracranial malignancies. The BBB is equipped with a range of ATP-dependent efflux transport proteins, of which P-gp (ABCB1) and BCRP (ABCG2) are the two most dominant for drug efflux from the brain. We investigated their impact on the pharmacokinetics and target engagement of a panel of clinically applied MEK inhibitors, in order to select the most promising candidate for brain cancers in the context of clinical pharmacokinetics and inhibitor characteristics. To this end, we used in vitro drug transport assays and conducted pharmacokinetic and pharmacodynamic studies in wildtype and ABC-transporter knockout mice. PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026): PD0325901 was the weakest substrate of P-gp and BCRP in vitro, its brain penetration was only marginally higher in Abcb1a/b;Abcg2 -/- mice, and efficient target inhibition in the brain could be achieved at clinically relevant plasma levels. Notably, target inhibition could also be demonstrated for selumetinib, but only at plasma levels far above levels in patients receiving the maximum tolerated dose. In summary, our study recommends further development of PD0325901 for the treatment of intracranial neoplasms.",
+  "context_text": "PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026): PD0325901 was the weakest substrate of P-gp and BCRP in vitro, its brain penetration was only marginally higher in Abcb1a/b;Abcg2-/- mice, and efficient target inhibition in the brain could be achieved at clinically relevant plasma levels. Our study investigates five MEK inhibitors that are in clinical development: pimasertib (AS703026), PD0325901, binimetinib (MEK162), selumetinib (AZD6244), and trametinib (GSK1120212). Samples were analyzed using an LC-MS/MS method as described for trametinib and binimetinib CETAs. [Note: the in vivo brain pharmacokinetic experiments in this paper cover PD0325901, selumetinib and pimasertib only; binimetinib appears in the in vitro transport assays and the comparative summary.]",
   "match_frac": 0.0
  },
  "CNS-011": {
@@ -1315,7 +1315,7 @@
   "moiety": "SELUMETINIB",
   "pmid": "28921565",
   "pmcid": null,
-  "access": "abstract_only",
+  "access": "full_text",
   "title": "The impact of P-glycoprotein and breast cancer resistance protein on the brain pharmacokinetics and pharmacodynamics of a panel of MEK inhibitors.",
   "journal": "Int J Cancer",
   "year": "2017",
@@ -1323,10 +1323,10 @@
    "Journal Article"
   ],
   "sentence": "PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026): PD0325901 was the weakest substrate of P-gp and BCRP in vitro, its brain penetration was only marginally higher in Abcb1a/b;Abcg2mice, and efficient target inhibition in the brain could be achieved at clinically relevant plasma levels.",
-  "context_source": "pubmed_abstract",
-  "context_section": "Abstract",
+  "context_source": "supplied_fulltext",
+  "context_section": "Results and Discussion (supplied full text, drug-specific extracts)",
   "context_kind": "abstract",
-  "context_text": "Mitogen/extracellular signal-regulated kinase (MEK) inhibitors have been tested in clinical trials for treatment of intracranial neoplasms, including glioblastoma (GBM), but efficacy of these drugs has not yet been demonstrated. The blood-brain barrier (BBB) is a major impediment to adequate delivery of drugs into the brain and may thereby also limit the successful implementation of MEK inhibitors against intracranial malignancies. The BBB is equipped with a range of ATP-dependent efflux transport proteins, of which P-gp (ABCB1) and BCRP (ABCG2) are the two most dominant for drug efflux from the brain. We investigated their impact on the pharmacokinetics and target engagement of a panel of clinically applied MEK inhibitors, in order to select the most promising candidate for brain cancers in the context of clinical pharmacokinetics and inhibitor characteristics. To this end, we used in vitro drug transport assays and conducted pharmacokinetic and pharmacodynamic studies in wildtype and ABC-transporter knockout mice. PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026): PD0325901 was the weakest substrate of P-gp and BCRP in vitro, its brain penetration was only marginally higher in Abcb1a/b;Abcg2 -/- mice, and efficient target inhibition in the brain could be achieved at clinically relevant plasma levels. Notably, target inhibition could also be demonstrated for selumetinib, but only at plasma levels far above levels in patients receiving the maximum tolerated dose. In summary, our study recommends further development of PD0325901 for the treatment of intracranial neoplasms.",
+  "context_text": "Interestingly, neither single knockout mouse strain demonstrated any increased brain penetration, indicative of redundancy between P-gp and BCRP as has been observed for various other compounds. The brain-to-plasma ratio was only about 0.02, which is close to the fraction of blood in brain The selumetinib brain-to-plasma ratio increased in Abcb1a/b;Abcg2-/- mice, but remained very poor (0.06). Whereas plasma levels were similar in wildtype and transporter knockout mice, the brain concentration of selumetinib was 3.5-fold increased in Abcb1a/b;Abcg2-/- mice following i.v. administration. Based on our preclinical data, we demonstrate that brain access of selumetinib is efficiently restricted (brain-to-plasma ratio of only 0.02-0.06) and results in just a marginal inhibition of intracranial MEK at clinically achievable plasma concentrations. Notably, target inhibition could also be demonstrated for selumetinib, but only at plasma levels far above levels in patients receiving the maximum tolerated dose.",
   "match_frac": 0.0
  },
  "CNS-068": {

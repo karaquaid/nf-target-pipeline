@@ -123,7 +123,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 2 attributed of 14 retrieved sentences · 1 full text, 1 abstract-only · ChEMBL calculated flag: `predicted_permeant` · openFDA label: `no_statement` · CNS-manifestation trial evidence on 8 drug rows
 
-**Evidence score: `unknown`** (below_peak_threshold) — best supporting claim 0.214, best contradicting 0.0, direction +1.0. best claim weighs 0.21, below 0.5; unassessed. Corroboration: 0.214 total weight across 2 claims (does not set the band). Heaviest claims: CNS-009 (0.21), CNS-010 (0.12).
+**Evidence score: `unknown`** (below_peak_threshold) — best supporting claim 0.214, best contradicting 0.0, direction +1.0. best claim weighs 0.21, below 0.5; unassessed. Corroboration: 0.214 total weight across 2 claims (does not set the band). Heaviest claims: CNS-009 (0.21), CNS-010 (0.06).
 
 **Proposed drug verdict: `unknown`** — No primary, normal-arm claim carries a measured or clinical finding. Decisive claim(s): nan.
 
@@ -139,10 +139,10 @@ A claim read from an abstract can still be decisive when the abstract states the
 - **CNS-010** · [PMID 28921565](https://pubmed.ncbi.nlm.nih.gov/28921565/) · `abstract_only` · `supporting` · number
   - > PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026): PD0325901 was the weakest substrate of P-gp and BCRP in vitro, its brain penetration was only marginally higher in Abcb1a/b;Abcg2mice, and efficient target inhibition in the brain could be achieved at clinically relevant plasma levels.
   - *The impact of P-glycoprotein and breast cancer resistance protein on the brain pharmacokinetics and pharmacodynamics of a panel of MEK inhibitors.* — Int J Cancer 2017
-  - **proposed: `unknown`** · basis `measured_pk_animal` · unclear · mouse · arm `unclear` · none = nan · confidence low · weight **0.12** · **flagged for human check**
-  - rationale: Text only ranks binimetinib as inferior to PD0325901 overall; no specific brain/CSF concentration, Kp,uu, or brain:plasma ratio for binimetinib itself is reported in the supplied text.
+  - **proposed: `unknown`** · basis `mechanistic_assertion` · unclear · in_vitro · arm `not_applicable` · none = nan · confidence high · weight **0.06**
+  - rationale: Sentence only ranks PD0325901 as better than binimetinib qualitatively; no brain/CSF exposure value for binimetinib is given. Note explicitly states binimetinib's in vivo brain PK was not measured in this paper.
   - span relied on: “PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026)”
-  - read from: pubmed_abstract / Abstract · **your verdict:** _______
+  - read from: supplied_fulltext / Results and Discussion (supplied full text, drug-specific extracts) · **your verdict:** _______
 
 ### COBIMETINIB
 
@@ -628,7 +628,7 @@ A claim read from an abstract can still be decisive when the abstract states the
 
 2 attributed of 9 retrieved sentences · 0 full text, 2 abstract-only · ChEMBL calculated flag: `predicted_non_permeant` · openFDA label: `no_label_found;no_statement` · CNS-manifestation trial evidence on 12 drug rows
 
-**Evidence score: `unknown`** (below_peak_threshold) — best supporting claim 0.0, best contradicting 0.463, direction -1.0. best claim weighs 0.46, below 0.5; unassessed. Corroboration: 0.463 total weight across 2 claims (does not set the band). Heaviest claims: CNS-068 (0.49), CNS-067 (0.46).
+**Evidence score: `contradicted`** (resolved) — best supporting claim 0.0, best contradicting 0.675, direction -1.0. best claim 0.68, direction -1.00. Corroboration: 0.675 total weight across 2 claims (does not set the band). Heaviest claims: CNS-067 (0.68), CNS-068 (0.49).
 
 **Proposed drug verdict: `contradicted`** — 1 primary mouse claim(s), all contradicted. Decisive claim(s): CNS-067.
 
@@ -637,10 +637,10 @@ A claim read from an abstract can still be decisive when the abstract states the
 - **CNS-067** · [PMID 28921565](https://pubmed.ncbi.nlm.nih.gov/28921565/) · `abstract_only` · `supporting` · number
   - > PD0325901 displayed more promising characteristics than trametinib (GSK1120212), binimetinib (MEK162), selumetinib (AZD6244), and pimasertib (AS703026): PD0325901 was the weakest substrate of P-gp and BCRP in vitro, its brain penetration was only marginally higher in Abcb1a/b;Abcg2mice, and efficient target inhibition in the brain could be achieved at clinically relevant plasma levels.
   - *The impact of P-glycoprotein and breast cancer resistance protein on the brain pharmacokinetics and pharmacodynamics of a panel of MEK inhibitors.* — Int J Cancer 2017
-  - **proposed: `contradicted`** · basis `measured_pk_animal` · primary · mouse · arm `normal` · brain target inhibition relative to plasma concentration = target inhibition only at plasma levels far above levels in patients receiving the maximum tolerated dose · confidence medium · weight **0.46** · **flagged for human check**
-  - rationale: In wildtype mice (normal arm), selumetinib only achieved brain target engagement at supratherapeutic plasma levels, indicating poor brain penetration relative to clinically achievable exposure - a contradicted finding for normal brain/CNS delivery.
-  - span relied on: “target inhibition could also be demonstrated for selumetinib, but only at plasma levels far above levels in patients receiving the maximum tolerated dose”
-  - read from: pubmed_abstract / Abstract · **your verdict:** _______
+  - **proposed: `contradicted`** · basis `measured_pk_animal` · primary · mouse · arm `normal` · brain-to-plasma ratio = brain-to-plasma ratio of only 0.02-0.06 · confidence high · weight **0.68**
+  - rationale: Wild-type brain-to-plasma ratio of 0.02 (near blood contamination level) is a low, exclusionary measurement in normal brain; knockout arm (0.06, 3.5-fold increase) describes transporter effect, not patient exposure.
+  - span relied on: “we demonstrate that brain access of selumetinib is efficiently restricted (brain-to-plasma ratio of only 0.02-0.06) and results in just a marginal inhibition of intracranial MEK at clinically achievable plasma concentrations”
+  - read from: supplied_fulltext / Results and Discussion (supplied full text, drug-specific extracts) · **your verdict:** _______
 - **CNS-068** · [PMID 32939452](https://pubmed.ncbi.nlm.nih.gov/32939452/) · [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7486535/) · `abstract_only` · `supporting` · no number
   - > We qualitatively assessed the effect of selumetinib on SNF-related spinal canal distortion, cerebrospinal fluid distribution, and spinal cord deformity on MRI.
   - *The MEK inhibitor selumetinib reduces spinal neurofibroma burden in patients with NF1 and plexiform neurofibromas.* — Neurooncol Adv 2020

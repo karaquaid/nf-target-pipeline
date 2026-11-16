@@ -8,7 +8,7 @@ CNS-006,AVAPRITINIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,1.0,0.8,0.8
 CNS-007,AVAPRITINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,0.5,0.2,0.85,0.85,1.0,not_applicable,none,abstract_with_first_person_study_language,0.0618,0.0
 CNS-008,AVAPRITINIB,demonstrated,abstract_only,Abstract,1.0,0.95,1.0,1.0,0.8,0.85,1.0,1.0,csf,tumour,abstract_with_first_person_study_language,0.646,0.646
 CNS-009,BINIMETINIB,demonstrated,full_text,Discussion,0.35,1.0,0.9,1.0,0.8,1.0,0.85,1.0,tumour_tissue,tumour,not_applicable_label_not_primary,0.2142,0.2142
-CNS-010,BINIMETINIB,unknown,abstract_only,Abstract,0.6,1.0,0.6,0.75,0.9,0.85,0.6,1.0,brain_unspecified,barrier_intact,not_applicable_label_not_primary,0.1239,0.0
+CNS-010,BINIMETINIB,unknown,full_text,"Results and Discussion (supplied full text, drug-specific extracts)",0.6,1.0,0.9,0.35,0.3,1.0,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.0567,0.0
 CNS-011,COBIMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
 CNS-012,COBIMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,1.0,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.5451,-0.5451
 CNS-013,COBIMETINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,0.5,0.2,0.85,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0161,0.0
@@ -65,7 +65,7 @@ CNS-063,REGORAFENIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.8,0.85,1.0
 CNS-064,REGORAFENIB,unknown,abstract_only,Abstract,0.6,1.0,0.9,1.0,0.3,0.85,1.0,1.0,not_applicable,none,not_applicable_label_not_primary,0.1377,0.0
 CNS-065,RIPRETINIB,unknown,full_text,Discussion,0.35,1.0,0.9,0.5,0.3,1.0,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0284,0.0
 CNS-066,RIPRETINIB,unknown,abstract_only,Abstract,0.35,1.0,0.9,1.0,0.3,0.85,0.6,1.0,not_applicable,none,not_applicable_label_not_primary,0.0482,0.0
-CNS-067,SELUMETINIB,contradicted,abstract_only,Abstract,1.0,0.95,1.0,0.75,0.9,0.85,0.85,1.0,brain_unspecified,barrier_intact,abstract_with_first_person_study_language,0.4633,-0.4633
+CNS-067,SELUMETINIB,contradicted,full_text,"Results and Discussion (supplied full text, drug-specific extracts)",1.0,1.0,1.0,0.75,0.9,1.0,1.0,1.0,normal_brain,barrier_intact,seated_in_results_or_table,0.675,-0.675
 CNS-068,SELUMETINIB,unknown,abstract_only,Abstract,1.0,0.95,0.9,1.0,0.8,0.85,0.85,1.0,not_applicable,tumour,abstract_with_first_person_study_language,0.4942,0.0
 CNS-069,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.486,-0.486
 CNS-070,SORAFENIB,contradicted,full_text,Discussion,1.0,0.9,1.0,0.6,0.9,1.0,1.0,1.0,csf,barrier_intact,seated_in_discussion,0.486,-0.486
