@@ -21,14 +21,13 @@
   "safety_downweighted": 45,
   "delivery_basis_counts": {
     "no_assessed_drug": 394,
-    "tumor_clinical": 18,
-    "no_drug": 6,
-    "unassessed": 3,
-    "tumor_contradicted": 3
+    "tumor_clinical": 17,
+    "unassessed": 7,
+    "no_drug": 6
   },
   "score_quartiles": {
     "0.25": 0.536,
-    "0.5": 0.584,
+    "0.5": 0.585,
     "0.75": 0.635
   },
   "top_per_stratum": [
@@ -153,5 +152,20 @@
       "score": 0.78
     }
   ],
-  "note": "Delivery enters only in bbb_required strata. A positive delivery score whose delivery_basis is tumor_clinical rests on the same trials that score clinical stage - recorded rather than hidden, per Kara 2026-11-16."
+  "note": "Delivery enters only in bbb_required strata. A positive delivery score whose delivery_basis is tumor_clinical rests on the same trials that score clinical stage - recorded rather than hidden, per Kara 2026-11-16.",
+  "call5_delivery": {
+    "weight": 0.2,
+    "states": {
+      "demonstrated": 1.0,
+      "unknown": 0.5,
+      "contradicted": 0.0
+    },
+    "sensitivity": {
+      "0.10": 0.991,
+      "0.20": 1.0,
+      "0.30": 0.993
+    },
+    "finding": "Inert at current coverage: delivery reaches 23 of 424 OPG candidates and the weight makes no difference to the ranking. After the compartment fix no candidate scores 0.0, because no drug in the table has a contradicted TUMOR band - every exclusion is barrier-intact, which optic pathway glioma does not ask about. Kept at 0.20 (Kara, 2026-11-17) so the scale is ready when a contradicted tumor band appears.",
+    "defect_fixed": "Before this call the scorer took a drug's OVERALL band in a tumor stratum, so cobimetinib and sorafenib - contradicted through an intact barrier, unknown in tumor - scored 0.0 for optic pathway glioma, and Kara's three human verdicts (all made about CSF or normal brain) applied in every compartment. Verdicts now carry a compartment and are honored only there. ITGA4 258->19, MAPK3 327->31, MTOR 30->12."
+  }
 }

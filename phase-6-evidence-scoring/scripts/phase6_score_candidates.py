@@ -110,6 +110,12 @@ def _truthy(v) -> bool:
 def drug_delivery_lookup() -> tuple[dict, dict]:
     """Per moiety: the band for each compartment class, and what the tumor band rests on."""
     rollup = pd.read_csv(DATA / "phase6-cns-adjudication-rollup.csv")
+    # Read the verdicts file directly: the rollup merge does not carry the
+    # compartment a verdict was made about, and defaulting that to "applies
+    # everywhere" let a barrier-intact verdict score a tumor stratum.
+    hv_path = DATA / "phase6-cns-human-verdicts.csv"
+    hv = pd.read_csv(hv_path) if hv_path.exists() else pd.DataFrame(columns=["moiety"])
+    hv_map = {r["moiety"]: (r.get("human_verdict"), r.get("compartment")) for _, r in hv.iterrows()}
     scores = pd.read_csv(DATA / "phase6-cns-evidence-scores.csv")
     bases = []
     for f in ("phase6-cns-adjudication-proposed.csv", "phase6-opg-adjudicated.csv"):
@@ -121,12 +127,13 @@ def drug_delivery_lookup() -> tuple[dict, dict]:
 
     bands, basis_of = {}, {}
     for _, r in rollup.iterrows():
-        human = r.get("drug_verdict")
+        human, human_comp = hv_map.get(r["moiety"], (None, None))
         bands[r["moiety"]] = {
             "overall": r.get("scored_band"),
             "barrier_intact": r.get("band_barrier_intact"),
             "tumor": r.get("band_tumor"),
             "human_verdict": human if isinstance(human, str) and human else None,
+            "human_compartment": human_comp if isinstance(human_comp, str) else None,
         }
         sub = scores[(scores["moiety"] == r["moiety"]) & (scores["compartment_class"] == "tumor")
                      & (scores["proposed_verdict"] == "demonstrated")]
@@ -151,10 +158,16 @@ def delivery_for(row, matches, variants, bands, basis_of) -> tuple:
         if not moiety or moiety not in bands:
             continue
         b = bands[moiety]
-        state = b["human_verdict"] or (
-            b.get(compartment) if b.get("overall") == "compartment_split" else b.get("overall"))
-        if state == "compartment_split":
-            state = b.get(compartment)
+        # Compartment first, always. Taking the overall band here applied a
+        # barrier-intact finding inside a tumor stratum - cobimetinib and
+        # sorafenib are contradicted through an intact barrier but unknown in
+        # tumor, and were scoring 0.0 for optic pathway glioma on that basis.
+        # A human verdict overrides only the compartment it was made about.
+        state = b.get(compartment)
+        if b["human_verdict"] and b.get("human_compartment") in (None, compartment):
+            state = b["human_verdict"]
+        if state in (None, "compartment_split"):
+            state = b.get("overall") if b.get("overall") != "compartment_split" else b.get(compartment)
         score = DELIVERY.get(state)
         if score is None:
             continue
