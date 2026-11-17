@@ -163,5 +163,84 @@
       "score": 0.78
     }
   ],
+  "decisions": {
+    "call1_mechanism": {
+      "ruling": "D_no_edges is unassessed, not scored 0.0 (Kara, 2026-11-16)",
+      "why": "Monarch and DisMech coverage is uneven by disease - no DisMech entry for NF2-SWN, no Monarch causal edge for SWN - so a zero there often scores a database gap, not biology.",
+      "counterfactual_measured_on_pre_ruling_table": {
+        "candidates_changing_rank": 3720,
+        "of": 3752,
+        "median_abs_rank_shift": 121.0,
+        "strata_whose_rank1_set_changes": 6,
+        "strata_whose_previous_leader_displaced": 5,
+        "of_strata": 9,
+        "correction": "When framing this call I told Kara 'eight of nine stratum leaders change'. That number was never computed - I read a gene list truncated to eight names as a count of strata. The correct figures are the two above."
+      }
+    },
+    "call1b_thin_coverage": {
+      "ruling": "unassessed weight contributes at a neutral 0.5 prior, not redistributed (Kara, 2026-11-16)",
+      "why": "Redistribution rewarded ignorance: with mechanism gone from most rows a candidate assessed on two maxed components scored a perfect 1.0, and 104 candidates tied at rank 1 - 41 in MPNST, including the pseudogene FKSG14 tied with PARP1. Ties fell to 34 under shrinkage."
+    },
+    "call2_weights": {
+      "ruling": "keep the weight vector, record its insensitivity (Kara, 2026-11-17)"
+    },
+    "call3_drug_stage": {
+      "ruling": "best_max_phase keeps full marks regardless of indication (Kara, 2026-11-17)",
+      "why": "The pipeline exists to find drugs NEW to NF patients, so an approval earned elsewhere is the signal of interest. The 182 candidates whose drugs have never been in an NF trial are flagged novel_to_nf rather than discounted."
+    },
+    "call4_safety": {
+      "ruling": "penalise only as a target's usable options are exhausted (Kara, 2026-11-17)",
+      "why": "The flat version applied 0.60 for any withdrawn drug, which scaled with how well studied a target was: TP53 took it for 2 of 465 drugs. Downweighted candidates fell 498 -> 45."
+    },
+    "call5_delivery": {
+      "ruling": "leave delivery at 0.20; it is inert at current coverage (Kara, 2026-11-17)",
+      "weight_sensitivity_spearman": {
+        "0.10": 0.991,
+        "0.20": 1.0,
+        "0.30": 0.993
+      },
+      "why": "Delivery reaches 23 of 424 OPG candidates, so its influence comes from coverage rather than weight. After the compartment fix no candidate scores 0.0: no drug in the table has a contradicted TUMOR band, every exclusion being barrier-intact, which OPG does not ask about.",
+      "defect_fixed": "The scorer took a drug's OVERALL band in a tumor stratum, so cobimetinib and sorafenib - contradicted through an intact barrier, unknown in tumor - scored 0.0 for optic pathway glioma; and the human verdicts, all made about CSF or normal brain, applied in every compartment. Verdicts now carry a compartment and are honoured only there. ITGA4 258->19, MAPK3 327->31, MTOR 30->12."
+    },
+    "call6_coverage": {
+      "ruling": "report n_components_assessed rather than an insufficient-evidence flag (Kara, 2026-11-17)",
+      "why": "At its below-2 setting the flag marked 149 candidates and not one sat in any stratum's top 10; below-3 would have flagged 41.5% of the table. The Call 1b shrinkage already demotes thin candidates quantitatively."
+    }
+  },
+  "weight_sensitivity": {
+    "default": {
+      "expression": 0.3,
+      "literature": 0.2,
+      "mechanism": 0.2,
+      "tractability": 0.15,
+      "drug_stage": 0.15
+    },
+    "variants": {
+      "expression_0.40_literature_0.10": {
+        "spearman_vs_default": 0.971,
+        "rank1_genes_changed": 13
+      },
+      "expression_0.20_literature_0.30": {
+        "spearman_vs_default": 0.97,
+        "rank1_genes_changed": 0
+      },
+      "drug_stage_0.25_tractability_0.05": {
+        "spearman_vs_default": 0.965,
+        "rank1_genes_changed": 3
+      },
+      "equal_weights_0.20": {
+        "spearman_vs_default": 0.963,
+        "rank1_genes_changed": 3
+      }
+    },
+    "component_coverage": {
+      "expression": 3425,
+      "literature": 354,
+      "mechanism": 1341,
+      "tractability": 3508,
+      "drug_stage": 1676
+    },
+    "finding": "Coverage dominates weighting: every variant correlates 0.95+ with the default, while literature speaks for a tenth of the candidates that tractability does."
+  },
   "note": "Delivery enters only in bbb_required strata. A positive delivery score whose delivery_basis is tumor_clinical rests on the same trials that score clinical stage - recorded rather than hidden, per Kara 2026-11-16."
 }

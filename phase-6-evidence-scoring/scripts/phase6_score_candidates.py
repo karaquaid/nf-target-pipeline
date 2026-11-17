@@ -102,6 +102,62 @@ ROUTE_INAPPROPRIATE = 0.40      # every drug this candidate has is route-exclude
 # Which compartment a manifestation needs. Only bbb_required strata consult this.
 MANIFESTATION_COMPARTMENT = {"Optic pathway glioma": "tumor"}
 
+# --- decision record ---------------------------------------------------------
+# Every ruling below was settled with Kara and is EMITTED INTO THE SUMMARY by
+# main(). An earlier version of this file left these notes appended to the JSON
+# by hand, and each rerun regenerated the summary from its own schema and wiped
+# them - the record has to be produced by the code that produces the scores.
+DECISIONS = {
+    "call1_mechanism": {
+        "ruling": "D_no_edges is unassessed, not scored 0.0 (Kara, 2026-11-16)",
+        "why": ("Monarch and DisMech coverage is uneven by disease - no DisMech entry for NF2-SWN, no "
+                "Monarch causal edge for SWN - so a zero there often scores a database gap, not biology."),
+        "counterfactual_measured_on_pre_ruling_table": {
+            "candidates_changing_rank": 3720, "of": 3752, "median_abs_rank_shift": 121.0,
+            "strata_whose_rank1_set_changes": 6, "strata_whose_previous_leader_displaced": 5, "of_strata": 9,
+            "correction": ("When framing this call I told Kara 'eight of nine stratum leaders change'. That "
+                           "number was never computed - I read a gene list truncated to eight names as a "
+                           "count of strata. The correct figures are the two above."),
+        },
+    },
+    "call1b_thin_coverage": {
+        "ruling": "unassessed weight contributes at a neutral 0.5 prior, not redistributed (Kara, 2026-11-16)",
+        "why": ("Redistribution rewarded ignorance: with mechanism gone from most rows a candidate assessed on "
+                "two maxed components scored a perfect 1.0, and 104 candidates tied at rank 1 - 41 in MPNST, "
+                "including the pseudogene FKSG14 tied with PARP1. Ties fell to 34 under shrinkage."),
+    },
+    "call2_weights": {"ruling": "keep the weight vector, record its insensitivity (Kara, 2026-11-17)"},
+    "call3_drug_stage": {
+        "ruling": "best_max_phase keeps full marks regardless of indication (Kara, 2026-11-17)",
+        "why": ("The pipeline exists to find drugs NEW to NF patients, so an approval earned elsewhere is the "
+                "signal of interest. The 182 candidates whose drugs have never been in an NF trial are "
+                "flagged novel_to_nf rather than discounted."),
+    },
+    "call4_safety": {
+        "ruling": "penalise only as a target's usable options are exhausted (Kara, 2026-11-17)",
+        "why": ("The flat version applied 0.60 for any withdrawn drug, which scaled with how well studied a "
+                "target was: TP53 took it for 2 of 465 drugs. Downweighted candidates fell 498 -> 45."),
+    },
+    "call5_delivery": {
+        "ruling": "leave delivery at 0.20; it is inert at current coverage (Kara, 2026-11-17)",
+        "weight_sensitivity_spearman": {"0.10": 0.991, "0.20": 1.0, "0.30": 0.993},
+        "why": ("Delivery reaches 23 of 424 OPG candidates, so its influence comes from coverage rather than "
+                "weight. After the compartment fix no candidate scores 0.0: no drug in the table has a "
+                "contradicted TUMOR band, every exclusion being barrier-intact, which OPG does not ask about."),
+        "defect_fixed": ("The scorer took a drug's OVERALL band in a tumor stratum, so cobimetinib and "
+                         "sorafenib - contradicted through an intact barrier, unknown in tumor - scored 0.0 "
+                         "for optic pathway glioma; and the human verdicts, all made about CSF or normal "
+                         "brain, applied in every compartment. Verdicts now carry a compartment and are "
+                         "honoured only there. ITGA4 258->19, MAPK3 327->31, MTOR 30->12."),
+    },
+    "call6_coverage": {
+        "ruling": "report n_components_assessed rather than an insufficient-evidence flag (Kara, 2026-11-17)",
+        "why": ("At its below-2 setting the flag marked 149 candidates and not one sat in any stratum's top "
+                "10; below-3 would have flagged 41.5% of the table. The Call 1b shrinkage already demotes "
+                "thin candidates quantitatively."),
+    },
+}
+
 
 def _truthy(v) -> bool:
     return str(v).strip().lower() == "true"
@@ -182,6 +238,49 @@ def delivery_for(row, matches, variants, bands, basis_of) -> tuple:
     else:
         basis = "unassessed"
     return best, basis, best_moiety
+
+
+def weight_sensitivity(out: pd.DataFrame) -> dict:
+    """How much the ranking depends on the weight vector, recomputed each run.
+
+    Call 2's finding was that it barely does - coverage separates candidates, not
+    weighting - and that only stays true if it is re-measured rather than quoted.
+    """
+    from scipy.stats import spearmanr
+
+    def ranks(w0):
+        def sc(r):
+            w = dict(w0)
+            if r["bbb_required"]:
+                w = {k: v * (1 - DELIVERY_WEIGHT) for k, v in w.items()}
+                w["cns_delivery"] = DELIVERY_WEIGHT
+            pres = {k: r[f"s_{k}"] for k in w if pd.notna(r.get(f"s_{k}"))}
+            aw = sum(w[k] for k in pres)
+            mw = sum(w.values()) - aw
+            return (((sum(r[f"s_{k}"] * w[k] for k in pres) + mw * NEUTRAL_PRIOR) / (aw + mw))
+                    * r["safety_multiplier"] * r["route_multiplier"])
+        s = out.apply(sc, axis=1)
+        return out.assign(_s=s).groupby(["disease", "manifestation"])._s.rank(ascending=False, method="min")
+
+    cur = out["rank_in_stratum"]
+    variants = {
+        "expression_0.40_literature_0.10": dict(WEIGHTS, expression=0.40, literature=0.10),
+        "expression_0.20_literature_0.30": dict(WEIGHTS, expression=0.20, literature=0.30),
+        "drug_stage_0.25_tractability_0.05": dict(WEIGHTS, drug_stage=0.25, tractability=0.05),
+        "equal_weights_0.20": dict.fromkeys(WEIGHTS, 0.20),
+    }
+    res = {}
+    for name, w in variants.items():
+        rk = ranks(w)
+        res[name] = {
+            "spearman_vs_default": round(float(spearmanr(cur, rk).statistic), 3),
+            "rank1_genes_changed": int(len(set(out.loc[rk == 1, "gene_symbol"])
+                                           - set(out.loc[cur == 1, "gene_symbol"]))),
+        }
+    return {"default": WEIGHTS, "variants": res,
+            "component_coverage": {k: int(out[f"s_{k}"].notna().sum()) for k in WEIGHTS},
+            "finding": ("Coverage dominates weighting: every variant correlates 0.95+ with the default, while "
+                        "literature speaks for a tenth of the candidates that tractability does.")}
 
 
 def main() -> None:
@@ -302,6 +401,8 @@ def main() -> None:
         "score_quartiles": out["score"].quantile([0.25, 0.5, 0.75]).round(3).to_dict(),
         "top_per_stratum": out[out["rank_in_stratum"] == 1][
             ["disease", "manifestation", "gene_symbol", "score"]].to_dict("records"),
+        "decisions": DECISIONS,
+        "weight_sensitivity": weight_sensitivity(out),
         "note": ("Delivery enters only in bbb_required strata. A positive delivery score whose "
                  "delivery_basis is tumor_clinical rests on the same trials that score clinical "
                  "stage - recorded rather than hidden, per Kara 2026-11-16."),
