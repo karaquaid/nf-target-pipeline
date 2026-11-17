@@ -1,0 +1,201 @@
+{
+  "generated_utc": "2026-11-17T19:53:58Z",
+  "what_this_measures": "Instability of single-reader, whole-body full-text verification in the nf-target-pipeline. Measurement only; no Phase 1b table was modified.",
+  "population": {
+    "unit": "(gene_target, disease, manifestation, pmid) claim where Phase 1b read that paper in full",
+    "claim_pairs_total": 469,
+    "papers_total": 155,
+    "claims_with_deterministic_phase1b_wholebody_verdict": 235,
+    "how_recorded_verdict_was_recovered": "Phase 1b stores verdict counts per row, not per claim. A claim's recorded verdict is determinable only where the row's full-text verdicts are unanimous, their count equals n_papers_fulltext_read, and all came from the whole-body pass (verdicts_from_whole_body == total). 235 of 469 claim pairs qualify.",
+    "claim_pairs_not_determinable": 234
+  },
+  "sampling": {
+    "seed": 20261117,
+    "design": "One-stage cluster sample: papers shuffled with the stated seed, walked in order, every full-text claim of each sampled paper verified (this reproduces Phase 1b's prompt unit, one prompt per paper carrying all that paper's claims). Equal inclusion probability per claim.",
+    "papers_attempted": 74,
+    "papers_with_body_retrieved": 59,
+    "papers_retrieval_failed": 15,
+    "retrieval_failure_reasons": {
+      "30239952": "short_body_0",
+      "33831431": "no_pmcid",
+      "33108355": "short_body_0",
+      "35467749": "short_body_0",
+      "42620117": "short_body_178",
+      "42540436": "short_body_0",
+      "32657748": "no_article",
+      "25480913": "short_body_0",
+      "40241281": "short_body_0",
+      "24362817": "no_article",
+      "36866403": "short_body_0",
+      "35210278": "no_article",
+      "31059067": "no_pmcid",
+      "35261809": "short_body_0",
+      "20043723": "no_pmcid"
+    },
+    "claims_in_sample_attempted": 200,
+    "claims_verified": 155,
+    "claims_verified_fraction_of_population": 0.3305,
+    "papers_sampled_fraction_of_population": 0.3806,
+    "reproduction_subsample_n": 82,
+    "retrieval_failure_breakdown": {
+      "empty_or_stub_text": 9,
+      "no_pmcid": 3,
+      "no_article": 3
+    }
+  },
+  "method": {
+    "retrieval": "PubMed MCP connector get_full_text_article (PMC), one body per paper, as Phase 7 did.",
+    "prompt": "litmonitor verdict_prompt verbatim (whole body, references stripped, 260k-char cap; no excerpting), VERDICT_SYSTEM verbatim.",
+    "model": "claude-sonnet-5",
+    "thinking": "disabled",
+    "temperature": "host default (not settable on this model); Phase 1b nominally requested temperature 0",
+    "runs": "two independent batched calls over identical prompts (run1, run2)",
+    "markup_guard": "A fresh not_supported verdict is voided when neither the gene label nor its digit-stripped base appears at a word boundary anywhere in the retrieved body."
+  },
+  "self_consistency_run1_vs_run2": {
+    "n": 155,
+    "disagreements": 19,
+    "rate": 0.1226,
+    "wilson95": [
+      0.0799,
+      0.1835
+    ],
+    "cluster_bootstrap95_by_paper": [
+      0.0497,
+      0.2081
+    ],
+    "after_markup_guard": {
+      "n": 150,
+      "disagreements": 17,
+      "rate": 0.1133,
+      "wilson95": [
+        0.072,
+        0.174
+      ]
+    },
+    "binary_support_vs_not_supported": {
+      "n": 155,
+      "disagreements": 6,
+      "rate": 0.0387,
+      "wilson95": [
+        0.0179,
+        0.0819
+      ],
+      "cluster_bootstrap95_by_paper": [
+        0.0,
+        0.0857
+      ]
+    },
+    "disagreement_pattern": {
+      "supported->partially_supported": 7,
+      "partially_supported->not_supported": 4,
+      "supported->not_supported": 1,
+      "partially_supported->supported": 6,
+      "not_supported->partially_supported": 1
+    }
+  },
+  "reproduction_of_phase1b": {
+    "n": 82,
+    "run1_disagreements": 17,
+    "run1_rate": 0.2073,
+    "run1_wilson95": [
+      0.1337,
+      0.3072
+    ],
+    "run1_cluster_bootstrap95_by_paper": [
+      0.117,
+      0.3165
+    ],
+    "run2_disagreements": 19,
+    "run2_rate": 0.2317,
+    "run2_wilson95": [
+      0.1537,
+      0.3338
+    ],
+    "run2_cluster_bootstrap95_by_paper": [
+      0.1125,
+      0.358
+    ],
+    "neither_run_reproduces": 14,
+    "binary_support_vs_not_supported": {
+      "n": 82,
+      "disagreements": 7,
+      "rate": 0.0854,
+      "cluster_bootstrap95_by_paper": [
+        0.0125,
+        0.1809
+      ]
+    },
+    "confusion_phase1b_to_run1": {
+      "supported->supported": 59,
+      "supported->partially_supported": 6,
+      "partially_supported->supported": 4,
+      "partially_supported->partially_supported": 6,
+      "not_supported->partially_supported": 1,
+      "partially_supported->not_supported": 5,
+      "not_supported->supported": 1
+    },
+    "caveat": "Conflates reader instability with protocol and retrieval change: Phase 1b read Europe PMC/NCBI JATS XML with markup intact; this run read the PubMed connector's extracted text, which deletes italicised gene symbols. Not a pure measure of reader noise."
+  },
+  "markup_guard": {
+    "papers_with_markup_loss_signature": 53,
+    "papers_sampled": 59,
+    "claims_whose_label_is_absent_from_retrieved_body_strict": 39,
+    "claims_whose_label_is_absent_from_retrieved_body_lax": 23,
+    "fresh_not_supported_run1": 9,
+    "voided_run1": 3,
+    "fresh_not_supported_run2": 13,
+    "voided_run2": 5,
+    "self_consistency_rate_label_present": 0.1061,
+    "self_consistency_rate_label_absent": 0.2174,
+    "note": "The guard only protects against false not_supported. In the RNF213 adjudication a positive verdict was returned against a body from which the label had been deleted, which the guard does not catch."
+  },
+  "adjudications": {
+    "PMID36148553_YAP1_WWTR1": {
+      "claim": "YAP1/WWTR1 (YAP/TAZ) | NF2-SWN | Meningioma (and the companion Vestibular schwannoma claim)",
+      "phase1b_recorded": "supported (full text)",
+      "phase7_reported": "not_supported",
+      "connector_body_label_occurrences": {
+        "YAP": 80,
+        "TAZ": 103,
+        "YAP1": 0,
+        "WWTR1": 0
+      },
+      "fresh_runs_connector_body": [
+        "supported",
+        "supported",
+        "supported"
+      ],
+      "fresh_runs_clean_jats_europepmc": [
+        "supported",
+        "supported",
+        "supported"
+      ],
+      "verdict": "supported \u2014 Phase 1b's record stands; Phase 7's not_supported does not reproduce",
+      "reasoning": "Six of six fresh whole-body reads (3 on the connector body, 3 on clean Europe PMC JATS) return supported for the meningioma claim, and the same for the vestibular schwannoma claim. The label is abundantly present in both bodies (YAP 80, TAZ 103 in the connector body), so this is not a retrieval artefact; the body states that NF2 loss reduces LATS1/2-mediated YAP/TAZ phosphorylation and that TAZ knockdown reduces NF2-null meningioma cell proliferation."
+    },
+    "PMID39367156_RNF213": {
+      "claim": "RNF213 | NF1 | Other",
+      "phase1b_recorded": "supported (full text)",
+      "phase7_reported": "not_supported in batch, supported on repeat",
+      "connector_body_RNF213_occurrences": 0,
+      "clean_jats_RNF213_occurrences": 34,
+      "fresh_runs_connector_body": [
+        "partially_supported",
+        "partially_supported",
+        "partially_supported"
+      ],
+      "fresh_runs_clean_jats_europepmc": [
+        "supported",
+        "supported",
+        "supported"
+      ],
+      "verdict": "supported \u2014 Phase 1b's record stands; Phase 7's not_supported is a retrieval artefact and is inadmissible",
+      "reasoning": "The connector's extracted body contains the string RNF213 zero times; the Europe PMC JATS body Phase 1b read contains it 34 times. Any verdict rendered against the connector body is void under the markup guard. Three fresh reads of the clean body return supported (the paper reports the RNF213 p.R4810K modifier variant in an NF1 patient with moyamoya syndrome)."
+    }
+  },
+  "scope_notes": [
+    "Measurement population is restricted to claims whose body is retrievable through the PubMed connector today; Phase 1b also read 20 papers from user-supplied PDFs and some via NCBI author-manuscript routes that the connector does not serve.",
+    "No Phase 1b table was read for anything but input; none was modified."
+  ]
+}
