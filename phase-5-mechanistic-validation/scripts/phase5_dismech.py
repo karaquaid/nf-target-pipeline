@@ -64,24 +64,61 @@ def norm(curie: str | None) -> str | None:
     return f"{pre.upper()}:{local}"
 
 
+def _aligned(items, id_getter, *value_getters):
+    """Serialise parallel pipe-delimited columns that a consumer can zip by index.
+
+    Every column is built from ONE ordering of ONE deduplicated sequence. The
+    earlier version sorted the id column as a set while writing the label and
+    modifier columns in source order, so the three disagreed whenever a node had
+    more than one entry: 80 of 92 term-label pairs across the 46 multi-term nodes
+    were mismatched (GO:0000165 labelled "Ras protein signal transduction" when it
+    is "MAPK cascade"). The gene columns had the same defect from sorting ids as
+    strings and labels alphabetically, so HGNC:17101|HGNC:3188 was labelled
+    EED|SUZ12 when HGNC:17101 is SUZ12.
+
+    Deduplicates on the id, keeps the first occurrence of each, and sorts once by
+    the id so all columns share that order.
+    """
+    seen, keep = set(), []
+    for it in items or []:
+        key = id_getter(it)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        keep.append((key, it))
+    keep.sort(key=lambda p: p[0])
+    return ["|".join(str(g(it) or "") for _, it in keep) for g in value_getters]
+
+
 def node_rows(entry: str, doc: dict) -> list[dict]:
     rows = []
     for node in doc.get("pathophysiology") or []:
         ev = node.get("evidence") or []
+        bps = node.get("biological_processes") or []
+        go_terms, go_labels, go_modifiers = _aligned(
+            bps,
+            lambda b: (b.get("term") or {}).get("id", ""),
+            lambda b: (b.get("term") or {}).get("id", ""),
+            lambda b: (b.get("term") or {}).get("label", ""),
+            lambda b: b.get("modifier") or "",
+        )
+        gene_items = node.get("genes") or []
+        genes, gene_labels = _aligned(
+            gene_items,
+            lambda g: norm((g.get("term") or {}).get("id")) if (g.get("term") or {}).get("id") else "",
+            lambda g: norm((g.get("term") or {}).get("id")),
+            lambda g: (g.get("term") or {}).get("label", ""),
+        )
         rows.append({
             "entry": entry,
             "node": node.get("name"),
             "conforms_to": node.get("conforms_to"),
             "description": node.get("description"),
-            "go_terms": "|".join(sorted({(b.get("term") or {}).get("id", "")
-                                         for b in node.get("biological_processes") or []} - {""})),
-            "go_labels": "|".join((b.get("term") or {}).get("label", "")
-                                  for b in node.get("biological_processes") or []),
-            "go_modifiers": "|".join(b.get("modifier") or "" for b in node.get("biological_processes") or []),
-            "genes": "|".join(sorted({norm((g.get("term") or {}).get("id"))
-                                      for g in node.get("genes") or [] if (g.get("term") or {}).get("id")})),
-            "gene_labels": "|".join(sorted({(g.get("term") or {}).get("label", "")
-                                            for g in node.get("genes") or []} - {""})),
+            "go_terms": go_terms,
+            "go_labels": go_labels,
+            "go_modifiers": go_modifiers,
+            "genes": genes,
+            "gene_labels": gene_labels,
             "downstream": "|".join(d.get("target", "") for d in node.get("downstream") or []),
             "n_evidence": len(ev),
             "evidence_refs": "|".join(e.get("reference", "") for e in ev),
