@@ -1,0 +1,27 @@
+{
+  "stage": "phase6_opg_retrieval.py",
+  "question": "does the drug act on, or reach, an intracranial glioma (tumour compartment)",
+  "moieties": 18,
+  "queries_per_moiety": 4,
+  "retmax": 25,
+  "papers": 325,
+  "sentences": 4320,
+  "attributed": 395,
+  "attributed_full_text": 192,
+  "attributed_abstract_only": 203,
+  "note": "Attribution requires the drug name or a ChEMBL synonym in the sentence itself, as in Phase 5. Unattributed sentences are retained but are not evidence about that drug.",
+  "correction_2026-11-16": "Commit 7930373's message lists dabrafenib among the drugs whose tumour band moved to demonstrated on evidence they previously had none of. That is wrong: dabrafenib and encorafenib already read tumour=demonstrated before this pass and are unchanged by it. Regorafenib did move and was omitted from that list.",
+  "tumour_band_moved_unknown_to_demonstrated": [
+    "SUNITINIB",
+    "REGORAFENIB",
+    "TOVORAFENIB",
+    "BINIMETINIB",
+    "SELUMETINIB",
+    "TRAMETINIB",
+    "PEXIDARTINIB"
+  ],
+  "tumour_band_already_demonstrated_before_this_pass": [
+    "ENCORAFENIB",
+    "DABRAFENIB"
+  ]
+}

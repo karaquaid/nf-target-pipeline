@@ -1,0 +1,28 @@
+{
+  "stage": "phase6_opg_adjudicate.py",
+  "model": "claude-sonnet-5",
+  "claims_submitted": 395,
+  "errors": [],
+  "verdict_counts": {
+    "unknown": 233,
+    "demonstrated": 147,
+    "contradicted": 15
+  },
+  "compartment_counts": {
+    "not_applicable": 204,
+    "tumour_tissue": 148,
+    "brain_unspecified": 18,
+    "plasma_only": 11,
+    "csf": 9,
+    "normal_brain": 5
+  },
+  "basis_counts": {
+    "clinical_cns_response": 247,
+    "review_restatement": 39,
+    "preclinical_cns_efficacy": 38,
+    "design_or_prediction": 35,
+    "mechanistic_assertion": 16,
+    "measured_pk_animal": 14,
+    "measured_pk_human": 6
+  }
+}
