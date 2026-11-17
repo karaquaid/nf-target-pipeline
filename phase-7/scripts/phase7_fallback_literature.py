@@ -898,7 +898,67 @@ def stage_aggregate(work, outdir=DATA):
 
 # ---------------------------------------------------------------------------
 
-STAGES = ["search", "metadata", "screen", "fulltext", "verify", "aggregate"]
+# --- post-curation -----------------------------------------------------------
+# Corrections ratified after the pipeline ran. They are applied as their own
+# stage, reading the same curation file the aggregate stage reads, so they are
+# reproducible from the record rather than hand-edited into the CSV. The stage
+# is idempotent and needs no work/ cache, so it can be re-run on the committed
+# table without re-fetching 279 papers and re-rolling every model verdict.
+
+# Kara, 2026-11-17. A paper that does not establish germline NF disease is kept
+# and penalised rather than excluded -- but only where germline status is
+# UNSTATED. Material established as sporadic stays excluded under the standing
+# rule in the Disease and Manifestation Labeling Standard. The magnitude is a
+# judgement call, not a measurement, and lives here so it is visible and
+# changeable in one place rather than buried per row.
+GERMLINE_UNESTABLISHED_WEIGHT = 0.5
+GERMLINE_FLAG = "germline NF attribution not established"
+
+
+def stage_postcurate(outdir=DATA):
+    """Apply ratified post-hoc corrections to the committed candidate table."""
+    path = os.path.join(outdir, "phase7-fallback-candidates.csv")
+    cur = _load(os.path.join(DATA, "phase7-fallback-curation.json"), {}) or {}
+    relabels = {(d["disease"], d["from_manifestation"], _key(d["gene_target"])): d
+                for d in cur.get("manifestation_relabels", [])}
+
+    with open(path, newline="") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0].keys()) if rows else []
+
+    for col in ("germline_attribution_weight", "postcuration_note"):
+        if col not in fields:
+            fields.append(col)
+
+    n_relabelled = n_penalised = 0
+    for r in rows:
+        key = (r["disease"], r["manifestation"], _key(r["gene_target"]))
+        if key in relabels:
+            d = relabels[key]
+            r["manifestation"] = d["to_manifestation"]
+            r["postcuration_note"] = d["reason"]
+            n_relabelled += 1
+        else:
+            r.setdefault("postcuration_note", r.get("postcuration_note") or "")
+
+        if (r.get("scope_flag") or "").strip() == GERMLINE_FLAG:
+            r["germline_attribution_weight"] = GERMLINE_UNESTABLISHED_WEIGHT
+            n_penalised += 1
+        else:
+            r["germline_attribution_weight"] = 1.0
+
+    with open(path, "w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+
+    print("  rows relabelled: %d" % n_relabelled)
+    print("  rows carrying the germline penalty (%.2f): %d"
+          % (GERMLINE_UNESTABLISHED_WEIGHT, n_penalised))
+    return {"relabelled": n_relabelled, "penalised": n_penalised}
+
+
+STAGES = ["search", "metadata", "screen", "fulltext", "verify", "aggregate", "postcurate"]
 
 
 def main(argv=None):
@@ -914,6 +974,8 @@ def main(argv=None):
         print(f"[{s}]")
         if s == "aggregate":
             stage_aggregate(args.workdir, args.outdir)
+        elif s == "postcurate":
+            stage_postcurate(args.outdir)
         else:
             if host is None:
                 raise SystemExit(

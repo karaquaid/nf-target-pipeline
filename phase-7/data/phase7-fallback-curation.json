@@ -1,71 +1,556 @@
 {
-  "_about": "Curation applied by phase7_fallback_literature.py (aggregate stage) to the raw abstract extraction. Every decision is recorded here rather than hand-edited into the CSV, so it is reversible and countable later (literature-target-map protocol, rule 4). Renames normalise a label onto an official HGNC symbol or onto the exact Phase 1b label for the same entity; they never merge two different entities. Drops remove a row from the candidate table on scope grounds; the claim stays in the work-directory caches. Paper flags do not remove anything - they mark rows whose every supporting paper carries the stated caveat.",
-
-  "rename_labels": [
-    {"stratum": "NF1|Non-optic LGG", "from": "MEK", "to": "MAP2K1/2 (MEK1/2)", "label_type": "family", "constituent_genes": ["MAP2K1", "MAP2K2"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF1|Non-optic LGG", "from": "MEK1/2", "to": "MAP2K1/2 (MEK1/2)", "label_type": "family", "constituent_genes": ["MAP2K1", "MAP2K2"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF1|Non-optic LGG", "from": "MEK (MAPK kinase)", "to": "MAP2K1/2 (MEK1/2)", "label_type": "family", "constituent_genes": ["MAP2K1", "MAP2K2"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF1|Non-optic LGG", "from": "mTOR", "to": "MTOR", "label_type": "gene", "note": "Official HGNC symbol; Phase 1b spelling."},
-    {"stratum": "NF1|Non-optic LGG", "from": "mTOR pathway", "to": "MTOR", "label_type": "gene", "note": "Pathway label folded onto its named node, which Phase 1b already holds in this stratum; avoids a near-duplicate counted as novel."},
-    {"stratum": "NF1|Non-optic LGG", "from": "mTORC1", "to": "MTORC1", "label_type": "complex", "constituent_genes": ["MTOR", "RPTOR", "MLST8"], "note": "Case-normalised."},
-    {"stratum": "NF1|Non-optic LGG", "from": "mTORC1/2", "to": "MTORC1/2", "label_type": "complex", "constituent_genes": ["MTOR", "RPTOR", "RICTOR", "MLST8"], "note": "Case-normalised."},
-    {"stratum": "NF1|Non-optic LGG", "from": "mTORC1/mTORC2 pathway", "to": "MTORC1/2", "label_type": "complex", "constituent_genes": ["MTOR", "RPTOR", "RICTOR", "MLST8"], "note": "Same entity as mTORC1/2."},
-    {"stratum": "NF1|Non-optic LGG", "from": "MAPK/Erk pathway", "to": "MAPK pathway", "label_type": "pathway", "constituent_genes": ["MAP2K1", "MAP2K2", "MAPK1", "MAPK3", "BRAF", "RAF1"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF1|Non-optic LGG", "from": "PI3K pathway", "to": "PI3K (family)", "label_type": "family", "constituent_genes": ["PIK3CA", "PIK3CB", "PIK3CD", "PIK3R1"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF1|Non-optic LGG", "from": "Matrilin 2", "to": "MATN2", "label_type": "gene", "note": "Official HGNC symbol."},
-    {"stratum": "NF1|Non-optic LGG", "from": "FAK", "to": "PTK2 (FAK)", "label_type": "gene", "constituent_genes": ["PTK2"], "note": "Phase 1b label for the same entity."},
-
-    {"stratum": "NF1|Other", "from": "RAS", "to": "RAS (pan)", "label_type": "family", "constituent_genes": ["HRAS", "KRAS", "NRAS"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF1|Other", "from": "NADPH oxidase 2", "to": "CYBB (NOX2)", "label_type": "complex", "constituent_genes": ["CYBB", "CYBA", "NCF1", "NCF2", "NCF4", "RAC1"], "note": "Official HGNC symbol for the catalytic subunit, complex members listed."},
-    {"stratum": "NF1|Other", "from": "GPER", "to": "GPER1", "label_type": "gene", "note": "Official HGNC symbol."},
-
-    {"stratum": "NF2-SWN|Meningioma", "from": "FAK", "to": "PTK2 (FAK)", "label_type": "gene", "constituent_genes": ["PTK2"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "FAK1 (PTK2)", "to": "PTK2 (FAK)", "label_type": "gene", "constituent_genes": ["PTK2"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "EphA2", "to": "EPHA2", "label_type": "gene", "note": "Official HGNC symbol."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "ErbB2", "to": "ERBB2", "label_type": "gene", "note": "Official HGNC symbol."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "c-KIT", "to": "KIT", "label_type": "gene", "note": "Official HGNC symbol."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "Src family kinase (SFK)", "to": "SRC", "label_type": "gene", "note": "Same paper (29982664) supports the Phase 1b SRC row in this stratum."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "EPH receptor signaling", "to": "EPH receptors", "label_type": "family", "constituent_genes": ["EPHA2", "EPHB1"], "note": "Phase 1b composite label for the same entity."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "MEK-ERK", "to": "MAP2K1/2 (MEK1/2)", "label_type": "family", "constituent_genes": ["MAP2K1", "MAP2K2"], "note": "The claim is MEK inhibition; Phase 1b holds MAP2K1/2 (MEK1/2) in this stratum."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "mTOR-S6", "to": "MTOR", "label_type": "gene", "note": "The claim is mTOR inhibition; Phase 1b holds MTOR in this stratum."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "mTORC1", "to": "MTORC1", "label_type": "complex", "constituent_genes": ["MTOR", "RPTOR", "MLST8"], "note": "Case-normalised."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "mTORC2", "to": "MTORC2", "label_type": "complex", "constituent_genes": ["MTOR", "RICTOR", "MLST8", "MAPKAP1"], "note": "Case-normalised."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "mTORC1/mTORC2", "to": "MTORC1/2", "label_type": "complex", "constituent_genes": ["MTOR", "RPTOR", "RICTOR", "MLST8"], "note": "Case-normalised."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "YAP-TEAD pathway", "to": "YAP1-TEAD", "label_type": "complex", "constituent_genes": ["YAP1", "TEAD1", "TEAD2", "TEAD3", "TEAD4"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "Hippo-YAP/TEAD pathway", "to": "YAP1-TEAD", "label_type": "complex", "constituent_genes": ["YAP1", "TEAD1", "TEAD2", "TEAD3", "TEAD4"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "YAP1/TAZ-TEAD signaling", "to": "YAP1/WWTR1 (YAP/TAZ)", "label_type": "family", "constituent_genes": ["YAP1", "WWTR1"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "MAPK", "to": "MAPK pathway", "label_type": "pathway", "constituent_genes": ["MAP2K1", "MAP2K2", "MAPK1", "MAPK3", "BRAF", "RAF1"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "PI3K-AKT", "to": "PI3K-AKT-MTOR axis", "label_type": "pathway", "constituent_genes": ["PIK3CA", "AKT1", "MTOR"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "PI3K-AKT-mTOR pathway", "to": "PI3K-AKT-MTOR axis", "label_type": "pathway", "constituent_genes": ["PIK3CA", "AKT1", "MTOR"], "note": "Phase 1b label for the same entity."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "PD-L1", "to": "CD274 (PD-L1)", "label_type": "gene", "constituent_genes": ["CD274"], "note": "Official HGNC symbol carried with the common name."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "CRL4", "to": "CRL4-DCAF1", "label_type": "complex", "constituent_genes": ["CUL4A", "CUL4B", "DDB1", "DCAF1"], "note": "The abstract names CRL4-DCAF1; the subscript was lost in text extraction. Phase 1b label for the same entity."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "YAP1-MAML2", "to": "YAP1-MAML2 (fusion)", "label_type": "other", "constituent_genes": ["YAP1", "MAML2"], "note": "A gene fusion, not a gene; label made explicit."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "Ubiquitin-proteasome pathway (UPP)", "to": "Ubiquitin-proteasome pathway", "label_type": "pathway", "constituent_genes": ["UBA1", "SKP2", "PSMB1", "PSMB5"], "note": "Trailing acronym removed."},
-    {"stratum": "NF2-SWN|Meningioma", "from": "ALK/ROS1/multi-kinase (brigatinib targets)", "to": "brigatinib", "label_type": "drug", "constituent_genes": [], "note": "The NEJM phase 2 trial names no single target, and PMID 34264955 shows brigatinib acts in NF2 tumours through kinases other than ALK. Recorded as a drug row (Phase 1b precedent: clemastine), not as an ALK claim."}
-  ],
-
-  "drop_rows": [
-    {"stratum": "NF2-SWN|Meningioma", "gene_target": "FAT2", "reason": "PMID 27900010 is a single sporadic spinal meningioma in a patient with no stated NF2 disease; germline NF2 attribution absent. Phase 1b scope decision 1 (sporadic tumours excluded)."},
-    {"stratum": "NF2-SWN|Meningioma", "gene_target": "TRAF7", "reason": "TRAF7 mutation defines the non-NF2 molecular group of meningioma, so the claim does not belong to the NF2-SWN stratum (PMID 42411653)."},
-    {"stratum": "NF2-SWN|Meningioma", "gene_target": "retroviral protease (targeted by ritonavir, atazanavir, lopinavir)", "reason": "Drug-class restatement of the HERV-K row from the same paper (34853069); names no distinct human target."},
-    {"stratum": "NF2-SWN|Meningioma", "gene_target": "VT3989", "reason": "Drug-level restatement of the YAP1-TEAD row from the same paper (42620117)."},
-    {"stratum": "NF2-SWN|Meningioma", "gene_target": "verteporfin", "reason": "Drug-level restatement of the YAP1-TEAD row from the same paper (42620117)."},
-    {"stratum": "NF1|Non-optic LGG", "gene_target": "BRAF", "reason": "In both supporting papers (30239952, 36455272) BRAF alteration defines the non-NF1 subgroup of paediatric LGG; the claim is not attributable to NF1."}
-  ],
-
-  "paper_flags": [
-    {"pmid": "39804847", "flag": "germline NF attribution not established", "detail": "A pheochromocytoma/paraganglioma cohort in which 'NF1 (cluster 2)' denotes the molecular cluster and somatic NF1 variant class; germline NF1 disease is not stated."},
-    {"pmid": "42411653", "flag": "germline NF attribution not established", "detail": "Optic nerve sheath meningioma review; most cases are sporadic and the row is not tied to a germline NF2 cohort."},
-    {"pmid": "43035157", "flag": "germline NF attribution not established", "detail": "Pan-solid-tumour Hippo/TEAD review citing NF2-deficient meningioma as an example rather than studying germline NF2 patients."},
-    {"pmid": "22618028", "flag": "germline NF attribution not established", "detail": "Meningioma series with no stated germline NF2 cohort; merlin status rather than NF2 disease."},
-    {"pmid": "41497607", "flag": "germline NF attribution not established", "detail": "NF2-mutant meningioma defined by tumour genotype; the mutation is somatic in most meningioma and germline status is not stated."},
-    {"pmid": "34853069", "flag": "germline NF attribution not established", "detail": "Merlin-negative primary cells; the paper states the tumours occur spontaneously or in NF2, without separating the two."},
-    {"pmid": "24203892", "flag": "manifestation attribution not verified", "detail": "Mixed paediatric LGG and pilocytic astrocytoma series including optic-pathway tumours; the non-optic site is not established for the NF1 subset."},
-    {"pmid": "24554201", "flag": "manifestation attribution not verified", "detail": "Pilocytic astrocytoma review covering all sites, NF1 and sporadic together."},
-    {"pmid": "30239952", "flag": "manifestation attribution not verified", "detail": "Paediatric LGG cell lines of mixed genotype; tumour site not stated."},
-    {"pmid": "31841591", "flag": "manifestation attribution not verified", "detail": "Paediatric LGG cell lines of mixed genotype; tumour site not stated."},
-    {"pmid": "32780261", "flag": "manifestation attribution not verified", "detail": "Institutional paediatric LGG series of mixed genotype and site."},
-    {"pmid": "36455272", "flag": "manifestation attribution not verified", "detail": "Institutional paediatric LGG series of mixed genotype and site."},
-    {"pmid": "21228927", "flag": "manifestation attribution not verified", "detail": "NF1-associated low-grade astrocytoma series; tumour site not stated, so optic-pathway cases may be included."}
-  ]
+ "_about": "Curation applied by phase7_fallback_literature.py (aggregate stage) to the raw abstract extraction. Every decision is recorded here rather than hand-edited into the CSV, so it is reversible and countable later (literature-target-map protocol, rule 4). Renames normalise a label onto an official HGNC symbol or onto the exact Phase 1b label for the same entity; they never merge two different entities. Drops remove a row from the candidate table on scope grounds; the claim stays in the work-directory caches. Paper flags do not remove anything - they mark rows whose every supporting paper carries the stated caveat.",
+ "rename_labels": [
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "MEK",
+   "to": "MAP2K1/2 (MEK1/2)",
+   "label_type": "family",
+   "constituent_genes": [
+    "MAP2K1",
+    "MAP2K2"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "MEK1/2",
+   "to": "MAP2K1/2 (MEK1/2)",
+   "label_type": "family",
+   "constituent_genes": [
+    "MAP2K1",
+    "MAP2K2"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "MEK (MAPK kinase)",
+   "to": "MAP2K1/2 (MEK1/2)",
+   "label_type": "family",
+   "constituent_genes": [
+    "MAP2K1",
+    "MAP2K2"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "mTOR",
+   "to": "MTOR",
+   "label_type": "gene",
+   "note": "Official HGNC symbol; Phase 1b spelling."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "mTOR pathway",
+   "to": "MTOR",
+   "label_type": "gene",
+   "note": "Pathway label folded onto its named node, which Phase 1b already holds in this stratum; avoids a near-duplicate counted as novel."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "mTORC1",
+   "to": "MTORC1",
+   "label_type": "complex",
+   "constituent_genes": [
+    "MTOR",
+    "RPTOR",
+    "MLST8"
+   ],
+   "note": "Case-normalised."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "mTORC1/2",
+   "to": "MTORC1/2",
+   "label_type": "complex",
+   "constituent_genes": [
+    "MTOR",
+    "RPTOR",
+    "RICTOR",
+    "MLST8"
+   ],
+   "note": "Case-normalised."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "mTORC1/mTORC2 pathway",
+   "to": "MTORC1/2",
+   "label_type": "complex",
+   "constituent_genes": [
+    "MTOR",
+    "RPTOR",
+    "RICTOR",
+    "MLST8"
+   ],
+   "note": "Same entity as mTORC1/2."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "MAPK/Erk pathway",
+   "to": "MAPK pathway",
+   "label_type": "pathway",
+   "constituent_genes": [
+    "MAP2K1",
+    "MAP2K2",
+    "MAPK1",
+    "MAPK3",
+    "BRAF",
+    "RAF1"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "PI3K pathway",
+   "to": "PI3K (family)",
+   "label_type": "family",
+   "constituent_genes": [
+    "PIK3CA",
+    "PIK3CB",
+    "PIK3CD",
+    "PIK3R1"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "Matrilin 2",
+   "to": "MATN2",
+   "label_type": "gene",
+   "note": "Official HGNC symbol."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "from": "FAK",
+   "to": "PTK2 (FAK)",
+   "label_type": "gene",
+   "constituent_genes": [
+    "PTK2"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF1|Other",
+   "from": "RAS",
+   "to": "RAS (pan)",
+   "label_type": "family",
+   "constituent_genes": [
+    "HRAS",
+    "KRAS",
+    "NRAS"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF1|Other",
+   "from": "NADPH oxidase 2",
+   "to": "CYBB (NOX2)",
+   "label_type": "complex",
+   "constituent_genes": [
+    "CYBB",
+    "CYBA",
+    "NCF1",
+    "NCF2",
+    "NCF4",
+    "RAC1"
+   ],
+   "note": "Official HGNC symbol for the catalytic subunit, complex members listed."
+  },
+  {
+   "stratum": "NF1|Other",
+   "from": "GPER",
+   "to": "GPER1",
+   "label_type": "gene",
+   "note": "Official HGNC symbol."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "FAK",
+   "to": "PTK2 (FAK)",
+   "label_type": "gene",
+   "constituent_genes": [
+    "PTK2"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "FAK1 (PTK2)",
+   "to": "PTK2 (FAK)",
+   "label_type": "gene",
+   "constituent_genes": [
+    "PTK2"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "EphA2",
+   "to": "EPHA2",
+   "label_type": "gene",
+   "note": "Official HGNC symbol."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "ErbB2",
+   "to": "ERBB2",
+   "label_type": "gene",
+   "note": "Official HGNC symbol."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "c-KIT",
+   "to": "KIT",
+   "label_type": "gene",
+   "note": "Official HGNC symbol."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "Src family kinase (SFK)",
+   "to": "SRC",
+   "label_type": "gene",
+   "note": "Same paper (29982664) supports the Phase 1b SRC row in this stratum."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "EPH receptor signaling",
+   "to": "EPH receptors",
+   "label_type": "family",
+   "constituent_genes": [
+    "EPHA2",
+    "EPHB1"
+   ],
+   "note": "Phase 1b composite label for the same entity."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "MEK-ERK",
+   "to": "MAP2K1/2 (MEK1/2)",
+   "label_type": "family",
+   "constituent_genes": [
+    "MAP2K1",
+    "MAP2K2"
+   ],
+   "note": "The claim is MEK inhibition; Phase 1b holds MAP2K1/2 (MEK1/2) in this stratum."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "mTOR-S6",
+   "to": "MTOR",
+   "label_type": "gene",
+   "note": "The claim is mTOR inhibition; Phase 1b holds MTOR in this stratum."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "mTORC1",
+   "to": "MTORC1",
+   "label_type": "complex",
+   "constituent_genes": [
+    "MTOR",
+    "RPTOR",
+    "MLST8"
+   ],
+   "note": "Case-normalised."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "mTORC2",
+   "to": "MTORC2",
+   "label_type": "complex",
+   "constituent_genes": [
+    "MTOR",
+    "RICTOR",
+    "MLST8",
+    "MAPKAP1"
+   ],
+   "note": "Case-normalised."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "mTORC1/mTORC2",
+   "to": "MTORC1/2",
+   "label_type": "complex",
+   "constituent_genes": [
+    "MTOR",
+    "RPTOR",
+    "RICTOR",
+    "MLST8"
+   ],
+   "note": "Case-normalised."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "YAP-TEAD pathway",
+   "to": "YAP1-TEAD",
+   "label_type": "complex",
+   "constituent_genes": [
+    "YAP1",
+    "TEAD1",
+    "TEAD2",
+    "TEAD3",
+    "TEAD4"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "Hippo-YAP/TEAD pathway",
+   "to": "YAP1-TEAD",
+   "label_type": "complex",
+   "constituent_genes": [
+    "YAP1",
+    "TEAD1",
+    "TEAD2",
+    "TEAD3",
+    "TEAD4"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "YAP1/TAZ-TEAD signaling",
+   "to": "YAP1/WWTR1 (YAP/TAZ)",
+   "label_type": "family",
+   "constituent_genes": [
+    "YAP1",
+    "WWTR1"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "MAPK",
+   "to": "MAPK pathway",
+   "label_type": "pathway",
+   "constituent_genes": [
+    "MAP2K1",
+    "MAP2K2",
+    "MAPK1",
+    "MAPK3",
+    "BRAF",
+    "RAF1"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "PI3K-AKT",
+   "to": "PI3K-AKT-MTOR axis",
+   "label_type": "pathway",
+   "constituent_genes": [
+    "PIK3CA",
+    "AKT1",
+    "MTOR"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "PI3K-AKT-mTOR pathway",
+   "to": "PI3K-AKT-MTOR axis",
+   "label_type": "pathway",
+   "constituent_genes": [
+    "PIK3CA",
+    "AKT1",
+    "MTOR"
+   ],
+   "note": "Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "PD-L1",
+   "to": "CD274 (PD-L1)",
+   "label_type": "gene",
+   "constituent_genes": [
+    "CD274"
+   ],
+   "note": "Official HGNC symbol carried with the common name."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "CRL4",
+   "to": "CRL4-DCAF1",
+   "label_type": "complex",
+   "constituent_genes": [
+    "CUL4A",
+    "CUL4B",
+    "DDB1",
+    "DCAF1"
+   ],
+   "note": "The abstract names CRL4-DCAF1; the subscript was lost in text extraction. Phase 1b label for the same entity."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "YAP1-MAML2",
+   "to": "YAP1-MAML2 (fusion)",
+   "label_type": "other",
+   "constituent_genes": [
+    "YAP1",
+    "MAML2"
+   ],
+   "note": "A gene fusion, not a gene; label made explicit."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "Ubiquitin-proteasome pathway (UPP)",
+   "to": "Ubiquitin-proteasome pathway",
+   "label_type": "pathway",
+   "constituent_genes": [
+    "UBA1",
+    "SKP2",
+    "PSMB1",
+    "PSMB5"
+   ],
+   "note": "Trailing acronym removed."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "from": "ALK/ROS1/multi-kinase (brigatinib targets)",
+   "to": "brigatinib",
+   "label_type": "drug",
+   "constituent_genes": [],
+   "note": "The NEJM phase 2 trial names no single target, and PMID 34264955 shows brigatinib acts in NF2 tumours through kinases other than ALK. Recorded as a drug row (Phase 1b precedent: clemastine), not as an ALK claim."
+  }
+ ],
+ "drop_rows": [
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "gene_target": "FAT2",
+   "reason": "PMID 27900010 is a single sporadic spinal meningioma in a patient with no stated NF2 disease; germline NF2 attribution absent. Phase 1b scope decision 1 (sporadic tumours excluded)."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "gene_target": "TRAF7",
+   "reason": "TRAF7 mutation defines the non-NF2 molecular group of meningioma, so the claim does not belong to the NF2-SWN stratum (PMID 42411653)."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "gene_target": "retroviral protease (targeted by ritonavir, atazanavir, lopinavir)",
+   "reason": "Drug-class restatement of the HERV-K row from the same paper (34853069); names no distinct human target."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "gene_target": "VT3989",
+   "reason": "Drug-level restatement of the YAP1-TEAD row from the same paper (42620117)."
+  },
+  {
+   "stratum": "NF2-SWN|Meningioma",
+   "gene_target": "verteporfin",
+   "reason": "Drug-level restatement of the YAP1-TEAD row from the same paper (42620117)."
+  },
+  {
+   "stratum": "NF1|Non-optic LGG",
+   "gene_target": "BRAF",
+   "reason": "In both supporting papers (30239952, 36455272) BRAF alteration defines the non-NF1 subgroup of paediatric LGG; the claim is not attributable to NF1."
+  }
+ ],
+ "paper_flags": [
+  {
+   "pmid": "39804847",
+   "flag": "germline NF attribution not established",
+   "detail": "A pheochromocytoma/paraganglioma cohort in which 'NF1 (cluster 2)' denotes the molecular cluster and somatic NF1 variant class; germline NF1 disease is not stated."
+  },
+  {
+   "pmid": "42411653",
+   "flag": "germline NF attribution not established",
+   "detail": "Optic nerve sheath meningioma review; most cases are sporadic and the row is not tied to a germline NF2 cohort."
+  },
+  {
+   "pmid": "43035157",
+   "flag": "germline NF attribution not established",
+   "detail": "Pan-solid-tumour Hippo/TEAD review citing NF2-deficient meningioma as an example rather than studying germline NF2 patients."
+  },
+  {
+   "pmid": "22618028",
+   "flag": "germline NF attribution not established",
+   "detail": "Meningioma series with no stated germline NF2 cohort; merlin status rather than NF2 disease."
+  },
+  {
+   "pmid": "41497607",
+   "flag": "germline NF attribution not established",
+   "detail": "NF2-mutant meningioma defined by tumour genotype; the mutation is somatic in most meningioma and germline status is not stated."
+  },
+  {
+   "pmid": "34853069",
+   "flag": "germline NF attribution not established",
+   "detail": "Merlin-negative primary cells; the paper states the tumours occur spontaneously or in NF2, without separating the two."
+  },
+  {
+   "pmid": "24203892",
+   "flag": "manifestation attribution not verified",
+   "detail": "Mixed paediatric LGG and pilocytic astrocytoma series including optic-pathway tumours; the non-optic site is not established for the NF1 subset."
+  },
+  {
+   "pmid": "24554201",
+   "flag": "manifestation attribution not verified",
+   "detail": "Pilocytic astrocytoma review covering all sites, NF1 and sporadic together."
+  },
+  {
+   "pmid": "30239952",
+   "flag": "manifestation attribution not verified",
+   "detail": "Paediatric LGG cell lines of mixed genotype; tumour site not stated."
+  },
+  {
+   "pmid": "31841591",
+   "flag": "manifestation attribution not verified",
+   "detail": "Paediatric LGG cell lines of mixed genotype; tumour site not stated."
+  },
+  {
+   "pmid": "32780261",
+   "flag": "manifestation attribution not verified",
+   "detail": "Institutional paediatric LGG series of mixed genotype and site."
+  },
+  {
+   "pmid": "36455272",
+   "flag": "manifestation attribution not verified",
+   "detail": "Institutional paediatric LGG series of mixed genotype and site."
+  },
+  {
+   "pmid": "21228927",
+   "flag": "manifestation attribution not verified",
+   "detail": "NF1-associated low-grade astrocytoma series; tumour site not stated, so optic-pathway cases may be included."
+  }
+ ],
+ "manifestation_relabels": [
+  {
+   "disease": "NF1",
+   "from_manifestation": "Other",
+   "to_manifestation": "Pheochromocytoma",
+   "gene_target": "RET",
+   "reason": "Pheochromocytoma added to the fixed manifestation vocabulary (Kara, 2026-11-17); this row was in 'Other' only because no term existed."
+  },
+  {
+   "disease": "NF1",
+   "from_manifestation": "Other",
+   "to_manifestation": "Pheochromocytoma",
+   "gene_target": "SOX9",
+   "reason": "Pheochromocytoma added to the fixed manifestation vocabulary (Kara, 2026-11-17); this row was in 'Other' only because no term existed."
+  },
+  {
+   "disease": "NF1",
+   "from_manifestation": "Other",
+   "to_manifestation": "Pheochromocytoma",
+   "gene_target": "HEY1",
+   "reason": "Pheochromocytoma added to the fixed manifestation vocabulary (Kara, 2026-11-17); this row was in 'Other' only because no term existed."
+  },
+  {
+   "disease": "NF1",
+   "from_manifestation": "Other",
+   "to_manifestation": "Pheochromocytoma",
+   "gene_target": "ESR1",
+   "reason": "Pheochromocytoma added to the fixed manifestation vocabulary (Kara, 2026-11-17); this row was in 'Other' only because no term existed."
+  },
+  {
+   "disease": "NF1",
+   "from_manifestation": "Other",
+   "to_manifestation": "Pheochromocytoma",
+   "gene_target": "GPER1",
+   "reason": "Pheochromocytoma added to the fixed manifestation vocabulary (Kara, 2026-11-17); this row was in 'Other' only because no term existed."
+  }
+ ],
+ "notes": [
+  "2026-11-17: manifestation_relabels and the germline_attribution_weight penalty are applied by the `postcurate` stage, which reads this file and needs no work/ cache."
+ ]
 }
