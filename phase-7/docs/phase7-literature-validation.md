@@ -113,10 +113,19 @@ cut is load-bearing — relaxing it to 150 takes the output from 56 rows to 540.
 
 Two signatures dominate and should not be read as 56 independent findings:
 
-- **The genuine find:** literature target **PARP1** in NF1 MPNST against five
-  base-excision-repair expression candidates — LIG1, POLD1, NEIL3, FEN1, RFC2 — all at
-  expression tier `B_replicated` in a 44-gene pathway. This is the most specific
-  mechanism-level convergence in the phase.
+- **~~The genuine find:~~ WITHDRAWN 2026-11-17 — this was a proliferation readout.** Phase 7
+  reported literature target **PARP1** in NF1 MPNST against five base-excision-repair
+  candidates (LIG1, POLD1, NEIL3, FEN1, RFC2) as the most specific mechanism-level convergence
+  in the phase. A targeted look does not support that reading:
+  BER is only the **fourth** most enriched pathway in this contrast (22.7% of genes replicated,
+  behind DNA replication at 44.4% and mismatch repair at 34.8%), it was **ten** genes not five
+  (the other five fall below the top-200 cap), and the literature claim is **not an
+  overexpression claim** but an olaparib-plus-selumetinib efficacy result in a PDOX mouse model.
+  BER surfaced only because it is small enough to pass the ≤100-gene specificity cut.
+  PARP1 remains a strong candidate on its drug profile — rank 22 of 858 in Phase 6 with no
+  expression component — but not on this convergence. Full analysis: `phase7-mpnst-parp1.md`.
+  **Consequence for the method: the pathway near-miss rule needs a proliferation control** in
+  any malignant-versus-benign contrast; size alone selected the wrong pathway.
 - **Second:** literature target `PI3K/AKT/GSK3β` in plexiform neurofibroma against
   WNT2B, GLI1, WNT11, BMP2, WNT10A (single dataset, so weaker).
 - **Redundant:** 34 of the 56 rows are one immune-infiltration signature in optic pathway
@@ -335,6 +344,9 @@ reader and no adjudication.
    term for it, which is why NF1 pheochromocytoma work landed in `Other` at all, and why the
    fallback had to scope `Other` to pheochromocytoma and vasculopathy/endothelial biology by
    hand. Five rows were relabelled; see the rulings section above.
-4. **MPNST PARP1 convergence is worth a targeted look** — a literature target and five
-   replicated expression candidates in the same 44-gene pathway is the closest thing this
-   phase found to independent corroboration at mechanism level.
+4. **RESOLVED 2026-11-17 — the MPNST PARP1 convergence was examined and withdrawn.** It is a
+   proliferation readout: BER is the fourth most enriched pathway in this contrast, it was ten
+   genes not five, and the literature claim is a drug-combination result rather than an
+   overexpression claim. PARP1 is still worth carrying on its drug profile (Phase 6 rank 22 of
+   858, 7 approved drugs, max phase 4) and the olaparib-plus-selumetinib combination has never
+   been trialled in NF1 MPNST. See `phase7-mpnst-parp1.md`.
