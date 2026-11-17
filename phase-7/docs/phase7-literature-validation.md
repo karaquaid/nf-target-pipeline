@@ -260,9 +260,62 @@ QuickGO; all 60 single-term nodes are correct). Phase 5's own results are unaffe
 cross-disease screen uses the IDs as a set — but the table must never be paired by index.
 The fix is ratified as its own PR off main.
 
+## Verification stability, measured (2026-11-17)
+
+Kara ruled: measure the instability before deciding anything. Done —
+`phase7-verification-stability.md`, `phase7-verification-stability.csv`,
+`phase7_verification_stability.py`.
+
+Population: 469 (gene_target, disease, manifestation, pmid) claims over 155 papers Phase 1b
+read in full. Seeded cluster sample (seed 20261117): **155 claims over 59 papers verified,
+33% of the population**, each read twice with the same reader, prompt and body.
+
+| measurement | rate | 95% interval (paper-clustered) |
+|---|---|---|
+| same reader disagreeing with itself, 3-way verdict | **12.3%** (19/155) | 5.0–20.8% |
+| same, collapsed to supported vs not | **3.9%** (6/155) | 0–8.6% |
+| fresh verdict vs Phase 1b's record | **20.7%** (17/82) | 11.7–31.7% |
+
+The second row is the one that matters for the evidence tiers: most disagreement is between
+`supported` and `partially_supported`, not between support and its absence.
+
+**Both known contradictions resolve in Phase 1b's favour, and neither was a reasoning error
+by Phase 1b.**
+
+- **PMID 36148553 / YAP-TAZ** — supported on 6 of 6 fresh reads (3 against the connector
+  body, 3 against clean Europe PMC JATS). The label is abundant in both bodies (YAP 80,
+  TAZ 103), so this is not a retrieval artefact. Phase 7's `not_supported` simply does not
+  reproduce: it was reader noise.
+- **PMID 39367156 / RNF213** — a **retrieval artefact**. The connector-extracted body
+  contains `RNF213` **zero** times; the Europe PMC JATS body contains it **34** times. Three
+  of three reads of the clean body return supported.
+
+**The retrieval route, not the reader, is the larger problem.** 53 of the 59 sampled papers
+show the dropped-italics signature (median 4 occurrences, max 35). The claim's own label is
+absent from the retrieved body in 39 of 155 claims under strict matching, 23 under lax. And
+the damage measurably degrades judgement: self-disagreement is **23.1% where the label is
+missing from the body against 8.6% where it is present**.
+
+Consequence for the guard added in Phase 7: it is necessary but **not sufficient**. It voids
+false `not_supported` verdicts (3 of 9 in run 1, 5 of 13 in run 2), but in the RNF213 case
+the reader returned a *positive* verdict against a body with the label deleted, which no
+symbol-presence guard catches. The real fix is to stop reading connector-extracted PMC text
+for verification and use Europe PMC JATS, which is the route Phase 1b itself used.
+
+Limits, as declared: 33% of the population at wide intervals; the reproduction figure
+conflates reader noise with the retrieval and protocol change and is an upper bound, not a
+reader-noise estimate; it is restricted to rows whose Phase 1b full-text verdicts were
+unanimous, because Phase 1b stores verdict counts per row rather than per claim, so the
+harder mixed-verdict rows are excluded by construction; two runs bound self-consistency
+pairwise only; and this measures reproducibility, not correctness — there is still one
+reader and no adjudication.
+
 ## Open items for the PI
 
-1. **Two single-reader disagreements with Phase 1b, nothing changed in Phase 1b.**
+1. **RESOLVED 2026-11-17 — both disagreements adjudicated in Phase 1b's favour**, one as
+   reader noise and one as a retrieval artefact; see the stability section above. Nothing in
+   Phase 1b needed changing. What is now open instead is the retrieval route: verification
+   should read Europe PMC JATS rather than connector-extracted PMC text. Original framing:
    `YAP/TAZ` against PMID 36148553 returned `not_supported` here although Phase 1b records
    that paper as full-text support for `YAP1/WWTR1 (YAP/TAZ)` in meningioma; and a repeat
    call on PMID 39367156 returned `supported` for RNF213 where the batch run returned
