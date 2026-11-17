@@ -66,6 +66,15 @@ LITERATURE = {"full text - supported": 1.00, "full text - partial": 0.70, "abstr
 # from this map means dropped from the weighted mean, as the absence rule requires.
 MECHANISM = {"A_mechanism": 1.00, "B_phenotype": 0.75, "C_other_only": 0.35}
 TRACTABILITY = {"evidence_present": 1.00, "assessed_no_evidence": 0.00}  # not_assessed -> no score
+# best_max_phase is the highest phase any drug against this target reached in ANY
+# indication, and it keeps full marks regardless of indication (Kara, 2026-11-17):
+# the pipeline exists to find drugs NEW to NF patients, so an approval earned
+# elsewhere is the signal of interest, not a dilution of it. An approved drug
+# establishes human target engagement, PK and safety; which disease it was
+# approved for is what repurposing proposes to change. 388 candidates score 1.00,
+# of which 182 have no drug ever tested in an NF trial - those are flagged
+# `novel_to_nf` rather than discounted, because they are the repurposing
+# opportunities this phase is meant to surface.
 DRUG_STAGE = {4: 1.00, 3: 0.80, 2: 0.60, 1: 0.40, 0: 0.15}
 
 WEIGHTS = {"expression": 0.30, "literature": 0.20, "mechanism": 0.20,
@@ -229,6 +238,8 @@ def main() -> None:
             "score": round(composite * safety * route, 4) if pd.notna(composite) else np.nan,
             "delivery_basis": delivery_basis, "delivery_from_drug": delivery_moiety,
             "bbb_required": bbb,
+            "n_drugs_in_nf_trials": int(r.get("n_drugs_in_nf_trials") or 0),
+            "novel_to_nf": bool(comp["drug_stage"] == 1.00 and not (r.get("n_drugs_in_nf_trials") or 0)),
             "insufficient_evidence": len(present) < 2,
         })
 

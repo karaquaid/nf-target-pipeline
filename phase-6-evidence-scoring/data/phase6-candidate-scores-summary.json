@@ -237,15 +237,5 @@
       "score": 0.75
     }
   ],
-  "note": "Delivery enters only in bbb_required strata. A positive delivery score whose delivery_basis is tumor_clinical rests on the same trials that score clinical stage - recorded rather than hidden, per Kara 2026-11-16.",
-  "call1_counterfactual": {
-    "question": "what if D_no_edges were dropped instead of scored 0.0 (measured on the pre-ruling table)",
-    "candidates_changing_rank": 3720,
-    "of": 3752,
-    "median_abs_rank_shift": 121.0,
-    "strata_whose_rank1_set_changes": 6,
-    "strata_whose_previous_leader_is_displaced_entirely": 5,
-    "of_strata": 9,
-    "correction": "I told Kara 'eight of nine stratum leaders change' when framing this decision. That was wrong: I read a gene list truncated to 8 names as a count of strata, and never computed the per-stratum figure. The correct numbers are 6 of 9 strata whose rank-1 set changes, 5 of 9 where the previous leader is displaced entirely. The other figures quoted at the time (3,720 rank changes, median 121, PRMT5 658->66) reproduce exactly."
-  }
+  "note": "Delivery enters only in bbb_required strata. A positive delivery score whose delivery_basis is tumor_clinical rests on the same trials that score clinical stage - recorded rather than hidden, per Kara 2026-11-16."
 }
