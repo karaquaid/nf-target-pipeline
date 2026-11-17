@@ -59,7 +59,12 @@ DATA = ROOT / "phase-6-evidence-scoring" / "data"
 # not a measurement. This block is the place to change the rubric.
 EXPRESSION = {"A_aggregated": 1.00, "B_replicated": 0.70, "C_single_dataset": 0.40}
 LITERATURE = {"full text - supported": 1.00, "full text - partial": 0.70, "abstract only": 0.40}
-MECHANISM = {"A_mechanism": 1.00, "B_phenotype": 0.75, "C_other_only": 0.35, "D_no_edges": 0.00}
+# D_no_edges is NOT scored (Kara, 2026-11-16): Monarch and DisMech returning no
+# edge for a gene is assessed-found-nothing, and their coverage is itself uneven
+# by disease - no DisMech entry for NF2-SWN, no Monarch causal edge for SWN - so
+# a zero there would often score a database gap rather than the biology. Absent
+# from this map means dropped from the weighted mean, as the absence rule requires.
+MECHANISM = {"A_mechanism": 1.00, "B_phenotype": 0.75, "C_other_only": 0.35}
 TRACTABILITY = {"evidence_present": 1.00, "assessed_no_evidence": 0.00}  # not_assessed -> no score
 DRUG_STAGE = {4: 1.00, 3: 0.80, 2: 0.60, 1: 0.40, 0: 0.15}
 
@@ -70,6 +75,8 @@ DELIVERY_WEIGHT = 0.20          # added in bbb_required strata; others rescale t
 # Delivery band -> score. `unknown` is 0.5, the neutral midpoint: unassessed, not
 # a penalty. `contradicted` is the only state that costs a candidate anything.
 DELIVERY = {"demonstrated": 1.00, "unknown": 0.50, "contradicted": 0.00}
+
+NEUTRAL_PRIOR = 0.50            # what an unassessed component contributes
 
 SAFETY = {"withdrawn": 0.60, "black_box": 0.85, "clean": 1.00}
 ROUTE_INAPPROPRIATE = 0.40      # every drug this candidate has is route-excluded
@@ -193,9 +200,17 @@ def main() -> None:
             weights["cns_delivery"] = DELIVERY_WEIGHT
             comp["cns_delivery"] = delivery
 
+        # Unassessed weight contributes at the neutral midpoint rather than being
+        # redistributed (Kara, 2026-11-16). Redistribution rewarded ignorance: a
+        # candidate assessed on two maxed components scored a perfect 1.0 and tied
+        # with one assessed on five, and 104 candidates sat at rank 1 - a pseudogene
+        # among them. Shrinking keeps absence non-punitive (0.5 is exactly neutral)
+        # while stopping it from earning a top score.
         present = {k: v for k, v in comp.items() if v is not None}
-        wsum = sum(weights[k] for k in present)
-        composite = sum(present[k] * weights[k] for k in present) / wsum if wsum else np.nan
+        assessed_w = sum(weights[k] for k in present)
+        missing_w = sum(weights.values()) - assessed_w
+        composite = ((sum(present[k] * weights[k] for k in present) + missing_w * NEUTRAL_PRIOR)
+                     / (assessed_w + missing_w))
 
         withdrawn = float(r.get("n_drugs_withdrawn") or 0)
         boxed = float(r.get("n_drugs_black_box") or 0)

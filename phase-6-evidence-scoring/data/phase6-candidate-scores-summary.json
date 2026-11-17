@@ -9,14 +9,13 @@
     "drug_stage": 0.15
   },
   "delivery_weight": 0.2,
-  "insufficient_evidence": 46,
+  "insufficient_evidence": 149,
   "components_assessed": {
-    "1": 46,
-    "2": 111,
-    "3": 1993,
-    "4": 1565,
-    "5": 36,
-    "6": 1
+    "1": 149,
+    "2": 1409,
+    "3": 1438,
+    "4": 733,
+    "5": 23
   },
   "route_downweighted": 1,
   "safety_downweighted": 498,
@@ -28,146 +27,215 @@
     "tumor_contradicted": 3
   },
   "score_quartiles": {
-    "0.25": 0.415,
-    "0.5": 0.542,
-    "0.75": 0.566
+    "0.25": 0.515,
+    "0.5": 0.582,
+    "0.75": 0.635
   },
   "top_per_stratum": [
     {
       "disease": "NF1",
       "manifestation": "ANNUBP / atypical neurofibroma",
-      "gene_symbol": "SUZ12",
-      "score": 1.0
+      "gene_symbol": "EZH2",
+      "score": 0.72
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "ANNUBP / atypical neurofibroma",
+      "gene_symbol": "ODC1",
+      "score": 0.72
     },
     {
       "disease": "NF1",
       "manifestation": "Bone defects",
       "gene_symbol": "PTPN11",
-      "score": 0.8429
+      "score": 0.74
     },
     {
       "disease": "NF1",
       "manifestation": "Cutaneous neurofibroma",
-      "gene_symbol": "GHSR",
-      "score": 0.7636
+      "gene_symbol": "F2R",
+      "score": 0.71
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Cutaneous neurofibroma",
+      "gene_symbol": "PGF",
+      "score": 0.71
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Cutaneous neurofibroma",
+      "gene_symbol": "RPL30",
+      "score": 0.71
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Cutaneous neurofibroma",
+      "gene_symbol": "RPS3",
+      "score": 0.71
     },
     {
       "disease": "NF1",
       "manifestation": "Malignant peripheral nerve sheath tumor (MPNST)",
-      "gene_symbol": "SUZ12",
-      "score": 1.0
+      "gene_symbol": "EZH2",
+      "score": 0.78
     },
     {
       "disease": "NF1",
       "manifestation": "Optic pathway glioma",
       "gene_symbol": "MAP2K2",
-      "score": 0.8632
+      "score": 0.776
     },
     {
       "disease": "NF1",
       "manifestation": "Plexiform neurofibroma",
       "gene_symbol": "COL11A1",
-      "score": 0.8375
+      "score": 0.77
     },
     {
       "disease": "NF1",
       "manifestation": "Plexiform neurofibroma",
       "gene_symbol": "COL4A5",
-      "score": 0.8375
+      "score": 0.77
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Plexiform neurofibroma",
+      "gene_symbol": "PDK1",
+      "score": 0.77
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Plexiform neurofibroma",
+      "gene_symbol": "E2F7",
+      "score": 0.77
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Non-vestibular schwannoma",
-      "gene_symbol": "HDAC6",
-      "score": 0.8143
+      "gene_symbol": "HDAC1",
+      "score": 0.75
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Non-vestibular schwannoma",
-      "gene_symbol": "HDAC8",
-      "score": 0.8143
+      "gene_symbol": "HDAC3",
+      "score": 0.75
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Non-vestibular schwannoma",
-      "gene_symbol": "HDAC9",
-      "score": 0.8143
+      "gene_symbol": "HDAC5",
+      "score": 0.75
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Non-vestibular schwannoma",
-      "gene_symbol": "HDAC4",
-      "score": 0.8143
+      "gene_symbol": "HDAC10",
+      "score": 0.75
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Non-vestibular schwannoma",
+      "gene_symbol": "HDAC7",
+      "score": 0.75
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Non-vestibular schwannoma",
+      "gene_symbol": "HDAC11",
+      "score": 0.75
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Pain",
-      "gene_symbol": "PDE10A",
-      "score": 0.6125
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Pain",
-      "gene_symbol": "LAMA1",
-      "score": 0.6125
+      "gene_symbol": "CA6",
+      "score": 0.62
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "HDAC6",
-      "score": 0.8143
+      "gene_symbol": "HDAC1",
+      "score": 0.75
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "HDAC8",
-      "score": 0.8143
+      "gene_symbol": "HDAC3",
+      "score": 0.75
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "HDAC9",
-      "score": 0.8143
+      "gene_symbol": "HDAC5",
+      "score": 0.75
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "HDAC4",
-      "score": 0.8143
+      "gene_symbol": "HDAC10",
+      "score": 0.75
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EPHB4",
-      "score": 0.8143
+      "gene_symbol": "HDAC7",
+      "score": 0.75
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EPHB2",
-      "score": 0.8143
+      "gene_symbol": "HDAC11",
+      "score": 0.75
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EPHA10",
-      "score": 0.8143
+      "gene_symbol": "EPHA3",
+      "score": 0.75
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Vestibular schwannoma",
+      "gene_symbol": "EPHA1",
+      "score": 0.75
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Vestibular schwannoma",
+      "gene_symbol": "EPHA8",
+      "score": 0.75
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Vestibular schwannoma",
+      "gene_symbol": "EPHA7",
+      "score": 0.75
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Vestibular schwannoma",
+      "gene_symbol": "EPHA5",
+      "score": 0.75
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Vestibular schwannoma",
+      "gene_symbol": "EPHA6",
+      "score": 0.75
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Vestibular schwannoma",
+      "gene_symbol": "EPHA4",
+      "score": 0.75
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Vestibular schwannoma",
+      "gene_symbol": "EPHB3",
+      "score": 0.75
     }
   ],
-  "note": "Delivery enters only in bbb_required strata. A positive delivery score whose delivery_basis is tumor_clinical rests on the same trials that score clinical stage - recorded rather than hidden, per Kara 2026-11-16.",
-  "delivery_rank_effect": {
-    "moved_5_or_more_ranks": 21,
-    "improved": 12,
-    "improved_by_basis": {
-      "tumor_clinical": 11,
-      "unassessed": 1
-    },
-    "worsened": 9,
-    "worsened_by_basis": {
-      "no_assessed_drug": 5,
-      "tumor_contradicted": 3,
-      "unassessed": 1
-    },
-    "note": "Candidates that worsened carry no delivery score of their own; they fall because peers with tumor_clinical evidence rose past them. An earlier commit message and memory note wrongly said all 21 moved upward on tumor_clinical."
-  }
+  "note": "Delivery enters only in bbb_required strata. A positive delivery score whose delivery_basis is tumor_clinical rests on the same trials that score clinical stage - recorded rather than hidden, per Kara 2026-11-16."
 }
