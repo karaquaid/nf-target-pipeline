@@ -87,7 +87,16 @@ DELIVERY = {"demonstrated": 1.00, "unknown": 0.50, "contradicted": 0.00}
 
 NEUTRAL_PRIOR = 0.50            # what an unassessed component contributes
 
-SAFETY = {"withdrawn": 0.60, "black_box": 0.85, "clean": 1.00}
+# Safety is a property of the target's remaining OPTIONS, not of any one drug
+# (Kara, 2026-11-17). The flat version penalised a target when any single drug
+# against it had been withdrawn or carried a boxed warning, which scaled with how
+# well studied the target was rather than how dangerous it was: TP53 took 0.60
+# for 2 withdrawn drugs out of 465, and all 71 withdrawn-penalised candidates
+# still had other drugs. A target is downweighted only as its usable options are
+# exhausted.
+SAFETY_EXHAUSTED = 0.60     # no drug against this target is free of a safety problem
+SAFETY_MOSTLY_FLAGGED = 0.85  # more than half the drugs carry one
+SAFETY_CLEAN = 1.00
 ROUTE_INAPPROPRIATE = 0.40      # every drug this candidate has is route-excluded
 
 # Which compartment a manifestation needs. Only bbb_required strata consult this.
@@ -223,7 +232,19 @@ def main() -> None:
 
         withdrawn = float(r.get("n_drugs_withdrawn") or 0)
         boxed = float(r.get("n_drugs_black_box") or 0)
-        safety = SAFETY["withdrawn"] if withdrawn else (SAFETY["black_box"] if boxed else SAFETY["clean"])
+        flagged = withdrawn + boxed
+        if not n_drugs or not flagged:
+            safety = SAFETY_CLEAN
+        else:
+            frac_flagged = min(flagged / n_drugs, 1.0)
+            if frac_flagged >= 0.999:
+                # Exhausted, but a withdrawal is not a boxed warning: the harsher
+                # multiplier is reserved for a target whose every drug was pulled.
+                safety = SAFETY_EXHAUSTED if withdrawn else SAFETY_MOSTLY_FLAGGED
+            elif frac_flagged > 0.5:
+                safety = SAFETY_MOSTLY_FLAGGED
+            else:
+                safety = SAFETY_CLEAN
         route_ok = float(r.get("n_route_appropriate_drugs") or 0)
         topical_only = float(r.get("n_excluded_topical_only") or 0)
         route = ROUTE_INAPPROPRIATE if (n_drugs and not route_ok and topical_only) else 1.00

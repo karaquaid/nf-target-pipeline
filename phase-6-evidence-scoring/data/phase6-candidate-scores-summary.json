@@ -18,7 +18,7 @@
     "5": 23
   },
   "route_downweighted": 1,
-  "safety_downweighted": 498,
+  "safety_downweighted": 45,
   "delivery_basis_counts": {
     "no_assessed_drug": 394,
     "tumor_clinical": 18,
@@ -27,8 +27,8 @@
     "tumor_contradicted": 3
   },
   "score_quartiles": {
-    "0.25": 0.515,
-    "0.5": 0.582,
+    "0.25": 0.536,
+    "0.5": 0.584,
     "0.75": 0.635
   },
   "top_per_stratum": [
@@ -53,62 +53,44 @@
     {
       "disease": "NF1",
       "manifestation": "Cutaneous neurofibroma",
-      "gene_symbol": "F2R",
-      "score": 0.71
+      "gene_symbol": "VEGFA",
+      "score": 0.75
     },
     {
       "disease": "NF1",
       "manifestation": "Cutaneous neurofibroma",
-      "gene_symbol": "PGF",
-      "score": 0.71
-    },
-    {
-      "disease": "NF1",
-      "manifestation": "Cutaneous neurofibroma",
-      "gene_symbol": "RPL30",
-      "score": 0.71
-    },
-    {
-      "disease": "NF1",
-      "manifestation": "Cutaneous neurofibroma",
-      "gene_symbol": "RPS3",
-      "score": 0.71
+      "gene_symbol": "CCR5",
+      "score": 0.75
     },
     {
       "disease": "NF1",
       "manifestation": "Malignant peripheral nerve sheath tumor (MPNST)",
-      "gene_symbol": "EZH2",
-      "score": 0.78
+      "gene_symbol": "RRM2",
+      "score": 0.9
     },
     {
       "disease": "NF1",
       "manifestation": "Optic pathway glioma",
-      "gene_symbol": "MAP2K2",
-      "score": 0.776
+      "gene_symbol": "BRAF",
+      "score": 0.832
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Optic pathway glioma",
+      "gene_symbol": "RAF1",
+      "score": 0.832
     },
     {
       "disease": "NF1",
       "manifestation": "Plexiform neurofibroma",
-      "gene_symbol": "COL11A1",
-      "score": 0.77
+      "gene_symbol": "PROS1",
+      "score": 0.87
     },
     {
-      "disease": "NF1",
-      "manifestation": "Plexiform neurofibroma",
-      "gene_symbol": "COL4A5",
-      "score": 0.77
-    },
-    {
-      "disease": "NF1",
-      "manifestation": "Plexiform neurofibroma",
-      "gene_symbol": "PDK1",
-      "score": 0.77
-    },
-    {
-      "disease": "NF1",
-      "manifestation": "Plexiform neurofibroma",
-      "gene_symbol": "E2F7",
-      "score": 0.77
+      "disease": "NF2-SWN",
+      "manifestation": "Non-vestibular schwannoma",
+      "gene_symbol": "HDAC2",
+      "score": 0.75
     },
     {
       "disease": "NF2-SWN",
@@ -154,87 +136,21 @@
     },
     {
       "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "HDAC1",
-      "score": 0.75
+      "manifestation": "Pain",
+      "gene_symbol": "MBNL1",
+      "score": 0.62
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Pain",
+      "gene_symbol": "EYA2",
+      "score": 0.62
     },
     {
       "disease": "NF2-SWN",
       "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "HDAC3",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "HDAC5",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "HDAC10",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "HDAC7",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "HDAC11",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EPHA3",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EPHA1",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EPHA8",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EPHA7",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EPHA5",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EPHA6",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EPHA4",
-      "score": 0.75
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EPHB3",
-      "score": 0.75
+      "gene_symbol": "EGFR",
+      "score": 0.78
     }
   ],
   "note": "Delivery enters only in bbb_required strata. A positive delivery score whose delivery_basis is tumor_clinical rests on the same trials that score clinical stage - recorded rather than hidden, per Kara 2026-11-16."
