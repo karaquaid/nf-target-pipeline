@@ -265,7 +265,13 @@ def main() -> None:
         rows.append({
             "gene_symbol": r["gene_symbol"], "disease": r["disease"], "manifestation": r["manifestation"],
             **{f"s_{k}": comp.get(k) for k in list(WEIGHTS) + ["cns_delivery"]},
+            # Coverage is reported as a count rather than a threshold flag
+            # (Kara, 2026-11-17): a reader comparing 2-of-6 against 5-of-6 judges
+            # thinness directly, without having to agree with a cut-off. The Call
+            # 1b shrinkage already demotes thin candidates quantitatively.
             "n_components_assessed": len(present),
+            "n_components_possible": len(weights),
+            "components_assessed": f"{len(present)}/{len(weights)}",
             "coverage": ";".join(cov),
             "composite_evidence": round(composite, 4) if pd.notna(composite) else np.nan,
             "safety_multiplier": safety, "route_multiplier": route,
@@ -274,7 +280,7 @@ def main() -> None:
             "bbb_required": bbb,
             "n_drugs_in_nf_trials": int(r.get("n_drugs_in_nf_trials") or 0),
             "novel_to_nf": bool(comp["drug_stage"] == 1.00 and not (r.get("n_drugs_in_nf_trials") or 0)),
-            "insufficient_evidence": len(present) < 2,
+
         })
 
     out = pd.DataFrame(rows)
@@ -288,7 +294,7 @@ def main() -> None:
         "candidates": len(out),
         "strata": int(out.groupby(["disease", "manifestation"]).ngroups),
         "weights": WEIGHTS, "delivery_weight": DELIVERY_WEIGHT,
-        "insufficient_evidence": int(out["insufficient_evidence"].sum()),
+        "components_assessed_distribution": out["components_assessed"].value_counts().sort_index().to_dict(),
         "components_assessed": out["n_components_assessed"].value_counts().sort_index().to_dict(),
         "route_downweighted": int((out["route_multiplier"] < 1).sum()),
         "safety_downweighted": int((out["safety_multiplier"] < 1).sum()),
