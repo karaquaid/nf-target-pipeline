@@ -120,9 +120,9 @@ Two signatures dominate and should not be read as 56 independent findings:
 - **Second:** literature target `PI3K/AKT/GSK3β` in plexiform neurofibroma against
   WNT2B, GLI1, WNT11, BMP2, WNT10A (single dataset, so weaker).
 - **Redundant:** 34 of the 56 rows are one immune-infiltration signature in optic pathway
-  glioma — 14 expression genes, 8 of them HLA class II (HLA-DRA, HLA-DRB1, HLA-DPA1,
-  HLA-DPB1, HLA-DMA, HLA-DOA) plus IFNGR1, ITGA4, CD44, CCL3, IL18, CTSK, CSF2RA,
-  ATP6V0A2 — counted once against each of four immune pathways and three different
+  glioma — 14 expression genes, 6 of them HLA class II (HLA-DRA, HLA-DRB1, HLA-DPA1,
+  HLA-DPB1, HLA-DMA, HLA-DOA) plus 8 others (IFNGR1, ITGA4, CD44, CCL3, IL18, CTSK,
+  CSF2RA, ATP6V0A2) — counted once against each of four immune pathways and three different
   literature targets (`MAPK pathway`, VEGFA, CSF1R). It is one observation, not many.
 
 ## Access weighting
@@ -167,11 +167,20 @@ Output is **61 candidate rows over 39 papers**, every row carrying a PMID.
 | NF1 Non-optic LGG | 9 | 1 | 0 | 8 |
 
 **New versus already held.** 34 of 61 rows are absent from Phase 1b under an exact label
-match, but 9 of those reach a Phase 1b target through a composite label, so **25 are
-novel on label and constituents together, and 13 of those are anchored in a paper read in
-full**: CD274 (PD-L1), FAT3/4, VGLL4, PAK1, RAC1, MTORC1, MTORC2, the YAP1-MAML2 fusion,
-Hippo pathway and PI3K-AKT-MTOR axis in NF2-SWN Meningioma; CYBB (NOX2), NCF1 and PRKCD
-in NF1 Other. Everything else that is new rests on an abstract nobody has checked.
+match, but 9 of those reach a Phase 1b target through a composite label (`novelty_basis =
+composite_label_partly_held_by_phase1b`), so **25 are novel on label and constituents
+together** (`novelty_basis = not_in_phase1b`).
+
+**8 of those 25 are anchored in a paper read in full** — CD274 (PD-L1), FAT3/4, VGLL4,
+PAK1 and RAC1 in NF2-SWN Meningioma; CYBB (NOX2), NCF1 and PRKCD in NF1 Other. All 8 are
+`full text - supported`. The other 17 rest on an abstract nobody has checked.
+
+Separately, 5 of the 9 partly-held composite rows are also full-text supported — Hippo
+pathway, PI3K-AKT-MTOR axis, MTORC1, MTORC2 and the YAP1-MAML2 fusion, all in NF2-SWN
+Meningioma. These are **not** novel on constituents: each reaches a target Phase 1b
+already holds. They are listed here because the full-text support is real, not because
+the target is new. Pooling them with the 8 to claim "13 novel and verified" would
+overstate novelty, and an earlier draft of this file did exactly that.
 
 **NF1 Non-optic LGG is a gap the fallback did not close.** 1 of its 9 rows is full-text
 supported and that row (`MAP2K1/2 (MEK1/2)`) is already in Phase 1b. 7 of the 9 carry a
