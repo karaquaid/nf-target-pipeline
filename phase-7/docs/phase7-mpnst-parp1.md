@@ -96,17 +96,32 @@ the pathway coincidence Phase 7 offered.
 
 ## 6. The combination is untested in NF1 MPNST
 
-Searching the Phase 4 trial tables, exactly **one** PARP inhibitor appears in any NF trial:
-**veliparib**, in NCT00946335 — a completed Phase 1 in **optic pathway glioma**, not MPNST.
-No olaparib, niraparib, rucaparib or talazoparib trial in NF appears in these tables.
+Searching the Phase 4 trial tables, exactly one PARP inhibitor appears at all: **veliparib** in
+NCT00946335. **That is not an NF trial.** It is "ABT-888 and Temozolomide in Treating Young
+Patients With Recurrent or Refractory CNS Tumors" (NCI, 31 enrolled, completed Phase 1), which
+lists 28 conditions, **none of them naming neurofibromatosis**. It entered the table because the
+optic-pathway-glioma query matched "Recurrent Childhood Visual Pathway and Hypothalamic Glioma".
+
+So the correct statement is stronger than the one first written here: **no PARP inhibitor has
+been trialled in NF at all**, in any manifestation. No olaparib, niraparib, rucaparib or
+talazoparib trial in NF appears in these tables either.
 
 The proposed partner, **selumetinib, is the FDA-approved NF1 agent**. So the specific hypothesis
 — a PARP inhibitor plus selumetinib in NF1 MPNST — is supported by one in vivo study and has not
 been taken into an NF trial.
 
-Discrepancy, flagged not resolved: the Phase 4 dossier records `n_drugs_in_nf_trials = 2` for
-PARP1. Only veliparib reproduces from `phase4-trial-drugs.csv`, by exact and by first-token
-matching. The second drug could not be identified.
+Two caveats on the trial evidence:
+
+- The Phase 4 dossier records `n_drugs_in_nf_trials = 2` for PARP1. Only veliparib reproduces
+  from `phase4-trial-drugs.csv`, by exact and by first-token matching. The second drug could not
+  be identified.
+- More importantly, **`n_drugs_in_nf_trials` does not mean what its name says.** The Phase 4
+  trial queries are manifestation terms, not NF-restricted, so 312 of 716 trial rows (44%) name
+  neurofibromatosis nowhere — 88% of the MPNST rows and 91% of the optic pathway glioma rows.
+  The column means "appeared in a trial for this manifestation". For PARP1 this makes the
+  finding stronger, not weaker: its only trial hit is a non-NF basket trial, so the untested
+  status is firmer than the column suggested. Audit:
+  `phase7-nf-trial-specificity-audit.csv`.
 
 ## What should follow
 
