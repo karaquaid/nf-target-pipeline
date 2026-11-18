@@ -7,5 +7,10 @@ __pycache__/
 # Phase 4 resume cache: regenerable, not a record
 phase-4/data/phase4-gtop-cache.jsonl
 
+# Phase 7 literature-fallback caches (PubMed responses and retrieved full texts).
+# Regenerate with phase-7/scripts/phase7_fallback_literature.py; only the curated
+# tables in phase-7/data live in the repo.
+phase-7/work/
+
 # DisMech release assets and Monarch resume caches land in build/ (already ignored
 # above); phase5_*.py default to --builddir build/phase5

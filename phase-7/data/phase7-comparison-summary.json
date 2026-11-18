@@ -1,0 +1,965 @@
+{
+  "inputs": {
+    "expression": "phase-3/data/phase3-candidate-targets.csv (manifestations exploded)",
+    "literature": "phase-1b/data/phase1b-candidate-targets.csv (all 303 rows)",
+    "phase6_role": "score attached after match class decided; not a comparison input"
+  },
+  "access_weight_rule": {
+    "full text - supported": 1.0,
+    "full text - partial": 0.6,
+    "abstract only": 0.3
+  },
+  "pathway_specificity_rule": {
+    "enrichment_fdr_cut": 0.05,
+    "pathway_size_cut": 100,
+    "rank_by": "pathway_size ascending, then enrichment fdr"
+  },
+  "totals": {
+    "n_comparison_rows": 3904,
+    "counts_by_match_class": {
+      "both_exact_named_gene": 20,
+      "both_via_composite_label": 7,
+      "expression_only": 3398,
+      "literature_only": 327,
+      "literature_only_no_expression_contrast_found": 152
+    },
+    "n_literature_only_rows": 479,
+    "n_literature_only_label_stratum_pairs": 265,
+    "n_literature_only_label_stratum_pairs_abstract_only": 50,
+    "n_literature_only_abstract_only": 99,
+    "n_literature_only_any_full_text": 380,
+    "n_near_misses": 225,
+    "n_near_misses_cross_manifestation": 169,
+    "n_near_misses_shared_pathway": 56
+  },
+  "phase1b_source_profile": {
+    "n_rows": 303,
+    "n_rows_in_expression_stratum": 212,
+    "n_rows_no_expression_contrast_found": 91
+  },
+  "literature_label_rows": {
+    "n_phase1b_rows": 303,
+    "by_status": {
+      "matched": {
+        "n_label_rows": 30,
+        "full text - supported": 21,
+        "full text - partial": 4,
+        "abstract only": 5,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 2,
+        "mean_access_weight": 0.83
+      },
+      "no_expression_contrast_found": {
+        "n_label_rows": 91,
+        "full text - supported": 53,
+        "full text - partial": 20,
+        "abstract only": 18,
+        "n_preprint_only_flag": 3,
+        "n_no_full_text_read": 12,
+        "mean_access_weight": 0.7736
+      },
+      "unmatched_despite_expression_contrast": {
+        "n_label_rows": 182,
+        "full text - supported": 120,
+        "full text - partial": 26,
+        "abstract only": 36,
+        "n_preprint_only_flag": 7,
+        "n_no_full_text_read": 32,
+        "mean_access_weight": 0.8044
+      }
+    },
+    "literature_only_label_rows_per_stratum": {
+      "NF1 | ANNUBP / atypical neurofibroma": {
+        "n_label_rows": 8,
+        "full text - supported": 6,
+        "full text - partial": 1,
+        "abstract only": 1,
+        "n_preprint_only_flag": 2,
+        "n_no_full_text_read": 1,
+        "mean_access_weight": 0.8625
+      },
+      "NF1 | Bone defects": {
+        "n_label_rows": 5,
+        "full text - supported": 3,
+        "full text - partial": 0,
+        "abstract only": 2,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 2,
+        "mean_access_weight": 0.72
+      },
+      "NF1 | Cardiovascular issues": {
+        "n_label_rows": 5,
+        "full text - supported": 2,
+        "full text - partial": 3,
+        "abstract only": 0,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 0,
+        "mean_access_weight": 0.76
+      },
+      "NF1 | Cognition / Behavioral / Learning": {
+        "n_label_rows": 6,
+        "full text - supported": 2,
+        "full text - partial": 3,
+        "abstract only": 1,
+        "n_preprint_only_flag": 1,
+        "n_no_full_text_read": 1,
+        "mean_access_weight": 0.6833
+      },
+      "NF1 | Cutaneous neurofibroma": {
+        "n_label_rows": 17,
+        "full text - supported": 10,
+        "full text - partial": 5,
+        "abstract only": 2,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 1,
+        "mean_access_weight": 0.8
+      },
+      "NF1 | Gastrointestinal stromal tumor (GIST)": {
+        "n_label_rows": 4,
+        "full text - supported": 0,
+        "full text - partial": 1,
+        "abstract only": 3,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 3,
+        "mean_access_weight": 0.375
+      },
+      "NF1 | Hematologic malignancies": {
+        "n_label_rows": 2,
+        "full text - supported": 1,
+        "full text - partial": 0,
+        "abstract only": 1,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 1,
+        "mean_access_weight": 0.65
+      },
+      "NF1 | High grade glioma": {
+        "n_label_rows": 10,
+        "full text - supported": 5,
+        "full text - partial": 4,
+        "abstract only": 1,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 1,
+        "mean_access_weight": 0.77
+      },
+      "NF1 | Malignant peripheral nerve sheath tumor (MPNST)": {
+        "n_label_rows": 54,
+        "full text - supported": 38,
+        "full text - partial": 8,
+        "abstract only": 8,
+        "n_preprint_only_flag": 4,
+        "n_no_full_text_read": 8,
+        "mean_access_weight": 0.837
+      },
+      "NF1 | Non-optic LGG": {
+        "n_label_rows": 4,
+        "full text - supported": 3,
+        "full text - partial": 1,
+        "abstract only": 0,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 0,
+        "mean_access_weight": 0.9
+      },
+      "NF1 | Optic pathway glioma": {
+        "n_label_rows": 11,
+        "full text - supported": 4,
+        "full text - partial": 1,
+        "abstract only": 6,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 6,
+        "mean_access_weight": 0.5818
+      },
+      "NF1 | Other": {
+        "n_label_rows": 11,
+        "full text - supported": 6,
+        "full text - partial": 1,
+        "abstract only": 4,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 0,
+        "mean_access_weight": 0.7091
+      },
+      "NF1 | Pain": {
+        "n_label_rows": 9,
+        "full text - supported": 5,
+        "full text - partial": 1,
+        "abstract only": 3,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 1,
+        "mean_access_weight": 0.7222
+      },
+      "NF1 | Plexiform neurofibroma": {
+        "n_label_rows": 37,
+        "full text - supported": 28,
+        "full text - partial": 3,
+        "abstract only": 6,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 4,
+        "mean_access_weight": 0.8541
+      },
+      "NF1 | Pulmonary disease": {
+        "n_label_rows": 2,
+        "full text - supported": 1,
+        "full text - partial": 1,
+        "abstract only": 0,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 0,
+        "mean_access_weight": 0.8
+      },
+      "NF2-SWN | Ependymoma": {
+        "n_label_rows": 3,
+        "full text - supported": 2,
+        "full text - partial": 0,
+        "abstract only": 1,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 1,
+        "mean_access_weight": 0.7667
+      },
+      "NF2-SWN | Meningioma": {
+        "n_label_rows": 29,
+        "full text - supported": 20,
+        "full text - partial": 5,
+        "abstract only": 4,
+        "n_preprint_only_flag": 2,
+        "n_no_full_text_read": 4,
+        "mean_access_weight": 0.8345
+      },
+      "NF2-SWN | Non-vestibular schwannoma": {
+        "n_label_rows": 17,
+        "full text - supported": 8,
+        "full text - partial": 3,
+        "abstract only": 6,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 6,
+        "mean_access_weight": 0.6824
+      },
+      "NF2-SWN | Vestibular schwannoma": {
+        "n_label_rows": 33,
+        "full text - supported": 23,
+        "full text - partial": 5,
+        "abstract only": 5,
+        "n_preprint_only_flag": 1,
+        "n_no_full_text_read": 4,
+        "mean_access_weight": 0.8333
+      },
+      "SWN | Non-vestibular schwannoma": {
+        "n_label_rows": 2,
+        "full text - supported": 2,
+        "full text - partial": 0,
+        "abstract only": 0,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 0,
+        "mean_access_weight": 1.0
+      },
+      "SWN | Pain": {
+        "n_label_rows": 4,
+        "full text - supported": 4,
+        "full text - partial": 0,
+        "abstract only": 0,
+        "n_preprint_only_flag": 0,
+        "n_no_full_text_read": 0,
+        "mean_access_weight": 1.0
+      }
+    }
+  },
+  "phase3b_reconciliation": {
+    "phase3b_recorded_total": 27,
+    "phase7_recomputed_total": 27,
+    "per_stratum_recorded": {
+      "NF1 | ANNUBP / atypical neurofibroma": 1,
+      "NF1 | Malignant peripheral nerve sheath tumor (MPNST)": 11,
+      "NF1 | Optic pathway glioma": 1,
+      "NF1 | Plexiform neurofibroma": 8,
+      "NF2-SWN | Vestibular schwannoma": 6
+    },
+    "per_stratum_recomputed": {
+      "NF1 | ANNUBP / atypical neurofibroma": 1,
+      "NF1 | Malignant peripheral nerve sheath tumor (MPNST)": 11,
+      "NF1 | Optic pathway glioma": 1,
+      "NF1 | Plexiform neurofibroma": 8,
+      "NF2-SWN | Vestibular schwannoma": 6
+    },
+    "per_stratum_agrees": true,
+    "unique_genes_in_both": 23,
+    "unique_genes_exact_named": 16,
+    "gene_stratum_pairs_exact_named": 20,
+    "gene_stratum_pairs_via_composite": 7,
+    "composite_only_genes": [
+      "CEMIP",
+      "E2F1",
+      "EZH2",
+      "FGFR1",
+      "MAPK3",
+      "PAK3",
+      "WWTR1"
+    ],
+    "divergence_from_contract_call_1": {
+      "contract_states": "16 exact_named_gene + 6 via_composite_label = 22 unique genes",
+      "phase7_recomputes": "16 exact_named_gene + 7 composite-only = 23 unique genes",
+      "extra_gene": "CEMIP",
+      "cause": "Contract Call 1 enumerated only the family/pathway/complex labels (56 of the 212 in-stratum Phase 1b rows). CEMIP is reached through `HYALURONAN`, whose label_type is `other`, so Call 1's enumeration did not cover it. Phase 7 expands every Phase 1b row that carries constituent_genes, which is the rule phase3b_coverage.py used and is why the 27 gene-per-stratum total reconciles exactly; narrowing expansion to family/pathway/complex would reproduce Call 1's 22 but break the 27.",
+      "resolution": "Kept the wider expansion and classified CEMIP as both_via_composite_label, since it was not named by a paper. A reviewer wanting Call 1's exact set should drop rows where lit_label_type is not in {family, pathway, complex, gene}."
+    },
+    "note": "27 is a gene-per-stratum count. Four genes are counted in two strata each (BIRC5, SOX10 and SPP1 in both NF1 MPNST and NF1 plexiform neurofibroma; EGFR in NF1 plexiform neurofibroma and NF2-SWN vestibular schwannoma), so 27 pairs collapse to 23 unique genes. Contract Call 1 enumerated 16 exact + 6 composite-only = 22 unique genes because it expanded only family/pathway/complex labels; expanding every label that carries constituent_genes (as phase3b_coverage.py does) adds CEMIP via the `other` label HYALURONAN, giving 23."
+  },
+  "per_stratum": [
+    {
+      "disease": "NF1",
+      "manifestation": "ANNUBP / atypical neurofibroma",
+      "has_expression_candidates": true,
+      "n_rows": 63,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 1,
+        "both_via_composite_label": 0,
+        "expression_only": 53,
+        "literature_only": 9,
+        "literature_only_no_expression_contrast_found": 0
+      },
+      "n_literature_only_genes": 9,
+      "n_literature_only_labels": 7,
+      "n_literature_only_named_gene_labels": 6,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 5,
+        "full text - partial": 1,
+        "abstract only": 1
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 7,
+        "full text - partial": 1,
+        "abstract only": 1,
+        "n_abstract_only": 1,
+        "n_any_full_text": 8,
+        "n_preprint_only_flag": 2,
+        "mean_access_weight": 0.8778
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Bone defects",
+      "has_expression_candidates": true,
+      "n_rows": 93,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 81,
+        "literature_only": 12,
+        "literature_only_no_expression_contrast_found": 0
+      },
+      "n_literature_only_genes": 12,
+      "n_literature_only_labels": 5,
+      "n_literature_only_named_gene_labels": 2,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 3,
+        "full text - partial": 0,
+        "abstract only": 2
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 4,
+        "full text - partial": 0,
+        "abstract only": 8,
+        "n_abstract_only": 8,
+        "n_any_full_text": 4,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.5333
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Cardiovascular issues",
+      "has_expression_candidates": false,
+      "n_rows": 13,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 13
+      },
+      "n_literature_only_genes": 13,
+      "n_literature_only_labels": 4,
+      "n_literature_only_named_gene_labels": 0,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 2,
+        "full text - partial": 2,
+        "abstract only": 0
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 3,
+        "full text - partial": 10,
+        "abstract only": 0,
+        "n_abstract_only": 0,
+        "n_any_full_text": 13,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.6923
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Cognition / Behavioral / Learning",
+      "has_expression_candidates": false,
+      "n_rows": 12,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 12
+      },
+      "n_literature_only_genes": 12,
+      "n_literature_only_labels": 6,
+      "n_literature_only_named_gene_labels": 2,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 2,
+        "full text - partial": 3,
+        "abstract only": 1
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 5,
+        "full text - partial": 4,
+        "abstract only": 3,
+        "n_abstract_only": 3,
+        "n_any_full_text": 9,
+        "n_preprint_only_flag": 3,
+        "mean_access_weight": 0.6917
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Cutaneous neurofibroma",
+      "has_expression_candidates": true,
+      "n_rows": 425,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 398,
+        "literature_only": 27,
+        "literature_only_no_expression_contrast_found": 0
+      },
+      "n_literature_only_genes": 27,
+      "n_literature_only_labels": 16,
+      "n_literature_only_named_gene_labels": 13,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 10,
+        "full text - partial": 4,
+        "abstract only": 2
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 12,
+        "full text - partial": 10,
+        "abstract only": 5,
+        "n_abstract_only": 5,
+        "n_any_full_text": 22,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.7222
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Gastrointestinal stromal tumor (GIST)",
+      "has_expression_candidates": false,
+      "n_rows": 5,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 5
+      },
+      "n_literature_only_genes": 5,
+      "n_literature_only_labels": 4,
+      "n_literature_only_named_gene_labels": 3,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 0,
+        "full text - partial": 1,
+        "abstract only": 3
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 0,
+        "full text - partial": 1,
+        "abstract only": 4,
+        "n_abstract_only": 4,
+        "n_any_full_text": 1,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.36
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Hematologic malignancies",
+      "has_expression_candidates": false,
+      "n_rows": 3,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 3
+      },
+      "n_literature_only_genes": 3,
+      "n_literature_only_labels": 2,
+      "n_literature_only_named_gene_labels": 1,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 1,
+        "full text - partial": 0,
+        "abstract only": 1
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 2,
+        "full text - partial": 0,
+        "abstract only": 1,
+        "n_abstract_only": 1,
+        "n_any_full_text": 2,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.7667
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "High grade glioma",
+      "has_expression_candidates": false,
+      "n_rows": 22,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 22
+      },
+      "n_literature_only_genes": 22,
+      "n_literature_only_labels": 10,
+      "n_literature_only_named_gene_labels": 6,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 5,
+        "full text - partial": 4,
+        "abstract only": 1
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 8,
+        "full text - partial": 11,
+        "abstract only": 3,
+        "n_abstract_only": 3,
+        "n_any_full_text": 19,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.7045
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Malignant peripheral nerve sheath tumor (MPNST)",
+      "has_expression_candidates": true,
+      "n_rows": 858,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 9,
+        "both_via_composite_label": 2,
+        "expression_only": 769,
+        "literature_only": 78,
+        "literature_only_no_expression_contrast_found": 0
+      },
+      "n_literature_only_genes": 78,
+      "n_literature_only_labels": 52,
+      "n_literature_only_named_gene_labels": 40,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 37,
+        "full text - partial": 7,
+        "abstract only": 8
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 51,
+        "full text - partial": 19,
+        "abstract only": 8,
+        "n_abstract_only": 8,
+        "n_any_full_text": 70,
+        "n_preprint_only_flag": 4,
+        "mean_access_weight": 0.8308
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Non-optic LGG",
+      "has_expression_candidates": false,
+      "n_rows": 9,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 9
+      },
+      "n_literature_only_genes": 9,
+      "n_literature_only_labels": 4,
+      "n_literature_only_named_gene_labels": 2,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 3,
+        "full text - partial": 1,
+        "abstract only": 0
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 8,
+        "full text - partial": 1,
+        "abstract only": 0,
+        "n_abstract_only": 0,
+        "n_any_full_text": 9,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.9556
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Optic pathway glioma",
+      "has_expression_candidates": true,
+      "n_rows": 424,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 1,
+        "expression_only": 399,
+        "literature_only": 24,
+        "literature_only_no_expression_contrast_found": 0
+      },
+      "n_literature_only_genes": 24,
+      "n_literature_only_labels": 12,
+      "n_literature_only_named_gene_labels": 6,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 4,
+        "full text - partial": 2,
+        "abstract only": 6
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 8,
+        "full text - partial": 5,
+        "abstract only": 11,
+        "n_abstract_only": 11,
+        "n_any_full_text": 13,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.5958
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Other",
+      "has_expression_candidates": false,
+      "n_rows": 16,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 16
+      },
+      "n_literature_only_genes": 16,
+      "n_literature_only_labels": 10,
+      "n_literature_only_named_gene_labels": 8,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 6,
+        "full text - partial": 1,
+        "abstract only": 3
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 6,
+        "full text - partial": 1,
+        "abstract only": 9,
+        "n_abstract_only": 9,
+        "n_any_full_text": 7,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.5813
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Pain",
+      "has_expression_candidates": false,
+      "n_rows": 15,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 15
+      },
+      "n_literature_only_genes": 15,
+      "n_literature_only_labels": 8,
+      "n_literature_only_named_gene_labels": 5,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 5,
+        "full text - partial": 1,
+        "abstract only": 2
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 6,
+        "full text - partial": 2,
+        "abstract only": 7,
+        "n_abstract_only": 7,
+        "n_any_full_text": 8,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.62
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Plexiform neurofibroma",
+      "has_expression_candidates": true,
+      "n_rows": 808,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 7,
+        "both_via_composite_label": 1,
+        "expression_only": 735,
+        "literature_only": 65,
+        "literature_only_no_expression_contrast_found": 0
+      },
+      "n_literature_only_genes": 65,
+      "n_literature_only_labels": 36,
+      "n_literature_only_named_gene_labels": 25,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 28,
+        "full text - partial": 4,
+        "abstract only": 4
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 41,
+        "full text - partial": 14,
+        "abstract only": 10,
+        "n_abstract_only": 10,
+        "n_any_full_text": 55,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.8062
+      }
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Pulmonary disease",
+      "has_expression_candidates": false,
+      "n_rows": 2,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 2
+      },
+      "n_literature_only_genes": 2,
+      "n_literature_only_labels": 2,
+      "n_literature_only_named_gene_labels": 2,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 1,
+        "full text - partial": 1,
+        "abstract only": 0
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 1,
+        "full text - partial": 1,
+        "abstract only": 0,
+        "n_abstract_only": 0,
+        "n_any_full_text": 2,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.8
+      }
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Ependymoma",
+      "has_expression_candidates": false,
+      "n_rows": 4,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 4
+      },
+      "n_literature_only_genes": 4,
+      "n_literature_only_labels": 3,
+      "n_literature_only_named_gene_labels": 2,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 2,
+        "full text - partial": 0,
+        "abstract only": 1
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 3,
+        "full text - partial": 0,
+        "abstract only": 1,
+        "n_abstract_only": 1,
+        "n_any_full_text": 3,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.825
+      }
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Meningioma",
+      "has_expression_candidates": false,
+      "n_rows": 43,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 43
+      },
+      "n_literature_only_genes": 43,
+      "n_literature_only_labels": 27,
+      "n_literature_only_named_gene_labels": 20,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 20,
+        "full text - partial": 3,
+        "abstract only": 4
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 31,
+        "full text - partial": 3,
+        "abstract only": 9,
+        "n_abstract_only": 9,
+        "n_any_full_text": 34,
+        "n_preprint_only_flag": 1,
+        "mean_access_weight": 0.8256
+      }
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Non-vestibular schwannoma",
+      "has_expression_candidates": true,
+      "n_rows": 221,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 192,
+        "literature_only": 29,
+        "literature_only_no_expression_contrast_found": 0
+      },
+      "n_literature_only_genes": 29,
+      "n_literature_only_labels": 17,
+      "n_literature_only_named_gene_labels": 14,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 8,
+        "full text - partial": 3,
+        "abstract only": 6
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 18,
+        "full text - partial": 5,
+        "abstract only": 6,
+        "n_abstract_only": 6,
+        "n_any_full_text": 23,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 0.7862
+      }
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Pain",
+      "has_expression_candidates": true,
+      "n_rows": 192,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 192,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 0
+      },
+      "n_literature_only_genes": 0,
+      "n_literature_only_labels": 0,
+      "n_literature_only_named_gene_labels": 0,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 0,
+        "full text - partial": 0,
+        "abstract only": 0
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 0,
+        "full text - partial": 0,
+        "abstract only": 0,
+        "n_abstract_only": 0,
+        "n_any_full_text": 0,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": null
+      }
+    },
+    {
+      "disease": "NF2-SWN",
+      "manifestation": "Vestibular schwannoma",
+      "has_expression_candidates": true,
+      "n_rows": 668,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 3,
+        "both_via_composite_label": 3,
+        "expression_only": 579,
+        "literature_only": 83,
+        "literature_only_no_expression_contrast_found": 0
+      },
+      "n_literature_only_genes": 83,
+      "n_literature_only_labels": 34,
+      "n_literature_only_named_gene_labels": 24,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 24,
+        "full text - partial": 5,
+        "abstract only": 5
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 57,
+        "full text - partial": 13,
+        "abstract only": 13,
+        "n_abstract_only": 13,
+        "n_any_full_text": 70,
+        "n_preprint_only_flag": 1,
+        "mean_access_weight": 0.8277
+      }
+    },
+    {
+      "disease": "SWN",
+      "manifestation": "Non-vestibular schwannoma",
+      "has_expression_candidates": false,
+      "n_rows": 4,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 4
+      },
+      "n_literature_only_genes": 4,
+      "n_literature_only_labels": 2,
+      "n_literature_only_named_gene_labels": 1,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 2,
+        "full text - partial": 0,
+        "abstract only": 0
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 4,
+        "full text - partial": 0,
+        "abstract only": 0,
+        "n_abstract_only": 0,
+        "n_any_full_text": 4,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 1.0
+      }
+    },
+    {
+      "disease": "SWN",
+      "manifestation": "Pain",
+      "has_expression_candidates": false,
+      "n_rows": 4,
+      "counts_by_match_class": {
+        "both_exact_named_gene": 0,
+        "both_via_composite_label": 0,
+        "expression_only": 0,
+        "literature_only": 0,
+        "literature_only_no_expression_contrast_found": 4
+      },
+      "n_literature_only_genes": 4,
+      "n_literature_only_labels": 4,
+      "n_literature_only_named_gene_labels": 4,
+      "literature_only_labels_by_tier": {
+        "full text - supported": 4,
+        "full text - partial": 0,
+        "abstract only": 0
+      },
+      "literature_only_access_profile": {
+        "full text - supported": 4,
+        "full text - partial": 0,
+        "abstract only": 0,
+        "n_abstract_only": 0,
+        "n_any_full_text": 4,
+        "n_preprint_only_flag": 0,
+        "mean_access_weight": 1.0
+      }
+    }
+  ]
+}

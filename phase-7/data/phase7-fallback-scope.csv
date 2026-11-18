@@ -1,0 +1,19 @@
+accession,reason,disease,manifestation,n_samples_in_scope,expr_targets,lit_targets,stratum_has_no_expression
+GSE5675,preflight_removed,NF1,Non-optic LGG,0.0,0,4,True
+GSE2841,preflight_removed,NF1,Other,2.0,0,11,True
+GSE232528,ingested_no_ranking,NF2-SWN,Meningioma,,0,29,True
+GSE120687,preflight_removed,NF1,Cutaneous neurofibroma,74.0,398,17,False
+GSE172221,preflight_removed,NF1,Cutaneous neurofibroma,22.0,398,17,False
+E-MEXP-258,ingested_no_ranking,NF1,Cutaneous neurofibroma,,398,17,False
+GSE218493,ingested_no_ranking,NF1,Cutaneous neurofibroma,,398,17,False
+GSE120687,preflight_removed,NF1,Malignant peripheral nerve sheath tumor (MPNST),74.0,780,66,False
+GSE172221,preflight_removed,NF1,Malignant peripheral nerve sheath tumor (MPNST),22.0,780,66,False
+GSE325204,preflight_removed,NF1,Malignant peripheral nerve sheath tumor (MPNST),9.0,780,66,False
+GSE77205,preflight_removed,NF1,Malignant peripheral nerve sheath tumor (MPNST),4.0,780,66,False
+GSE120687,preflight_removed,NF1,Plexiform neurofibroma,74.0,743,45,False
+GSE172221,preflight_removed,NF1,Plexiform neurofibroma,22.0,743,45,False
+GSE181985,ingested_no_ranking,NF1,Plexiform neurofibroma,,743,45,False
+GSE218493,ingested_no_ranking,NF1,Plexiform neurofibroma,,743,45,False
+GSE56598,preflight_removed,NF2-SWN,Non-vestibular schwannoma,20.0,192,17,False
+GSE56598,preflight_removed,NF2-SWN,Vestibular schwannoma,20.0,585,40,False
+GSE344687,ingested_no_ranking,NF2-SWN,Vestibular schwannoma,,585,40,False

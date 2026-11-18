@@ -109,6 +109,65 @@ def flatten(study: dict) -> dict:
     }
 
 
+# Most of these queries are MANIFESTATION terms, not NF terms, so the table they
+# build is a manifestation-trial table and not an NF-trial table. 312 of its 716
+# rows name neurofibromatosis nowhere - 91% of the optic pathway glioma rows and
+# 88% of the MPNST rows - because a query like "optic pathway glioma OR optic
+# nerve glioma" also returns general paediatric CNS and soft-tissue-sarcoma
+# trials. That is correct for some uses and wrong for others: a non-NF paediatric
+# CNS trial is perfectly good evidence that a drug reaches the CNS (Phase 5 uses
+# it exactly that way), but it is NOT evidence that a drug has been tried in NF.
+#
+# So both facts are carried, and consumers pick the one they mean.
+NF_PATTERN = re.compile(
+    r"neurofibromatos|\bNF1\b|\bNF-1\b|\bNF2\b|\bNF-2\b|schwannomatos|von Recklinghausen",
+    re.I,
+)
+
+
+def is_nf_specific(query_label: str, title: str, conditions: str) -> bool:
+    """True when the trial is actually an NF trial.
+
+    Two ways to qualify: it came from one of the NF-restricted `_disease_*`
+    queries (NF by provenance), or its title or condition list names an NF
+    disease (NF by statement). Provenance alone is not enough, because the
+    manifestation queries are not NF-restricted.
+    """
+    if str(query_label).startswith("_disease_"):
+        return True
+    return bool(NF_PATTERN.search(f"{title} {conditions}"))
+
+
+def annotate_nf_specific(data: Path) -> dict:
+    """Recompute `nf_specific` on the committed tables without re-querying.
+
+    Kept separate from the fetch so the flag can be added to the existing record
+    without a data refresh, which would silently fold in every trial registered
+    since the pinned run of 2026-11-04 and make the two changes impossible to
+    tell apart in review.
+    """
+    trials = pd.read_csv(data / "phase4-nf-trials.csv")
+    trials["nf_specific"] = [
+        is_nf_specific(q, t, c)
+        for q, t, c in zip(trials["query_label"], trials["title"], trials["conditions"])
+    ]
+    nf_trials = set(trials.loc[trials["nf_specific"], "nct_id"])
+
+    drugs = pd.read_csv(data / "phase4-trial-drugs.csv")
+    drugs["nf_specific"] = drugs["nct_id"].isin(nf_trials)
+
+    trials.to_csv(data / "phase4-nf-trials.csv", index=False)
+    drugs.to_csv(data / "phase4-trial-drugs.csv", index=False)
+    return {
+        "trial_rows": int(len(trials)),
+        "trial_rows_nf_specific": int(trials["nf_specific"].sum()),
+        "distinct_trials": int(trials["nct_id"].nunique()),
+        "distinct_trials_nf_specific": int(len(nf_trials)),
+        "drug_rows": int(len(drugs)),
+        "drug_rows_nf_specific": int(drugs["nf_specific"].sum()),
+    }
+
+
 def normalise(name: str) -> str:
     """Trial intervention names carry dose and formulation text; reduce to a
     comparable token so 'Selumetinib 25 mg/m2' matches 'SELUMETINIB'."""
@@ -122,9 +181,18 @@ def normalise(name: str) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", default=".")
+    parser.add_argument("--annotate-only", action="store_true",
+                        help="recompute nf_specific on the committed tables; no network, "
+                             "no refetch, no change to which trials are in the record")
     args = parser.parse_args()
     root = Path(args.repo).resolve()
     data = root / "phase-4/data"
+
+    if args.annotate_only:
+        stats = annotate_nf_specific(data)
+        for k, v in stats.items():
+            print(f"  {k}: {v}")
+        return
 
     rows, trial_drugs, errors = [], [], {}
     for label, condition in QUERIES.items():
@@ -141,6 +209,7 @@ def main() -> None:
                     "manifestation": "" if label.startswith("_disease_") else label,
                     "disease_scope": label.replace("_disease_", "") if label.startswith("_disease_") else "",
                     **{k: v for k, v in flat.items() if k != "interventions"},
+                    "nf_specific": is_nf_specific(label, flat["title"], flat["conditions"]),
                     "n_interventions": len(flat["interventions"]),
                 }
             )
@@ -156,6 +225,7 @@ def main() -> None:
                         "intervention_name": intervention["name"],
                         "intervention_type": intervention["type"],
                         "intervention_key": normalise(intervention["name"]),
+                        "nf_specific": is_nf_specific(label, flat["title"], flat["conditions"]),
                     }
                 )
         print(f"  {label[:45]:47s} {len(studies)} studies", flush=True)

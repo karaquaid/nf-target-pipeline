@@ -1,0 +1,9 @@
+pathway,kegg_genes,genes_with_evidence,genes_replicated,replicated_up,replicated_down,pct_of_pathway_replicated,median_rank_in_stratum,n_in_candidate_list
+DNA replication,36,23,16,15,1,44.4,341.0,6
+Mismatch repair,23,11,8,8,0,34.8,221.5,4
+Cell cycle,158,102,38,36,2,24.1,275.0,20
+Base excision repair,44,27,10,10,0,22.7,237.5,5
+Homologous recombination,138,67,23,23,0,16.7,346.0,8
+Nucleotide excision repair,63,24,9,9,0,14.3,286.0,4
+Spliceosome,184,54,9,8,1,4.9,510.0,1
+Ribosome,302,86,9,8,1,3.0,545.0,0

@@ -377,8 +377,19 @@ def main() -> None:
             "score": round(composite * safety * route, 4) if pd.notna(composite) else np.nan,
             "delivery_basis": delivery_basis, "delivery_from_drug": delivery_moiety,
             "bbb_required": bbb,
-            "n_drugs_in_nf_trials": int(r.get("n_drugs_in_nf_trials") or 0),
-            "novel_to_nf": bool(comp["drug_stage"] == 1.00 and not (r.get("n_drugs_in_nf_trials") or 0)),
+            # Two counts, because the Phase 4 trial table answers two questions.
+            # Its queries are mostly manifestation terms, so a drug can appear in
+            # it through a general sarcoma or paediatric CNS trial that enrolled
+            # no NF patient: 312 of 716 trial rows name neurofibromatosis nowhere.
+            # `novel_to_nf` now means what it says and is derived from the
+            # NF-specific count; the old behaviour is kept under an accurate name
+            # so the two are never confused again. Neither is a scoring input.
+            "n_drugs_in_manifestation_trials": int(r.get("n_drugs_in_manifestation_trials") or 0),
+            "n_drugs_in_nf_specific_trials": int(r.get("n_drugs_in_nf_specific_trials") or 0),
+            "novel_to_nf": bool(
+                comp["drug_stage"] == 1.00 and not (r.get("n_drugs_in_nf_specific_trials") or 0)),
+            "novel_to_manifestation_trials": bool(
+                comp["drug_stage"] == 1.00 and not (r.get("n_drugs_in_manifestation_trials") or 0)),
 
         })
 
