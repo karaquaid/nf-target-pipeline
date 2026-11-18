@@ -3,6 +3,11 @@
 The agent that performs a first build of a literature target map: the work this project calls
 Phase 1b, generalised to any disease.
 
+**This file is only about recreating the agent inside Claude Science.** If you want to run the
+tool, start at [`litmonitor/README.md`](../../../litmonitor/README.md), which is a complete
+walkthrough written for people who have never used a command line. You do not need this file or
+the agent to build a target map.
+
 | File | What it is |
 |---|---|
 | `SKILL.md` | The protocol. Published as the skill `literature-target-map`. |
@@ -38,9 +43,12 @@ access to this repository:
     python litmonitor/review.py --config mystudy.toml --stamp 2026-11
     python litmonitor/report.py --config mystudy.toml
 
-See `litmonitor/README.md`. The agent exists for the parts that benefit from a conversation:
-designing the vocabulary, arguing about scope, and reading extracted rows against their
-abstracts before a full run.
+The walkthrough for those commands, including installing Python and getting an API key, is
+[`litmonitor/README.md`](../../../litmonitor/README.md).
+
+The agent exists for the parts that benefit from a conversation: designing the vocabulary,
+arguing about scope, and reading extracted rows against their abstracts before a full run. The
+work it does is the same, and it runs the same scripts.
 
 ## Relationship to the monitor
 
