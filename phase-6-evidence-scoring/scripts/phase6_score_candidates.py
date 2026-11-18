@@ -94,13 +94,25 @@ NEUTRAL_PRIOR = 0.50            # what an unassessed component contributes
 # for 2 withdrawn drugs out of 465, and all 71 withdrawn-penalised candidates
 # still had other drugs. A target is downweighted only as its usable options are
 # exhausted.
-SAFETY_EXHAUSTED = 0.60     # no drug against this target is free of a safety problem
-SAFETY_MOSTLY_FLAGGED = 0.85  # more than half the drugs carry one
+# REVERSED 2026-11-17 (Kara): a safety concern always downweights, regardless of
+# what alternatives the target has. The options-exhausted version asked whether a
+# target still had clean drugs; this one asks whether a safety signal exists at
+# all against the target, on the view that the signal may be mechanism-based and
+# is not cancelled by the existence of other molecules. The cost is accepted:
+# 498 candidates are downweighted rather than 45, and the penalty falls hardest
+# on the best-studied targets - TP53 takes 0.60 for 2 withdrawn drugs out of 465.
+SAFETY_WITHDRAWN = 0.60
+SAFETY_BLACK_BOX = 0.85
 SAFETY_CLEAN = 1.00
 ROUTE_INAPPROPRIATE = 0.40      # every drug this candidate has is route-excluded
 
 # Which compartment a manifestation needs. Only bbb_required strata consult this.
-MANIFESTATION_COMPARTMENT = {"Optic pathway glioma": "tumor"}
+# Vestibular schwannoma joined the CNS-required set on 2026-11-17 (Kara). Like
+# optic pathway glioma it is a tumour, so it reads the tumor band. Caveat carried
+# in the summary: the tumor-compartment evidence was retrieved for gliomas, so VS
+# inherits bands measured in another tumour type until a VS-specific pass runs.
+MANIFESTATION_COMPARTMENT = {"Optic pathway glioma": "tumor",
+                             "Vestibular schwannoma": "tumor"}
 
 # --- decision record ---------------------------------------------------------
 # Every ruling below was settled with Kara and is EMITTED INTO THE SUMMARY by
@@ -134,9 +146,13 @@ DECISIONS = {
                 "flagged novel_to_nf rather than discounted."),
     },
     "call4_safety": {
-        "ruling": "penalise only as a target's usable options are exhausted (Kara, 2026-11-17)",
-        "why": ("The flat version applied 0.60 for any withdrawn drug, which scaled with how well studied a "
-                "target was: TP53 took it for 2 of 465 drugs. Downweighted candidates fell 498 -> 45."),
+        "ruling": "a safety concern always downweights, regardless of alternatives (Kara, 2026-11-17)",
+        "superseded": ("An earlier ruling the same day scored safety on the fraction of a target's drugs "
+                       "carrying a problem, so a target with clean alternatives kept full marks. That is "
+                       "reversed: the signal may be mechanism-based, and the existence of other molecules "
+                       "does not cancel it."),
+        "cost_accepted": ("498 candidates are downweighted rather than 45, and the penalty falls hardest on "
+                          "the best-studied targets - TP53 takes 0.60 for 2 withdrawn drugs out of 465."),
     },
     "call5_delivery": {
         "ruling": "leave delivery at 0.20; it is inert at current coverage (Kara, 2026-11-17)",
@@ -344,19 +360,8 @@ def main() -> None:
 
         withdrawn = float(r.get("n_drugs_withdrawn") or 0)
         boxed = float(r.get("n_drugs_black_box") or 0)
-        flagged = withdrawn + boxed
-        if not n_drugs or not flagged:
-            safety = SAFETY_CLEAN
-        else:
-            frac_flagged = min(flagged / n_drugs, 1.0)
-            if frac_flagged >= 0.999:
-                # Exhausted, but a withdrawal is not a boxed warning: the harsher
-                # multiplier is reserved for a target whose every drug was pulled.
-                safety = SAFETY_EXHAUSTED if withdrawn else SAFETY_MOSTLY_FLAGGED
-            elif frac_flagged > 0.5:
-                safety = SAFETY_MOSTLY_FLAGGED
-            else:
-                safety = SAFETY_CLEAN
+        safety = (SAFETY_WITHDRAWN if withdrawn
+                  else SAFETY_BLACK_BOX if boxed else SAFETY_CLEAN)
         route_ok = float(r.get("n_route_appropriate_drugs") or 0)
         topical_only = float(r.get("n_excluded_topical_only") or 0)
         route = ROUTE_INAPPROPRIATE if (n_drugs and not route_ok and topical_only) else 1.00

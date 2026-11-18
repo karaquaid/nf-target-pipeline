@@ -38,16 +38,22 @@ from pathlib import Path
 
 import pandas as pd
 
-# Per docs/project-plan.md: topical delivery is appropriate only for the
-# skin-localised manifestations; everything else needs a systemic route.
-TOPICAL_ELIGIBLE = {"Cutaneous neurofibroma", "ANNUBP / atypical neurofibroma"}
+# Topical delivery is acceptable only where the lesion is reachable through the
+# skin. ANNUBP was removed from this set on 2026-11-17 (Kara): the plan called it
+# "skin-localised", but an atypical neurofibromatous neoplasm of uncertain
+# biologic potential arises within deep or plexiform neurofibromas on the
+# progression path to MPNST, and topical drug cannot reach it.
+TOPICAL_ELIGIBLE = {"Cutaneous neurofibroma"}
 # CNS-relevant manifestations additionally require blood-brain-barrier
-# penetration from a systemic drug.
+# penetration from a systemic drug. Vestibular schwannoma was added on
+# 2026-11-17 (Kara): it sits in the cerebellopontine angle, so a drug must reach
+# an intracranial compartment to treat it, whatever the tumour's own vasculature.
 CNS_RELEVANT = {
     "Optic pathway glioma",
     "High grade glioma",
     "Non-optic LGG",
     "Cognition / Behavioral / Learning",
+    "Vestibular schwannoma",
 }
 
 TIER_RANK = {"A_aggregated": 0, "B_replicated": 1, "C_single_dataset": 2}
