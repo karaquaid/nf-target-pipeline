@@ -70,7 +70,13 @@ def main() -> None:
     # A drug tested in a trial for a CNS manifestation has demonstrated delivery
     # whatever a descriptor model predicts, so that evidence is recorded here and
     # the override is reported in its own columns. Phase 4's flag is left intact.
-    in_cns_trial = pd.to_numeric(drugs.n_nf_trials, errors="coerce").fillna(0) > 0
+    #
+    # This deliberately uses the MANIFESTATION count, not the NF-specific one.
+    # The question here is whether the drug reaches the compartment, and a
+    # paediatric CNS trial that enrolled no NF patient answers that just as well
+    # as an NF trial does. Column renamed from n_manifestation_trials 2026-11-18; the values
+    # and therefore every Phase 5 output are unchanged.
+    in_cns_trial = pd.to_numeric(drugs.n_manifestation_trials, errors="coerce").fillna(0) > 0
     drugs["cns_delivery_evidence"] = "predicted_only"
     drugs.loc[in_cns_trial & _true(drugs.bbb_required),
               "cns_delivery_evidence"] = "clinical_trial_in_cns_manifestation"
@@ -114,7 +120,7 @@ def main() -> None:
             "distinct_drugs": int(gh_.drug_name.nunique()),
             "route_appropriate_drug_rows": int(_true(gh_.route_appropriate).sum()),
             "approved_or_phase3_appropriate": int((_true(gh_.route_appropriate) & (ph >= 3)).sum()),
-            "drug_rows_in_nf_trials": int((pd.to_numeric(gh_.n_nf_trials, errors="coerce").fillna(0) > 0).sum()),
+            "drug_rows_in_manifestation_trials": int((pd.to_numeric(gh_.n_manifestation_trials, errors="coerce").fillna(0) > 0).sum()),
         })
     by_stratum = pd.DataFrame(rows)
     by_stratum.to_csv(data / "phase5-drugs-by-stratum.csv", index=False)
@@ -122,7 +128,7 @@ def main() -> None:
     short = clinical_ov[clinical_ov.phase5_support_tier.isin(["A_mechanism", "B_phenotype"])]
     short = (short[["gene_symbol", "disease", "manifestation", "phase5_support_tier",
                     "tme_target", "drug_name", "chembl_id", "max_phase_numeric", "routes",
-                    "cns_penetration_flag", "bbb_required", "n_nf_trials", "nf_trial_ids",
+                    "cns_penetration_flag", "bbb_required", "n_manifestation_trials", "nf_trial_ids",
                     "has_boxed_warning", "serious_reports", "chembl_mechanisms",
                     "evidence_sources", "route_flag", "cns_delivery_evidence"]]
              .sort_values(["disease", "manifestation", "phase5_support_tier",
@@ -142,10 +148,10 @@ def main() -> None:
         "route_appropriate_clinical_stage_rows": int(len(clinical)),
         "route_appropriate_rows_with_clinical_cns_override": int(len(appropriate_ov)),
         "clinical_stage_rows_with_clinical_cns_override": int(len(clinical_ov)),
-        "cns_rows_excluded_by_calculated_flag_but_in_an_nf_trial": int(
+        "cns_rows_excluded_by_calculated_flag_but_in_a_manifestation_trial": int(
             ((has.route_flag == "excluded_not_bbb_penetrant")
-             & (pd.to_numeric(has.n_nf_trials, errors="coerce").fillna(0) > 0)).sum()),
-        "drug_rows_in_nf_trials": int((pd.to_numeric(has.n_nf_trials, errors="coerce").fillna(0) > 0).sum()),
+             & (pd.to_numeric(has.n_manifestation_trials, errors="coerce").fillna(0) > 0)).sum()),
+        "drug_rows_in_manifestation_trials": int((pd.to_numeric(has.n_manifestation_trials, errors="coerce").fillna(0) > 0).sum()),
         "shortlist_rows": int(len(short)),
         "shortlist_distinct_drugs": int(short.drug_name.nunique()),
     }

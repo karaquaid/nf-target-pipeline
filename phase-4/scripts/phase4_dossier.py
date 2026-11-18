@@ -72,6 +72,21 @@ def read_optional(path: Path) -> pd.DataFrame:
     return pd.read_csv(path) if path.exists() else pd.DataFrame()
 
 
+def read_either(data: Path, name: str) -> pd.DataFrame:
+    """Read `name` or `name.gz`, whichever is present.
+
+    The committed table is gzipped but this script asked for the plain name, so
+    it could not regenerate its own output. Fixed here rather than renaming the
+    data file, since other phases read the .gz path.
+    """
+    plain, gz = data / name, data / f"{name}.gz"
+    if plain.exists():
+        return pd.read_csv(plain)
+    if gz.exists():
+        return pd.read_csv(gz)
+    raise FileNotFoundError(f"neither {plain} nor {gz}")
+
+
 def route_verdict(row) -> tuple:
     """Returns (flag, reason). Never drops a drug."""
     manifestation = row["manifestation"]
@@ -142,7 +157,7 @@ def main() -> None:
     targets = pd.read_csv(data / "phase4-targets.csv")
     identifiers = pd.read_csv(data / "phase4-identifiers.csv")
     interactions = pd.read_csv(data / "phase4-drug-interactions.csv.gz")
-    tract = pd.read_csv(data / "phase4-opentargets-tractability.csv")
+    tract = read_either(data, "phase4-opentargets-tractability.csv")
     probes = read_optional(data / "phase4-opentargets-probes.csv")
     admet = pd.read_csv(data / "phase4-admet.csv.gz")
     labels = read_optional(data / "phase4-openfda-labels.csv")
@@ -189,23 +204,42 @@ def main() -> None:
         drugs["first_approval_date"] = pd.NA
 
     if len(trial_drugs):
-        in_nf_trial = (
-            trial_drugs[trial_drugs["matches_phase4_drug"]]
+        # Two counts, because the trial table answers two different questions and
+        # was previously reported as though it answered only the NF one. The
+        # queries behind it are mostly MANIFESTATION terms, so a drug can appear
+        # here through a general sarcoma or paediatric CNS trial that enrolled no
+        # NF patient. `n_manifestation_trials` is the right number for asking
+        # whether a drug has been given for this tumour type (Phase 5 uses it for
+        # CNS delivery, where a non-NF CNS trial is still valid evidence);
+        # `n_nf_specific_trials` is the right number for any claim about NF.
+        matched = trial_drugs[trial_drugs["matches_phase4_drug"]]
+        in_trial = (
+            matched
             .groupby("intervention_key", as_index=False)
             .agg(
-                nf_trial_ids=("nct_id", lambda s: "; ".join(sorted(set(s))[:10])),
-                n_nf_trials=("nct_id", "nunique"),
-                nf_trial_phases=(
+                manifestation_trial_ids=("nct_id", lambda s: "; ".join(sorted(set(s))[:10])),
+                n_manifestation_trials=("nct_id", "nunique"),
+                manifestation_trial_phases=(
                     "phases",
                     lambda s: "; ".join(sorted({x for v in s.dropna() for x in str(v).split("; ") if x})),
                 ),
             )
             .rename(columns={"intervention_key": "drug_key"})
         )
-        drugs = drugs.merge(in_nf_trial, on="drug_key", how="left")
+        nf_only = (
+            matched[matched["nf_specific"]]
+            .groupby("intervention_key", as_index=False)
+            .agg(
+                nf_specific_trial_ids=("nct_id", lambda s: "; ".join(sorted(set(s))[:10])),
+                n_nf_specific_trials=("nct_id", "nunique"),
+            )
+            .rename(columns={"intervention_key": "drug_key"})
+        )
+        drugs = drugs.merge(in_trial, on="drug_key", how="left").merge(nf_only, on="drug_key", how="left")
     else:
-        drugs["n_nf_trials"] = pd.NA
-        drugs["nf_trial_ids"] = pd.NA
+        for col in ("n_manifestation_trials", "manifestation_trial_ids",
+                    "n_nf_specific_trials", "nf_specific_trial_ids"):
+            drugs[col] = pd.NA
 
     if len(selectivity):
         sel = selectivity.groupby("gene_symbol", as_index=False).agg(
@@ -253,8 +287,10 @@ def main() -> None:
         "has_boxed_warning",
         "total_reports",
         "serious_reports",
-        "n_nf_trials",
-        "nf_trial_ids",
+        "n_manifestation_trials",
+        "manifestation_trial_ids",
+        "n_nf_specific_trials",
+        "nf_specific_trial_ids",
         "marketing_statuses",
         "first_approval_date",
         "chembl_action_types",
@@ -305,7 +341,8 @@ def main() -> None:
                 lambda s: int(s.isin({"excluded_not_bbb_penetrant", "excluded_biologic_cns"}).sum()),
             ),
             n_route_unknown=("route_flag", lambda s: int((s == "route_unknown").sum())),
-            n_drugs_in_nf_trials=("n_nf_trials", lambda s: int(s.notna().sum())),
+            n_drugs_in_manifestation_trials=("n_manifestation_trials", lambda s: int(s.notna().sum())),
+            n_drugs_in_nf_specific_trials=("n_nf_specific_trials", lambda s: int(s.notna().sum())),
             n_drugs_black_box=("has_boxed_warning", lambda s: int((s == True).sum())),  # noqa: E712
             n_drugs_withdrawn=("withdrawn_flag", lambda s: int((s == True).sum())),  # noqa: E712
             max_faers_reports=("total_reports", "max"),
@@ -335,7 +372,8 @@ def main() -> None:
         "n_excluded_topical_only",
         "n_excluded_not_bbb",
         "n_route_unknown",
-        "n_drugs_in_nf_trials",
+        "n_drugs_in_manifestation_trials",
+        "n_drugs_in_nf_specific_trials",
         "n_drugs_black_box",
         "n_drugs_withdrawn",
         "n_chemical_probes",

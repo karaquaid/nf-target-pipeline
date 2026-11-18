@@ -112,9 +112,10 @@ been taken into an NF trial.
 
 Two caveats on the trial evidence:
 
-- The Phase 4 dossier records `n_drugs_in_nf_trials = 2` for PARP1. Only veliparib reproduces
-  from `phase4-trial-drugs.csv`, by exact and by first-token matching. The second drug could not
-  be identified.
+- **Resolved 2026-11-18.** The dossier's `n_drugs_in_nf_trials = 2` was a manifestation count.
+  Under the corrected columns PARP1 reads `n_drugs_in_manifestation_trials = 2` and
+  **`n_drugs_in_nf_specific_trials = 0`** — so no PARP1 drug has been in an NF trial, which is
+  what this section argued on other evidence.
 - More importantly, **`n_drugs_in_nf_trials` does not mean what its name says.** The Phase 4
   trial queries are manifestation terms, not NF-restricted, so 312 of 716 trial rows (44%) name
   neurofibromatosis nowhere — 88% of the MPNST rows and 91% of the optic pathway glioma rows.
