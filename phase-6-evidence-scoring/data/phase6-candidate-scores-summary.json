@@ -10,35 +10,37 @@
   },
   "delivery_weight": 0.2,
   "components_assessed_distribution": {
-    "1/5": 108,
-    "1/6": 41,
-    "2/5": 1242,
-    "2/6": 167,
-    "3/5": 1302,
-    "3/6": 136,
-    "4/5": 668,
-    "4/6": 65,
-    "5/5": 8,
-    "5/6": 15
+    "1/5": 67,
+    "1/6": 82,
+    "2/5": 996,
+    "2/6": 413,
+    "3/5": 1047,
+    "3/6": 370,
+    "4/5": 545,
+    "4/6": 189,
+    "5/5": 5,
+    "5/6": 37,
+    "6/6": 1
   },
   "components_assessed": {
     "1": 149,
     "2": 1409,
-    "3": 1438,
-    "4": 733,
-    "5": 23
+    "3": 1417,
+    "4": 734,
+    "5": 42,
+    "6": 1
   },
-  "route_downweighted": 1,
-  "safety_downweighted": 45,
+  "route_downweighted": 11,
+  "safety_downweighted": 498,
   "delivery_basis_counts": {
-    "no_assessed_drug": 394,
-    "tumor_clinical": 17,
-    "unassessed": 7,
-    "no_drug": 6
+    "no_assessed_drug": 1007,
+    "tumor_clinical": 39,
+    "unassessed": 27,
+    "no_drug": 19
   },
   "score_quartiles": {
-    "0.25": 0.536,
-    "0.5": 0.585,
+    "0.25": 0.515,
+    "0.5": 0.578,
     "0.75": 0.635
   },
   "top_per_stratum": [
@@ -63,44 +65,62 @@
     {
       "disease": "NF1",
       "manifestation": "Cutaneous neurofibroma",
-      "gene_symbol": "VEGFA",
-      "score": 0.75
+      "gene_symbol": "F2R",
+      "score": 0.71
     },
     {
       "disease": "NF1",
       "manifestation": "Cutaneous neurofibroma",
-      "gene_symbol": "CCR5",
-      "score": 0.75
+      "gene_symbol": "PGF",
+      "score": 0.71
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Cutaneous neurofibroma",
+      "gene_symbol": "RPL30",
+      "score": 0.71
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Cutaneous neurofibroma",
+      "gene_symbol": "RPS3",
+      "score": 0.71
     },
     {
       "disease": "NF1",
       "manifestation": "Malignant peripheral nerve sheath tumor (MPNST)",
-      "gene_symbol": "RRM2",
-      "score": 0.9
+      "gene_symbol": "EZH2",
+      "score": 0.78
     },
     {
       "disease": "NF1",
       "manifestation": "Optic pathway glioma",
-      "gene_symbol": "BRAF",
-      "score": 0.832
-    },
-    {
-      "disease": "NF1",
-      "manifestation": "Optic pathway glioma",
-      "gene_symbol": "RAF1",
-      "score": 0.832
+      "gene_symbol": "MAP2K2",
+      "score": 0.776
     },
     {
       "disease": "NF1",
       "manifestation": "Plexiform neurofibroma",
-      "gene_symbol": "PROS1",
-      "score": 0.87
+      "gene_symbol": "COL11A1",
+      "score": 0.77
     },
     {
-      "disease": "NF2-SWN",
-      "manifestation": "Non-vestibular schwannoma",
-      "gene_symbol": "HDAC2",
-      "score": 0.75
+      "disease": "NF1",
+      "manifestation": "Plexiform neurofibroma",
+      "gene_symbol": "COL4A5",
+      "score": 0.77
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Plexiform neurofibroma",
+      "gene_symbol": "PDK1",
+      "score": 0.77
+    },
+    {
+      "disease": "NF1",
+      "manifestation": "Plexiform neurofibroma",
+      "gene_symbol": "E2F7",
+      "score": 0.77
     },
     {
       "disease": "NF2-SWN",
@@ -146,21 +166,9 @@
     },
     {
       "disease": "NF2-SWN",
-      "manifestation": "Pain",
-      "gene_symbol": "MBNL1",
-      "score": 0.62
-    },
-    {
-      "disease": "NF2-SWN",
-      "manifestation": "Pain",
-      "gene_symbol": "EYA2",
-      "score": 0.62
-    },
-    {
-      "disease": "NF2-SWN",
       "manifestation": "Vestibular schwannoma",
-      "gene_symbol": "EGFR",
-      "score": 0.78
+      "gene_symbol": "CSF1",
+      "score": 0.752
     }
   ],
   "decisions": {
@@ -189,8 +197,9 @@
       "why": "The pipeline exists to find drugs NEW to NF patients, so an approval earned elsewhere is the signal of interest. The 182 candidates whose drugs have never been in an NF trial are flagged novel_to_nf rather than discounted."
     },
     "call4_safety": {
-      "ruling": "penalise only as a target's usable options are exhausted (Kara, 2026-11-17)",
-      "why": "The flat version applied 0.60 for any withdrawn drug, which scaled with how well studied a target was: TP53 took it for 2 of 465 drugs. Downweighted candidates fell 498 -> 45."
+      "ruling": "a safety concern always downweights, regardless of alternatives (Kara, 2026-11-17)",
+      "superseded": "An earlier ruling the same day scored safety on the fraction of a target's drugs carrying a problem, so a target with clean alternatives kept full marks. That is reversed: the signal may be mechanism-based, and the existence of other molecules does not cancel it.",
+      "cost_accepted": "498 candidates are downweighted rather than 45, and the penalty falls hardest on the best-studied targets - TP53 takes 0.60 for 2 withdrawn drugs out of 465."
     },
     "call5_delivery": {
       "ruling": "leave delivery at 0.20; it is inert at current coverage (Kara, 2026-11-17)",
@@ -217,20 +226,20 @@
     },
     "variants": {
       "expression_0.40_literature_0.10": {
-        "spearman_vs_default": 0.971,
-        "rank1_genes_changed": 13
+        "spearman_vs_default": 0.975,
+        "rank1_genes_changed": 1
       },
       "expression_0.20_literature_0.30": {
-        "spearman_vs_default": 0.97,
-        "rank1_genes_changed": 0
+        "spearman_vs_default": 0.964,
+        "rank1_genes_changed": 2
       },
       "drug_stage_0.25_tractability_0.05": {
-        "spearman_vs_default": 0.965,
-        "rank1_genes_changed": 3
+        "spearman_vs_default": 0.956,
+        "rank1_genes_changed": 0
       },
       "equal_weights_0.20": {
-        "spearman_vs_default": 0.963,
-        "rank1_genes_changed": 3
+        "spearman_vs_default": 0.964,
+        "rank1_genes_changed": 1
       }
     },
     "component_coverage": {
