@@ -36,7 +36,14 @@ from pathlib import Path
 
 import pandas as pd
 
-TOPICAL_ELIGIBLE = {"Cutaneous neurofibroma", "ANNUBP / atypical neurofibroma"}
+# Imported rather than redeclared: this constant used to be defined in both
+# files, so a change in one silently disagreed with the other.
+try:
+    from phase4_targets import TOPICAL_ELIGIBLE
+except ImportError:  # running from the repo root rather than the scripts dir
+    import sys as _sys
+    _sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from phase4_targets import TOPICAL_ELIGIBLE
 
 # openFDA label routes that deliver a drug systemically.
 SYSTEMIC_LABEL_ROUTES = {
