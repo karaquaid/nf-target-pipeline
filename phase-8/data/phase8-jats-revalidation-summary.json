@@ -1,0 +1,18 @@
+{
+ "claims": 155,
+ "papers": 59,
+ "jats_retrieved_claims": 155,
+ "jats_retrieved_papers": 59,
+ "jats_unretrievable_papers": [],
+ "routes": {
+  "efetch": 36,
+  "europepmc": 23
+ },
+ "connector_label_absent_strict": 39,
+ "connector_label_absent_lax": 23,
+ "jats_label_absent_strict": 33,
+ "jats_label_absent_lax": 17,
+ "recovered_claims": 6,
+ "lost_claims": 0,
+ "total_inline_strings_dropped_by_renderer": 0
+}
