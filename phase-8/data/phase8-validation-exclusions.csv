@@ -1,0 +1,9 @@
+intervention_key,decision,reason,evidence_nct_id,note,decided
+AFLIBERCEPT,excluded,trial_is_not_nf,NCT03710564,"Only NF-flagged trial is brolucizumab vs aflibercept in age-related macular degeneration; nf_specific by _disease_ provenance alone, NF named nowhere",2026-11-19
+BROLUCIZUMAB,excluded,trial_is_not_nf,NCT03710564,"Same trial: age-related macular degeneration, not NF",2026-11-19
+METFORMIN,excluded,trial_is_not_nf,NCT00588172,Only NF-flagged trial is OCT1 pharmacogenetics in type 2 diabetes; nf_specific by _disease_ provenance alone,2026-11-19
+ACETAMINOPHEN,excluded,not_under_test,NCT03649165,Co-administered in a selumetinib bioavailability and food-effect study in healthy participants; not a therapy under test,2026-11-19
+TANEZUMAB,excluded,symptomatic_care,NCT04163419,"Anti-NGF antibody trialled for pain due to schwannomatosis; targeted, but at a pain mediator rather than an NF disease process",2026-11-19
+ASPIRIN,kept,disease_directed_despite_drug_class,NCT03079999,"Study of Aspirin in Patients With Vestibular Schwannoma: a disease-modifying hypothesis, not analgesia. The project plan named aspirin as a symptomatic-care example; its NF trial is not",2026-11-19
+DICLOFENAC SODIUM,kept,disease_directed_despite_drug_class,NCT03090971,Topical diclofenac after laser microporation of cutaneous neurofibromas: directed at the lesion,2026-11-19
+LAMOTRIGINE,kept,disease_directed_despite_drug_class,NCT02256124,Effect of Lamotrigine on Cognition in NF1: directed at the NF1 synaptic-plasticity mechanism,2026-11-19

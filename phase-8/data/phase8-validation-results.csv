@@ -1,0 +1,103 @@
+gene_symbol,disease,manifestation,drugs,nct_ids,n_drugs,n_trials,outcome,in_capped_expression,in_full_expression,in_phase4,n_strata_scored,strata_scored,best_rank_in_stratum,score
+AKT1,NF1,Cutaneous neurofibroma,EVEROLIMUS,NCT02332902,1,1,below_cap,False,True,False,0,,,
+CSF1R,NF1,Malignant peripheral nerve sheath tumor (MPNST),SUNITINIB,NCT00589784,1,1,below_cap,False,True,False,0,,,
+FGFR1,NF1,Malignant peripheral nerve sheath tumor (MPNST),SUNITINIB,NCT00589784,1,1,below_cap,False,True,False,0,,,
+FLT1,NF1,Malignant peripheral nerve sheath tumor (MPNST),SUNITINIB,NCT00589784,1,1,below_cap,False,True,False,0,,,
+FLT1,NF1,Optic pathway glioma,SORAFENIB,NCT01338857,1,1,below_cap,False,True,False,0,,,
+HIF1A,NF1,Optic pathway glioma,VINCRISTINE SULFATE,NCT03871257,1,1,below_cap,False,True,False,0,,,
+KDR,NF1,Malignant peripheral nerve sheath tumor (MPNST),SUNITINIB,NCT00589784,1,1,below_cap,False,True,False,0,,,
+KIT,NF1,Malignant peripheral nerve sheath tumor (MPNST),SUNITINIB,NCT00589784,1,1,below_cap,False,True,False,0,,,
+LATS2,NF1,Malignant peripheral nerve sheath tumor (MPNST),SUNITINIB,NCT00589784,1,1,below_cap,False,True,False,0,,,
+MET,NF2-SWN,Vestibular schwannoma,CRIZOTINIB,NCT04283669,1,1,below_cap,False,True,False,0,,,
+PDGFB,NF1,Malignant peripheral nerve sheath tumor (MPNST),SUNITINIB,NCT00589784,1,1,below_cap,False,True,False,0,,,
+PDGFRA,NF1,Optic pathway glioma,SORAFENIB,NCT01338857,1,1,below_cap,False,True,False,0,,,
+PTGS1,NF1,Cutaneous neurofibroma,DICLOFENAC SODIUM,NCT03090971,1,1,below_cap,False,True,False,0,,,
+ABL1,NF1,"(disease-level trial, no manifestation)",IMATINIB MESYLATE,NCT00427583,1,1,disease_level_only,False,True,False,0,,,
+AKT1,NF1,"(disease-level trial, no manifestation)",EVEROLIMUS,NCT01661283,1,1,disease_level_only,False,True,True,3,NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Optic pathway glioma;NF1 / Plexiform neurofibroma,,
+AKT1,NF2-SWN,"(disease-level trial, no manifestation)",CAPIVASERTIB;EVEROLIMUS,NCT01024946;NCT02352844;NCT02523014,2,3,disease_level_only,False,False,True,1,NF2-SWN / Vestibular schwannoma,,
+ARAF,NF1,"(disease-level trial, no manifestation)",ENCORAFENIB,NCT04800822,1,1,disease_level_only,False,True,True,5,NF1 / Bone defects;NF1 / Cutaneous neurofibroma;NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Optic pathway glioma;NF1 / Plexiform neurofibroma,,
+ARAF,NF2-SWN,"(disease-level trial, no manifestation)",TOVORAFENIB,NCT06381570,1,1,disease_level_only,False,False,False,0,,,
+BRAF,NF1,"(disease-level trial, no manifestation)",DABRAFENIB;ENCORAFENIB,NCT04201457;NCT04800822,2,2,disease_level_only,False,True,True,5,NF1 / Bone defects;NF1 / Cutaneous neurofibroma;NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Optic pathway glioma;NF1 / Plexiform neurofibroma,,
+BRAF,NF2-SWN,"(disease-level trial, no manifestation)",TOVORAFENIB,NCT06381570,1,1,disease_level_only,False,False,False,0,,,
+CDK4,NF2-SWN,"(disease-level trial, no manifestation)",ABEMACICLIB,NCT02523014,1,1,disease_level_only,False,False,False,0,,,
+CDK6,NF2-SWN,"(disease-level trial, no manifestation)",ABEMACICLIB,NCT02523014,1,1,disease_level_only,False,True,False,0,,,
+EGFR,NF1,"(disease-level trial, no manifestation)",CETUXIMAB,NCT04800822,1,1,disease_level_only,True,True,True,2,NF1 / ANNUBP / atypical neurofibroma;NF1 / Plexiform neurofibroma,,
+EGFR,NF2-SWN,"(disease-level trial, no manifestation)",OSIMERTINIB,NCT05228015,1,1,disease_level_only,True,True,True,2,NF2-SWN / Non-vestibular schwannoma;NF2-SWN / Vestibular schwannoma,,
+GMNN,NF1,"(disease-level trial, no manifestation)",VINCRISTINE SULFATE,NCT00846430;NCT04166409,1,2,disease_level_only,True,True,True,1,NF1 / Malignant peripheral nerve sheath tumor (MPNST),,
+HIF1A,NF1,"(disease-level trial, no manifestation)",VINCRISTINE SULFATE,NCT00846430;NCT04166409,1,2,disease_level_only,False,True,True,1,NF1 / Malignant peripheral nerve sheath tumor (MPNST),,
+HMGCR,NF1,"(disease-level trial, no manifestation)",LOVASTATIN,NCT00352599;NCT00853580;NCT02964884;NCT03504501;NCT03826940,1,5,disease_level_only,False,True,True,1,NF1 / Optic pathway glioma,,
+KIT,NF1,"(disease-level trial, no manifestation)",IMATINIB MESYLATE,NCT00427583,1,1,disease_level_only,True,True,True,3,NF1 / ANNUBP / atypical neurofibroma;NF1 / Cutaneous neurofibroma;NF1 / Plexiform neurofibroma,,
+KRAS,NF1,"(disease-level trial, no manifestation)",SELUMETINIB,NCT06620354;NCT06621082;NCT06763315,1,3,disease_level_only,False,True,True,5,NF1 / Bone defects;NF1 / Cutaneous neurofibroma;NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Optic pathway glioma;NF1 / Plexiform neurofibroma,,
+MAP2K1,NF1,"(disease-level trial, no manifestation)",BINIMETINIB;DABRAFENIB;MIRDAMETINIB;SELUMETINIB;SELUMETINIB SULFATE;TRAMETINIB,NCT03190915;NCT03232892;NCT03363217;NCT04166409;NCT04201457;NCT04800822;NCT05180825;NCT05849662;NCT06620354;NCT06621082;NCT06763315;NCT07237100;NCT07521657,6,13,disease_level_only,False,True,True,5,NF1 / Bone defects;NF1 / Cutaneous neurofibroma;NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Optic pathway glioma;NF1 / Plexiform neurofibroma,,
+MAP2K1,NF2-SWN,"(disease-level trial, no manifestation)",COBIMETINIB,NCT03989115,1,1,disease_level_only,False,False,True,2,NF2-SWN / Non-vestibular schwannoma;NF2-SWN / Vestibular schwannoma,,
+MAP2K2,NF1,"(disease-level trial, no manifestation)",BINIMETINIB;DABRAFENIB;MIRDAMETINIB;SELUMETINIB;SELUMETINIB SULFATE;TRAMETINIB,NCT03190915;NCT03232892;NCT03363217;NCT04166409;NCT04201457;NCT04800822;NCT05180825;NCT05849662;NCT06620354;NCT06621082;NCT06763315;NCT07237100;NCT07521657,6,13,disease_level_only,False,True,True,5,NF1 / Bone defects;NF1 / Cutaneous neurofibroma;NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Optic pathway glioma;NF1 / Plexiform neurofibroma,,
+MAP2K2,NF2-SWN,"(disease-level trial, no manifestation)",COBIMETINIB,NCT03989115,1,1,disease_level_only,False,False,True,2,NF2-SWN / Non-vestibular schwannoma;NF2-SWN / Vestibular schwannoma,,
+MTOR,NF1,"(disease-level trial, no manifestation)",EVEROLIMUS,NCT01661283,1,1,disease_level_only,False,True,True,2,NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Optic pathway glioma,,
+MTOR,NF2-SWN,"(disease-level trial, no manifestation)",EVEROLIMUS,NCT01024946;NCT02352844,1,2,disease_level_only,False,False,True,2,NF2-SWN / Non-vestibular schwannoma;NF2-SWN / Vestibular schwannoma,,
+POLD1,NF1,"(disease-level trial, no manifestation)",CYTARABINE;FLUDARABINE,NCT05735717;NCT05849662,2,2,disease_level_only,True,True,True,2,NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Plexiform neurofibroma,,
+PRIM1,NF1,"(disease-level trial, no manifestation)",CYTARABINE;FLUDARABINE,NCT05735717;NCT05849662,2,2,disease_level_only,True,True,True,1,NF1 / Malignant peripheral nerve sheath tumor (MPNST),,
+PTGS1,NF1,"(disease-level trial, no manifestation)",CELECOXIB,NCT00846430,1,1,disease_level_only,False,True,False,0,,,
+RAF1,NF1,"(disease-level trial, no manifestation)",ENCORAFENIB,NCT04800822,1,1,disease_level_only,False,True,True,5,NF1 / Bone defects;NF1 / Cutaneous neurofibroma;NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Optic pathway glioma;NF1 / Plexiform neurofibroma,,
+RAF1,NF2-SWN,"(disease-level trial, no manifestation)",TOVORAFENIB,NCT06381570,1,1,disease_level_only,False,False,False,0,,,
+RRM2,NF1,"(disease-level trial, no manifestation)",FLUDARABINE,NCT05735717;NCT05849662,1,2,disease_level_only,True,True,True,2,NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Plexiform neurofibroma,,
+SCN11A,NF1,"(disease-level trial, no manifestation)",LAMOTRIGINE,NCT02256124;NCT03504501,1,2,disease_level_only,False,False,False,0,,,
+SCN7A,NF1,"(disease-level trial, no manifestation)",LAMOTRIGINE,NCT02256124;NCT03504501,1,2,disease_level_only,True,True,True,3,NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Optic pathway glioma;NF1 / Plexiform neurofibroma,,
+VEGFA,NF1,"(disease-level trial, no manifestation)",BEVACIZUMAB,NCT01661283,1,1,disease_level_only,True,True,True,4,NF1 / Cutaneous neurofibroma;NF1 / Malignant peripheral nerve sheath tumor (MPNST);NF1 / Optic pathway glioma;NF1 / Plexiform neurofibroma,,
+ABL1,NF1,Plexiform neurofibroma,IMATINIB MESYLATE,NCT02177825;NCT03688568,1,2,not_differentially_expressed,False,False,False,0,,,
+AR,NF1,Optic pathway glioma,VINBLASTINE SULFATE,NCT00352495,1,1,not_differentially_expressed,False,False,False,0,,,
+BRAF,NF2-SWN,Vestibular schwannoma,TEMSIROLIMUS,NCT01552434,1,1,not_differentially_expressed,False,False,False,0,,,
+CDK4,NF1,ANNUBP / atypical neurofibroma,ABEMACICLIB,NCT04750928,1,1,not_differentially_expressed,False,False,False,0,,,
+CDK6,NF1,ANNUBP / atypical neurofibroma,ABEMACICLIB,NCT04750928,1,1,not_differentially_expressed,False,False,False,0,,,
+FGFR1,NF1,Optic pathway glioma,SORAFENIB,NCT01338857,1,1,not_differentially_expressed,False,False,False,0,,,
+GMNN,NF1,Optic pathway glioma,VINCRISTINE SULFATE,NCT03871257,1,1,not_differentially_expressed,False,False,False,0,,,
+HIF1A,NF1,Cutaneous neurofibroma,DICLOFENAC SODIUM,NCT03090971,1,1,not_differentially_expressed,False,False,False,0,,,
+KDR,NF1,Optic pathway glioma,SORAFENIB,NCT01338857,1,1,not_differentially_expressed,False,False,False,0,,,
+KDR,NF2-SWN,Vestibular schwannoma,AXITINIB,NCT02129647,1,1,not_differentially_expressed,False,False,False,0,,,
+KIT,NF1,Optic pathway glioma,SORAFENIB,NCT01338857,1,1,not_differentially_expressed,False,False,False,0,,,
+KIT,NF2-SWN,Vestibular schwannoma,AXITINIB,NCT02129647,1,1,not_differentially_expressed,False,False,False,0,,,
+KRAS,NF2-SWN,Vestibular schwannoma,SELUMETINIB,NCT03095248;NCT07707947,1,2,not_differentially_expressed,False,False,False,0,,,
+MTOR,NF1,Cutaneous neurofibroma,EVEROLIMUS,NCT02332902,1,1,not_differentially_expressed,False,False,False,0,,,
+MTOR,NF1,Plexiform neurofibroma,EVEROLIMUS;SIROLIMUS,NCT00634270;NCT01365468,2,2,not_differentially_expressed,False,False,False,0,,,
+PPARG,NF1,Cutaneous neurofibroma,DICLOFENAC SODIUM,NCT03090971,1,1,not_differentially_expressed,False,False,False,0,,,
+ZHX2,NF1,Optic pathway glioma,SORAFENIB,NCT01338857,1,1,not_differentially_expressed,False,False,False,0,,,
+AKT1,NF1,Plexiform neurofibroma,EVEROLIMUS,NCT01365468,1,1,scored,False,True,True,1,NF1 / Plexiform neurofibroma,704,0.51
+ARAF,NF1,Optic pathway glioma,SORAFENIB,NCT01338857,1,1,scored,False,False,True,1,NF1 / Optic pathway glioma,8,0.6392
+BRAF,NF1,Optic pathway glioma,SORAFENIB,NCT01338857,1,1,scored,False,True,True,1,NF1 / Optic pathway glioma,2,0.7072
+BRAF,NF1,Plexiform neurofibroma,DABRAFENIB,NCT03975829,1,1,scored,False,True,True,1,NF1 / Plexiform neurofibroma,390,0.612
+EGFR,NF2-SWN,Vestibular schwannoma,BRIGATINIB;CETUXIMAB;ICOTINIB;LAPATINIB;NERATINIB,NCT00863122;NCT00973739;NCT01552434;NCT02934256;NCT04374305,5,5,scored,True,True,True,1,NF2-SWN / Vestibular schwannoma,5,0.7004
+ERBB2,NF2-SWN,Vestibular schwannoma,LAPATINIB;NERATINIB,NCT00863122;NCT00973739;NCT04374305,2,3,scored,False,True,True,1,NF2-SWN / Vestibular schwannoma,661,0.2298
+FLT1,NF2-SWN,Vestibular schwannoma,AXITINIB,NCT02129647,1,1,scored,False,True,True,1,NF2-SWN / Vestibular schwannoma,183,0.5984
+HDAC1,NF2-SWN,Vestibular schwannoma,VALPROIC ACID,NCT01552434,1,1,scored,False,False,True,1,NF2-SWN / Vestibular schwannoma,6,0.7
+HDAC2,NF2-SWN,Vestibular schwannoma,VALPROIC ACID,NCT01552434,1,1,scored,False,True,True,1,NF2-SWN / Vestibular schwannoma,201,0.595
+HDAC3,NF2-SWN,Vestibular schwannoma,VALPROIC ACID,NCT01552434,1,1,scored,False,True,True,1,NF2-SWN / Vestibular schwannoma,6,0.7
+HDAC4,NF2-SWN,Vestibular schwannoma,VALPROIC ACID,NCT01552434,1,1,scored,False,False,True,1,NF2-SWN / Vestibular schwannoma,26,0.676
+HDAC5,NF2-SWN,Vestibular schwannoma,VALPROIC ACID,NCT01552434,1,1,scored,False,True,True,1,NF2-SWN / Vestibular schwannoma,6,0.7
+HDAC7,NF2-SWN,Vestibular schwannoma,VALPROIC ACID,NCT01552434,1,1,scored,False,False,True,1,NF2-SWN / Vestibular schwannoma,6,0.7
+HDAC8,NF2-SWN,Vestibular schwannoma,VALPROIC ACID,NCT01552434,1,1,scored,False,True,True,1,NF2-SWN / Vestibular schwannoma,26,0.676
+HDAC9,NF2-SWN,Vestibular schwannoma,VALPROIC ACID,NCT01552434,1,1,scored,False,True,True,1,NF2-SWN / Vestibular schwannoma,26,0.676
+KIT,NF1,Plexiform neurofibroma,IMATINIB MESYLATE,NCT02177825;NCT03688568,1,2,scored,True,True,True,1,NF1 / Plexiform neurofibroma,109,0.6545
+KRAS,NF1,Malignant peripheral nerve sheath tumor (MPNST),SELUMETINIB,NCT03433183;NCT06735820,1,2,scored,False,True,True,1,NF1 / Malignant peripheral nerve sheath tumor (MPNST),675,0.561
+KRAS,NF1,Optic pathway glioma,SELUMETINIB,NCT01089101,1,1,scored,False,False,True,1,NF1 / Optic pathway glioma,19,0.578
+KRAS,NF1,Plexiform neurofibroma,SELUMETINIB,NCT02407405;NCT03109301;NCT03326388;NCT04495127;NCT04590235;NCT04924608;NCT05101148;NCT05825365;NCT06188741;NCT06502171,1,10,scored,False,True,True,1,NF1 / Plexiform neurofibroma,390,0.612
+MAP2K1,NF1,Cutaneous neurofibroma,MIRDAMETINIB;SELUMETINIB SULFATE,NCT02839720;NCT06159166,2,2,scored,False,False,True,1,NF1 / Cutaneous neurofibroma,317,0.561
+MAP2K1,NF1,Malignant peripheral nerve sheath tumor (MPNST),SELUMETINIB,NCT03433183;NCT06735820,1,2,scored,False,False,True,1,NF1 / Malignant peripheral nerve sheath tumor (MPNST),94,0.68
+MAP2K1,NF1,Optic pathway glioma,SELUMETINIB;SELUMETINIB SULFATE;SORAFENIB,NCT01089101;NCT01338857;NCT03871257,3,3,scored,False,True,True,1,NF1 / Optic pathway glioma,4,0.6596
+MAP2K1,NF1,Plexiform neurofibroma,AVUTOMETINIB;BINIMETINIB;DABRAFENIB;MIRDAMETINIB;SELUMETINIB;TRAMETINIB,NCT02407405;NCT03109301;NCT03231306;NCT03326388;NCT03741101;NCT03975829;NCT04495127;NCT04590235;NCT04924608;NCT05101148;NCT05825365;NCT06104488;NCT06188741;NCT06502171;NCT07850635,6,15,scored,False,False,True,1,NF1 / Plexiform neurofibroma,390,0.612
+MAP2K1,NF2-SWN,Vestibular schwannoma,SELUMETINIB,NCT03095248;NCT07707947,1,2,scored,False,False,True,1,NF2-SWN / Vestibular schwannoma,65,0.6188
+MAP2K2,NF1,Cutaneous neurofibroma,MIRDAMETINIB;SELUMETINIB SULFATE,NCT02839720;NCT06159166,2,2,scored,False,True,True,1,NF1 / Cutaneous neurofibroma,9,0.66
+MAP2K2,NF1,Malignant peripheral nerve sheath tumor (MPNST),SELUMETINIB,NCT03433183;NCT06735820,1,2,scored,False,True,True,1,NF1 / Malignant peripheral nerve sheath tumor (MPNST),53,0.72
+MAP2K2,NF1,Optic pathway glioma,SELUMETINIB;SELUMETINIB SULFATE,NCT01089101;NCT03871257,2,2,scored,False,True,True,1,NF1 / Optic pathway glioma,1,0.776
+MAP2K2,NF1,Plexiform neurofibroma,AVUTOMETINIB;BINIMETINIB;DABRAFENIB;MIRDAMETINIB;SELUMETINIB;TRAMETINIB,NCT02407405;NCT03109301;NCT03231306;NCT03326388;NCT03741101;NCT03975829;NCT04495127;NCT04590235;NCT04924608;NCT05101148;NCT05825365;NCT06104488;NCT06188741;NCT06502171;NCT07850635,6,15,scored,False,True,True,1,NF1 / Plexiform neurofibroma,38,0.72
+MAP2K2,NF2-SWN,Vestibular schwannoma,SELUMETINIB,NCT03095248;NCT07707947,1,2,scored,False,False,True,1,NF2-SWN / Vestibular schwannoma,2,0.728
+MTOR,NF1,Malignant peripheral nerve sheath tumor (MPNST),SIROLIMUS,NCT03433183,1,1,scored,False,True,True,1,NF1 / Malignant peripheral nerve sheath tumor (MPNST),840,0.432
+MTOR,NF2-SWN,Vestibular schwannoma,TEMSIROLIMUS,NCT01552434,1,1,scored,False,False,True,1,NF2-SWN / Vestibular schwannoma,644,0.4056
+PDGFB,NF2-SWN,Vestibular schwannoma,AXITINIB,NCT02129647,1,1,scored,True,True,True,1,NF2-SWN / Vestibular schwannoma,45,0.648
+PDGFRA,NF1,Malignant peripheral nerve sheath tumor (MPNST),SUNITINIB,NCT00589784,1,1,scored,True,True,True,1,NF1 / Malignant peripheral nerve sheath tumor (MPNST),839,0.4377
+PTGS1,NF2-SWN,Vestibular schwannoma,ASPIRIN,NCT03079999,1,1,scored,True,True,True,1,NF2-SWN / Vestibular schwannoma,658,0.3576
+RAF1,NF1,Optic pathway glioma,SORAFENIB,NCT01338857,1,1,scored,False,True,True,1,NF1 / Optic pathway glioma,2,0.7072
+RAF1,NF1,Plexiform neurofibroma,AVUTOMETINIB,NCT06104488,1,1,scored,False,False,True,1,NF1 / Plexiform neurofibroma,390,0.612
+TOP2A,NF1,Malignant peripheral nerve sheath tumor (MPNST),DOXORUBICIN HYDROCHLORIDE;ETOPOSIDE,NCT00304083,2,1,scored,True,True,True,1,NF1 / Malignant peripheral nerve sheath tumor (MPNST),94,0.68
+TRPM3,NF1,Cutaneous neurofibroma,DICLOFENAC SODIUM,NCT03090971,1,1,scored,True,True,True,1,NF1 / Cutaneous neurofibroma,395,0.4696
+VEGFA,NF1,Cutaneous neurofibroma,RANIBIZUMAB,NCT00657202,1,1,scored,False,False,True,1,NF1 / Cutaneous neurofibroma,22,0.6375
+VEGFA,NF1,Optic pathway glioma,LENALIDOMIDE;SORAFENIB,NCT01338857;NCT01553149,2,2,scored,False,False,True,1,NF1 / Optic pathway glioma,8,0.6392
+VEGFA,NF2-SWN,Vestibular schwannoma,BEVACIZUMAB;ENDOSTATIN,NCT01125046;NCT01207687;NCT01552434;NCT01767792;NCT02104323;NCT04374305,2,6,scored,False,True,True,1,NF2-SWN / Vestibular schwannoma,20,0.68

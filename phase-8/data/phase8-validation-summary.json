@@ -1,0 +1,26 @@
+{
+  "validation_set": {
+    "genes": 45,
+    "drugs": 42,
+    "trials": 77,
+    "gene_disease_manifestation_combinations": 102
+  },
+  "outcomes": {
+    "scored": 41,
+    "disease_level_only": 31,
+    "not_differentially_expressed": 17,
+    "below_cap": 13
+  },
+  "manifestation_level": {
+    "combinations": 71,
+    "scored": 41,
+    "recall_scored": 0.5775,
+    "genes_scored_somewhere": 33,
+    "genes_in_set": 45
+  },
+  "list_used": {
+    "ranking": "phase-3/data/phase3-candidate-targets.csv (capped top-200)",
+    "measured_universe": "phase-3/data/phase3-expression-targets.csv.gz (full table)"
+  },
+  "limitation": "Tests recall of the already-known. Parts of the pipeline were built from the same trial evidence, so this is a sanity check, not an independent validation."
+}
