@@ -55,7 +55,7 @@ be re-run without repeating the one before it):
     search      PubMed connector search_articles over the query bank
     metadata    get_article_metadata -> titles + abstracts
     screen      host.llm abstract-level target extraction (Phase 1b rubric)
-    fulltext    convert_article_ids -> get_full_text_article for PMC-held papers
+    fulltext    convert_article_ids for PMCIDs, then lib/europepmc_client for JATS bodies
     verify      host.llm whole-body verification, one reasoning pass per paper
     aggregate   writes the two deliverable CSVs
 
@@ -454,10 +454,31 @@ def stage_screen(host, work):
 
 
 def stage_fulltext(host, work):
+    """Retrieve article bodies through the shared Europe PMC / NCBI JATS client.
+
+    Changed 2026-11-19 to satisfy the retrieval ruling of 2026-11-17. This stage
+    used the PubMed connector's `get_full_text_article`, whose PMC extraction drops
+    italic markup; journals italicise gene symbols, so a symbol could vanish from
+    the body a verdict was then formed against. `lib/europepmc_client` renders JATS
+    and checks its own output: `symbol_check` lists any inline-markup string that
+    failed to survive, and an empty list is the guarantee the connector could not
+    give.
+
+    The connector is still used, but only for what it is reliable at: resolving a
+    PMID to a PMCID where Europe PMC has no record of one.
+
+    Note on the committed table. `phase7-fallback-candidates.csv` was produced
+    before this change, under the connector route, and stands as produced; the
+    stability measurement puts the binary supported-or-not call at 3.9%. Re-running
+    it is a separate decision.
+    """
+    sys.path.insert(0, os.path.join(REPO, "lib"))
+    import europepmc_client as epmc
+
     claims = _load(os.path.join(work, "claims.json"), [])
     meta = _load(os.path.join(work, "metadata.json"), {})
     pmids = sorted({c["pmid"] for c in claims})
-    # PMCID via the metadata record first, convert_article_ids for the rest.
+    # PMCID from the metadata record first, the connector's converter for the rest.
     pmcid = {p: meta[p]["pmcid"] for p in pmids if meta.get(p, {}).get("pmcid")}
     missing = [p for p in pmids if p not in pmcid]
     for i in range(0, len(missing), 50):
@@ -466,43 +487,50 @@ def stage_fulltext(host, work):
             if rec.get("pmcid"):
                 pmcid[str(rec["pmid"])] = rec["pmcid"]
     print(f"  {len(pmids)} papers carrying a claim; {len(pmcid)} have a PMCID")
+
     bodies = _load(os.path.join(work, "fulltext.json"), {})
-    todo = [p for p in pmids if p in pmcid and p not in bodies]
-    for i in range(0, len(todo), 5):
-        chunk = todo[i:i + 5]
+    failures = _load(os.path.join(work, "fulltext-failures.json"), {})
+    todo = [p for p in pmids if p not in bodies]
+    routes: dict[str, int] = {}
+    for n_done, p in enumerate(todo, 1):
         try:
-            r = _mcp(host, "get_full_text_article", pmc_ids=[pmcid[p] for p in chunk])
-        except Exception as exc:  # one bad id must not lose the batch
-            print(f"  full-text batch failed ({exc.__class__.__name__}); retrying singly")
-            r = {"articles": []}
-            for p in chunk:
-                try:
-                    r["articles"] += _mcp(host, "get_full_text_article", pmc_ids=[pmcid[p]]).get("articles", [])
-                except Exception:
-                    pass
-        by_pmid = {}
-        for a in r.get("articles", []):
-            ident = a.get("identifiers", {})
-            p = str(ident.get("pmid") or "")
-            body = a.get("full_text") or ""
-            if not p:  # match back by PMCID when the record carries no PMID
-                pmc = str(ident.get("pmc") or ident.get("pmcid") or "")
-                for cand in chunk:
-                    if pmc and pmc.replace("PMC", "") == str(pmcid[cand]).replace("PMC", ""):
-                        p = cand
-            if p and body:
-                by_pmid[p] = body
-        for p in chunk:
-            if p in by_pmid:
-                n = len(by_pmid[p])
-                if n < MIN_BODY_CHARS:
-                    print(f"  PMC record for PMID {p} is a {n}-char stub, not a body; "
-                          "treated as not retrieved")
-                    continue
-                bodies[p] = {"pmcid": pmcid[p], "n_chars": n, "body": by_pmid[p]}
-        _dump(bodies, os.path.join(work, "fulltext.json"))
+            got = epmc.get_fulltext(pmid=p, pmcid=pmcid.get(p))
+        except Exception as exc:
+            # A retrieval failure is recorded, never dropped: a paper whose body
+            # could not be fetched must stay distinguishable from one that has none.
+            failures[p] = f"{exc.__class__.__name__}: {exc}"[:200]
+            print(f"  ! PMID {p}: {failures[p]}")
+            continue
+        if got["error"]:
+            failures[p] = got["error"]
+            continue
+        body = got["text"]
+        n = len(body)
+        if n < MIN_BODY_CHARS:
+            failures[p] = f"{n}-char stub, not an article body"
+            print(f"  PMC record for PMID {p} is a {n}-char stub, not a body; "
+                  "treated as not retrieved")
+            continue
+        if got["symbol_check"]:
+            # The client's own guarantee failed. That is a defect in the renderer,
+            # not a property of the paper, so it stops the run rather than feeding
+            # a damaged body to the reader.
+            raise RuntimeError(
+                f"PMID {p}: {len(got['symbol_check'])} inline string(s) dropped by the "
+                f"JATS renderer, e.g. {got['symbol_check'][:5]}. Do not verify against "
+                "this body."
+            )
+        routes[got["route"]] = routes.get(got["route"], 0) + 1
+        bodies[p] = {"pmcid": got["pmcid"], "n_chars": n, "body": body,
+                     "route": got["route"], "retrieval": "europepmc_client"}
+        if n_done % 10 == 0:
+            _dump(bodies, os.path.join(work, "fulltext.json"))
         time.sleep(0.3)
-    print(f"  full text retrieved for {len(bodies)} / {len(pmids)} papers")
+    _dump(bodies, os.path.join(work, "fulltext.json"))
+    _dump(failures, os.path.join(work, "fulltext-failures.json"))
+    by_route = ", ".join(f"{k} {v}" for k, v in sorted(routes.items())) or "none"
+    print(f"  full text retrieved for {len(bodies)} / {len(pmids)} papers "
+          f"(by route: {by_route}); {len(failures)} recorded as not retrieved")
     return os.path.join(work, "fulltext.json")
 
 
