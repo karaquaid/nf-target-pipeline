@@ -26,6 +26,87 @@ TIER_DOC = {
 }
 
 
+
+# Facts about how the phase was run that no committed table records, following the
+# convention of phase-4/scripts/build_phase4_report.py. Both were read off the
+# pinned run of 2026-11-11 and are not derivable from the committed tables:
+# phase5-monarch-associations.csv.gz does not carry the per-gene `resolved_via`
+# column, and the GO process-term count is taken across all 3,777 DisMech disorder
+# entries, not the NF mechanism nodes, so the committed NF-only mechanisms table
+# cannot answer it. A live run overrides both from its own build artefacts.
+PROCESS_HISTORY = {
+    "n_resolved_via_phase4_alias": 43,
+    "n_go_process_terms": 2950,
+}
+
+
+def load_run_facts(build: Path, data: Path) -> tuple[dict, dict, dict]:
+    """Return (inputs, monarch, dismech) run facts.
+
+    Added 2026-11-20. This report used to read three JSON files from --builddir,
+    which no committed script writes, so it was the one phase report that could not
+    be regenerated from the repository. Every fact it needed is already carried in
+    the committed phase5-provenance.json that this script itself writes, so the
+    committed record is now the fallback: a live run still prefers its own build
+    artefacts, and a regeneration from a clean clone reconstructs the same values
+    from what is committed.
+
+    The counts that a committed table can answer are asserted against it rather
+    than trusted, so a provenance file that has drifted from the dossier fails here
+    instead of propagating a stale number into the prose.
+    """
+    paths = {k: build / f"phase5-{k}.json" for k in ("inputs", "monarch-summary", "dismech-summary")}
+    if all(q.exists() for q in paths.values()):
+        print("run facts: build artefacts in", build)
+        return (json.load(open(paths["inputs"])),
+                json.load(open(paths["monarch-summary"])),
+                json.load(open(paths["dismech-summary"])))
+
+    prov_path = data / "phase5-provenance.json"
+    if not prov_path.exists():
+        raise SystemExit(
+            f"neither the build artefacts in {build} nor {prov_path} are present; "
+            "nothing here can be reconstructed. Run the Phase 5 passes first."
+        )
+    print("run facts: committed", prov_path)
+    prov = json.load(open(prov_path))
+    counts, src = prov["counts"], prov["sources"]
+    mon_src, dis_src = src["monarch"], src["dismech"]
+
+    dossier = pd.read_csv(data.parent.parent / "phase-4" / "data" / "phase4-target-dossier.csv",
+                          low_memory=False)
+    if len(dossier) != counts["dossier_rows"] or dossier.gene_symbol.nunique() != counts["distinct_genes"]:
+        raise SystemExit(
+            f"{prov_path} records {counts['dossier_rows']:,} dossier rows and "
+            f"{counts['distinct_genes']:,} genes, but phase4-target-dossier.csv now holds "
+            f"{len(dossier):,} and {dossier.gene_symbol.nunique():,}. The provenance file is "
+            "stale; re-run the Phase 5 passes rather than regenerating the report."
+        )
+
+    inputs = {"input_commit": prov["input_commit"],
+              "dossier_rows": counts["dossier_rows"],
+              "distinct_genes": counts["distinct_genes"]}
+    mon = {"monarch_kg_version": mon_src["kg_version"],
+           "monarch_api_version": mon_src["api_version"],
+           "n_symbols": mon_src["requests"]["symbol_resolution"],
+           "n_resolved": mon_src["requests"]["association_queries"] // 2,
+           "errors": [None] * mon_src["errors"],
+           "unresolved_symbols": prov["unresolved_symbols"],
+           "n_association_rows": counts["monarch_association_rows"],
+           "n_genes_with_disease_edge": counts["genes_with_causal_disease_edge"],
+           "n_genes_with_phenotype_edge": counts["genes_with_phenotype_edge"],
+           "n_resolved_via_phase4_alias": PROCESS_HISTORY["n_resolved_via_phase4_alias"]}
+    dis = {"n_go_process_terms": PROCESS_HISTORY["n_go_process_terms"],
+           "dismech_release": dis_src["release"],
+           "dismech_release_published": dis_src["released"],
+           "entries_fetched": dis_src["entries_fetched"],
+           "n_disorders_indexed": dis_src["disorders_indexed"],
+           "n_mechanism_nodes": counts["dismech_mechanism_nodes"],
+           "n_gene_overlap_rows": counts["dismech_gene_overlap_rows"],
+           "n_cross_disease_rows": counts["cross_disease_rows"]}
+    return inputs, mon, dis
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--builddir", default="build/phase5")
@@ -35,9 +116,7 @@ def main() -> None:
     build, data, docs = Path(args.builddir), Path(args.datadir), Path(args.docdir)
     docs.mkdir(parents=True, exist_ok=True)
 
-    inputs = json.load(open(build / "phase5-inputs.json"))
-    mon = json.load(open(build / "phase5-monarch-summary.json"))
-    dis = json.load(open(build / "phase5-dismech-summary.json"))
+    inputs, mon, dis = load_run_facts(build, data)
     sup = pd.read_csv(data / "phase5-target-support.csv")
     assoc = pd.read_csv(data / "phase5-monarch-associations.csv.gz")
     mech = pd.read_csv(data / "phase5-dismech-mechanisms.csv")

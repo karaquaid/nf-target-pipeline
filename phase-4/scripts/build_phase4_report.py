@@ -58,7 +58,19 @@ UNAVAILABLE = {
 
 
 def read(path: Path) -> pd.DataFrame:
-    return pd.read_csv(path) if path.exists() else pd.DataFrame()
+    """Read `path`, or its .gz sibling where that is what is committed.
+
+    The same defect phase4_dossier.py carried: this script asked for the plain
+    phase4-opentargets-tractability.csv while the committed table is gzipped, so it
+    could not regenerate its own output. Found 2026-11-22 by the Phase 8 manifest
+    check, which reported the file as a missing input.
+    """
+    if path.exists():
+        return pd.read_csv(path)
+    gz = path.with_name(path.name + ".gz")
+    if gz.exists():
+        return pd.read_csv(gz)
+    return pd.DataFrame()
 
 
 def fmt(value) -> str:
@@ -72,7 +84,7 @@ def build(root: Path) -> str:
     dossier = pd.read_csv(data / "phase4-target-dossier.csv")
     routes = pd.read_csv(data / "phase4-drug-route-flags.csv.gz")
     interactions = pd.read_csv(data / "phase4-drug-interactions.csv.gz")
-    tract = pd.read_csv(data / "phase4-opentargets-tractability.csv")
+    tract = read(data / "phase4-opentargets-tractability.csv")
     admet = pd.read_csv(data / "phase4-admet.csv.gz")
     trials = read(data / "phase4-nf-trials.csv")
     trial_drugs = read(data / "phase4-trial-drugs.csv")
@@ -374,10 +386,12 @@ def build(root: Path) -> str:
     add("| phase4-identifiers.csv | symbol to UniProt and Ensembl, with unresolved symbols kept |")
     add("| phase4-symbol-corrections.csv | the two platform-annotation corruptions and the one non-gene label |")
     add("| phase4-drug-interactions.csv.gz | one row per target and drug, with the source of each claim |")
-    add("| phase4-opentargets-tractability.csv | tractability buckets per target and modality |")
+    add("| phase4-opentargets-tractability.csv.gz | tractability buckets per target and modality |")
     add("| phase4-chembl-drugs.csv.gz | drug records including max_phase and route booleans |")
     add("| phase4-chembl-mechanisms.csv.gz | mechanism of action per drug |")
     add("| phase4-nf-trials.csv, phase4-trial-drugs.csv | NF interventional trials and their drugs |")
+    add("| phase4-nf-provenance-check.csv | the provenance-only trials, each with its "
+        "registry verdict and retrieval date |")
     add("| phase4-openfda-labels.csv, phase4-openfda-approvals.csv, phase4-faers.csv | route, approval and adverse event data |")
     add("| phase4-admet.csv.gz | calculated properties and the CNS penetration flag |")
     add("| phase4-gtop-interactions.csv.gz, phase4-gtop-selectivity.csv | curated affinities and ligand breadth |")
@@ -408,6 +422,74 @@ def build(root: Path) -> str:
         "to any output."
     )
     add("")
+
+    # Two columns added after review. Numbers recomputed here, per the convention
+    # that no current-state figure in the prose is a remembered one.
+    drugs = read(root / "phase-4/data/phase4-trial-drugs.csv")
+    trials = read(root / "phase-4/data/phase4-nf-trials.csv")
+    if not drugs.empty and "matches_phase4_interaction_drug" in drugs.columns:
+        nfd = drugs[drugs["nf_specific"]]
+        n_chembl = nfd.loc[nfd["matches_phase4_drug"], "intervention_key"].nunique()
+        n_inter = nfd.loc[nfd["matches_phase4_interaction_drug"], "intervention_key"].nunique()
+        recovered = n_inter - n_chembl
+        add("## Two columns added after review")
+        add("")
+        add(
+            "Both were derived through `phase4_clinicaltrials.py --annotate-only`, so no trial was "
+            "refetched and the pinned run of 2026-11-04 is untouched. Neither replaces an existing "
+            "column."
+        )
+        add("")
+        add(
+            f"**`matches_phase4_interaction_drug`** sits alongside `matches_phase4_drug`. The "
+            f"original column is computed against `phase4-chembl-drugs.csv`, the ChEMBL drug "
+            f"universe, but the table that maps a drug to a target is "
+            f"`phase4-drug-interactions.csv.gz`, which also carries drugs reached through DGIdb and "
+            f"Open Targets. Across the NF-specific trials the ChEMBL match finds {n_chembl} "
+            f"distinct interventions and the interaction match finds {n_inter}. The {recovered} it "
+            f"recovers include everolimus, sirolimus and temsirolimus, plus tipifarnib, imiquimod, "
+            f"carboplatin, temozolomide and methotrexate. Both columns are kept so the two "
+            f"populations cannot be conflated; anything mapping trial drugs onto targets wants the "
+            f"interaction column."
+        )
+        add("")
+    if not trials.empty and "nf_specific_basis" in trials.columns:
+        nft = trials[trials["nf_specific"]]
+        order = {"statement": 0, "provenance_nf_in_eligibility": 1,
+                 "provenance_no_nf_mention": 2, "provenance_unchecked": 3}
+        best = (nft.assign(_r=nft["nf_specific_basis"].map(order))
+                   .sort_values("_r").drop_duplicates("nct_id"))
+        counts = best["nf_specific_basis"].value_counts().to_dict()
+        chk = read(root / "phase-4/data/phase4-nf-provenance-check.csv")
+        add(
+            "**`nf_specific_basis`** says which evidence qualified a trial, in three states. "
+            "`statement` means an NF disease is named in the title or conditions. "
+            "`provenance_nf_in_eligibility` means NF is named in the full registry record, usually "
+            "in eligibility criteria, which this table does not carry. `provenance_no_nf_mention` "
+            "means the trial came back from an NF-restricted query and the full record names NF "
+            "nowhere."
+        )
+        add("")
+        add(
+            f"All {len(chk)} provenance-only trials were checked against the registry rather than "
+            f"assumed, and {int((chk['verdict'] == 'nf_in_eligibility').sum()) if not chk.empty else 0} "
+            f"name NF. Of the {len(best)} NF-specific trials, "
+            f"{counts.get('statement', 0)} qualify by statement, "
+            f"{counts.get('provenance_nf_in_eligibility', 0)} by eligibility criteria and "
+            f"{counts.get('provenance_no_nf_mention', 0)} name NF nowhere. Two of those four are "
+            f"not NF trials: NCT03710564 (age-related macular degeneration) and NCT00588172 (type 2 "
+            f"diabetes). The other two are MPNST trials that never state whether their patients "
+            f"have NF1, NCT00427583 and NCT02986919; they are kept and flagged rather than dropped, "
+            f"which is the standing rule for material that merely never states germline status. "
+            f"Every verdict is in `phase4-nf-provenance-check.csv`."
+        )
+        add("")
+        add(
+            "A consumer needing certainty filters on `statement`. One wanting every genuine NF "
+            f"trial accepts `statement` or `provenance_nf_in_eligibility`. `nf_specific` itself is "
+            f"unchanged at {int(trials['nf_specific'].sum())} rows and {len(best)} distinct trials."
+        )
+        add("")
 
     return "\n".join(lines)
 

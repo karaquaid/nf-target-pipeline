@@ -33,18 +33,43 @@ recovered include everolimus, sirolimus and temsirolimus, which between them app
 NF-specific trials and carry a directional MTOR interaction, plus tipifarnib, imiquimod,
 carboplatin, temozolomide and methotrexate.
 
+Resolved 2026-11-20 (Kara): both joins are carried. `matches_phase4_drug` is unchanged and
+`matches_phase4_interaction_drug` is added alongside it, so the two populations cannot be
+conflated, the same way `n_manifestation_trials` and `n_nf_specific_trials` are kept side by side.
+Added by `phase4_clinicaltrials.py --annotate-only`, so no trial was refetched and the pinned run
+of 2026-11-04 is untouched.
+
 This matters for the ruling's own example. mTOR, which the ruling names as something the set
 should contain, reaches the pinned 35 only through metformin, and metformin's single NF-flagged
 trial is OCT1 pharmacogenetics in type 2 diabetes. The set below is built on the 68.
 
-**2. `nf_specific` by provenance admits trials that are not NF trials.** The flag qualifies a
-trial two ways: it came from an NF-restricted `_disease_*` query, or its title or conditions name
-an NF disease. Seven of the 68 interventions have no NF-flagged trial that names an NF disease
-anywhere. Two of those trials are plainly not NF: NCT03710564 (brolucizumab against aflibercept in
-age-related macular degeneration) and NCT00588172 (metformin in type 2 diabetes). Three others are
-solid-tumour or low-grade-glioma basket trials that plausibly enrol NF cohorts through eligibility
-criteria the committed table does not carry; they are kept and flagged `provenance_only`, which is
-43 of the set's 275 rows.
+**2. `nf_specific` by provenance is mostly sound, which is not what this write-up first said.** The
+flag qualifies a trial two ways: it came from an NF-restricted `_disease_*` query, or its title or
+conditions name an NF disease. The first version of this document generalised from two bad cases
+and said the provenance half "admits trials that are not NF trials". That was an inference from the
+committed columns, not a measurement.
+
+All 21 provenance-only trials were then checked against the registry through the ClinicalTrials.gov
+connector on 2026-11-22. **17 of the 21 do name NF**, almost always in eligibility criteria, which
+is exactly the field the committed table does not carry. Three of the five trials this document
+originally held up as suspect are confirmed NF that way: NCT04800822, NCT03989115 and NCT06381570.
+
+Rolled up to distinct trials, the 209 NF-specific trials are 188 by statement, 17 NF-named in the
+full registry record, and 4 naming NF nowhere. Those four split two ways:
+
+- **Not NF trials.** NCT03710564 (brolucizumab against aflibercept in age-related macular
+  degeneration) and NCT00588172 (metformin in type 2 diabetes). Both excluded below.
+- **MPNST trials that never state whether their patients have NF1.** NCT00427583 (imatinib) and
+  NCT02986919 (CPI-0610). MPNST occurs sporadically as well as in NF1, so these are unresolved
+  rather than wrong, and they are kept and flagged, which is the standing rule for material that
+  merely never states germline status. Two validation rows rest on one of them: ABL1 and KIT
+  through imatinib in NCT00427583.
+
+Every verdict, the NF terms found, the fields they appeared in and the retrieval date are in
+`phase-4/data/phase4-nf-provenance-check.csv`. `nf_specific_basis` on the Phase 4 trial tables
+carries the three states, so a consumer needing certainty filters on `statement`. The set below
+carries the same attribution per row: 232 `statement`, 41 `provenance_nf_in_eligibility`, 2
+`provenance_no_nf_mention`.
 
 **3. The ruling's symptomatic-care examples half hold.** Checking each drug against its actual
 trial rather than its drug class:
@@ -151,3 +176,4 @@ called", and says so in `phase8-validation-summary.json` under `list_used`, per 
 | `phase-8/data/phase8-validation-results.csv` | one row per gene by disease by manifestation, with the outcome and rank |
 | `phase-8/data/phase8-validation-summary.json` | the counts above |
 | `phase-8/scripts/phase8_validate.py` | the check, regenerable |
+| `phase-4/data/phase4-nf-provenance-check.csv` | the 21 provenance-only trials, each with its registry verdict and retrieval date |

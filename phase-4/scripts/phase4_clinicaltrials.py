@@ -138,33 +138,123 @@ def is_nf_specific(query_label: str, title: str, conditions: str) -> bool:
     return bool(NF_PATTERN.search(f"{title} {conditions}"))
 
 
-def annotate_nf_specific(data: Path) -> dict:
-    """Recompute `nf_specific` on the committed tables without re-querying.
+def nf_specific_basis(query_label: str, title: str, conditions: str,
+                      checked: dict | None = None, nct_id: str = "") -> str:
+    """Which evidence qualified the trial as NF-specific. Three states.
 
-    Kept separate from the fetch so the flag can be added to the existing record
+    Added 2026-11-20 (Kara). `nf_specific` is one boolean over two unlike kinds of
+    evidence, and only one of them was checkable from the committed columns.
+
+      statement                     an NF disease is named in the title or conditions
+      provenance_nf_in_eligibility  NF is named in the full registry record, usually
+                                    in eligibility criteria, which this table does
+                                    not carry. Verified per trial, not assumed
+      provenance_no_nf_mention      came back from an NF-restricted query and the
+                                    full record names NF nowhere
+
+    All 21 provenance-only trials were checked against the registry on 2026-11-22
+    through the ClinicalTrials.gov connector. 17 name NF in the full record; the
+    provenance half of the rule is therefore mostly sound, which is the opposite of
+    what the Phase 8 wrap first assumed from the committed columns alone. The four
+    that do not are in phase-4/data/phase4-nf-provenance-check.csv: two are not NF
+    trials at all (NCT03710564 age-related macular degeneration, NCT00588172 type 2
+    diabetes), and two are MPNST trials that never state whether their patients
+    have NF1 (NCT00427583, NCT02986919). Those two are kept and flagged rather than
+    dropped, which is the standing rule for material that merely never states
+    germline status.
+
+    Consumers needing certainty filter on `statement`. Consumers wanting every
+    genuine NF trial accept `statement` or `provenance_nf_in_eligibility`.
+    """
+    if NF_PATTERN.search(f"{title} {conditions}"):
+        return "statement"
+    if str(query_label).startswith("_disease_"):
+        verdict = (checked or {}).get(str(nct_id))
+        if verdict == "nf_in_eligibility":
+            return "provenance_nf_in_eligibility"
+        if verdict == "no_nf_mention":
+            return "provenance_no_nf_mention"
+        return "provenance_unchecked"
+    return ""
+
+
+def load_provenance_check(data: Path) -> dict:
+    """Per-trial registry verdicts for provenance-only trials, retrieved 2026-11-22."""
+    path = data / "phase4-nf-provenance-check.csv"
+    if not path.exists():
+        return {}
+    chk = pd.read_csv(path)
+    return dict(zip(chk["nct_id"].astype(str), chk["verdict"]))
+
+
+def interaction_drug_keys(data: Path) -> set:
+    """Drug names in the consolidated interaction table, which is what maps a drug
+    to a target. `matches_phase4_drug` is computed against the ChEMBL drug universe
+    alone, so a drug reached only through DGIdb or Open Targets is invisible to it."""
+    ix = pd.read_csv(data / "phase4-drug-interactions.csv.gz", low_memory=False)
+    keys = ix["drug_name"].fillna("").astype(str).str.upper().str.strip()
+    return set(keys) - {""}
+
+
+def annotate_nf_specific(data: Path) -> dict:
+    """Recompute the derived flags on the committed tables without re-querying.
+
+    Kept separate from the fetch so a flag can be added to the existing record
     without a data refresh, which would silently fold in every trial registered
-    since the pinned run of 2026-11-04 and make the two changes impossible to
+    since the pinned run of 2026-11-04 and make the changes impossible to
     tell apart in review.
+
+    Three columns are derived here. `nf_specific` is unchanged. `nf_specific_basis`
+    (2026-11-20) says which half of the rule qualified the trial.
+    `matches_phase4_interaction_drug` (2026-11-20) is the drug match against the
+    interaction table, carried ALONGSIDE `matches_phase4_drug` rather than replacing
+    it, so the two populations can never be conflated: the ChEMBL-universe match
+    reports 40 distinct NF-specific interventions, the interaction-table match 68.
+    The 28 it recovers include everolimus, sirolimus and temsirolimus, which is why
+    mTOR reached the Phase 8 validation population only through a type 2 diabetes
+    trial.
     """
     trials = pd.read_csv(data / "phase4-nf-trials.csv")
     trials["nf_specific"] = [
         is_nf_specific(q, t, c)
         for q, t, c in zip(trials["query_label"], trials["title"], trials["conditions"])
     ]
+    checked = load_provenance_check(data)
+    trials["nf_specific_basis"] = [
+        nf_specific_basis(q, t, c, checked, n)
+        for q, t, c, n in zip(trials["query_label"], trials["title"],
+                              trials["conditions"], trials["nct_id"])
+    ]
     nf_trials = set(trials.loc[trials["nf_specific"], "nct_id"])
+    basis_by_trial = dict(zip(trials["nct_id"], trials["nf_specific_basis"]))
 
     drugs = pd.read_csv(data / "phase4-trial-drugs.csv")
     drugs["nf_specific"] = drugs["nct_id"].isin(nf_trials)
+    drugs["nf_specific_basis"] = drugs["nct_id"].map(basis_by_trial).fillna("")
+    ix_keys = interaction_drug_keys(data)
+    drugs["matches_phase4_interaction_drug"] = drugs["intervention_key"].isin(ix_keys)
 
     trials.to_csv(data / "phase4-nf-trials.csv", index=False)
     drugs.to_csv(data / "phase4-trial-drugs.csv", index=False)
+    nfd = drugs[drugs["nf_specific"]]
     return {
         "trial_rows": int(len(trials)),
         "trial_rows_nf_specific": int(trials["nf_specific"].sum()),
+        "trial_rows_nf_by_statement": int((trials["nf_specific_basis"] == "statement").sum()),
+        "trial_rows_nf_in_eligibility": int(
+            (trials["nf_specific_basis"] == "provenance_nf_in_eligibility").sum()),
+        "trial_rows_no_nf_mention": int(
+            (trials["nf_specific_basis"] == "provenance_no_nf_mention").sum()),
+        "trial_rows_provenance_unchecked": int(
+            (trials["nf_specific_basis"] == "provenance_unchecked").sum()),
         "distinct_trials": int(trials["nct_id"].nunique()),
         "distinct_trials_nf_specific": int(len(nf_trials)),
         "drug_rows": int(len(drugs)),
         "drug_rows_nf_specific": int(drugs["nf_specific"].sum()),
+        "nf_interventions_matching_chembl_universe": int(
+            nfd.loc[nfd["matches_phase4_drug"], "intervention_key"].nunique()),
+        "nf_interventions_matching_interaction_table": int(
+            nfd.loc[nfd["matches_phase4_interaction_drug"], "intervention_key"].nunique()),
     }
 
 
