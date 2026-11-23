@@ -26,7 +26,7 @@ Of those genes, 1,861 resolved to a current HGNC symbol directly and 41 through 
 
 | Disease | Manifestation | Targets | With a drug | With an approved drug | Undrugged but tractable | Route-appropriate drugs |
 | --- | --- | --- | --- | --- | --- | --- |
-| NF1 | ANNUBP / atypical neurofibroma | 63 | 43 | 10 | 19 | 210 |
+| NF1 | ANNUBP / atypical neurofibroma | 63 | 43 | 10 | 19 | 206 |
 | NF1 | Bone defects | 93 | 42 | 16 | 41 | 316 |
 | NF1 | Cutaneous neurofibroma | 425 | 173 | 38 | 234 | 615 |
 | NF1 | Malignant peripheral nerve sheath tumor (MPNST) | 858 | 393 | 86 | 438 | 1,083 |
@@ -34,11 +34,11 @@ Of those genes, 1,861 resolved to a current HGNC symbol directly and 41 through 
 | NF1 | Plexiform neurofibroma | 808 | 378 | 85 | 405 | 1,190 |
 | NF2-SWN | Non-vestibular schwannoma | 221 | 95 | 25 | 98 | 353 |
 | NF2-SWN | Pain | 192 | 67 | 6 | 97 | 53 |
-| NF2-SWN | Vestibular schwannoma | 668 | 309 | 77 | 302 | 1,041 |
+| NF2-SWN | Vestibular schwannoma | 668 | 309 | 77 | 302 | 205 |
 
 ## Delivery route and CNS penetration
 
-The filter was applied to 39,138 target-drug pairs. 33,349 carry no clinical route in ChEMBL and no openFDA label, which is the expected state for a preclinical screening hit and is recorded as unknown rather than inappropriate. Of the pairs where a route is known, 427 are flagged delivery-inappropriate and kept for audit: 267 topical-only drugs against a manifestation needing a systemic route, 144 systemic drugs predicted not to cross the blood-brain barrier against a CNS manifestation, and 16 biologics against a CNS manifestation.
+The filter was applied to 39,138 target-drug pairs. 33,349 carry no clinical route in ChEMBL and no openFDA label, which is the expected state for a preclinical screening hit and is recorded as unknown rather than inappropriate. Of the pairs where a route is known, 715 are flagged delivery-inappropriate and kept for audit: 271 topical-only drugs against a manifestation needing a systemic route, 394 systemic drugs predicted not to cross the blood-brain barrier against a CNS manifestation, and 50 biologics against a CNS manifestation.
 
 The CNS flag is a prediction from ChEMBL's calculated molecular properties, not a permeability measurement: ChEMBL holds no experimental blood-brain-barrier data. Across 4,005 drugs it reads 1,773 predicted permeant, 1,771 predicted non-permeant, 221 biologics and 240 with no calculated properties. The thresholds are stated in phase-4/scripts/phase4_admet.py and in phase-4/data/phase4-admet-provenance.json.
 
@@ -95,10 +95,11 @@ A third is a schema drift rather than an access problem: Open Targets no longer 
 | phase4-identifiers.csv | symbol to UniProt and Ensembl, with unresolved symbols kept |
 | phase4-symbol-corrections.csv | the two platform-annotation corruptions and the one non-gene label |
 | phase4-drug-interactions.csv.gz | one row per target and drug, with the source of each claim |
-| phase4-opentargets-tractability.csv | tractability buckets per target and modality |
+| phase4-opentargets-tractability.csv.gz | tractability buckets per target and modality |
 | phase4-chembl-drugs.csv.gz | drug records including max_phase and route booleans |
 | phase4-chembl-mechanisms.csv.gz | mechanism of action per drug |
 | phase4-nf-trials.csv, phase4-trial-drugs.csv | NF interventional trials and their drugs |
+| phase4-nf-provenance-check.csv | the provenance-only trials, each with its registry verdict and retrieval date |
 | phase4-openfda-labels.csv, phase4-openfda-approvals.csv, phase4-faers.csv | route, approval and adverse event data |
 | phase4-admet.csv.gz | calculated properties and the CNS penetration flag |
 | phase4-gtop-interactions.csv.gz, phase4-gtop-selectivity.csv | curated affinities and ligand breadth |
@@ -123,3 +124,15 @@ python phase-4/scripts/build_phase4_report.py
 ```
 
 Only phase4_identifiers.py runs offline; it reads the committed mygene cache. The rest touch the network. Two need a key, read from the environment and never written to any output.
+
+## Two columns added after review
+
+Both were derived through `phase4_clinicaltrials.py --annotate-only`, so no trial was refetched and the pinned run of 2026-11-04 is untouched. Neither replaces an existing column.
+
+**`matches_phase4_interaction_drug`** sits alongside `matches_phase4_drug`. The original column is computed against `phase4-chembl-drugs.csv`, the ChEMBL drug universe, but the table that maps a drug to a target is `phase4-drug-interactions.csv.gz`, which also carries drugs reached through DGIdb and Open Targets. Across the NF-specific trials the ChEMBL match finds 40 distinct interventions and the interaction match finds 68. The 28 it recovers include everolimus, sirolimus and temsirolimus, plus tipifarnib, imiquimod, carboplatin, temozolomide and methotrexate. Both columns are kept so the two populations cannot be conflated; anything mapping trial drugs onto targets wants the interaction column.
+
+**`nf_specific_basis`** says which evidence qualified a trial, in three states. `statement` means an NF disease is named in the title or conditions. `provenance_nf_in_eligibility` means NF is named in the full registry record, usually in eligibility criteria, which this table does not carry. `provenance_no_nf_mention` means the trial came back from an NF-restricted query and the full record names NF nowhere.
+
+All 21 provenance-only trials were checked against the registry rather than assumed, and 17 name NF. Of the 209 NF-specific trials, 188 qualify by statement, 17 by eligibility criteria and 4 name NF nowhere. Two of those four are not NF trials: NCT03710564 (age-related macular degeneration) and NCT00588172 (type 2 diabetes). The other two are MPNST trials that never state whether their patients have NF1, NCT00427583 and NCT02986919; they are kept and flagged rather than dropped, which is the standing rule for material that merely never states germline status. Every verdict is in `phase4-nf-provenance-check.csv`.
+
+A consumer needing certainty filters on `statement`. One wanting every genuine NF trial accepts `statement` or `provenance_nf_in_eligibility`. `nf_specific` itself is unchanged at 435 rows and 209 distinct trials.

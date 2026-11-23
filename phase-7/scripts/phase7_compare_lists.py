@@ -42,6 +42,9 @@ ACCESS_WEIGHT = {
 # Contract Call 2. Wording is part of the ruling: "found", never "exists".
 NO_CONTRAST_CLASS = "literature_only_no_expression_contrast_found"
 
+# Ruling 3's own framing of what the top-200 cap excluded.
+REPLICATED_TIERS = ("A_aggregated", "B_replicated")
+
 MATCH_CLASSES = [
     "both_exact_named_gene",
     "both_via_composite_label",
@@ -72,7 +75,7 @@ def split_set(value, sep=";") -> set:
     return {part.strip() for part in value.split(sep) if part.strip()}
 
 
-def load_expression(root: Path) -> pd.DataFrame:
+def load_expression(root: Path, source: str = "capped") -> pd.DataFrame:
     """Phase 3 candidates, exploded to one row per manifestation.
 
     `manifestations` is the label set of the source contrast, not a per-gene
@@ -81,8 +84,21 @@ def load_expression(root: Path) -> pd.DataFrame:
     three apart. `expr_manifestation_specific` records, per source row, whether
     the contrast named a single manifestation.
     """
-    path = root / "phase-3" / "data" / "phase3-candidate-targets.csv"
-    df = pd.read_csv(path)
+    if source == "full":
+        # Ruling 3 of 2026-11-17: a pathway or near-miss analysis reads the full
+        # table, not the capped list. Restricted to non-driver replicated genes,
+        # which is the population the ruling describes the cap as having halved.
+        path = root / "phase-3" / "data" / "phase3-expression-targets.csv.gz"
+        df = pd.read_csv(path, low_memory=False)
+        df = df[(~df["driver_gene"]) & (df["evidence_tier"].isin(REPLICATED_TIERS))]
+        df = df.drop(columns=["driver_gene", "in_candidate_list"])
+    elif source == "capped":
+        path = root / "phase-3" / "data" / "phase3-candidate-targets.csv"
+        df = pd.read_csv(path)
+    else:
+        raise ValueError(f"unknown expression source: {source!r}")
+    df = df.copy()
+    df["expression_list_used"] = str(path.relative_to(root))
     df["src_manifestations"] = df["manifestations"]
     df["expr_manifestation_specific"] = ~df["manifestations"].str.contains(r"\|", regex=True)
     df["manifestation"] = df["manifestations"].str.split("|")
@@ -442,6 +458,7 @@ def build_pathway_near_misses(
                         {
                             "near_miss_type": "shared_pathway",
                             "gene_symbol": expr_gene,
+                            "expression_list_used": erec["expression_list_used"],
                             "expr_disease": disease,
                             "expr_manifestation": manifestation,
                             "expr_comparison_class": cc,
@@ -507,6 +524,7 @@ NEAR_MISS_COLUMNS = [
     "lit_preprint_only",
     "cross_disease",
     "also_matched_in_lit_manifestation",
+    "expression_list_used",
     "pathway_id",
     "pathway_name",
     "pathway_size",
@@ -816,7 +834,11 @@ def main() -> None:
             (g, d, m) in both_cells
             for g, d, m in zip(cross["gene_symbol"], cross["lit_disease"], cross["lit_manifestation"])
         ]
-    pathway = build_pathway_near_misses(root, expr, lit_x)
+    # Ruling 3: the pathway near-miss pass reads the full table. The exact-match
+    # comparison above stays on the capped candidate list, which is the list
+    # Phase 4 consumes and the one Phase 3b reconciles against.
+    expr_full = load_expression(root, source="full")
+    pathway = build_pathway_near_misses(root, expr_full, lit_x)
     if not pathway.empty:
         pathway["also_matched_in_lit_manifestation"] = False
     near = pd.concat([cross, pathway], ignore_index=True).reindex(columns=NEAR_MISS_COLUMNS)

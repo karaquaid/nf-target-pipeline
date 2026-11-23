@@ -89,11 +89,18 @@ presentation chart, and the failure it caused was shaping an analysis silently: 
 MPNST PARP1 convergence rested on a base-excision-repair signature the cap had truncated from ten
 genes to five.
 
-Two committed steps still read the capped list and are marked `non_compliant` in the manifest:
-`phase3_kegg_enrich.py` and the pathway near-miss pass in `phase7_compare_lists.py`. Changing
-either moves a committed table, and the same ruling says no rerun of Phases 3 to 6, so the
-remediation is the PI's to schedule. If you write a new pathway or convergence analysis, read the
-full table and say so in the output.
+Both steps that read the capped list were changed on 2026-11-20 and neither was re-run, so their
+committed tables stand as produced while any future run complies. `phase3_kegg_enrich.py` takes
+`--foreground replicated` by default and `phase7_compare_lists.py` loads the full table for the
+near-miss pass only, leaving the exact-match comparison on the capped list that Phase 4 consumes.
+Both record which list they used.
+
+One residual is not closed and you should not describe ruling 3 as discharged: the near-miss pass
+selects its pathways, and its per-pathway gene lists, from `phase3-kegg-enrichment.csv`, which was
+computed on the capped foreground and cannot be regenerated because the Phase 2 ranked lists it
+needs are not committed.
+
+If you write a new pathway or convergence analysis, read the full table and say so in the output.
 
 **R4. A failed or empty API call is reported.** See above.
 
@@ -106,6 +113,11 @@ Do not resolve any of these yourself. Put the question to the user with what you
 - Any change to the fixed manifestation vocabulary. It is project-wide, and it has been changed
   once (Pheochromocytoma, 2026-11-17).
 - Whether a dataset or a paper is in scope, and whether germline NF attribution is established.
+- Whether a trial counts as an NF trial. `nf_specific_basis` is three-state: `statement`,
+  `provenance_nf_in_eligibility` (verified against the registry, where the NF mention usually lives)
+  and `provenance_no_nf_mention`. Of 209 NF-specific trials, 188 are by statement, 17 by eligibility
+  criteria and 4 name NF nowhere. Two of those four are not NF trials; two are MPNST trials that
+  never state whether their patients have NF1 and are kept and flagged, not dropped.
 - Whether a near-miss or convergence is a finding. A malignant-versus-benign contrast raises every
   replication and repair pathway, so coherent up-regulation of one is the expected case. Ask for a
   proliferation control before reporting any such convergence.
@@ -125,7 +137,10 @@ reached through a manifestation-term trial query is in a `manifestation` trial, 
 ## Validating a change
 
 `phase-8/data/phase8-validation-set.csv` holds the targets with NF clinical precedent, built from
-the drugs actually trialled in NF. `phase-8/scripts/phase8_validate.py` checks whether the
+the drugs actually trialled in NF. Build it from `matches_phase4_interaction_drug`, not
+`matches_phase4_drug`: the latter joins against the ChEMBL drug universe alone and reports 40
+interventions where the interaction table supports 68, dropping the mTOR inhibitors among others.
+Both columns are carried, so check which one you are reading. `phase-8/scripts/phase8_validate.py` checks whether the
 pipeline surfaces each one in the stratum its trial evidence implies. Run it after any change
 that could move the candidate lists.
 

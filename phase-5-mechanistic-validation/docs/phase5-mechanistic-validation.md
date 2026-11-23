@@ -114,12 +114,28 @@ Most frequently co-occurring disorders at two shared terms:
 
 ## Files
 
+- `phase5-cns-literature-by-drug.csv`
+- `phase5-cns-literature-claims.csv`
+- `phase5-cns-literature-provenance.json`
 - `phase5-cross-disease-mechanisms.csv.gz`
 - `phase5-dismech-gene-overlap.csv`
 - `phase5-dismech-genetic.csv`
 - `phase5-dismech-mechanisms.csv`
+- `phase5-drug-candidate-exclusions.csv`
+- `phase5-drug-candidate-set.csv`
+- `phase5-drug-candidate-summary.json`
+- `phase5-drug-matches.csv.gz`
+- `phase5-drug-search-summary.json`
+- `phase5-drugs-by-stratum.csv`
+- `phase5-label-cns-provenance.json`
+- `phase5-label-cns-statements.csv`
+- `phase5-label-cns-verdicts.csv`
 - `phase5-manifestation-hpo-map.csv`
 - `phase5-monarch-associations.csv.gz`
 - `phase5-provenance.json`
 - `phase5-support-by-stratum.csv`
+- `phase5-support-column-coverage.json`
+- `phase5-supported-target-drugs.csv`
 - `phase5-target-support.csv`
+- `phase5-tractability-state-summary.json`
+- `phase5-tractability-state.csv`
